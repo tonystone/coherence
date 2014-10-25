@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by Tony Stone (Mobile Grid, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.mobilegridinc.com/rightscale/api/15/xsd" targetNamespace="http://www.mobilegridinc.com/rightscale/api/15/xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="RightScaleCommon.xsd"/>
+	<xs:complexType name="Cloud">
+		<xs:sequence>
+			<xs:element name="link" type="tns:link"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="description" type="xs:string"/>
+		<xs:attribute name="cloud_id" type="xs:string"/>
+		<xs:attribute name="url" type="xs:anyURI"/>
+	</xs:complexType>
+	<xs:complexType name="Clouds">
+		<xs:sequence>
+			<xs:element name="cloud" type="tns:Cloud"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,29 @@
+<wsdl:description xmlns:wsdl="http://www.w3.org/ns/wsdl"
+    targetNamespace="http://www.bookstore.org/booklist/wsdl"
+    xmlns:https="http://www.w3.org/ns/wsdl/http">
+    
+    <wsdl:types/>
+    <wsdl:interface name="CloudListInterface">
+        <wsdl:operation name="CloudList"
+            pattern="http://www.w3.org/ns/wsdl/in-out"
+            style="http://www.w3.org/ns/wsdl/style/iri"
+            wsdlx:safe="true">
+            <wsdl:input element=""/>
+            <wsdl:output element=""/>
+        </wsdl:operation>
+    </wsdl:interface>
+
+    <wsdl:binding name="CloudListBinding"
+        type="http://www.w3.org/ns/wsdl/http"
+        interface="">
+        <wsdl:operation ref="" https:method="GET"/>
+    </wsdl:binding>
+    
+    <wsdl:service name="Cloud" interface="">
+        <wsdl:endpoint name="CloudList"
+            binding="CloudListBinding"
+            address="https://my.rightscale.com/api/clouds/">
+        </wsdl:endpoint>
+    </wsdl:service>
+    
+</wsdl:description>
