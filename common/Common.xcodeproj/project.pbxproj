@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36698110EB2011CDAD620198 /* LogSteamTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 366980B42D8046AEF1341DB4 /* LogSteamTests.cpp */; };
+		36698A9D9831F6D3EA35C6A8 /* LogStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36698EE80E56BC316FF1BA7A /* LogStream.cpp */; };
+		36698BA8DD75A9D50B919795 /* OperationQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 366988C19A18BAC150616047 /* OperationQueue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		36698C51049AA11545A58EE5 /* LogStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698E7FDD914A049301346D /* LogStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36698C845582D955DBEF4B30 /* OperationQueueTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36698B56837B098B3290363C /* OperationQueueTests.cpp */; };
+		EA321D2019A0136F00921E4D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA321D1F19A0136F00921E4D /* main.cpp */; };
+		EA321D2E19A0141F00921E4D /* Access.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2619A0141F00921E4D /* Access.hpp */; };
+		EA321D2F19A0141F00921E4D /* BinaryIArchive.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2719A0141F00921E4D /* BinaryIArchive.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA321D3019A0141F00921E4D /* BinaryOArchive.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2819A0141F00921E4D /* BinaryOArchive.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA321D3119A0141F00921E4D /* BinaryIArchiveImpl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2A19A0141F00921E4D /* BinaryIArchiveImpl.hpp */; };
+		EA321D3219A0141F00921E4D /* BinaryOArchiveImpl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2B19A0141F00921E4D /* BinaryOArchiveImpl.hpp */; };
+		EA321D3319A0141F00921E4D /* Version.h in Headers */ = {isa = PBXBuildFile; fileRef = EA321D2C19A0141F00921E4D /* Version.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA321D3719A0144800921E4D /* BinaryArchiveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA321D3519A0144800921E4D /* BinaryArchiveTest.cpp */; };
+		EA321D3819A0144800921E4D /* VersionTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA321D3619A0144800921E4D /* VersionTest.mm */; };
+		EA67FED419A3D1E500A7B833 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA321D0019A0133000921E4D /* Common.framework */; };
+		EA8FE7F819A6A341007DB69C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8FE7F719A6A341007DB69C /* gtest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA67FED219A3D1DF00A7B833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA321CF719A0133000921E4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA321CFF19A0133000921E4D;
+			remoteInfo = Common;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA321D1B19A0136F00921E4D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		366980B42D8046AEF1341DB4 /* LogSteamTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogSteamTests.cpp; sourceTree = "<group>"; };
+		366988C19A18BAC150616047 /* OperationQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OperationQueue.hpp; sourceTree = "<group>"; };
+		36698B56837B098B3290363C /* OperationQueueTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OperationQueueTests.cpp; sourceTree = "<group>"; };
+		36698E7FDD914A049301346D /* LogStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogStream.h; sourceTree = "<group>"; };
+		36698EE80E56BC316FF1BA7A /* LogStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogStream.cpp; sourceTree = "<group>"; };
+		EA321D0019A0133000921E4D /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA321D0419A0133000921E4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		EA321D1D19A0136F00921E4D /* Common Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Common Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA321D1F19A0136F00921E4D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EA321D2619A0141F00921E4D /* Access.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Access.hpp; sourceTree = "<group>"; };
+		EA321D2719A0141F00921E4D /* BinaryIArchive.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryIArchive.hpp; sourceTree = "<group>"; };
+		EA321D2819A0141F00921E4D /* BinaryOArchive.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryOArchive.hpp; sourceTree = "<group>"; };
+		EA321D2A19A0141F00921E4D /* BinaryIArchiveImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryIArchiveImpl.hpp; sourceTree = "<group>"; };
+		EA321D2B19A0141F00921E4D /* BinaryOArchiveImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryOArchiveImpl.hpp; sourceTree = "<group>"; };
+		EA321D2C19A0141F00921E4D /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		EA321D3519A0144800921E4D /* BinaryArchiveTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryArchiveTest.cpp; sourceTree = "<group>"; };
+		EA321D3619A0144800921E4D /* VersionTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VersionTest.mm; sourceTree = "<group>"; };
+		EA8FE7F719A6A341007DB69C /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../../../../../../Library/Frameworks/gtest.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA321CFC19A0133000921E4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA321D1A19A0136F00921E4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA8FE7F819A6A341007DB69C /* gtest.framework in Frameworks */,
+				EA67FED419A3D1E500A7B833 /* Common.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA321CF619A0133000921E4D = {
+			isa = PBXGroup;
+			children = (
+				EA321D0219A0133000921E4D /* Common */,
+				EA321D1E19A0136F00921E4D /* Common Tests */,
+				EA321D3B19A014F300921E4D /* Frameworks */,
+				EA321D0119A0133000921E4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA321D0119A0133000921E4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D0019A0133000921E4D /* Common.framework */,
+				EA321D1D19A0136F00921E4D /* Common Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA321D0219A0133000921E4D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D2519A0141F00921E4D /* serialization */,
+				EA321D2C19A0141F00921E4D /* Version.h */,
+				EA321D0319A0133000921E4D /* Supporting Files */,
+				36698E7FDD914A049301346D /* LogStream.h */,
+				36698EE80E56BC316FF1BA7A /* LogStream.cpp */,
+				366988C19A18BAC150616047 /* OperationQueue.hpp */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EA321D0319A0133000921E4D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D0419A0133000921E4D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA321D1E19A0136F00921E4D /* Common Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D3419A0144800921E4D /* serialization */,
+				EA321D3619A0144800921E4D /* VersionTest.mm */,
+				EA321D1F19A0136F00921E4D /* main.cpp */,
+				366980B42D8046AEF1341DB4 /* LogSteamTests.cpp */,
+				36698B56837B098B3290363C /* OperationQueueTests.cpp */,
+			);
+			path = "Common Tests";
+			sourceTree = "<group>";
+		};
+		EA321D2519A0141F00921E4D /* serialization */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D2619A0141F00921E4D /* Access.hpp */,
+				EA321D2719A0141F00921E4D /* BinaryIArchive.hpp */,
+				EA321D2819A0141F00921E4D /* BinaryOArchive.hpp */,
+				EA321D2919A0141F00921E4D /* impl */,
+			);
+			path = serialization;
+			sourceTree = "<group>";
+		};
+		EA321D2919A0141F00921E4D /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D2A19A0141F00921E4D /* BinaryIArchiveImpl.hpp */,
+				EA321D2B19A0141F00921E4D /* BinaryOArchiveImpl.hpp */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		EA321D3419A0144800921E4D /* serialization */ = {
+			isa = PBXGroup;
+			children = (
+				EA321D3519A0144800921E4D /* BinaryArchiveTest.cpp */,
+			);
+			path = serialization;
+			sourceTree = "<group>";
+		};
+		EA321D3B19A014F300921E4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA8FE7F719A6A341007DB69C /* gtest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EA321CFD19A0133000921E4D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA321D3319A0141F00921E4D /* Version.h in Headers */,
+				36698C51049AA11545A58EE5 /* LogStream.h in Headers */,
+				EA321D2F19A0141F00921E4D /* BinaryIArchive.hpp in Headers */,
+				EA321D3019A0141F00921E4D /* BinaryOArchive.hpp in Headers */,
+				36698BA8DD75A9D50B919795 /* OperationQueue.hpp in Headers */,
+				EA321D3219A0141F00921E4D /* BinaryOArchiveImpl.hpp in Headers */,
+				EA321D2E19A0141F00921E4D /* Access.hpp in Headers */,
+				EA321D3119A0141F00921E4D /* BinaryIArchiveImpl.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EA321CFF19A0133000921E4D /* Common */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA321D1319A0133000921E4D /* Build configuration list for PBXNativeTarget "Common" */;
+			buildPhases = (
+				EA321CFB19A0133000921E4D /* Sources */,
+				EA321CFC19A0133000921E4D /* Frameworks */,
+				EA321CFD19A0133000921E4D /* Headers */,
+				EA321CFE19A0133000921E4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Common;
+			productName = ConnectCommon;
+			productReference = EA321D0019A0133000921E4D /* Common.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EA321D1C19A0136F00921E4D /* Common Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA321D2119A0136F00921E4D /* Build configuration list for PBXNativeTarget "Common Tests" */;
+			buildPhases = (
+				EA321D1919A0136F00921E4D /* Sources */,
+				EA321D1A19A0136F00921E4D /* Frameworks */,
+				EA321D1B19A0136F00921E4D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA67FED319A3D1DF00A7B833 /* PBXTargetDependency */,
+			);
+			name = "Common Tests";
+			productName = "ConnectCommon Tests";
+			productReference = EA321D1D19A0136F00921E4D /* Common Tests */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA321CF719A0133000921E4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Mobile Grid, Inc.";
+				TargetAttributes = {
+					EA321CFF19A0133000921E4D = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					EA321D1C19A0136F00921E4D = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = EA321CFA19A0133000921E4D /* Build configuration list for PBXProject "Common" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA321CF619A0133000921E4D;
+			productRefGroup = EA321D0119A0133000921E4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA321CFF19A0133000921E4D /* Common */,
+				EA321D1C19A0136F00921E4D /* Common Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA321CFE19A0133000921E4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA321CFB19A0133000921E4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36698A9D9831F6D3EA35C6A8 /* LogStream.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA321D1919A0136F00921E4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA321D2019A0136F00921E4D /* main.cpp in Sources */,
+				EA321D3819A0144800921E4D /* VersionTest.mm in Sources */,
+				EA321D3719A0144800921E4D /* BinaryArchiveTest.cpp in Sources */,
+				36698110EB2011CDAD620198 /* LogSteamTests.cpp in Sources */,
+				36698C845582D955DBEF4B30 /* OperationQueueTests.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA67FED319A3D1DF00A7B833 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA321CFF19A0133000921E4D /* Common */;
+			targetProxy = EA67FED219A3D1DF00A7B833 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EA321D1119A0133000921E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EA321D1219A0133000921E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EA321D1419A0133000921E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Common/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Common;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Debug;
+		};
+		EA321D1519A0133000921E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Common/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Common;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Release;
+		};
+		EA321D2219A0136F00921E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "Common Tests";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../**";
+				VALID_ARCHS = "x86_64 i386";
+			};
+			name = Debug;
+		};
+		EA321D2319A0136F00921E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "Common Tests";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../**";
+				VALID_ARCHS = "x86_64 i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA321CFA19A0133000921E4D /* Build configuration list for PBXProject "Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA321D1119A0133000921E4D /* Debug */,
+				EA321D1219A0133000921E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA321D1319A0133000921E4D /* Build configuration list for PBXNativeTarget "Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA321D1419A0133000921E4D /* Debug */,
+				EA321D1519A0133000921E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA321D2119A0136F00921E4D /* Build configuration list for PBXNativeTarget "Common Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA321D2219A0136F00921E4D /* Debug */,
+				EA321D2319A0136F00921E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA321CF719A0133000921E4D /* Project object */;
+}

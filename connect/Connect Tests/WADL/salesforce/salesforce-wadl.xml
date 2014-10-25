@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/" xmlns="http://wadl.dev.java.net/2009/02"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd    http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+    <!--
+    Salesforce enforces the usage of a different endpoint for each user.
+    This endpoint info is part of the oauth access token response.
+    For the unsigned user use case, this instance_url is stored in the session after the oauth dance.
+    For signed in users, it is stored as a name value pair in the credential attributes table.
+    -->
+    <resources base="$instanceUrl$">
+        <resource path="/services/data">
+            <method id="versions" name="GET" apigee:displayName="Versions">
+                <apigee:tags>
+                    <apigee:tag primary="true">Miscellaneous</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/services/data"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf"><![CDATA[Lists summary information about each REST API version currently available, including the version, label, and a link to each version's root. Check http://wiki.developerforce.com/images/c/c9/Api_rest.pdf for complete details
+				]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0">
+            <method id="resources" name="GET" apigee:displayName="Resources">
+                <apigee:tags>
+                    <apigee:tag primary="true">Miscellaneous</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[List the resources available for the specified API version. It provides the name and URI of each resource.]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects">
+            <method id="sobjects" name="GET" apigee:displayName="SObjects">
+                <apigee:tags>
+                    <apigee:tag primary="true">Miscellaneous</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf"><![CDATA[List the objects that are available in your organization and available to the logged-in user. This request also returns the organization encoding as well as maximum batch size permitted in queries.
+]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/query/?q=select%20count()%20from%20account">
+            <method id="SOQL" name="GET" apigee:displayName="Query">
+                <apigee:tags>
+                    <apigee:tag primary="true">Miscellaneous</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/query/?q=SELECT%20count()%20from%20Account"/>
+                <doc title=""
+                     apigee:url="http://www.salesforce.com/us/developer/docs/api/index_Left.htm#StartTopic=Content/sforce_api_calls_soql.htm">
+                    <![CDATA[You can execute a SOQL query that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results. check http://www.salesforce.com/us/developer/docs/api/index_Left.htm#StartTopic=Content/sforce_api_calls_soql.htm for more details.
+]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/query/search/?q=FIND%20{joe}">
+            <method id="sosl" name="GET" apigee:displayName="Search">
+                <apigee:tags>
+                    <apigee:tag primary="true">Miscellaneous</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/search/?q=FIND%20{joe}"/>
+                <doc title=""
+                     apigee:url="http://www.salesforce.com/us/developer/docs/api/index_Left.htm#StartTopic=Content/sforce_api_calls_sosl.htm">
+                    <![CDATA[Execute the specified SOSL search. The search string, in this example {test}, must be URL-encoded. check http://www.salesforce.com/us/developer/docs/api/index_Left.htm#StartTopic=Content/sforce_api_calls_sosl.htm for more details]]></doc>
+            </method>
+        </resource>
+
+        <!-- sobjects start here -->
+
+        <resource path="/services/data/v20.0/sobjects/{sobject}">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <method id="sobject" name="GET" apigee:displayName="SObject (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Retrieve metadata for an object using the HTTP GET method. Check http://wiki.developerforce.com/images/c/c9/Api_rest.pdf for complete details.]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/{sobject}/describe">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <method id="sobjectDescribe" name="GET" apigee:displayName="SObject/describe">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}/describe"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Retrieve all the metadata for an object, including information about each field, URLs, and child relationships.]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/${sobject}/">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <method id="sobjectCreate" name="POST" apigee:displayName="SObject (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}/"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Creates a Record]]></doc>
+                <request>
+                    <representation>
+                        <apigee:payload><![CDATA[
+
+{
+  "field" : "value"
+}
+
+                 		]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/{sobject}/{id}">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <method id="sobjectid" name="GET" apigee:displayName="SObject/id (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}/{id}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf"><![CDATA[Accesses individual records from an object based on the specified object ID. You can retrieve or update individual records within a specific object, or delete the specified object.
+]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/{sobject}/{id}?fields={field1},{field2}">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <param name="field1" required="true" type="xsd:string" style="query"/>
+            <param name="field2" required="true" type="xsd:string" style="query"/>
+            <method id="sobjectFields" name="GET" apigee:displayName="SObject/id ? fields">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}/{id}?fields={field1},{field2}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Retrieve the value from fields on a record using the HTTP GET method.]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/{sobject}/{id}">
+            <param name="sobject" required="true" type="xsd:string" style="query"/>
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <method id="sobjectDelete" name="DELETE" apigee:displayName="SObject/id (DELETE)">
+                <apigee:tags>
+                    <apigee:tag primary="true">SObject</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/{sobject}/{id}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Deletes the given record]]></doc>
+            </method>
+        </resource>
+
+        <!-- Account stats here -->
+
+        <resource path="/services/data/v20.0/sobjects/Account">
+            <method id="account" name="GET" apigee:displayName="Account (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Get the basic information of available fields in the account object]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/Account/describe">
+            <method id="accountDescribe" name="GET" apigee:displayName="Account/describe">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account/describe"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Get the detailed information of available fields in the account object]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/Account/">
+            <method id="accountCreate" name="POST" apigee:displayName="Account (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account/"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Creates an Account record . It returns the id of the created account in the response.]]></doc>
+                <request>
+                    <representation>
+                        <apigee:payload><![CDATA[
+
+{
+  "Name" : "test"
+}
+
+                 		]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/Account/${id}">
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <method id="accountid" name="GET" apigee:displayName="Account/id (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account/{id}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Get the details of the given account record]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/services/data/v20.0/sobjects/Account/${id}?fields=OwnerId,CreatedDate">
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <method id="accountFields" name="GET" apigee:displayName="Account/id ? fields">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account/{id}?fields=OwnerId,CreatedDate"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Get values of particular fields of the given account record in the response]]></doc>
+            </method>
+        </resource>
+
+        <!--
+                <resource path="/services/data/v20.0/sobjects/Account/{id}">
+                    <param name="id" required="true" type="xsd:string" style="query" />
+                    <method name="PATCH" displayName="Update" id="accountUpdate">
+                        <tags>
+                            <tag primary="true">Account</tag>
+                        </tags>
+                        <authentication required="true"/>
+                        <docs url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf"/>
+                        <example url="/services/data/v20.0/sobjects/Account/"/>
+                        <notes>Get the versions TODO</notes>
+                        <payload>
+                        <![CDATA[
+        {
+          "BillingCity" : "San Francisco"
+        }
+                        ]]>
+                         </payload>
+                    </method>
+                </resource>
+        -->
+        <resource path="/services/data/v20.0/sobjects/Account/{id}">
+            <param name="id" required="true" type="xsd:string" style="query"/>
+            <method id="accountDelete" name="DELETE" apigee:displayName="Account/id (DELETE)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Account</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/services/data/v20.0/sobjects/Account/{id}"/>
+                <doc title="" apigee:url="http://wiki.developerforce.com/images/c/c9/Api_rest.pdf">
+                    <![CDATA[Deletes the Account record with the given id]]></doc>
+            </method>
+        </resource>
+
+        <!-- TODO update a recod -->
+
+    </resources>
+</application>

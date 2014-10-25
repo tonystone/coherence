@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:apigee="http://api.apigee.com/wadl/2010/07/" xmlns="http://wadl.dev.java.net/2009/02" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+    <resources base="http://api.apigee.com/v1">
+
+        <resource path="/consoles">
+            <param name="format" type="xsd:string" style="template" required="true" default="json">
+                <option value="xml" mediaType="application/xml"/>
+                <option value="json" mediaType="application/json"/>
+            </param>
+            <method id="getConsoles" name="GET" apigee:displayName="List Published Consoles">
+                <apigee:tags>
+                    <apigee:tag primary="true">4. Consoles</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/consoles.{format}"/>
+                <doc><![CDATA[
+                  Retrieves a list of all the primary Consoles.
+                ]]></doc>
+            </method>
+
+            <method id="getConsole" name="GET" apigee:displayName="Get Console Description">
+                <apigee:tags>
+                    <apigee:tag primary="true">4. Consoles</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/consoles/{console_name}.{format}"/>
+                <doc><![CDATA[
+                  Retrieves a Console using the Console name.
+                ]]></doc>
+            </method>
+        </resource>
+
+    </resources>
+
+    <resources base="https://{appname}-api.apigee.com/v1">
+
+        <resource path="/users">
+            <param name="format" type="xsd:string" style="template" required="true" default="json">
+                <option value="xml" mediaType="application/xml"/>
+                <option value="json" mediaType="application/json"/>
+            </param>
+            <method id="getUsers2" name="GET" apigee:displayName="List Users">
+                <apigee:tags>
+                    <apigee:tag primary="true">1. Managing Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/users.{format}"/>
+                <doc><![CDATA[
+                  List all the users for the application {appName}.
+                ]]></doc>
+            </method>
+
+            <method id="getUserDetails2" name="GET" apigee:displayName="Get User Info">
+                <apigee:tags>
+                    <apigee:tag primary="true">1. Managing Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/users/{user_name_or_id}.{format}"/>
+                <doc><![CDATA[
+                  Retrieves the user entry specified by the provided {user_name_or_id} for application {appName}.
+                ]]></doc>
+            </method>
+
+            <method id="createUserDetails2" name="POST" apigee:displayName="Create User">
+                <apigee:tags>
+                    <apigee:tag primary="true">1. Managing Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/users.{format}"/>
+                <doc><![CDATA[
+                  Creates the user entry specified by the provided {user_name} for application {appName}.
+                ]]></doc>
+                <request>
+                    <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"/>
+                    <representation>
+                        <apigee:payload><![CDATA[
+{
+  "userName": "{userName}",
+  "fullName": "{FirstName LastName}",
+  "password": "{password}"
+}
+                   ]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+
+            <method id="updateUserDetails2" name="PUT" apigee:displayName="Update User">
+                <apigee:tags>
+                    <apigee:tag primary="true">1. Managing Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/users/{user_name_or_id}.{format}"/>
+                <doc><![CDATA[
+                  Updates the user entry specified by the provided {user_name_or_id} for application {appName}.
+                ]]></doc>
+                <request>
+                    <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"/>
+                    <representation>
+                        <apigee:payload><![CDATA[
+{
+  "userName": "{newUserName}",
+  "fullName": "{FirstName LastName}",
+  "password": "{password}"
+}
+                   ]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+
+            <method id="deleteUserDetails2" name="DELETE" apigee:displayName="Delete User">
+                <apigee:tags>
+                    <apigee:tag primary="true">1. Managing Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/users/{user_name_or_id}.{format}"/>
+                <doc><![CDATA[
+                  Deletes the user entry specified by the provided {user_name_or_id} for an application {appName}.
+                ]]></doc>
+            </method>
+        </resource>
+
+        <resource path="/smartkeys">
+            <param name="format" type="xsd:string" style="template" required="true" default="json">
+                <option value="xml" mediaType="application/xml"/>
+                <option value="json" mediaType="application/json"/>
+            </param>
+
+            <method id="getSmartKey" name="GET" apigee:displayName="Get SmartKey">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/smartkeys/me.{format}"/>
+                <doc><![CDATA[
+                  Retrieves the user's SmartKey in exchange for the user's credentials.
+                ]]></doc>
+            </method>
+        </resource>
+        <resource path="/smartkeys/{smartkey}/providers/{providername}">
+            <param name="format" type="xsd:string" style="template" required="true" default="json">
+                <option value="xml" mediaType="application/xml"/>
+                <option value="json" mediaType="application/json"/>
+            </param>
+            <param name="smartkey" type="xsd:string" style="template" required="true" default="USER-SMARTKEY" />
+            <param name="providername" type="xsd:string" style="template" required="true" default="twitter" />
+
+            <method id="getUsersCredentials2" name="GET" apigee:displayName="Get User Credentials">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/smartkeys/{smartkey}/providers/{providername}.{format}"/>
+                <doc><![CDATA[
+                  Retrieves auth credentials for the user identified by {smartkey} corresponding to the provider {providername}.
+                ]]></doc>
+            </method>
+
+            <method id="addUsersCredentials2" name="POST" apigee:displayName="Add User Credentials">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/smartkeys/{smartkey}/providers/{providername}.{format}"/>
+                <doc><![CDATA[
+                  Adds auth credentials for the user identified by {smartkey} corresponding to the provider {providername}.
+                ]]></doc>
+                <request>
+                    <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"/>
+                    <representation>
+                        <apigee:payload><![CDATA[
+{
+  "oauthToken" : "{accessToken}",
+  "oauthTokenSecret" : "{accessTokenSecret}"
+}
+                   ]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+
+            <method id="updateUsersCredentials2" name="PUT" apigee:displayName="Update User Credentials">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/smartkeys/{smartkey}/providers/{providername}.{format}"/>
+                <doc><![CDATA[
+                  Updates auth credentials for the user identified by {smartkey} corresponding to the provider {providername}.
+                ]]></doc>
+                <request>
+                    <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"/>
+                    <representation>
+                        <apigee:payload><![CDATA[
+{
+  "oauthToken" : "{accessToken}",
+  "oauthTokenSecret" : "{accessTokenSecret}"
+}
+                   ]]></apigee:payload>
+                    </representation>
+                </request>
+            </method>
+
+            <method id="deleteUsersCredentials2" name="DELETE" apigee:displayName="Delete User Credentials">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/smartkeys/{smartkey}/providers/{providername}.{format}"/>
+                <doc><![CDATA[
+                  Deletes auth credentials for the user identified by {smartkey} corresponding to the provider {providername}.
+                ]]></doc>
+            </method>			
+        </resource>
+        <resource path="/providers/{providername}/authorize">
+        <param name="providername" type="xsd:string" style="template" required="true" default="twitter" />
+        <param name="app_callback" type="xsd:string" style="query" required="true" default="USER-SMARTKEY" />
+        <param name="app_callback" type="xsd:string" style="query" required="true" default="https://apigee.com" />
+            <method id="startDance" name="GET" apigee:displayName="Begin an OAuth dance">
+                <apigee:tags>
+                    <apigee:tag primary="true">2. Working with SmartKeys</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <apigee:example url="/providers/{providername}/authorize?smartkey={smartkey}&amp;app_callback=https://apigee.com"/>
+                <doc><![CDATA[
+                  Visit this URL in a new browser tab—do not issue this request in the Console, or it will fail!
+                ]]></doc>
+            </method>
+		</resource>        
+		<resource path="/twitter/{providerResource}">
+            <param name="providerResource" type="xsd:string" style="template" required="true" default="/1/statuses/home_timeline.json" />
+
+            <method id="twitterExample" name="GET" apigee:displayName="Twitter home_timeline">
+                <apigee:tags>
+                    <apigee:tag primary="true">3. Example Provider Calls</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/twitter/{1/statuses/home_timeline.json}?smartkey={smartkey}"/>
+                <doc><![CDATA[
+                  Use a SmartKey to make an authenticated request to Twitter.
+                ]]></doc>
+            </method>
+        </resource>
+		<resource path="/salesforce/{providerResource}">
+            <param name="providerResource" type="xsd:string" style="template" required="true" default="services/data/v20.0/sobjects/Account/describe" />
+
+            <method id="salesforceExample" name="GET" apigee:displayName="Salesforce account object">
+                <apigee:tags>
+                    <apigee:tag primary="true">3. Example Provider Calls</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/salesforce/{services/data/v20.0/sobjects/Account/describe}?smartkey={smartkey}"/>
+                <doc><![CDATA[
+                  Use a SmartKey to make an authenticated request to Salesforce Chatter.
+                ]]></doc>
+            </method>
+        </resource>
+		<resource path="/salesforce/{providerResource}">
+            <param name="providerResource" type="xsd:string" style="template" required="true" default="services/data/v22.0/chatter/feeds/user-profile/me/feed-items" />
+
+            <method id="chatterExample" name="GET" apigee:displayName="Chatter user profile feed">
+                <apigee:tags>
+                    <apigee:tag primary="true">3. Example Provider Calls</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="false"/>
+                <apigee:example url="/salesforce/{services/data/v22.0/chatter/feeds/user-profile/me/feed-items}?smartkey={smartkey}"/>
+                <doc><![CDATA[
+                  Use a SmartKey to make an authenticated request to Salesforce.
+                ]]></doc>
+            </method>
+        </resource>
+    </resources>
+
+</application>

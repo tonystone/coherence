@@ -1,0 +1,935 @@
+<application xmlns="http://wadl.dev.java.net/2009/02"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+    <!-- Pivotal Tracker API v3 -->
+    <resources base="https://www.pivotaltracker.com/services/v3/">
+
+        <!-- User Token -->
+
+        <resource path="tokens/active">
+            <method id="get_tokens_active" name="GET" apigee:displayName="tokens/active (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">User Token</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="tokens/active"/>
+
+                <doc title="Retrieve User Token (via Basic Auth)" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#retrieve_token_basic_auth">
+                    <![CDATA[Returns an API token associated with the user. This method requires HTTP Basic authentication.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="tokens/active">
+            <method id="post_tokens_active" name="POST" apigee:displayName="tokens/active (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">User Token</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="tokens/active"/>
+
+                <doc title="Retrieve User Token (via POST)" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#retrieve_token_post">
+                    <![CDATA[Returns an API token associated with the user.]]>
+                </doc>
+
+                <request>
+                    <param name="username" type="xsd:string" style="query" required="true">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#retrieve_token_post">
+                            <![CDATA[The user's name.]]>
+                        </doc>
+                    </param>
+
+                    <param name="password" type="xsd:string" style="query" required="true">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#retrieve_token_post">
+                            <![CDATA[The user's password.]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Activity Feed -->
+
+        <resource path="activities">
+            <method id="get_activities" name="GET" apigee:displayName="activities">
+                <apigee:tags>
+                    <apigee:tag primary="true">Activity Feed</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="activities"/>
+
+                <doc title="All activity" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                    <![CDATA[Retrieves the recent activity of all your projects.]]>
+                </doc>
+
+                <request>
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false" default="10">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                            <![CDATA[Limits the number of activity feed items. Note the default value is 10, and there is a upper cap of 100]]>
+                        </doc>
+                    </param>
+
+                    <param name="occurred_since_date" type="xsd:string" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                            <![CDATA[Restricts the activity feed to only those items that occurred after a supplied date (example format: 2009/12/18 21:00:00 UTC)]]>
+                        </doc>
+                    </param>
+
+                    <param name="newer_than_version" type="xsd:string" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                            <![CDATA[Restricts the activity feed to only those items that have a greater than supplied version]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/activities">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_project_activity">
+                    <![CDATA[The ID of the project to retrieve the activity for]]>
+                </doc>
+            </param>
+
+            <method id="get_project_activities" name="GET" apigee:displayName="projects/{PROJECT_ID}/activities">
+                <apigee:tags>
+                    <apigee:tag primary="true">Activity Feed</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/activities"/>
+
+                <doc title="Project activity" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_project_activity">
+                    <![CDATA[Retrieves the recent activity of a specific project.]]>
+                </doc>
+
+                <request>
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false" default="10">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                            <![CDATA[Limits the number of activity feed items. Note the default value is 10, and there is a upper cap of 100]]>
+                        </doc>
+                    </param>
+
+                    <param name="occurred_since_date" type="xsd:string" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_activity">
+                            <![CDATA[Restricts the activity feed to only those items that occurred after a supplied date (example format: 2009/12/18 21:00:00 UTC)]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Get Projects -->
+
+        <resource path="projects/{PROJECT_ID}">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_project_info">
+                    <![CDATA[The ID of the project to retrieve]]>
+                </doc>
+            </param>
+
+            <method id="get_single_project" name="GET" apigee:displayName="projects/{PROJECT_ID}">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}"/>
+
+                <doc title="Get a single project" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_project_info">
+                    <![CDATA[Retrieves information about a project.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects">
+            <method id="get_all_projects" name="GET" apigee:displayName="projects (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects"/>
+
+                <doc title="All my projects" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_project_all_projects">
+                    <![CDATA[Retrieves all of the user's projects.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Manage Projects -->
+
+        <resource path="projects">
+            <method id="post_add_project" name="POST" apigee:displayName="projects (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects"/>
+
+                <doc title="Add a new project" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_project">
+                    <![CDATA[Adds a new project.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/memberships">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_memberships">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_all_memberships" name="GET" apigee:displayName="projects/{PROJECT_ID}/memberships (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/memberships"/>
+
+                <doc title="All Memberships" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_memberships">
+                    <![CDATA[Retrieves all memberships for a project.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="post_add_membership" name="POST" apigee:displayName="projects/{PROJECT_ID}/memberships (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/memberships"/>
+
+                <doc title="Add Membership" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_membership">
+                    <![CDATA[Adds a new membership to a project.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/memberships/{MEMBERSHIP_ID}">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_membership_info">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="MEMBERSHIP_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_membership_info">
+                    <![CDATA[The ID of the membership]]>
+                </doc>
+            </param>
+
+            <method id="get_membership_info" name="GET" apigee:displayName="projects/{PROJECT_ID}/memberships/{MEMBERSHIP_ID} (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/memberships/{MEMBERSHIP_ID}"/>
+
+                <doc title="Get Membership" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_membership_info">
+                    <![CDATA[Retrieves information about a single membership.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="delete_remove_membership" name="DELETE" apigee:displayName="projects/{PROJECT_ID}/memberships/{MEMBERSHIP_ID} (DELETE)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Projects</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/memberships/{MEMBERSHIP_ID}"/>
+
+                <doc title="Remove Membership" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#remove_membership">
+                    <![CDATA[Removes a membership from a project]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Get Iterations -->
+
+        <resource path="projects/{PROJECT_ID}/iterations">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_iterations" name="GET" apigee:displayName="projects/{PROJECT_ID}/iterations">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Iterations</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/iterations"/>
+
+                <doc title="Get Iterations" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[Retrieves all iterations, with stories.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/iterations/done">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_iterations_done" name="GET" apigee:displayName="projects/{PROJECT_ID}/iterations/done">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Iterations</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/iterations/done"/>
+
+                <doc title="Get Iterations" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[Retrieves iterations from the "done" group, with stories.]]>
+                </doc>
+
+                <request>
+                    <param name="offset" type="xsd:integer" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the number of iterations to skip from the beginning of the result.]]>
+                        </doc>
+                    </param>
+
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the maximum number of iterations returned.]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/iterations/current">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_iterations_current" name="GET" apigee:displayName="projects/{PROJECT_ID}/iterations/current">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Iterations</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/iterations/current"/>
+
+                <doc title="Get Iterations" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[Retrieves iterations from the "current" group, with stories.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/iterations/backlog">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_iterations_backlog" name="GET" apigee:displayName="projects/{PROJECT_ID}/iterations/backlog">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Iterations</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/iterations/backlog"/>
+
+                <doc title="Get Iterations" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[Retrieves iterations from the "backlog" group, with stories.]]>
+                </doc>
+
+                <request>
+                    <param name="offset" type="xsd:integer" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the number of iterations to skip from the beginning of the result.]]>
+                        </doc>
+                    </param>
+
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the maximum number of iterations returned.]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/iterations/current_backlog">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_iterations_current_backlog" name="GET" apigee:displayName="projects/{PROJECT_ID}/iterations/current_backlog">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Iterations</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/iterations/current_backlog"/>
+
+                <doc title="Get Iterations" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations">
+                    <![CDATA[Retrieves iterations from the "current" and "backlog" groups, with stories.]]>
+                </doc>
+
+                <request>
+                    <param name="offset" type="xsd:integer" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the number of iterations to skip from the beginning of the result.]]>
+                        </doc>
+                    </param>
+
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_iterations_with_limit_and_offset">
+                            <![CDATA[Controls the maximum number of iterations returned.]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Get Stories -->
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_story">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_story">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="get_story" name="GET" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID} (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}"/>
+
+                <doc title="Get a single story" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_story">
+                    <![CDATA[Retrieves information about a single story.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_story">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="get_all_stories" name="GET" apigee:displayName="projects/{PROJECT_ID}/stories (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Get Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories"/>
+
+                <doc title="Get all stories for a project" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_all_stories">
+                    <![CDATA[Retrieves all stories for a project, or those matching filter(s)]]>
+                </doc>
+
+                <request>
+                    <param name="filter" type="xsd:string" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_stories_by_filter">
+                            <![CDATA[A filter for the returned stories to match. See the API documentation for more details.]]>
+                        </doc>
+                    </param>
+
+                    <param name="offset" type="xsd:integer" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_stories_with_pagination">
+                            <![CDATA[Controls the number of stories to skip from the beginning of the result.]]>
+                        </doc>
+                    </param>
+
+                    <param name="limit" type="xsd:positiveInteger" style="query" required="false">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#get_stories_with_pagination">
+                            <![CDATA[Controls the maximum number of stories returned.]]>
+                        </doc>
+                    </param>
+                </request>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Manage Stories -->
+
+        <resource path="projects/{PROJECT_ID}/stories">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_story">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="post_add_story" name="POST" apigee:displayName="projects/{PROJECT_ID}/stories (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories"/>
+
+                <doc title="Add a new story" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_story">
+                    <![CDATA[Adds a new story]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#update_story">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#update_story">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="put_story" name="PUT" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID} (PUT)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}"/>
+
+                <doc title="Update Story" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#update_story">
+                    <![CDATA[Updates a story]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="delete_story" name="DELETE" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID} (DELETE)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}"/>
+
+                <doc title="Delete a story" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#delete_story">
+                    <![CDATA[Deletes a story]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}/notes">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_note">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_note">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="post_add_note" name="PUT" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/notes (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/notes"/>
+
+                <doc title="Add note (comment)" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_note">
+                    <![CDATA[Adds a note (comment)]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories/deliver_all_finished">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_story">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <method id="put_deliver_all_finished" name="POST" apigee:displayName="projects/{PROJECT_ID}/stories/deliver_all_finished">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/deliver_all_finished"/>
+
+                <doc title="Deliver all finished stories" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#deliver_all_finished">
+                    <![CDATA[Takes all finished stories and marks them as delivered. This could be used to automate a demo deploy process. The updated stories are returned as the result.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}/moves">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#move_stories">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#move_stories">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="post_move_stories" name="POST" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/moves">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/moves"/>
+
+                <doc title="Move Stories (Change priorities)" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#move_stories">
+                    <![CDATA[Moves a story before or after another story. The moved story is returned in the response.]]>
+                </doc>
+
+                <!--
+                <request>
+                    <param name="move[move]" style="query" required="true">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#move_stories">
+                            <![CDATA[The new location for this story relative to the other story. Allowed values: before, after]]>
+                        </doc>
+                        <option value="before"/>
+                        <option value="after"/>
+                    </param>
+
+                    <param name="move[target]" type="xsd:string" style="query" required="true">
+                        <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#move_stories">
+                            <![CDATA[The ID of the story in relation to which to move this story]]>
+                        </doc>
+                    </param>
+                </request>
+                -->
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Tasks -->
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID}">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <param name="TASK_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[The ID of the task]]>
+                </doc>
+            </param>
+
+            <method id="get_view_task" name="GET" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID} (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID}"/>
+
+                <doc title="Get a single task" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[Returns information about a single task]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="put_update_task" name="PUT" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID} (PUT)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID}"/>
+
+                <doc title="Update a task" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#update_task">
+                    <![CDATA[Updates a task]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="delete_task" name="DELETE" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID} (DELETE)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks/{TASK_ID}"/>
+
+                <doc title="Delete a task" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#delete_task">
+                    <![CDATA[Deletes a task]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="get_all_tasks" name="GET" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks (GET)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks"/>
+
+                <doc title="Get all tasks for a story" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#view_task">
+                    <![CDATA[Returns all tasks for a story]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+
+            <method id="post_add_task" name="POST" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks (POST)">
+                <apigee:tags>
+                    <apigee:tag primary="true">Manage Stories</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/tasks"/>
+
+                <doc title="Add a task" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#add_task">
+                    <![CDATA[Adds a task to a story]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Attachments -->
+
+        <resource path="projects/{PROJECT_ID}/stories/{STORY_ID}/attachments">
+            <param name="PROJECT_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#upload_attachment">
+                    <![CDATA[The ID of the project]]>
+                </doc>
+            </param>
+
+            <param name="STORY_ID" type="xsd:string" style="template" required="true">
+                <doc apigee:url="https://www.pivotaltracker.com/help/api?version=v3#upload_attachment">
+                    <![CDATA[The ID of the story]]>
+                </doc>
+            </param>
+
+            <method id="post_upload_attachment" name="POST" apigee:displayName="projects/{PROJECT_ID}/stories/{STORY_ID}/attachments">
+                <apigee:tags>
+                    <apigee:tag primary="true">Attachment</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="projects/{PROJECT_ID}/stories/{STORY_ID}/attachments"/>
+
+                <doc title="Upload an attachment" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#upload_attachment">
+                    <![CDATA[Uploads an attachment to a story.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+        <!-- Source Control Management -->
+
+        <resource path="source_commits">
+            <method id="post_source_commits" name="POST" apigee:displayName="source_commits">
+                <apigee:tags>
+                    <apigee:tag primary="true">Source Control Management</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="true"/>
+
+                <apigee:example url="source_commits"/>
+
+                <doc title="Source Control Management Post-Commit Hook Integration" apigee:url="https://www.pivotaltracker.com/help/api?version=v3#scm_post_commit">
+                    <![CDATA[Allows integration with post-commit hooks of Source Control Management (SCM) systems such as Subversion, Git, etc.]]>
+                </doc>
+
+                <response>
+                    <representation mediaType="application/xml"/>
+                </response>
+            </method>
+        </resource>
+
+    </resources>
+</application>

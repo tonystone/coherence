@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+<doc xmlns:jersey="http://jersey.java.net/"></doc>
+<grammars/>
+<resources base="http://0.0.0.0:8081/"
+<resource path="{collection}">
+<param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="collection" style="template" type="xs:string"/>
+<method id="getQueryResponse" name="GET">
+<request>
+    <param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="query" style="query" type="xs:string" default="{}"/>
+</request>
+<response>
+<representation mediaType="application/json"/>
+</response>
+        </method>
+<method id="deleteQuery" name="DELETE">
+<request>
+    <param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="query" style="query" type="xs:string" default="{}"/>
+</request>
+<response>
+<representation mediaType="application/json"/>
+</response>
+        </method>
+<method id="entityPost" name="POST">
+<request>
+    <representation mediaType="application/json"/>
+</request>
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+        </resource>
+<resource path="{collection}/{id}">
+<param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="id" style="template" type="xs:string"/>
+<param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="collection" style="template" type="xs:string"/>
+<method id="entityPost" name="POST">
+<request>
+    <representation mediaType="application/json"/>
+</request>
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+<method id="entityGet" name="GET">
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+<method id="entityPut" name="PUT">
+<request>
+    <representation mediaType="application/json"/>
+</request>
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+<method id="entityDelete" name="DELETE">
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+        </resource>
+<resource path="/ping">
+<method id="handlePing" name="GET">
+    <response>
+        <representation mediaType="application/json"/>
+    </response>
+</method>
+</resource>
+<resource path="{collection}/_group">
+<param xmlns:xs="<a href="http://www.w3.org/2001/XMLSchema"" target="_blank">http://www.w3.org/2001/XMLSchema"</a> name="collection" style="template" type="xs:string"/>
+<method id="groupPost" name="POST">
+<request>
+    <representation mediaType="application/json"/>
+</request>
+<response>
+    <representation mediaType="application/json"/>
+</response>
+</method>
+        </resource>
+        </resources>
+        </application>

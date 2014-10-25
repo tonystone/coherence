@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.mobilegridinc.com/schemas/connect/v1"
+           xmlns:tns="http://www.mobilegridinc.com/schemas/connect/v1"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           xmlns:wadl="http://wadl.dev.java.net/2009/02"
+           elementFormDefault="qualified">
+
+
+    <xs:element name="entity">
+        <xs:complexType>
+            <xs:sequence>
+                <!--<xs:element ref="tns:doc" minOccurs="0" maxOccurs="unbounded"/>-->
+                <!--<xs:element ref="tns:action" minOccurs="0" maxOccurs="unbounded"/>-->
+                <!--<xs:element ref="tns:relationship" minOccurs="0" maxOccurs="unbounded"/>-->
+                <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="name" type="xs:string"/>
+            <xs:attribute name="versionHash" type="xs:string"/>
+            <xs:anyAttribute namespace="##other" processContents="lax"/>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

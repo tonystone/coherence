@@ -1,0 +1,10 @@
+Manifest-Version: 2.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Console Log Service
+Bundle-SymbolicName: com.mobilegridinc.connect.editor.desktop.ConsoleLogController
+Bundle-Version: 1.0.0
+Bundle-Activator: com.mobilegridinc.connect.editor.desktop.ConsoleLogActivator
+Bundle-Vendor: Mobile Grid, Inc.
+Bundle-Localization: plugin
+Export-Package: javax.swing,javax.xml.bind,org.osgi.service.log
+Import-Package: org.osgi.framework,javax.swing,javax.xml.bind,org.osgi.service.log

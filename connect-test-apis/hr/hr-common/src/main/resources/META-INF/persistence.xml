@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2014 Mobile Grid, Inc. All rights reserved.
+  -->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="HR Common Persistence Unit"  transaction-type="RESOURCE_LOCAL">
+
+        <jta-data-source>java:/jdbc/HumanResourceDS</jta-data-source>
+
+        <class>com.mobilegridinc.test.hr.persistence.Country</class>
+        <class>com.mobilegridinc.test.hr.persistence.Department</class>
+        <class>com.mobilegridinc.test.hr.persistence.Employee</class>
+        <class>com.mobilegridinc.test.hr.persistence.JobHistory</class>
+        <class>com.mobilegridinc.test.hr.persistence.Job</class>
+        <class>com.mobilegridinc.test.hr.persistence.Location</class>
+        <class>com.mobilegridinc.test.hr.persistence.LocationDepartment</class>
+        <class>com.mobilegridinc.test.hr.persistence.Region</class>
+
+    </persistence-unit>
+
+
+</persistence>

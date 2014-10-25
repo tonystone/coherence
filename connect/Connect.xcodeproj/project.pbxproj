@@ -1,0 +1,1560 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3669800662D2D78E2FADD004 /* MGWSDLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 366985B0F8A4A323BD04D4DC /* MGWSDLProperty.m */; };
+		3669806A8B0B5E946FE1C1E9 /* MGWSDLComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B98200202A99594D168 /* MGWSDLComponent.h */; };
+		3669806DB20FCA585420C690 /* MGWebServiceOutMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698AC5E4A64DF39607C3DA /* MGWebServiceOutMessage.h */; };
+		3669809C81BEB3BFFB3F4D3B /* MGNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698212371852EA11E3344D /* MGNetworkReachability.m */; };
+		3669809F99882855F62FC6D2 /* MGAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 366982EB040B60AE3FBBE5A8 /* MGAssert.h */; };
+		366980A54FBA37A76439927E /* MGWSDL+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 366989AA8CF6632FAA3B3D7B /* MGWSDL+HTTP.m */; };
+		366980C7FE5EBA044B2512BC /* MGEntitySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 366989085F3877A841D31DD4 /* MGEntitySettings.m */; };
+		366980D7F906902B5A6890C3 /* Connect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3669817171A5AC889CA2B12F /* Connect.hpp */; };
+		366980DD0D806311263BF7DE /* MGFetchRequestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 366983AA6A68E89B56786D71 /* MGFetchRequestAnalyzer.m */; };
+		366980E12E963B70CB53D3AD /* MGWebServiceMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698FF27ED7DE8F235A1DEC /* MGWebServiceMessage.h */; };
+		366980ED39348D00EDB063E0 /* MGConnectEntitySettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 366980B2E37903DA6D81675D /* MGConnectEntitySettings.h */; };
+		366980F4197AC391E7219339 /* MGWSDLBindingFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984FE94ADAA338654C805 /* MGWSDLBindingFaultReference.m */; };
+		3669811D6904F35C35C9545F /* MGRuntimeException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669880A65A4A01C56DB7001 /* MGRuntimeException.m */; };
+		36698121296AD4DF7EA1637F /* MGDeleteEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698A2E47A857B1C79A7D5D /* MGDeleteEntityAction.m */; };
+		36698139FEABDDAFFF23253C /* MGWSDL+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 366980E809A043C30E1E65A3 /* MGWSDL+HTTP.h */; };
+		3669813E9379CBF0332CF986 /* MGManagedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698F1229A5163C0F89F6C0 /* MGManagedEntity.m */; };
+		36698141F62CD70C88C5B2AC /* MGWebServiceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698E531E81C146AF52F959 /* MGWebServiceOperation.m */; };
+		366981458EE22B33BDE43DAA /* MGConnectActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698BBA245026CC7D1D8161 /* MGConnectActionController.h */; };
+		366981532FC7B3D84A0FD9E7 /* MGConnectManagedObjectActionMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 366985BC0F8D4F0537B796E0 /* MGConnectManagedObjectActionMessage.h */; };
+		36698156651F7C0A77DB4D93 /* MGConnectManagedObjectContext+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 366980DA448F2FC12FE54319 /* MGConnectManagedObjectContext+Internal.h */; };
+		3669818C91B7864F35D349ED /* wadl-schema.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 366981368F391B7CEC358737 /* wadl-schema.xsd */; };
+		3669821F2088A9C55EA34FBE /* MGError.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669844A4D2A71C8800CD5CE /* MGError.h */; };
+		366982255256F1C22EF90251 /* MGConnectEntityActionDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 366982555113FF4EBD643912 /* MGConnectEntityActionDefinition.h */; };
+		36698243AF58803649900177 /* MGWebServiceHTTPXMLDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984568F6E6537BD61B896 /* MGWebServiceHTTPXMLDeserializer.m */; };
+		366982452A52768739B30DCD /* MGMetadataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669857EDF257BDE2AC7F7CC /* MGMetadataModel.m */; };
+		366982459E3F70B13DAF70A8 /* MGConnectAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 366989A0BF2F5BB49FC604D1 /* MGConnectAction.h */; };
+		3669824C43E57A7B2154E98E /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 366986AF8ABEFCF1CF2CA002 /* MGWSDLExtendableComponent.m */; };
+		3669826A70F76D0018B3F720 /* MGWebServiceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669807AD0A4663ECE1955F7 /* MGWebServiceOperation.h */; };
+		366982AA5CA74C2C3937385C /* MGWSDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698DE153CFD23935634DA4 /* MGWSDL.h */; };
+		366982D74319A7321388A6C7 /* MGReadEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698055CA6FDCF591D5BF2B /* MGReadEntityAction.m */; };
+		366982D82F9B9795C6F48379 /* MGWebServiceHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698E1AF149A2D53855A076 /* MGWebServiceHTTPOperation.m */; };
+		366983090485DB3D025EE7B2 /* MGWSDLService.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698EFA2F215D6D682274E1 /* MGWSDLService.h */; };
+		3669831768C3AA8C62E605D2 /* MGConnectModelMangler.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698E3E00944314BF0B84A0 /* MGConnectModelMangler.h */; };
+		366983271185BE69406A1B83 /* MGWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698D6C4D603398B9094F2F /* MGWebService.m */; };
+		3669833C6CCA49B636C4DC1C /* MGInitializationException.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B6C4827936A6B756911 /* MGInitializationException.h */; };
+		3669836AC472042C3BB1EE69 /* MGListEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984F642BE587A58B64484 /* MGListEntityAction.m */; };
+		36698371A35B485FEB2FB579 /* MGSQLitePersistentStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698D67DB99190D7FA34463 /* MGSQLitePersistentStore.mm */; };
+		3669837EC5F311E53CB91C47 /* MGWSDLBindingMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669814516D6CE2B40C23033 /* MGWSDLBindingMessageReference.h */; };
+		3669838CDBBA1B7B8D6BBD44 /* MGWebServiceHTTPSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698AE8081B01937C8CF12D /* MGWebServiceHTTPSerializer.h */; };
+		366983AE53ED25B28D78DAD5 /* MGConnectPersistentStoreCoordinatorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698F9182EB1F985C58B4D7 /* MGConnectPersistentStoreCoordinatorTests.mm */; };
+		366983B6D2E13813D1B910BD /* MGConnectManagedObjectActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698A9BA839E11CE3E7B03C /* MGConnectManagedObjectActionMessage.m */; };
+		366983DC36BE5686852244F4 /* MGWebServiceHTTPJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669860EFD6D783453F96F79 /* MGWebServiceHTTPJSONSerializer.h */; };
+		366983FB00105164BFBD19C3 /* MGWSDLBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 366989DDCEF5F4DE46FAAAD1 /* MGWSDLBinding.h */; };
+		366983FC1DDF1DEA5E57F9D7 /* MGWSDLInterfaceFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669838047D578CCB19C3087 /* MGWSDLInterfaceFaultReference.m */; };
+		36698402FFFB4183864390A1 /* MGConnectPersistentStoreCoordinator+Internal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366986C1825DAB751ED183BE /* MGConnectPersistentStoreCoordinator+Internal.mm */; };
+		3669840AC3243649C89C943C /* MGCacheSynchronizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669831989E9D891C77953AC /* MGCacheSynchronizationManager.m */; };
+		366984102918B1B9E269AD69 /* MGSQLitePersistentStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669811679CD222A83C27E88 /* MGSQLitePersistentStore.h */; };
+		36698415C6C1CB468EEE39F8 /* MGConnectConcreteEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669864FEAF4AC3D0A16E7E7 /* MGConnectConcreteEntityAction.m */; };
+		3669842D6E03B002C445D4C7 /* MGConnectEmptyActionMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 366983875567AD465971DEE6 /* MGConnectEmptyActionMessage.h */; };
+		366984462DFD409986E62D32 /* MGWebServiceHTTPURLEncodedSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698BE1E6A368A6478782D4 /* MGWebServiceHTTPURLEncodedSerializer.m */; };
+		36698457DB57A5C90DFB2EF7 /* MGWebServiceHTTPDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 366986E0D35EF697635AD904 /* MGWebServiceHTTPDeserializer.h */; };
+		3669848B3C53AE942C9E53B0 /* MGLogReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698A1034288D1B5645D24F /* MGLogReader.m */; };
+		366984A9545F731E13B701B1 /* MGWSDLElementDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669870F75D201ED1FA40887 /* MGWSDLElementDeclaration.h */; };
+		366984AC5CE5D6DDF4221BE5 /* MGConnectInitializationOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669844ECACF72DA4EDDDACA /* MGConnectInitializationOptions.h */; };
+		366984EEDBF0DBD1698E0C3A /* MGMetadataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984BA388337A5F310C78F /* MGMetadataManager.h */; };
+		366984F51528435DE2F60169 /* MGWebServiceHTTPDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 366982C62ACB35682B064277 /* MGWebServiceHTTPDeserializer.m */; };
+		366984FCAB0E2329967B67A9 /* MGLogWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669894EA0162155640EB527 /* MGLogWriter.h */; };
+		366984FD9F446BD2CC63CA55 /* MGNetworkMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 366986FF709BAE92DF3A452D /* MGNetworkMonitor.m */; };
+		36698517EA6E95F94700D1E6 /* MGInMemoryPersistentStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 366986FCF27B0DE5FE3F2CE6 /* MGInMemoryPersistentStore.h */; };
+		366985281C6853AE641711E2 /* MGEntitySettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698974EE3FB0D44DAD5F71 /* MGEntitySettings.h */; };
+		3669852A8503CE8EA56D3339 /* MGConnectPersistentStoreCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B72A9439C2F19FED0A4 /* MGConnectPersistentStoreCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36698534D9C716629D3AD6C8 /* MGActionExecutionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 366983D328A54D528C2EA6DF /* MGActionExecutionProxy.m */; };
+		3669857956D0E58E35A7DA4A /* MGConnect+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 366981D79C576F181D0DD518 /* MGConnect+Internal.h */; };
+		36698589F11E534DA62CFF64 /* MGConnect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698636625CC955F82D3878 /* MGConnect.mm */; };
+		366985B42D1C0B2962BE02E7 /* MGWSDLInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 366986251BE6D43B9C78F9C5 /* MGWSDLInterface.m */; };
+		366985B86C7E1668EBDFFC5F /* coredata-model.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 36698747779AD0F4BF3AF1DE /* coredata-model.xsd */; };
+		366985C032CE9D92C4794E25 /* MGWSDLFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 366988303AD08B9932DF35A9 /* MGWSDLFeature.m */; };
+		366985EACD89521070F7F02C /* MGRuntimeException.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669871E51EA442519AB6FC4 /* MGRuntimeException.h */; };
+		366985F33FF7E3E7286B1B1D /* MGConnectInitializationOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 366985A3B9F41C6C787544EA /* MGConnectInitializationOptions.m */; };
+		3669861D7D313389B2DCC242 /* MGUpdateEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698AC74653AEEDC1C84FDA /* MGUpdateEntityAction.h */; };
+		366986408F46AA3345E63614 /* MGPassthroughManagedObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B919B4193642E7575BA /* MGPassthroughManagedObjectContext.h */; };
+		3669867E00C6A27492494BB1 /* MGPersistentStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698C5C77BAD44C094B221B /* MGPersistentStore.h */; };
+		36698686FE80AD2C60EEA9B6 /* MGConnectEntitySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB692DFC38201359905 /* MGConnectEntitySettings.m */; };
+		36698693AF7547494F46B065 /* MGWebServiceOutMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698666819DA4BF01D03A7F /* MGWebServiceOutMessage.m */; };
+		366986A839107D7AD6E2DA22 /* MGNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669814446C52B4644DBD88F /* MGNetworkReachability.h */; };
+		366986A9517CAEAE59672B5D /* MGWSDLBindingFault.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698C34F65CFAEBE917EC10 /* MGWSDLBindingFault.h */; };
+		366986BB4961D8B0AFB842FC /* MGTransactionLogRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698987B9A670FA124C5682 /* MGTransactionLogRecord.m */; };
+		366986D4B6BAE9CD1981DE39 /* MGObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698CB81E34B9BE1E200543 /* MGObjectMapper.h */; };
+		36698718F7768BD9812BC24A /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698549357DD9C913EB904C /* Role.m */; };
+		3669875147038AED4A5EA3DB /* MGWSDLExtendableComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698614DBDB76E6C9892E0B /* MGWSDLExtendableComponent.h */; };
+		36698776E00D084F80E0975C /* MGWSDLBindingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698B64053733E91F30AB8B /* MGWSDLBindingOperation.m */; };
+		366987800A10A2978DC34DB9 /* MGActionQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669843537FFC5023019300B /* MGActionQueue.h */; };
+		3669879649AF2C94ECBD8DFC /* MGClassProtocolValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698F798F27218FE8EEAE04 /* MGClassProtocolValidator.m */; };
+		366987AC23E1DBC2A0466C0A /* MGCreateEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984CF7E2AD11EE471594C /* MGCreateEntityAction.h */; };
+		366987B0CF9C03A38D492CC8 /* MGWebServiceInMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698F2EB50216FCA7C91AED /* MGWebServiceInMessage.m */; };
+		366987CE9B1B35D831D80C81 /* MGLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698D0A8A278E870E615967 /* MGLogWriter.m */; };
+		366987CF49B7CA75BB7F605D /* MGWSDLExtensionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B259B76427F19A5F7BC /* MGWSDLExtensionElement.h */; };
+		366987D4AFAB5DDB3397DBB7 /* MGRESTfulFetchRequestAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = 366987C8E64142413E15C3DA /* MGRESTfulFetchRequestAnalyzer.h */; };
+		366987DED9555B70FDD6036F /* MGException.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698E62F037126C98DE3E2C /* MGException.m */; };
+		366987F04B73BE9D47EFEA9A /* MGWebServiceHTTPXMLDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698E8048BA71DE2FDB6BB7 /* MGWebServiceHTTPXMLDeserializer.h */; };
+		3669883C065B611ABDEE0B99 /* MGWebServiceHTTPOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669854066893D504D7CE880 /* MGWebServiceHTTPOperation.h */; };
+		366988470E9EEE5DA5539234 /* MGDeleteEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698A1F7BC332D4F7A57251 /* MGDeleteEntityAction.h */; };
+		366988566ABB4C3207B276B8 /* MGMetadataBackingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698D39DCA6582AF36C3694 /* MGMetadataBackingStore.m */; };
+		3669887BBC9C7283F720A3E4 /* MGWSDLElementDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = 366988DDF06876C1F1CA1032 /* MGWSDLElementDeclaration.m */; };
+		366988A9BB083DC706CE5271 /* MGXPathV1ObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669829F7EE2A7ECA62B936A /* MGXPathV1ObjectMapper.m */; };
+		366988DD7537B1EECEEC74D0 /* MGWSDLInterfaceMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669852D2F4BCD0797643631 /* MGWSDLInterfaceMessageReference.h */; };
+		366988E9BF37ADB090CD2CFD /* MGCreateEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698396ADD39D3611C7C0C8 /* MGCreateEntityAction.m */; };
+		366988EB63EE0C01D7AB6696 /* MGWSDLBindingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984F3F910A49B8329AFFF /* MGWSDLBindingOperation.h */; };
+		366988F390A3598079B4CB31 /* apigee-wadl-extensions.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 36698BDDDA5E6C6F03C8D942 /* apigee-wadl-extensions.xsd */; };
+		36698904DA7B73E7C3FE5506 /* MGMetadataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698D58D485BA62CD6C6295 /* MGMetadataModel.h */; };
+		36698908656A0DC7547C8022 /* MGInMemoryReferenceObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B0B6D789FCD2C7A7D18 /* MGInMemoryReferenceObject.h */; };
+		366989165A392EF6E5C157F5 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698B4B55BD7AB2CE05190D /* Person.m */; };
+		3669892E01D5C38DBF7098A7 /* MGWebServiceHTTPJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 366986FC5C81A17023853A66 /* MGWebServiceHTTPJSONDeserializer.m */; };
+		3669893FF51302102DE699B6 /* MGConnectManagedObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366987942E44AC1C78543FF0 /* MGConnectManagedObject.mm */; };
+		366989445E73D5FEEDE4C81B /* MGError.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698928BE620F225A627C43 /* MGError.m */; };
+		366989539CE066C53F99407F /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698E78B6BAFE98CE6A1B17 /* MGWSDLInterfaceFault.h */; };
+		36698965FC3257F5BAB94C21 /* MGException.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698B2A87986747B7238812 /* MGException.h */; };
+		3669898563835AD0DA695EAF /* MGWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 366982723C8F27F801ECAA17 /* MGWebService.h */; };
+		366989937D6F1533E591DA8B /* MGMetadataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669852D0CDE727989631712 /* MGMetadataManager.m */; };
+		366989D923B7A4E83C9BE01A /* MGWSDLBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 366988E5B84ED50519A31BDA /* MGWSDLBinding.m */; };
+		366989E21FED13C562F00577 /* MGNetworkMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698DBE6632CB82FF5AB8CD /* MGNetworkMonitor.h */; };
+		366989ED0181697A44E3E600 /* MGWSDLEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669846A17FADF127677F4F3 /* MGWSDLEndpoint.h */; };
+		36698A03DD45E5A110D164B3 /* MGConnectAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698790C5FF570F5919D390 /* MGConnectAction.m */; };
+		36698A18751B4218C18A5E8D /* MGConnectEmptyActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 366989B50CE03B7B1BEE7864 /* MGConnectEmptyActionMessage.m */; };
+		36698A1C29D493C5ED01BC3A /* MGListEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984174C00C2C3F8D107B7 /* MGListEntityAction.h */; };
+		36698A24D1D34901112899F3 /* MGWSDLBindingFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 366989B0E57EC42436DCFE65 /* MGWSDLBindingFault.m */; };
+		36698A2CB452F051FF36AFFE /* MGConnectActionExecutionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698AC53A9BFB3C5E1454ED /* MGConnectActionExecutionInfo.h */; };
+		36698A49C6347357A7B771A8 /* MGWebServiceHTTPJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984F13CC926BFC5BAB01B /* MGWebServiceHTTPJSONSerializer.m */; };
+		36698A842F5D8AE2970D726E /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 3669802BD31D69F1FA57F282 /* connect.xsd */; };
+		36698A865240CEBD5A24BF99 /* MGManagedEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698A888D2BD07E86B03151 /* MGManagedEntity.h */; };
+		36698A87222F43D35A837F17 /* MGWebServiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698B57BE4344206BF2E6BB /* MGWebServiceMessage.m */; };
+		36698A901AE66732A363AAAC /* MGConnectManagedObjectContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366989DD599185B4E41E3D86 /* MGConnectManagedObjectContext.mm */; };
+		36698A98960F01FD4C8B3C39 /* MGWSDLInterfaceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 366986DF458058994CC64FDB /* MGWSDLInterfaceOperation.m */; };
+		36698AE96756A1B7DADC5E00 /* MGLogReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698FE50353AC93F3DACC48 /* MGLogReader.h */; };
+		36698AEBB45B472A6D7E1538 /* Connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3669852EBB408015F0FADA2E /* Connect.cpp */; };
+		36698B2D40F040F85715DB54 /* MGWSDLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 366983422351773AA5871F2B /* MGWSDLComponent.m */; };
+		36698B45D29F3A10D80EA250 /* MGWSDLInterfaceFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669802DB411752F5F4814E1 /* MGWSDLInterfaceFaultReference.h */; };
+		36698B4A167934955C293909 /* MGXPathV1ObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698E86BE1E2B4A3BC6C165 /* MGXPathV1ObjectMapper.h */; };
+		36698B579A4D52DA32E25F13 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 366980523A1E9028DDB379E1 /* Company.m */; };
+		36698B5CE63CE246E3B1DDEB /* MGRESTfulFetchRequestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698733F810DC38D530630C /* MGRESTfulFetchRequestAnalyzer.m */; };
+		36698B71AE0B69BF4EFB0918 /* MGConnectActionMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698F1426A426C9CEED63D3 /* MGConnectActionMonitor.h */; };
+		36698B71FF32CAFCA978656E /* MGPassthroughPersistentStoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 366985F82551C9BA4B11988A /* MGPassthroughPersistentStoreCoordinator.m */; };
+		36698B7831143B421836559F /* MGWebServiceHTTPSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669827C8411EF05A2AAECE9 /* MGWebServiceHTTPSerializer.m */; };
+		36698B808B2FB4778E2FEEF5 /* MGInMemoryReferenceObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698E06A5BB3590B6331D4A /* MGInMemoryReferenceObject.mm */; };
+		36698B837C024206760F4A67 /* MGPassthroughManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984CE586BC78D1594DE6D /* MGPassthroughManagedObjectContext.m */; };
+		36698B8DCD44E3076C9A0FB3 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698199E76CD9B4342662EF /* Employee.m */; };
+		36698B93BEBC748D06671EDB /* MGConnectConcreteEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669879C8EB583740DE10CD1 /* MGConnectConcreteEntityAction.h */; };
+		36698BB5F8994A82A1D53E71 /* MGWSDLInterfaceFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 366987A140E0B846471FB0E3 /* MGWSDLInterfaceFault.m */; };
+		36698BCFFD4E41B908B17638 /* MGWSDLBindingFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669847124912FE9929C2A44 /* MGWSDLBindingFaultReference.h */; };
+		36698C124DEE4FE9CCEAEE75 /* MGConnectPersistentStoreCoordinator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366980475397987ED00ECD61 /* MGConnectPersistentStoreCoordinator.mm */; };
+		36698C2CA674348839F35FC4 /* MGConnectDictionaryActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 366981CF3DAB153A0D7B5EBB /* MGConnectDictionaryActionMessage.m */; };
+		36698C50F0D23DDC5DD4CCA1 /* MGWSDLService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698698C72FDF8055FAC78D /* MGWSDLService.m */; };
+		36698C5186CEF7524F0075C4 /* MGConnectActionExecutionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 366987E90973217E4A0AC31B /* MGConnectActionExecutionInfo.m */; };
+		36698C5B2A221C50F2201B69 /* MGConnectManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669852DBC3D26A1885D22EE /* MGConnectManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36698C7084CB6A3131DDDCBA /* MGWSDLEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698DF6DAFCCF9FCCA9EE41 /* MGWSDLEndpoint.m */; };
+		36698C7DD2879FEC50B677D2 /* MGWSDLDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698A0E7ACFD6BAF0599AF8 /* MGWSDLDescription.m */; };
+		36698C82AEACC8E8D4A9B2EB /* MGReadEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984689074D38D049212C7 /* MGReadEntityAction.h */; };
+		36698CB02BAD198D76AF59F3 /* MGWSDLExtensionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669847AFEE1E0B775B5A40E /* MGWSDLExtensionElement.m */; };
+		36698CB15130063513C90BF3 /* MGWSDLInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 366989EB035240F8B43B8568 /* MGWSDLInterface.h */; };
+		36698D064C48A5DAA32CBEAF /* MGConnectActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698CD4BFBC7114B7B9A57E /* MGConnectActionController.m */; };
+		36698D1EA676E4AF0BDB3616 /* MGConnectActionMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698258D1886467FE05C9C9 /* MGConnectActionMessage.h */; };
+		36698D2C3B7F8DDAAABAE337 /* MGWebServiceHTTPJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 366989D67E914E3D75DED7C2 /* MGWebServiceHTTPJSONDeserializer.h */; };
+		36698D33E8F66E16E0CFBBE8 /* MGUpdateEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 366984D8295A7A840C3CA12F /* MGUpdateEntityAction.m */; };
+		36698D42C45C122FF422CDDE /* MGWebServiceHTTPXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698CA4F4A1DAACF9BAFD6E /* MGWebServiceHTTPXMLSerializer.m */; };
+		36698D65E7DD9D2F659FE94F /* MGWebServiceHTTPURLEncodedSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698F70A72D833FDB52C35F /* MGWebServiceHTTPURLEncodedSerializer.h */; };
+		36698D6DD93BAB3E895A0EB9 /* MGWSDLDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669821FA067BDEA703FC6F8 /* MGWSDLDescription.h */; };
+		36698D7CA4FAD77679C82B1D /* MGWSDLFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 366988E8DE8BC1635A8A822C /* MGWSDLFeature.h */; };
+		36698D82A5DF29B122A94EBA /* MGWSDLBindingMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698E720C8A11CD6BAEC63D /* MGWSDLBindingMessageReference.m */; };
+		36698DBEBD5D47CA2BD077AC /* MGActionMonitorNotificationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 366983D722D0C6CA0ADF24EC /* MGActionMonitorNotificationManager.h */; };
+		36698DD7A401C5597BB6947C /* MGInitializationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698C8594F63EC01A137932 /* MGInitializationException.m */; };
+		36698DDB4F336EF89487ACDC /* MGConnectEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669889C702E6C7DEE4686BF /* MGConnectEntityAction.m */; };
+		36698DE01F3D3C6A5E09A231 /* MGWSDL+Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698DF84D7BE731A6588BEC /* MGWSDL+Types.m */; };
+		36698DECBF35878890692CCF /* MGMetadataBackingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698D3D7198CF1117AE8060 /* MGMetadataBackingStore.h */; };
+		36698DFFCFB522E4A538AA0D /* MGConnectTestModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3669819EC689846623E8E186 /* MGConnectTestModel.xcdatamodel */; };
+		36698E02070D637B70A79C49 /* MGActionMonitorNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 366982CB35224AADCFF9F35E /* MGActionMonitorNotificationManager.m */; };
+		36698E12E1CB1522DD42209A /* MGWSDLTypeDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669824E32CC99AB8EF86E67 /* MGWSDLTypeDefinition.h */; };
+		36698E20B62607A89D6BF3AD /* MGCacheSynchronizationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698A7CEC9827DA492B7D54 /* MGCacheSynchronizationManager.h */; };
+		36698E279E7B9EC38EECE7AC /* MGPassthroughPersistentStoreCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698A2E341A9D3F4914BD1F /* MGPassthroughPersistentStoreCoordinator.h */; };
+		36698E36E6AAD79E1A830EDC /* MGConnectEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698869AF493CE63E5C180A /* MGConnectEntityAction.h */; };
+		36698E6257CBD927A2E0A288 /* MGConnectManagedObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 366980E1D0BD6F8CE32DDAF3 /* MGConnectManagedObjectContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36698E7134C2C98E18CABF1D /* MGClassProtocolValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 366983CA15D8F487BA3C33E7 /* MGClassProtocolValidator.h */; };
+		36698E754D0BEC57D7561342 /* MGActionExecutionProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 366983AE1CAA81C54693A597 /* MGActionExecutionProxy.h */; };
+		36698E7EC5D9FE36DDA2E840 /* MGConnectActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698163E5EB1A63C3935303 /* MGConnectActionMessage.m */; };
+		36698E89FCB2CEDD44387B3D /* MGConnectModelMangler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698CF1075601B845857DCF /* MGConnectModelMangler.mm */; };
+		36698E91F72115137E69F6A8 /* MGWSDL+Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669879151C3A46ABA32E46C /* MGWSDL+Types.h */; };
+		36698EBD69BB46F85FDF5B99 /* MGInMemoryPersistentStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366981F976F7AEAED071689A /* MGInMemoryPersistentStore.mm */; };
+		36698F21C28B64F7A7F500A4 /* MGWSDLInterfaceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669864CF4B7624490B56394 /* MGWSDLInterfaceOperation.h */; };
+		36698F41DE04A2771C05249D /* MGConnectPersistentStoreCoordinator+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 36698028E63B3A24725E6331 /* MGConnectPersistentStoreCoordinator+Internal.h */; };
+		36698F4DCCE4F1157CE3C790 /* MGWSDLInterfaceMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698DF67B3C50DF51D2F632 /* MGWSDLInterfaceMessageReference.m */; };
+		36698F9271578147B83F5AC8 /* MGWSDLTypeDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698AA117858FE1AA0AA6DA /* MGWSDLTypeDefinition.m */; };
+		36698F9B0C72FE4CAA2BD635 /* MGWSDLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 366981CB2C3CDB112FC5B69B /* MGWSDLProperty.h */; };
+		36698F9FFA47E50430750E68 /* MGConnectDictionaryActionMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669814085A6F6DADC146DBD /* MGConnectDictionaryActionMessage.h */; };
+		36698FA0629234232C5120C6 /* MGActionQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669893859A79617A440BAA8 /* MGActionQueue.m */; };
+		36698FB29257ACC60ED3CFF5 /* MGTransactionLogRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 366989BF18B3CAD8F8F0FAA0 /* MGTransactionLogRecord.h */; };
+		36698FB31D34E45FBD178749 /* MGWebServiceHTTPXMLSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 366984EF7D2EDF7ED019A71A /* MGWebServiceHTTPXMLSerializer.h */; };
+		36698FED95A05FE1C5E22576 /* MGWebServiceInMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3669892992859170F619ED07 /* MGWebServiceInMessage.h */; };
+		36698FF9DEF575417CE91768 /* MGFetchRequestAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = 366981AEFD7B7672354B6BD4 /* MGFetchRequestAnalyzer.h */; };
+		EA1CB97D19B274C900AAA31C /* MGDataMergeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1CB97919B274C900AAA31C /* MGDataMergeOperation.h */; };
+		EA1CB97E19B274C900AAA31C /* MGDataMergeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1CB97A19B274C900AAA31C /* MGDataMergeOperation.m */; };
+		EA51F09A19A103FE001A037B /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF2472C19A10150000EFE29 /* Common.framework */; };
+		EA8FE80119A6CB48007DB69C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8FE7FE19A6CB2C007DB69C /* CoreData.framework */; };
+		EA8FE81319A6EABD007DB69C /* MGConnectTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366985CF13455743674337C8 /* MGConnectTests.mm */; };
+		EA8FE81419A6EAC0007DB69C /* MGInMemoryPersistentStoreTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36698BC2E71FD8CF3D5B4845 /* MGInMemoryPersistentStoreTests.mm */; };
+		EA8FE82319A6EB65007DB69C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA8FE82219A6EB65007DB69C /* main.mm */; };
+		EA8FE82419A6EDC3007DB69C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8FE80619A6E83F007DB69C /* gtest.framework */; };
+		EA8FE82719A6EE0D007DB69C /* Connect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9CDAE719648806003F7752 /* Connect.framework */; };
+		EA9CDAED19648806003F7752 /* MGConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9CDAEC19648806003F7752 /* MGConnect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAAD03D419B2CF83007F69BB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAD03D319B2CF83007F69BB /* libxml2.dylib */; };
+		EAAD03D719B2D0E0007F69BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF56C73199EC2EB00D5621F /* Foundation.framework */; };
+		EAB4A4BC19BE6F2D00C944FB /* HR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAB4A4BA19BE6F2D00C944FB /* HR.xcdatamodeld */; };
+		EADE524D19B275370010947A /* MGTraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = EADE524B19B275370010947A /* MGTraceLog.h */; };
+		EADE524E19B275370010947A /* MGTraceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = EADE524C19B275370010947A /* MGTraceLog.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA51F09819A103FA001A037B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAF2472619A10150000EFE29 /* Common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EA321CFF19A0133000921E4D;
+			remoteInfo = Common;
+		};
+		EA8FE82519A6EE08007DB69C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9CDADE19648806003F7752 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA9CDAE619648806003F7752;
+			remoteInfo = Connect;
+		};
+		EAF2472B19A10150000EFE29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAF2472619A10150000EFE29 /* Common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA321D0019A0133000921E4D;
+			remoteInfo = Common;
+		};
+		EAF2472D19A10150000EFE29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAF2472619A10150000EFE29 /* Common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA321D1D19A0136F00921E4D;
+			remoteInfo = "Common Tests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA8FE80A19A6E9CF007DB69C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		36698028E63B3A24725E6331 /* MGConnectPersistentStoreCoordinator+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGConnectPersistentStoreCoordinator+Internal.h"; sourceTree = "<group>"; };
+		3669802BD31D69F1FA57F282 /* connect.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = connect.xsd; sourceTree = "<group>"; };
+		3669802DB411752F5F4814E1 /* MGWSDLInterfaceFaultReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFaultReference.h; sourceTree = "<group>"; };
+		366980475397987ED00ECD61 /* MGConnectPersistentStoreCoordinator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectPersistentStoreCoordinator.mm; sourceTree = "<group>"; };
+		366980523A1E9028DDB379E1 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		36698055CA6FDCF591D5BF2B /* MGReadEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGReadEntityAction.m; sourceTree = "<group>"; };
+		3669807AD0A4663ECE1955F7 /* MGWebServiceOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceOperation.h; sourceTree = "<group>"; };
+		366980B2E37903DA6D81675D /* MGConnectEntitySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectEntitySettings.h; sourceTree = "<group>"; };
+		366980DA448F2FC12FE54319 /* MGConnectManagedObjectContext+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGConnectManagedObjectContext+Internal.h"; sourceTree = "<group>"; };
+		366980E1D0BD6F8CE32DDAF3 /* MGConnectManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectManagedObjectContext.h; sourceTree = "<group>"; };
+		366980E809A043C30E1E65A3 /* MGWSDL+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+HTTP.h"; sourceTree = "<group>"; };
+		3669811679CD222A83C27E88 /* MGSQLitePersistentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSQLitePersistentStore.h; sourceTree = "<group>"; };
+		3669811EFF6921DBE776C26E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		366981368F391B7CEC358737 /* wadl-schema.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = "wadl-schema.xsd"; sourceTree = "<group>"; };
+		3669814085A6F6DADC146DBD /* MGConnectDictionaryActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectDictionaryActionMessage.h; sourceTree = "<group>"; };
+		3669814446C52B4644DBD88F /* MGNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetworkReachability.h; sourceTree = "<group>"; };
+		3669814516D6CE2B40C23033 /* MGWSDLBindingMessageReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingMessageReference.h; sourceTree = "<group>"; };
+		36698163E5EB1A63C3935303 /* MGConnectActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectActionMessage.m; sourceTree = "<group>"; };
+		3669817171A5AC889CA2B12F /* Connect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Connect.hpp; sourceTree = "<group>"; };
+		36698199E76CD9B4342662EF /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
+		3669819EC689846623E8E186 /* MGConnectTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MGConnectTestModel.xcdatamodel; sourceTree = "<group>"; };
+		366981AEFD7B7672354B6BD4 /* MGFetchRequestAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFetchRequestAnalyzer.h; sourceTree = "<group>"; };
+		366981CB2C3CDB112FC5B69B /* MGWSDLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLProperty.h; sourceTree = "<group>"; };
+		366981CF3DAB153A0D7B5EBB /* MGConnectDictionaryActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectDictionaryActionMessage.m; sourceTree = "<group>"; };
+		366981D79C576F181D0DD518 /* MGConnect+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGConnect+Internal.h"; sourceTree = "<group>"; };
+		366981F976F7AEAED071689A /* MGInMemoryPersistentStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGInMemoryPersistentStore.mm; sourceTree = "<group>"; };
+		36698212371852EA11E3344D /* MGNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNetworkReachability.m; sourceTree = "<group>"; };
+		3669821FA067BDEA703FC6F8 /* MGWSDLDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLDescription.h; sourceTree = "<group>"; };
+		3669823967E91D45FA05EFB6 /* Environment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Environment.hpp; sourceTree = "<group>"; };
+		3669824E32CC99AB8EF86E67 /* MGWSDLTypeDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLTypeDefinition.h; sourceTree = "<group>"; };
+		366982555113FF4EBD643912 /* MGConnectEntityActionDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectEntityActionDefinition.h; sourceTree = "<group>"; };
+		36698258D1886467FE05C9C9 /* MGConnectActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectActionMessage.h; sourceTree = "<group>"; };
+		366982723C8F27F801ECAA17 /* MGWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebService.h; sourceTree = "<group>"; };
+		3669827C8411EF05A2AAECE9 /* MGWebServiceHTTPSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPSerializer.m; sourceTree = "<group>"; };
+		3669829F7EE2A7ECA62B936A /* MGXPathV1ObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXPathV1ObjectMapper.m; sourceTree = "<group>"; };
+		366982C62ACB35682B064277 /* MGWebServiceHTTPDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPDeserializer.m; sourceTree = "<group>"; };
+		366982CB35224AADCFF9F35E /* MGActionMonitorNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGActionMonitorNotificationManager.m; sourceTree = "<group>"; };
+		366982EB040B60AE3FBBE5A8 /* MGAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAssert.h; sourceTree = "<group>"; };
+		3669831989E9D891C77953AC /* MGCacheSynchronizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCacheSynchronizationManager.m; sourceTree = "<group>"; };
+		366983422351773AA5871F2B /* MGWSDLComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLComponent.m; sourceTree = "<group>"; };
+		3669838047D578CCB19C3087 /* MGWSDLInterfaceFaultReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFaultReference.m; sourceTree = "<group>"; };
+		366983875567AD465971DEE6 /* MGConnectEmptyActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectEmptyActionMessage.h; sourceTree = "<group>"; };
+		36698396ADD39D3611C7C0C8 /* MGCreateEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCreateEntityAction.m; sourceTree = "<group>"; };
+		366983AA6A68E89B56786D71 /* MGFetchRequestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFetchRequestAnalyzer.m; sourceTree = "<group>"; };
+		366983AE1CAA81C54693A597 /* MGActionExecutionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGActionExecutionProxy.h; sourceTree = "<group>"; };
+		366983CA15D8F487BA3C33E7 /* MGClassProtocolValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClassProtocolValidator.h; sourceTree = "<group>"; };
+		366983D328A54D528C2EA6DF /* MGActionExecutionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGActionExecutionProxy.m; sourceTree = "<group>"; };
+		366983D722D0C6CA0ADF24EC /* MGActionMonitorNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGActionMonitorNotificationManager.h; sourceTree = "<group>"; };
+		366984174C00C2C3F8D107B7 /* MGListEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGListEntityAction.h; sourceTree = "<group>"; };
+		3669843537FFC5023019300B /* MGActionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGActionQueue.h; sourceTree = "<group>"; };
+		3669844A4D2A71C8800CD5CE /* MGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGError.h; sourceTree = "<group>"; };
+		3669844ECACF72DA4EDDDACA /* MGConnectInitializationOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectInitializationOptions.h; sourceTree = "<group>"; };
+		366984568F6E6537BD61B896 /* MGWebServiceHTTPXMLDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPXMLDeserializer.m; sourceTree = "<group>"; };
+		366984689074D38D049212C7 /* MGReadEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGReadEntityAction.h; sourceTree = "<group>"; };
+		3669846A17FADF127677F4F3 /* MGWSDLEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLEndpoint.h; sourceTree = "<group>"; };
+		3669847124912FE9929C2A44 /* MGWSDLBindingFaultReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFaultReference.h; sourceTree = "<group>"; };
+		3669847AFEE1E0B775B5A40E /* MGWSDLExtensionElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtensionElement.m; sourceTree = "<group>"; };
+		366984BA388337A5F310C78F /* MGMetadataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMetadataManager.h; sourceTree = "<group>"; };
+		366984CE586BC78D1594DE6D /* MGPassthroughManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPassthroughManagedObjectContext.m; sourceTree = "<group>"; };
+		366984CF7E2AD11EE471594C /* MGCreateEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCreateEntityAction.h; sourceTree = "<group>"; };
+		366984D8295A7A840C3CA12F /* MGUpdateEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUpdateEntityAction.m; sourceTree = "<group>"; };
+		366984EF7D2EDF7ED019A71A /* MGWebServiceHTTPXMLSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPXMLSerializer.h; sourceTree = "<group>"; };
+		366984F13CC926BFC5BAB01B /* MGWebServiceHTTPJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPJSONSerializer.m; sourceTree = "<group>"; };
+		366984F3F910A49B8329AFFF /* MGWSDLBindingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingOperation.h; sourceTree = "<group>"; };
+		366984F642BE587A58B64484 /* MGListEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGListEntityAction.m; sourceTree = "<group>"; };
+		366984FE94ADAA338654C805 /* MGWSDLBindingFaultReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFaultReference.m; sourceTree = "<group>"; };
+		3669852D0CDE727989631712 /* MGMetadataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMetadataManager.m; sourceTree = "<group>"; };
+		3669852D2F4BCD0797643631 /* MGWSDLInterfaceMessageReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceMessageReference.h; sourceTree = "<group>"; };
+		3669852DBC3D26A1885D22EE /* MGConnectManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectManagedObject.h; sourceTree = "<group>"; };
+		3669852EBB408015F0FADA2E /* Connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connect.cpp; sourceTree = "<group>"; };
+		3669854066893D504D7CE880 /* MGWebServiceHTTPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPOperation.h; sourceTree = "<group>"; };
+		36698549357DD9C913EB904C /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
+		3669857EDF257BDE2AC7F7CC /* MGMetadataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMetadataModel.m; sourceTree = "<group>"; };
+		366985A3B9F41C6C787544EA /* MGConnectInitializationOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectInitializationOptions.m; sourceTree = "<group>"; };
+		366985B0F8A4A323BD04D4DC /* MGWSDLProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLProperty.m; sourceTree = "<group>"; };
+		366985BC0F8D4F0537B796E0 /* MGConnectManagedObjectActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectManagedObjectActionMessage.h; sourceTree = "<group>"; };
+		366985CF13455743674337C8 /* MGConnectTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectTests.mm; sourceTree = "<group>"; };
+		366985F82551C9BA4B11988A /* MGPassthroughPersistentStoreCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPassthroughPersistentStoreCoordinator.m; sourceTree = "<group>"; };
+		3669860EFD6D783453F96F79 /* MGWebServiceHTTPJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPJSONSerializer.h; sourceTree = "<group>"; };
+		36698614DBDB76E6C9892E0B /* MGWSDLExtendableComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtendableComponent.h; sourceTree = "<group>"; };
+		366986251BE6D43B9C78F9C5 /* MGWSDLInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterface.m; sourceTree = "<group>"; };
+		36698636625CC955F82D3878 /* MGConnect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnect.mm; sourceTree = "<group>"; };
+		3669864CF4B7624490B56394 /* MGWSDLInterfaceOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceOperation.h; sourceTree = "<group>"; };
+		3669864FEAF4AC3D0A16E7E7 /* MGConnectConcreteEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectConcreteEntityAction.m; sourceTree = "<group>"; };
+		36698666819DA4BF01D03A7F /* MGWebServiceOutMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceOutMessage.m; sourceTree = "<group>"; };
+		3669868C8C9E868D6150EEDC /* HR.sql */ = {isa = PBXFileReference; lastKnownFileType = file.sql; path = HR.sql; sourceTree = "<group>"; };
+		36698698C72FDF8055FAC78D /* MGWSDLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLService.m; sourceTree = "<group>"; };
+		366986AF8ABEFCF1CF2CA002 /* MGWSDLExtendableComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtendableComponent.m; sourceTree = "<group>"; };
+		366986C1825DAB751ED183BE /* MGConnectPersistentStoreCoordinator+Internal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "MGConnectPersistentStoreCoordinator+Internal.mm"; sourceTree = "<group>"; };
+		366986DF458058994CC64FDB /* MGWSDLInterfaceOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceOperation.m; sourceTree = "<group>"; };
+		366986E0D35EF697635AD904 /* MGWebServiceHTTPDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPDeserializer.h; sourceTree = "<group>"; };
+		366986FC5C81A17023853A66 /* MGWebServiceHTTPJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPJSONDeserializer.m; sourceTree = "<group>"; };
+		366986FCF27B0DE5FE3F2CE6 /* MGInMemoryPersistentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGInMemoryPersistentStore.h; sourceTree = "<group>"; };
+		366986FF709BAE92DF3A452D /* MGNetworkMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNetworkMonitor.m; sourceTree = "<group>"; };
+		3669870F75D201ED1FA40887 /* MGWSDLElementDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLElementDeclaration.h; sourceTree = "<group>"; };
+		3669871E51EA442519AB6FC4 /* MGRuntimeException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGRuntimeException.h; sourceTree = "<group>"; };
+		36698733F810DC38D530630C /* MGRESTfulFetchRequestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGRESTfulFetchRequestAnalyzer.m; sourceTree = "<group>"; };
+		36698747779AD0F4BF3AF1DE /* coredata-model.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = "coredata-model.xsd"; sourceTree = "<group>"; };
+		36698790C5FF570F5919D390 /* MGConnectAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectAction.m; sourceTree = "<group>"; };
+		3669879151C3A46ABA32E46C /* MGWSDL+Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+Types.h"; sourceTree = "<group>"; };
+		366987942E44AC1C78543FF0 /* MGConnectManagedObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectManagedObject.mm; sourceTree = "<group>"; };
+		3669879C8EB583740DE10CD1 /* MGConnectConcreteEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectConcreteEntityAction.h; sourceTree = "<group>"; };
+		366987A140E0B846471FB0E3 /* MGWSDLInterfaceFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFault.m; sourceTree = "<group>"; };
+		366987C8E64142413E15C3DA /* MGRESTfulFetchRequestAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGRESTfulFetchRequestAnalyzer.h; sourceTree = "<group>"; };
+		366987E90973217E4A0AC31B /* MGConnectActionExecutionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectActionExecutionInfo.m; sourceTree = "<group>"; };
+		3669880A65A4A01C56DB7001 /* MGRuntimeException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGRuntimeException.m; sourceTree = "<group>"; };
+		366988303AD08B9932DF35A9 /* MGWSDLFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLFeature.m; sourceTree = "<group>"; };
+		36698869AF493CE63E5C180A /* MGConnectEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectEntityAction.h; sourceTree = "<group>"; };
+		3669889C702E6C7DEE4686BF /* MGConnectEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectEntityAction.m; sourceTree = "<group>"; };
+		366988DDF06876C1F1CA1032 /* MGWSDLElementDeclaration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLElementDeclaration.m; sourceTree = "<group>"; };
+		366988E5B84ED50519A31BDA /* MGWSDLBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBinding.m; sourceTree = "<group>"; };
+		366988E8DE8BC1635A8A822C /* MGWSDLFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLFeature.h; sourceTree = "<group>"; };
+		366989085F3877A841D31DD4 /* MGEntitySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEntitySettings.m; sourceTree = "<group>"; };
+		36698928BE620F225A627C43 /* MGError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGError.m; sourceTree = "<group>"; };
+		3669892992859170F619ED07 /* MGWebServiceInMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceInMessage.h; sourceTree = "<group>"; };
+		36698936C07E578A26D6010A /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		3669893859A79617A440BAA8 /* MGActionQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGActionQueue.m; sourceTree = "<group>"; };
+		3669894EA0162155640EB527 /* MGLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLogWriter.h; sourceTree = "<group>"; };
+		36698974EE3FB0D44DAD5F71 /* MGEntitySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEntitySettings.h; sourceTree = "<group>"; };
+		36698987B9A670FA124C5682 /* MGTransactionLogRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransactionLogRecord.m; sourceTree = "<group>"; };
+		366989A0BF2F5BB49FC604D1 /* MGConnectAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectAction.h; sourceTree = "<group>"; };
+		366989AA8CF6632FAA3B3D7B /* MGWSDL+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+HTTP.m"; sourceTree = "<group>"; };
+		366989B0E57EC42436DCFE65 /* MGWSDLBindingFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFault.m; sourceTree = "<group>"; };
+		366989B50CE03B7B1BEE7864 /* MGConnectEmptyActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectEmptyActionMessage.m; sourceTree = "<group>"; };
+		366989BF18B3CAD8F8F0FAA0 /* MGTransactionLogRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTransactionLogRecord.h; sourceTree = "<group>"; };
+		366989D67E914E3D75DED7C2 /* MGWebServiceHTTPJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPJSONDeserializer.h; sourceTree = "<group>"; };
+		366989DD599185B4E41E3D86 /* MGConnectManagedObjectContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectManagedObjectContext.mm; sourceTree = "<group>"; };
+		366989DDCEF5F4DE46FAAAD1 /* MGWSDLBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLBinding.h; sourceTree = "<group>"; };
+		366989EB035240F8B43B8568 /* MGWSDLInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterface.h; sourceTree = "<group>"; };
+		36698A0E7ACFD6BAF0599AF8 /* MGWSDLDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLDescription.m; sourceTree = "<group>"; };
+		36698A1034288D1B5645D24F /* MGLogReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGLogReader.m; sourceTree = "<group>"; };
+		36698A1F7BC332D4F7A57251 /* MGDeleteEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDeleteEntityAction.h; sourceTree = "<group>"; };
+		36698A2E341A9D3F4914BD1F /* MGPassthroughPersistentStoreCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPassthroughPersistentStoreCoordinator.h; sourceTree = "<group>"; };
+		36698A2E47A857B1C79A7D5D /* MGDeleteEntityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDeleteEntityAction.m; sourceTree = "<group>"; };
+		36698A7CEC9827DA492B7D54 /* MGCacheSynchronizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCacheSynchronizationManager.h; sourceTree = "<group>"; };
+		36698A888D2BD07E86B03151 /* MGManagedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGManagedEntity.h; sourceTree = "<group>"; };
+		36698A9BA839E11CE3E7B03C /* MGConnectManagedObjectActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectManagedObjectActionMessage.m; sourceTree = "<group>"; };
+		36698AA117858FE1AA0AA6DA /* MGWSDLTypeDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLTypeDefinition.m; sourceTree = "<group>"; };
+		36698AC53A9BFB3C5E1454ED /* MGConnectActionExecutionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectActionExecutionInfo.h; sourceTree = "<group>"; };
+		36698AC5E4A64DF39607C3DA /* MGWebServiceOutMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceOutMessage.h; sourceTree = "<group>"; };
+		36698AC74653AEEDC1C84FDA /* MGUpdateEntityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUpdateEntityAction.h; sourceTree = "<group>"; };
+		36698AE8081B01937C8CF12D /* MGWebServiceHTTPSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPSerializer.h; sourceTree = "<group>"; };
+		36698B0B6D789FCD2C7A7D18 /* MGInMemoryReferenceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGInMemoryReferenceObject.h; sourceTree = "<group>"; };
+		36698B259B76427F19A5F7BC /* MGWSDLExtensionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtensionElement.h; sourceTree = "<group>"; };
+		36698B2A87986747B7238812 /* MGException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGException.h; sourceTree = "<group>"; };
+		36698B4B55BD7AB2CE05190D /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		36698B57BE4344206BF2E6BB /* MGWebServiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceMessage.m; sourceTree = "<group>"; };
+		36698B64053733E91F30AB8B /* MGWSDLBindingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingOperation.m; sourceTree = "<group>"; };
+		36698B6C4827936A6B756911 /* MGInitializationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGInitializationException.h; sourceTree = "<group>"; };
+		36698B72A9439C2F19FED0A4 /* MGConnectPersistentStoreCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectPersistentStoreCoordinator.h; sourceTree = "<group>"; };
+		36698B919B4193642E7575BA /* MGPassthroughManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPassthroughManagedObjectContext.h; sourceTree = "<group>"; };
+		36698B98200202A99594D168 /* MGWSDLComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLComponent.h; sourceTree = "<group>"; };
+		36698BBA245026CC7D1D8161 /* MGConnectActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectActionController.h; sourceTree = "<group>"; };
+		36698BC2E71FD8CF3D5B4845 /* MGInMemoryPersistentStoreTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGInMemoryPersistentStoreTests.mm; sourceTree = "<group>"; };
+		36698BDDDA5E6C6F03C8D942 /* apigee-wadl-extensions.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = "apigee-wadl-extensions.xsd"; sourceTree = "<group>"; };
+		36698BE1E6A368A6478782D4 /* MGWebServiceHTTPURLEncodedSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPURLEncodedSerializer.m; sourceTree = "<group>"; };
+		36698C34F65CFAEBE917EC10 /* MGWSDLBindingFault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFault.h; sourceTree = "<group>"; };
+		36698C5C77BAD44C094B221B /* MGPersistentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPersistentStore.h; sourceTree = "<group>"; };
+		36698C8594F63EC01A137932 /* MGInitializationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGInitializationException.m; sourceTree = "<group>"; };
+		36698CA4F4A1DAACF9BAFD6E /* MGWebServiceHTTPXMLSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPXMLSerializer.m; sourceTree = "<group>"; };
+		36698CB81E34B9BE1E200543 /* MGObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGObjectMapper.h; sourceTree = "<group>"; };
+		36698CD4BFBC7114B7B9A57E /* MGConnectActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectActionController.m; sourceTree = "<group>"; };
+		36698CF1075601B845857DCF /* MGConnectModelMangler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectModelMangler.mm; sourceTree = "<group>"; };
+		36698D0A8A278E870E615967 /* MGLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGLogWriter.m; sourceTree = "<group>"; };
+		36698D39DCA6582AF36C3694 /* MGMetadataBackingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMetadataBackingStore.m; sourceTree = "<group>"; };
+		36698D3D7198CF1117AE8060 /* MGMetadataBackingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMetadataBackingStore.h; sourceTree = "<group>"; };
+		36698D58D485BA62CD6C6295 /* MGMetadataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMetadataModel.h; sourceTree = "<group>"; };
+		36698D67DB99190D7FA34463 /* MGSQLitePersistentStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGSQLitePersistentStore.mm; sourceTree = "<group>"; };
+		36698D6C4D603398B9094F2F /* MGWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebService.m; sourceTree = "<group>"; };
+		36698DBE6632CB82FF5AB8CD /* MGNetworkMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetworkMonitor.h; sourceTree = "<group>"; };
+		36698DE153CFD23935634DA4 /* MGWSDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDL.h; sourceTree = "<group>"; };
+		36698DF67B3C50DF51D2F632 /* MGWSDLInterfaceMessageReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceMessageReference.m; sourceTree = "<group>"; };
+		36698DF6DAFCCF9FCCA9EE41 /* MGWSDLEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLEndpoint.m; sourceTree = "<group>"; };
+		36698DF84D7BE731A6588BEC /* MGWSDL+Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+Types.m"; sourceTree = "<group>"; };
+		36698E06A5BB3590B6331D4A /* MGInMemoryReferenceObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGInMemoryReferenceObject.mm; sourceTree = "<group>"; };
+		36698E1AF149A2D53855A076 /* MGWebServiceHTTPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPOperation.m; sourceTree = "<group>"; };
+		36698E3E00944314BF0B84A0 /* MGConnectModelMangler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectModelMangler.h; sourceTree = "<group>"; };
+		36698E531E81C146AF52F959 /* MGWebServiceOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceOperation.m; sourceTree = "<group>"; };
+		36698E62F037126C98DE3E2C /* MGException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGException.m; sourceTree = "<group>"; };
+		36698E720C8A11CD6BAEC63D /* MGWSDLBindingMessageReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingMessageReference.m; sourceTree = "<group>"; };
+		36698E78B6BAFE98CE6A1B17 /* MGWSDLInterfaceFault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFault.h; sourceTree = "<group>"; };
+		36698E8048BA71DE2FDB6BB7 /* MGWebServiceHTTPXMLDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPXMLDeserializer.h; sourceTree = "<group>"; };
+		36698E86BE1E2B4A3BC6C165 /* MGXPathV1ObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXPathV1ObjectMapper.h; sourceTree = "<group>"; };
+		36698EC891C0761D5C5BB925 /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
+		36698EDBAADBCCD89140C823 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
+		36698EFA2F215D6D682274E1 /* MGWSDLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWSDLService.h; sourceTree = "<group>"; };
+		36698F1229A5163C0F89F6C0 /* MGManagedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGManagedEntity.m; sourceTree = "<group>"; };
+		36698F1426A426C9CEED63D3 /* MGConnectActionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectActionMonitor.h; sourceTree = "<group>"; };
+		36698F2EB50216FCA7C91AED /* MGWebServiceInMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceInMessage.m; sourceTree = "<group>"; };
+		36698F70A72D833FDB52C35F /* MGWebServiceHTTPURLEncodedSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPURLEncodedSerializer.h; sourceTree = "<group>"; };
+		36698F798F27218FE8EEAE04 /* MGClassProtocolValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClassProtocolValidator.m; sourceTree = "<group>"; };
+		36698F9182EB1F985C58B4D7 /* MGConnectPersistentStoreCoordinatorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGConnectPersistentStoreCoordinatorTests.mm; sourceTree = "<group>"; };
+		36698FB692DFC38201359905 /* MGConnectEntitySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectEntitySettings.m; sourceTree = "<group>"; };
+		36698FE50353AC93F3DACC48 /* MGLogReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLogReader.h; sourceTree = "<group>"; };
+		36698FF27ED7DE8F235A1DEC /* MGWebServiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWebServiceMessage.h; sourceTree = "<group>"; };
+		EA1CB97919B274C900AAA31C /* MGDataMergeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDataMergeOperation.h; sourceTree = "<group>"; };
+		EA1CB97A19B274C900AAA31C /* MGDataMergeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDataMergeOperation.m; sourceTree = "<group>"; };
+		EA8FE7FE19A6CB2C007DB69C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EA8FE80619A6E83F007DB69C /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../../../../../../Library/Frameworks/gtest.framework; sourceTree = "<group>"; };
+		EA8FE80C19A6E9CF007DB69C /* Connect Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Connect Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8FE82219A6EB65007DB69C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		EA9CDAE719648806003F7752 /* Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9CDAEB19648806003F7752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		EA9CDAEC19648806003F7752 /* MGConnect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGConnect.h; sourceTree = "<group>"; };
+		EAAD03D319B2CF83007F69BB /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		EAB4A4BB19BE6F2D00C944FB /* HR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HR.xcdatamodel; sourceTree = "<group>"; };
+		EADE524B19B275370010947A /* MGTraceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTraceLog.h; sourceTree = "<group>"; };
+		EADE524C19B275370010947A /* MGTraceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTraceLog.m; sourceTree = "<group>"; };
+		EAF2472619A10150000EFE29 /* Common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Common.xcodeproj; path = ../../Common/Common/Common.xcodeproj; sourceTree = "<group>"; };
+		EAF56C73199EC2EB00D5621F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EAF56C81199EC2EB00D5621F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		EAF56C84199EC2EB00D5621F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA8FE80919A6E9CF007DB69C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA8FE82719A6EE0D007DB69C /* Connect.framework in Frameworks */,
+				EA8FE82419A6EDC3007DB69C /* gtest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9CDAE319648806003F7752 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAAD03D719B2D0E0007F69BB /* Foundation.framework in Frameworks */,
+				EAAD03D419B2CF83007F69BB /* libxml2.dylib in Frameworks */,
+				EA8FE80119A6CB48007DB69C /* CoreData.framework in Frameworks */,
+				EA51F09A19A103FE001A037B /* Common.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3669803D0DD57B3BE8896470 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				3669811679CD222A83C27E88 /* MGSQLitePersistentStore.h */,
+				36698D67DB99190D7FA34463 /* MGSQLitePersistentStore.mm */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		366980EABA7FC1BF752687D1 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				36698F30BC1C62C34E021983 /* model */,
+				36698FE50353AC93F3DACC48 /* MGLogReader.h */,
+				36698A1034288D1B5645D24F /* MGLogReader.m */,
+				3669894EA0162155640EB527 /* MGLogWriter.h */,
+				36698D0A8A278E870E615967 /* MGLogWriter.m */,
+				366984BA388337A5F310C78F /* MGMetadataManager.h */,
+				3669852D0CDE727989631712 /* MGMetadataManager.m */,
+				36698D3D7198CF1117AE8060 /* MGMetadataBackingStore.h */,
+				36698D39DCA6582AF36C3694 /* MGMetadataBackingStore.m */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
+		3669810290CDBD19319FF4F8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				36698478126C9F1B0F0CDE60 /* inmemory */,
+				3669803D0DD57B3BE8896470 /* sqlite */,
+				36698C5C77BAD44C094B221B /* MGPersistentStore.h */,
+				EA1CB97919B274C900AAA31C /* MGDataMergeOperation.h */,
+				EA1CB97A19B274C900AAA31C /* MGDataMergeOperation.m */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		366982FA5F755A41A453F976 /* Airline */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Airline;
+			sourceTree = "<group>";
+		};
+		366982FC7333CC6680F5D8B1 /* WSDL */ = {
+			isa = PBXGroup;
+			children = (
+				366987E7792F35432D89A3D5 /* OBJC */,
+			);
+			path = WSDL;
+			sourceTree = "<group>";
+		};
+		3669838ADE1D8A9F2D2B3316 /* Schemas */ = {
+			isa = PBXGroup;
+			children = (
+				3669802BD31D69F1FA57F282 /* connect.xsd */,
+				366981368F391B7CEC358737 /* wadl-schema.xsd */,
+				36698747779AD0F4BF3AF1DE /* coredata-model.xsd */,
+				36698BDDDA5E6C6F03C8D942 /* apigee-wadl-extensions.xsd */,
+			);
+			path = Schemas;
+			sourceTree = "<group>";
+		};
+		3669841E6404A92503C9288B /* HR */ = {
+			isa = PBXGroup;
+			children = (
+				EAB4A4BA19BE6F2D00C944FB /* HR.xcdatamodeld */,
+				3669868C8C9E868D6150EEDC /* HR.sql */,
+			);
+			path = HR;
+			sourceTree = "<group>";
+		};
+		36698478126C9F1B0F0CDE60 /* inmemory */ = {
+			isa = PBXGroup;
+			children = (
+				366986FCF27B0DE5FE3F2CE6 /* MGInMemoryPersistentStore.h */,
+				366981F976F7AEAED071689A /* MGInMemoryPersistentStore.mm */,
+				36698B0B6D789FCD2C7A7D18 /* MGInMemoryReferenceObject.h */,
+				36698E06A5BB3590B6331D4A /* MGInMemoryReferenceObject.mm */,
+			);
+			path = inmemory;
+			sourceTree = "<group>";
+		};
+		3669848B1EC3CFB57023EA71 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				36698B919B4193642E7575BA /* MGPassthroughManagedObjectContext.h */,
+				366984CE586BC78D1594DE6D /* MGPassthroughManagedObjectContext.m */,
+				36698A2E341A9D3F4914BD1F /* MGPassthroughPersistentStoreCoordinator.h */,
+				366985F82551C9BA4B11988A /* MGPassthroughPersistentStoreCoordinator.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		36698557394E7E7EFDBA110E /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				3669854066893D504D7CE880 /* MGWebServiceHTTPOperation.h */,
+				36698E1AF149A2D53855A076 /* MGWebServiceHTTPOperation.m */,
+				36698AE8081B01937C8CF12D /* MGWebServiceHTTPSerializer.h */,
+				3669827C8411EF05A2AAECE9 /* MGWebServiceHTTPSerializer.m */,
+				366986E0D35EF697635AD904 /* MGWebServiceHTTPDeserializer.h */,
+				366982C62ACB35682B064277 /* MGWebServiceHTTPDeserializer.m */,
+				366984EF7D2EDF7ED019A71A /* MGWebServiceHTTPXMLSerializer.h */,
+				36698CA4F4A1DAACF9BAFD6E /* MGWebServiceHTTPXMLSerializer.m */,
+				3669860EFD6D783453F96F79 /* MGWebServiceHTTPJSONSerializer.h */,
+				366984F13CC926BFC5BAB01B /* MGWebServiceHTTPJSONSerializer.m */,
+				36698E8048BA71DE2FDB6BB7 /* MGWebServiceHTTPXMLDeserializer.h */,
+				366984568F6E6537BD61B896 /* MGWebServiceHTTPXMLDeserializer.m */,
+				366989D67E914E3D75DED7C2 /* MGWebServiceHTTPJSONDeserializer.h */,
+				366986FC5C81A17023853A66 /* MGWebServiceHTTPJSONDeserializer.m */,
+				36698F70A72D833FDB52C35F /* MGWebServiceHTTPURLEncodedSerializer.h */,
+				36698BE1E6A368A6478782D4 /* MGWebServiceHTTPURLEncodedSerializer.m */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		366986D2BD10DF6ABE9F905F /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				3669810290CDBD19319FF4F8 /* Persistence */,
+				366989D7CCECD65A69C5944B /* Debug */,
+				3669852EBB408015F0FADA2E /* Connect.cpp */,
+				3669817171A5AC889CA2B12F /* Connect.hpp */,
+				366988380A0FED006EF311C6 /* Actions */,
+				3669848B1EC3CFB57023EA71 /* Common */,
+				36698DF9A140457E4531391F /* Core */,
+				366987B807E307EF9BCD07E4 /* Messages */,
+				366980EABA7FC1BF752687D1 /* Metadata */,
+				36698CCC1966FFA7DE1FC00B /* Network */,
+				366989C0134FA80D7BA54371 /* Queues */,
+				366988C36735D9B3D81F0859 /* Synchronization */,
+				36698DEF58A989B726AFB0D4 /* Transformation */,
+				366983D722D0C6CA0ADF24EC /* MGActionMonitorNotificationManager.h */,
+				366982CB35224AADCFF9F35E /* MGActionMonitorNotificationManager.m */,
+				366983CA15D8F487BA3C33E7 /* MGClassProtocolValidator.h */,
+				36698F798F27218FE8EEAE04 /* MGClassProtocolValidator.m */,
+				366981D79C576F181D0DD518 /* MGConnect+Internal.h */,
+				36698BBA245026CC7D1D8161 /* MGConnectActionController.h */,
+				36698CD4BFBC7114B7B9A57E /* MGConnectActionController.m */,
+				3669844ECACF72DA4EDDDACA /* MGConnectInitializationOptions.h */,
+				366985A3B9F41C6C787544EA /* MGConnectInitializationOptions.m */,
+				366980DA448F2FC12FE54319 /* MGConnectManagedObjectContext+Internal.h */,
+				36698974EE3FB0D44DAD5F71 /* MGEntitySettings.h */,
+				366989085F3877A841D31DD4 /* MGEntitySettings.m */,
+				3669885C2EBD470A0143DE07 /* WebServices */,
+				36698028E63B3A24725E6331 /* MGConnectPersistentStoreCoordinator+Internal.h */,
+				366986C1825DAB751ED183BE /* MGConnectPersistentStoreCoordinator+Internal.mm */,
+				3669838ADE1D8A9F2D2B3316 /* Schemas */,
+				366987942E44AC1C78543FF0 /* MGConnectManagedObject.mm */,
+				3669852DBC3D26A1885D22EE /* MGConnectManagedObject.h */,
+				36698CF1075601B845857DCF /* MGConnectModelMangler.mm */,
+				36698E3E00944314BF0B84A0 /* MGConnectModelMangler.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		366987B807E307EF9BCD07E4 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				366983875567AD465971DEE6 /* MGConnectEmptyActionMessage.h */,
+				366989B50CE03B7B1BEE7864 /* MGConnectEmptyActionMessage.m */,
+				3669814085A6F6DADC146DBD /* MGConnectDictionaryActionMessage.h */,
+				366981CF3DAB153A0D7B5EBB /* MGConnectDictionaryActionMessage.m */,
+				366985BC0F8D4F0537B796E0 /* MGConnectManagedObjectActionMessage.h */,
+				36698A9BA839E11CE3E7B03C /* MGConnectManagedObjectActionMessage.m */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		366987D41CFC7F9B2FEF8D5C /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				366989A0BF2F5BB49FC604D1 /* MGConnectAction.h */,
+				36698790C5FF570F5919D390 /* MGConnectAction.m */,
+				36698AC53A9BFB3C5E1454ED /* MGConnectActionExecutionInfo.h */,
+				366987E90973217E4A0AC31B /* MGConnectActionExecutionInfo.m */,
+				36698258D1886467FE05C9C9 /* MGConnectActionMessage.h */,
+				36698163E5EB1A63C3935303 /* MGConnectActionMessage.m */,
+				36698F1426A426C9CEED63D3 /* MGConnectActionMonitor.h */,
+				36698869AF493CE63E5C180A /* MGConnectEntityAction.h */,
+				3669889C702E6C7DEE4686BF /* MGConnectEntityAction.m */,
+				366982555113FF4EBD643912 /* MGConnectEntityActionDefinition.h */,
+				366980B2E37903DA6D81675D /* MGConnectEntitySettings.h */,
+				36698FB692DFC38201359905 /* MGConnectEntitySettings.m */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		366987E7792F35432D89A3D5 /* OBJC */ = {
+			isa = PBXGroup;
+			children = (
+				36698DE153CFD23935634DA4 /* MGWSDL.h */,
+				366980E809A043C30E1E65A3 /* MGWSDL+HTTP.h */,
+				366989AA8CF6632FAA3B3D7B /* MGWSDL+HTTP.m */,
+				3669879151C3A46ABA32E46C /* MGWSDL+Types.h */,
+				36698DF84D7BE731A6588BEC /* MGWSDL+Types.m */,
+				366989DDCEF5F4DE46FAAAD1 /* MGWSDLBinding.h */,
+				366988E5B84ED50519A31BDA /* MGWSDLBinding.m */,
+				366988E8DE8BC1635A8A822C /* MGWSDLFeature.h */,
+				366988303AD08B9932DF35A9 /* MGWSDLFeature.m */,
+				36698EFA2F215D6D682274E1 /* MGWSDLService.h */,
+				36698698C72FDF8055FAC78D /* MGWSDLService.m */,
+				3669846A17FADF127677F4F3 /* MGWSDLEndpoint.h */,
+				36698DF6DAFCCF9FCCA9EE41 /* MGWSDLEndpoint.m */,
+				366981CB2C3CDB112FC5B69B /* MGWSDLProperty.h */,
+				366985B0F8A4A323BD04D4DC /* MGWSDLProperty.m */,
+				36698B98200202A99594D168 /* MGWSDLComponent.h */,
+				366983422351773AA5871F2B /* MGWSDLComponent.m */,
+				366989EB035240F8B43B8568 /* MGWSDLInterface.h */,
+				366986251BE6D43B9C78F9C5 /* MGWSDLInterface.m */,
+				3669821FA067BDEA703FC6F8 /* MGWSDLDescription.h */,
+				36698A0E7ACFD6BAF0599AF8 /* MGWSDLDescription.m */,
+				36698C34F65CFAEBE917EC10 /* MGWSDLBindingFault.h */,
+				366989B0E57EC42436DCFE65 /* MGWSDLBindingFault.m */,
+				36698E78B6BAFE98CE6A1B17 /* MGWSDLInterfaceFault.h */,
+				366987A140E0B846471FB0E3 /* MGWSDLInterfaceFault.m */,
+				3669824E32CC99AB8EF86E67 /* MGWSDLTypeDefinition.h */,
+				36698AA117858FE1AA0AA6DA /* MGWSDLTypeDefinition.m */,
+				366984F3F910A49B8329AFFF /* MGWSDLBindingOperation.h */,
+				36698B64053733E91F30AB8B /* MGWSDLBindingOperation.m */,
+				36698B259B76427F19A5F7BC /* MGWSDLExtensionElement.h */,
+				3669847AFEE1E0B775B5A40E /* MGWSDLExtensionElement.m */,
+				3669870F75D201ED1FA40887 /* MGWSDLElementDeclaration.h */,
+				366988DDF06876C1F1CA1032 /* MGWSDLElementDeclaration.m */,
+				3669864CF4B7624490B56394 /* MGWSDLInterfaceOperation.h */,
+				366986DF458058994CC64FDB /* MGWSDLInterfaceOperation.m */,
+				36698614DBDB76E6C9892E0B /* MGWSDLExtendableComponent.h */,
+				366986AF8ABEFCF1CF2CA002 /* MGWSDLExtendableComponent.m */,
+				3669847124912FE9929C2A44 /* MGWSDLBindingFaultReference.h */,
+				366984FE94ADAA338654C805 /* MGWSDLBindingFaultReference.m */,
+				3669814516D6CE2B40C23033 /* MGWSDLBindingMessageReference.h */,
+				36698E720C8A11CD6BAEC63D /* MGWSDLBindingMessageReference.m */,
+				3669802DB411752F5F4814E1 /* MGWSDLInterfaceFaultReference.h */,
+				3669838047D578CCB19C3087 /* MGWSDLInterfaceFaultReference.m */,
+				3669852D2F4BCD0797643631 /* MGWSDLInterfaceMessageReference.h */,
+				36698DF67B3C50DF51D2F632 /* MGWSDLInterfaceMessageReference.m */,
+			);
+			path = OBJC;
+			sourceTree = "<group>";
+		};
+		366988380A0FED006EF311C6 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				366984174C00C2C3F8D107B7 /* MGListEntityAction.h */,
+				366984F642BE587A58B64484 /* MGListEntityAction.m */,
+				366984689074D38D049212C7 /* MGReadEntityAction.h */,
+				36698055CA6FDCF591D5BF2B /* MGReadEntityAction.m */,
+				366984CF7E2AD11EE471594C /* MGCreateEntityAction.h */,
+				36698396ADD39D3611C7C0C8 /* MGCreateEntityAction.m */,
+				36698A1F7BC332D4F7A57251 /* MGDeleteEntityAction.h */,
+				36698A2E47A857B1C79A7D5D /* MGDeleteEntityAction.m */,
+				36698AC74653AEEDC1C84FDA /* MGUpdateEntityAction.h */,
+				366984D8295A7A840C3CA12F /* MGUpdateEntityAction.m */,
+				366983AE1CAA81C54693A597 /* MGActionExecutionProxy.h */,
+				366983D328A54D528C2EA6DF /* MGActionExecutionProxy.m */,
+				3669879C8EB583740DE10CD1 /* MGConnectConcreteEntityAction.h */,
+				3669864FEAF4AC3D0A16E7E7 /* MGConnectConcreteEntityAction.m */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		3669885C2EBD470A0143DE07 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				36698557394E7E7EFDBA110E /* HTTP */,
+				366982723C8F27F801ECAA17 /* MGWebService.h */,
+				36698D6C4D603398B9094F2F /* MGWebService.m */,
+				36698FF27ED7DE8F235A1DEC /* MGWebServiceMessage.h */,
+				36698B57BE4344206BF2E6BB /* MGWebServiceMessage.m */,
+				3669892992859170F619ED07 /* MGWebServiceInMessage.h */,
+				36698F2EB50216FCA7C91AED /* MGWebServiceInMessage.m */,
+				3669807AD0A4663ECE1955F7 /* MGWebServiceOperation.h */,
+				36698E531E81C146AF52F959 /* MGWebServiceOperation.m */,
+				36698AC5E4A64DF39607C3DA /* MGWebServiceOutMessage.h */,
+				36698666819DA4BF01D03A7F /* MGWebServiceOutMessage.m */,
+				366982FC7333CC6680F5D8B1 /* WSDL */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		366988C36735D9B3D81F0859 /* Synchronization */ = {
+			isa = PBXGroup;
+			children = (
+				366981AEFD7B7672354B6BD4 /* MGFetchRequestAnalyzer.h */,
+				366983AA6A68E89B56786D71 /* MGFetchRequestAnalyzer.m */,
+				36698A7CEC9827DA492B7D54 /* MGCacheSynchronizationManager.h */,
+				3669831989E9D891C77953AC /* MGCacheSynchronizationManager.m */,
+				366987C8E64142413E15C3DA /* MGRESTfulFetchRequestAnalyzer.h */,
+				36698733F810DC38D530630C /* MGRESTfulFetchRequestAnalyzer.m */,
+			);
+			path = Synchronization;
+			sourceTree = "<group>";
+		};
+		36698960940CAEFE4E782B3A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				36698993D18ACDE3C51FD28B /* InMemory */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		36698993D18ACDE3C51FD28B /* InMemory */ = {
+			isa = PBXGroup;
+			children = (
+				36698BC2E71FD8CF3D5B4845 /* MGInMemoryPersistentStoreTests.mm */,
+			);
+			path = InMemory;
+			sourceTree = "<group>";
+		};
+		366989A5FDFB7E501CC288EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3669841E6404A92503C9288B /* HR */,
+				366982FA5F755A41A453F976 /* Airline */,
+				366989AC185C49ED7227BD78 /* Company */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		366989AC185C49ED7227BD78 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				36698B4B55BD7AB2CE05190D /* Person.m */,
+				366980523A1E9028DDB379E1 /* Company.m */,
+				3669811EFF6921DBE776C26E /* Person.h */,
+				36698EC891C0761D5C5BB925 /* Employee.h */,
+				3669819EC689846623E8E186 /* MGConnectTestModel.xcdatamodel */,
+				36698936C07E578A26D6010A /* Company.h */,
+				36698EDBAADBCCD89140C823 /* Role.h */,
+				36698199E76CD9B4342662EF /* Employee.m */,
+				36698549357DD9C913EB904C /* Role.m */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
+		366989C0134FA80D7BA54371 /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+				3669843537FFC5023019300B /* MGActionQueue.h */,
+				3669893859A79617A440BAA8 /* MGActionQueue.m */,
+			);
+			path = Queues;
+			sourceTree = "<group>";
+		};
+		366989D7CCECD65A69C5944B /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				EADE524B19B275370010947A /* MGTraceLog.h */,
+				EADE524C19B275370010947A /* MGTraceLog.m */,
+				366982EB040B60AE3FBBE5A8 /* MGAssert.h */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		36698CCC1966FFA7DE1FC00B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				36698DBE6632CB82FF5AB8CD /* MGNetworkMonitor.h */,
+				366986FF709BAE92DF3A452D /* MGNetworkMonitor.m */,
+				3669814446C52B4644DBD88F /* MGNetworkReachability.h */,
+				36698212371852EA11E3344D /* MGNetworkReachability.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		36698DEF58A989B726AFB0D4 /* Transformation */ = {
+			isa = PBXGroup;
+			children = (
+				36698CB81E34B9BE1E200543 /* MGObjectMapper.h */,
+				36698E86BE1E2B4A3BC6C165 /* MGXPathV1ObjectMapper.h */,
+				3669829F7EE2A7ECA62B936A /* MGXPathV1ObjectMapper.m */,
+			);
+			path = Transformation;
+			sourceTree = "<group>";
+		};
+		36698DF9A140457E4531391F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				36698A888D2BD07E86B03151 /* MGManagedEntity.h */,
+				36698F1229A5163C0F89F6C0 /* MGManagedEntity.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		36698E46FF3AE39CA1D6301E /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				3669844A4D2A71C8800CD5CE /* MGError.h */,
+				36698928BE620F225A627C43 /* MGError.m */,
+				36698B2A87986747B7238812 /* MGException.h */,
+				36698E62F037126C98DE3E2C /* MGException.m */,
+				3669871E51EA442519AB6FC4 /* MGRuntimeException.h */,
+				3669880A65A4A01C56DB7001 /* MGRuntimeException.m */,
+				36698B6C4827936A6B756911 /* MGInitializationException.h */,
+				36698C8594F63EC01A137932 /* MGInitializationException.m */,
+			);
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
+		36698F30BC1C62C34E021983 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				36698D58D485BA62CD6C6295 /* MGMetadataModel.h */,
+				3669857EDF257BDE2AC7F7CC /* MGMetadataModel.m */,
+				366989BF18B3CAD8F8F0FAA0 /* MGTransactionLogRecord.h */,
+				36698987B9A670FA124C5682 /* MGTransactionLogRecord.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		36698FAF0B1D62104633AED8 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				36698960940CAEFE4E782B3A /* Persistence */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		EA7569EE199ED0AB002D5B81 /* Connect Tests */ = {
+			isa = PBXGroup;
+			children = (
+				36698FAF0B1D62104633AED8 /* Internal */,
+				366985CF13455743674337C8 /* MGConnectTests.mm */,
+				EA8FE82219A6EB65007DB69C /* main.mm */,
+				3669823967E91D45FA05EFB6 /* Environment.hpp */,
+				36698F9182EB1F985C58B4D7 /* MGConnectPersistentStoreCoordinatorTests.mm */,
+				366989A5FDFB7E501CC288EC /* Models */,
+			);
+			path = "Connect Tests";
+			sourceTree = "<group>";
+		};
+		EA9CDADD19648806003F7752 = {
+			isa = PBXGroup;
+			children = (
+				EA9CDAE919648806003F7752 /* Connect */,
+				EA7569EE199ED0AB002D5B81 /* Connect Tests */,
+				EAF56C72199EC2EB00D5621F /* Frameworks */,
+				EA9CDAE819648806003F7752 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA9CDAE819648806003F7752 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9CDAE719648806003F7752 /* Connect.framework */,
+				EA8FE80C19A6E9CF007DB69C /* Connect Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA9CDAE919648806003F7752 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				EA9CDAEC19648806003F7752 /* MGConnect.h */,
+				36698636625CC955F82D3878 /* MGConnect.mm */,
+				366986D2BD10DF6ABE9F905F /* Internal */,
+				EA9CDAEA19648806003F7752 /* Supporting Files */,
+				366980E1D0BD6F8CE32DDAF3 /* MGConnectManagedObjectContext.h */,
+				366989DD599185B4E41E3D86 /* MGConnectManagedObjectContext.mm */,
+				36698E46FF3AE39CA1D6301E /* Exceptions */,
+				366980475397987ED00ECD61 /* MGConnectPersistentStoreCoordinator.mm */,
+				36698B72A9439C2F19FED0A4 /* MGConnectPersistentStoreCoordinator.h */,
+				366987D41CFC7F9B2FEF8D5C /* Deprecated */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		EA9CDAEA19648806003F7752 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA9CDAEB19648806003F7752 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAF2472719A10150000EFE29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAF2472C19A10150000EFE29 /* Common.framework */,
+				EAF2472E19A10150000EFE29 /* Common Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAF56C72199EC2EB00D5621F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD03D319B2CF83007F69BB /* libxml2.dylib */,
+				EA8FE80619A6E83F007DB69C /* gtest.framework */,
+				EA8FE7FE19A6CB2C007DB69C /* CoreData.framework */,
+				EAF2472619A10150000EFE29 /* Common.xcodeproj */,
+				EAF56C73199EC2EB00D5621F /* Foundation.framework */,
+				EAF56C81199EC2EB00D5621F /* XCTest.framework */,
+				EAF56C84199EC2EB00D5621F /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EA9CDAE419648806003F7752 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9CDAED19648806003F7752 /* MGConnect.h in Headers */,
+				36698C5B2A221C50F2201B69 /* MGConnectManagedObject.h in Headers */,
+				36698E6257CBD927A2E0A288 /* MGConnectManagedObjectContext.h in Headers */,
+				3669852A8503CE8EA56D3339 /* MGConnectPersistentStoreCoordinator.h in Headers */,
+				3669809F99882855F62FC6D2 /* MGAssert.h in Headers */,
+				36698517EA6E95F94700D1E6 /* MGInMemoryPersistentStore.h in Headers */,
+				366984102918B1B9E269AD69 /* MGSQLitePersistentStore.h in Headers */,
+				36698908656A0DC7547C8022 /* MGInMemoryReferenceObject.h in Headers */,
+				3669867E00C6A27492494BB1 /* MGPersistentStore.h in Headers */,
+				366980D7F906902B5A6890C3 /* Connect.hpp in Headers */,
+				3669821F2088A9C55EA34FBE /* MGError.h in Headers */,
+				36698965FC3257F5BAB94C21 /* MGException.h in Headers */,
+				366985EACD89521070F7F02C /* MGRuntimeException.h in Headers */,
+				3669833C6CCA49B636C4DC1C /* MGInitializationException.h in Headers */,
+				36698A1C29D493C5ED01BC3A /* MGListEntityAction.h in Headers */,
+				36698C82AEACC8E8D4A9B2EB /* MGReadEntityAction.h in Headers */,
+				366987AC23E1DBC2A0466C0A /* MGCreateEntityAction.h in Headers */,
+				366988470E9EEE5DA5539234 /* MGDeleteEntityAction.h in Headers */,
+				3669861D7D313389B2DCC242 /* MGUpdateEntityAction.h in Headers */,
+				36698E754D0BEC57D7561342 /* MGActionExecutionProxy.h in Headers */,
+				36698B93BEBC748D06671EDB /* MGConnectConcreteEntityAction.h in Headers */,
+				366986408F46AA3345E63614 /* MGPassthroughManagedObjectContext.h in Headers */,
+				36698E279E7B9EC38EECE7AC /* MGPassthroughPersistentStoreCoordinator.h in Headers */,
+				36698A865240CEBD5A24BF99 /* MGManagedEntity.h in Headers */,
+				3669842D6E03B002C445D4C7 /* MGConnectEmptyActionMessage.h in Headers */,
+				36698F9FFA47E50430750E68 /* MGConnectDictionaryActionMessage.h in Headers */,
+				366981532FC7B3D84A0FD9E7 /* MGConnectManagedObjectActionMessage.h in Headers */,
+				36698904DA7B73E7C3FE5506 /* MGMetadataModel.h in Headers */,
+				36698FB29257ACC60ED3CFF5 /* MGTransactionLogRecord.h in Headers */,
+				36698AE96756A1B7DADC5E00 /* MGLogReader.h in Headers */,
+				366984FCAB0E2329967B67A9 /* MGLogWriter.h in Headers */,
+				366984EEDBF0DBD1698E0C3A /* MGMetadataManager.h in Headers */,
+				36698DECBF35878890692CCF /* MGMetadataBackingStore.h in Headers */,
+				366989E21FED13C562F00577 /* MGNetworkMonitor.h in Headers */,
+				366986A839107D7AD6E2DA22 /* MGNetworkReachability.h in Headers */,
+				366987800A10A2978DC34DB9 /* MGActionQueue.h in Headers */,
+				36698FF9DEF575417CE91768 /* MGFetchRequestAnalyzer.h in Headers */,
+				36698E20B62607A89D6BF3AD /* MGCacheSynchronizationManager.h in Headers */,
+				366987D4AFAB5DDB3397DBB7 /* MGRESTfulFetchRequestAnalyzer.h in Headers */,
+				366986D4B6BAE9CD1981DE39 /* MGObjectMapper.h in Headers */,
+				36698B4A167934955C293909 /* MGXPathV1ObjectMapper.h in Headers */,
+				EADE524D19B275370010947A /* MGTraceLog.h in Headers */,
+				EA1CB97D19B274C900AAA31C /* MGDataMergeOperation.h in Headers */,
+				36698DBEBD5D47CA2BD077AC /* MGActionMonitorNotificationManager.h in Headers */,
+				36698E7134C2C98E18CABF1D /* MGClassProtocolValidator.h in Headers */,
+				3669857956D0E58E35A7DA4A /* MGConnect+Internal.h in Headers */,
+				366981458EE22B33BDE43DAA /* MGConnectActionController.h in Headers */,
+				366984AC5CE5D6DDF4221BE5 /* MGConnectInitializationOptions.h in Headers */,
+				36698156651F7C0A77DB4D93 /* MGConnectManagedObjectContext+Internal.h in Headers */,
+				366985281C6853AE641711E2 /* MGEntitySettings.h in Headers */,
+				3669883C065B611ABDEE0B99 /* MGWebServiceHTTPOperation.h in Headers */,
+				3669838CDBBA1B7B8D6BBD44 /* MGWebServiceHTTPSerializer.h in Headers */,
+				36698457DB57A5C90DFB2EF7 /* MGWebServiceHTTPDeserializer.h in Headers */,
+				36698FB31D34E45FBD178749 /* MGWebServiceHTTPXMLSerializer.h in Headers */,
+				366983DC36BE5686852244F4 /* MGWebServiceHTTPJSONSerializer.h in Headers */,
+				366987F04B73BE9D47EFEA9A /* MGWebServiceHTTPXMLDeserializer.h in Headers */,
+				36698D2C3B7F8DDAAABAE337 /* MGWebServiceHTTPJSONDeserializer.h in Headers */,
+				36698D65E7DD9D2F659FE94F /* MGWebServiceHTTPURLEncodedSerializer.h in Headers */,
+				3669898563835AD0DA695EAF /* MGWebService.h in Headers */,
+				366980E12E963B70CB53D3AD /* MGWebServiceMessage.h in Headers */,
+				36698FED95A05FE1C5E22576 /* MGWebServiceInMessage.h in Headers */,
+				3669826A70F76D0018B3F720 /* MGWebServiceOperation.h in Headers */,
+				3669806DB20FCA585420C690 /* MGWebServiceOutMessage.h in Headers */,
+				366982AA5CA74C2C3937385C /* MGWSDL.h in Headers */,
+				36698139FEABDDAFFF23253C /* MGWSDL+HTTP.h in Headers */,
+				36698E91F72115137E69F6A8 /* MGWSDL+Types.h in Headers */,
+				366983FB00105164BFBD19C3 /* MGWSDLBinding.h in Headers */,
+				36698D7CA4FAD77679C82B1D /* MGWSDLFeature.h in Headers */,
+				366983090485DB3D025EE7B2 /* MGWSDLService.h in Headers */,
+				366989ED0181697A44E3E600 /* MGWSDLEndpoint.h in Headers */,
+				36698F9B0C72FE4CAA2BD635 /* MGWSDLProperty.h in Headers */,
+				3669806A8B0B5E946FE1C1E9 /* MGWSDLComponent.h in Headers */,
+				36698CB15130063513C90BF3 /* MGWSDLInterface.h in Headers */,
+				36698D6DD93BAB3E895A0EB9 /* MGWSDLDescription.h in Headers */,
+				366986A9517CAEAE59672B5D /* MGWSDLBindingFault.h in Headers */,
+				366989539CE066C53F99407F /* MGWSDLInterfaceFault.h in Headers */,
+				36698E12E1CB1522DD42209A /* MGWSDLTypeDefinition.h in Headers */,
+				366988EB63EE0C01D7AB6696 /* MGWSDLBindingOperation.h in Headers */,
+				366987CF49B7CA75BB7F605D /* MGWSDLExtensionElement.h in Headers */,
+				366984A9545F731E13B701B1 /* MGWSDLElementDeclaration.h in Headers */,
+				36698F21C28B64F7A7F500A4 /* MGWSDLInterfaceOperation.h in Headers */,
+				3669875147038AED4A5EA3DB /* MGWSDLExtendableComponent.h in Headers */,
+				36698BCFFD4E41B908B17638 /* MGWSDLBindingFaultReference.h in Headers */,
+				3669837EC5F311E53CB91C47 /* MGWSDLBindingMessageReference.h in Headers */,
+				36698B45D29F3A10D80EA250 /* MGWSDLInterfaceFaultReference.h in Headers */,
+				366988DD7537B1EECEEC74D0 /* MGWSDLInterfaceMessageReference.h in Headers */,
+				366982459E3F70B13DAF70A8 /* MGConnectAction.h in Headers */,
+				36698A2CB452F051FF36AFFE /* MGConnectActionExecutionInfo.h in Headers */,
+				36698D1EA676E4AF0BDB3616 /* MGConnectActionMessage.h in Headers */,
+				36698B71AE0B69BF4EFB0918 /* MGConnectActionMonitor.h in Headers */,
+				36698E36E6AAD79E1A830EDC /* MGConnectEntityAction.h in Headers */,
+				366982255256F1C22EF90251 /* MGConnectEntityActionDefinition.h in Headers */,
+				366980ED39348D00EDB063E0 /* MGConnectEntitySettings.h in Headers */,
+				36698F41DE04A2771C05249D /* MGConnectPersistentStoreCoordinator+Internal.h in Headers */,
+				3669831768C3AA8C62E605D2 /* MGConnectModelMangler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EA8FE80B19A6E9CF007DB69C /* Connect Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA8FE81019A6E9CF007DB69C /* Build configuration list for PBXNativeTarget "Connect Tests" */;
+			buildPhases = (
+				EA8FE80819A6E9CF007DB69C /* Sources */,
+				EA8FE80919A6E9CF007DB69C /* Frameworks */,
+				EA8FE80A19A6E9CF007DB69C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA8FE82619A6EE08007DB69C /* PBXTargetDependency */,
+			);
+			name = "Connect Tests";
+			productName = "Connect Tests";
+			productReference = EA8FE80C19A6E9CF007DB69C /* Connect Tests */;
+			productType = "com.apple.product-type.tool";
+		};
+		EA9CDAE619648806003F7752 /* Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9CDAFD19648806003F7752 /* Build configuration list for PBXNativeTarget "Connect" */;
+			buildPhases = (
+				EA9CDAE219648806003F7752 /* Sources */,
+				EA9CDAE319648806003F7752 /* Frameworks */,
+				EA9CDAE419648806003F7752 /* Headers */,
+				EA9CDAE519648806003F7752 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA51F09919A103FA001A037B /* PBXTargetDependency */,
+			);
+			name = Connect;
+			productName = MGConnect;
+			productReference = EA9CDAE719648806003F7752 /* Connect.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA9CDADE19648806003F7752 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Mobile Grid, Inc.";
+				TargetAttributes = {
+					EA8FE80B19A6E9CF007DB69C = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					EA9CDAE619648806003F7752 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = EA9CDAE119648806003F7752 /* Build configuration list for PBXProject "Connect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA9CDADD19648806003F7752;
+			productRefGroup = EA9CDAE819648806003F7752 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EAF2472719A10150000EFE29 /* Products */;
+					ProjectRef = EAF2472619A10150000EFE29 /* Common.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EA9CDAE619648806003F7752 /* Connect */,
+				EA8FE80B19A6E9CF007DB69C /* Connect Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EAF2472C19A10150000EFE29 /* Common.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Common.framework;
+			remoteRef = EAF2472B19A10150000EFE29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAF2472E19A10150000EFE29 /* Common Tests */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "Common Tests";
+			remoteRef = EAF2472D19A10150000EFE29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA9CDAE519648806003F7752 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36698A842F5D8AE2970D726E /* connect.xsd in Resources */,
+				3669818C91B7864F35D349ED /* wadl-schema.xsd in Resources */,
+				366985B86C7E1668EBDFFC5F /* coredata-model.xsd in Resources */,
+				366988F390A3598079B4CB31 /* apigee-wadl-extensions.xsd in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA8FE80819A6E9CF007DB69C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA8FE81319A6EABD007DB69C /* MGConnectTests.mm in Sources */,
+				EAB4A4BC19BE6F2D00C944FB /* HR.xcdatamodeld in Sources */,
+				EA8FE82319A6EB65007DB69C /* main.mm in Sources */,
+				EA8FE81419A6EAC0007DB69C /* MGInMemoryPersistentStoreTests.mm in Sources */,
+				366983AE53ED25B28D78DAD5 /* MGConnectPersistentStoreCoordinatorTests.mm in Sources */,
+				366989165A392EF6E5C157F5 /* Person.m in Sources */,
+				36698B579A4D52DA32E25F13 /* Company.m in Sources */,
+				36698DFFCFB522E4A538AA0D /* MGConnectTestModel.xcdatamodel in Sources */,
+				36698B8DCD44E3076C9A0FB3 /* Employee.m in Sources */,
+				36698718F7768BD9812BC24A /* Role.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9CDAE219648806003F7752 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36698589F11E534DA62CFF64 /* MGConnect.mm in Sources */,
+				36698EBD69BB46F85FDF5B99 /* MGInMemoryPersistentStore.mm in Sources */,
+				36698371A35B485FEB2FB579 /* MGSQLitePersistentStore.mm in Sources */,
+				36698B808B2FB4778E2FEEF5 /* MGInMemoryReferenceObject.mm in Sources */,
+				36698AEBB45B472A6D7E1538 /* Connect.cpp in Sources */,
+				36698A901AE66732A363AAAC /* MGConnectManagedObjectContext.mm in Sources */,
+				366989445E73D5FEEDE4C81B /* MGError.m in Sources */,
+				366987DED9555B70FDD6036F /* MGException.m in Sources */,
+				3669811D6904F35C35C9545F /* MGRuntimeException.m in Sources */,
+				36698DD7A401C5597BB6947C /* MGInitializationException.m in Sources */,
+				3669836AC472042C3BB1EE69 /* MGListEntityAction.m in Sources */,
+				366982D74319A7321388A6C7 /* MGReadEntityAction.m in Sources */,
+				366988E9BF37ADB090CD2CFD /* MGCreateEntityAction.m in Sources */,
+				36698121296AD4DF7EA1637F /* MGDeleteEntityAction.m in Sources */,
+				36698D33E8F66E16E0CFBBE8 /* MGUpdateEntityAction.m in Sources */,
+				36698534D9C716629D3AD6C8 /* MGActionExecutionProxy.m in Sources */,
+				36698415C6C1CB468EEE39F8 /* MGConnectConcreteEntityAction.m in Sources */,
+				36698B837C024206760F4A67 /* MGPassthroughManagedObjectContext.m in Sources */,
+				36698B71FF32CAFCA978656E /* MGPassthroughPersistentStoreCoordinator.m in Sources */,
+				3669813E9379CBF0332CF986 /* MGManagedEntity.m in Sources */,
+				36698A18751B4218C18A5E8D /* MGConnectEmptyActionMessage.m in Sources */,
+				36698C2CA674348839F35FC4 /* MGConnectDictionaryActionMessage.m in Sources */,
+				366983B6D2E13813D1B910BD /* MGConnectManagedObjectActionMessage.m in Sources */,
+				366982452A52768739B30DCD /* MGMetadataModel.m in Sources */,
+				366986BB4961D8B0AFB842FC /* MGTransactionLogRecord.m in Sources */,
+				3669848B3C53AE942C9E53B0 /* MGLogReader.m in Sources */,
+				366987CE9B1B35D831D80C81 /* MGLogWriter.m in Sources */,
+				366989937D6F1533E591DA8B /* MGMetadataManager.m in Sources */,
+				366988566ABB4C3207B276B8 /* MGMetadataBackingStore.m in Sources */,
+				366984FD9F446BD2CC63CA55 /* MGNetworkMonitor.m in Sources */,
+				3669809C81BEB3BFFB3F4D3B /* MGNetworkReachability.m in Sources */,
+				36698FA0629234232C5120C6 /* MGActionQueue.m in Sources */,
+				366980DD0D806311263BF7DE /* MGFetchRequestAnalyzer.m in Sources */,
+				3669840AC3243649C89C943C /* MGCacheSynchronizationManager.m in Sources */,
+				36698B5CE63CE246E3B1DDEB /* MGRESTfulFetchRequestAnalyzer.m in Sources */,
+				366988A9BB083DC706CE5271 /* MGXPathV1ObjectMapper.m in Sources */,
+				EA1CB97E19B274C900AAA31C /* MGDataMergeOperation.m in Sources */,
+				EADE524E19B275370010947A /* MGTraceLog.m in Sources */,
+				36698E02070D637B70A79C49 /* MGActionMonitorNotificationManager.m in Sources */,
+				3669879649AF2C94ECBD8DFC /* MGClassProtocolValidator.m in Sources */,
+				36698D064C48A5DAA32CBEAF /* MGConnectActionController.m in Sources */,
+				366985F33FF7E3E7286B1B1D /* MGConnectInitializationOptions.m in Sources */,
+				366980C7FE5EBA044B2512BC /* MGEntitySettings.m in Sources */,
+				366982D82F9B9795C6F48379 /* MGWebServiceHTTPOperation.m in Sources */,
+				36698B7831143B421836559F /* MGWebServiceHTTPSerializer.m in Sources */,
+				366984F51528435DE2F60169 /* MGWebServiceHTTPDeserializer.m in Sources */,
+				36698D42C45C122FF422CDDE /* MGWebServiceHTTPXMLSerializer.m in Sources */,
+				36698A49C6347357A7B771A8 /* MGWebServiceHTTPJSONSerializer.m in Sources */,
+				36698243AF58803649900177 /* MGWebServiceHTTPXMLDeserializer.m in Sources */,
+				3669892E01D5C38DBF7098A7 /* MGWebServiceHTTPJSONDeserializer.m in Sources */,
+				366984462DFD409986E62D32 /* MGWebServiceHTTPURLEncodedSerializer.m in Sources */,
+				366983271185BE69406A1B83 /* MGWebService.m in Sources */,
+				36698A87222F43D35A837F17 /* MGWebServiceMessage.m in Sources */,
+				366987B0CF9C03A38D492CC8 /* MGWebServiceInMessage.m in Sources */,
+				36698141F62CD70C88C5B2AC /* MGWebServiceOperation.m in Sources */,
+				36698693AF7547494F46B065 /* MGWebServiceOutMessage.m in Sources */,
+				366980A54FBA37A76439927E /* MGWSDL+HTTP.m in Sources */,
+				36698DE01F3D3C6A5E09A231 /* MGWSDL+Types.m in Sources */,
+				366989D923B7A4E83C9BE01A /* MGWSDLBinding.m in Sources */,
+				366985C032CE9D92C4794E25 /* MGWSDLFeature.m in Sources */,
+				36698C50F0D23DDC5DD4CCA1 /* MGWSDLService.m in Sources */,
+				36698C7084CB6A3131DDDCBA /* MGWSDLEndpoint.m in Sources */,
+				3669800662D2D78E2FADD004 /* MGWSDLProperty.m in Sources */,
+				36698B2D40F040F85715DB54 /* MGWSDLComponent.m in Sources */,
+				366985B42D1C0B2962BE02E7 /* MGWSDLInterface.m in Sources */,
+				36698C7DD2879FEC50B677D2 /* MGWSDLDescription.m in Sources */,
+				36698A24D1D34901112899F3 /* MGWSDLBindingFault.m in Sources */,
+				36698BB5F8994A82A1D53E71 /* MGWSDLInterfaceFault.m in Sources */,
+				36698F9271578147B83F5AC8 /* MGWSDLTypeDefinition.m in Sources */,
+				36698776E00D084F80E0975C /* MGWSDLBindingOperation.m in Sources */,
+				36698CB02BAD198D76AF59F3 /* MGWSDLExtensionElement.m in Sources */,
+				3669887BBC9C7283F720A3E4 /* MGWSDLElementDeclaration.m in Sources */,
+				36698A98960F01FD4C8B3C39 /* MGWSDLInterfaceOperation.m in Sources */,
+				3669824C43E57A7B2154E98E /* MGWSDLExtendableComponent.m in Sources */,
+				366980F4197AC391E7219339 /* MGWSDLBindingFaultReference.m in Sources */,
+				36698D82A5DF29B122A94EBA /* MGWSDLBindingMessageReference.m in Sources */,
+				366983FC1DDF1DEA5E57F9D7 /* MGWSDLInterfaceFaultReference.m in Sources */,
+				36698F4DCCE4F1157CE3C790 /* MGWSDLInterfaceMessageReference.m in Sources */,
+				36698C124DEE4FE9CCEAEE75 /* MGConnectPersistentStoreCoordinator.mm in Sources */,
+				36698A03DD45E5A110D164B3 /* MGConnectAction.m in Sources */,
+				36698C5186CEF7524F0075C4 /* MGConnectActionExecutionInfo.m in Sources */,
+				36698E7EC5D9FE36DDA2E840 /* MGConnectActionMessage.m in Sources */,
+				36698DDB4F336EF89487ACDC /* MGConnectEntityAction.m in Sources */,
+				36698686FE80AD2C60EEA9B6 /* MGConnectEntitySettings.m in Sources */,
+				36698402FFFB4183864390A1 /* MGConnectPersistentStoreCoordinator+Internal.mm in Sources */,
+				3669893FF51302102DE699B6 /* MGConnectManagedObject.mm in Sources */,
+				36698E89FCB2CEDD44387B3D /* MGConnectModelMangler.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA51F09919A103FA001A037B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Common;
+			targetProxy = EA51F09819A103FA001A037B /* PBXContainerItemProxy */;
+		};
+		EA8FE82619A6EE08007DB69C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA9CDAE619648806003F7752 /* Connect */;
+			targetProxy = EA8FE82519A6EE08007DB69C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EA8FE81119A6E9CF007DB69C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Connect Tests/Model/Connect Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
+			};
+			name = Debug;
+		};
+		EA8FE81219A6E9CF007DB69C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Connect Tests/Model/Connect Tests-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
+			};
+			name = Release;
+		};
+		EA9CDAFB19648806003F7752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EA9CDAFC19648806003F7752 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EA9CDAFE19648806003F7752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta5.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
+				INFOPLIST_FILE = Connect/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
+			};
+			name = Debug;
+		};
+		EA9CDAFF19648806003F7752 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta5.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
+				INFOPLIST_FILE = Connect/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA8FE81019A6E9CF007DB69C /* Build configuration list for PBXNativeTarget "Connect Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA8FE81119A6E9CF007DB69C /* Debug */,
+				EA8FE81219A6E9CF007DB69C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA9CDAE119648806003F7752 /* Build configuration list for PBXProject "Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9CDAFB19648806003F7752 /* Debug */,
+				EA9CDAFC19648806003F7752 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA9CDAFD19648806003F7752 /* Build configuration list for PBXNativeTarget "Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9CDAFE19648806003F7752 /* Debug */,
+				EA9CDAFF19648806003F7752 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EAB4A4BA19BE6F2D00C944FB /* HR.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAB4A4BB19BE6F2D00C944FB /* HR.xcdatamodel */,
+			);
+			currentVersion = EAB4A4BB19BE6F2D00C944FB /* HR.xcdatamodel */;
+			path = HR.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EA9CDADE19648806003F7752 /* Project object */;
+}

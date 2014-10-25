@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:connect="http://www.mobilegridinc.com/schemas/connect/v1">
+
+    <doc>
+        Test API to determine the structure of storage of our Web Services.
+    </doc>
+
+    <resources base="http://api-staging.mobilegridinc.com/connect/test/2">
+        <doc>
+            <connect:model versionHash="A87BE3456" userVersion="1.0"/>
+        </doc>
+
+        <resource path="/companies">
+
+            <doc>
+                Company Entity @ path "/connect/test/2/companies"
+
+                <connect:entity name="Company">
+                    <connect:relationship name="employees" targetEntity="Employee"/>
+                    <connect:relationship name="departments" targetEntity="Department"/>
+                </connect:entity>
+            </doc>
+
+            <method name="GET" id="listCompanies">
+                <doc>  Lists all the companies at the endpoint. </doc>
+                <response> <representation mediaType="application/xml"/> </response>
+            </method>
+            <method name="POST" id="insertCompany">
+                <doc>  Creates a new company.  </doc>
+                <request> <representation mediaType="*/*"/> </request>
+                <response> <representation mediaType="*/*"/> </response>
+            </method>
+
+            <resource path="/{uid}">
+                <doc>
+                    "/connect/test/2/companies/{uid}"
+                </doc>
+                <param type="xs:string" style="template" name="uid">
+                    <doc> The unique identifier of this object.</doc>
+                </param>
+                <method name="GET" id="readCompany">
+                    <doc> Reads the company with the given {uid}.</doc>
+                    <response> <representation mediaType="application/xml"/> </response>
+                </method>
+                <method name="PUT" id="updateCompany">
+                    <doc> Reads the company with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+                <method name="DELETE" id="deleteCompany">
+                    <doc> Reads the company with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+
+            </resource>
+
+        </resource>
+
+        <resource path="/departments">
+            <doc>
+                Department Entity @ path "/connect/test/2/departments"
+
+                <connect:entity name="Department"/>
+            </doc>
+            <method name="GET" id="listDepartments">
+                <doc>  Lists all the departments at the endpoint. </doc>
+                <response> <representation mediaType="application/xml"/> </response>
+            </method>
+            <method name="POST" id="insertDepartment">
+                <doc>  Creates a new department.  </doc>
+                <request> <representation mediaType="*/*"/> </request>
+                <response> <representation mediaType="*/*"/> </response>
+            </method>
+
+            <resource path="/{uid}">
+                <doc>
+                    "/connect/test/2/departments/{uid}"
+                </doc>
+                <param type="xs:string" style="template" name="uid">
+                    <doc> The unique identifier of this object.</doc>
+                </param>
+                <method name="GET" id="readDepartment">
+                    <doc> Reads the department with the given {uid}.</doc>
+                    <response> <representation mediaType="application/xml"/> </response>
+                </method>
+                <method name="PUT" id="updateDepartment">
+                    <doc> Reads the departemnt with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+                <method name="DELETE" id="deleteDepartment">
+                    <doc> Reads the department with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+            </resource>
+
+        </resource>
+
+        <resource path="/employees">
+            <doc>
+                Employee Entity @ path "/connect/test/2/employees"
+
+                <connect:entity name="Employee"/>
+            </doc>
+            <method name="GET" id="listEmployees">
+                <doc>  Lists all the employees at the endpoint. </doc>
+                <response> <representation mediaType="application/xml"/> </response>
+            </method>
+            <method name="POST" id="insertEmployee">
+                <doc>  Creates a new employee.  </doc>
+                <request> <representation mediaType="*/*"/> </request>
+                <response> <representation mediaType="*/*"/> </response>
+            </method>
+
+            <resource path="/{uid}">
+                <doc>
+                    "/connect/test/2/employees/{uid}"
+                </doc>
+                <param type="xs:string" style="template" name="uid">
+                    <doc> The unique identifier of this object.</doc>
+                </param>
+                <method name="GET" id="readEmployee">
+                    <doc> Reads the employee with the given {uid}.</doc>
+                    <response> <representation mediaType="application/xml"/> </response>
+                </method>
+                <method name="PUT" id="updateEmployee">
+                    <doc> Reads the employee with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+                <method name="DELETE" id="deleteEmployee">
+                    <doc> Reads the employee with the given {uid}. </doc>
+                    <request> <representation mediaType="*/*"/> </request>
+                    <response> <representation mediaType="*/*"/> </response>
+                </method>
+            </resource>
+
+        </resource>
+
+
+    </resources>
+</application>
