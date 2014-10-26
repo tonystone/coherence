@@ -1,0 +1,747 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EAF36D1A19FC577400D4359E /* Connect-Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF36D0E19FC577400D4359E /* Connect-Common.framework */; };
+		EAF36D2119FC577400D4359E /* Connect_Common_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D2019FC577400D4359E /* Connect_Common_Tests.m */; };
+		EAF36D7819FC58BE00D4359E /* MGConnectConfigurationReader.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D2A19FC58BE00D4359E /* MGConnectConfigurationReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D7919FC58BE00D4359E /* MGConnectConfigurationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D2B19FC58BE00D4359E /* MGConnectConfigurationReader.m */; };
+		EAF36D7A19FC58BE00D4359E /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAF36D2F19FC58BE00D4359E /* connect.xsd */; };
+		EAF36D7B19FC58BE00D4359E /* MGConnectWADLAction.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3119FC58BE00D4359E /* MGConnectWADLAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D7C19FC58BE00D4359E /* MGConnectWADLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3219FC58BE00D4359E /* MGConnectWADLAction.m */; };
+		EAF36D7D19FC58BE00D4359E /* MGConnectWADLAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3319FC58BE00D4359E /* MGConnectWADLAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D7E19FC58BE00D4359E /* MGConnectWADLAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3419FC58BE00D4359E /* MGConnectWADLAuthentication.m */; };
+		EAF36D7F19FC58BE00D4359E /* MGConnectWADLCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3519FC58BE00D4359E /* MGConnectWADLCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8019FC58BE00D4359E /* MGConnectWADLCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3619FC58BE00D4359E /* MGConnectWADLCollection.m */; };
+		EAF36D8119FC58BE00D4359E /* MGConnectWADLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3719FC58BE00D4359E /* MGConnectWADLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8219FC58BE00D4359E /* MGConnectWADLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3819FC58BE00D4359E /* MGConnectWADLElement.m */; };
+		EAF36D8319FC58BE00D4359E /* MGConnectWADLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3919FC58BE00D4359E /* MGConnectWADLEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8419FC58BE00D4359E /* MGConnectWADLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3A19FC58BE00D4359E /* MGConnectWADLEntity.m */; };
+		EAF36D8519FC58BE00D4359E /* MGConnectWADLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3B19FC58BE00D4359E /* MGConnectWADLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8619FC58BE00D4359E /* MGConnectWADLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3C19FC58BE00D4359E /* MGConnectWADLModel.m */; };
+		EAF36D8719FC58BE00D4359E /* MGConnectWADLRelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D3D19FC58BE00D4359E /* MGConnectWADLRelationship.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8819FC58BE00D4359E /* MGConnectWADLRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D3E19FC58BE00D4359E /* MGConnectWADLRelationship.m */; };
+		EAF36D8919FC58BE00D4359E /* MGWADL+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4219FC58BE00D4359E /* MGWADL+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8A19FC58BE00D4359E /* MGWADLResource+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4319FC58BE00D4359E /* MGWADLResource+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8B19FC58BE00D4359E /* MGWADLResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4419FC58BE00D4359E /* MGWADLResource+Extensions.m */; };
+		EAF36D8C19FC58BE00D4359E /* MGWADLResources+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4519FC58BE00D4359E /* MGWADLResources+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8D19FC58BE00D4359E /* MGWADLResources+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4619FC58BE00D4359E /* MGWADLResources+Extensions.m */; };
+		EAF36D8E19FC58BE00D4359E /* MGWADL.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4719FC58BE00D4359E /* MGWADL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D8F19FC58BE00D4359E /* MGWADLApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4819FC58BE00D4359E /* MGWADLApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9019FC58BE00D4359E /* MGWADLApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4919FC58BE00D4359E /* MGWADLApplication.m */; };
+		EAF36D9119FC58BE00D4359E /* MGWADLDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4A19FC58BE00D4359E /* MGWADLDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9219FC58BE00D4359E /* MGWADLDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4B19FC58BE00D4359E /* MGWADLDoc.m */; };
+		EAF36D9319FC58BE00D4359E /* MGWADLGrammars.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4C19FC58BE00D4359E /* MGWADLGrammars.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9419FC58BE00D4359E /* MGWADLGrammars.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4D19FC58BE00D4359E /* MGWADLGrammars.m */; };
+		EAF36D9519FC58BE00D4359E /* MGWADLInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D4E19FC58BE00D4359E /* MGWADLInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9619FC58BE00D4359E /* MGWADLInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D4F19FC58BE00D4359E /* MGWADLInclude.m */; };
+		EAF36D9719FC58BE00D4359E /* MGWADLLink.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5019FC58BE00D4359E /* MGWADLLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9819FC58BE00D4359E /* MGWADLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5119FC58BE00D4359E /* MGWADLLink.m */; };
+		EAF36D9919FC58BE00D4359E /* MGWADLMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5219FC58BE00D4359E /* MGWADLMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9A19FC58BE00D4359E /* MGWADLMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5319FC58BE00D4359E /* MGWADLMethod.m */; };
+		EAF36D9B19FC58BE00D4359E /* MGWADLOption.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5419FC58BE00D4359E /* MGWADLOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9C19FC58BE00D4359E /* MGWADLOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5519FC58BE00D4359E /* MGWADLOption.m */; };
+		EAF36D9D19FC58BE00D4359E /* MGWADLParam.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5619FC58BE00D4359E /* MGWADLParam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36D9E19FC58BE00D4359E /* MGWADLParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5719FC58BE00D4359E /* MGWADLParam.m */; };
+		EAF36D9F19FC58BE00D4359E /* MGWADLRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5819FC58BE00D4359E /* MGWADLRepresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DA019FC58BE00D4359E /* MGWADLRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5919FC58BE00D4359E /* MGWADLRepresentation.m */; };
+		EAF36DA119FC58BE00D4359E /* MGWADLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5A19FC58BE00D4359E /* MGWADLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DA219FC58BE00D4359E /* MGWADLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5B19FC58BE00D4359E /* MGWADLRequest.m */; };
+		EAF36DA319FC58BE00D4359E /* MGWADLResource.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5C19FC58BE00D4359E /* MGWADLResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DA419FC58BE00D4359E /* MGWADLResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5D19FC58BE00D4359E /* MGWADLResource.m */; };
+		EAF36DA519FC58BE00D4359E /* MGWADLResources.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D5E19FC58BE00D4359E /* MGWADLResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DA619FC58BE00D4359E /* MGWADLResources.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D5F19FC58BE00D4359E /* MGWADLResources.m */; };
+		EAF36DA719FC58BE00D4359E /* MGWADLResourceType.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6019FC58BE00D4359E /* MGWADLResourceType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DA819FC58BE00D4359E /* MGWADLResourceType.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6119FC58BE00D4359E /* MGWADLResourceType.m */; };
+		EAF36DA919FC58BE00D4359E /* MGWADLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6219FC58BE00D4359E /* MGWADLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DAA19FC58BE00D4359E /* MGWADLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6319FC58BE00D4359E /* MGWADLResponse.m */; };
+		EAF36DAB19FC58BE00D4359E /* wadl-schema.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAF36D6419FC58BE00D4359E /* wadl-schema.xsd */; };
+		EAF36DAC19FC58BE00D4359E /* MGXMLReader.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6619FC58BE00D4359E /* MGXMLReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DAD19FC58BE00D4359E /* MGXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6719FC58BE00D4359E /* MGXMLReader.m */; };
+		EAF36DAE19FC58BE00D4359E /* MGXMLCDATA.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6919FC58BE00D4359E /* MGXMLCDATA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DAF19FC58BE00D4359E /* MGXMLCDATA.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6A19FC58BE00D4359E /* MGXMLCDATA.m */; };
+		EAF36DB019FC58BE00D4359E /* MGXMLComment.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6B19FC58BE00D4359E /* MGXMLComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DB119FC58BE00D4359E /* MGXMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6C19FC58BE00D4359E /* MGXMLComment.m */; };
+		EAF36DB219FC58BE00D4359E /* MGXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6D19FC58BE00D4359E /* MGXMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DB319FC58BE00D4359E /* MGXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D6E19FC58BE00D4359E /* MGXMLDocument.m */; };
+		EAF36DB419FC58BE00D4359E /* MGXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D6F19FC58BE00D4359E /* MGXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DB519FC58BE00D4359E /* MGXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D7019FC58BE00D4359E /* MGXMLElement.m */; };
+		EAF36DB619FC58BE00D4359E /* MGXMLElementDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D7119FC58BE00D4359E /* MGXMLElementDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DB719FC58BE00D4359E /* MGXMLElementDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D7219FC58BE00D4359E /* MGXMLElementDefinition.m */; };
+		EAF36DB819FC58BE00D4359E /* MGXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D7319FC58BE00D4359E /* MGXMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DB919FC58BE00D4359E /* MGXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D7419FC58BE00D4359E /* MGXMLNode.m */; };
+		EAF36DBA19FC58BE00D4359E /* MGXMLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D7519FC58BE00D4359E /* MGXMLWhitespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF36DBB19FC58BE00D4359E /* MGXMLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF36D7619FC58BE00D4359E /* MGXMLWhitespace.m */; };
+		EAF36DBC19FC58BE00D4359E /* Version.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF36D7719FC58BE00D4359E /* Version.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAF36D1B19FC577400D4359E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAF36D0519FC577400D4359E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAF36D0D19FC577400D4359E;
+			remoteInfo = "Connect Common";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EAF36D0E19FC577400D4359E /* Connect-Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Connect-Common.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAF36D1219FC577400D4359E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAF36D1919FC577400D4359E /* Connect-Common Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Connect-Common Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAF36D1F19FC577400D4359E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		EAF36D2019FC577400D4359E /* Connect_Common_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Connect_Common_Tests.m; sourceTree = "<group>"; };
+		EAF36D2A19FC58BE00D4359E /* MGConnectConfigurationReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationReader.h; sourceTree = "<group>"; };
+		EAF36D2B19FC58BE00D4359E /* MGConnectConfigurationReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationReader.m; sourceTree = "<group>"; };
+		EAF36D2F19FC58BE00D4359E /* connect.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = connect.xsd; sourceTree = "<group>"; };
+		EAF36D3119FC58BE00D4359E /* MGConnectWADLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLAction.h; sourceTree = "<group>"; };
+		EAF36D3219FC58BE00D4359E /* MGConnectWADLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLAction.m; sourceTree = "<group>"; };
+		EAF36D3319FC58BE00D4359E /* MGConnectWADLAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLAuthentication.h; sourceTree = "<group>"; };
+		EAF36D3419FC58BE00D4359E /* MGConnectWADLAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLAuthentication.m; sourceTree = "<group>"; };
+		EAF36D3519FC58BE00D4359E /* MGConnectWADLCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLCollection.h; sourceTree = "<group>"; };
+		EAF36D3619FC58BE00D4359E /* MGConnectWADLCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLCollection.m; sourceTree = "<group>"; };
+		EAF36D3719FC58BE00D4359E /* MGConnectWADLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLElement.h; sourceTree = "<group>"; };
+		EAF36D3819FC58BE00D4359E /* MGConnectWADLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLElement.m; sourceTree = "<group>"; };
+		EAF36D3919FC58BE00D4359E /* MGConnectWADLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLEntity.h; sourceTree = "<group>"; };
+		EAF36D3A19FC58BE00D4359E /* MGConnectWADLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLEntity.m; sourceTree = "<group>"; };
+		EAF36D3B19FC58BE00D4359E /* MGConnectWADLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLModel.h; sourceTree = "<group>"; };
+		EAF36D3C19FC58BE00D4359E /* MGConnectWADLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLModel.m; sourceTree = "<group>"; };
+		EAF36D3D19FC58BE00D4359E /* MGConnectWADLRelationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectWADLRelationship.h; sourceTree = "<group>"; };
+		EAF36D3E19FC58BE00D4359E /* MGConnectWADLRelationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectWADLRelationship.m; sourceTree = "<group>"; };
+		EAF36D4219FC58BE00D4359E /* MGWADL+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGWADL+Extensions.h"; sourceTree = "<group>"; };
+		EAF36D4319FC58BE00D4359E /* MGWADLResource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGWADLResource+Extensions.h"; sourceTree = "<group>"; };
+		EAF36D4419FC58BE00D4359E /* MGWADLResource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MGWADLResource+Extensions.m"; sourceTree = "<group>"; };
+		EAF36D4519FC58BE00D4359E /* MGWADLResources+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGWADLResources+Extensions.h"; sourceTree = "<group>"; };
+		EAF36D4619FC58BE00D4359E /* MGWADLResources+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MGWADLResources+Extensions.m"; sourceTree = "<group>"; };
+		EAF36D4719FC58BE00D4359E /* MGWADL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADL.h; sourceTree = "<group>"; };
+		EAF36D4819FC58BE00D4359E /* MGWADLApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLApplication.h; sourceTree = "<group>"; };
+		EAF36D4919FC58BE00D4359E /* MGWADLApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLApplication.m; sourceTree = "<group>"; };
+		EAF36D4A19FC58BE00D4359E /* MGWADLDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLDoc.h; sourceTree = "<group>"; };
+		EAF36D4B19FC58BE00D4359E /* MGWADLDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLDoc.m; sourceTree = "<group>"; };
+		EAF36D4C19FC58BE00D4359E /* MGWADLGrammars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLGrammars.h; sourceTree = "<group>"; };
+		EAF36D4D19FC58BE00D4359E /* MGWADLGrammars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLGrammars.m; sourceTree = "<group>"; };
+		EAF36D4E19FC58BE00D4359E /* MGWADLInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLInclude.h; sourceTree = "<group>"; };
+		EAF36D4F19FC58BE00D4359E /* MGWADLInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLInclude.m; sourceTree = "<group>"; };
+		EAF36D5019FC58BE00D4359E /* MGWADLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLLink.h; sourceTree = "<group>"; };
+		EAF36D5119FC58BE00D4359E /* MGWADLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLLink.m; sourceTree = "<group>"; };
+		EAF36D5219FC58BE00D4359E /* MGWADLMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLMethod.h; sourceTree = "<group>"; };
+		EAF36D5319FC58BE00D4359E /* MGWADLMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLMethod.m; sourceTree = "<group>"; };
+		EAF36D5419FC58BE00D4359E /* MGWADLOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLOption.h; sourceTree = "<group>"; };
+		EAF36D5519FC58BE00D4359E /* MGWADLOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLOption.m; sourceTree = "<group>"; };
+		EAF36D5619FC58BE00D4359E /* MGWADLParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLParam.h; sourceTree = "<group>"; };
+		EAF36D5719FC58BE00D4359E /* MGWADLParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLParam.m; sourceTree = "<group>"; };
+		EAF36D5819FC58BE00D4359E /* MGWADLRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLRepresentation.h; sourceTree = "<group>"; };
+		EAF36D5919FC58BE00D4359E /* MGWADLRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLRepresentation.m; sourceTree = "<group>"; };
+		EAF36D5A19FC58BE00D4359E /* MGWADLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLRequest.h; sourceTree = "<group>"; };
+		EAF36D5B19FC58BE00D4359E /* MGWADLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLRequest.m; sourceTree = "<group>"; };
+		EAF36D5C19FC58BE00D4359E /* MGWADLResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLResource.h; sourceTree = "<group>"; };
+		EAF36D5D19FC58BE00D4359E /* MGWADLResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLResource.m; sourceTree = "<group>"; };
+		EAF36D5E19FC58BE00D4359E /* MGWADLResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLResources.h; sourceTree = "<group>"; };
+		EAF36D5F19FC58BE00D4359E /* MGWADLResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLResources.m; sourceTree = "<group>"; };
+		EAF36D6019FC58BE00D4359E /* MGWADLResourceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLResourceType.h; sourceTree = "<group>"; };
+		EAF36D6119FC58BE00D4359E /* MGWADLResourceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLResourceType.m; sourceTree = "<group>"; };
+		EAF36D6219FC58BE00D4359E /* MGWADLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGWADLResponse.h; sourceTree = "<group>"; };
+		EAF36D6319FC58BE00D4359E /* MGWADLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGWADLResponse.m; sourceTree = "<group>"; };
+		EAF36D6419FC58BE00D4359E /* wadl-schema.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "wadl-schema.xsd"; sourceTree = "<group>"; };
+		EAF36D6619FC58BE00D4359E /* MGXMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLReader.h; sourceTree = "<group>"; };
+		EAF36D6719FC58BE00D4359E /* MGXMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLReader.m; sourceTree = "<group>"; };
+		EAF36D6919FC58BE00D4359E /* MGXMLCDATA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLCDATA.h; sourceTree = "<group>"; };
+		EAF36D6A19FC58BE00D4359E /* MGXMLCDATA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLCDATA.m; sourceTree = "<group>"; };
+		EAF36D6B19FC58BE00D4359E /* MGXMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLComment.h; sourceTree = "<group>"; };
+		EAF36D6C19FC58BE00D4359E /* MGXMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLComment.m; sourceTree = "<group>"; };
+		EAF36D6D19FC58BE00D4359E /* MGXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLDocument.h; sourceTree = "<group>"; };
+		EAF36D6E19FC58BE00D4359E /* MGXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLDocument.m; sourceTree = "<group>"; };
+		EAF36D6F19FC58BE00D4359E /* MGXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLElement.h; sourceTree = "<group>"; };
+		EAF36D7019FC58BE00D4359E /* MGXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLElement.m; sourceTree = "<group>"; };
+		EAF36D7119FC58BE00D4359E /* MGXMLElementDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLElementDefinition.h; sourceTree = "<group>"; };
+		EAF36D7219FC58BE00D4359E /* MGXMLElementDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLElementDefinition.m; sourceTree = "<group>"; };
+		EAF36D7319FC58BE00D4359E /* MGXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLNode.h; sourceTree = "<group>"; };
+		EAF36D7419FC58BE00D4359E /* MGXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLNode.m; sourceTree = "<group>"; };
+		EAF36D7519FC58BE00D4359E /* MGXMLWhitespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGXMLWhitespace.h; sourceTree = "<group>"; };
+		EAF36D7619FC58BE00D4359E /* MGXMLWhitespace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGXMLWhitespace.m; sourceTree = "<group>"; };
+		EAF36D7719FC58BE00D4359E /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAF36D0A19FC577400D4359E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAF36D1619FC577400D4359E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF36D1A19FC577400D4359E /* Connect-Common.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAF36D0419FC577400D4359E = {
+			isa = PBXGroup;
+			children = (
+				EAF36D1019FC577400D4359E /* Connect Common */,
+				EAF36D1D19FC577400D4359E /* Connect Common Tests */,
+				EAF36D0F19FC577400D4359E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAF36D0F19FC577400D4359E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D0E19FC577400D4359E /* Connect-Common.framework */,
+				EAF36D1919FC577400D4359E /* Connect-Common Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAF36D1019FC577400D4359E /* Connect Common */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D7719FC58BE00D4359E /* Version.h */,
+				EAF36D2A19FC58BE00D4359E /* MGConnectConfigurationReader.h */,
+				EAF36D2B19FC58BE00D4359E /* MGConnectConfigurationReader.m */,
+				EAF36D2C19FC58BE00D4359E /* Schemas */,
+				EAF36D1119FC577400D4359E /* Supporting Files */,
+			);
+			path = "Connect Common";
+			sourceTree = "<group>";
+		};
+		EAF36D1119FC577400D4359E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D1219FC577400D4359E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAF36D1D19FC577400D4359E /* Connect Common Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D2019FC577400D4359E /* Connect_Common_Tests.m */,
+				EAF36D1E19FC577400D4359E /* Supporting Files */,
+			);
+			path = "Connect Common Tests";
+			sourceTree = "<group>";
+		};
+		EAF36D1E19FC577400D4359E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D1F19FC577400D4359E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAF36D2C19FC58BE00D4359E /* Schemas */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D2D19FC58BE00D4359E /* Connect */,
+				EAF36D3F19FC58BE00D4359E /* WADL */,
+				EAF36D6519FC58BE00D4359E /* XML */,
+			);
+			path = Schemas;
+			sourceTree = "<group>";
+		};
+		EAF36D2D19FC58BE00D4359E /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D2F19FC58BE00D4359E /* connect.xsd */,
+				EAF36D3019FC58BE00D4359E /* Model */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		EAF36D3019FC58BE00D4359E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D3119FC58BE00D4359E /* MGConnectWADLAction.h */,
+				EAF36D3219FC58BE00D4359E /* MGConnectWADLAction.m */,
+				EAF36D3319FC58BE00D4359E /* MGConnectWADLAuthentication.h */,
+				EAF36D3419FC58BE00D4359E /* MGConnectWADLAuthentication.m */,
+				EAF36D3519FC58BE00D4359E /* MGConnectWADLCollection.h */,
+				EAF36D3619FC58BE00D4359E /* MGConnectWADLCollection.m */,
+				EAF36D3719FC58BE00D4359E /* MGConnectWADLElement.h */,
+				EAF36D3819FC58BE00D4359E /* MGConnectWADLElement.m */,
+				EAF36D3919FC58BE00D4359E /* MGConnectWADLEntity.h */,
+				EAF36D3A19FC58BE00D4359E /* MGConnectWADLEntity.m */,
+				EAF36D3B19FC58BE00D4359E /* MGConnectWADLModel.h */,
+				EAF36D3C19FC58BE00D4359E /* MGConnectWADLModel.m */,
+				EAF36D3D19FC58BE00D4359E /* MGConnectWADLRelationship.h */,
+				EAF36D3E19FC58BE00D4359E /* MGConnectWADLRelationship.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EAF36D3F19FC58BE00D4359E /* WADL */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D4019FC58BE00D4359E /* Model */,
+				EAF36D6419FC58BE00D4359E /* wadl-schema.xsd */,
+			);
+			path = WADL;
+			sourceTree = "<group>";
+		};
+		EAF36D4019FC58BE00D4359E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D4119FC58BE00D4359E /* Extensions */,
+				EAF36D4719FC58BE00D4359E /* MGWADL.h */,
+				EAF36D4819FC58BE00D4359E /* MGWADLApplication.h */,
+				EAF36D4919FC58BE00D4359E /* MGWADLApplication.m */,
+				EAF36D4A19FC58BE00D4359E /* MGWADLDoc.h */,
+				EAF36D4B19FC58BE00D4359E /* MGWADLDoc.m */,
+				EAF36D4C19FC58BE00D4359E /* MGWADLGrammars.h */,
+				EAF36D4D19FC58BE00D4359E /* MGWADLGrammars.m */,
+				EAF36D4E19FC58BE00D4359E /* MGWADLInclude.h */,
+				EAF36D4F19FC58BE00D4359E /* MGWADLInclude.m */,
+				EAF36D5019FC58BE00D4359E /* MGWADLLink.h */,
+				EAF36D5119FC58BE00D4359E /* MGWADLLink.m */,
+				EAF36D5219FC58BE00D4359E /* MGWADLMethod.h */,
+				EAF36D5319FC58BE00D4359E /* MGWADLMethod.m */,
+				EAF36D5419FC58BE00D4359E /* MGWADLOption.h */,
+				EAF36D5519FC58BE00D4359E /* MGWADLOption.m */,
+				EAF36D5619FC58BE00D4359E /* MGWADLParam.h */,
+				EAF36D5719FC58BE00D4359E /* MGWADLParam.m */,
+				EAF36D5819FC58BE00D4359E /* MGWADLRepresentation.h */,
+				EAF36D5919FC58BE00D4359E /* MGWADLRepresentation.m */,
+				EAF36D5A19FC58BE00D4359E /* MGWADLRequest.h */,
+				EAF36D5B19FC58BE00D4359E /* MGWADLRequest.m */,
+				EAF36D5C19FC58BE00D4359E /* MGWADLResource.h */,
+				EAF36D5D19FC58BE00D4359E /* MGWADLResource.m */,
+				EAF36D5E19FC58BE00D4359E /* MGWADLResources.h */,
+				EAF36D5F19FC58BE00D4359E /* MGWADLResources.m */,
+				EAF36D6019FC58BE00D4359E /* MGWADLResourceType.h */,
+				EAF36D6119FC58BE00D4359E /* MGWADLResourceType.m */,
+				EAF36D6219FC58BE00D4359E /* MGWADLResponse.h */,
+				EAF36D6319FC58BE00D4359E /* MGWADLResponse.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EAF36D4119FC58BE00D4359E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D4219FC58BE00D4359E /* MGWADL+Extensions.h */,
+				EAF36D4319FC58BE00D4359E /* MGWADLResource+Extensions.h */,
+				EAF36D4419FC58BE00D4359E /* MGWADLResource+Extensions.m */,
+				EAF36D4519FC58BE00D4359E /* MGWADLResources+Extensions.h */,
+				EAF36D4619FC58BE00D4359E /* MGWADLResources+Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EAF36D6519FC58BE00D4359E /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D6619FC58BE00D4359E /* MGXMLReader.h */,
+				EAF36D6719FC58BE00D4359E /* MGXMLReader.m */,
+				EAF36D6819FC58BE00D4359E /* Model */,
+			);
+			path = XML;
+			sourceTree = "<group>";
+		};
+		EAF36D6819FC58BE00D4359E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAF36D6919FC58BE00D4359E /* MGXMLCDATA.h */,
+				EAF36D6A19FC58BE00D4359E /* MGXMLCDATA.m */,
+				EAF36D6B19FC58BE00D4359E /* MGXMLComment.h */,
+				EAF36D6C19FC58BE00D4359E /* MGXMLComment.m */,
+				EAF36D6D19FC58BE00D4359E /* MGXMLDocument.h */,
+				EAF36D6E19FC58BE00D4359E /* MGXMLDocument.m */,
+				EAF36D6F19FC58BE00D4359E /* MGXMLElement.h */,
+				EAF36D7019FC58BE00D4359E /* MGXMLElement.m */,
+				EAF36D7119FC58BE00D4359E /* MGXMLElementDefinition.h */,
+				EAF36D7219FC58BE00D4359E /* MGXMLElementDefinition.m */,
+				EAF36D7319FC58BE00D4359E /* MGXMLNode.h */,
+				EAF36D7419FC58BE00D4359E /* MGXMLNode.m */,
+				EAF36D7519FC58BE00D4359E /* MGXMLWhitespace.h */,
+				EAF36D7619FC58BE00D4359E /* MGXMLWhitespace.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EAF36D0B19FC577400D4359E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF36D7B19FC58BE00D4359E /* MGConnectWADLAction.h in Headers */,
+				EAF36DA519FC58BE00D4359E /* MGWADLResources.h in Headers */,
+				EAF36D8F19FC58BE00D4359E /* MGWADLApplication.h in Headers */,
+				EAF36D9519FC58BE00D4359E /* MGWADLInclude.h in Headers */,
+				EAF36DB019FC58BE00D4359E /* MGXMLComment.h in Headers */,
+				EAF36DAE19FC58BE00D4359E /* MGXMLCDATA.h in Headers */,
+				EAF36D7D19FC58BE00D4359E /* MGConnectWADLAuthentication.h in Headers */,
+				EAF36D9D19FC58BE00D4359E /* MGWADLParam.h in Headers */,
+				EAF36DA719FC58BE00D4359E /* MGWADLResourceType.h in Headers */,
+				EAF36D8719FC58BE00D4359E /* MGConnectWADLRelationship.h in Headers */,
+				EAF36D8319FC58BE00D4359E /* MGConnectWADLEntity.h in Headers */,
+				EAF36DB219FC58BE00D4359E /* MGXMLDocument.h in Headers */,
+				EAF36D8C19FC58BE00D4359E /* MGWADLResources+Extensions.h in Headers */,
+				EAF36D8919FC58BE00D4359E /* MGWADL+Extensions.h in Headers */,
+				EAF36DB619FC58BE00D4359E /* MGXMLElementDefinition.h in Headers */,
+				EAF36DBA19FC58BE00D4359E /* MGXMLWhitespace.h in Headers */,
+				EAF36D7F19FC58BE00D4359E /* MGConnectWADLCollection.h in Headers */,
+				EAF36DA319FC58BE00D4359E /* MGWADLResource.h in Headers */,
+				EAF36D9119FC58BE00D4359E /* MGWADLDoc.h in Headers */,
+				EAF36DB819FC58BE00D4359E /* MGXMLNode.h in Headers */,
+				EAF36DA919FC58BE00D4359E /* MGWADLResponse.h in Headers */,
+				EAF36DB419FC58BE00D4359E /* MGXMLElement.h in Headers */,
+				EAF36D8A19FC58BE00D4359E /* MGWADLResource+Extensions.h in Headers */,
+				EAF36DA119FC58BE00D4359E /* MGWADLRequest.h in Headers */,
+				EAF36D8519FC58BE00D4359E /* MGConnectWADLModel.h in Headers */,
+				EAF36DAC19FC58BE00D4359E /* MGXMLReader.h in Headers */,
+				EAF36D9319FC58BE00D4359E /* MGWADLGrammars.h in Headers */,
+				EAF36D9F19FC58BE00D4359E /* MGWADLRepresentation.h in Headers */,
+				EAF36DBC19FC58BE00D4359E /* Version.h in Headers */,
+				EAF36D9919FC58BE00D4359E /* MGWADLMethod.h in Headers */,
+				EAF36D9719FC58BE00D4359E /* MGWADLLink.h in Headers */,
+				EAF36D8E19FC58BE00D4359E /* MGWADL.h in Headers */,
+				EAF36D9B19FC58BE00D4359E /* MGWADLOption.h in Headers */,
+				EAF36D8119FC58BE00D4359E /* MGConnectWADLElement.h in Headers */,
+				EAF36D7819FC58BE00D4359E /* MGConnectConfigurationReader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EAF36D0D19FC577400D4359E /* Connect-Common */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAF36D2419FC577400D4359E /* Build configuration list for PBXNativeTarget "Connect-Common" */;
+			buildPhases = (
+				EAF36D0919FC577400D4359E /* Sources */,
+				EAF36D0A19FC577400D4359E /* Frameworks */,
+				EAF36D0B19FC577400D4359E /* Headers */,
+				EAF36D0C19FC577400D4359E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Connect-Common";
+			productName = "Connect Common";
+			productReference = EAF36D0E19FC577400D4359E /* Connect-Common.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAF36D1819FC577400D4359E /* Connect-Common Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAF36D2719FC577400D4359E /* Build configuration list for PBXNativeTarget "Connect-Common Tests" */;
+			buildPhases = (
+				EAF36D1519FC577400D4359E /* Sources */,
+				EAF36D1619FC577400D4359E /* Frameworks */,
+				EAF36D1719FC577400D4359E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAF36D1C19FC577400D4359E /* PBXTargetDependency */,
+			);
+			name = "Connect-Common Tests";
+			productName = "Connect CommonTests";
+			productReference = EAF36D1919FC577400D4359E /* Connect-Common Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAF36D0519FC577400D4359E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Mobile Grid, Inc.";
+				TargetAttributes = {
+					EAF36D0D19FC577400D4359E = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EAF36D1819FC577400D4359E = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = EAF36D0819FC577400D4359E /* Build configuration list for PBXProject "Connect-Common" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EAF36D0419FC577400D4359E;
+			productRefGroup = EAF36D0F19FC577400D4359E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAF36D0D19FC577400D4359E /* Connect-Common */,
+				EAF36D1819FC577400D4359E /* Connect-Common Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAF36D0C19FC577400D4359E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF36DAB19FC58BE00D4359E /* wadl-schema.xsd in Resources */,
+				EAF36D7A19FC58BE00D4359E /* connect.xsd in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAF36D1719FC577400D4359E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAF36D0919FC577400D4359E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF36D7C19FC58BE00D4359E /* MGConnectWADLAction.m in Sources */,
+				EAF36DA019FC58BE00D4359E /* MGWADLRepresentation.m in Sources */,
+				EAF36DB319FC58BE00D4359E /* MGXMLDocument.m in Sources */,
+				EAF36D8419FC58BE00D4359E /* MGConnectWADLEntity.m in Sources */,
+				EAF36DA219FC58BE00D4359E /* MGWADLRequest.m in Sources */,
+				EAF36D8819FC58BE00D4359E /* MGConnectWADLRelationship.m in Sources */,
+				EAF36DA419FC58BE00D4359E /* MGWADLResource.m in Sources */,
+				EAF36DAA19FC58BE00D4359E /* MGWADLResponse.m in Sources */,
+				EAF36D8619FC58BE00D4359E /* MGConnectWADLModel.m in Sources */,
+				EAF36DA619FC58BE00D4359E /* MGWADLResources.m in Sources */,
+				EAF36DAF19FC58BE00D4359E /* MGXMLCDATA.m in Sources */,
+				EAF36D9619FC58BE00D4359E /* MGWADLInclude.m in Sources */,
+				EAF36D8B19FC58BE00D4359E /* MGWADLResource+Extensions.m in Sources */,
+				EAF36D9A19FC58BE00D4359E /* MGWADLMethod.m in Sources */,
+				EAF36D9E19FC58BE00D4359E /* MGWADLParam.m in Sources */,
+				EAF36DB719FC58BE00D4359E /* MGXMLElementDefinition.m in Sources */,
+				EAF36DB919FC58BE00D4359E /* MGXMLNode.m in Sources */,
+				EAF36DA819FC58BE00D4359E /* MGWADLResourceType.m in Sources */,
+				EAF36D9819FC58BE00D4359E /* MGWADLLink.m in Sources */,
+				EAF36D7E19FC58BE00D4359E /* MGConnectWADLAuthentication.m in Sources */,
+				EAF36D9019FC58BE00D4359E /* MGWADLApplication.m in Sources */,
+				EAF36D8019FC58BE00D4359E /* MGConnectWADLCollection.m in Sources */,
+				EAF36D9219FC58BE00D4359E /* MGWADLDoc.m in Sources */,
+				EAF36DB119FC58BE00D4359E /* MGXMLComment.m in Sources */,
+				EAF36D8219FC58BE00D4359E /* MGConnectWADLElement.m in Sources */,
+				EAF36DAD19FC58BE00D4359E /* MGXMLReader.m in Sources */,
+				EAF36DB519FC58BE00D4359E /* MGXMLElement.m in Sources */,
+				EAF36D7919FC58BE00D4359E /* MGConnectConfigurationReader.m in Sources */,
+				EAF36D9C19FC58BE00D4359E /* MGWADLOption.m in Sources */,
+				EAF36D8D19FC58BE00D4359E /* MGWADLResources+Extensions.m in Sources */,
+				EAF36DBB19FC58BE00D4359E /* MGXMLWhitespace.m in Sources */,
+				EAF36D9419FC58BE00D4359E /* MGWADLGrammars.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAF36D1519FC577400D4359E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF36D2119FC577400D4359E /* Connect_Common_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAF36D1C19FC577400D4359E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAF36D0D19FC577400D4359E /* Connect-Common */;
+			targetProxy = EAF36D1B19FC577400D4359E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EAF36D2219FC577400D4359E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EAF36D2319FC577400D4359E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EAF36D2519FC577400D4359E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Connect Common/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EAF36D2619FC577400D4359E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Connect Common/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EAF36D2819FC577400D4359E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Connect Common Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Connect-Common Tests";
+			};
+			name = Debug;
+		};
+		EAF36D2919FC577400D4359E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Connect Common Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Connect-Common Tests";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAF36D0819FC577400D4359E /* Build configuration list for PBXProject "Connect-Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAF36D2219FC577400D4359E /* Debug */,
+				EAF36D2319FC577400D4359E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAF36D2419FC577400D4359E /* Build configuration list for PBXNativeTarget "Connect-Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAF36D2519FC577400D4359E /* Debug */,
+				EAF36D2619FC577400D4359E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAF36D2719FC577400D4359E /* Build configuration list for PBXNativeTarget "Connect-Common Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAF36D2819FC577400D4359E /* Debug */,
+				EAF36D2919FC577400D4359E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAF36D0519FC577400D4359E /* Project object */;
+}
