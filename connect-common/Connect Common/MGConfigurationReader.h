@@ -7,6 +7,6 @@
 
 @class MGWADLApplication;
 
-@interface MGConnectConfigurationReader : NSObject
-    + (MGWADLApplication *) wadlApplicationFromURL: (NSURL *) fileURL;
+@interface MGConfigurationReader : NSObject
+    + (MGWADLApplication *)connectConfigurationFromURL: (NSURL *) fileURL;
 @end

@@ -226,7 +226,9 @@
 
     - (NSString *) descriptionForLevel: (NSUInteger) level {
 
-        NSMutableString * description = [NSMutableString stringWithFormat: @"<%@ : %p>:", NSStringFromClass([self class]), self];
+        NSString * linePadding = [@"" stringByPaddingToLength: level * 3 withString: @"   " startingAtIndex: 0];
+        
+        NSMutableString * description = [NSMutableString stringWithFormat: @"\r%@<%@", linePadding, NSStringFromClass([self class])];
 
         // Print all the attributes in order
         for (NSString * attributeName in [_definition attributeNames]) {
@@ -236,15 +238,37 @@
                 [description appendFormat: @" %@: \"%@\"", attributeName, _attributes[attributeName]];
             }
         }
+        
+        // Print all the other attributes
+        for (NSString * attributeName in [_otherAttributes allKeys]) {
+            
+            // If it has a value, add it to the list.
+            if (_otherAttributes[attributeName]) {
+                [description appendFormat: @" %@: \"%@\"", attributeName, _otherAttributes[attributeName]];
+            }
+        }
 
+        NSUInteger elementCount = 0;
+        
         //
         // For each element, note that these are stored in order so
         // we don't have to loop through the definition first.
         //
         for (NSArray * elements in _elementArrays) {
             for (MGXMLElement * element in elements) {
+                elementCount++;
+                
+                if (elementCount == 1) {
+                    [description appendFormat: @">\r%@ {", linePadding];
+                }
                 [description appendString: [element descriptionForLevel:level+1]];
             }
+        }
+        
+        if (elementCount == 0) {
+            [description appendString: @">"];
+        } else {
+            [description appendFormat: @"\r%@ }", linePadding];
         }
         return description;
     }

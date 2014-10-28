@@ -17,7 +17,6 @@
                         @"element",
                         @"mediaType",
                         @"href",
-                        @"href",
                         @"profile",
                         @"##other"
                 ]

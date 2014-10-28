@@ -11,25 +11,20 @@
 
     <xs:import namespace="http://wadl.dev.java.net/2009/02"/>
 
+    <!-- Misc -->
+
+    <xs:simpleType name="localFragment">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="(#\w+)"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- WADL Extensions -->
-
-    <xs:complexType name="authenticationType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="required"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
-    <xs:complexType name="payloadType">
-        <xs:sequence>
-            <xs:element ref="wadl:doc" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1"/>
-        </xs:sequence>
-        <xs:attribute name="required" type="xs:boolean" use="optional"/>
-    </xs:complexType>
-
-    <xs:element name="authentication" type="tns:authenticationType"/>
+    <xs:element name="authentication" >
+        <xs:complexType>
+            <xs:attribute name="required" type="xs:boolean" use="required"/>
+        </xs:complexType>
+    </xs:element>
 
     <xs:attribute name="responseType" type="tns:ResponseType"/>
 
@@ -88,7 +83,6 @@
         </xs:complexType>
     </xs:element>
 
-
     <xs:element name="action">
         <xs:complexType>
             <xs:sequence>
@@ -98,7 +92,7 @@
             <xs:attribute name="id" type="xs:ID"/>
             <xs:attribute name="type" type="tns:Action" use="required"/>
             <xs:attribute name="name" type="xs:string"/>
-            <xs:attribute name="method" type="wadl:Method" use="required"/>
+            <xs:attribute name="method" type="tns:localFragment" use="required"/>
             <xs:anyAttribute namespace="##other" processContents="lax"/>
         </xs:complexType>
     </xs:element>

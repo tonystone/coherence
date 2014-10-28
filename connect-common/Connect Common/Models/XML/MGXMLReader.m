@@ -204,7 +204,7 @@
         }
         [namespaceStack addObject:namespaceURI];
 
-        NSLog(@"Prefix \"%@\" for namespace \"%@\" in scope...", prefix, namespaceURI);
+//        NSLog(@"Prefix \"%@\" for namespace \"%@\" in scope...", prefix, namespaceURI);
     }
 
     - (void)endScopeForPrefix:(NSString *)prefix {
@@ -217,7 +217,7 @@
                 [_inScopeNamespaces removeObjectForKey: prefix];
             }
         }
-        NSLog(@"Prefix \"%@\" out of scope...", prefix);
+//        NSLog(@"Prefix \"%@\" out of scope...", prefix);
     }
 
     - (BOOL)isPrefixInScope:(NSString *)prefix {
