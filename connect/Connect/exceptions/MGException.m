@@ -7,7 +7,7 @@
 //
 
 #import "MGException.h"
-#import "MGTraceLog.h"
+#import <Connect-Common/MGTraceLog.h>
 
 @implementation MGException
 

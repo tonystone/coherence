@@ -4,10 +4,8 @@
 //
 
 #import "MGSQLitePersistentStore.h"
-#import "MGConnect.h"
-#include <Common/LogStream.h>
+#import "Connect.h"
 
-using mg::LogStream;
 
 @implementation MGSQLitePersistentStore {
 

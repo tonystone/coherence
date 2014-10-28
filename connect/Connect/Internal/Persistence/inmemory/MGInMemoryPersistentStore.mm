@@ -5,9 +5,6 @@
 
 #import "MGInMemoryPersistentStore.h"
 #import "MGInMemoryReferenceObject.h"
-#include <Common/LogStream.h>
-
-using mg::LogStream;
 
 @implementation MGInMemoryPersistentStore {
         NSMutableDictionary * cache;
