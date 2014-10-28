@@ -18,7 +18,7 @@
 
 // Web Services (WADL)
 #import "MGWADLEditorViewController.h"
-#import "MGXMLDocument.h"
+#import "MGConnectConfigurationReader.h"
 #import "MGXMLReader.h"
 
 @interface MGConnectEditorRootViewController ()
@@ -133,6 +133,8 @@
 
             _wadlDocument = [MGXMLReader xmlDocumentFromURL: url elementClassPrefixes: @[@"MGConnect", @"MGWADL"]];
 
+            NSLog(@"WADL: %@", _wadlDocument);
+            
             if (_currentRightViewController && [_currentRightViewController isKindOfClass: [MGWADLEditorViewController class]]) {
                 [(MGWADLEditorViewController *)_currentRightViewController setWADLDocument: _wadlDocument];
             }

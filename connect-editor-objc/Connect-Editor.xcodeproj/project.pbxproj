@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3669824EC934D50D44C8B730 /* MGWADLEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366985F887B3CC782F5ED15D /* MGWADLEditorViewController.xib */; };
+		3669884F0D29E44169B01720 /* MGMessageLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698CCCC2C71A7921A5E1A4 /* MGMessageLog.m */; };
+		36698BA00EE57C748117841C /* MGWADLEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366982FEF74B9D57701391AA /* MGWADLEditorViewController.m */; };
+		36698C0E791BB97B4AB25D05 /* MGConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 366986303F3D8F28BD4FC489 /* MGConnectTestModel.xcdatamodeld */; };
+		36698E5FC58A2CF1A794EA58 /* MGConnectEditorRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366985BFFBE132CCFEDFDE28 /* MGConnectEditorRootViewController.m */; };
+		36698F2A293EE13DE834125E /* MGConnectEditorMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3669873649094605818118B3 /* MGConnectEditorMainMenu.xib */; };
+		EA06A9AE19FD5413005EB2ED /* MGConnectCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7A6F819FC618000E41EE3 /* MGConnectCommon.framework */; };
+		EA37FEC019738D6D0049DDEB /* MGManageObjectModelReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EA37FEBF19738D6D0049DDEB /* MGManageObjectModelReader.m */; };
+		EA4ECA9A19743AF2000676DE /* MGWADLEditorResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ECA9819743AF2000676DE /* MGWADLEditorResourcesViewController.m */; };
+		EA4ECA9B19743AF2000676DE /* MGWADLEditorResourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4ECA9919743AF2000676DE /* MGWADLEditorResourcesViewController.xib */; };
+		EA4ECAA019743F77000676DE /* MGDisclosureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ECA9E19743F77000676DE /* MGDisclosureViewController.m */; };
+		EA4ECAA119743F77000676DE /* MGDisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4ECA9F19743F77000676DE /* MGDisclosureViewController.xib */; };
+		EA69A6F91974598000B1D9D7 /* MGMessageLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69A6F71974598000B1D9D7 /* MGMessageLogViewController.m */; };
+		EA69A6FA1974598000B1D9D7 /* MGMessageLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA69A6F81974598000B1D9D7 /* MGMessageLogViewController.xib */; };
+		EAB81C1C1970C7D500E75D07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB81C1B1970C7D500E75D07 /* main.m */; };
+		EAB81C1F1970C7D500E75D07 /* MGConnectEditorAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB81C1E1970C7D500E75D07 /* MGConnectEditorAppDelegate.m */; };
+		EAB81C211970C7D500E75D07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB81C201970C7D500E75D07 /* Images.xcassets */; };
+		EAB81C301970C7D600E75D07 /* ConnectEditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB81C2F1970C7D600E75D07 /* ConnectEditorTests.m */; };
+		EABC220D1971B16600851A36 /* MGProjectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EABC220C1971B16600851A36 /* MGProjectItem.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA06A9AA19FD5409005EB2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EAF36D0D19FC577400D4359E;
+			remoteInfo = "Connect-Common";
+		};
+		EAB81C2A1970C7D600E75D07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAB81C0E1970C7D500E75D07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAB81C151970C7D500E75D07;
+			remoteInfo = ConnectEditor;
+		};
+		EAD7A6F719FC618000E41EE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EAF36D0E19FC577400D4359E;
+			remoteInfo = "Connect-Common";
+		};
+		EAD7A6F919FC618000E41EE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EAF36D1919FC577400D4359E;
+			remoteInfo = "Connect-Common Tests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		366982FEF74B9D57701391AA /* MGWADLEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGWADLEditorViewController.m; path = "UI/WADL Editor/MGWADLEditorViewController.m"; sourceTree = "<group>"; };
+		366985BFFBE132CCFEDFDE28 /* MGConnectEditorRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConnectEditorRootViewController.m; sourceTree = "<group>"; };
+		366985F887B3CC782F5ED15D /* MGWADLEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MGWADLEditorViewController.xib; path = "UI/WADL Editor/MGWADLEditorViewController.xib"; sourceTree = "<group>"; };
+		3669873649094605818118B3 /* MGConnectEditorMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGConnectEditorMainMenu.xib; sourceTree = "<group>"; };
+		366987A54AD160D8FA1428C1 /* MGConnectTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MGConnectTestModel.xcdatamodel; sourceTree = "<group>"; };
+		36698C77D263D9B3553544CD /* MGWADLEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGWADLEditorViewController.h; path = "UI/WADL Editor/MGWADLEditorViewController.h"; sourceTree = "<group>"; };
+		36698CCCC2C71A7921A5E1A4 /* MGMessageLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMessageLog.m; sourceTree = "<group>"; };
+		36698DFD78735863945C3F54 /* MGMessageLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMessageLog.h; sourceTree = "<group>"; };
+		36698E70057E297F0DD73329 /* MGConnectEditorRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConnectEditorRootViewController.h; sourceTree = "<group>"; };
+		EA37FEBE19738D6D0049DDEB /* MGManageObjectModelReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGManageObjectModelReader.h; sourceTree = "<group>"; };
+		EA37FEBF19738D6D0049DDEB /* MGManageObjectModelReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGManageObjectModelReader.m; sourceTree = "<group>"; };
+		EA4ECA9719743AF2000676DE /* MGWADLEditorResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGWADLEditorResourcesViewController.h; path = "UI/WADL Editor/MGWADLEditorResourcesViewController.h"; sourceTree = "<group>"; };
+		EA4ECA9819743AF2000676DE /* MGWADLEditorResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGWADLEditorResourcesViewController.m; path = "UI/WADL Editor/MGWADLEditorResourcesViewController.m"; sourceTree = "<group>"; };
+		EA4ECA9919743AF2000676DE /* MGWADLEditorResourcesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MGWADLEditorResourcesViewController.xib; path = "UI/WADL Editor/MGWADLEditorResourcesViewController.xib"; sourceTree = "<group>"; };
+		EA4ECA9D19743F77000676DE /* MGDisclosureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGDisclosureViewController.h; path = UI/Common/MGDisclosureViewController.h; sourceTree = "<group>"; };
+		EA4ECA9E19743F77000676DE /* MGDisclosureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGDisclosureViewController.m; path = UI/Common/MGDisclosureViewController.m; sourceTree = "<group>"; };
+		EA4ECA9F19743F77000676DE /* MGDisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MGDisclosureViewController.xib; path = UI/Common/MGDisclosureViewController.xib; sourceTree = "<group>"; };
+		EA69A6F61974598000B1D9D7 /* MGMessageLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGMessageLogViewController.h; path = "UI/Message Log/MGMessageLogViewController.h"; sourceTree = "<group>"; };
+		EA69A6F71974598000B1D9D7 /* MGMessageLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGMessageLogViewController.m; path = "UI/Message Log/MGMessageLogViewController.m"; sourceTree = "<group>"; };
+		EA69A6F81974598000B1D9D7 /* MGMessageLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MGMessageLogViewController.xib; path = "UI/Message Log/MGMessageLogViewController.xib"; sourceTree = "<group>"; };
+		EAB81C161970C7D500E75D07 /* Connect-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Connect-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAB81C1A1970C7D500E75D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB81C1B1970C7D500E75D07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EAB81C1D1970C7D500E75D07 /* MGConnectEditorAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGConnectEditorAppDelegate.h; sourceTree = "<group>"; };
+		EAB81C1E1970C7D500E75D07 /* MGConnectEditorAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGConnectEditorAppDelegate.m; sourceTree = "<group>"; };
+		EAB81C201970C7D500E75D07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EAB81C291970C7D600E75D07 /* Connect-EditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Connect-EditorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAB81C2E1970C7D600E75D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB81C2F1970C7D600E75D07 /* ConnectEditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectEditorTests.m; sourceTree = "<group>"; };
+		EABC220B1971B16600851A36 /* MGProjectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGProjectItem.h; path = "Project Items/MGProjectItem.h"; sourceTree = "<group>"; };
+		EABC220C1971B16600851A36 /* MGProjectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGProjectItem.m; path = "Project Items/MGProjectItem.m"; sourceTree = "<group>"; };
+		EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Connect-Common.xcodeproj"; path = "../connect-common/Connect-Common.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAB81C131970C7D500E75D07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA06A9AE19FD5413005EB2ED /* MGConnectCommon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB81C261970C7D600E75D07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		366983AAF3C110FCDB883B5C /* WADL Editor */ = {
+			isa = PBXGroup;
+			children = (
+				36698C77D263D9B3553544CD /* MGWADLEditorViewController.h */,
+				366982FEF74B9D57701391AA /* MGWADLEditorViewController.m */,
+				366985F887B3CC782F5ED15D /* MGWADLEditorViewController.xib */,
+				EA4ECA9719743AF2000676DE /* MGWADLEditorResourcesViewController.h */,
+				EA4ECA9819743AF2000676DE /* MGWADLEditorResourcesViewController.m */,
+				EA4ECA9919743AF2000676DE /* MGWADLEditorResourcesViewController.xib */,
+			);
+			name = "WADL Editor";
+			sourceTree = "<group>";
+		};
+		3669884AFC35E8DAA1E0FA45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				366986303F3D8F28BD4FC489 /* MGConnectTestModel.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		366989E287E5D93C46F12A97 /* Message Logging */ = {
+			isa = PBXGroup;
+			children = (
+				36698CCCC2C71A7921A5E1A4 /* MGMessageLog.m */,
+				36698DFD78735863945C3F54 /* MGMessageLog.h */,
+			);
+			path = "Message Logging";
+			sourceTree = "<group>";
+		};
+		36698D5771FAF398E26852DC /* WADL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WADL;
+			sourceTree = "<group>";
+		};
+		36698F457D7D4DAD4481DC71 /* ConnectTestData */ = {
+			isa = PBXGroup;
+			children = (
+				36698D5771FAF398E26852DC /* WADL */,
+				3669884AFC35E8DAA1E0FA45 /* Models */,
+			);
+			name = ConnectTestData;
+			path = ../../ConnectTestData;
+			sourceTree = "<group>";
+		};
+		36698FAB35F8EBF1678776F0 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3669873649094605818118B3 /* MGConnectEditorMainMenu.xib */,
+				36698E70057E297F0DD73329 /* MGConnectEditorRootViewController.h */,
+				366985BFFBE132CCFEDFDE28 /* MGConnectEditorRootViewController.m */,
+			);
+			name = Root;
+			path = UI/Root;
+			sourceTree = "<group>";
+		};
+		EA37FEBD19738D6D0049DDEB /* Readers */ = {
+			isa = PBXGroup;
+			children = (
+				EA37FEBE19738D6D0049DDEB /* MGManageObjectModelReader.h */,
+				EA37FEBF19738D6D0049DDEB /* MGManageObjectModelReader.m */,
+			);
+			path = Readers;
+			sourceTree = "<group>";
+		};
+		EA4ECA9C19743F08000676DE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EA4ECA9D19743F77000676DE /* MGDisclosureViewController.h */,
+				EA4ECA9E19743F77000676DE /* MGDisclosureViewController.m */,
+				EA4ECA9F19743F77000676DE /* MGDisclosureViewController.xib */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		EA69A6FB1974598D00B1D9D7 /* Message Log */ = {
+			isa = PBXGroup;
+			children = (
+				EA69A6F61974598000B1D9D7 /* MGMessageLogViewController.h */,
+				EA69A6F71974598000B1D9D7 /* MGMessageLogViewController.m */,
+				EA69A6F81974598000B1D9D7 /* MGMessageLogViewController.xib */,
+			);
+			name = "Message Log";
+			sourceTree = "<group>";
+		};
+		EAB81C0D1970C7D500E75D07 = {
+			isa = PBXGroup;
+			children = (
+				EAB81C181970C7D500E75D07 /* ConnectEditor */,
+				EAB81C2C1970C7D600E75D07 /* ConnectEditorTests */,
+				EAD7A6E619FC5C1B00E41EE3 /* Frameworks */,
+				EAB81C171970C7D500E75D07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAB81C171970C7D500E75D07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAB81C161970C7D500E75D07 /* Connect-Editor.app */,
+				EAB81C291970C7D600E75D07 /* Connect-EditorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAB81C181970C7D500E75D07 /* ConnectEditor */ = {
+			isa = PBXGroup;
+			children = (
+				EAB81C1D1970C7D500E75D07 /* MGConnectEditorAppDelegate.h */,
+				EAB81C1E1970C7D500E75D07 /* MGConnectEditorAppDelegate.m */,
+				EAB81C9D1970C80E00E75D07 /* UI */,
+				EA37FEBD19738D6D0049DDEB /* Readers */,
+				EAB81C201970C7D500E75D07 /* Images.xcassets */,
+				EAB81C191970C7D500E75D07 /* Supporting Files */,
+				EABC220B1971B16600851A36 /* MGProjectItem.h */,
+				EABC220C1971B16600851A36 /* MGProjectItem.m */,
+				366989E287E5D93C46F12A97 /* Message Logging */,
+			);
+			path = ConnectEditor;
+			sourceTree = "<group>";
+		};
+		EAB81C191970C7D500E75D07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAB81C1A1970C7D500E75D07 /* Info.plist */,
+				EAB81C1B1970C7D500E75D07 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAB81C2C1970C7D600E75D07 /* ConnectEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAB81C2F1970C7D600E75D07 /* ConnectEditorTests.m */,
+				EAB81C2D1970C7D600E75D07 /* Supporting Files */,
+				36698F457D7D4DAD4481DC71 /* ConnectTestData */,
+			);
+			path = ConnectEditorTests;
+			sourceTree = "<group>";
+		};
+		EAB81C2D1970C7D600E75D07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAB81C2E1970C7D600E75D07 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAB81C9D1970C80E00E75D07 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				36698FAB35F8EBF1678776F0 /* Root */,
+				EA4ECA9C19743F08000676DE /* Common */,
+				366983AAF3C110FCDB883B5C /* WADL Editor */,
+				EA69A6FB1974598D00B1D9D7 /* Message Log */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		EAD7A6E619FC5C1B00E41EE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAD7A6F319FC618000E41EE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7A6F819FC618000E41EE3 /* MGConnectCommon.framework */,
+				EAD7A6FA19FC618000E41EE3 /* Connect-Common Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAB81C151970C7D500E75D07 /* Connect-Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAB81C331970C7D600E75D07 /* Build configuration list for PBXNativeTarget "Connect-Editor" */;
+			buildPhases = (
+				EAB81C121970C7D500E75D07 /* Sources */,
+				EAB81C131970C7D500E75D07 /* Frameworks */,
+				EAB81C141970C7D500E75D07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA06A9AB19FD5409005EB2ED /* PBXTargetDependency */,
+			);
+			name = "Connect-Editor";
+			productName = ConnectEditor;
+			productReference = EAB81C161970C7D500E75D07 /* Connect-Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAB81C281970C7D600E75D07 /* Connect-EditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAB81C361970C7D600E75D07 /* Build configuration list for PBXNativeTarget "Connect-EditorTests" */;
+			buildPhases = (
+				EAB81C251970C7D600E75D07 /* Sources */,
+				EAB81C261970C7D600E75D07 /* Frameworks */,
+				EAB81C271970C7D600E75D07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAB81C2B1970C7D600E75D07 /* PBXTargetDependency */,
+			);
+			name = "Connect-EditorTests";
+			productName = ConnectEditorTests;
+			productReference = EAB81C291970C7D600E75D07 /* Connect-EditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAB81C0E1970C7D500E75D07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Mobile Grid, Inc.";
+				TargetAttributes = {
+					EAB81C151970C7D500E75D07 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					EAB81C281970C7D600E75D07 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = EAB81C151970C7D500E75D07;
+					};
+				};
+			};
+			buildConfigurationList = EAB81C111970C7D500E75D07 /* Build configuration list for PBXProject "Connect-Editor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EAB81C0D1970C7D500E75D07;
+			productRefGroup = EAB81C171970C7D500E75D07 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EAD7A6F319FC618000E41EE3 /* Products */;
+					ProjectRef = EAD7A6F219FC618000E41EE3 /* Connect-Common.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EAB81C151970C7D500E75D07 /* Connect-Editor */,
+				EAB81C281970C7D600E75D07 /* Connect-EditorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EAD7A6F819FC618000E41EE3 /* MGConnectCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MGConnectCommon.framework;
+			remoteRef = EAD7A6F719FC618000E41EE3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAD7A6FA19FC618000E41EE3 /* Connect-Common Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Connect-Common Tests.xctest";
+			remoteRef = EAD7A6F919FC618000E41EE3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAB81C141970C7D500E75D07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA4ECA9B19743AF2000676DE /* MGWADLEditorResourcesViewController.xib in Resources */,
+				EAB81C211970C7D500E75D07 /* Images.xcassets in Resources */,
+				EA69A6FA1974598000B1D9D7 /* MGMessageLogViewController.xib in Resources */,
+				3669824EC934D50D44C8B730 /* MGWADLEditorViewController.xib in Resources */,
+				36698F2A293EE13DE834125E /* MGConnectEditorMainMenu.xib in Resources */,
+				EA4ECAA119743F77000676DE /* MGDisclosureViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB81C271970C7D600E75D07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAB81C121970C7D500E75D07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAB81C1F1970C7D500E75D07 /* MGConnectEditorAppDelegate.m in Sources */,
+				EA37FEC019738D6D0049DDEB /* MGManageObjectModelReader.m in Sources */,
+				EA4ECA9A19743AF2000676DE /* MGWADLEditorResourcesViewController.m in Sources */,
+				EA69A6F91974598000B1D9D7 /* MGMessageLogViewController.m in Sources */,
+				EAB81C1C1970C7D500E75D07 /* main.m in Sources */,
+				EABC220D1971B16600851A36 /* MGProjectItem.m in Sources */,
+				EA4ECAA019743F77000676DE /* MGDisclosureViewController.m in Sources */,
+				36698C0E791BB97B4AB25D05 /* MGConnectTestModel.xcdatamodeld in Sources */,
+				36698BA00EE57C748117841C /* MGWADLEditorViewController.m in Sources */,
+				36698E5FC58A2CF1A794EA58 /* MGConnectEditorRootViewController.m in Sources */,
+				3669884F0D29E44169B01720 /* MGMessageLog.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB81C251970C7D600E75D07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAB81C301970C7D600E75D07 /* ConnectEditorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA06A9AB19FD5409005EB2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Connect-Common";
+			targetProxy = EA06A9AA19FD5409005EB2ED /* PBXContainerItemProxy */;
+		};
+		EAB81C2B1970C7D600E75D07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAB81C151970C7D500E75D07 /* Connect-Editor */;
+			targetProxy = EAB81C2A1970C7D600E75D07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EAB81C311970C7D600E75D07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EAB81C321970C7D600E75D07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EAB81C341970C7D600E75D07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ConnectEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Connect-Editor";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../connect-common/Connect Common\"/**";
+			};
+			name = Debug;
+		};
+		EAB81C351970C7D600E75D07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ConnectEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Connect-Editor";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../connect-common/Connect Common\"/**";
+			};
+			name = Release;
+		};
+		EAB81C371970C7D600E75D07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ConnectEditor.app/Contents/MacOS/ConnectEditor";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConnectEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Connect-EditorTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		EAB81C381970C7D600E75D07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ConnectEditor.app/Contents/MacOS/ConnectEditor";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConnectEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Connect-EditorTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAB81C111970C7D500E75D07 /* Build configuration list for PBXProject "Connect-Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAB81C311970C7D600E75D07 /* Debug */,
+				EAB81C321970C7D600E75D07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAB81C331970C7D600E75D07 /* Build configuration list for PBXNativeTarget "Connect-Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAB81C341970C7D600E75D07 /* Debug */,
+				EAB81C351970C7D600E75D07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAB81C361970C7D600E75D07 /* Build configuration list for PBXNativeTarget "Connect-EditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAB81C371970C7D600E75D07 /* Debug */,
+				EAB81C381970C7D600E75D07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		366986303F3D8F28BD4FC489 /* MGConnectTestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				366987A54AD160D8FA1428C1 /* MGConnectTestModel.xcdatamodel */,
+			);
+			currentVersion = 366987A54AD160D8FA1428C1 /* MGConnectTestModel.xcdatamodel */;
+			path = MGConnectTestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EAB81C0E1970C7D500E75D07 /* Project object */;
+}
