@@ -25,13 +25,11 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.mobilegridinc.connect</groupId>
-            <artifactId>hr-legacy</artifactId>
-            <version>1.0</version>
-            <type>war</type>
-            <scope>compile</scope>
-        </dependency>
+        <!--
+            WARNING: On GlassFish there is currently a
+             bug which prohibits deployment of 2 wars
+             in the same ear
+        -->
         <dependency>
             <groupId>com.mobilegridinc.connect</groupId>
             <artifactId>hr-rest</artifactId>
@@ -39,6 +37,14 @@
             <type>war</type>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.mobilegridinc.connect</groupId>
+            <artifactId>hr-legacy</artifactId>
+            <version>1.0</version>
+            <type>war</type>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -53,22 +59,28 @@
                         directory which is the portable location from
                         Java EE 6 on.
                     -->
-                    <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+                    <defaultLibBundleDir>/lib</defaultLibBundleDir>
 
                     <modules>
                         <jarModule>
                             <groupId>com.mobilegridinc.connect</groupId>
                             <artifactId>hr-common</artifactId>
+                            <!--
+                                WARNING: Required for Glassfish, but
+                                must not be included for Wildfly (JBoss).
+                            -->
+                            <!--<includeInApplicationXml>true</includeInApplicationXml>-->
                         </jarModule>
-                        <webModule>
-                            <groupId>com.mobilegridinc.connect</groupId>
-                            <artifactId>hr-legacy</artifactId>
-                            <contextRoot>/hr/test/legacy</contextRoot>
-                        </webModule>
+
                         <webModule>
                             <groupId>com.mobilegridinc.connect</groupId>
                             <artifactId>hr-rest</artifactId>
                             <contextRoot>/hr/test/rest</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>com.mobilegridinc.connect</groupId>
+                            <artifactId>hr-legacy</artifactId>
+                            <contextRoot>/hr/test/legacy</contextRoot>
                         </webModule>
                     </modules>
 

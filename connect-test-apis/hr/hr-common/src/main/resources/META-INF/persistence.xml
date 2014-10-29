@@ -5,7 +5,22 @@
 
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
+    <!--
+        NOTE: on Wildfly (JBoss) this needs to be:
+
+        <persistence-unit name="HR Common Persistence Unit"  transaction-type="RESOURCE_LOCAL">
+
+            <jta-data-source>java:/jdbc/HumanResourceD</jta-data-source>
+
+        and on Glassfish, this needs to be:
+
+        <persistence-unit name="HR Common Persistence Unit"  transaction-type="JTA">
+
+            <jta-data-source>jdbc/HumanResourceDS</jta-data-source>
+    -->
+
     <persistence-unit name="HR Common Persistence Unit"  transaction-type="RESOURCE_LOCAL">
+
 
         <jta-data-source>java:/jdbc/HumanResourceDS</jta-data-source>
 
