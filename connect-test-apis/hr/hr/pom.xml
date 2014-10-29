@@ -28,7 +28,13 @@
         <!--
             WARNING: On GlassFish there is currently a
              bug which prohibits deployment of 2 wars
-             in the same ear
+             in the same ear.
+
+             For an update on the bug, see:
+
+            https://java.net/jira/browse/GLASSFISH-20720
+
+             GLASSFISH-20720 - EAR deployment with multiple embedded WARs broken in 3.1.2.2 and 4.0
         -->
         <dependency>
             <groupId>com.mobilegridinc.connect</groupId>
