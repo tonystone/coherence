@@ -48,12 +48,17 @@
                 <version>2.9.1</version>
                 <configuration>
                     <version>6</version>
+                    <!--
+                        This will deplay all jars into the APP-INF/lib
+                        directory which is the portable location from
+                        Java EE 6 on.
+                    -->
+                    <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
 
                     <modules>
                         <jarModule>
                             <groupId>com.mobilegridinc.connect</groupId>
                             <artifactId>hr-common</artifactId>
-                            <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <webModule>
                             <groupId>com.mobilegridinc.connect</groupId>
