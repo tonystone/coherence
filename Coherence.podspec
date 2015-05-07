@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.1.0"
+  s.version          = "0.1.3"
   s.summary          = "Coherence - An offline caching synchronization library."
   s.description      = <<-DESC
                        Coherence is a library that allows offline use of a local CoreData cache.
