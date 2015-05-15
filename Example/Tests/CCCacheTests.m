@@ -6,10 +6,10 @@
 #import <XCTest/XCTest.h>
 #import <Coherence/Coherence.h>
 
-@interface CCCoherenceTests : XCTestCase
+@interface CCCacheTests : XCTestCase
 @end
 
-@implementation CCCoherenceTests {
+@implementation CCCacheTests {
         CCCache *cache;
     }
 
