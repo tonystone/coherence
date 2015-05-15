@@ -9,13 +9,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.1.3"
-  s.summary          = "Coherence - An offline caching synchronization library."
+  s.version          = "0.1.4"
+  s.summary          = "Coherence"
   s.description      = <<-DESC
-                       Coherence is a library that allows offline use of a local CoreData cache.
 
-                       It will keep the cache coherent between the master and slave caching local
-                       changes until it can be synchronized with the master.
                        DESC
   s.homepage         = "https://www.climate.com"
   s.license          = 'MIT'
@@ -25,7 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.public_header_files = 'Pod/Classes/Coherence.h'
+  s.public_header_files = 'Pod/Classes/Coherence.h', 'Pod/Classes/Cache/CCCache.h', 'Pod/Classes/Module/CCModule.h'
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
     'Coherence' => ['Pod/Assets/*.png']

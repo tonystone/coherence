@@ -2,19 +2,21 @@
 // Created by Tony Stone on 4/30/15.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#ifndef Pods_Coherence_h
+#define Pods_Coherence_h
 
-@protocol CCAction;
+/** @name Public Headers
+*
+* Please review the following header files for full
+* documentation for the usage of this module.
+*
+* */
+///@{
+#import "CCModule.h"
+#import "CCResource.h"
+#import "CCResourceService.h"
 
-@interface Coherence : NSObject
+#import "CCCache.h"
+///@}
 
-    - (instancetype)initWithIdentifier: (NSString *) anIdentifier managedObjectModel:(NSManagedObjectModel *)model;
-
-    - (void) start;
-    - (void) stop;
-
-    - (NSManagedObjectContext *) mainThreadContext;
-    - (NSManagedObjectContext *) editContext;
-
-@end
+#endif

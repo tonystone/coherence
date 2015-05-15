@@ -17,7 +17,7 @@
 
     - (id)initWithBackingStore:(CCBackingStore *)aBackingStore writeAheadLog:(CCWriteAheadLog *) aWriteAheadLog  {
 
-        LogInfo(@"Initializing with logging %@...", aWriteAheadLog ? @"\"ON\"" : @"\"OFF\"");
+        LogInfo(@"Initializing with transaction logging %@...", aWriteAheadLog ? @"\"Enabled\"" : @"\"Disabled\"");
 
         if ((self = [super init])) {
             writeAheadLog     = aWriteAheadLog;
@@ -30,37 +30,6 @@
         return self;
     }
 
-//
-//    - (id) initWithDataStoreManager: (MGDataStoreManager *) aDataStoreManager notificationSelector: (SEL) aSelector transactionLogManager: (MGTransactionLogManager *) aTransactionLogManager {
-//
-//        NSParameterAssert(aDataStoreManager != nil);
-//        NSParameterAssert(aSelector != nil);
-//        NSParameterAssert(aTransactionLogManager != nil);
-//
-//
-//
-//        if ((self = [super init])) {
-//            dataStoreManager      = aDataStoreManager;
-//            transactionLogManager = aTransactionLogManager;
-//
-//            [[NSNotificationCenter defaultCenter] addObserver: dataStoreManager selector: aSelector name: NSManagedObjectContextDidSaveNotification object: self];
-//        }
-//
-//        LogTrace(4, @"<%@ : %p> initialized", NSStringFromClass([self class]), self);
-//
-//        return  self;
-//    }
-//
-//    - (void) dealloc {
-//        if (dataStoreManager) {
-//            [[NSNotificationCenter defaultCenter] removeObserver: dataStoreManager name: NSManagedObjectContextDidSaveNotification object: self];
-//        }
-//    }
-//
-//    - (MGTransactionLogManager *) transactionLogManager {
-//        return transactionLogManager;
-//    }
-//
     - (BOOL) save:(NSError *__autoreleasing *)error {
 
         if (logTransactions) {

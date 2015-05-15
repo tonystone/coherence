@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Internal/Meta/CCWriteAheadLog.h
+../../../../../Pod/Classes/Cache/Internal/Meta/CCWriteAheadLog.h

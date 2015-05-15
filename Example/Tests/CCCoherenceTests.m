@@ -10,7 +10,7 @@
 @end
 
 @implementation CCCoherenceTests {
-        Coherence * coherence;
+        CCCache *cache;
     }
 
     - (void)setUp {
@@ -22,7 +22,7 @@
         NSURL *                dataCacheModelURL = [bundle URLForResource: @"TestModel" withExtension: @"momd"];
         NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
         
-        coherence = [[Coherence alloc] initWithIdentifier: @"TestModule" managedObjectModel: model];
+        cache = [[CCCache alloc] initWithIdentifier: @"TestModule" managedObjectModel: model];
     }
 
     - (void)tearDown {
@@ -33,7 +33,7 @@
 
     - (void)testConstruction {
         
-        XCTAssertNotNil(coherence);
+        XCTAssertNotNil(cache);
     }
 
 @end

@@ -1,8 +1,8 @@
 //
-// Created by Tony Stone on 4/30/15.
+// Created by Tony Stone on 5/15/15.
 //
 
-#import "Coherence.h"
+#import "CCCache.h"
 #import "CCBackingStore.h"
 #import "CCSynchronizationManager.h"
 #import "CCManagedObjectContext.h"
@@ -13,7 +13,7 @@
 #import <TraceLog/TraceLog.h>
 
 
-@implementation Coherence {
+@implementation CCCache {
         CCBackingStore * cache;
         CCBackingStore * metaCache;
 
@@ -24,7 +24,7 @@
     }
 
     - (instancetype)initWithIdentifier: (NSString *) anIdentifier managedObjectModel:(NSManagedObjectModel *)model {
-        
+
         NSParameterAssert(anIdentifier != nil);
         NSParameterAssert(model != nil);
 
@@ -57,10 +57,10 @@
         AssertIsMainThread();
 
         LogTrace(1,@"Creating main thread context...");
-        
+
         mainThreadContext = [[CCManagedObjectContext alloc] initWithBackingStore: cache writeAheadLog: writeAheadLog];
         [mainThreadContext setPersistentStoreCoordinator:[cache persistentStoreCoordinator]];
-        
+
         LogTrace(1,@"Main thread context created.");
     }
 

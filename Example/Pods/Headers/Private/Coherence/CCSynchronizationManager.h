@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Internal/CCSynchronizationManager.h
+../../../../../Pod/Classes/Cache/Internal/CCSynchronizationManager.h
