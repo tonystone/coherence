@@ -1,8 +1,8 @@
 {
   "name": "Coherence",
-  "version": "0.1.4",
-  "summary": "Coherence - An offline caching synchronization library.",
-  "description": "                       Coherence is a library that allows offline use of a local CoreData cache.\n\n                       It will keep the cache coherent between the master and slave caching local\n                       changes until it can be synchronized with the master.\n",
+  "version": "0.1.5",
+  "summary": "Coherence",
+  "description": "\n",
   "homepage": "https://www.climate.com",
   "license": "MIT",
   "authors": {
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "ssh://git@stash.ci.climatedna.net:7999/fdi/coherence-ios.git",
-    "tag": "0.1.4"
+    "tag": "0.1.5"
   },
   "platforms": {
     "ios": "8.0"
@@ -19,7 +19,7 @@
   "public_header_files": [
     "Pod/Classes/Coherence.h",
     "Pod/Classes/Cache/CCCache.h",
-    "Pod/Classes/Module/CCModule.h"
+    "Pod/Classes/Module/*.h"
   ],
   "source_files": "Pod/Classes/**/*",
   "resource_bundles": {
