@@ -15,15 +15,12 @@ typedef NSString CCTransactionID;
 /**
     LogEntry types
 */
-enum  {
-    CCMetaLogEntryTypeBeginMarker = 0,
-    CCMetaLogEntryTypeEndMarker   = 1,
-    CCMetaLogEntryTypeInsert      = 2,
-    CCMetaLogEntryTypeUpdate      = 3,
-    CCMetaLogEntryTypeDelete      = 4,
-};
-typedef NSUInteger CCMetaLogEntryType;
 
+extern NSString const * CCMetaLogEntryTypeBeginMarker;
+extern NSString const * CCMetaLogEntryTypeEndMarker;
+extern NSString const * CCMetaLogEntryTypeInsert;
+extern NSString const * CCMetaLogEntryTypeUpdate;
+extern NSString const * CCMetaLogEntryTypeDelete;
 
 /**
     CCMetaLogEntry structure
@@ -34,7 +31,7 @@ typedef NSUInteger CCMetaLogEntryType;
     @property (nonatomic, strong) NSNumber        * previousSequenceNumber;    // Previous sequence number, usually sequenceNumber -1 but not guaranteed
     @property (nonatomic, strong) CCTransactionID * transactionID;             // CCMetaLogEntry transactionEntry objectID in URI String representation
     @property (nonatomic, strong) NSDate          * timestamp;                 // Timestamp of when this record was put in
-    @property (nonatomic, strong) NSNumber        * type;                      // The type of transactionRecord.  See CCMetaLogEntryType for more info
+    @property (nonatomic, strong) NSString  const * type;                      // The type of transactionRecord.  See CCMetaLogEntryType for more info
 
     @property (nonatomic, strong) NSString        * updateEntityName;          // The entity that was changed
     @property (nonatomic, strong) NSString        * updateObjectID;            // The objectID in URI String representation

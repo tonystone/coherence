@@ -135,7 +135,7 @@
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock)];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock - 1)];
-        [metaLogEntry setType:@(CCMetaLogEntryTypeBeginMarker)];
+        [metaLogEntry setType: CCMetaLogEntryTypeBeginMarker];
         [metaLogEntry setTimestamp:[NSDate date]];
 
         //
@@ -158,7 +158,7 @@
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock)];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock - 1)];
-        [metaLogEntry setType:@(CCMetaLogEntryTypeEndMarker)];
+        [metaLogEntry setType:CCMetaLogEntryTypeEndMarker];
         [metaLogEntry setTimestamp:[NSDate date]];
 
         //
@@ -222,14 +222,14 @@
         }
     }
 
-    - (CCMetaLogEntry *) transactionLogEntry:(CCMetaLogEntryType)logRecordType object:(NSManagedObject *)object transaction:(CCTransactionID *)transactionID metadataContext:(NSManagedObjectContext *)metadataContext sequenceNumber: (NSUInteger) sequenceNumber {
+    - (CCMetaLogEntry *) transactionLogEntry:(NSString const *)logRecordType object:(NSManagedObject *)object transaction:(CCTransactionID *)transactionID metadataContext:(NSManagedObjectContext *)metadataContext sequenceNumber: (NSUInteger) sequenceNumber {
 
         CCMetaLogEntry * metaLogEntry = (CCMetaLogEntry *) [NSEntityDescription insertNewObjectForEntityForName: @"CCMetaLogEntry" inManagedObjectContext: metadataContext];
 
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(sequenceNumber)];
         [metaLogEntry setSequenceNumber:@(sequenceNumber - 1)];
-        [metaLogEntry setType:@(logRecordType)];
+        [metaLogEntry setType:logRecordType];
         [metaLogEntry setTimestamp:[NSDate date]];
         //
         // Update the object identification data

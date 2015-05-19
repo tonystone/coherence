@@ -4,6 +4,11 @@
 
 #import "CCMetaLogEntry.h"
 
+NSString const * CCMetaLogEntryTypeBeginMarker = @"B";
+NSString const * CCMetaLogEntryTypeEndMarker   = @"E";
+NSString const * CCMetaLogEntryTypeInsert      = @"I";
+NSString const * CCMetaLogEntryTypeUpdate      = @"U";
+NSString const * CCMetaLogEntryTypeDelete      = @"D";
 
 @implementation CCMetaLogEntry
 
