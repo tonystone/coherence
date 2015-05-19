@@ -82,7 +82,7 @@
             NSError * error = nil;
 
             if (![metadataContext save: &error]) {
-                // Throw an exception
+                @throw [NSException exceptionWithName: @"Runtime Exception" reason: [error localizedDescription] userInfo: @{@"error": error}];
             }
         }
         return transactionID;
@@ -108,7 +108,7 @@
         NSArray * fetchResults = [aContext executeFetchRequest: fetchRequest error: &error];
 
         if (error) {
-            @throw [NSException exceptionWithName: @"Runtime Exception" reason: [error localizedFailureReason] userInfo: @{@"error": error}];
+            @throw [NSException exceptionWithName: @"Runtime Exception" reason: [error localizedDescription] userInfo: @{@"error": error}];
         }
 
         return fetchResults;
@@ -124,7 +124,7 @@
         NSError * error = nil;
 
         if (![metadataContext obtainPermanentIDsForObjects: @[metaLogEntry] error: &error]) {
-            @throw [NSException exceptionWithName: @"Runtime Exception" reason: [NSString stringWithFormat: @"Failed to obtain perminent id for transaction log record: %@", [error localizedFailureReason]] userInfo: @{@"error": error}];
+            @throw [NSException exceptionWithName: @"Runtime Exception" reason: [NSString stringWithFormat: @"Failed to obtain perminent id for transaction log record: %@", [error localizedDescription]] userInfo: @{@"error": error}];
         }
 
         //
