@@ -5,6 +5,7 @@
 
 #import <XCTest/XCTest.h>
 #import <Coherence/Coherence.h>
+#import "CCUser.h"
 
 @interface CCCacheTests : XCTestCase
 @end
@@ -34,6 +35,18 @@
     - (void)testConstruction {
         
         XCTAssertNotNil(cache);
+    }
+
+    - (void) testCRUD {
+         NSManagedObjectContext * context = [cache editContext];
+
+        CCUser * user = [NSEntityDescription insertNewObjectForEntityForName: @"CCUser" inManagedObjectContext:  context];
+
+        [user setFirstName: @"First"];
+        [user setLastName:  @"Last"];
+        [user setUserName:  @"lastfirst"];
+
+        XCTAssertNoThrow([context save: nil]);
     }
 
 @end
