@@ -10,7 +10,7 @@
 #define COCOAPODS_POD_AVAILABLE_Coherence
 #define COCOAPODS_VERSION_MAJOR_Coherence 0
 #define COCOAPODS_VERSION_MINOR_Coherence 1
-#define COCOAPODS_VERSION_PATCH_Coherence 5
+#define COCOAPODS_VERSION_PATCH_Coherence 6
 
 // TraceLog
 #define COCOAPODS_POD_AVAILABLE_TraceLog
