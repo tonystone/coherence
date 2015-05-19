@@ -150,11 +150,6 @@
 
         CCMetaLogEntry * metaLogEntry = (CCMetaLogEntry *) [NSEntityDescription insertNewObjectForEntityForName: @"CCMetaLogEntry" inManagedObjectContext: metadataContext];
 
-        //
-        // We use the URI representation of the object id as the transactionID
-        //
-        transactionID = [[[metaLogEntry objectID] URIRepresentation] absoluteString];
-
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock)];
         [metaLogEntry setPreviousSequenceNumber:@(*sequenceNumberBlock - 1)];
