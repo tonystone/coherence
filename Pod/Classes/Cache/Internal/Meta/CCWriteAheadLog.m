@@ -134,7 +134,7 @@
 
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock)];
-        [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock - 1)];
+        [metaLogEntry setPreviousSequenceNumber:@(*sequenceNumberBlock - 1)];
         [metaLogEntry setType: CCMetaLogEntryTypeBeginMarker];
         [metaLogEntry setTimestamp:[NSDate date]];
 
@@ -157,7 +157,7 @@
 
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock)];
-        [metaLogEntry setSequenceNumber:@(*sequenceNumberBlock - 1)];
+        [metaLogEntry setPreviousSequenceNumber:@(*sequenceNumberBlock - 1)];
         [metaLogEntry setType:CCMetaLogEntryTypeEndMarker];
         [metaLogEntry setTimestamp:[NSDate date]];
 
@@ -228,7 +228,7 @@
 
         [metaLogEntry setTransactionID:transactionID];
         [metaLogEntry setSequenceNumber:@(sequenceNumber)];
-        [metaLogEntry setSequenceNumber:@(sequenceNumber - 1)];
+        [metaLogEntry setPreviousSequenceNumber:@(sequenceNumber - 1)];
         [metaLogEntry setType:logRecordType];
         [metaLogEntry setTimestamp:[NSDate date]];
         //
