@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -23,7 +24,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		9100C2884216A8E64627CD78 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57452B0A759FB18EE975608 /* libPods-Tests.a */; };
 		9DA9A1A8DB83D5955C27DDBF /* libPods-Coherence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F29440E31A93E222B892E /* libPods-Coherence.a */; };
-		EA0289661AF32ED700200848 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA0289641AF32ED700200848 /* TestModel.xcdatamodeld */; };
 		EA02896A1AF32FC600200848 /* CCField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0289691AF32FC600200848 /* CCField.m */; };
 		EA02896D1AF32FC700200848 /* CCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EA02896C1AF32FC700200848 /* CCUser.m */; };
 		EA1A9F551AF2F62800DF4936 /* CCCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB4DAC13D5CFB5B0CC9 /* CCCacheTests.m */; };
@@ -42,6 +42,7 @@
 /* Begin PBXFileReference section */
 		30B185C69BD1C596413EC9BD /* Pods-Coherence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.release.xcconfig"; sourceTree = "<group>"; };
 		35528757887FFC4CA4F9A507 /* Pods-Coherence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.debug.xcconfig"; sourceTree = "<group>"; };
+		366983E42FD23BECD9F6D82F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		36698FB4DAC13D5CFB5B0CC9 /* CCCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCacheTests.m; sourceTree = "<group>"; };
 		387FD13B580E0398D458F786 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3AB2779859654ACA1535649C /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		CBF446C4B5F6CB3431A2835D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E57452B0A759FB18EE975608 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA0289651AF32ED700200848 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		EA0289681AF32FC600200848 /* CCField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCField.h; path = "Test Data/Model/CCField.h"; sourceTree = "<group>"; };
 		EA0289691AF32FC600200848 /* CCField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCField.m; path = "Test Data/Model/CCField.m"; sourceTree = "<group>"; };
 		EA02896B1AF32FC700200848 /* CCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCUser.h; path = "Test Data/Model/CCUser.h"; sourceTree = "<group>"; };
@@ -215,11 +215,11 @@
 		EA0289671AF32F8700200848 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EA0289641AF32ED700200848 /* TestModel.xcdatamodeld */,
 				EA02896B1AF32FC700200848 /* CCUser.h */,
 				EA02896C1AF32FC700200848 /* CCUser.m */,
 				EA0289681AF32FC600200848 /* CCField.h */,
 				EA0289691AF32FC600200848 /* CCField.m */,
+				36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -403,7 +403,7 @@
 				EA02896D1AF32FC700200848 /* CCUser.m in Sources */,
 				EA02896A1AF32FC600200848 /* CCField.m in Sources */,
 				EA1A9F551AF2F62800DF4936 /* CCCacheTests.m in Sources */,
-				EA0289661AF32ED700200848 /* TestModel.xcdatamodeld in Sources */,
+				366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,13 +628,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA0289641AF32ED700200848 /* TestModel.xcdatamodeld */ = {
+		36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA0289651AF32ED700200848 /* TestModel.xcdatamodel */,
+				366983E42FD23BECD9F6D82F /* TestModel.xcdatamodel */,
 			);
-			currentVersion = EA0289651AF32ED700200848 /* TestModel.xcdatamodel */;
-			path = TestModel.xcdatamodeld;
+			currentVersion = 366983E42FD23BECD9F6D82F /* TestModel.xcdatamodel */;
+			name = TestModel.xcdatamodeld;
+			path = "Test Data/Model/TestModel.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
