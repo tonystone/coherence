@@ -13,6 +13,8 @@ typedef enum {
 
 @protocol CCResource <NSObject>
 
+    + (id <CCResource>) resourceWithJSONDictionary: (NSDictionary *) jsonDictionary;
+
     - (NSDictionary *) toJSONDictionary: (CCJSONType) type;
 
 @end
