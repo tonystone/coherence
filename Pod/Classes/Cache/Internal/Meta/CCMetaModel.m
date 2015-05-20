@@ -65,9 +65,15 @@
         [updateEntityName setAttributeType: NSStringAttributeType];
         [attributes addObject: updateEntityName];
 
+        NSAttributeDescription * updateObjectID = [[NSAttributeDescription alloc] init];
+        [updateObjectID setName: @"updateObjectID"];
+        [updateObjectID setOptional: YES];
+        [updateObjectID setAttributeType: NSStringAttributeType];
+        [attributes addObject: updateObjectID];
+        
         NSAttributeDescription * updateUniqueID = [[NSAttributeDescription alloc] init];
         [updateUniqueID setName: @"updateUniqueID"];
-        [updateUniqueID setOptional:NO];
+        [updateUniqueID setOptional: YES];
         [updateUniqueID setAttributeType: NSStringAttributeType];
         [attributes addObject: updateUniqueID];
 
