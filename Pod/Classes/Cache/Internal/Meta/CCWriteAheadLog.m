@@ -241,8 +241,6 @@
 
     - (void) initializeSequenceNumberGenerator {
         @synchronized (self) {
-
-#warning This should be gotten from a table stored in the DB so we have continues sequence numbering
             //
             // We need to find the last log entry and get it's
             // sequenceNumber value to calculate the next number
