@@ -229,7 +229,6 @@
         //
         // Update the object identification data
         //
-#warning [transactionLogEntry setUpdateUniqueID: <Need to determine Unique ID field>]
         [metaLogEntry setUpdateObjectID:[[[object objectID] URIRepresentation] absoluteString]];
         [metaLogEntry setUpdateEntityName:[[object entity] name]];
 
