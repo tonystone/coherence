@@ -38,15 +38,25 @@
     }
 
     - (void) testCRUD {
-         NSManagedObjectContext * context = [cache editContext];
+        NSManagedObjectContext * editContext       = [cache editContext];
+        NSManagedObjectContext * mainThreadContext = [cache mainThreadContext];
 
-        CCUser * user = [NSEntityDescription insertNewObjectForEntityForName: @"CCUser" inManagedObjectContext:  context];
+        CCUser *insertedUser = [NSEntityDescription insertNewObjectForEntityForName:@"CCUser" inManagedObjectContext:editContext];
 
-        [user setFirstName: @"First"];
-        [user setLastName:  @"Last"];
-        [user setUserName:  @"lastfirst"];
+        [insertedUser setFirstName:@"First"];
+        [insertedUser setLastName:@"Last"];
+        [insertedUser setUserName:@"lastfirst"];
 
-        XCTAssertNoThrow([context save: nil]);
+        XCTAssertNoThrow([editContext save:nil]);
+
+        NSManagedObjectID * userId = [insertedUser objectID];
+
+        CCUser * savedUser = (CCUser *) [mainThreadContext objectWithID: userId];
+
+        XCTAssertNotNil(savedUser);
+        XCTAssertEqual([savedUser firstName], [insertedUser  firstName]);
+        XCTAssertEqual([savedUser lastName],  [insertedUser  lastName]);
+        XCTAssertEqual([savedUser userName],  [insertedUser  userName]);
     }
 
 @end

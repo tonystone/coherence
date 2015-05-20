@@ -11,8 +11,8 @@
 
 @implementation CCUser
 
-@dynamic userName;
-@dynamic firstName;
-@dynamic lastName;
+    @dynamic userName;
+    @dynamic firstName;
+    @dynamic lastName;
 
 @end

@@ -15,4 +15,5 @@
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * name;
 
+
 @end
