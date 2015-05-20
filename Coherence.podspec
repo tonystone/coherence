@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.1.7"
+  s.version          = "0.1.8"
   s.summary          = "Coherence"
   s.description      = <<-DESC
 
