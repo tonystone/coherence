@@ -12,7 +12,6 @@
 #import "CCWriteAheadLog.h"
 #import <TraceLog/TraceLog.h>
 
-
 @implementation CCCache {
         CCBackingStore * cache;
         CCBackingStore * metaCache;
@@ -23,7 +22,7 @@
         CCWriteAheadLog          * writeAheadLog;
     }
 
-    - (instancetype)initWithIdentifier: (NSString *) anIdentifier managedObjectModel:(NSManagedObjectModel *)model {
+    - (instancetype) initWithIdentifier: (NSString *) anIdentifier managedObjectModel:(NSManagedObjectModel *)model {
 
         NSParameterAssert(anIdentifier != nil);
         NSParameterAssert(model != nil);
@@ -56,38 +55,40 @@
     - (void) createMainThreadContext {
         AssertIsMainThread();
 
-        LogTrace(1,@"Creating main thread context...");
+        LogInfo(@"Creating main thread context...");
 
         mainThreadContext = [[CCManagedObjectContext alloc] initWithBackingStore: cache writeAheadLog: writeAheadLog];
-        [mainThreadContext setPersistentStoreCoordinator:[cache persistentStoreCoordinator]];
 
-        LogTrace(1,@"Main thread context created.");
+        LogInfo(@"Main thread context created.");
     }
 
-    - (void)start {
+    - (void) start {
         LogInfo(@"Starting...");
         [synchronizationManager start];
         LogInfo(@"Started.");
     }
 
-    - (void)stop {
+    - (void) stop {
         LogInfo(@"Stopping...");
         [synchronizationManager stop];
         LogInfo(@"Stopped.");
     }
 
-    - (NSManagedObjectContext *)mainThreadContext {
+    - (NSManagedObjectContext *) mainThreadContext {
         AssertIsMainThread();
 
         return mainThreadContext;
     }
 
-    - (NSManagedObjectContext *)editContext {
-        CCManagedObjectContext * editContext = [[CCManagedObjectContext alloc] initWithBackingStore: cache writeAheadLog: writeAheadLog];
-
-        [editContext setPersistentStoreCoordinator:[cache persistentStoreCoordinator]];
-
-        return editContext;
+    - (NSManagedObjectContext *) editContext {
+        LogInfo(@"Creating edit context...");
+        
+        NSManagedObjectContext * context = [[CCManagedObjectContext alloc] initWithBackingStore: cache writeAheadLog: writeAheadLog parent: mainThreadContext];
+        
+        LogInfo(@"Edit context created.");
+        
+        return context;
     }
+
 
 @end

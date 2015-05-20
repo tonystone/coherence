@@ -11,5 +11,11 @@
 @interface CCManagedObjectContext : NSManagedObjectContext
 
     - (id)initWithBackingStore:(CCBackingStore *)aBackingStore writeAheadLog:(CCWriteAheadLog *) aWriteAheadLog;
+    - (id)initWithBackingStore:(CCBackingStore *)aBackingStore writeAheadLog:(CCWriteAheadLog *) aWriteAheadLog parent: (CCManagedObjectContext *) aParent;
+
+    - (BOOL)save:(NSError **)error logChanges: (BOOL)logChanges;
+
+    - (void) registerListener: (CCManagedObjectContext *) listener;
+    - (void) unregisterListener: (CCManagedObjectContext *) listener;
 
 @end
