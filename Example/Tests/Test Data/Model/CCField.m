@@ -11,7 +11,7 @@
 
 @implementation CCField
 
-@dynamic uuid;
-@dynamic name;
+    @dynamic uuid;
+    @dynamic name;
 
 @end
