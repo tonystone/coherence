@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "Coherence"
   s.description      = <<-DESC
 
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.public_header_files = 'Pod/Classes/Coherence.h', 'Pod/Classes/Cache/CCCache.h', 'Pod/Classes/Module/*.h'
+  s.public_header_files = 'Pod/Classes/Coherence.h', 'Pod/Classes/Cache/CCCache.h', 'Pod/Classes/Module/*.h', 'Pod/Classes/Configuration/*.h'
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
     'Coherence' => ['Pod/Assets/*.png']

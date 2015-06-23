@@ -6,6 +6,7 @@
 
 @protocol CCResourceService;
 @protocol CCResource;
+@protocol CCConfiguration;
 
 @protocol CCModule <NSObject>
 
