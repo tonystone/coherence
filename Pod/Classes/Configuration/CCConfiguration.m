@@ -59,15 +59,6 @@ typedef enum {
         NSMutableArray * errors = [[NSMutableArray alloc] init];
 
         [self loadFromDictionary: values capitalizeFirstLetter: capitalize keyPrefix: keyPrefix defaults: defaults forProtocol: conformingProtocol errors: errors];
-        
-        unsigned int protocolCount = 0;
-        Protocol * __unsafe_unretained * protocolList = protocol_copyProtocolList(conformingProtocol, &protocolCount);
-        
-        for (int p = 0; p < protocolCount; p++) {
-            [self loadFromDictionary: values capitalizeFirstLetter: capitalize keyPrefix: keyPrefix defaults: defaults forProtocol: protocolList[p] errors: errors];
-
-        }
-        free(protocolList);
 
         if ([errors count] > 0) {
             NSMutableString * reasonMessage = [[NSMutableString alloc] initWithFormat: @"The Following error(s) occured during initialization of %@\n\n", NSStringFromClass([self class])];
@@ -186,14 +177,6 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
 
             // Add the implementation
             [self addProtocolImplementation: aProtocol toClass: newClass];
-
-            unsigned int protocolCount = 0;
-            Protocol * __unsafe_unretained * protocolList = protocol_copyProtocolList(aProtocol, &protocolCount);
-
-            for (int p = 0; p < protocolCount; p++) {
-                [self addProtocolImplementation: protocolList[p] toClass: newClass];
-            }
-            free(protocolList);
 
             objc_registerClassPair(newClass);
 

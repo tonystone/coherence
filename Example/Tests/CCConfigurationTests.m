@@ -30,7 +30,7 @@ static int        intReadonlyTestValue     = true;
 // Test configuration when developers are using a pure protocol
 // for their configuration construction.
 //
-@protocol TestPureProtocolConfiguration
+@protocol TestPureProtocolConfiguration <NSObject>
 
     @property(nonatomic, readwrite, assign) char       charProperty;
     @property(nonatomic, readwrite, assign) BOOL       boolProperty;
@@ -49,7 +49,18 @@ static int        intReadonlyTestValue     = true;
 // Test configuration when developers are using a subclass
 // of CCConfiguration for their configuration using default values.
 //
-@protocol TestSubClassConfiguration <TestPureProtocolConfiguration>
+@protocol TestSubClassConfiguration <NSObject>
+
+    @property(nonatomic, readwrite, assign) char       charProperty;
+    @property(nonatomic, readwrite, assign) BOOL       boolProperty;
+
+    @property(nonatomic, readwrite, assign) NSInteger  integerProperty;
+    @property(nonatomic, readwrite, assign) NSUInteger unsignedIntegerProperty;
+
+    @property(nonatomic, readwrite, assign) float      floatProperty;
+    @property(nonatomic, readwrite, assign) double     doubleProperty;
+
+    @property(nonatomic, readwrite, strong) NSString * stringProperty;
 
     @property(nonatomic, readonly, strong)            NSString * stringPropertyReadonly;
     @property(getter=isIntPropertyReadonly, readonly) int        intPropertyReadonly;
