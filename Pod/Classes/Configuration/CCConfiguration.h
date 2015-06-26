@@ -25,6 +25,14 @@
     */
     - (NSDictionary *) defaults;
 
+    /**
+     *  This method should return the name of the main bundle dictionary
+     *  key to search for the configuration option keys.
+     *
+     * @default TCCConfiguration
+     */
+    - (NSString *) bundleKey;
+
 @end
 
 

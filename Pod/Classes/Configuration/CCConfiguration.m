@@ -7,7 +7,8 @@
 #import <TraceLog/TraceLog.h>
 #import "NSString+CapitalizeFirstLetter.h"
 
-static NSString * const CCErrorDomain = @"FSErrorDomain";
+static NSString * const CCErrorDomain      = @"FSErrorDomain";
+static NSString * const CCDefaultBundleKey = @"TCCConfiguration";
 
 typedef enum {
     CCInitializationErrorCode   = 100,
@@ -36,7 +37,7 @@ typedef enum {
             defaults = [config defaults];
         }
 
-        [config loadFromDictionary:[[NSBundle mainBundle] infoDictionary] capitalizeFirstLetter:YES keyPrefix: @"TCC" defaults: defaults];
+        [config loadFromBundle: [NSBundle mainBundle] defaults:defaults];
 
         return config;
     }
@@ -49,16 +50,25 @@ typedef enum {
 
         config->conformingProtocol = aProtocol;
 
-        [config loadFromDictionary:[[NSBundle mainBundle] infoDictionary] capitalizeFirstLetter:YES keyPrefix: @"TCC" defaults: defaults];
+        [config loadFromBundle: [NSBundle mainBundle] defaults:defaults];
 
         return config;
     }
 
-    - (void) loadFromDictionary: (NSDictionary *)values capitalizeFirstLetter: (BOOL) capitalize keyPrefix: (NSString *) keyPrefix defaults: (NSDictionary *) defaults  {
+    - (void)loadFromBundle:(NSBundle *)bundle defaults:(NSDictionary *)defaults {
 
         NSMutableArray * errors = [[NSMutableArray alloc] init];
 
-        [self loadFromDictionary: values capitalizeFirstLetter: capitalize keyPrefix: keyPrefix defaults: defaults forProtocol: conformingProtocol errors: errors];
+        NSString * bundleKey = CCDefaultBundleKey;
+        if ([self respondsToSelector: @selector(bundleKey)]) {
+            bundleKey = [self bundleKey];
+        }
+
+        if (![[NSBundle mainBundle] infoDictionary][bundleKey]) {
+            [errors addObject: [NSError errorWithDomain: CCErrorDomain code: CCMissingConfigurationKey userInfo: @{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Required bundle key %@ missing form Info.plist file", bundleKey]}]];
+        }
+
+        [self loadFromDictionary: [[NSBundle mainBundle] infoDictionary][bundleKey] defaults:defaults forProtocol:conformingProtocol errors:errors];
 
         if ([errors count] > 0) {
             NSMutableString * reasonMessage = [[NSMutableString alloc] initWithFormat: @"The Following error(s) occured during initialization of %@\n\n", NSStringFromClass([self class])];
@@ -70,7 +80,7 @@ typedef enum {
         }
     }
 
-    - (void) loadFromDictionary: (NSDictionary *)values capitalizeFirstLetter: (BOOL) capitalize keyPrefix: (NSString *) keyPrefix defaults: (NSDictionary *) defaults forProtocol: (Protocol *) aProtocol errors: (NSMutableArray *) errors {
+    - (void)loadFromDictionary:(NSDictionary *)values defaults:(NSDictionary *)defaults forProtocol:(Protocol *)aProtocol errors:(NSMutableArray *)errors {
         
         NSString * errorMessage = nil;
         CCErrorDomainCode errorCode = CCInitializationErrorCode;
@@ -79,17 +89,9 @@ typedef enum {
         objc_property_t  * properties = protocol_copyPropertyList(aProtocol, &propertyCount);
         
         for (int i = 0; i < propertyCount; i++) {
-            NSString * propertyName      = [NSString stringWithCString: property_getName(properties[i]) encoding: NSUTF8StringEncoding];
-            NSString * dictionaryKeyName = [propertyName copy];
-            
-            if (keyPrefix || capitalize) {
-                dictionaryKeyName = [dictionaryKeyName stringWithCapitalizedFirstLetter];
-            }
-            if (keyPrefix) {
-                dictionaryKeyName = [keyPrefix stringByAppendingString: dictionaryKeyName];
-            }
-            
-            id value = values[dictionaryKeyName];
+            NSString * propertyName = [NSString stringWithCString: property_getName(properties[i]) encoding: NSUTF8StringEncoding];
+
+            id value = values[propertyName];
             
             if (!value) {
                 value = defaults[propertyName];
@@ -98,7 +100,7 @@ typedef enum {
             if (value) {
                 [self setValue: value forKey: propertyName];
             } else {
-                errorMessage = [NSString stringWithFormat:@"%@ key was missing from the info.plist and no default value was supplied, this value is required.", dictionaryKeyName];
+                errorMessage = [NSString stringWithFormat:@"%@ key was missing from the info.plist and no default value was supplied, this value is required.", propertyName];
                 errorCode    = CCMissingConfigurationKey;
             }
             if (errorMessage) {
