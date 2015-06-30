@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.2.4"
+  s.version          = "0.2.5"
   s.summary          = "Coherence"
   s.description      = <<-DESC
 
@@ -36,17 +36,21 @@ Pod::Spec.new do |s|
      end
   end
 
+  s.subspec 'Utility' do |sp|
+    sp.source_files = 'Pod/Classes/Utility/*'
+  end
+
   s.subspec 'Configuration' do |sp|
     sp.source_files = 'Pod/Classes/Configuration/*'
+
+    sp.dependency 'Coherence/Utility'
   end
 
   s.subspec 'Module' do |sp|
     sp.source_files = 'Pod/Classes/Module/*'
   end
 
-  s.subspec 'Utility' do |sp|
-    sp.source_files = 'Pod/Classes/Utility/*'
-  end
+
 
   s.dependency 'TraceLog', ">=0.2.0"
 end

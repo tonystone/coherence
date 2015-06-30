@@ -3,7 +3,6 @@
 //
 
 #import "CCPersistentStoreCoordinator.h"
-#import "CCBackingStore.h"
 #import "CCWriteAheadLog.h"
 #import "CCMetaModel.h"
 #import "NSManagedObjectModel+UniqueIdentity.h"

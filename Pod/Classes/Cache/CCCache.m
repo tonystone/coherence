@@ -4,34 +4,46 @@
 
 #import "CCCache.h"
 #import "CCPersistentStoreCoordinator.h"
-#import "CCBackingStore.h"
-#import "CCSynchronizationManager.h"
 #import "CCManagedObjectContext.h"
-#import "CCMetaModel.h"
 
 #import "CCAssert.h"
-#import "CCWriteAheadLog.h"
+#import "NSManagedObjectModel+UniqueIdentity.h"
 #import <TraceLog/TraceLog.h>
 
+@interface CCCache (private)
+    - (void) addPersistentStoreForConfiguration: (NSString *) configurationName  storeType: (NSString *) storeType storePath: (NSString *) storePath;
+@end
+
 @implementation CCCache {
-        CCBackingStore *_cache;
+        NSManagedObjectModel         * _managedObjectModel;
+        CCPersistentStoreCoordinator * _persistentStoreCoordinator;
 
-        CCSynchronizationManager *_synchronizationManager;
-
-        CCManagedObjectContext   *_mainThreadContext;
-        CCWriteAheadLog          *_writeAheadLog;
+        CCManagedObjectContext       * _mainThreadContext;
     }
 
-    - (instancetype) initWithManagedObjectModel:(NSManagedObjectModel *)model {
+    - (instancetype) initWithManagedObjectModel:(NSManagedObjectModel *) aModel {
 
-        NSParameterAssert(model != nil);
+        NSParameterAssert(aModel != nil);
 
         LogInfo(@"Initializing '%@' instance...", NSStringFromClass([self class]));
 
         self = [super init];
         if (self) {
-            _cache = [[CCBackingStore alloc] initWithManagedObjectModel:model];
-            _synchronizationManager = [[CCSynchronizationManager alloc] initWithCache:_cache metaCache:nil];
+
+            _managedObjectModel = aModel;
+
+            NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+
+            NSString * storePath = [cachesPath stringByAppendingFormat: @"/Cache%@.bin", [aModel uniqueIdentifier]];
+
+            //
+            // Create the persistent store _persistentStoreCoordinator
+            // so we can attache the persistent stores
+            // to it.
+            //
+            _persistentStoreCoordinator = [[CCPersistentStoreCoordinator alloc] initWithManagedObjectModel: _managedObjectModel];
+
+            [self addPersistentStoreForConfiguration: nil storeType: NSSQLiteStoreType storePath: storePath];
 
             //
             // We don't know if we're going to be created
@@ -42,6 +54,8 @@
 
             // Start up the system
             [self start];
+
+            LogInfo(@"'%@' instance initialized.", NSStringFromClass([self class]));
         }
 
         return self;
@@ -53,20 +67,20 @@
         LogInfo(@"Creating main thread context...");
 
         _mainThreadContext = [[CCManagedObjectContext alloc] initWithConcurrencyType: NSMainQueueConcurrencyType];
-        [_mainThreadContext setPersistentStoreCoordinator: [_cache persistentStoreCoordinator]];
+        [_mainThreadContext setPersistentStoreCoordinator: _persistentStoreCoordinator];
 
         LogInfo(@"Main thread context created.");
     }
 
     - (void) start {
         LogInfo(@"Starting...");
-        [_synchronizationManager start];
+
         LogInfo(@"Started.");
     }
 
     - (void) stop {
         LogInfo(@"Stopping...");
-        [_synchronizationManager stop];
+
         LogInfo(@"Stopped.");
     }
 
@@ -80,11 +94,105 @@
         LogInfo(@"Creating edit context...");
         
         NSManagedObjectContext * context = [[CCManagedObjectContext alloc] initWithConcurrencyType: NSPrivateQueueConcurrencyType parent: _mainThreadContext];
-        [context setPersistentStoreCoordinator: [_cache persistentStoreCoordinator]];
+        [context setPersistentStoreCoordinator: _persistentStoreCoordinator];
         
         LogInfo(@"Edit context created.");
         
         return context;
+    }
+
+    - (void) clearAllData {
+
+        @autoreleasepool {
+            // We want callbacks here but we don't want any other behavior to kick off
+            NSManagedObjectContext * editContext = [[NSManagedObjectContext alloc] init];
+            [editContext setPersistentStoreCoordinator: _persistentStoreCoordinator];
+
+            // Find all root entities
+            for (NSEntityDescription * entity in [_managedObjectModel entities]) {
+                // If there is no super entity, this is a root entity
+                if (![entity superentity]) {
+                    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] initWithEntityName: [entity name]];
+
+                    NSError * error = nil;
+
+                    NSArray * managedObjects = [editContext executeFetchRequest: fetchRequest error: &error];
+
+                    for (NSManagedObject * aManagedObject in managedObjects) {
+                        [editContext deleteObject: aManagedObject];
+                    }
+
+                    [editContext save: &error];
+                }
+            }
+        }
+    }
+
+@end
+
+
+@implementation CCCache (private)
+
+    - (void) addPersistentStoreForConfiguration: (NSString *) configurationName  storeType: (NSString *) storeType storePath: (NSString *) storePath {
+
+        NSParameterAssert(storeType != nil);
+        NSParameterAssert(storePath != nil);
+
+        NSFileManager * fileManager     = [NSFileManager defaultManager];
+        NSURL         * storeUrl        = [NSURL fileURLWithPath: storePath];
+
+        BOOL            removeIncompatibleStore = YES;
+
+        NSError           * error           = nil;
+        NSPersistentStore * persistentStore = nil;
+
+
+        if ([fileManager fileExistsAtPath: storePath]) {
+
+            NSDictionary * metadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: storeType URL: storeUrl error: &error];
+
+            if (![_managedObjectModel isConfiguration:configurationName compatibleWithStoreMetadata:metadata]) {
+
+                if (removeIncompatibleStore) {
+
+                    LogWarning(@"Removing incompatible persistent store at path %@", storePath);
+
+                    //
+                    // If the existing persistentStore is not compatible with the structure
+                    // provided, we need to delete it and recreate it.
+                    //
+                    if (![fileManager removeItemAtPath: storePath error: &error]) {
+                        @throw [NSException exceptionWithName: @"PersistentStore Creation Exception" reason: [NSString stringWithFormat: @"%@: Could not remove incompatible persistent store", [error localizedDescription]] userInfo: nil];
+                    }
+
+                    LogWarning(@"Persistent store removed");
+
+                } else {
+                    @throw [NSException exceptionWithName: @"PersistentStore Creation Exception" reason: @"The existing persistent store is not compatible with the managed object _managedObjectModel" userInfo: nil];
+                }
+            }
+        }
+
+        persistentStore = [_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:configurationName URL:storeUrl options:nil error:&error];
+
+        if (!persistentStore) {
+
+            NSString * errorMessage = [NSString stringWithFormat: @"Failed to add PersistentStore <%@>", configurationName];
+
+            @throw [NSException exceptionWithName: errorMessage reason: [error localizedDescription] userInfo: nil];
+        }
+
+#if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        //
+        // Check to make sure the protection key is NSFileProtectionComplete
+        //
+        NSDictionary * currentAttributes = [fileManager attributesOfItemAtPath: storePath error: nil];
+
+        if (currentAttributes[NSFileProtectionKey] != NSFileProtectionComplete) {
+            [fileManager setAttributes: @{NSFileProtectionKey: NSFileProtectionComplete} ofItemAtPath: storePath error: nil];
+        };
+#endif
+
     }
 
 

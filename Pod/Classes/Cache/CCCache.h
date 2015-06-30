@@ -14,6 +14,8 @@
     - (void) start;
     - (void) stop;
 
+    - (void) clearAllData;
+
     - (NSManagedObjectContext *) mainThreadContext;
     - (NSManagedObjectContext *) editContext;
 

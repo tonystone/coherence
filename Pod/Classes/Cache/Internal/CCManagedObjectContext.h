@@ -5,7 +5,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CCBackingStore;
 @class CCWriteAheadLog;
 
 @interface CCManagedObjectContext : NSManagedObjectContext

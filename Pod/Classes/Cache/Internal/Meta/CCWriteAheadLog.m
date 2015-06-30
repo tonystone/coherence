@@ -3,7 +3,6 @@
 //
 
 #import "CCWriteAheadLog.h"
-#import "CCBackingStore.h"
 #import "CCMetaModel.h"
 #import "CCMetaLogEntry.h"
 

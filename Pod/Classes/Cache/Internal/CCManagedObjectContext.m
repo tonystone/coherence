@@ -3,8 +3,6 @@
 //
 
 #import "CCManagedObjectContext.h"
-#import "CCWriteAheadLog.h"
-#import "CCBackingStore.h"
 
 #import <TraceLog/TraceLog.h>
 
