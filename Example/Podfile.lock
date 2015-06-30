@@ -1,5 +1,20 @@
 PODS:
-  - Coherence (0.2.3):
+  - Coherence (0.2.4):
+    - Coherence/Cache (= 0.2.4)
+    - Coherence/Configuration (= 0.2.4)
+    - Coherence/Module (= 0.2.4)
+    - Coherence/Utility (= 0.2.4)
+    - TraceLog (>= 0.2.0)
+  - Coherence/Cache (0.2.4):
+    - Coherence/Cache/Internal (= 0.2.4)
+    - TraceLog (>= 0.2.0)
+  - Coherence/Cache/Internal (0.2.4):
+    - TraceLog (>= 0.2.0)
+  - Coherence/Configuration (0.2.4):
+    - TraceLog (>= 0.2.0)
+  - Coherence/Module (0.2.4):
+    - TraceLog (>= 0.2.0)
+  - Coherence/Utility (0.2.4):
     - TraceLog (>= 0.2.0)
   - TraceLog (0.2.0):
     - TraceLog/Internal (= 0.2.0)
@@ -13,7 +28,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Coherence: 1e295fd46bccdb0238a3047bf5a54ac59a30912f
+  Coherence: 0850b7cb896f596d55703b7ed4f363981174647b
   TraceLog: 81d5f9e531fd402a08794ad52718dea1a40240f1
 
 COCOAPODS: 0.37.1
