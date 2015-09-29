@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.2.5"
+  s.version          = "0.3.0"
   s.summary          = "Coherence"
   s.description      = <<-DESC
 
@@ -52,5 +52,5 @@ Pod::Spec.new do |s|
 
 
 
-  s.dependency 'TraceLog', ">=0.2.0"
+  s.dependency 'TraceLog', "~>0.2"
 end

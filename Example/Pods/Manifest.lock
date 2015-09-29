@@ -1,35 +1,35 @@
 PODS:
-  - Coherence (0.2.5):
-    - Coherence/Cache (= 0.2.5)
-    - Coherence/Configuration (= 0.2.5)
-    - Coherence/Module (= 0.2.5)
-    - Coherence/Utility (= 0.2.5)
-    - TraceLog (>= 0.2.0)
-  - Coherence/Cache (0.2.5):
-    - Coherence/Cache/Internal (= 0.2.5)
-    - TraceLog (>= 0.2.0)
-  - Coherence/Cache/Internal (0.2.5):
-    - TraceLog (>= 0.2.0)
-  - Coherence/Configuration (0.2.5):
+  - Coherence (0.3.0):
+    - Coherence/Cache (= 0.3.0)
+    - Coherence/Configuration (= 0.3.0)
+    - Coherence/Module (= 0.3.0)
+    - Coherence/Utility (= 0.3.0)
+    - TraceLog (~> 0.2)
+  - Coherence/Cache (0.3.0):
+    - Coherence/Cache/Internal (= 0.3.0)
+    - TraceLog (~> 0.2)
+  - Coherence/Cache/Internal (0.3.0):
+    - TraceLog (~> 0.2)
+  - Coherence/Configuration (0.3.0):
     - Coherence/Utility
-    - TraceLog (>= 0.2.0)
-  - Coherence/Module (0.2.5):
-    - TraceLog (>= 0.2.0)
-  - Coherence/Utility (0.2.5):
-    - TraceLog (>= 0.2.0)
-  - TraceLog (0.2.0):
-    - TraceLog/Internal (= 0.2.0)
-  - TraceLog/Internal (0.2.0)
+    - TraceLog (~> 0.2)
+  - Coherence/Module (0.3.0):
+    - TraceLog (~> 0.2)
+  - Coherence/Utility (0.3.0):
+    - TraceLog (~> 0.2)
+  - TraceLog (0.3.0):
+    - TraceLog/Internal (= 0.3.0)
+  - TraceLog/Internal (0.3.0)
 
 DEPENDENCIES:
   - Coherence (from `../`)
 
 EXTERNAL SOURCES:
   Coherence:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: 9805afc398fc8a2a8635da2f5c4c2817a16c95c3
-  TraceLog: 81d5f9e531fd402a08794ad52718dea1a40240f1
+  Coherence: 868d86b4eedd3b45bf78c2852501ed23e11f6bd1
+  TraceLog: 65ee8b386d90bcd533ffecbebbe90dbadcca9ebc
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.38.2

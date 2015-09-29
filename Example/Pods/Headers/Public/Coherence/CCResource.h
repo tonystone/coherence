@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Module/CCResource.h
