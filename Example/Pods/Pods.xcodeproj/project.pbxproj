@@ -10,14 +10,12 @@
 		0503F7D4E87D8E656DF72D958AB00D6D /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BBD68431BECD8BAAAC8468443914F7 /* Pods-Tests-dummy.m */; };
 		0A6096E25741F204219847C1C651D26C /* CCResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 0716894531DA327F736ADA6844613ABF /* CCResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E9AAB697D7EDB8A29D66C3F490236E4 /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA5481A8D5715E66CFBC0F64B6C06487 /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		203BEAA889C9085FE891AD65A291B76F /* CCTypeTransformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFC344CBA60A26398BDA5F8FC5963F /* CCTypeTransformation.m */; };
 		28054ED287AA41A819E888EBA4C12AE1 /* CCMetaLogEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = A281690F6681154FAFC70586BECDC97C /* CCMetaLogEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		377F266317BE0A5D56ACC4CA97ED8904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E7AF8580A3274CB44E7103B282FB9 /* Foundation.framework */; };
 		3C5D27824A73142D84C5FBEDD9EE81F7 /* Coherence.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BDAF0CF971B222DE41C33912D532866 /* Coherence.bundle */; };
 		3E806CD742D92D78CF87F0BB8DE7B799 /* CCPersistentStoreCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6024E9A53AD01B72532F69ACC7A75C7C /* CCPersistentStoreCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40836B4C08F5CC7E67B24A458248412C /* NSString+CapitalizeFirstLetter.h in Headers */ = {isa = PBXBuildFile; fileRef = C2815EFE26F5176076F9E74874D11D06 /* NSString+CapitalizeFirstLetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4261752A116B0ECAEFB9390B99AE7CE8 /* NSManagedObjectModel+UniqueIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B721C3C64E53DB809BE4BFD8CDD4E6B /* NSManagedObjectModel+UniqueIdentity.m */; };
-		4D3DA58A6DAD3B50F56391DFC601BEE8 /* CCTypeTransformation.h in Headers */ = {isa = PBXBuildFile; fileRef = 502CC93518BBC2AB7B45D9187A9CE637 /* CCTypeTransformation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		532BBEDB690E734F0822D4418C0174D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E7AF8580A3274CB44E7103B282FB9 /* Foundation.framework */; };
 		54E60AD8337CD405E348DF3799D74FD9 /* TraceLog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D35D71F374AC90F41C0BE77DE97B2 /* TraceLog.bundle */; };
 		596C9E9CA2716CD3A329404E8F76402F /* CCResourceService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A70C469CAD7C70FF839463DB1B7EEDF /* CCResourceService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -127,7 +125,6 @@
 		4A9775D06D1BD2D57456C00327C5F5D1 /* CCManagedObjectContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCManagedObjectContext.h; sourceTree = "<group>"; };
 		4D47DCA2896AEBE6D0B1766723803104 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
 		4E1965D166E1EF870BC16A6F2F2C3B3F /* Pods-Coherence-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Coherence-acknowledgements.plist"; sourceTree = "<group>"; };
-		502CC93518BBC2AB7B45D9187A9CE637 /* CCTypeTransformation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCTypeTransformation.h; sourceTree = "<group>"; };
 		54F46A88F2FEFD75FD41AD659F77CA9A /* Pods-Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-umbrella.h"; sourceTree = "<group>"; };
 		551566AA7420CB890BDF5318C7FB1DB9 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8A0319E47AB363349D0D751239787A /* NSManagedObjectModel+UniqueIdentity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+UniqueIdentity.h"; sourceTree = "<group>"; };
@@ -140,7 +137,6 @@
 		6AA076BFF04B827CCED3DFD48E132070 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BEEB106F8E69A1A1B02CCAACB5380FE /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = Pod/Classes/TraceLog.h; sourceTree = "<group>"; };
 		6F27994A26276B630559B1335E31F88C /* TraceLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TraceLog.xcconfig; sourceTree = "<group>"; };
-		6FDFC344CBA60A26398BDA5F8FC5963F /* CCTypeTransformation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CCTypeTransformation.m; sourceTree = "<group>"; };
 		7BDAF0CF971B222DE41C33912D532866 /* Coherence.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Coherence.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		859737C34E805D03C3314685DE177832 /* TraceLog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-prefix.pch"; sourceTree = "<group>"; };
 		8939F1A5FF6E20EC2DD38DCF32B2AA26 /* CCManagedObjectContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CCManagedObjectContext.m; sourceTree = "<group>"; };
@@ -376,8 +372,6 @@
 				E6E27043A30A2D33C4FF300D20007639 /* CCAssert.h */,
 				4A9775D06D1BD2D57456C00327C5F5D1 /* CCManagedObjectContext.h */,
 				8939F1A5FF6E20EC2DD38DCF32B2AA26 /* CCManagedObjectContext.m */,
-				502CC93518BBC2AB7B45D9187A9CE637 /* CCTypeTransformation.h */,
-				6FDFC344CBA60A26398BDA5F8FC5963F /* CCTypeTransformation.m */,
 				B3893C1774D8C739D374F51105B5AE74 /* Meta */,
 				0CF8043AB8E281CB41D18509A44ACF10 /* Utility */,
 			);
@@ -658,7 +652,6 @@
 				3E806CD742D92D78CF87F0BB8DE7B799 /* CCPersistentStoreCoordinator.h in Headers */,
 				0A6096E25741F204219847C1C651D26C /* CCResource.h in Headers */,
 				596C9E9CA2716CD3A329404E8F76402F /* CCResourceService.h in Headers */,
-				4D3DA58A6DAD3B50F56391DFC601BEE8 /* CCTypeTransformation.h in Headers */,
 				B95C90ACE6989A68B94D6674A01134CB /* CCWriteAheadLog.h in Headers */,
 				E802D08C6E9FFC3806FF85DD6C624F00 /* Coherence-umbrella.h in Headers */,
 				EAC09EA7B23A2E8FF7D6A4C12DF70FFF /* Coherence.h in Headers */,
@@ -856,7 +849,6 @@
 				8136A949AC63E12C94C3456092B7A3E0 /* CCMetaLogEntry.m in Sources */,
 				609538B5134D8F5C3EB6EA55A459F75E /* CCMetaModel.m in Sources */,
 				914EA7522AA118E3A25B0736EB34F73C /* CCPersistentStoreCoordinator.m in Sources */,
-				203BEAA889C9085FE891AD65A291B76F /* CCTypeTransformation.m in Sources */,
 				BE84181D4F19410F290AE64CFCAEBB30 /* CCWriteAheadLog.m in Sources */,
 				FA99982F08E7A996CA48838A6899AA3A /* Coherence-dummy.m in Sources */,
 				4261752A116B0ECAEFB9390B99AE7CE8 /* NSManagedObjectModel+UniqueIdentity.m in Sources */,
