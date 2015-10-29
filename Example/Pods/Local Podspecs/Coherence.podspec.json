@@ -3,26 +3,19 @@
   "version": "0.3.0",
   "summary": "Coherence",
   "description": "",
-  "homepage": "https://www.climate.com",
-  "license": "MIT",
-  "authors": {
-    "Tony Stone": "tony@mobilegridinc.com"
-  },
+  "homepage": "https://github.com/TheClimateCorporation/coherence",
+  "license": "Apache License, Version 2.0",
+  "authors": "Tony Stone",
   "source": {
-    "git": "ssh://git@stash.ci.climatedna.net:7999/fdi/coherence-ios.git",
+    "git": "https://github.com/TheClimateCorporation/coherence.git",
     "tag": "0.3.0"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "public_header_files": "Pod/Classes/Coherence.h",
-  "source_files": "Pod/Classes/Coherence.h",
-  "resource_bundles": {
-    "Coherence": [
-      "Pod/Assets/*.png"
-    ]
-  },
+  "public_header_files": "Pod/Coherence.h",
+  "source_files": "Pod/Coherence.h",
   "dependencies": {
     "TraceLog": [
       "~>0.2"
@@ -31,21 +24,19 @@
   "subspecs": [
     {
       "name": "Cache",
-      "source_files": "Pod/Classes/Cache/*",
-      "subspecs": [
-        {
-          "name": "Internal",
-          "source_files": "Pod/Classes/Cache/Internal/**/*"
-        }
-      ]
+      "source_files": [
+        "Pod/Cache/*",
+        "Pod/Cache/Internal/**/*"
+      ],
+      "public_header_files": "Pod/Cache/*.h"
     },
     {
       "name": "Utility",
-      "source_files": "Pod/Classes/Utility/*"
+      "source_files": "Pod/Utility/*"
     },
     {
       "name": "Configuration",
-      "source_files": "Pod/Classes/Configuration/*",
+      "source_files": "Pod/Configuration/*",
       "dependencies": {
         "Coherence/Utility": [
 
@@ -54,7 +45,7 @@
     },
     {
       "name": "Module",
-      "source_files": "Pod/Classes/Module/*"
+      "source_files": "Pod/Module/*"
     }
   ]
 }

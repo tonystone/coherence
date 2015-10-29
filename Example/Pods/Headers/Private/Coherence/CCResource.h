@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Module/CCResource.h
+../../../../../Pod/Module/CCResource.h

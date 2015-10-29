@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Cache/CCPersistentStoreCoordinator.h
+../../../../../Pod/Cache/CCPersistentStoreCoordinator.h

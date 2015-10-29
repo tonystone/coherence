@@ -22,32 +22,26 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.public_header_files = 'Pod/Classes/Coherence.h'
-  s.source_files = 'Pod/Classes/Coherence.h'
-  s.resource_bundles = {
-    'Coherence' => ['Pod/Assets/*.png']
-  }
+  s.public_header_files = 'Pod/Coherence.h'
+  s.source_files = 'Pod/Coherence.h'
 
   s.subspec 'Cache' do |sp|
-     sp.source_files = 'Pod/Classes/Cache/*'
-
-     sp.subspec 'Internal' do |sp|
-        sp.source_files = 'Pod/Classes/Cache/Internal/**/*'
-     end
+     sp.source_files = 'Pod/Cache/*','Pod/Cache/Internal/**/*'
+     sp.public_header_files = 'Pod/Cache/*.h'
   end
 
   s.subspec 'Utility' do |sp|
-    sp.source_files = 'Pod/Classes/Utility/*'
+    sp.source_files = 'Pod/Utility/*'
   end
 
   s.subspec 'Configuration' do |sp|
-    sp.source_files = 'Pod/Classes/Configuration/*'
+    sp.source_files = 'Pod/Configuration/*'
 
     sp.dependency 'Coherence/Utility'
   end
 
   s.subspec 'Module' do |sp|
-    sp.source_files = 'Pod/Classes/Module/*'
+    sp.source_files = 'Pod/Module/*'
   end
 
   s.dependency 'TraceLog', "~>0.2"

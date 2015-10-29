@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Module/CCModule.h
+../../../../../Pod/Module/CCModule.h
