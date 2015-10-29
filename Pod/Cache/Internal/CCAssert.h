@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   CCAssert.h
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -18,14 +18,10 @@
  *
  *   Created by Tony Stone on 4/30/15.
  */
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#ifndef CC_ASSERT_H
+#define CC_ASSERT_H
 
+#define AssertIsMainThread()  NSAssert([NSThread isMainThread], @"%@ must be executed on the main thread", NSStringFromSelector(_cmd))
+#define AssertIsNotMainThreadIfCondition(condition)  NSAssert(((condition) ? ![NSThread isMainThread] : true), @"%@ can not be executed on the thread when %s is true.", NSStringFromSelector(_cmd), #condition)
 
-@interface CCField : NSManagedObject
-
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
-
-
-@end
+#endif // CC_ASSERT_H

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Module/CCResourceService.h
+../../../../../Pod/Module/CCResourceService.h

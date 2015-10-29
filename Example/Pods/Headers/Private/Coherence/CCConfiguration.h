@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Configuration/CCConfiguration.h
+../../../../../Pod/Configuration/CCConfiguration.h

@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   NSString+CapitalizeFirstLetter.h
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -16,16 +16,11 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 4/30/15.
+ *   Created by Tony Stone on 6/30/15.
  */
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
+@interface NSString (CapitalizeFirstLetter)
 
-@interface CCField : NSManagedObject
-
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
-
-
+    - (NSString *) stringWithCapitalizedFirstLetter;
 @end

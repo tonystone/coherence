@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   NSString+CapitalizeFirstLetter.m
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -16,16 +16,19 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 4/30/15.
+ *   Created by Tony Stone on 6/30/15.
  */
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "NSString+CapitalizeFirstLetter.h"
 
 
-@interface CCField : NSManagedObject
+@implementation NSString (CapitalizeFirstLetter)
 
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
 
+    - (NSString *)stringWithCapitalizedFirstLetter {
+        if (self.length > 0) {
+            return [self stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[self substringToIndex:1] capitalizedString]];
+        }
+        return nil;
+    }
 
 @end

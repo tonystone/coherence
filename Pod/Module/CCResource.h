@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   CCResource.h
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -16,16 +16,21 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 4/30/15.
+ *   Created by Tony Stone on 5/4/15.
  */
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
 
-@interface CCField : NSManagedObject
+typedef enum {
+    CCJSONType_INSERT,
+    CCJSONType_UPDATE,
+    CCJSONType_FULL
+} CCJSONType;
 
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
+@protocol CCResource <NSObject>
 
+    + (id <CCResource>) resourceWithJSONDictionary: (NSDictionary *) jsonDictionary;
+
+    - (NSDictionary *) toJSONDictionary: (CCJSONType) type;
 
 @end

@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   Coherence.h
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -18,14 +18,24 @@
  *
  *   Created by Tony Stone on 4/30/15.
  */
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#ifndef Pods_Coherence_h
+#define Pods_Coherence_h
 
+/** @name Public Headers
+*
+* Please review the following header files for full
+* documentation for the usage of this module.
+*
+* */
+///@{
+#import "CCModule.h"
+#import "CCResource.h"
+#import "CCResourceService.h"
 
-@interface CCField : NSManagedObject
+#import "CCConfiguration.h"
 
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
+#import "CCCache.h"
+#import "CCPersistentStoreCoordinator.h"
+///@}
 
-
-@end
+#endif

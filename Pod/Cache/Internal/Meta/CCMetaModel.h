@@ -1,5 +1,5 @@
 /**
- *   CCField.h
+ *   CCMetaModel.h
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -21,11 +21,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@interface CCMetaModel : NSObject
 
-@interface CCField : NSManagedObject
-
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * name;
-
-
+    + (NSManagedObjectModel *) managedObjectModel;
 @end

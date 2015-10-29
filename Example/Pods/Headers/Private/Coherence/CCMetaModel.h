@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Cache/Internal/Meta/CCMetaModel.h
+../../../../../Pod/Cache/Internal/Meta/CCMetaModel.h
