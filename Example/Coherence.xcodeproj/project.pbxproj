@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D093AADE82CD49B11EFAED2 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FD099FDD07012284BA1866 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2D093AADE82CD49B11EFAED2 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FD099FDD07012284BA1866 /* Pods_Tests.framework */; };
 		366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */; };
 		366988DEB58C33A2A7FF7809 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -24,10 +24,11 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		809FA4F18E51EDCAD8DBC2FA /* Pods_Coherence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04D81EA2D413B2846E9BCDC /* Pods_Coherence.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		809FA4F18E51EDCAD8DBC2FA /* Pods_Coherence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04D81EA2D413B2846E9BCDC /* Pods_Coherence.framework */; };
 		EA02896A1AF32FC600200848 /* CCField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0289691AF32FC600200848 /* CCField.m */; };
 		EA02896D1AF32FC700200848 /* CCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EA02896C1AF32FC700200848 /* CCUser.m */; };
 		EA1A9F551AF2F62800DF4936 /* CCCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB4DAC13D5CFB5B0CC9 /* CCCacheTests.m */; };
+		EAEF7E4C1C1B428B00CCEE54 /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF7E4B1C1B428B00CCEE54 /* WriteAheadLogTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		EA0289691AF32FC600200848 /* CCField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCField.m; path = "Test Data/Model/CCField.m"; sourceTree = "<group>"; };
 		EA02896B1AF32FC700200848 /* CCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCUser.h; path = "Test Data/Model/CCUser.h"; sourceTree = "<group>"; };
 		EA02896C1AF32FC700200848 /* CCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCUser.m; path = "Test Data/Model/CCUser.m"; sourceTree = "<group>"; };
+		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
+		EAEF7E4B1C1B428B00CCEE54 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		F604A332A03EF7A69FDDB726 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Coherence.podspec; path = ../Coherence.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +125,7 @@
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Coherence */,
 				6003F5B5195388D20070C39A /* Tests */,
+				EA5FD52A1C1A5918002A7B8A /* Playground */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				1C088FB0F843602FC9E75328 /* Pods */,
@@ -179,10 +183,11 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EA0289631AF32EB800200848 /* Test Data */,
-				6003F5B6195388D20070C39A /* Supporting Files */,
+				EAEF7E4B1C1B428B00CCEE54 /* WriteAheadLogTests.swift */,
 				36698FB4DAC13D5CFB5B0CC9 /* CCCacheTests.m */,
 				36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */,
+				EA0289631AF32EB800200848 /* Test Data */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -225,6 +230,14 @@
 				36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		EA5FD52A1C1A5918002A7B8A /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				EA5FD52B1C1A598D002A7B8A /* Coherence.playground */,
+			);
+			name = Playground;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +291,8 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CC;
-				LastUpgradeCheck = 0510;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
@@ -439,6 +453,7 @@
 				EA02896A1AF32FC600200848 /* CCField.m in Sources */,
 				EA1A9F551AF2F62800DF4936 /* CCCacheTests.m in Sources */,
 				366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */,
+				EAEF7E4C1C1B428B00CCEE54 /* WriteAheadLogTests.swift in Sources */,
 				366988DEB58C33A2A7FF7809 /* CCConfigurationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +522,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -567,9 +583,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -584,6 +602,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -594,6 +613,7 @@
 			baseConfigurationReference = F604A332A03EF7A69FDDB726 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Coherence.app/Coherence";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -606,7 +626,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -617,6 +640,7 @@
 			baseConfigurationReference = 3AB2779859654ACA1535649C /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Coherence.app/Coherence";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -625,6 +649,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

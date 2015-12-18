@@ -1,7 +1,7 @@
+
 /**
- *   CCMetaModel.h
+ *   TLConsoleWriter.m
  *
- *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,16 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 4/30/15.
+ *   Created by Tony Stone on 11/13/15.
  */
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "TLConsoleWriter.h"
+#import "TLLogLevel.h"
 
-@interface CCMetaModel : NSObject
+@implementation TLConsoleWriter
 
-    + (NSManagedObjectModel *) managedObjectModel;
+    - (void) log: (NSTimeInterval) timestamp level: (LogLevel) level tag: (nonnull const NSString *) tag message: (nullable const NSString *) message file: (nonnull const NSString *) file function: (const NSString *) function lineNumber: (NSUInteger) lineNumber {
+        
+        NSLog(@"%7s: <%@> %@", [stringForLogLevel(level) cStringUsingEncoding:NSUTF8StringEncoding], tag, message);
+    }
+
 @end

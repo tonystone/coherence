@@ -4,19 +4,26 @@ PODS:
     - Coherence/Configuration (= 0.3.0)
     - Coherence/Module (= 0.3.0)
     - Coherence/Utility (= 0.3.0)
-    - TraceLog (~> 0.2)
+    - TraceLog/ObjC (~> 0.4)
+    - TraceLog/Swift (~> 0.4)
   - Coherence/Cache (0.3.0):
-    - TraceLog (~> 0.2)
+    - TraceLog/ObjC (~> 0.4)
+    - TraceLog/Swift (~> 0.4)
   - Coherence/Configuration (0.3.0):
     - Coherence/Utility
-    - TraceLog (~> 0.2)
+    - TraceLog/ObjC (~> 0.4)
+    - TraceLog/Swift (~> 0.4)
   - Coherence/Module (0.3.0):
-    - TraceLog (~> 0.2)
+    - TraceLog/ObjC (~> 0.4)
+    - TraceLog/Swift (~> 0.4)
   - Coherence/Utility (0.3.0):
-    - TraceLog (~> 0.2)
-  - TraceLog (0.3.0):
-    - TraceLog/Internal (= 0.3.0)
-  - TraceLog/Internal (0.3.0)
+    - TraceLog/ObjC (~> 0.4)
+    - TraceLog/Swift (~> 0.4)
+  - TraceLog/Core (0.4.5)
+  - TraceLog/ObjC (0.4.5):
+    - TraceLog/Core
+  - TraceLog/Swift (0.4.5):
+    - TraceLog/Core
 
 DEPENDENCIES:
   - Coherence (from `../`)
@@ -26,7 +33,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: cb21a9feda1871549b1ee760c20a443bd8f4c702
-  TraceLog: 65ee8b386d90bcd533ffecbebbe90dbadcca9ebc
+  Coherence: 5de167ca9066d400e253e9867721a6305d4ebe9a
+  TraceLog: 5142132741f8e70dc3ae5aef61657dd4e6d55bb0
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

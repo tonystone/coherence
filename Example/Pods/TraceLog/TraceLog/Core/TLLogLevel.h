@@ -1,7 +1,6 @@
 /**
- *   CCPersistentStoreCoordinator.h
+ *   TLLogLevel.h
  *
- *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +15,21 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 5/21/15.
+ *   Created by Tony Stone on 11/13/15.
  */
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
-@interface CCPersistentStoreCoordinator : NSPersistentStoreCoordinator
+typedef NS_ENUM(NSInteger, LogLevel) {
+    LogLevelInvalid = -1,
+    LogLevelOff     = 0,
+    LogLevelError   = 1,
+    LogLevelWarning = 2,
+    LogLevelInfo    = 3,
+    LogLevelTrace1  = 4,
+    LogLevelTrace2  = 5,
+    LogLevelTrace3  = 6,
+    LogLevelTrace4  = 7
+};
 
-@end
+LogLevel logLevelForString(NSString * logLevelString);
+NSString * stringForLogLevel(LogLevel logLevel);

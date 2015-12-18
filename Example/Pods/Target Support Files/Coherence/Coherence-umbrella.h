@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 
 #import "Coherence.h"
-#import "CCCache.h"
-#import "CCPersistentStoreCoordinator.h"
+#import "CCAssert.h"
+#import "CCManagedObjectContext.h"
 #import "CCConfiguration.h"
 #import "CCModule.h"
 #import "CCResource.h"

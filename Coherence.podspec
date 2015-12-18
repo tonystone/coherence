@@ -44,5 +44,6 @@ Pod::Spec.new do |s|
     sp.source_files = 'Pod/Module/*'
   end
 
-  s.dependency 'TraceLog', "~>0.2"
+  s.dependency 'TraceLog/ObjC', "~>0.4"
+  s.dependency 'TraceLog/Swift', "~>0.4"
 end

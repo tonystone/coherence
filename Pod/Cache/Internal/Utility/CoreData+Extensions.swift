@@ -1,7 +1,6 @@
 /**
- *   NSManagedObjectModel+UniqueIdentity.m
+ *   NSManagedObjectModel+Extensions.swift
  *
- *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,27 +15,23 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 5/22/15.
+ *   Created by Tony Stone on 12/8/15.
  */
-#import "NSManagedObjectModel+UniqueIdentity.h"
+import Foundation
+import CoreData
 
-@implementation NSManagedObjectModel (UniqueIdentity)
-
-    - (NSString *)uniqueIdentifier {
+internal extension NSManagedObjectModel {
+    
+    internal func uniqueIdentifier() -> String {
         //
         // Calculate the hash of the Models entityVersionHashes
         //
-        NSUInteger hash        = 0;
-        NSArray * entityHashes = [[self entityVersionHashesByName] allValues];
-
-        if ([entityHashes count] > 0) {
-            hash = [entityHashes[0] hash];
-
-            for (int i = 1; i < [entityHashes count]; i++) {
-                hash = hash * 31u + [entityHashes[i] hash];
-            }
+        var hash = 0;
+        
+        for entityHash in self.entityVersionHashesByName.values {
+            hash = 31 &* hash &+ entityHash.hash;
         }
-        return [NSString stringWithFormat: @"%lu", (unsigned long) hash];
+        return String(hash);
     }
-
-@end
+    
+}

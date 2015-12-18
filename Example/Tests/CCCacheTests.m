@@ -19,8 +19,8 @@
  *   Created by Tony Stone on 4/30/15.
  */
 #import <XCTest/XCTest.h>
-#import <Coherence/Coherence.h>
 #import "CCUser.h"
+@import Coherence;
 
 static NSString * const kFirstName = @"First";
 static NSString * const kLastName  = @"Last";
@@ -30,7 +30,7 @@ static NSString * const kUserName = @"First Last";
 @end
 
 @implementation CCCacheTests {
-        CCCache *cache;
+        Cache * cache;
     }
 
     - (void)setUp {
@@ -41,13 +41,14 @@ static NSString * const kUserName = @"First Last";
         
         NSURL *                dataCacheModelURL = [bundle URLForResource: @"TestModel" withExtension: @"momd"];
         NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
-        
-        cache = [[CCCache alloc] initWithManagedObjectModel: model];
+
+        cache = [[Cache alloc] initWithManagedObjectModel: model persistentStoreOptions: nil];
     }
 
     - (void)tearDown {
 
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        cache = nil;
+        
         [super tearDown];
     }
 
@@ -74,6 +75,8 @@ static NSString * const kUserName = @"First Last";
             userId = [insertedUser objectID];
         }]);
 
+        [mainThreadContext save: nil];
+        
         CCUser __block * savedUser = nil;
         
         [mainThreadContext performBlockAndWait:^{
@@ -81,9 +84,9 @@ static NSString * const kUserName = @"First Last";
         }];
 
         XCTAssertNotNil(savedUser);
-        XCTAssertEqual([savedUser firstName], kFirstName);
-        XCTAssertEqual([savedUser lastName],  kLastName);
-        XCTAssertEqual([savedUser userName],  kUserName);
+        XCTAssertTrue([[savedUser firstName] isEqualToString: kFirstName]);
+        XCTAssertTrue([[savedUser lastName] isEqualToString: kLastName]);
+        XCTAssertTrue([[savedUser userName] isEqualToString: kUserName]);
     }
 
 @end

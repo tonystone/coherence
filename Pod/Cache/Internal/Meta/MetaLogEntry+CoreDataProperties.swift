@@ -1,7 +1,6 @@
 /**
- *   NSManagedObjectModel+UniqueIdentity.h
+ *   MetaLogEntry+CoreDataProperties.swift
  *
- *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +15,21 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 5/22/15.
+ *   Created by Tony Stone on 12/10/15.
  */
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+import Foundation
+import CoreData
 
-@interface NSManagedObjectModel (UniqueIdentity)
-    - (NSString *)uniqueIdentifier;
-@end
+extension MetaLogEntry {
+
+    @NSManaged var sequenceNumber: Int32
+    @NSManaged var previousSequenceNumber: Int32
+    @NSManaged var transactionID: TransactionID?
+    @NSManaged var timestamp: NSTimeInterval
+    @NSManaged var type: MetaLogEntryType
+    @NSManaged var updateEntityName: String?
+    @NSManaged var updateObjectID: String?
+    @NSManaged var updateUniqueID: String?
+    @NSManaged var updateData: LogEntryUpdateData?
+
+}

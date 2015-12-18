@@ -1,1 +1,1 @@
-../../../TraceLog/Pod/Classes/TraceLog.h
+../../../TraceLog/TraceLog/ObjC/TraceLog.h
