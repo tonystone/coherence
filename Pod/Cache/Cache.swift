@@ -23,7 +23,7 @@ import TraceLog
 
 public final class Cache : NSObject {
 
-    private typealias CoreDataStackType = CoreDataStack<Cache,PersistentStoreCoordinator, NSManagedObjectContext>
+    private typealias CoreDataStackType = CoreDataStack<Cache,NSPersistentStoreCoordinator, NSManagedObjectContext>
     
     private let coreDataStack: CoreDataStackType!   // Note: this is protected with a guard in the designated init method
     
@@ -52,10 +52,27 @@ public final class Cache : NSObject {
         self.init(managedObjectModel: model, persistentStoreOptions: [NSPersistentStoreFileProtectionKey : NSFileProtectionComplete], migrationManager: migrationManager)
     }
     
+    /**
+     Initializes the receiver with a managed object model and uses the migration manager to migrate the store.
+     
+     - Parameter managedObjectModel: A managed object model.
+     - Parameter options: persistentStore options
+     
+     - Returns: The receiver, initialized with model.
+     */
     public convenience init?(managedObjectModel model: NSManagedObjectModel, persistentStoreOptions options: [NSObject : AnyObject]?) {
         self.init(managedObjectModel: model, persistentStoreOptions: options, migrationManager: nil)
     }
     
+    /**
+     Initializes the receiver with a managed object model and uses the migration manager to migrate the store.
+     
+     - Parameter managedObjectModel: A managed object model.
+     - Parameter migrationManager: An instande of NSMigrationManager.
+     - Parameter options: persistentStore options
+     
+     - Returns: The receiver, initialized with model.
+     */
     public init?(managedObjectModel model: NSManagedObjectModel, persistentStoreOptions options: [NSObject : AnyObject]?, migrationManager: NSMigrationManager? = nil) {
         
         logInfo { "Initializing instance..." }
