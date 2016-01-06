@@ -20,7 +20,7 @@
 import Foundation
 import CoreData
 
-extension MetaLogEntry {
+internal extension MetaLogEntry {
 
     @NSManaged var sequenceNumber: Int32
     @NSManaged var previousSequenceNumber: Int32
