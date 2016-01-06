@@ -20,9 +20,9 @@
 import Foundation
 import CoreData
 
-typealias TransactionID = String
+internal typealias TransactionID = String
 
-@objc enum MetaLogEntryType: Int32 {
+@objc internal enum MetaLogEntryType: Int32 {
     case BeginMarker = 1
     case EndMarker   = 2
     case Insert      = 3
@@ -30,7 +30,7 @@ typealias TransactionID = String
     case Delete      = 5
 }
 
-@objc(MetaLogEntry) class MetaLogEntry: NSManagedObject {
+@objc(MetaLogEntry) internal class MetaLogEntry: NSManagedObject {
 
     class LogEntryUpdateData : NSObject, NSCoding  {
         required convenience init?(coder aDecoder: NSCoder) {
