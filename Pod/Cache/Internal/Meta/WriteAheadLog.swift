@@ -33,9 +33,9 @@ internal let persistentStoreType = NSSQLiteStoreType
 internal let sqliteFileExts      = ["sqlite", "sqlite-shm", "sqlite-wal"]
 internal let metaModel           = MetaModel()
 
-internal class WriteAheadLog : NSObject {
+internal class WriteAheadLog {
 
-    private typealias CoreDataStackType = CoreDataStack<WriteAheadLog, NSPersistentStoreCoordinator, NSManagedObjectContext>
+    private typealias CoreDataStackType = GenericCoreDataStack<WriteAheadLog, NSPersistentStoreCoordinator, NSManagedObjectContext>
     
     private let coreDataStack: CoreDataStackType!
     
@@ -47,9 +47,7 @@ internal class WriteAheadLog : NSObject {
             "Initializing instance..."
         }
         
-        coreDataStack = CoreDataStackType(namingPrefix: "meta", managedObjectModel: metaModel)
-        
-        super.init()
+        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, namingPrefix: "meta")
         
         guard coreDataStack != nil else {
             return nil
@@ -88,7 +86,7 @@ internal class WriteAheadLog : NSObject {
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sequenceNumber", ascending:false)]
         
-        if let lastLogRecord = try (metadataContext.executeFetchRequest(fetchRequest).last) as? MetaLogEntry {
+        if let lastLogRecord = try (metadataContext().executeFetchRequest(fetchRequest).last) as? MetaLogEntry {
             
             return Int(lastLogRecord.sequenceNumber)
         }
@@ -131,7 +129,7 @@ internal class WriteAheadLog : NSObject {
         var transactionID: TransactionID? = nil
         var writeError: NSError? = nil
         
-        let metadataContext = coreDataStack.editContext
+        let metadataContext = coreDataStack.editContext()
         
         metadataContext.performBlockAndWait {
 

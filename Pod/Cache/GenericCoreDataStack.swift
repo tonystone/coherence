@@ -1,8 +1,8 @@
 //
-//  CoreDataStack.swift
+//  GenericCoreDataStack.swift
 //  Pods
 //
-//  Created by Tony Stone on 12/14/15.
+//  Created by Tony Stone on 1/6/16.
 //
 //
 
@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 import TraceLog
 
-
-typealias ConfigurationOptionsType = [String : (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)]
+public typealias ConfigurationOptionsType = [String : (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)]
 
 internal let defaultModelConfigurationName: String = "Default"
 
@@ -22,42 +21,27 @@ internal let storeOptionsDefault: [NSObject : AnyObject] = [
     NSPersistentStoreFileProtectionKey              : NSFileProtectionComplete
 ]
 
-internal let configurationOptionsDefault: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: nil, migrationManager: nil)]
+public let configurationOptionsDefault: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: nil, migrationManager: nil)]
 
-internal class CoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> : NSObject {
-
+public class GenericCoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
+    
     private let managedObjectModel: NSManagedObjectModel
     private let persistentStoreCoordinator: CoordinatorType
     private let tag = String(OwnerType)
-
+    
     // We allow access to the mainThreadContext
-    internal let mainThreadContext: ContextType
-
-    internal var editContext: ContextType {
-        get {
-            logInfo(tag) { "Creating edit context for \(NSThread .currentThread())..." }
-
-            let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            context.parentContext = self.mainThreadContext
-
-            logInfo(tag) { "Edit context created." }
-
-            return context
-        }
-    }
-
-    internal init?(namingPrefix: String, managedObjectModel model: NSManagedObjectModel, configurationOptions: ConfigurationOptionsType = configurationOptionsDefault) {
+    private let mainContext: ContextType
+    
+    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions: ConfigurationOptionsType = configurationOptionsDefault, namingPrefix: String = "cache") {
         
         managedObjectModel = model;
         
         // Create the coordinator
         persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
-
+        
         // Now the main thread context
-        mainThreadContext = ContextType(concurrencyType: .MainQueueConcurrencyType)
-        mainThreadContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-
-        super.init()
+        mainContext = ContextType(concurrencyType: .MainQueueConcurrencyType)
+        mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
         
         do {
             //
@@ -87,7 +71,7 @@ internal class CoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordi
                     if configuration != defaultModelConfigurationName {
                         
                         let storeURL = cachesURL.URLByAppendingPathComponent("\(namingPrefix)\(managedObjectModel.uniqueIdentifier())\(configuration).sqlite")
-        
+                        
                         if let (storeType, storeOptions, migrationManager) = configurationOptions[configuration] {
                             try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         } else {
@@ -106,8 +90,24 @@ internal class CoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordi
         }
     }
     
+    public func mainThreadContext () -> NSManagedObjectContext {
+        return mainContext
+    }
+    
+    public func editContext () -> NSManagedObjectContext {
+        
+        logInfo(tag) { "Creating edit context for \(NSThread .currentThread())..." }
+        
+        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        context.parentContext = mainContext
+        
+        logInfo(tag) { "Edit context created." }
+        
+        return context
+    }
+    
     private func addPersistentStore(storeType: String, configuration: String?, URL storeURL: NSURL, options: [NSObject : AnyObject]?, migrationManger migrator: NSMigrationManager?) throws {
-
+        
         do {
             //
             // If a migration manager was supplied, try a migration first.
@@ -131,16 +131,16 @@ internal class CoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordi
             }
             
         } catch let error as NSError where [NSMigrationError,
-                                            NSMigrationConstraintViolationError,
-                                            NSMigrationCancelledError,
-                                            NSMigrationMissingSourceModelError,
-                                            NSMigrationMissingMappingModelError,
-                                            NSMigrationManagerSourceStoreError,
-                                            NSMigrationManagerDestinationStoreError].contains(error.code) {
-                                                
-            logError { "Migration failed due to error: \(error.localizedDescription)" }
-                                                
-            throw error
+            NSMigrationConstraintViolationError,
+            NSMigrationCancelledError,
+            NSMigrationMissingSourceModelError,
+            NSMigrationMissingMappingModelError,
+            NSMigrationManagerSourceStoreError,
+            NSMigrationManagerDestinationStoreError].contains(error.code) {
+                
+                logError { "Migration failed due to error: \(error.localizedDescription)" }
+                
+                throw error
         } catch let error as NSError {
             logError { "Failed to attached persistent store: \(error.localizedDescription)" }
             throw error
