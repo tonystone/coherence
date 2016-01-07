@@ -81,9 +81,9 @@ let intReadonlyTestValue: Int           = 1
     var intPropertyReadonly: Int  { get }
 }
 
-class TestSubClassConfigurationClass : CCConfiguration {
+class TestSubClassConfigurationClass : Configuration {
 
-    override func defaults () -> [NSObject : AnyObject] {
+    override class func defaults () -> [String : AnyObject] {
         return ["stringPropertyReadonly" : stringReadonlyTestValue, "intPropertyReadonly": intReadonlyTestValue]
     }
 }
@@ -92,12 +92,12 @@ class ConfigurationTests : XCTestCase {
 
     func testPureProtocolConfigurationConstruction () {
 
-        XCTAssertNotNil(CCConfiguration.configurationForProtocol(TestPureProtocolConfiguration.self))
+        XCTAssertNotNil(Configuration.configurationForProtocol(TestPureProtocolConfiguration.self))
     }
 
     func testPureProtocolConfigurationCRUD () {
         
-        let configuration = CCConfiguration.configurationForProtocol(TestPureProtocolConfiguration.self) as! TestPureProtocolConfiguration
+        let configuration = Configuration.configurationForProtocol(TestPureProtocolConfiguration.self) as! TestPureProtocolConfiguration
 
         // Note all values are filled with the values from the info.plist
 //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)

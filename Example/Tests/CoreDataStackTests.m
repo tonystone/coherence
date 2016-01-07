@@ -1,5 +1,5 @@
 /**
- *   CCCacheTests.m
+ *   CoreDataStackTests.m
  *
  *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
@@ -19,18 +19,20 @@
  *   Created by Tony Stone on 4/30/15.
  */
 #import <XCTest/XCTest.h>
-#import "CCUser.h"
+
+#import "Tests-Swift.h"
+@import CoreData;
 @import Coherence;
 
 static NSString * const kFirstName = @"First";
 static NSString * const kLastName  = @"Last";
 static NSString * const kUserName = @"First Last";
 
-@interface CCCacheTests : XCTestCase
+@interface CoreDataStackTests : XCTestCase
 @end
 
-@implementation CCCacheTests {
-        Cache * cache;
+@implementation CoreDataStackTests {
+        CoreDataStack * coreDataStack;
     }
 
     - (void)setUp {
@@ -42,29 +44,29 @@ static NSString * const kUserName = @"First Last";
         NSURL *                dataCacheModelURL = [bundle URLForResource: @"TestModel" withExtension: @"momd"];
         NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
 
-        cache = [[Cache alloc] initWithManagedObjectModel: model persistentStoreOptions: nil];
+        coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model];
     }
 
     - (void)tearDown {
 
-        cache = nil;
+        coreDataStack = nil;
         
         [super tearDown];
     }
 
     - (void)testConstruction {
         
-        XCTAssertNotNil(cache);
+        XCTAssertNotNil(coreDataStack);
     }
 
     - (void) testCRUD {
-        NSManagedObjectContext * editContext       = [cache editContext];
-        NSManagedObjectContext * mainThreadContext = [cache mainThreadContext];
+        NSManagedObjectContext * editContext       = [coreDataStack editContext];
+        NSManagedObjectContext * mainThreadContext = [coreDataStack mainThreadContext];
 
         NSManagedObjectID __block * userId = nil;
 
         XCTAssertNoThrow([editContext performBlockAndWait:^{
-            CCUser *insertedUser = [NSEntityDescription insertNewObjectForEntityForName:@"CCUser" inManagedObjectContext:editContext];
+            User *insertedUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:editContext];
             
             [insertedUser setFirstName: kFirstName];
             [insertedUser setLastName: kLastName];
@@ -77,10 +79,10 @@ static NSString * const kUserName = @"First Last";
 
         [mainThreadContext save: nil];
         
-        CCUser __block * savedUser = nil;
+        User __block * savedUser = nil;
         
         [mainThreadContext performBlockAndWait:^{
-             savedUser = (CCUser *) [mainThreadContext objectWithID: userId];
+             savedUser = (User *) [mainThreadContext objectWithID: userId];
         }];
 
         XCTAssertNotNil(savedUser);

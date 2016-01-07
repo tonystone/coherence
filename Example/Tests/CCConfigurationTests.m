@@ -18,9 +18,8 @@
  *
  *   Created by Tony Stone on 4/30/15.
  */
-#import <XCTest/XCTest.h>
-#import <Coherence/Coherence.h>
-#import "CCConfiguration.h"
+@import XCTest;
+@import Coherence;
 
 static char       charPListTestValue            = 'A';
 static BOOL       boolPListTestValue            = YES;
@@ -82,13 +81,13 @@ static int        intReadonlyTestValue     = true;
 
 @end
 
-@interface TestSubClassConfiguration : CCConfiguration <CCConfiguration>
+@interface TestSubClassConfiguration : CCConfiguration
 @end
 @implementation TestSubClassConfiguration
 
 //    @synthesize stringProperty, stringPropertyReadonly, unsignedIntegerProperty, boolProperty, doubleProperty, intReadOnlyGetter;
 
-    - (NSDictionary *) defaults {
+    + (NSDictionary * _Nonnull) defaults {
         return @{
                 @"stringPropertyReadonly": stringReadonlyTestValue,
                 @"intPropertyReadonly": @(intReadonlyTestValue)
@@ -102,8 +101,6 @@ static int        intReadonlyTestValue     = true;
 @end
 
 @implementation CCConfigurationTests
-
-
 
     - (void)testPureProtocolConfigurationConstruction {
     
