@@ -1,21 +1,22 @@
 {
   "name": "Coherence",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "summary": "Coherence",
-  "description": "",
-  "homepage": "https://github.com/TheClimateCorporation/coherence",
+  "description": "Coherence is a collection of base frameworks that help set the groundwork for module development.",
+  "homepage": "https://github.com/tonystone/coherence",
   "license": "Apache License, Version 2.0",
   "authors": "Tony Stone",
   "source": {
-    "git": "https://github.com/TheClimateCorporation/coherence.git",
-    "tag": "0.3.0"
+    "git": "https://github.com/tonystone/coherence.git",
+    "tag": "0.4.0"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "public_header_files": "Pod/Coherence.h",
-  "source_files": "Pod/Coherence.h",
+  "module_name": "Coherence",
+  "source_files": "Pod/**/*",
+  "exclude_files": "Pod/Object/CCObject.*",
   "dependencies": {
     "TraceLog/ObjC": [
       "~>0.4"
@@ -26,29 +27,9 @@
   },
   "subspecs": [
     {
-      "name": "Cache",
-      "source_files": [
-        "Pod/Cache/*",
-        "Pod/Cache/Internal/**/*"
-      ],
-      "public_header_files": "Pod/Cache/*.h"
-    },
-    {
-      "name": "Utility",
-      "source_files": "Pod/Utility/*"
-    },
-    {
-      "name": "Configuration",
-      "source_files": "Pod/Configuration/*",
-      "dependencies": {
-        "Coherence/Utility": [
-
-        ]
-      }
-    },
-    {
-      "name": "Module",
-      "source_files": "Pod/Module/*"
+      "name": "No-Arc",
+      "requires_arc": false,
+      "source_files": "Pod/Object/CCObject.*"
     }
   ]
 }
