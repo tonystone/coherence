@@ -31,6 +31,7 @@
 		EA0BFDD51C3DAD2500F24D9C /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BFDD11C3DAD2500F24D9C /* User+CoreDataProperties.swift */; };
 		EA0BFDD61C3DAD2500F24D9C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BFDD21C3DAD2500F24D9C /* User.swift */; };
 		EA1A9F551AF2F62800DF4936 /* CoreDataStackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB4DAC13D5CFB5B0CC9 /* CoreDataStackTests.m */; };
+		EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = EA4D365C1C3DF58C003DC554 /* .travis.yml */; };
 		EA62DFD11C3CC36500F7DF89 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +71,7 @@
 		EA0BFDD01C3DAD2500F24D9C /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Field.swift; path = "Test Data/Model/Field.swift"; sourceTree = "<group>"; };
 		EA0BFDD11C3DAD2500F24D9C /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Test Data/Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA0BFDD21C3DAD2500F24D9C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Test Data/Model/User.swift"; sourceTree = "<group>"; };
-		EA4D365B1C3DF463003DC554 /* travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = travis.yml; path = ../travis.yml; sourceTree = "<group>"; };
+		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
 		EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
 		F604A332A03EF7A69FDDB726 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,7 +205,7 @@
 				F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */,
 				CBF446C4B5F6CB3431A2835D /* README.md */,
 				387FD13B580E0398D458F786 /* LICENSE */,
-				EA4D365B1C3DF463003DC554 /* travis.yml */,
+				EA4D365C1C3DF58C003DC554 /* .travis.yml */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -320,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */,
 				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
