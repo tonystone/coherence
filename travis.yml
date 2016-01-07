@@ -1,0 +1,19 @@
+language: objective-c
+xcode_workspace: Example/Coherence.xcworkspace
+xcode_scheme: Coherence-Example
+osx_image: xcode7.1
+
+before_install:
+- brew install xctool
+- gem install cocoapods --quiet
+- pod --version
+- pod setup --silent
+- pod repo update --silent
+
+script:
+- travis_wait pod lib lint
+
+- xctool -workspace Example/Coherence.xcworkspace -scheme Coherence-Example -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES test
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
