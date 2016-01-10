@@ -9,40 +9,28 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "0.3.0"
+  s.version          = "0.4.0"
   s.summary          = "Coherence"
   s.description      = <<-DESC
-
+                       Coherence is a collection of base frameworks that help set the groundwork for module development.
                        DESC
-  s.homepage         = "https://github.com/TheClimateCorporation/coherence"
+  s.homepage         = "https://github.com/tonystone/coherence"
   s.license          = 'Apache License, Version 2.0'
   s.author           = "Tony Stone"
-  s.source           = { :git => "https://github.com/TheClimateCorporation/coherence.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/tonystone/coherence.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
+  s.platform      = :ios, '8.0'
+  s.requires_arc  = true
+  
+  s.module_name   = 'Coherence'
+  s.source_files  = 'Pod/**/*'
+  s.exclude_files = 'Pod/Object/CCObject.*'
 
-  s.public_header_files = 'Pod/Coherence.h'
-  s.source_files = 'Pod/Coherence.h'
-
-  s.subspec 'Cache' do |sp|
-     sp.source_files = 'Pod/Cache/*','Pod/Cache/Internal/**/*'
-     sp.public_header_files = 'Pod/Cache/*.h'
+  s.subspec 'No-Arc' do |sp|
+    sp.requires_arc = false
+    sp.source_files = 'Pod/Object/CCObject.*'
   end
 
-  s.subspec 'Utility' do |sp|
-    sp.source_files = 'Pod/Utility/*'
-  end
-
-  s.subspec 'Configuration' do |sp|
-    sp.source_files = 'Pod/Configuration/*'
-
-    sp.dependency 'Coherence/Utility'
-  end
-
-  s.subspec 'Module' do |sp|
-    sp.source_files = 'Pod/Module/*'
-  end
-
-  s.dependency 'TraceLog', "~>0.2"
+  s.dependency 'TraceLog/ObjC', "~>0.4"
+  s.dependency 'TraceLog/Swift', "~>0.4"
 end

@@ -1,0 +1,1 @@
+../../../TraceLog/TraceLog/Core/TLConsoleWriter.h
