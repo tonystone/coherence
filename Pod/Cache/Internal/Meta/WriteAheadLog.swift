@@ -35,7 +35,7 @@ internal let metaModel           = MetaModel()
 
 internal class WriteAheadLog {
 
-    private typealias CoreDataStackType = GenericCoreDataStack<WriteAheadLog, NSPersistentStoreCoordinator, NSManagedObjectContext>
+    private typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
     private let coreDataStack: CoreDataStackType!
     
@@ -47,7 +47,7 @@ internal class WriteAheadLog {
             "Initializing instance..."
         }
         
-        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, namingPrefix: "meta")
+        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, namingPrefix: "meta", logTag: String(WriteAheadLog.self))
         
         guard coreDataStack != nil else {
             return nil

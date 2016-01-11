@@ -2,6 +2,7 @@ language: objective-c
 xcode_workspace: Example/Coherence.xcworkspace
 xcode_scheme: Coherence-Example
 osx_image: xcode7.1
+sudo: true
 
 before_install:
 - brew install xctool
