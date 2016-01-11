@@ -23,18 +23,30 @@ internal let storeOptionsDefault: [NSObject : AnyObject] = [
 
 public let configurationOptionsDefault: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: nil, migrationManager: nil)]
 
-public class GenericCoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
+/**
+    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+ */
+public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
     
     private let managedObjectModel: NSManagedObjectModel
     private let persistentStoreCoordinator: CoordinatorType
-    private let tag = String(OwnerType)
+    private let tag: String
     
     // We allow access to the mainThreadContext
     private let mainContext: ContextType
     
-    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions: ConfigurationOptionsType = configurationOptionsDefault, namingPrefix: String = "cache") {
+    /**
+        Initializes the receiver with a managed object model.
+     
+        - Parameter managedObjectModel: A managed object model.
+        - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+        - namingPrefix: An optional String which is appended to the beginning of the persistent store names.
+        - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+     */
+    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = configurationOptionsDefault, namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
         
-        managedObjectModel = model;
+        self.managedObjectModel = model
+        self.tag = tag
         
         // Create the coordinator
         persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
@@ -58,9 +70,9 @@ public class GenericCoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreC
             // There is only one so it's the default configuration
             if configurations.count == 1 {
                 
-                let storeURL = cachesURL.URLByAppendingPathComponent("\(namingPrefix)\(managedObjectModel.uniqueIdentifier())default.sqlite")
+                let storeURL = cachesURL.URLByAppendingPathComponent("\(prefix)\(managedObjectModel.uniqueIdentifier())default.sqlite")
                 
-                if let (storeType, storeOptions, migrationManager) = configurationOptions[defaultModelConfigurationName] {
+                if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
                     try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                 } else {
                     try self.addPersistentStore(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
@@ -70,9 +82,9 @@ public class GenericCoreDataStack<OwnerType, CoordinatorType: NSPersistentStoreC
                     
                     if configuration != defaultModelConfigurationName {
                         
-                        let storeURL = cachesURL.URLByAppendingPathComponent("\(namingPrefix)\(managedObjectModel.uniqueIdentifier())\(configuration).sqlite")
+                        let storeURL = cachesURL.URLByAppendingPathComponent("\(prefix)\(managedObjectModel.uniqueIdentifier())\(configuration).sqlite")
                         
-                        if let (storeType, storeOptions, migrationManager) = configurationOptions[configuration] {
+                        if let (storeType, storeOptions, migrationManager) = options[configuration] {
                             try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         } else {
                             try self.addPersistentStore(NSSQLiteStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
