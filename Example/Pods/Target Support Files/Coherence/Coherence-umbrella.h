@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 
 #import "Coherence.h"
-#import "CCConfiguration.h"
 #import "CCModule.h"
 #import "CCResource.h"
 #import "CCResourceService.h"
