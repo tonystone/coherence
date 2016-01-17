@@ -58,6 +58,21 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
 //
 @implementation CCObject
 
++ (id) instanceForProtocol: (Protocol *) aProtocol defaults: (NSDictionary *) defaults bundleKey: (NSString *) bundleKey  {
+    
+    Class implClass = [self classForProtocol: aProtocol baseClass: self];
+    
+    id instance = [[implClass alloc] init];
+//    
+//    [self loadObject: instance protocol: aProtocol bundle: [NSBundle mainBundle] bundleKey: bundleKey defaults: defaults];
+//    
+#if !__has_feature(objc_arc)
+    return [instance autorelease];
+#else
+    return instance;
+#endif
+}
+
 + (Class) classForProtocol: (Protocol *) aProtocol baseClass: (Class) baseClass {
 
     @autoreleasepool {

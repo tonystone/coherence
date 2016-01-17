@@ -10,6 +10,6 @@
 
 @interface CCObject : NSObject
 
-    + (Class) classForProtocol: (Protocol *) aProtocol baseClass: (Class) baseClass;
+    + (id) instanceForProtocol: (Protocol *) aProtocol defaults: (NSDictionary *) defaults bundleKey: (NSString *) bundleKey ;
 
 @end
