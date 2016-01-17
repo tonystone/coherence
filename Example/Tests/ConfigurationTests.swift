@@ -43,6 +43,7 @@ let stringTestValue: String             = "String test value 2"
 let stringReadonlyTestValue: String     = "Readonly string test value"
 let intReadonlyTestValue: Int           = 1
 
+
 //
 // Test configuration when developers are using a pure protocol
 // for their configuration construction.
@@ -89,15 +90,15 @@ class TestSubClassConfigurationClass : Configuration {
 }
 
 class ConfigurationTests : XCTestCase {
-
+    
     func testPureProtocolConfigurationConstruction () {
-
-        XCTAssertNotNil(Configuration.configurationForProtocol(TestPureProtocolConfiguration.self))
+        
+        XCTAssertNotNil(Configuration.instance(TestPureProtocolConfiguration.self))
     }
 
     func testPureProtocolConfigurationCRUD () {
         
-        let configuration = Configuration.configurationForProtocol(TestPureProtocolConfiguration.self) as! TestPureProtocolConfiguration
+        let configuration: TestPureProtocolConfiguration = Configuration.instance(TestPureProtocolConfiguration.self)!
 
         // Note all values are filled with the values from the info.plist
 //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
@@ -114,12 +115,12 @@ class ConfigurationTests : XCTestCase {
 
     func testSubclassConfigurationConstruction () {
         
-        XCTAssertNotNil(TestSubClassConfigurationClass.configurationForProtocol(TestSubClassConfiguration.self))
+        XCTAssertNotNil(TestSubClassConfigurationClass.instance(TestPureProtocolConfiguration.self))
     }
     
     func testSubclassConfigurationCRUD () {
         
-        let configuration = TestSubClassConfigurationClass.configurationForProtocol(TestSubClassConfiguration.self) as! TestSubClassConfiguration
+        let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance(TestSubClassConfiguration.self)!
         
         // Note all values are filled with the values from the info.plist
         //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
