@@ -23,14 +23,8 @@
 
 /** @name Public Headers
 *
-* Please review the following header files for full
-* documentation for the usage of this module.
+* Note: This file has been deprecated but left in so that it wont break objective-c code that imports it.
 *
 * */
-///@{
-#import "CCModule.h"
-#import "CCResource.h"
-#import "CCResourceService.h"
-///@}
 
 #endif

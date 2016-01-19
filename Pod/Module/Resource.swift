@@ -1,8 +1,7 @@
 /**
- *   CCModule.h
+ *   Resource.swift
  *
- *   Copyright 2015 The Climate Corporation
- *   Copyright 2015 Tony Stone
+ *   Copyright 2016 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -16,41 +15,19 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  *
- *   Created by Tony Stone on 5/7/15.
+ *   Created by Tony Stone on 1/18/2016.
  */
-#import <UIKit/UIKit.h>
+import Foundation
 
-@protocol CCResourceService;
-@protocol CCResource;
-@protocol CCConfiguration;
+@objc public enum CCJSONType: Int {
+    case INSERT, UPDATE, FULL
+}
 
-@protocol CCModule <NSObject>
+@objc
+public protocol CCResource  : NSObjectProtocol  {
 
-@required
+    func resourceWithJSONDictionary(jsonDictionary: [NSObject: AnyObject]) -> CCResource
 
-    /**
-    *
-    */
-    + (id <CCModule>) instance;
+    func toJSONDictionary(type: CCJSONType) -> [NSObject: AnyObject]
 
-    /**
-    *
-    */
-    - (void) start;
-
-    /**
-    *
-    */
-    - (void) stop;
-
-    /**
-    *
-    */
-    - (id)serviceForProtocol: (Protocol *)aProtocol;
-
-    /**
-    *
-    */
-    - (UIViewController *) rootViewController;
-
-@end
+}
