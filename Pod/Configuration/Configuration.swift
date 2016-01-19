@@ -54,9 +54,9 @@ public class Configuration<P: NSObjectProtocol> {
     }
     
     /**
-    *  Creates an implementation and instance of
-    *  configuration instance for the protocol
-    *  specified.
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Returns: An instance of an Object that implements the protocol specified by P.
     */
     @nonobjc
     @warn_unused_result
@@ -65,9 +65,11 @@ public class Configuration<P: NSObjectProtocol> {
     }
     
     /**
-     *  Creates an implementation and instance of
-     *  configuration instance for the protocol
-     *  specified.
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Parameter defaults: A dictionary of property names and default values for those properties.
+     
+        - Returns: An instance of an Object that implements the protocol specified by P.
      */
     @nonobjc
     @warn_unused_result
@@ -76,15 +78,21 @@ public class Configuration<P: NSObjectProtocol> {
     }
 
     /**
-     *  Creates an implementation and instance of
-     *  configuration instance for the protocol
-     *  specified.
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Parameters
+            - defaults: A dictionary of property names and default values for those properties.
+            - bundleKey: The key used to store the property names and values in the Info.plist file.  The value of the key must be a dictionary.
+     
+        - Returns: An instance of an Object that implements the protocol specified by P.
      */
     @nonobjc
     @warn_unused_result
     public final class func instance(defaults: [String: AnyObject], bundleKey: String) -> P? {
         
-        guard let conformingProtocol: Protocol = NSProtocolFromString(String(reflecting: P.self)) else {
+        // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
+        
+        guard let conformingProtocol: Protocol = objc_getProtocol(String(reflecting: P.self)) else {
             fatalError ("Could not create instance for protoocol \(P.self)")
         }
         return createInstance(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? P
@@ -93,10 +101,14 @@ public class Configuration<P: NSObjectProtocol> {
 
 @objc
 public class CCConfiguration : NSObject {
+
     /**
-     *  Creates an implementation and instance of
-     *  configuration instance for the protocol
-     *  specified.
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Parameters
+            - objcProtocol: A configuration Protocol to create an instance for.  A class will be created that implements this protocol.
+     
+        - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
     @warn_unused_result
@@ -104,12 +116,31 @@ public class CCConfiguration : NSObject {
         return createInstance(objcProtocol, defaults: defaultDefaults, bundleKey: defaultBundleKey)
     }
     
+    /**
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Parameters
+            - objcProtocol: A configuration Protocol to create an instance for.  A class will be created that implements this protocol.
+            - defaults: A dictionary of property names and default values for those properties.
+     
+        - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
+     */
     @objc
     @warn_unused_result
     public final class func configurationForProtocol (objcProtocol: Protocol, defaults: [String: AnyObject]) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaults, bundleKey: defaultBundleKey)
     }
     
+    /**
+        Creates an implementation and instance of an object for the protocol (P) specified.
+     
+        - Parameters
+            - objcProtocol: A configuration Protocol to create an instance for.  A class will be created that implements this protocol.
+            - defaults: A dictionary of property names and default values for those properties.
+            - bundleKey: The key used to store the property names and values in the Info.plist file.  The value of the key must be a dictionary.
+     
+        - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
+     */
     @objc
     @warn_unused_result
     public final class func configurationForProtocol (objcProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject? {
