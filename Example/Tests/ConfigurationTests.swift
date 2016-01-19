@@ -66,7 +66,7 @@ let intReadonlyTestValue: Int           = 1
 // Test configuration when developers are using a subclass
 // of CCConfiguration for their configuration using default values.
 @objc protocol TestSubClassConfiguration  : NSObjectProtocol {
-
+    
     //    var charProperty: Character      { get set }
     var boolProperty: Bool      { get set }
     
@@ -83,7 +83,7 @@ let intReadonlyTestValue: Int           = 1
 }
 
 class TestSubClassConfigurationClass : Configuration<TestSubClassConfiguration> {
-
+    
     override class func defaults () -> [String : AnyObject] {
         return ["stringPropertyReadonly" : stringReadonlyTestValue, "intPropertyReadonly": intReadonlyTestValue]
     }
@@ -116,32 +116,30 @@ class ConfigurationTests : XCTestCase {
         }
     }
 
-//    func testSubclassConfigurationConstruction () {
-//        
-//        XCTAssertNotNil(TestSubClassConfigurationClass.instance(TestSubClassConfiguration))
-//    }
-//    
-//    func testSubclassConfigurationCRUD () {
-//        
-//        if let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance(TestSubClassConfiguration.self) {
-//            // Note all values are filled with the values from the info.plist
-//            //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
-//            XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
-//            
-//            XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
-//            XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
-//            
-//            XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
-//            XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
-//            
-//            XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
-//            
-//            XCTAssertEqual       (configuration.stringPropertyReadonly,  stringReadonlyTestValue)
-//            XCTAssertEqual       (configuration.intPropertyReadonly,   intReadonlyTestValue)
-//        } else {
-//            XCTFail("Could not create test instance of TestSubClassConfiguration")
-//        }
-//        
-//
-//    }
+    func testSubclassConfigurationConstruction () {
+        
+        XCTAssertNotNil(TestSubClassConfigurationClass.instance())
+    }
+    
+    func testSubclassConfigurationCRUD () {
+        
+        if let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance() {
+            // Note all values are filled with the values from the info.plist
+            //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
+            XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
+            
+            XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
+            XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
+            
+            XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
+            XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
+            
+            XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
+            
+            XCTAssertEqual       (configuration.stringPropertyReadonly,  stringReadonlyTestValue)
+            XCTAssertEqual       (configuration.intPropertyReadonly,   intReadonlyTestValue)
+        } else {
+            XCTFail("Could not create test instance of TestSubClassConfiguration")
+        }
+    }
 }
