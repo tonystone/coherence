@@ -24,10 +24,6 @@ import TraceLog
 public let defaultBundleKey = "TCCConfiguration"
 public let defaultDefaults  = [String: AnyObject]()
 
-internal enum Error: ErrorType {
-    case FailedInitialization(message: String)
-}
-
 /**
     Main Configuration implementation
 */
@@ -91,7 +87,7 @@ public class Configuration<P: NSObjectProtocol> {
     public final class func instance(defaults: [String: AnyObject], bundleKey: String) -> P? {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
-        
+
         guard let conformingProtocol: Protocol = objc_getProtocol(String(reflecting: P.self)) else {
             fatalError ("Could not create instance for protoocol \(P.self)")
         }
@@ -151,6 +147,10 @@ public class CCConfiguration : NSObject {
 /**
  Internal load exstension
  */
+
+private enum Error: ErrorType {
+    case FailedInitialization(message: String)
+}
 
 private func createInstance(conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> NSObject? {
     
