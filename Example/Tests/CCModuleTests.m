@@ -35,7 +35,7 @@
 
 @implementation CCModuleTests
 
-    - (void) moduleTestInstance {
+    - (void) testModuleInstance {
         id <CCModule> module = [TestModule instance];
         
         XCTAssertNotNil(module);

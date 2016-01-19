@@ -12,16 +12,16 @@ import TraceLog
 
 public typealias ConfigurationOptionsType = [String : (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)]
 
-internal let defaultModelConfigurationName: String = "Default"
+public let defaultModelConfigurationName: String = "Default"
 
-internal let storeOptionsDefault: [NSObject : AnyObject] = [
+public let defaultStoreOptions: [NSObject : AnyObject] = [
     NSIgnorePersistentStoreVersioningOption         : true,
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true,
     NSPersistentStoreFileProtectionKey              : NSFileProtectionComplete
 ]
 
-public let configurationOptionsDefault: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: nil, migrationManager: nil)]
+public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
 
 /**
     A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
@@ -43,7 +43,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         - namingPrefix: An optional String which is appended to the beginning of the persistent store names.
         - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = configurationOptionsDefault, namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
+    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
         
         self.managedObjectModel = model
         self.tag = tag

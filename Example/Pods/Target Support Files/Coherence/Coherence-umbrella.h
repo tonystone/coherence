@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 
 #import "Coherence.h"
-#import "CCConfiguration.h"
 #import "CCObject.h"
 
 FOUNDATION_EXPORT double CoherenceVersionNumber;
