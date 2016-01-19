@@ -54,7 +54,6 @@ public class Configuration<P: NSObjectProtocol> {
      
         - Returns: An instance of an Object that implements the protocol specified by P.
     */
-    @nonobjc
     @warn_unused_result
     public final class func instance () -> P? {
         return instance(self.defaults())
@@ -67,7 +66,6 @@ public class Configuration<P: NSObjectProtocol> {
      
         - Returns: An instance of an Object that implements the protocol specified by P.
      */
-    @nonobjc
     @warn_unused_result
     public final class func instance(defaults: [String: AnyObject]) -> P? {
         return instance(defaults, bundleKey: self.bundleKey())
@@ -82,7 +80,6 @@ public class Configuration<P: NSObjectProtocol> {
      
         - Returns: An instance of an Object that implements the protocol specified by P.
      */
-    @nonobjc
     @warn_unused_result
     public final class func instance(defaults: [String: AnyObject], bundleKey: String) -> P? {
         
