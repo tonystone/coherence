@@ -51,28 +51,6 @@ public class Configuration<P: NSObjectProtocol> {
     /**
         Creates an implementation and instance of an object for the protocol (P) specified.
      
-        - Returns: An instance of an Object that implements the protocol specified by P.
-    */
-    @warn_unused_result
-    public final class func instance () -> P? {
-        return instance(self.defaults())
-    }
-    
-    /**
-        Creates an implementation and instance of an object for the protocol (P) specified.
-     
-        - Parameter defaults: A dictionary of property names and default values for those properties.
-     
-        - Returns: An instance of an Object that implements the protocol specified by P.
-     */
-    @warn_unused_result
-    public final class func instance(defaults: [String: AnyObject]) -> P? {
-        return instance(defaults, bundleKey: self.bundleKey())
-    }
-
-    /**
-        Creates an implementation and instance of an object for the protocol (P) specified.
-     
         - Parameters
             - defaults: A dictionary of property names and default values for those properties.
             - bundleKey: The key used to store the property names and values in the Info.plist file.  The value of the key must be a dictionary.
@@ -80,13 +58,17 @@ public class Configuration<P: NSObjectProtocol> {
         - Returns: An instance of an Object that implements the protocol specified by P.
      */
     @warn_unused_result
-    public final class func instance(defaults: [String: AnyObject], bundleKey: String) -> P? {
+    public final class func instance(defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P? {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
 
         guard let conformingProtocol: Protocol = objc_getProtocol(String(reflecting: P.self)) else {
             fatalError ("Could not create instance for protoocol \(P.self)")
         }
+        
+        let defaults  = defaults  ?? self.defaults()
+        let bundleKey = bundleKey ?? self.bundleKey()
+        
         return createInstance(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? P
     }
 }
