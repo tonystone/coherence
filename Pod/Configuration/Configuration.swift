@@ -1,7 +1,6 @@
 /**
- *   CCConfiguration.m
+ *   Configuration.swift
  *
- *   Copyright 2015 The Climate Corporation
  *   Copyright 2015 Tony Stone
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
