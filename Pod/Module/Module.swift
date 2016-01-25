@@ -19,28 +19,41 @@
  */
 import Foundation
 
+/**
+    CCModule protocol
+ 
+    - Note: This is a backwards compatibility protocol for use only to
+            replace exisitng usage of CCModule in Objective-C.
+*/
 @objc
-public protocol CCModule  : NSObjectProtocol {
+public protocol CCModule {
 
     /**
         - Returns the instance of this singleton
     */
-    static func instance () -> CCModule
+    static func instance () -> CCModule!
 
     /**
+        Start the module and services
     */
     func start ()
 
     /**
+        Stop the module and services
     */
     func stop ()
 
     /**
+        Get a service for the protocol passed in.
+     
+        - Note: These are only protocols that are defined by the module that implements this protocol.
     */
-    func serviceForProtocol(aProtocol: Protocol) -> CCResourceService
+    func serviceForProtocol(aProtocol: Protocol) -> CCResourceService!
 
     /**
+        Returns the root view controller for this module
     */
-    func rootViewController () -> UIViewController
+    @available(*,deprecated=0.4.1)
+    func rootViewController () -> UIViewController!
     
 }

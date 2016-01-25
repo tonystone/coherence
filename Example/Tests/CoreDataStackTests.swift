@@ -59,8 +59,6 @@ class CoreDataStackTests: XCTestCase {
                 
                 do {
                     try editContext.save()
-                    try mainThreadContext.save()
-                    
                 } catch {
                     XCTFail()
                 }

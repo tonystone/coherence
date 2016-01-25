@@ -1,19 +1,37 @@
-//
-//  GenericCoreDataStack.swift
-//  Pods
-//
-//  Created by Tony Stone on 1/6/16.
-//
-//
-
+/**
+ *   GenericCoreDataStack.swift
+ *
+ *   Copyright 2016 Tony Stone
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ *
+ *   Created by Tony Stone on 1/6/16.
+ */
 import Foundation
 import CoreData
 import TraceLog
 
-public typealias ConfigurationOptionsType = [String : (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)]
+/**
+    The name of the default configuration in the model.  If you have not 
+    created any configurations, this will be the only configuration avaialble.
 
+    Use this name if you override the options passed.
+*/
 public let defaultModelConfigurationName: String = "Default"
 
+/**
+    Default options passed to attached and configure the persistent stores.
+ */
 public let defaultStoreOptions: [NSObject : AnyObject] = [
     NSIgnorePersistentStoreVersioningOption         : true,
     NSMigratePersistentStoresAutomaticallyOption    : true,
@@ -21,7 +39,28 @@ public let defaultStoreOptions: [NSObject : AnyObject] = [
     NSPersistentStoreFileProtectionKey              : NSFileProtectionComplete
 ]
 
+/**
+    PersistentStore configuration settings.
+ */
+public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)
+
+/**
+    Configuration options dictionary keyed by configuration name.  
+    The name is the name you listed in your model.
+ */
+public typealias ConfigurationOptionsType = [String : PersistentStoreConfiguration]
+
+/**
+    The detault configuration options used to configure the persistent store when no override is supplied.
+ */
 public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
+
+/**
+    There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently 
+    logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take 
+    an alternate action.
+ */
+public typealias asynErrorHandlerBlock = (NSError) -> Void
 
 /**
     A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
@@ -31,9 +70,8 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
     private let managedObjectModel: NSManagedObjectModel
     private let persistentStoreCoordinator: CoordinatorType
     private let tag: String
-    
-    // We allow access to the mainThreadContext
     private let mainContext: ContextType
+    private let errorHandlerBlock: (error: NSError) -> Void
     
     /**
         Initializes the receiver with a managed object model.
@@ -43,10 +81,18 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         - namingPrefix: An optional String which is appended to the beginning of the persistent store names.
         - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
+    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil,  namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
         
         self.managedObjectModel = model
         self.tag = tag
+    
+        if let asyncErrorBlock = asyncErrorBlock {
+            self.errorHandlerBlock = asyncErrorBlock
+        } else {
+            self.errorHandlerBlock = { (error: NSError) -> Void in
+                logError { error.localizedDescription }
+            }
+        }
         
         // Create the coordinator
         persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
@@ -93,6 +139,8 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                 }
             }
             
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleContextDidSaveNotification:", name: NSManagedObjectContextDidSaveNotification, object: nil)
+            
         } catch  let error as NSError {
             
             logError(tag) {
@@ -100,6 +148,10 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             }
             return nil
         }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     public func mainThreadContext () -> NSManagedObjectContext {
@@ -156,6 +208,27 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         } catch let error as NSError {
             logError { "Failed to attached persistent store: \(error.localizedDescription)" }
             throw error
+        }
+    }
+    
+    private dynamic func handleContextDidSaveNotification(notification: NSNotification)  {
+        
+        if let context = notification.object as? NSManagedObjectContext {
+            
+            //
+            // If the saved context has it's parent set to our 
+            // mainThreadContext auto save the main context
+            //
+            if context.parentContext == mainContext {
+                
+                mainContext.performBlockAndWait({ () -> Void in
+                    do {
+                        try self.mainContext.save()
+                    } catch let error as NSError {
+                        self.errorHandlerBlock(error: error)
+                    }
+                })
+            }
         }
     }
 }

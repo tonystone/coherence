@@ -23,11 +23,15 @@ import Foundation
 public protocol CCResourceService : NSObjectProtocol {
 
     /**
+        Start the service
      */
-    func start ()
+
+    @available(*,deprecated=0.4.1)
+    optional func start ()
     
     /**
+        Stop the service
      */
-    func stop ()
-
+    @available(*,deprecated=0.4.1)
+    optional func stop ()
 }
