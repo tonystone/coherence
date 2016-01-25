@@ -25,9 +25,9 @@ import Foundation
 
 @objc
 public protocol CCResource  : NSObjectProtocol  {
-
-    func resourceWithJSONDictionary(jsonDictionary: [NSObject: AnyObject]) -> CCResource!
-
-    func toJSONDictionary(type: CCJSONType) -> [NSObject: AnyObject]!
+    
+    static func resourceWithJSONDictionary(jsonDictionary: [NSObject : AnyObject]!) -> CCResource!
+    
+    func toJSONDictionary(type: CCJSONType) -> [NSObject : AnyObject]!
 
 }
