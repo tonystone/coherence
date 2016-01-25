@@ -48,7 +48,7 @@ public protocol CCModule {
      
         - Note: These are only protocols that are defined by the module that implements this protocol.
     */
-    func serviceForProtocol(aProtocol: Protocol) -> AnyObject!
+    func serviceForProtocol(aProtocol: Protocol!) -> AnyObject!
 
     /**
         Returns the root view controller for this module
