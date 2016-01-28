@@ -98,22 +98,19 @@ class ConfigurationTests : XCTestCase {
 
     func testPureProtocolConfigurationCRUD () {
         
-        if let configuration = Configuration<TestPureProtocolConfiguration>.instance() {
+        let configuration = Configuration<TestPureProtocolConfiguration>.instance()
 
-            // Note all values are filled with the values from the info.plist
-            //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
-            XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
-            
-            XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
-            XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
-            
-            XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
-            XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
-            
-            XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
-        } else {
-            XCTFail("Failed to create instance of test Configuration.")
-        }
+        // Note all values are filled with the values from the info.plist
+        //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
+        XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
+        
+        XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
+        XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
+        
+        XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
+        XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
+        
+        XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
     }
 
     func testSubclassConfigurationConstruction () {
