@@ -120,23 +120,21 @@ class ConfigurationTests : XCTestCase {
     
     func testSubclassConfigurationCRUD () {
         
-        if let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance() {
-            // Note all values are filled with the values from the info.plist
-            //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
-            XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
-            
-            XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
-            XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
-            
-            XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
-            XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
-            
-            XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
-            
-            XCTAssertEqual       (configuration.stringPropertyReadonly,  stringReadonlyTestValue)
-            XCTAssertEqual       (configuration.intPropertyReadonly,   intReadonlyTestValue)
-        } else {
-            XCTFail("Could not create test instance of TestSubClassConfiguration")
-        }
+        let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance()
+        
+        // Note all values are filled with the values from the info.plist
+        //        XCTAssertEqual       (configuration.charProperty, charPListTestValue)
+        XCTAssertEqual       (configuration.boolProperty, boolPListTestValue)
+        
+        XCTAssertEqual       (configuration.integerProperty,         integerPListTestValue)
+        XCTAssertEqual       (configuration.unsignedIntegerProperty, unsignedIntegerPListTestValue)
+        
+        XCTAssertEqual       (configuration.floatProperty,  floatPListTestValue)
+        XCTAssertEqual       (configuration.doubleProperty, doublePListTestValue)
+        
+        XCTAssertEqual       (configuration.stringProperty, stringPListTestValue)
+        
+        XCTAssertEqual       (configuration.stringPropertyReadonly,  stringReadonlyTestValue)
+        XCTAssertEqual       (configuration.intPropertyReadonly,   intReadonlyTestValue)
     }
 }
