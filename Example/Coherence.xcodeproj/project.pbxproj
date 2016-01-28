@@ -30,9 +30,11 @@
 		EA0BFDD41C3DAD2500F24D9C /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BFDD01C3DAD2500F24D9C /* Field.swift */; };
 		EA0BFDD51C3DAD2500F24D9C /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BFDD11C3DAD2500F24D9C /* User+CoreDataProperties.swift */; };
 		EA0BFDD61C3DAD2500F24D9C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BFDD21C3DAD2500F24D9C /* User.swift */; };
-		EA1A9F551AF2F62800DF4936 /* CoreDataStackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB4DAC13D5CFB5B0CC9 /* CoreDataStackTests.m */; };
+		EA1A9F551AF2F62800DF4936 /* CCCoreDataStackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698FB4DAC13D5CFB5B0CC9 /* CCCoreDataStackTests.m */; };
 		EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = EA4D365C1C3DF58C003DC554 /* .travis.yml */; };
 		EA62DFD11C3CC36500F7DF89 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */; };
+		EA9F26CF1C570694005361CA /* CCObjcTestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9F26CE1C570694005361CA /* CCObjcTestModule.m */; };
+		EA9F26D11C5708B1005361CA /* ModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F26D01C5708B1005361CA /* ModuleTests.swift */; };
 		EAE5582C1C4DF58A00A1E5EA /* CCModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE5582B1C4DF58A00A1E5EA /* CCModuleTests.m */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +44,7 @@
 		36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConfigurationTests.m; sourceTree = "<group>"; };
 		366983E42FD23BECD9F6D82F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		366987F1B3605889A4467182 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
-		36698FB4DAC13D5CFB5B0CC9 /* CoreDataStackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackTests.m; sourceTree = "<group>"; };
+		36698FB4DAC13D5CFB5B0CC9 /* CCCoreDataStackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCoreDataStackTests.m; sourceTree = "<group>"; };
 		387FD13B580E0398D458F786 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3AB2779859654ACA1535649C /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		47FD099FDD07012284BA1866 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,10 @@
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
 		EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
+		EA9F26CD1C570694005361CA /* CCObjcTestModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCObjcTestModule.h; sourceTree = "<group>"; };
+		EA9F26CE1C570694005361CA /* CCObjcTestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCObjcTestModule.m; sourceTree = "<group>"; };
+		EA9F26D01C5708B1005361CA /* ModuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleTests.swift; sourceTree = "<group>"; };
+		EA9F26D21C5709AE005361CA /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EAE5582B1C4DF58A00A1E5EA /* CCModuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCModuleTests.m; sourceTree = "<group>"; };
 		F604A332A03EF7A69FDDB726 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Coherence.podspec; path = ../Coherence.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -183,9 +189,13 @@
 			children = (
 				366987F1B3605889A4467182 /* ConfigurationTests.swift */,
 				EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */,
-				36698FB4DAC13D5CFB5B0CC9 /* CoreDataStackTests.m */,
+				EA9F26D01C5708B1005361CA /* ModuleTests.swift */,
+				36698FB4DAC13D5CFB5B0CC9 /* CCCoreDataStackTests.m */,
 				36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */,
 				EAE5582B1C4DF58A00A1E5EA /* CCModuleTests.m */,
+				EA9F26CD1C570694005361CA /* CCObjcTestModule.h */,
+				EA9F26CE1C570694005361CA /* CCObjcTestModule.m */,
+				EA9F26D21C5709AE005361CA /* Tests-Bridging-Header.h */,
 				EA0289631AF32EB800200848 /* Test Data */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -451,15 +461,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0BFDD31C3DAD2500F24D9C /* Field+CoreDataProperties.swift in Sources */,
-				EA1A9F551AF2F62800DF4936 /* CoreDataStackTests.m in Sources */,
+				EA1A9F551AF2F62800DF4936 /* CCCoreDataStackTests.m in Sources */,
 				EA62DFD11C3CC36500F7DF89 /* CoreDataStackTests.swift in Sources */,
 				EA0BFDD41C3DAD2500F24D9C /* Field.swift in Sources */,
 				366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */,
+				EA9F26D11C5708B1005361CA /* ModuleTests.swift in Sources */,
 				366988DEB58C33A2A7FF7809 /* CCConfigurationTests.m in Sources */,
 				EA0BFDD51C3DAD2500F24D9C /* User+CoreDataProperties.swift in Sources */,
 				36698D2D8C6AFD968FFD20D5 /* ConfigurationTests.swift in Sources */,
 				EA0BFDD61C3DAD2500F24D9C /* User.swift in Sources */,
 				EAE5582C1C4DF58A00A1E5EA /* CCModuleTests.m in Sources */,
+				EA9F26CF1C570694005361CA /* CCObjcTestModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +638,7 @@
 				MODULEMAP_FILE = Tests;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -649,6 +662,7 @@
 				MODULEMAP_FILE = Tests;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

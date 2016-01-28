@@ -28,10 +28,10 @@ static NSString * const kFirstName = @"First";
 static NSString * const kLastName  = @"Last";
 static NSString * const kUserName = @"First Last";
 
-@interface CoreDataStackTests : XCTestCase
+@interface CCCoreDataStackTests : XCTestCase
 @end
 
-@implementation CoreDataStackTests {
+@implementation CCCoreDataStackTests {
         CoreDataStack * coreDataStack;
     }
 

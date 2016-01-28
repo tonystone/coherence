@@ -24,6 +24,8 @@ import Foundation
  
     - Note: This is a backwards compatibility protocol for use only to
             replace exisitng usage of CCModule in Objective-C.
+ 
+   - Warning: if implementing this protocol in Objective-C, the methods must be re-declared in your header file to be visible due to a bug in Swift that does not expose it.
 */
 @objc
 public protocol CCModule {
