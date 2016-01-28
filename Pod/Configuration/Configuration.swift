@@ -58,7 +58,7 @@ public class Configuration<P: NSObjectProtocol> {
         - Returns: An instance of an Object that implements the protocol specified by P.
      */
     @warn_unused_result
-    public final class func instance(defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P? {
+    public final class func instance(defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
 
@@ -69,7 +69,7 @@ public class Configuration<P: NSObjectProtocol> {
         let defaults  = defaults  ?? self.defaults()
         let bundleKey = bundleKey ?? self.bundleKey()
         
-        return createInstance(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? P
+        return createInstance(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as! P
     }
 }
 
@@ -130,7 +130,7 @@ private enum Error: ErrorType {
     case FailedInitialization(message: String)
 }
 
-private func createInstance(conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> NSObject? {
+private func createInstance(conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject {
     
     guard let config = CCObject.instanceForProtocol(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? NSObject else {
         fatalError ("Could not create instance for protoocol \(NSStringFromProtocol(conformingProtocol))")
@@ -144,7 +144,6 @@ private func createInstance(conformingProtocol: Protocol, defaults: [String: Any
     } catch {
         fatalError ("\(error)")
     }
-    return nil
 }
 
 private func loadObject(conformingProtocol: Protocol, anObject: NSObject, bundleKey: String, defaults: [NSObject : AnyObject]) throws {
