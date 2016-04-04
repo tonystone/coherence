@@ -33,7 +33,14 @@ import TraceLog
         - Parameter managedObjectModel: A managed object model.
     */
     public init?(managedObjectModel model: NSManagedObjectModel) {
+
         impl = CoreDataStackType(managedObjectModel: model, logTag: String(CoreDataStack.self))
+        
+        super.init()
+        
+        if impl == nil {
+            return nil
+        }
     }
     
     /**
@@ -43,7 +50,14 @@ import TraceLog
         - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
      */
     public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType) {
+        
         impl = CoreDataStackType(managedObjectModel: model, configurationOptions: options, logTag: String(CoreDataStack.self))
+
+        super.init()
+        
+        if impl == nil {
+            return nil
+        }
     }
     
     public func mainThreadContext () -> NSManagedObjectContext {
