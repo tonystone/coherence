@@ -36,6 +36,8 @@ import TraceLog
 
         impl = CoreDataStackType(managedObjectModel: model, logTag: String(CoreDataStack.self))
         
+        super.init()
+        
         if impl == nil {
             return nil
         }
@@ -51,6 +53,8 @@ import TraceLog
         
         impl = CoreDataStackType(managedObjectModel: model, configurationOptions: options, logTag: String(CoreDataStack.self))
 
+        super.init()
+        
         if impl == nil {
             return nil
         }
