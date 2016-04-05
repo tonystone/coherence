@@ -30,6 +30,12 @@ import TraceLog
 public let defaultModelConfigurationName: String = "Default"
 
 /**
+    An option – when set to true – will check if the persistent store and the model are incompatible.
+    If so, the underlying persistent store will be removed and replaced.
+ */
+public let CCOverwriteIncompatibleModelOption: String = "overwriteIncompatibleModelOption"
+
+/**
     Default options passed to attached and configure the persistent stores.
  */
 public let defaultStoreOptions: [NSObject : AnyObject] = [
@@ -185,14 +191,38 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                 }
             }
             
-            logInfo(tag) {
-                "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."
+            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
+
+            let persistentStore = try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
+
+            if options?[CCOverwriteIncompatibleModelOption] as? Bool == true {
+
+                let model = persistentStoreCoordinator.managedObjectModel
+                let metadata = persistentStoreCoordinator.metadataForPersistentStore(persistentStore)
+
+                logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
+
+                if !model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
+
+                    logInfo(tag) { "Model is incompatible. Attempting to remove the persistent store." }
+                    try persistentStoreCoordinator.removePersistentStore(persistentStore)
+
+                    logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
+                    if let path = storeURL.path {
+
+                        let fileManager = NSFileManager.defaultManager()
+
+                        try fileManager.removeItemAtURL(storeURL)
+                        try fileManager.removeItemAtURL(NSURL(fileURLWithPath: "\(path)-shm"))
+                        try fileManager.removeItemAtURL(NSURL(fileURLWithPath: "\(path)-wal"))
+                    }
+
+                    logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
+                    try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
+                }
             }
-            try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
-            
-            logInfo(tag) {
-                "Persistent store attached successfully."
-            }
+
+            logInfo(tag) { "Persistent store attached successfully." }
             
         } catch let error as NSError where [NSMigrationError,
             NSMigrationConstraintViolationError,
