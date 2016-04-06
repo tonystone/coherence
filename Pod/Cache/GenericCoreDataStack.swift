@@ -208,13 +208,13 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                     try persistentStoreCoordinator.removePersistentStore(persistentStore)
 
                     logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
+                    
                     if let path = storeURL.path {
-
-                        deleteIfExists(fileURL: storeURL)
-                        deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-shm"))
-                        deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-wal"))
+                        try deleteIfExists(fileURL: storeURL)
+                        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-shm"))
+                        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-wal"))
                     }
-
+                    
                     logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
                     try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
                 }
@@ -239,15 +239,14 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         }
     }
     
-    private func deleteIfExists(fileURL url: NSURL) {
+    private func deleteIfExists(fileURL url: NSURL) throws {
         
         let fileManager = NSFileManager.defaultManager()
         
-        do {
-            try fileManager.removeItemAtURL(url)
-            
-        } catch let error as NSError {
-            logError { "Could not delete file \(url), error was: \(error.localizedDescription)" }
+        if let path = url.path {
+            if fileManager.fileExistsAtPath(path) {
+                try fileManager.removeItemAtURL(url)
+            }
         }
     }
     
