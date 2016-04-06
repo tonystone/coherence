@@ -202,7 +202,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
 
                 logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
 
-                if !model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
+                if model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
 
                     logInfo(tag) { "Model is incompatible. Attempting to remove the persistent store." }
                     try persistentStoreCoordinator.removePersistentStore(persistentStore)
@@ -210,11 +210,9 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                     logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
                     if let path = storeURL.path {
 
-                        let fileManager = NSFileManager.defaultManager()
-
-                        try fileManager.removeItemAtURL(storeURL)
-                        try fileManager.removeItemAtURL(NSURL(fileURLWithPath: "\(path)-shm"))
-                        try fileManager.removeItemAtURL(NSURL(fileURLWithPath: "\(path)-wal"))
+                        deleteIfExists(fileURL: storeURL)
+                        deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-shm"))
+                        deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-wal"))
                     }
 
                     logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
@@ -238,6 +236,18 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         } catch let error as NSError {
             logError { "Failed to attached persistent store: \(error.localizedDescription)" }
             throw error
+        }
+    }
+    
+    private func deleteIfExists(fileURL url: NSURL) {
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        do {
+            try fileManager.removeItemAtURL(url)
+            
+        } catch let error as NSError {
+            logError { "Could not delete file \(url), error was: \(error.localizedDescription)" }
         }
     }
     
