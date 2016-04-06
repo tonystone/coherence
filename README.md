@@ -1,5 +1,11 @@
 # Coherence
 
+## Requirements
+
+| Xcode | Swift | iOS |
+|:-----:|:-----:|:---:|
+|  7.3  |  2.2  | 8.0 |
+
 ## Author
 
 Tony Stone ([https://github.com/tonystone] (https://github.com/tonystone))
