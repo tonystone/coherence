@@ -202,7 +202,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
 
                 logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
 
-                if model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
+                if !model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
 
                     logInfo(tag) { "Model is incompatible. Attempting to remove the persistent store." }
                     try persistentStoreCoordinator.removePersistentStore(persistentStore)
