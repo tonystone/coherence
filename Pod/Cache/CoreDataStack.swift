@@ -21,20 +21,22 @@ import Foundation
 import CoreData
 import TraceLog
 
-@objc public final class CoreDataStack : NSObject  {
+@objc public final class CoreDataStack: NSObject  {
     
     private typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
-    private let impl: CoreDataStackType!   // Note: this is protected with a guard in the designated init method
+    private let impl: CoreDataStackType!
     
     /**
         Initializes the receiver with a managed object model.
     
-        - Parameter managedObjectModel: A managed object model.
+        - parameters:
+          - managedObjectModel: A managed object model.
+          - storeNamePrefix: A unique name prefix for the persistent store to be created.
     */
-    public init?(managedObjectModel model: NSManagedObjectModel) {
+    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) {
 
-        impl = CoreDataStackType(managedObjectModel: model, logTag: String(CoreDataStack.self))
+        impl = CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(CoreDataStack.self))
         
         super.init()
         
@@ -46,12 +48,14 @@ import TraceLog
     /**
         Initializes the receiver with a managed object model.
      
-        - Parameter managedObjectModel: A managed object model.
-        - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+        - parameters:
+          - managedObjectModel: A managed object model.
+          - storeNamePrefix: A unique name prefix for the persistent store to be created.
+          - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType) {
+    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) {
         
-        impl = CoreDataStackType(managedObjectModel: model, configurationOptions: options, logTag: String(CoreDataStack.self))
+        impl = CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(CoreDataStack.self))
 
         super.init()
         
@@ -68,5 +72,3 @@ import TraceLog
         return impl.editContext()
     }
 }
-
-

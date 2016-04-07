@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		238BFBA11CB59CB6008ED202 /* SimpleEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BFBA01CB59CB6008ED202 /* SimpleEntityModel.swift */; };
+		238BFBA31CB59E85008ED202 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BFBA21CB59E85008ED202 /* SimpleEntity.swift */; };
 		2D093AADE82CD49B11EFAED2 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FD099FDD07012284BA1866 /* Pods_Tests.framework */; };
 		366982E31535AF2FE4CA995B /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */; };
 		366988DEB58C33A2A7FF7809 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		238BFBA01CB59CB6008ED202 /* SimpleEntityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEntityModel.swift; sourceTree = "<group>"; };
+		238BFBA21CB59E85008ED202 /* SimpleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleEntity.swift; path = "Test Data/Model/SimpleEntity.swift"; sourceTree = "<group>"; };
 		30B185C69BD1C596413EC9BD /* Pods-Coherence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.release.xcconfig"; sourceTree = "<group>"; };
 		35528757887FFC4CA4F9A507 /* Pods-Coherence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.debug.xcconfig"; sourceTree = "<group>"; };
 		36698109F3C35E30A4F30AF1 /* CCConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConfigurationTests.m; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				EA0BFDD11C3DAD2500F24D9C /* User+CoreDataProperties.swift */,
 				EA0BFDD21C3DAD2500F24D9C /* User.swift */,
 				36698E27B14435ECFAAD23C5 /* TestModel.xcdatamodeld */,
+				238BFBA01CB59CB6008ED202 /* SimpleEntityModel.swift */,
+				238BFBA21CB59E85008ED202 /* SimpleEntity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -461,6 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0BFDD31C3DAD2500F24D9C /* Field+CoreDataProperties.swift in Sources */,
+				238BFBA11CB59CB6008ED202 /* SimpleEntityModel.swift in Sources */,
+				238BFBA31CB59E85008ED202 /* SimpleEntity.swift in Sources */,
 				EA1A9F551AF2F62800DF4936 /* CCCoreDataStackTests.m in Sources */,
 				EA62DFD11C3CC36500F7DF89 /* CoreDataStackTests.swift in Sources */,
 				EA0BFDD41C3DAD2500F24D9C /* Field.swift in Sources */,

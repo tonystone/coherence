@@ -47,7 +47,7 @@ internal class WriteAheadLog {
             "Initializing instance..."
         }
         
-        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, namingPrefix: "meta", logTag: String(WriteAheadLog.self))
+        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, storeNamePrefix: "meta", logTag: String(WriteAheadLog.self))
         
         guard coreDataStack != nil else {
             return nil
@@ -99,11 +99,11 @@ internal class WriteAheadLog {
         defer {
             objc_sync_exit(self)
         }
-        let sequenceNumberBlockStart = nextSequenceNumber;
+        let sequenceNumberBlockStart = nextSequenceNumber
 
-        nextSequenceNumber = nextSequenceNumber + size - 1;
+        nextSequenceNumber = nextSequenceNumber + size - 1
 
-        return sequenceNumberBlockStart...size - 1;
+        return sequenceNumberBlockStart...size - 1
     }
 
     internal func logTransactionForContextChanges(transactionContext: NSManagedObjectContext) throws -> TransactionID {
@@ -156,14 +156,14 @@ internal class WriteAheadLog {
         if let unwrappedWriteError = writeError {
             throw WriteAheadLogErrors.TransactionWriteFailed(message: unwrappedWriteError.localizedDescription)
         }
-        return transactionID!;
+        return transactionID!
     }
 
     internal func removeTransaction(transactionID: TransactionID) {
     }
 
     internal func transactionLogEntriesForTransaction(transactionID: TransactionID, context: NSManagedObjectContext) -> [MetaLogEntry] {
-        return [];
+        return []
     }
 
     internal func transactionLogRecordsForEntity(entityDescription: NSEntityDescription, context: NSManagedObjectContext) throws -> [MetaLogEntry] {
@@ -201,13 +201,13 @@ internal class WriteAheadLog {
         //
         // Increment the sequence for this record
         //
-        sequenceNumber++;
+        sequenceNumber += 1
         
         logTrace(4) {
             "Log entry created: \(metaLogEntry)"
         }
         
-        return transactionID;
+        return transactionID
     }
 
     private func logEndTransactionEntry(transactionID: TransactionID, metadataContext: NSManagedObjectContext, inout sequenceNumber: Int) throws {
@@ -223,7 +223,7 @@ internal class WriteAheadLog {
         //
         // Increment the sequence for this record
         //
-        sequenceNumber++;
+        sequenceNumber += 1
         
         logTrace(4) {
             "Log entry created: \(metaLogEntry)"
@@ -249,7 +249,7 @@ internal class WriteAheadLog {
             //
             // Increment the sequence for this record
             //
-            sequenceNumber++;
+            sequenceNumber += 1
             
             logTrace(4) {
                 "Log entry created: \(metaLogEntry)"
@@ -277,7 +277,7 @@ internal class WriteAheadLog {
             //
             // Increment the sequence for this record
             //
-            sequenceNumber++;
+            sequenceNumber += 1
             
             logTrace(4) {
                 "Log entry created: \(metaLogEntry)"
@@ -294,7 +294,7 @@ internal class WriteAheadLog {
             //
             // Increment the sequence for this record
             //
-            sequenceNumber++;
+            sequenceNumber += 1
             
             logTrace(4) {
                 "Log entry created: \(metaLogEntry)"
@@ -318,6 +318,6 @@ internal class WriteAheadLog {
         metaLogEntry.updateObjectID = object.objectID.URIRepresentation().absoluteString
         metaLogEntry.updateEntityName = object.entity.name
 
-        return metaLogEntry;
+        return metaLogEntry
     }
 }
