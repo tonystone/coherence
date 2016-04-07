@@ -26,8 +26,7 @@ class CoreDataStackTests: XCTestCase {
         if let dataModelURL = bundle.URLForResource("TestModel", withExtension: "momd") {
             
             let model = NSManagedObjectModel(contentsOfURL: dataModelURL)
-            
-            coreDataStack = CoreDataStack(managedObjectModel: model!)
+            coreDataStack = CoreDataStack(managedObjectModel: model!, storeNamePrefix: "TestModel")
         }
     }
     
@@ -40,6 +39,30 @@ class CoreDataStackTests: XCTestCase {
     func testConstruction () {
     
         XCTAssertNotNil(coreDataStack)
+    }
+    
+    func testStackCreation_OverrideStoreIfModelIncompatible() throws {
+        
+        coreDataStack = nil
+        
+        let model = SimpleEntityModel()
+        
+        var options: [NSObject:AnyObject] = defaultStoreOptions
+        options[CCOverwriteIncompatibleStoreOption] = true
+
+        coreDataStack = CoreDataStack(managedObjectModel: model, storeNamePrefix: "TestModel", configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+        
+        XCTAssertNotNil(coreDataStack)
+        
+        // clean up
+        coreDataStack = nil
+        
+        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        let storeURL = cachesURL.URLByAppendingPathComponent("TestModel.sqlite")
+        
+        try deleteIfExists(fileURL: storeURL)
+        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(storeURL.path!)-shm"))
+        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(storeURL.path!)-wal"))
     }
     
     func testCRUD () {
@@ -88,5 +111,14 @@ class CoreDataStackTests: XCTestCase {
 
     }
 
-
+    private func deleteIfExists(fileURL url: NSURL) throws {
+    
+        let fileManager = NSFileManager.defaultManager()
+        
+        if let path = url.path {
+            if fileManager.fileExistsAtPath(path) {
+                try fileManager.removeItemAtURL(url)
+            }
+        }
+    }
 }

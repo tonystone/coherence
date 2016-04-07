@@ -44,7 +44,7 @@ static NSString * const kUserName = @"First Last";
         NSURL *                dataCacheModelURL = [bundle URLForResource: @"TestModel" withExtension: @"momd"];
         NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
 
-        coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model];
+        coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model storeNamePrefix:@"TestModel"];
     }
 
     - (void)tearDown {

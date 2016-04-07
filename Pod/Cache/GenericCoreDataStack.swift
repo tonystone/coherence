@@ -33,7 +33,7 @@ public let defaultModelConfigurationName: String = "Default"
     An option – when set to true – will check if the persistent store and the model are incompatible.
     If so, the underlying persistent store will be removed and replaced.
  */
-public let CCOverwriteIncompatibleModelOption: String = "overwriteIncompatibleModelOption"
+public let CCOverwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
 
 /**
     Default options passed to attached and configure the persistent stores.
@@ -82,12 +82,13 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
     /**
         Initializes the receiver with a managed object model.
      
-        - Parameter managedObjectModel: A managed object model.
-        - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-        - namingPrefix: An optional String which is appended to the beginning of the persistent store names.
-        - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+        - parameters:
+          - managedObjectModel: A managed object model.
+          - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+          - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
+          - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil,  namingPrefix prefix: String = "cache", logTag tag: String = String(GenericCoreDataStack.self)) {
+    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil, logTag tag: String = String(GenericCoreDataStack.self)) {
         
         self.managedObjectModel = model
         self.tag = tag
@@ -122,10 +123,11 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             // There is only one so it's the default configuration
             if configurations.count == 1 {
                 
-                let storeURL = cachesURL.URLByAppendingPathComponent("\(prefix)\(managedObjectModel.uniqueIdentifier())default.sqlite")
+                let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix).sqlite")
                 
                 if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
                     try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
+                    
                 } else {
                     try self.addPersistentStore(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
                 }
@@ -134,24 +136,22 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                     
                     if configuration != defaultModelConfigurationName {
                         
-                        let storeURL = cachesURL.URLByAppendingPathComponent("\(prefix)\(managedObjectModel.uniqueIdentifier())\(configuration).sqlite")
+                        let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
                         
                         if let (storeType, storeOptions, migrationManager) = options[configuration] {
                             try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
+                            
                         } else {
                             try self.addPersistentStore(NSSQLiteStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
                         }
                     }
                 }
             }
-            
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleContextDidSaveNotification:", name: NSManagedObjectContextDidSaveNotification, object: nil)
             
         } catch  let error as NSError {
             
-            logError(tag) {
-                "Failed to initialize: \(error.localizedDescription)"
-            }
+            logError(tag) { "Failed to initialize: \(error.localizedDescription)" }
             return nil
         }
     }
@@ -193,32 +193,30 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             
             logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
 
-            let persistentStore = try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
-
-            if options?[CCOverwriteIncompatibleModelOption] as? Bool == true {
-
-                let model = persistentStoreCoordinator.managedObjectModel
-                let metadata = persistentStoreCoordinator.metadataForPersistentStore(persistentStore)
-
-                logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
-
-                if !model.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
-
-                    logInfo(tag) { "Model is incompatible. Attempting to remove the persistent store." }
-                    try persistentStoreCoordinator.removePersistentStore(persistentStore)
-
-                    logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
+            if options?[CCOverwriteIncompatibleStoreOption] as? Bool == true {
+                
+                let fileManager = NSFileManager.defaultManager()
+                
+                if let path = storeURL.path where fileManager.fileExistsAtPath(path) {
                     
-                    if let path = storeURL.path {
+                    logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
+
+                    let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
+                    logTrace(4) { "metadata: \(metadata)" }
+
+                    if !persistentStoreCoordinator.managedObjectModel.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
+                        
+                        logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
+                        
                         try deleteIfExists(fileURL: storeURL)
                         try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-shm"))
                         try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-wal"))
                     }
-                    
-                    logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
-                    try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
                 }
             }
+            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
+            
+            try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
 
             logInfo(tag) { "Persistent store attached successfully." }
             

@@ -47,7 +47,7 @@ internal class WriteAheadLog {
             "Initializing instance..."
         }
         
-        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, namingPrefix: "meta", logTag: String(WriteAheadLog.self))
+        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, storeNamePrefix: "meta", logTag: String(WriteAheadLog.self))
         
         guard coreDataStack != nil else {
             return nil
