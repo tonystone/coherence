@@ -36,11 +36,11 @@ import TraceLog
     */
     public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) {
 
-        impl = CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(CoreDataStack.self))
+        do {
+            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(CoreDataStack.self))
         
-        super.init()
-        
-        if impl == nil {
+            super.init()
+        } catch {
             return nil
         }
     }
@@ -55,11 +55,11 @@ import TraceLog
      */
     public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) {
         
-        impl = CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(CoreDataStack.self))
-
-        super.init()
-        
-        if impl == nil {
+        do {
+            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(CoreDataStack.self))
+            
+            super.init()
+        } catch {
             return nil
         }
     }
