@@ -43,7 +43,13 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
             //
             // Create our write ahead logger
             //
-            writeAheadLog = WriteAheadLog(identifier: model.uniqueIdentifier(), path: cachePath)
+            do {
+                writeAheadLog = try WriteAheadLog(identifier: model.uniqueIdentifier(), path: cachePath)
+            } catch {
+                writeAheadLog = nil
+                
+                logError { "Failed to enable logging." }
+            }
         } else {
             writeAheadLog = nil
             
