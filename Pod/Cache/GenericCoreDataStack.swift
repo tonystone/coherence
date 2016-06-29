@@ -88,11 +88,11 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
           - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
           - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil, logTag tag: String = String(GenericCoreDataStack.self)) {
+    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil, logTag tag: String = String(GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
         self.tag = tag
-    
+        
         if let asyncErrorBlock = asyncErrorBlock {
             self.errorHandlerBlock = asyncErrorBlock
         } else {
@@ -108,52 +108,45 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         mainContext = ContextType(concurrencyType: .MainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
         
-        do {
-            //
-            // Figure out where to put things
-            //
-            // Note: We use the applications bundle not the classes or modules.
-            //
-            let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        //
+        // Figure out where to put things
+        //
+        // Note: We use the applications bundle not the classes or modules.
+        //
+        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        
+        logInfo(tag) { "Store path: \(cachesURL.path ?? "Unknown")" }
+        
+        let configurations = managedObjectModel.configurations
+        
+        // There is only one so it's the default configuration
+        if configurations.count == 1 {
             
-            logInfo(tag) { "Store path: \(cachesURL.path ?? "Unknown")" }
+            let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix).sqlite")
             
-            let configurations = managedObjectModel.configurations
-            
-            // There is only one so it's the default configuration
-            if configurations.count == 1 {
+            if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
+                try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                 
-                let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix).sqlite")
-                
-                if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
-                    try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
-                    
-                } else {
-                    try self.addPersistentStore(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
-                }
             } else {
-                for configuration in configurations {
+                try self.addPersistentStore(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
+            }
+        } else {
+            for configuration in configurations {
+                
+                if configuration != defaultModelConfigurationName {
                     
-                    if configuration != defaultModelConfigurationName {
+                    let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
+                    
+                    if let (storeType, storeOptions, migrationManager) = options[configuration] {
+                        try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         
-                        let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
-                        
-                        if let (storeType, storeOptions, migrationManager) = options[configuration] {
-                            try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
-                            
-                        } else {
-                            try self.addPersistentStore(NSSQLiteStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
-                        }
+                    } else {
+                        try self.addPersistentStore(NSSQLiteStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
                     }
                 }
             }
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleContextDidSaveNotification:", name: NSManagedObjectContextDidSaveNotification, object: nil)
-            
-        } catch  let error as NSError {
-            
-            logError(tag) { "Failed to initialize: \(error.localizedDescription)" }
-            return nil
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GenericCoreDataStack.handleContextDidSaveNotification(_:)), name: NSManagedObjectContextDidSaveNotification, object: nil)
     }
     
     deinit {
@@ -228,12 +221,19 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             NSMigrationManagerSourceStoreError,
             NSMigrationManagerDestinationStoreError].contains(error.code) {
                 
-                logError { "Migration failed due to error: \(error.localizedDescription)" }
+                let message = "Migration failed due to error: \(error.localizedDescription)"
                 
-                throw error
+                logError { message }
+                
+                throw NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
+                
         } catch let error as NSError {
-            logError { "Failed to attached persistent store: \(error.localizedDescription)" }
-            throw error
+            
+            let message = "Failed to attached persistent store: \(error.localizedDescription)"
+            
+            logError { message }
+            
+            throw  NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
         }
     }
     
@@ -258,7 +258,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             //
             if context.parentContext == mainContext {
                 
-                mainContext.performBlockAndWait({ () -> Void in
+                mainContext.performBlock( { () -> Void in
                     do {
                         try self.mainContext.save()
                     } catch let error as NSError {
