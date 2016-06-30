@@ -41,26 +41,18 @@ internal class WriteAheadLog {
     
     var nextSequenceNumber = 0
 
-    init?(identifier: String, path: String) {
+    init(identifier: String, path: String) throws {
         
         logInfo {
             "Initializing instance..."
         }
         
-        coreDataStack = CoreDataStackType(managedObjectModel: metaModel, storeNamePrefix: "meta", logTag: String(WriteAheadLog.self))
+        coreDataStack = try CoreDataStackType(managedObjectModel: metaModel, storeNamePrefix: "meta", logTag: String(WriteAheadLog.self))
         
-        guard coreDataStack != nil else {
-            return nil
-        }
-    
-        do {
-            nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
-            
-            logTrace(1) {
-                "Starting Transaction ID: \(self.nextSequenceNumber)"
-            }
-        } catch {
-            return nil
+        nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
+        
+        logTrace(1) {
+            "Starting Transaction ID: \(self.nextSequenceNumber)"
         }
         
         logInfo {
