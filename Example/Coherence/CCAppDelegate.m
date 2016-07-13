@@ -7,12 +7,23 @@
 //
 
 #import "CCAppDelegate.h"
+@import CoreData;
+@import Coherence;
 
 @implementation CCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
+    NSBundle * bundle = [NSBundle bundleForClass:[self class]];
+    
+    NSURL *                dataCacheModelURL = [bundle URLForResource: @"Example" withExtension: @"momd"];
+    NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
+     
+    CoreDataStack * coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model storeNamePrefix:@"Example"];
+    
+    NSLog(@"%@", coreDataStack);
+    
     return YES;
 }
 							

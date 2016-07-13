@@ -42,7 +42,7 @@ public let defaultStoreOptions: [NSObject : AnyObject] = [
     NSIgnorePersistentStoreVersioningOption         : true,
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true,
-    NSPersistentStoreFileProtectionKey              : NSFileProtectionComplete
+    NSPersistentStoreFileProtectionKey              : NSFileProtectionCompleteUntilFirstUserAuthentication
 ]
 
 /**
@@ -186,27 +186,44 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             
             logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
 
-            if options?[CCOverwriteIncompatibleStoreOption] as? Bool == true {
+            let fileManager = NSFileManager.defaultManager()
+            
+            if let storePath = storeURL.path where fileManager.fileExistsAtPath(storePath) {
                 
-                let fileManager = NSFileManager.defaultManager()
+                let storeShmPath = "\(storePath)-shm"
+                let storeWalPath = "\(storePath)-wal"
                 
-                if let path = storeURL.path where fileManager.fileExistsAtPath(path) {
+                if let requiredProtection = options?[NSPersistentStoreFileProtectionKey] as? String {
+                    //
+                    // If the file protection bit is different than the require protection
+                    // type, we reset the protection.
+                    //
+                    // Note: this must be done before opening the data store either with 
+                    //       metadataForPersistentStoreOfType or normally with
+                    //       addPersistentStoreWithType.
+                    //
+                    try updateFileProtectionIfNeeded(storePath,    requiredProtection: requiredProtection)
+                    try updateFileProtectionIfNeeded(storeShmPath, requiredProtection: requiredProtection)
+                    try updateFileProtectionIfNeeded(storeWalPath, requiredProtection: requiredProtection)
+                }
+                
+                // Check the store for compatibility if requested by developer.
+                if options?[CCOverwriteIncompatibleStoreOption] as? Bool == true {
                     
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
-
+                    
                     let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
                     logTrace(4) { "metadata: \(metadata)" }
-
+                    
                     if !persistentStoreCoordinator.managedObjectModel.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
                         
-                        logInfo(tag) { "Attempting to remove file \(storeURL) and -shm and -wal files" }
-                        
-                        try deleteIfExists(fileURL: storeURL)
-                        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-shm"))
-                        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(path)-wal"))
+                        try deleteIfExists(storePath)
+                        try deleteIfExists(storeShmPath)
+                        try deleteIfExists(storeWalPath)
                     }
                 }
             }
+            
             logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
             
             try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
@@ -237,13 +254,41 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         }
     }
     
-    private func deleteIfExists(fileURL url: NSURL) throws {
+    private func deleteIfExists(path: String) throws {
         
         let fileManager = NSFileManager.defaultManager()
         
-        if let path = url.path {
-            if fileManager.fileExistsAtPath(path) {
-                try fileManager.removeItemAtURL(url)
+        if fileManager.fileExistsAtPath(path) {
+            
+            logInfo(tag) { "Removing file \(path)." }
+            
+            try fileManager.removeItemAtPath(path)
+        }
+    }
+    
+    private func updateFileProtectionIfNeeded(path: String, requiredProtection: String) throws {
+        
+        logInfo(tag) { "Checking file protection attribute for file \(path)." }
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        if fileManager.fileExistsAtPath(path) {
+            
+            let currentAttributes = try fileManager.attributesOfItemAtPath(path)
+            
+            if let currentProtection = currentAttributes[NSFileProtectionKey] as? String {
+                
+                logTrace(tag, level: 1) { "Current file protection \"\(currentProtection)\"." }
+                
+                if currentProtection != requiredProtection {
+                    
+                    logTrace(tag, level: 1) { "Updating file protection to \"\(requiredProtection)\"." }
+                    
+                    try fileManager.setAttributes([NSFileProtectionKey: requiredProtection], ofItemAtPath: path)
+                
+                } else {
+                    logTrace(tag, level: 1) { "No update required." }
+                }
             }
         }
     }
