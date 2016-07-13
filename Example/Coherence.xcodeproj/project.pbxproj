@@ -37,6 +37,7 @@
 		EA62DFD11C3CC36500F7DF89 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62DFD01C3CC36500F7DF89 /* CoreDataStackTests.swift */; };
 		EA9F26CF1C570694005361CA /* CCObjcTestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9F26CE1C570694005361CA /* CCObjcTestModule.m */; };
 		EA9F26D11C5708B1005361CA /* ModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F26D01C5708B1005361CA /* ModuleTests.swift */; };
+		EAA8A3731D35C12700D0C1EA /* Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */; };
 		EAE5582C1C4DF58A00A1E5EA /* CCModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE5582B1C4DF58A00A1E5EA /* CCModuleTests.m */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		EA9F26CE1C570694005361CA /* CCObjcTestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCObjcTestModule.m; sourceTree = "<group>"; };
 		EA9F26D01C5708B1005361CA /* ModuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleTests.swift; sourceTree = "<group>"; };
 		EA9F26D21C5709AE005361CA /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Example.xcdatamodel; sourceTree = "<group>"; };
 		EAE5582B1C4DF58A00A1E5EA /* CCModuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCModuleTests.m; sourceTree = "<group>"; };
 		F604A332A03EF7A69FDDB726 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Coherence.podspec; path = ../Coherence.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -184,6 +186,7 @@
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* Coherence-Prefix.pch */,
+				EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -311,7 +314,11 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = MR4939Y2DA;
+					};
 					6003F5AD195388D20070C39A = {
+						DevelopmentTeam = 4GD686SLNS;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -456,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA8A3731D35C12700D0C1EA /* Example.xcdatamodeld in Sources */,
 				6003F59E195388D20070C39A /* CCAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* CCViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -600,12 +608,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -616,11 +627,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -631,6 +645,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Coherence.app/Coherence";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -646,6 +662,7 @@
 				MODULEMAP_FILE = Tests;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -659,6 +676,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Coherence.app/Coherence";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -670,6 +689,7 @@
 				MODULEMAP_FILE = Tests;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -717,6 +737,16 @@
 			currentVersion = 366983E42FD23BECD9F6D82F /* TestModel.xcdatamodel */;
 			name = TestModel.xcdatamodeld;
 			path = "Test Data/Model/TestModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */,
+			);
+			currentVersion = EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */;
+			path = Example.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
