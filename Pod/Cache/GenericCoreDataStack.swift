@@ -39,10 +39,8 @@ public let CCOverwriteIncompatibleStoreOption: String = "overwriteIncompatibleSt
     Default options passed to attached and configure the persistent stores.
  */
 public let defaultStoreOptions: [NSObject : AnyObject] = [
-    NSIgnorePersistentStoreVersioningOption         : true,
     NSMigratePersistentStoresAutomaticallyOption    : true,
-    NSInferMappingModelAutomaticallyOption          : true,
-    NSPersistentStoreFileProtectionKey              : NSFileProtectionCompleteUntilFirstUserAuthentication
+    NSInferMappingModelAutomaticallyOption          : true
 ]
 
 /**
@@ -113,7 +111,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         //
         // Note: We use the applications bundle not the classes or modules.
         //
-        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
         
         logInfo(tag) { "Store path: \(cachesURL.path ?? "Unknown")" }
         
@@ -192,20 +190,6 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                 
                 let storeShmPath = "\(storePath)-shm"
                 let storeWalPath = "\(storePath)-wal"
-                
-                if let requiredProtection = options?[NSPersistentStoreFileProtectionKey] as? String {
-                    //
-                    // If the file protection bit is different than the require protection
-                    // type, we reset the protection.
-                    //
-                    // Note: this must be done before opening the data store either with 
-                    //       metadataForPersistentStoreOfType or normally with
-                    //       addPersistentStoreWithType.
-                    //
-                    try updateFileProtectionIfNeeded(storePath,    requiredProtection: requiredProtection)
-                    try updateFileProtectionIfNeeded(storeShmPath, requiredProtection: requiredProtection)
-                    try updateFileProtectionIfNeeded(storeWalPath, requiredProtection: requiredProtection)
-                }
                 
                 // Check the store for compatibility if requested by developer.
                 if options?[CCOverwriteIncompatibleStoreOption] as? Bool == true {
