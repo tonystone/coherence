@@ -5,7 +5,7 @@
 //  Created by Tony Stone on 4/19/13.
 //  Copyright (c) 2013 Mobile Grid, Inc. All rights reserved.
 //
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "MGActionEntityDefinitionTests.h"
 #import "MGEntityActionDefinition+Private.h"
@@ -18,7 +18,7 @@
 #import "MGSAXYObjectMapper.h"
 
 
-@interface MGActionEntityDefinitionTests : SenTestCase @end
+@interface MGActionEntityDefinitionTests : XCTestCase @end
 
 @implementation MGActionEntityDefinitionTests {
     NSManagedObjectModel * dataCacheModel;

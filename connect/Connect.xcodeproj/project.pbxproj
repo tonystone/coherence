@@ -122,7 +122,6 @@
 		EABF7659170334D5005757EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABF7658170334D5005757EB /* Foundation.framework */; };
 		EABF765E170334D5005757EB /* MGConnect.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EABF765D170334D5005757EB /* MGConnect.h */; };
 		EABF7660170334D5005757EB /* MGConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = EABF765F170334D5005757EB /* MGConnect.m */; };
-		EABF7668170334D5005757EB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABF7667170334D5005757EB /* SenTestingKit.framework */; };
 		EABF766A170334D5005757EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABF7669170334D5005757EB /* UIKit.framework */; };
 		EABF766B170334D5005757EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABF7658170334D5005757EB /* Foundation.framework */; };
 		EABF766E170334D5005757EB /* libConnect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EABF7655170334D5005757EB /* libConnect.a */; };
@@ -379,8 +378,7 @@
 		EABF765C170334D5005757EB /* Connect-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Connect-Prefix.pch"; sourceTree = "<group>"; };
 		EABF765D170334D5005757EB /* MGConnect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGConnect.h; sourceTree = "<group>"; };
 		EABF765F170334D5005757EB /* MGConnect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGConnect.m; sourceTree = "<group>"; };
-		EABF7666170334D5005757EB /* ConnectTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EABF7667170334D5005757EB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EABF7666170334D5005757EB /* ConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABF7669170334D5005757EB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EABF7671170334D5005757EB /* ConnectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "ConnectTests-Info.plist"; sourceTree = "<group>"; };
 		EABF7673170334D5005757EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 				EA1D02CD172D85F9003206C3 /* libxml2.dylib in Frameworks */,
 				EA57ED851719AEA0002D4C18 /* SystemConfiguration.framework in Frameworks */,
 				EA57ED811719AE71002D4C18 /* CoreData.framework in Frameworks */,
-				EABF7668170334D5005757EB /* SenTestingKit.framework in Frameworks */,
 				EABF766A170334D5005757EB /* UIKit.framework in Frameworks */,
 				EABF766B170334D5005757EB /* Foundation.framework in Frameworks */,
 				EABF766E170334D5005757EB /* libConnect.a in Frameworks */,
@@ -878,7 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				EABF7655170334D5005757EB /* libConnect.a */,
-				EABF7666170334D5005757EB /* ConnectTests.octest */,
+				EABF7666170334D5005757EB /* ConnectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -888,7 +885,6 @@
 			children = (
 				EA1D02CB172D70EA003206C3 /* libxml2.dylib */,
 				EABF7658170334D5005757EB /* Foundation.framework */,
-				EABF7667170334D5005757EB /* SenTestingKit.framework */,
 				EABF7669170334D5005757EB /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -1001,8 +997,8 @@
 			);
 			name = ConnectTests;
 			productName = MGResourceManagerTests;
-			productReference = EABF7666170334D5005757EB /* ConnectTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productReference = EABF7666170334D5005757EB /* ConnectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1294,6 +1290,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect/Connect-Prefix.pch";
@@ -1303,7 +1300,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = ConnectTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1313,6 +1309,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect/Connect-Prefix.pch";
@@ -1322,7 +1319,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = ConnectTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

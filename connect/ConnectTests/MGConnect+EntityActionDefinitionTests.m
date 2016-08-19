@@ -52,14 +52,14 @@
         
         MGWSDLDescription * wsdlDescription = [actionDefinition wsdl: entityName];
         
-        STAssertNotNil(wsdlDescription, @"Failed to generate wsdl from Action");
+        XCTAssertNotNil(wsdlDescription, @"Failed to generate wsdl from Action");
         
         NSArray * actionWebServices = [MGWebService webServicesForWSDLDescription: wsdlDescription];
         
         [webServices addObjectsFromArray: actionWebServices];
     }
     
-    STAssertTrue([webServices count] == [actionDefinitions count], @"Did not create all required webServices");
+    XCTAssertTrue([webServices count] == [actionDefinitions count], @"Did not create all required webServices");
 }
 
 //- (void) testWebServiceExecutionCloudRead {

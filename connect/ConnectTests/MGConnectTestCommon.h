@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Mobile Grid, Inc. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #define kCurrentlyDefinedProvider @"RightScale"
 
 #define kConfigDataStore @"configuration"
 #define kCloudDataStore  @"cloud"
 
-@interface MGConnectTestCommon : SenTestCase 
+@interface MGConnectTestCommon : XCTestCase 
 
 - (void) login;
 
