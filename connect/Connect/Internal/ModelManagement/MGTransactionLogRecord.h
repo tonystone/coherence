@@ -46,7 +46,7 @@ typedef NSUInteger MGTransactionLogRecordType;
 
 /**
  NOTE: the attributes in this class are all public because
-       it is considered a strcuture.  We had to make this a class
+       it is considered a structure.  We had to make this a class
        to suite the CoreData requirements.
  */
 @interface MGTransactionLogRecordInsertData : NSObject <NSCoding> {
@@ -57,7 +57,7 @@ typedef NSUInteger MGTransactionLogRecordType;
 
 /**
  NOTE: the attributes in this class are all public because
- it is considered a strcuture.  We had to make this a class
+ it is considered a structure.  We had to make this a class
  to suite the CoreData requirements.
  */
 @interface MGTransactionLogRecordUpdateData : NSObject <NSCoding>  {
@@ -69,7 +69,7 @@ typedef NSUInteger MGTransactionLogRecordType;
 
 /**
  NOTE: the attributes in this class are all public because
- it is considered a strcuture.  We had to make this a class
+ it is considered a structure.  We had to make this a class
  to suite the CoreData requirements.
  */
 @interface MGTransactionLogRecordDeleteData : NSObject <NSCoding>
