@@ -1,0 +1,1832 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01DC2B8AD35C108A5FBFECF772EA66C6 /* OXJSONPathMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D17E280BD9E60318A3327ACDEB2EAE70 /* OXJSONPathMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02EBC61ED2C0DB2A41052BF00DD735FA /* MGWSDLBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FE9EAAB54A10452EDB351F70BE627DE /* MGWSDLBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04F47FDC00576F17AE42C2CEB6007F22 /* MGWSDLInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 870862528618A3E57D28F2A0CCD0E1FD /* MGWSDLInterface.m */; };
+		070469A6771EE7A4557E6F734B334A35 /* MGWSDL+Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 94046AFECFF52C85664E72E2F2782E41 /* MGWSDL+Types.m */; };
+		0774EA13DD408569BFCBF5FDC8756E59 /* TLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB855A745E1840D7176891B187921F /* TLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		081A71CA28A5BB59839817B023F722BB /* MGConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6CCA88D032BDE363818E008FDF9287 /* MGConnect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0847026F809F66F50B1593418B5174D7 /* MGResourceReferenceDataMergeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BC0B8D15B75EA3CE0A34AECA7C8E9AF /* MGResourceReferenceDataMergeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D3F6D8A0333A116D95DF94445374D87 /* MGEntityListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 298387703DAFA2ECF8414DA9234A550D /* MGEntityListAction.m */; };
+		0E4B0B76EEF84569F669240525DE958D /* MGWSDLComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BFBAA457244815FC2A7F0B2DF34DD7E /* MGWSDLComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F45D5C66B721A86FB6F2DBA3D47CCAF /* TLLogLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 972F0D8420BCDB01B746D42DA2B8AED7 /* TLLogLevel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0F583C49288BEEB2FC4905C8651FF8D8 /* MGWebServiceInMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F625D0EC18DEFF915AF5E2B54DAD47 /* MGWebServiceInMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F7D702B2A576B68C9288695B71ADB2C /* MGWSDLTypeDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = C39E51A8FC859175774B74C212A9678C /* MGWSDLTypeDefinition.m */; };
+		10B60D64ABFCCC8D34C368FC2E96DE79 /* OXProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5CD434E81FDD942A6846835D5E270C /* OXProperty.m */; };
+		126845F7480D24E484163B0E2EFD524F /* MGBackingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A99206D4CA926DBC25D38B974E1F9CD6 /* MGBackingStore.m */; };
+		1344F41376EC23C0F29909D678CBBA20 /* OXJSONPathMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5A7AD1BF97F3DE65E4E76697C2BDD /* OXJSONPathMapper.m */; };
+		1347D3CE66BD40563C8F2C476C84ECA4 /* MGSAXYObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E776032C9A50008A0720CB9E4167B5 /* MGSAXYObjectMapper.m */; };
+		14EC5C56414EB5FC17BBB97E434418B0 /* OXUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C32C47104617F427719A781F5CF53089 /* OXUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16406AD34A849E8471E6B1952CD2263D /* MGWSDLBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 824FBEDC79F9282EAF1149877133D0A6 /* MGWSDLBinding.m */; };
+		1659931DA8E14FA71755A0B0EBC74046 /* MGWebServiceHTTPSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9033B5AE080D29E74392CB8452078BE5 /* MGWebServiceHTTPSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		168680A7D3711215FB4627120CE64AC6 /* MGWSDLInterfaceMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 41897B07EF33A9AC9DA422413BDC349E /* MGWSDLInterfaceMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17DAB10FC0CD6562F41E25D166C61CAD /* OXmlReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 71135625B875D1F12D809589A1AA73B6 /* OXmlReader.m */; };
+		1885A177525370907CF2B4C92F15177B /* MGEntityDeleteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9888DF0D492C58D827BE1C53877D0 /* MGEntityDeleteAction.m */; };
+		18AC5F5B2BED1F6FB8FEB50AB9E672B7 /* MGEntityDeleteAction.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A3AAF4EBFBFE6921CAA2AAD7001E0E /* MGEntityDeleteAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		195915095DD7651B71D177A1ED6150BE /* MGNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D8A729A5C29A6472C88F6AFDA834E5CC /* MGNetworkReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		195EEAFB6D5CA4FFD75D4C9EA894ABAF /* MGRuntimeException.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3ABF9A0FAD18F016A704AB4C4B6C41 /* MGRuntimeException.m */; };
+		19C5DD11B59C0F842F9DA328505B6664 /* MGConnect+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 7956C5B24FA132540104FBEEDC92202F /* MGConnect+Private.m */; };
+		1A47E2CEAB452B9EB2EEBCBA2C81D1FC /* MGEntityInsertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 978465DF2409301B7FED1477635F0F78 /* MGEntityInsertAction.m */; };
+		1A72310CAB4588F5876C020C6211CDE4 /* OXComplexMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5032CB1962C3EB117205545827352E45 /* OXComplexMapper.m */; };
+		1AB0C5E0B69C9E86FA9931688A9F966E /* MGWSDLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = A32E61A74929896C928787D8391CEA91 /* MGWSDLComponent.m */; };
+		1AF91C217C11B3F96B2C21C49D61B8C0 /* MGTransactionLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A972B2FF3311E1B989E1CCAFA727E6 /* MGTransactionLogManager.m */; };
+		1E1FADD04E357C0F279721268CF4D8EC /* MGConnect+EntityActionNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = F58EE8A9EA2AA3DC6F057A168799E244 /* MGConnect+EntityActionNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E7CC90676BD550CEEB2E3609D16ADB2 /* MGWebServiceHTTPJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 906E3B76897089DD1C90DAAEE6681CD3 /* MGWebServiceHTTPJSONDeserializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FBEB2D124D16729F16647FB79A12A9A /* Pods-Connect_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6231E49CD3BC2D1D362064923AC5AB /* Pods-Connect_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20FBBE8418BCED45A0B0E98CE19FF7F4 /* MGWebServiceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 163AE365AB2B98B743E78D7235FEC82A /* MGWebServiceOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		213EC1900AA92203301135F4C68BEF70 /* MGConnect+EntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A93FCE2506BD0F6F44D90796B45F8B4B /* MGConnect+EntityAction.m */; };
+		2562084054AF14193B17A9AE9047E579 /* MGWSDLExtensionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 76FF892972FEB6348971FD827DE0DB1F /* MGWSDLExtensionElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A015B91F5195528864DCCE48347D9BA /* OXmlXPathMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA19D8049923B7A10C1AEDA81CFA837 /* OXmlXPathMapper.m */; };
+		2B60F4C53B9BB64989E62C184B2B062D /* MGWSDLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 57D03F705BBDE72F2D987ADDE93C87CE /* MGWSDLProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2BC960F6ABED86FCA45A3932E185F8B6 /* OXJSONWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF59ACC8F633FBD7E2B44038D3FC89C /* OXJSONWriter.m */; };
+		2BD082E54A1FE72B4FAEA55A50C86717 /* MGConnect+EntityActionNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B6188319349DF264DCE0BDC2D4067B /* MGConnect+EntityActionNotification.m */; };
+		3336E100B0710D73F724438B28B70867 /* MGDataMergeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 333950D914DFCD41A696258F639FCD1E /* MGDataMergeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34669F1850267EF7349B98AB17814512 /* TLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = C3C804E2AD020D934B7B999EF0702ED3 /* TLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36AFCFFD35F81988355A1423BD63CB52 /* MGWebServiceHTTPDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DBF3A560EC4E4499AFE0C9D60641BE2 /* MGWebServiceHTTPDeserializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36BCF7AA5CCA38FE84A305DD6379052D /* OXJSONObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 85E9E35FD7A90019D91E14D5287C7D7B /* OXJSONObjectMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38554A09EFB53A6C5AB7EB03B24B13BD /* MGConnect+EntitySettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B0A6EE18E2AC3E7193C9460FAB526F /* MGConnect+EntitySettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39ECE754EA70177F72E77D26C9A8D38C /* MGBackingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD22E3887D5021FA86953DBB701808D /* MGBackingStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BE594DC359EBC26D6C4C73388851DD9 /* MGWebServiceHTTPURLEncodedSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B77A05A43246F725DF3F46869F5F12 /* MGWebServiceHTTPURLEncodedSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ED447B21A74DCDF248725C46DDD1E7E /* WebLinkAccessService.h in Headers */ = {isa = PBXBuildFile; fileRef = A0507BBE33CCFE78092A6B9E4AD34897 /* WebLinkAccessService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F749D58C7A1504C0AB819CC4B47225B /* MGAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ACB20593FB7E43676DA7980EB4B6295 /* MGAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40031395E8B89FBB3D578FEB655CAF7F /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B62E4B0773369E60E3A64D311A95286 /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4109B93AFD3019C040D58406C47B20E2 /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E7E833F3157AA7A11F588D1A29AB5AF /* MGWSDLInterfaceFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4117B99BC2DA97AEB9901BC18DE38A57 /* MGWSDLBindingFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EEBA4A9AE6889C218D947193F67ECE /* MGWSDLBindingFaultReference.m */; };
+		4324E7067684D1BE014040D4B149C361 /* OXmlContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 86584243EB8EAE58BE189847884EBD73 /* OXmlContext.m */; };
+		4390FB4D4CE6743A87C06D01A2829179 /* OXType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F38F3B8F7B517052D9CF5BB7CE58D3E /* OXType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		450780A28E4E27FD75CF9C4A3EC25DD6 /* MGDataStoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 698FA18A3C75693C0322437DC6C79830 /* MGDataStoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48B2EE1F2938B01B36BF39BABD6BE025 /* MGEntityUpdateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 75251BD78E33D264086D2F8499A275A9 /* MGEntityUpdateAction.m */; };
+		48B505804A34443A5E555BBD2ED43406 /* MGWebServiceHTTPOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E5E418D4089F3DEDB68FB7E889256 /* MGWebServiceHTTPOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48F323056FAFE6D3594DD9D628AD282B /* MGTransactionLogRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7635808F22442027E6FCD2AA81F853BF /* MGTransactionLogRecord.m */; };
+		4A0A13303CB36EE08922E1DBBB1738F4 /* MGTransactionLogRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = C027CE490C610FFDA42537DA6EAF44F1 /* MGTransactionLogRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A17144FA8AB6B7EA2C55E2A66515E47 /* MGWSDLFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = BDDD332BB897935482CECC137A71C71E /* MGWSDLFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A3AD813D2956A0691DF1726E813098F /* MGMetadataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A90CFB6B174967DBA1CA325E6E7D362 /* MGMetadataModel.m */; };
+		4B3D4054186E6DCF76A76279B54C475B /* TLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF04C0716089729C1C165B7C2D8BCDF /* TLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B9E5B78A74EFAAD935EE47028F60E73 /* MGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 75093F60C38BC55FCBDE07506B31BC88 /* MGAction.m */; };
+		4C1607AA2529C3505C764C2E0EF4FDBD /* MGWSDLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 242D07567628497FAA1983F25C4655CA /* MGWSDLProperty.m */; };
+		4E3AF7C35B73C48546B1EF012D3F2C38 /* MGWebServiceHTTPXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC41F44BC749FFAC437B482AEE141C3 /* MGWebServiceHTTPXMLSerializer.m */; };
+		4F575CC6A34ACCBAA095BD5F9B73CFC9 /* MGEntityListAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 31FF7F4CCEC75DD8E3F7852CABEE7457 /* MGEntityListAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F915FD0BD1D3369B8EF54EF789B8BA6 /* MGWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDA1BF85DAF43CA2470BC979A780A26 /* MGWebService.m */; };
+		4FA7CF46B9CC59A001812923DA77C0C5 /* MGWSDLBindingFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 112F7ED4364592A3702A97B102BF82CC /* MGWSDLBindingFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5019D22A50707CB0F750C401EAD22E2C /* TLConsoleWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EA5217BA335B8395E4DA90B38B6B2 /* TLConsoleWriter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5053CD2E5B87018B1FA68E1CD28EC0C8 /* MGConnect+EntityStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = BBD34DEA9F7844174C0A4711EE0D9BBB /* MGConnect+EntityStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55060E0B5EE1A65EF8D44BF79B4266B6 /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8593D72D6586A0B9815766B0B0EE7D /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57FF88C2BDAD60C16624CA31B975D784 /* MGDataStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2E655D59D559B7A630680066CCA71 /* MGDataStoreManager.m */; };
+		594E7A7CBF3072B7F46E083740759D3B /* MGConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FF820D98B3A13112FBADA438BF6645 /* MGConnect.m */; };
+		5C9E2920ACCBF7E1EE3FE27E5A0D9CBB /* MGWSDLInterfaceFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BEFA75238A3671A2420DDEC8DE6F21 /* MGWSDLInterfaceFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CA609D7579586EC80AA667B20265799 /* MGWSDLDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = E3001DDE2F5DCE11F18DEBCB261050D8 /* MGWSDLDescription.m */; };
+		5D64305755DD444C920E85FD8B07C022 /* Connect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 10900E31B643D08572B2A192D082A65F /* Connect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F3A4BCC7687C29317A4B6DAC02FC7E6 /* TLLogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = F12D7A9E2C2481A7939D0F2484B24F40 /* TLLogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61724941DC7BA1977932AC259092EE24 /* NSMutableArray+OXStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 910590AF28AE778362FBD8061C6FA6F7 /* NSMutableArray+OXStack.m */; };
+		621C67962187D1A99B5AFBF80F3B09CD /* MGEntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 23E5995BBF944E75B37CEF8887D8E0E9 /* MGEntityAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6296974C87182B983B42DEEC4F65F38F /* MGWSDLInterfaceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A4B261381EC85CF7168AB5337E5BE /* MGWSDLInterfaceOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		633E1463709944592CAB02E51DBFB4AA /* MGWSDLTypeDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = C709FB011392C443B829424D9A7EBCC8 /* MGWSDLTypeDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63B30F5EA6BAD1636B49F2B09216DC42 /* MGWebServiceHTTPJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 556749FC663F7E848CE5ABC9E3BC5129 /* MGWebServiceHTTPJSONSerializer.m */; };
+		64F901FA23ED520A4FC18F2C1E45170D /* OXTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 7080977E3DE5688897277D8880332A6D /* OXTransform.m */; };
+		6764F52BD64CE4AE57E97C076786036F /* OXmlPrinter.h in Headers */ = {isa = PBXBuildFile; fileRef = 962F74328C08B4A9D589D4F637D2A6E5 /* OXmlPrinter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		694D309B5DB39E24D5E90F0924BCF8D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F7D399395791507FF957779D2AC611 /* Foundation.framework */; };
+		6C13A5F38CBD8AE23EA8D951A99C3879 /* MGNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B972833326B19B5E18CEDC5D3A112268 /* MGNetworkReachability.m */; };
+		6C3836C6B24A7D44CD496F3CDC7288D3 /* MGWebServiceHTTPJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = D12FB2F7EEB37605780E5AAF3D1C5F94 /* MGWebServiceHTTPJSONSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D53FE0329EF760BD74460CD6AC064D1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C1F9F7D2D8427D4586D94A032A6F81 /* CoreData.framework */; };
+		6F94164B80B129761BD28457D9BE44D3 /* MGError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E72EC420F0F23CA34C3CE9BB95FE1BE /* MGError.m */; };
+		6FEB1039E4477F5CA04DEF26978477E6 /* MGWSDLBindingFault.h in Headers */ = {isa = PBXBuildFile; fileRef = CB7E48F8BC115E3363D88E6552EA3828 /* MGWSDLBindingFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7065E7BFEA1A985E7B1DEE9713A6928A /* MGWSDLEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 815D571667DA29F3B5D04CFF7C051308 /* MGWSDLEndpoint.m */; };
+		70E67A23932282F861A3EF2F7C31E6E4 /* MGActionNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF4B38163FF4C64498ADCAAE412369D /* MGActionNotificationService.m */; };
+		716EEA54E2C7F54CFF488AFD2DFE4484 /* OXmlElementMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066600155A215EFDFD3B14012BFE0B5 /* OXmlElementMapper.m */; };
+		71773CC7AB856637AE8CF9523C5AC5CF /* MGResourceReferenceDataMergeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA9FB4067754993A29EDE9FDB818E5B /* MGResourceReferenceDataMergeOperation.m */; };
+		72575E4EBE411B02060468F00556DB96 /* MGWSDLDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A58DF7B089E5E98436DC4C8E57D1CD7 /* MGWSDLDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7297C097E4CA29A74495B91315D2AAA3 /* MGWSDLInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF8C96BFAEB47BB65B2E6705B3650EC /* MGWSDLInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73A6F1C73FCAECA66BC97F4A8C4A0664 /* MGWSDLExtendableComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 06F4681490717506A911F49AB9C86D3E /* MGWSDLExtendableComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		744EFEAB09E2B5519611DF1BCC14A983 /* MGMetadataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4053F28E5296B65F962E813F0F65FEB9 /* MGMetadataModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74B2A200D26731F202DD35A351CC33D2 /* TLConsoleWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 616944163CA350C2ED20ED32A7E9C000 /* TLConsoleWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75167B28AAD926A7AA01F188015E6726 /* MGWebServiceHTTPXMLDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9BFCEE8DD25293B9B8588B960B6BAA /* MGWebServiceHTTPXMLDeserializer.m */; };
+		756E3469F53C717DFFDC477D7235F474 /* MGRuntimeException.h in Headers */ = {isa = PBXBuildFile; fileRef = F114DB88FE0E10AD8489C65FB324BC19 /* MGRuntimeException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A5A88793B505EB278D873F30C150B69 /* MGEntityReadAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE265B97D8F49710D60CFC94204621F /* MGEntityReadAction.m */; };
+		7AB2FB8F9089561C158278EFD6F52DF0 /* MGActionQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C611727316C125451715FDBE34CD1703 /* MGActionQueue.m */; };
+		7AD59E64282E1DDED69B562F4E20461E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F7D399395791507FF957779D2AC611 /* Foundation.framework */; };
+		7C4141A7900C3FCB4F73C0741BBC30B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F7D399395791507FF957779D2AC611 /* Foundation.framework */; };
+		7EE4D3E727C1C9D04D4CFF395EBA2A06 /* MGWebServiceInMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF5737B523468B8BDC0683162299C8 /* MGWebServiceInMessage.m */; };
+		7FAE6F05E9E6B456B7C5E1085155D5B1 /* MGConnect+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 78E1B3CA316F2B0CF95947689D11CB8D /* MGConnect+Action.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		806A0EDACA465333FE40FC84821564F6 /* MGConnect+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B2279FB898F1042128C9DDDB68905B /* MGConnect+Action.m */; };
+		80936988ECC730F9E7E3E648B8BC20C5 /* MGException.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEA06FB0C44EB4D9D60D6A16911F656 /* MGException.m */; };
+		8125F67174860CA73BC4D879017E6D48 /* MGInitializationException.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F91D75EC355A8F170EC03A0B9A4664 /* MGInitializationException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83A8631043D212BCD7B6C1162CC8FFAB /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = FC823417A3DDA8985D41B1103B0033D6 /* MGWSDLExtendableComponent.m */; };
+		84ABCE1FAED946C3A34923AE7BDD9ACA /* OXJSONObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B21EE8C8BB8012F6084C986E2A347621 /* OXJSONObjectMapper.m */; };
+		895B965B067DCB0408A7ECA244802A7D /* MGWSDLInterfaceMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B26C0958E5B711EA516B42FE2292B5 /* MGWSDLInterfaceMessageReference.m */; };
+		89CC04B0E956C6B2111B8A3094253191 /* OXmlPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 66283CF0D75EA58590037CAC32EF0A89 /* OXmlPrinter.m */; };
+		8AEFE85C45D825289690EE31F4167803 /* NSMutableArray+OXStack.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B55F0F75E2D9EC4C5D90802410DA61 /* NSMutableArray+OXStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B818FD4848E1611A71A815D5B73FBF2 /* MGWSDLBindingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D2D69EB69EB2E876A46A5C3F277C60 /* MGWSDLBindingOperation.m */; };
+		8C5EACE987934E0F9744D866AFC938D5 /* MGConnect+EntitySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = DE41680C9A3588E047DAD7B8B1A9CB2B /* MGConnect+EntitySettings.m */; };
+		8C86C052EE3C818677A55789689994B8 /* MGActionQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A3BEF550B2766DC52F37918463B8FA /* MGActionQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D1CDA267FF2CE317E7629B7A7F2ADA2 /* OXmlElementMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CBD5509BA3155E8FCD09B3465B76C82 /* OXmlElementMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DF8FFF34A7EED019992267A50C4F8EE /* OXmlMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2701F72BE99D7BD54FC66621CE26B4 /* OXmlMapper.m */; };
+		8E875245E4AFC738D1DE8DC8E4020D7E /* MGWebServiceOutMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D54F7AC78056B6C5568E78E3DA8924D5 /* MGWebServiceOutMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F7872CDE486FF501C9869E5DAE78121 /* MGWSDL+Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EF5A88C08CB4E44BB4E6D1BC520C760 /* MGWSDL+Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91541F851DF2C98DB7C0E05C80F17D31 /* MGException.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF116933ADACB7A765332EF0C63984D /* MGException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92032853042C9FCFCCD04197184FC46D /* MGWSDLInterfaceFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A5FC9B690D720B5A549C30F31DB9E1 /* MGWSDLInterfaceFault.m */; };
+		92599284C8AFF6C8208C05526949E537 /* OXPathMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EDCEB05B9A27DBDCA158F3C6E217B33 /* OXPathMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9439102F6AD8494C0875D4861073B846 /* MGConnect+EntityAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 22DC9E7DE242BDB959EC8DC384665287 /* MGConnect+EntityAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9490657A8D8A9BDCCF5142FF9B05F50A /* MGWebServiceHTTPSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B16B19046FD29AA202E7907DB3ABA7CF /* MGWebServiceHTTPSerializer.m */; };
+		97BF322078919F4F8424928FF9684B2B /* OXUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E592CD563DCE74EC91F8EDAF0A9BCE4 /* OXUtil.m */; };
+		99AE9E0282C1EC72EF1D4D5BF0EC0E1D /* MGWSDLElementDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 37BC748F3D8E2F89FD5DF82457F90306 /* MGWSDLElementDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99EC3610F3F4FF70E74AC29D7E00B5E2 /* MGConnect+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = A69F07B72DA6DEC7093B6DC746C2E9FB /* MGConnect+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AB08C52D32953AB710B8A4E3F8123A2 /* MGInitializationException.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B96B59572A07AEA0C9CE9A91368FA /* MGInitializationException.m */; };
+		9B24F22EC3A15EDAD3F01D3949E37A04 /* Pods-Connect_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD2DBEA155A78299A9485B7B90E9BD /* Pods-Connect_Tests-dummy.m */; };
+		9CECE81090842C3722C6A9D3AFD1948E /* MGConnect+PrivateSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 53DBF44006DA0DD500B8DB3EF3BF7A06 /* MGConnect+PrivateSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9DFBAA22918BAA03C11B74F4AEC48D1D /* MGWebServiceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C79C55B0BB5D0992FCDC724F9C0685 /* MGWebServiceOperation.m */; };
+		A1ED28C0DC371879D82110DABAE89DF4 /* OXJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E746A237556176EF791B7A177988216 /* OXJSONReader.m */; };
+		A256A46362E5CBBFD464E6DE589C6C77 /* OXmlReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 66712DA4C488F8C1E462A55C5B7B67F7 /* OXmlReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A335BB4B540AD102E1EB2DD16E7C78EE /* MGConnect+PrivateSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1224AA459031B67355F2A433BD79C /* MGConnect+PrivateSettings.m */; };
+		A3B3E3AC4F73A46DC5DF684F886F25FE /* MGNetworkMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D0801EFC6199444C4C7CB1614BDDF7 /* MGNetworkMonitor.m */; };
+		A4B14D0041B5B997C99948CC08D08E36 /* OXType.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8180A4B245F07DA654F3953A5E95A /* OXType.m */; };
+		A61244979DEC63EBD5C2977EAAD2ED51 /* MGWSDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D352F0400B84125CF13AFF165427B650 /* MGWSDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C3752E645C7562FD016EACAE858C81 /* MGEntityReadAction.h in Headers */ = {isa = PBXBuildFile; fileRef = A15F4DC7C5FA47308BC5A1305357988F /* MGEntityReadAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E7EBC3852C53BF7392A89FA79009C5 /* MGWebServiceHTTPURLEncodedSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04D65B466EC3F26D6B9D40E23A8B58 /* MGWebServiceHTTPURLEncodedSerializer.m */; };
+		A89A8A2144DC2F20DCFC1ED8F2F5B049 /* MGError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C6E50E3870DE6D7BB8B88CFF986C248 /* MGError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8C6F3EB7C5D83868A610EC4E2498131 /* OXmlWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 82865E672841228A70DE49447C436A04 /* OXmlWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A91C71E9F833D36EEDC4B786A6026AD4 /* MGWSDLInterfaceFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649559FA286819E5FB73E6B549A9620 /* MGWSDLInterfaceFaultReference.m */; };
+		AB2CD370C76DBF502E37C81F6774DD44 /* MGSAXYObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 258DE9AA854D308FEED2062CB446EB66 /* MGSAXYObjectMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABF8E7E473DFFF1B20BF3208CE4942BE /* MGEntityInsertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8673B23E571EB614EA0A01EE37B705FF /* MGEntityInsertAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD4E46285E9565EDA7B61D5392E9E9E6 /* OXContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 187F4D3B121FDF56745140BAC8CDC6F5 /* OXContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADB341A997A0DBBA3772FCCA4AFAE190 /* MGWSDLService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392C358E546F1732F1106D308C7B89FC /* MGWSDLService.m */; };
+		AEDBEFDA60D44EEBC049A80EAE6AA5B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F7D399395791507FF957779D2AC611 /* Foundation.framework */; };
+		AF84C697785A675277088D845DD2860C /* Connect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E868119170ABBF58D0C299FABE0EEDE9 /* Connect-dummy.m */; };
+		B1BFFF1DBC98F214359594936A1A1763 /* MGConnect+DataStoreConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DC8CE438605C699C3D061A175EE111 /* MGConnect+DataStoreConfiguration.m */; };
+		B599B90129A50FE48470BAC26D93EA1B /* OXmlMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = BC10E0306CE163A05AC1932F27199249 /* OXmlMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B790F0683DBE554D2EAB7A457251631A /* MGConnect+EntityActionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 008D10797271036F96C569F3922A6AF3 /* MGConnect+EntityActionDefinition.m */; };
+		B9915BCA6CAE6AB1FE4D1C35BE25F67B /* MGConnect+EntityStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9809ECDBAF2C9DB63E718159AC9707 /* MGConnect+EntityStatistics.m */; };
+		B994316068674A95E31992FD6BAC1881 /* TraceLog-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F53932DEF5B1280F8C00D8FEB3E2E02 /* TraceLog-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BAB38CD00309C32EF64A50C9A900EEF3 /* MGBackingStoreInitializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A6CE342C12FD61FB2C655580E3F2429 /* MGBackingStoreInitializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB3BE0DA473B045C190CEEFB2AB8E2AC /* MGWSDLBindingMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = D71C80908BA2120826DF50634BCB9885 /* MGWSDLBindingMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC9DD56459F396D5FCCEE64D644948F2 /* MGWSDLBindingMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 324CCBF606E4471800106EDE5D793126 /* MGWSDLBindingMessageReference.m */; };
+		BDF71D5948F1BBA350833D23D4EBE762 /* MGConnect+EntityActionDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 552D3BEFD057DA6223B90EEB1EA540DB /* MGConnect+EntityActionDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE95075207FE30E33CA6FA041747ED67 /* MGWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = CCC2D96574D222818A72232FBF7BAE97 /* MGWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEC8C7D9FA175E6A774752BA4CBF710C /* MGWebServiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7029EE0B1E25178FFF1814B0ABC8E569 /* MGWebServiceMessage.m */; };
+		C064E6B4159E936DEB834B75CA4BFE76 /* MGObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C9908700885797EC1D8C2057EA1C97D /* MGObjectMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C14E565C6E308B4D218CADF4EB3B9073 /* MGXPathV1ObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2FEFE6C7477EBE6D48768E2E250130 /* MGXPathV1ObjectMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C17BADC3D4BA970C478BDFEF3DDCDC39 /* TraceLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF92A9E5648B6335103C55B72B4F026 /* TraceLog-dummy.m */; };
+		C5B50A4B71C0351D1FFC945720AF3CB9 /* OXComplexMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BD1A3241091149D04622108086D87 /* OXComplexMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5C82FDB3DDDFB4EBA7FE3D06C7EC813 /* MGWSDL+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD9879340E3F69E108E083D20852EA /* MGWSDL+HTTP.m */; };
+		C6FD8B1519CADE68EAB3FE04FE783991 /* MGDataMergeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC29D7E6F13B821607A401E21A1610D /* MGDataMergeOperation.m */; };
+		CBE7BBA1531CC37F999B63C24C6B6C01 /* MGWebServiceOutMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDBA243DE0E7409C67E217485550D12 /* MGWebServiceOutMessage.m */; };
+		CEC788363E38DEF4E1F4083367B0AECB /* OXmlWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF15DA88B28860567441E73A2FDC5A3 /* OXmlWriter.m */; };
+		CF1651E02518312AA2F8D679A694B99D /* OXJSONMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E0B44A6872326957D570E9EE2C3593F /* OXJSONMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF8F375CBE16E60BFBDE8A6582B73062 /* MGWebServiceHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 411D1CE412785C26ADB76D6B5BC9C3A1 /* MGWebServiceHTTPOperation.m */; };
+		D13B8A534C3C840B1435DA78B5483D8E /* MGWSDLBindingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 99392D0DCB4FC95EA0A3567F5B9D8BCF /* MGWSDLBindingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1EFA067CB3FC84D34BDA2254DA43CE5 /* MGNetworkMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = CC155ED8F4F09B388748354679C0B7B9 /* MGNetworkMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1F65B3133C6F4402ECB4F03EE2795B6 /* OXBlockDef.h in Headers */ = {isa = PBXBuildFile; fileRef = F4EE9C4AAF0ACEFBC4471DC4ADC7E00D /* OXBlockDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D228ACA1BB5D5D5B55CB4AB7AF0C1A05 /* MGTransactionLogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 087CA20DDC0F597E74DB0923ECFB9CF6 /* MGTransactionLogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4604D2B1CF226914D7DB19052F5DA47 /* MGResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 05698F9C6F5630A7D37150CC06C1E157 /* MGResource.m */; };
+		D479B5F32828A864C0382B1A18977C1F /* OXPathLite.h in Headers */ = {isa = PBXBuildFile; fileRef = A6AC2FB3A5AAD5CC30B11D8213EADD3E /* OXPathLite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6467CEED986CB64757ECC6FF099DD62 /* MGWSDLService.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A660C38041C9F9BA2CE06429598A9A8 /* MGWSDLService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8864F20DDFF84AAC2EF62D16528E2F9 /* OXPathMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 434135660C4A0DFABF74B25BCDB5EEDC /* OXPathMapper.m */; };
+		D887203314F841FE52817321E92771CD /* MGWebServiceMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCB335A4EE00F0C4C058E30C20C35E1 /* MGWebServiceMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D895985664666D0D3F90F46C3221AA26 /* MGWSDL+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 902365C52BC53ABD2DF1C8D82F341BA5 /* MGWSDL+HTTP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D931E7E5826BF6BB65B8A33957CD237C /* MGWSDLExtensionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA76E52BC24E7ED629C5E337227F12 /* MGWSDLExtensionElement.m */; };
+		D978D3EA69E72D5FE740B908F701AFE1 /* OXProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2CAA0DA85CA9C9D7F866DBB8035A3 /* OXProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD5BA61589339B8E99BF8BD961544D57 /* OXJSONReader.h in Headers */ = {isa = PBXBuildFile; fileRef = B32534512D8CF4A2B1881E5D758D6D1C /* OXJSONReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DEB861D82AEC93E74CBF6C302456A9B1 /* MGResource.h in Headers */ = {isa = PBXBuildFile; fileRef = E0AC010E9C8522D52300D9B653BE2F1F /* MGResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF71E9E25064AA915369DBD5CF8AD4DD /* OXTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E3B005A2B257B7C371303AC61C68E6 /* OXTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFD26C12EA74F2379D4F93B4A269A6B0 /* MGXPathV1ObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DA43B6DDF50CE24FA7D672661F9DC19F /* MGXPathV1ObjectMapper.m */; };
+		E1EF5FA1E44047DC6FBF59B02CD199BE /* Pods-Connect_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC73A8D90EDA08B6BA656B1F6A694E1 /* Pods-Connect_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E25F9CE6516E2AA47D0D05802F5A1FA0 /* Pods-Connect_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D0386E16EA5263BB4BF6CE19ED29FA /* Pods-Connect_Example-dummy.m */; };
+		E289F8D70415263F207F075F2AF0201B /* MGWSDLEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 63AFD3E14374D62FEACD6CDD186FD350 /* MGWSDLEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3461003F6FC3413FC74FB40256590E0 /* MGWSDLElementDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A953C00DC0F3BB3C3AD636995DE05D8 /* MGWSDLElementDeclaration.m */; };
+		E3E4BD626E1050A196132913B0158182 /* MGWebServiceHTTPXMLDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA42C2C212DBD243D04CACE9682B902A /* MGWebServiceHTTPXMLDeserializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E424C230489FC3258D90BD3B4F97BB33 /* MGWSDLBindingFault.m in Sources */ = {isa = PBXBuildFile; fileRef = C597F047EABF942EC747BF7610D07E31 /* MGWSDLBindingFault.m */; };
+		E61020790409B84B41279CB7E8922DFB /* OXPathLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 92950689F1295548C6BC17AB958223C9 /* OXPathLite.m */; };
+		E708BFB154920A1358113992614086AD /* MGConnect+DataStoreConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 04ECB635F48EC906B955765F2648A2F4 /* MGConnect+DataStoreConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E80FB780503DDCF1663D69FC7D8774A7 /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4557E8DFB3463745870A699C30D143B7 /* TraceLog.framework */; };
+		E945FF45A5102E40A42EB202058936FB /* MGEntityUpdateAction.h in Headers */ = {isa = PBXBuildFile; fileRef = EDBC93AE79A0A18A5A5A7D0D22481EFC /* MGEntityUpdateAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EACDA3B86DC0C2DDD4499CEEE0441368 /* MGLoggedManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 341410F1A4AE2F0F7BD6A437904091D2 /* MGLoggedManagedObjectContext.m */; };
+		EB01BB8E0059C8FB0836E7D1A156C59A /* MGEntityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C25B153AA1C04237F83668FD85E8E7F3 /* MGEntityAction.m */; };
+		ECD1F954BB7EA5F19BF3C0BD1745453B /* MGWebServiceHTTPXMLSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7739EC0C2A301F0184CCF3A272331CA6 /* MGWebServiceHTTPXMLSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED92732DE53BDFD565DB0079934951CA /* MGEntityActionDefinition+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A170B02A0CC4347EF7221D65854E432 /* MGEntityActionDefinition+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE3809066DD69BA65C7740E51D0772A8 /* MGWebServiceHTTPDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D20B7D6BCEBF0322E3C2D01CD6A2D3 /* MGWebServiceHTTPDeserializer.m */; };
+		EED0B9E2828AA81D263A434AF8E296C5 /* OXContext.m in Sources */ = {isa = PBXBuildFile; fileRef = FF09C93E20249290438D801B3BE92018 /* OXContext.m */; };
+		F151B66EC2A69584A0C4F8A157BA4BCD /* MGAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = EE3F0573EC9F932866122C19A10618E7 /* MGAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F371112022548C6101904AACB84F2760 /* MGLoggedManagedObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC2F25AC9C0EB954976238FF403025D /* MGLoggedManagedObjectContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4C8EFE60A9CA30E7F1837B7F02DBBED /* MGWSDLInterfaceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 770EFB132F833E9B20D555C94C7CE9F3 /* MGWSDLInterfaceOperation.m */; };
+		F52F5B112F797C8F676CA809A6F101EE /* MGWSDLFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC15FD461DF0C4F9E4DBA1DD121565E /* MGWSDLFeature.m */; };
+		F571B48293238B413D75C811DEC0B9EB /* OXJSONMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D296667CC6D71D843599BF867DD8 /* OXJSONMapper.m */; };
+		F717463F537DD37CA9F620DD777E988F /* OXmlContext.h in Headers */ = {isa = PBXBuildFile; fileRef = C082FB51279BF55DE6EBBC4ED8F148C1 /* OXmlContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F96FDCD937527D33CA39786F816955ED /* OXJSONWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 43E4464424243C548491F0AF0F999CEA /* OXJSONWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9C3B6EE05CBDC6E4D363114757AF9E9 /* MGActionNotificationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA837E30AC409C34D3AE683E1065158 /* MGActionNotificationService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA18351E049B98E3FCC05124EDD3193 /* OXmlXPathMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F9318248289A4FAEF4B2A019D1CFB5F8 /* OXmlXPathMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC9830E2FA24653F766E0694142F707A /* MGWebServiceHTTPJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E393EAD1A7AF4C80A48E09BC5F7247 /* MGWebServiceHTTPJSONDeserializer.m */; };
+		FDC1108C127C9CD9B7EBFFCBA459E171 /* SAXy-Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = D1FBE7B4C456B61F18227943FAA17840 /* SAXy-Prefix.pch */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0BF654933ACAE98C62ED0E38E2766ABC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FC6E2EAC99314B23A67CB6DD4E1F050;
+			remoteInfo = TraceLog;
+		};
+		BCACC7E3507A787CE76B42D09E76B73F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57BA76E90B89CFFEB70DDA44FF072A2B;
+			remoteInfo = Connect;
+		};
+		FEA8C4C15881E51C91D4488E9FB51BF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FC6E2EAC99314B23A67CB6DD4E1F050;
+			remoteInfo = TraceLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0066600155A215EFDFD3B14012BFE0B5 /* OXmlElementMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlElementMapper.m; sourceTree = "<group>"; };
+		008D10797271036F96C569F3922A6AF3 /* MGConnect+EntityActionDefinition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+EntityActionDefinition.m"; sourceTree = "<group>"; };
+		04ECB635F48EC906B955765F2648A2F4 /* MGConnect+DataStoreConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+DataStoreConfiguration.h"; sourceTree = "<group>"; };
+		05698F9C6F5630A7D37150CC06C1E157 /* MGResource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGResource.m; sourceTree = "<group>"; };
+		06F4681490717506A911F49AB9C86D3E /* MGWSDLExtendableComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtendableComponent.h; sourceTree = "<group>"; };
+		07A3BEF550B2766DC52F37918463B8FA /* MGActionQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGActionQueue.h; sourceTree = "<group>"; };
+		087CA20DDC0F597E74DB0923ECFB9CF6 /* MGTransactionLogManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGTransactionLogManager.h; sourceTree = "<group>"; };
+		0A58DF7B089E5E98436DC4C8E57D1CD7 /* MGWSDLDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLDescription.h; sourceTree = "<group>"; };
+		0A6CE342C12FD61FB2C655580E3F2429 /* MGBackingStoreInitializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGBackingStoreInitializer.h; sourceTree = "<group>"; };
+		10900E31B643D08572B2A192D082A65F /* Connect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Connect-umbrella.h"; sourceTree = "<group>"; };
+		112F7ED4364592A3702A97B102BF82CC /* MGWSDLBindingFaultReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFaultReference.h; sourceTree = "<group>"; };
+		163AE365AB2B98B743E78D7235FEC82A /* MGWebServiceOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceOperation.h; sourceTree = "<group>"; };
+		187F4D3B121FDF56745140BAC8CDC6F5 /* OXContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXContext.h; sourceTree = "<group>"; };
+		18B0A6EE18E2AC3E7193C9460FAB526F /* MGConnect+EntitySettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+EntitySettings.h"; sourceTree = "<group>"; };
+		18E393EAD1A7AF4C80A48E09BC5F7247 /* MGWebServiceHTTPJSONDeserializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPJSONDeserializer.m; sourceTree = "<group>"; };
+		1A170B02A0CC4347EF7221D65854E432 /* MGEntityActionDefinition+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGEntityActionDefinition+Private.h"; sourceTree = "<group>"; };
+		1A5CD434E81FDD942A6846835D5E270C /* OXProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXProperty.m; sourceTree = "<group>"; };
+		1AF59ACC8F633FBD7E2B44038D3FC89C /* OXJSONWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXJSONWriter.m; sourceTree = "<group>"; };
+		1D6231E49CD3BC2D1D362064923AC5AB /* Pods-Connect_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Connect_Example-umbrella.h"; sourceTree = "<group>"; };
+		1FCB335A4EE00F0C4C058E30C20C35E1 /* MGWebServiceMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceMessage.h; sourceTree = "<group>"; };
+		211D1F3BFFFB9522D180FBF00BCB255F /* Connect-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Connect-prefix.pch"; sourceTree = "<group>"; };
+		22DC9E7DE242BDB959EC8DC384665287 /* MGConnect+EntityAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+EntityAction.h"; sourceTree = "<group>"; };
+		23E5995BBF944E75B37CEF8887D8E0E9 /* MGEntityAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityAction.h; sourceTree = "<group>"; };
+		242D07567628497FAA1983F25C4655CA /* MGWSDLProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLProperty.m; sourceTree = "<group>"; };
+		258DE9AA854D308FEED2062CB446EB66 /* MGSAXYObjectMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGSAXYObjectMapper.h; sourceTree = "<group>"; };
+		28BD9879340E3F69E108E083D20852EA /* MGWSDL+HTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+HTTP.m"; sourceTree = "<group>"; };
+		298387703DAFA2ECF8414DA9234A550D /* MGEntityListAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityListAction.m; sourceTree = "<group>"; };
+		2ACB20593FB7E43676DA7980EB4B6295 /* MGAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGAction.h; sourceTree = "<group>"; };
+		2DF1224AA459031B67355F2A433BD79C /* MGConnect+PrivateSettings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+PrivateSettings.m"; sourceTree = "<group>"; };
+		30F7D399395791507FF957779D2AC611 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		31FF7F4CCEC75DD8E3F7852CABEE7457 /* MGEntityListAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityListAction.h; sourceTree = "<group>"; };
+		324CCBF606E4471800106EDE5D793126 /* MGWSDLBindingMessageReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingMessageReference.m; sourceTree = "<group>"; };
+		333950D914DFCD41A696258F639FCD1E /* MGDataMergeOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGDataMergeOperation.h; sourceTree = "<group>"; };
+		33694466682244A4509DC5566ADF7D69 /* Pods-Connect_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		33A8180A4B245F07DA654F3953A5E95A /* OXType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXType.m; sourceTree = "<group>"; };
+		341410F1A4AE2F0F7BD6A437904091D2 /* MGLoggedManagedObjectContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGLoggedManagedObjectContext.m; sourceTree = "<group>"; };
+		34BCFEDC2557E0FA5F442BD27CBAB7B8 /* Pods_Connect_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37BC748F3D8E2F89FD5DF82457F90306 /* MGWSDLElementDeclaration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLElementDeclaration.h; sourceTree = "<group>"; };
+		37D5CF893547A68F59C11DF294A71F67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38D20B7D6BCEBF0322E3C2D01CD6A2D3 /* MGWebServiceHTTPDeserializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPDeserializer.m; sourceTree = "<group>"; };
+		392C358E546F1732F1106D308C7B89FC /* MGWSDLService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLService.m; sourceTree = "<group>"; };
+		39EEBA4A9AE6889C218D947193F67ECE /* MGWSDLBindingFaultReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFaultReference.m; sourceTree = "<group>"; };
+		3A7EA5217BA335B8395E4DA90B38B6B2 /* TLConsoleWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLConsoleWriter.m; path = TraceLog/Core/TLConsoleWriter.m; sourceTree = "<group>"; };
+		3BA9888DF0D492C58D827BE1C53877D0 /* MGEntityDeleteAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityDeleteAction.m; sourceTree = "<group>"; };
+		3BC0B8D15B75EA3CE0A34AECA7C8E9AF /* MGResourceReferenceDataMergeOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGResourceReferenceDataMergeOperation.h; sourceTree = "<group>"; };
+		3DF6BD1B28CBAD600076390E2681CF7A /* Pods-Connect_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Connect_Tests.modulemap"; sourceTree = "<group>"; };
+		3E7E833F3157AA7A11F588D1A29AB5AF /* MGWSDLInterfaceFault.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFault.h; sourceTree = "<group>"; };
+		3F53932DEF5B1280F8C00D8FEB3E2E02 /* TraceLog-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TraceLog-Bridging-Header.h"; path = "TraceLog/Core/TraceLog-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F6CCA88D032BDE363818E008FDF9287 /* MGConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnect.h; sourceTree = "<group>"; };
+		4053F28E5296B65F962E813F0F65FEB9 /* MGMetadataModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGMetadataModel.h; sourceTree = "<group>"; };
+		411D1CE412785C26ADB76D6B5BC9C3A1 /* MGWebServiceHTTPOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPOperation.m; sourceTree = "<group>"; };
+		41897B07EF33A9AC9DA422413BDC349E /* MGWSDLInterfaceMessageReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceMessageReference.h; sourceTree = "<group>"; };
+		426A4B261381EC85CF7168AB5337E5BE /* MGWSDLInterfaceOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceOperation.h; sourceTree = "<group>"; };
+		427E5E418D4089F3DEDB68FB7E889256 /* MGWebServiceHTTPOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPOperation.h; sourceTree = "<group>"; };
+		434135660C4A0DFABF74B25BCDB5EEDC /* OXPathMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXPathMapper.m; sourceTree = "<group>"; };
+		43E4464424243C548491F0AF0F999CEA /* OXJSONWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXJSONWriter.h; sourceTree = "<group>"; };
+		4557E8DFB3463745870A699C30D143B7 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45B26C0958E5B711EA516B42FE2292B5 /* MGWSDLInterfaceMessageReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceMessageReference.m; sourceTree = "<group>"; };
+		4649559FA286819E5FB73E6B549A9620 /* MGWSDLInterfaceFaultReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFaultReference.m; sourceTree = "<group>"; };
+		47DC8CE438605C699C3D061A175EE111 /* MGConnect+DataStoreConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+DataStoreConfiguration.m"; sourceTree = "<group>"; };
+		4B62E4B0773369E60E3A64D311A95286 /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = TraceLog/ObjC/TraceLog.h; sourceTree = "<group>"; };
+		4C6E50E3870DE6D7BB8B88CFF986C248 /* MGError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGError.h; sourceTree = "<group>"; };
+		4E0B44A6872326957D570E9EE2C3593F /* OXJSONMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXJSONMapper.h; sourceTree = "<group>"; };
+		4E746A237556176EF791B7A177988216 /* OXJSONReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXJSONReader.m; sourceTree = "<group>"; };
+		4EB5A7AD1BF97F3DE65E4E76697C2BDD /* OXJSONPathMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXJSONPathMapper.m; sourceTree = "<group>"; };
+		4EDA76E52BC24E7ED629C5E337227F12 /* MGWSDLExtensionElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtensionElement.m; sourceTree = "<group>"; };
+		4FA837E30AC409C34D3AE683E1065158 /* MGActionNotificationService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGActionNotificationService.h; sourceTree = "<group>"; };
+		4FFB855A745E1840D7176891B187921F /* TLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLLogger.m; path = TraceLog/Core/TLLogger.m; sourceTree = "<group>"; };
+		5032CB1962C3EB117205545827352E45 /* OXComplexMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXComplexMapper.m; sourceTree = "<group>"; };
+		53DBF44006DA0DD500B8DB3EF3BF7A06 /* MGConnect+PrivateSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+PrivateSettings.h"; sourceTree = "<group>"; };
+		552D3BEFD057DA6223B90EEB1EA540DB /* MGConnect+EntityActionDefinition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+EntityActionDefinition.h"; sourceTree = "<group>"; };
+		556749FC663F7E848CE5ABC9E3BC5129 /* MGWebServiceHTTPJSONSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPJSONSerializer.m; sourceTree = "<group>"; };
+		57D03F705BBDE72F2D987ADDE93C87CE /* MGWSDLProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLProperty.h; sourceTree = "<group>"; };
+		5A04D65B466EC3F26D6B9D40E23A8B58 /* MGWebServiceHTTPURLEncodedSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPURLEncodedSerializer.m; sourceTree = "<group>"; };
+		5A660C38041C9F9BA2CE06429598A9A8 /* MGWSDLService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLService.h; sourceTree = "<group>"; };
+		5AC73A8D90EDA08B6BA656B1F6A694E1 /* Pods-Connect_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Connect_Tests-umbrella.h"; sourceTree = "<group>"; };
+		5BDBA243DE0E7409C67E217485550D12 /* MGWebServiceOutMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceOutMessage.m; sourceTree = "<group>"; };
+		5E592CD563DCE74EC91F8EDAF0A9BCE4 /* OXUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXUtil.m; sourceTree = "<group>"; };
+		5F38F3B8F7B517052D9CF5BB7CE58D3E /* OXType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXType.h; sourceTree = "<group>"; };
+		5F9BFCEE8DD25293B9B8588B960B6BAA /* MGWebServiceHTTPXMLDeserializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPXMLDeserializer.m; sourceTree = "<group>"; };
+		60DD2DBEA155A78299A9485B7B90E9BD /* Pods-Connect_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Connect_Tests-dummy.m"; sourceTree = "<group>"; };
+		616944163CA350C2ED20ED32A7E9C000 /* TLConsoleWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLConsoleWriter.h; path = TraceLog/Core/TLConsoleWriter.h; sourceTree = "<group>"; };
+		63AFD3E14374D62FEACD6CDD186FD350 /* MGWSDLEndpoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLEndpoint.h; sourceTree = "<group>"; };
+		64FF820D98B3A13112FBADA438BF6645 /* MGConnect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnect.m; sourceTree = "<group>"; };
+		66283CF0D75EA58590037CAC32EF0A89 /* OXmlPrinter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlPrinter.m; sourceTree = "<group>"; };
+		66712DA4C488F8C1E462A55C5B7B67F7 /* OXmlReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlReader.h; sourceTree = "<group>"; };
+		698FA18A3C75693C0322437DC6C79830 /* MGDataStoreManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGDataStoreManager.h; sourceTree = "<group>"; };
+		6A953C00DC0F3BB3C3AD636995DE05D8 /* MGWSDLElementDeclaration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLElementDeclaration.m; sourceTree = "<group>"; };
+		6BF15DA88B28860567441E73A2FDC5A3 /* OXmlWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlWriter.m; sourceTree = "<group>"; };
+		6CC2F25AC9C0EB954976238FF403025D /* MGLoggedManagedObjectContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGLoggedManagedObjectContext.h; sourceTree = "<group>"; };
+		6D3ABF9A0FAD18F016A704AB4C4B6C41 /* MGRuntimeException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGRuntimeException.m; sourceTree = "<group>"; };
+		6E72EC420F0F23CA34C3CE9BB95FE1BE /* MGError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGError.m; sourceTree = "<group>"; };
+		6EE265B97D8F49710D60CFC94204621F /* MGEntityReadAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityReadAction.m; sourceTree = "<group>"; };
+		6EEC946862144285F7C03B74551BC157 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EF5A88C08CB4E44BB4E6D1BC520C760 /* MGWSDL+Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+Types.h"; sourceTree = "<group>"; };
+		7029EE0B1E25178FFF1814B0ABC8E569 /* MGWebServiceMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceMessage.m; sourceTree = "<group>"; };
+		7080977E3DE5688897277D8880332A6D /* OXTransform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXTransform.m; sourceTree = "<group>"; };
+		71135625B875D1F12D809589A1AA73B6 /* OXmlReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlReader.m; sourceTree = "<group>"; };
+		72A972B2FF3311E1B989E1CCAFA727E6 /* MGTransactionLogManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGTransactionLogManager.m; sourceTree = "<group>"; };
+		737AA9150F37EE5B2729372F19EE27B4 /* Pods-Connect_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Connect_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		73D0801EFC6199444C4C7CB1614BDDF7 /* MGNetworkMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGNetworkMonitor.m; sourceTree = "<group>"; };
+		75093F60C38BC55FCBDE07506B31BC88 /* MGAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGAction.m; sourceTree = "<group>"; };
+		75251BD78E33D264086D2F8499A275A9 /* MGEntityUpdateAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityUpdateAction.m; sourceTree = "<group>"; };
+		7635808F22442027E6FCD2AA81F853BF /* MGTransactionLogRecord.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGTransactionLogRecord.m; sourceTree = "<group>"; };
+		76C1F9F7D2D8427D4586D94A032A6F81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		76FF892972FEB6348971FD827DE0DB1F /* MGWSDLExtensionElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtensionElement.h; sourceTree = "<group>"; };
+		770EFB132F833E9B20D555C94C7CE9F3 /* MGWSDLInterfaceOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceOperation.m; sourceTree = "<group>"; };
+		7739EC0C2A301F0184CCF3A272331CA6 /* MGWebServiceHTTPXMLSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPXMLSerializer.h; sourceTree = "<group>"; };
+		78B2E655D59D559B7A630680066CCA71 /* MGDataStoreManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGDataStoreManager.m; sourceTree = "<group>"; };
+		78E1B3CA316F2B0CF95947689D11CB8D /* MGConnect+Action.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+Action.h"; sourceTree = "<group>"; };
+		7956C5B24FA132540104FBEEDC92202F /* MGConnect+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+Private.m"; sourceTree = "<group>"; };
+		7A90CFB6B174967DBA1CA325E6E7D362 /* MGMetadataModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGMetadataModel.m; sourceTree = "<group>"; };
+		7AC41F44BC749FFAC437B482AEE141C3 /* MGWebServiceHTTPXMLSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPXMLSerializer.m; sourceTree = "<group>"; };
+		7C4DB8803F0EA9FD2C85C3AE52EF0410 /* Pods_Connect_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CF04C0716089729C1C165B7C2D8BCDF /* TLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLLogger.h; path = TraceLog/Core/TLLogger.h; sourceTree = "<group>"; };
+		7F7365526499FFE1FAA49557CCC533EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FE572A0B10225BBD883061A34CD0B28 /* Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		815D571667DA29F3B5D04CFF7C051308 /* MGWSDLEndpoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLEndpoint.m; sourceTree = "<group>"; };
+		824FBEDC79F9282EAF1149877133D0A6 /* MGWSDLBinding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBinding.m; sourceTree = "<group>"; };
+		82865E672841228A70DE49447C436A04 /* OXmlWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlWriter.h; sourceTree = "<group>"; };
+		8534195397DA9A3CFC7680E28CD2B021 /* Pods-Connect_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		85E9E35FD7A90019D91E14D5287C7D7B /* OXJSONObjectMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXJSONObjectMapper.h; sourceTree = "<group>"; };
+		86584243EB8EAE58BE189847884EBD73 /* OXmlContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlContext.m; sourceTree = "<group>"; };
+		8673B23E571EB614EA0A01EE37B705FF /* MGEntityInsertAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityInsertAction.h; sourceTree = "<group>"; };
+		870862528618A3E57D28F2A0CCD0E1FD /* MGWSDLInterface.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterface.m; sourceTree = "<group>"; };
+		8836B64A7EA947F1BE659AB988925CF5 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TraceLog.modulemap; sourceTree = "<group>"; };
+		88D2D69EB69EB2E876A46A5C3F277C60 /* MGWSDLBindingOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingOperation.m; sourceTree = "<group>"; };
+		88F9365898470553CF86839CCE8E42DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B2FEFE6C7477EBE6D48768E2E250130 /* MGXPathV1ObjectMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXPathV1ObjectMapper.h; sourceTree = "<group>"; };
+		8C9908700885797EC1D8C2057EA1C97D /* MGObjectMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGObjectMapper.h; sourceTree = "<group>"; };
+		8CBD5509BA3155E8FCD09B3465B76C82 /* OXmlElementMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlElementMapper.h; sourceTree = "<group>"; };
+		8EDCEB05B9A27DBDCA158F3C6E217B33 /* OXPathMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXPathMapper.h; sourceTree = "<group>"; };
+		8F8593D72D6586A0B9815766B0B0EE7D /* TraceLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-umbrella.h"; sourceTree = "<group>"; };
+		8F85B81607D3FDB6BC76FA49C85AF018 /* Pods-Connect_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Connect_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		902365C52BC53ABD2DF1C8D82F341BA5 /* MGWSDL+HTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+HTTP.h"; sourceTree = "<group>"; };
+		9033B5AE080D29E74392CB8452078BE5 /* MGWebServiceHTTPSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPSerializer.h; sourceTree = "<group>"; };
+		906E3B76897089DD1C90DAAEE6681CD3 /* MGWebServiceHTTPJSONDeserializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPJSONDeserializer.h; sourceTree = "<group>"; };
+		910590AF28AE778362FBD8061C6FA6F7 /* NSMutableArray+OXStack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+OXStack.m"; sourceTree = "<group>"; };
+		92476FD3561597F26AEE75716D3C5DC7 /* Pods-Connect_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect_Example-resources.sh"; sourceTree = "<group>"; };
+		92950689F1295548C6BC17AB958223C9 /* OXPathLite.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXPathLite.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94046AFECFF52C85664E72E2F2782E41 /* MGWSDL+Types.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+Types.m"; sourceTree = "<group>"; };
+		962F74328C08B4A9D589D4F637D2A6E5 /* OXmlPrinter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlPrinter.h; sourceTree = "<group>"; };
+		972F0D8420BCDB01B746D42DA2B8AED7 /* TLLogLevel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLLogLevel.m; path = TraceLog/Core/TLLogLevel.m; sourceTree = "<group>"; };
+		978465DF2409301B7FED1477635F0F78 /* MGEntityInsertAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityInsertAction.m; sourceTree = "<group>"; };
+		97C79C55B0BB5D0992FCDC724F9C0685 /* MGWebServiceOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceOperation.m; sourceTree = "<group>"; };
+		99392D0DCB4FC95EA0A3567F5B9D8BCF /* MGWSDLBindingOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingOperation.h; sourceTree = "<group>"; };
+		99A5FC9B690D720B5A549C30F31DB9E1 /* MGWSDLInterfaceFault.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFault.m; sourceTree = "<group>"; };
+		9AF116933ADACB7A765332EF0C63984D /* MGException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGException.h; sourceTree = "<group>"; };
+		9B8918FC96621A3D04066CE8DB6323EE /* Pods-Connect_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect_Tests-resources.sh"; sourceTree = "<group>"; };
+		9BA9FB4067754993A29EDE9FDB818E5B /* MGResourceReferenceDataMergeOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGResourceReferenceDataMergeOperation.m; sourceTree = "<group>"; };
+		9BFBAA457244815FC2A7F0B2DF34DD7E /* MGWSDLComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLComponent.h; sourceTree = "<group>"; };
+		9CDF5737B523468B8BDC0683162299C8 /* MGWebServiceInMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceInMessage.m; sourceTree = "<group>"; };
+		9DBF3A560EC4E4499AFE0C9D60641BE2 /* MGWebServiceHTTPDeserializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPDeserializer.h; sourceTree = "<group>"; };
+		9E2024CD172BDE34A8550E73EAB43141 /* Pods-Connect_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9FE9EAAB54A10452EDB351F70BE627DE /* MGWSDLBinding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBinding.h; sourceTree = "<group>"; };
+		A0507BBE33CCFE78092A6B9E4AD34897 /* WebLinkAccessService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WebLinkAccessService.h; sourceTree = "<group>"; };
+		A15F4DC7C5FA47308BC5A1305357988F /* MGEntityReadAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityReadAction.h; sourceTree = "<group>"; };
+		A32E61A74929896C928787D8391CEA91 /* MGWSDLComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLComponent.m; sourceTree = "<group>"; };
+		A51B96B59572A07AEA0C9CE9A91368FA /* MGInitializationException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGInitializationException.m; sourceTree = "<group>"; };
+		A69F07B72DA6DEC7093B6DC746C2E9FB /* MGConnect+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+Private.h"; sourceTree = "<group>"; };
+		A6AC2FB3A5AAD5CC30B11D8213EADD3E /* OXPathLite.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXPathLite.h; sourceTree = "<group>"; };
+		A93FCE2506BD0F6F44D90796B45F8B4B /* MGConnect+EntityAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+EntityAction.m"; sourceTree = "<group>"; };
+		A99206D4CA926DBC25D38B974E1F9CD6 /* MGBackingStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGBackingStore.m; sourceTree = "<group>"; };
+		ABD22E3887D5021FA86953DBB701808D /* MGBackingStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGBackingStore.h; sourceTree = "<group>"; };
+		ADEC59908765AD8897383E78FD9D42F7 /* Pods-Connect_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Connect_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		AEDD8B4A8E5FED1889990831D4658BA7 /* Pods-Connect_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Connect_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AF4BD1A3241091149D04622108086D87 /* OXComplexMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXComplexMapper.h; sourceTree = "<group>"; };
+		AFEA06FB0C44EB4D9D60D6A16911F656 /* MGException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGException.m; sourceTree = "<group>"; };
+		B16B19046FD29AA202E7907DB3ABA7CF /* MGWebServiceHTTPSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebServiceHTTPSerializer.m; sourceTree = "<group>"; };
+		B1B2279FB898F1042128C9DDDB68905B /* MGConnect+Action.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+Action.m"; sourceTree = "<group>"; };
+		B21EE8C8BB8012F6084C986E2A347621 /* OXJSONObjectMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXJSONObjectMapper.m; sourceTree = "<group>"; };
+		B2D2CAA0DA85CA9C9D7F866DBB8035A3 /* OXProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXProperty.h; sourceTree = "<group>"; };
+		B32534512D8CF4A2B1881E5D758D6D1C /* OXJSONReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXJSONReader.h; sourceTree = "<group>"; };
+		B4E3B005A2B257B7C371303AC61C68E6 /* OXTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXTransform.h; sourceTree = "<group>"; };
+		B4E65B02DCA2641E0BE72D63191EAD9C /* Pods-Connect_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B972833326B19B5E18CEDC5D3A112268 /* MGNetworkReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGNetworkReachability.m; sourceTree = "<group>"; };
+		B9A3AAF4EBFBFE6921CAA2AAD7001E0E /* MGEntityDeleteAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityDeleteAction.h; sourceTree = "<group>"; };
+		B9B55F0F75E2D9EC4C5D90802410DA61 /* NSMutableArray+OXStack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+OXStack.h"; sourceTree = "<group>"; };
+		BA42C2C212DBD243D04CACE9682B902A /* MGWebServiceHTTPXMLDeserializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPXMLDeserializer.h; sourceTree = "<group>"; };
+		BBD34DEA9F7844174C0A4711EE0D9BBB /* MGConnect+EntityStatistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+EntityStatistics.h"; sourceTree = "<group>"; };
+		BBF4B38163FF4C64498ADCAAE412369D /* MGActionNotificationService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGActionNotificationService.m; sourceTree = "<group>"; };
+		BC10E0306CE163A05AC1932F27199249 /* OXmlMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlMapper.h; sourceTree = "<group>"; };
+		BCDA1BF85DAF43CA2470BC979A780A26 /* MGWebService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWebService.m; sourceTree = "<group>"; };
+		BDDD332BB897935482CECC137A71C71E /* MGWSDLFeature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLFeature.h; sourceTree = "<group>"; };
+		C027CE490C610FFDA42537DA6EAF44F1 /* MGTransactionLogRecord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGTransactionLogRecord.h; sourceTree = "<group>"; };
+		C082FB51279BF55DE6EBBC4ED8F148C1 /* OXmlContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlContext.h; sourceTree = "<group>"; };
+		C14114217A6DCE5D37FC985EF225D998 /* TraceLog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-prefix.pch"; sourceTree = "<group>"; };
+		C25B153AA1C04237F83668FD85E8E7F3 /* MGEntityAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGEntityAction.m; sourceTree = "<group>"; };
+		C32C47104617F427719A781F5CF53089 /* OXUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXUtil.h; sourceTree = "<group>"; };
+		C39E51A8FC859175774B74C212A9678C /* MGWSDLTypeDefinition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLTypeDefinition.m; sourceTree = "<group>"; };
+		C3C804E2AD020D934B7B999EF0702ED3 /* TLWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLWriter.h; path = TraceLog/Core/TLWriter.h; sourceTree = "<group>"; };
+		C597F047EABF942EC747BF7610D07E31 /* MGWSDLBindingFault.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFault.m; sourceTree = "<group>"; };
+		C611727316C125451715FDBE34CD1703 /* MGActionQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGActionQueue.m; sourceTree = "<group>"; };
+		C709FB011392C443B829424D9A7EBCC8 /* MGWSDLTypeDefinition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLTypeDefinition.h; sourceTree = "<group>"; };
+		C784591348DB5694D4D9F21DC83EF344 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7F625D0EC18DEFF915AF5E2B54DAD47 /* MGWebServiceInMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceInMessage.h; sourceTree = "<group>"; };
+		C847F573671A2545FE1756AACF8E9466 /* Connect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Connect.modulemap; sourceTree = "<group>"; };
+		C8BEFA75238A3671A2420DDEC8DE6F21 /* MGWSDLInterfaceFaultReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFaultReference.h; sourceTree = "<group>"; };
+		C9D0386E16EA5263BB4BF6CE19ED29FA /* Pods-Connect_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Connect_Example-dummy.m"; sourceTree = "<group>"; };
+		CA2701F72BE99D7BD54FC66621CE26B4 /* OXmlMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlMapper.m; sourceTree = "<group>"; };
+		CB7E48F8BC115E3363D88E6552EA3828 /* MGWSDLBindingFault.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFault.h; sourceTree = "<group>"; };
+		CC155ED8F4F09B388748354679C0B7B9 /* MGNetworkMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGNetworkMonitor.h; sourceTree = "<group>"; };
+		CCC2D96574D222818A72232FBF7BAE97 /* MGWebService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebService.h; sourceTree = "<group>"; };
+		CED2F69AABE89103A304934702E385E1 /* Connect.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Connect.xcconfig; sourceTree = "<group>"; };
+		D0CC70C3B211E70B5438FFC4544BB3A7 /* Pods-Connect_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D12FB2F7EEB37605780E5AAF3D1C5F94 /* MGWebServiceHTTPJSONSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPJSONSerializer.h; sourceTree = "<group>"; };
+		D17E280BD9E60318A3327ACDEB2EAE70 /* OXJSONPathMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXJSONPathMapper.h; sourceTree = "<group>"; };
+		D1FBE7B4C456B61F18227943FAA17840 /* SAXy-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAXy-Prefix.pch"; sourceTree = "<group>"; };
+		D352F0400B84125CF13AFF165427B650 /* MGWSDL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDL.h; sourceTree = "<group>"; };
+		D54F7AC78056B6C5568E78E3DA8924D5 /* MGWebServiceOutMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceOutMessage.h; sourceTree = "<group>"; };
+		D71C80908BA2120826DF50634BCB9885 /* MGWSDLBindingMessageReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingMessageReference.h; sourceTree = "<group>"; };
+		D8A729A5C29A6472C88F6AFDA834E5CC /* MGNetworkReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGNetworkReachability.h; sourceTree = "<group>"; };
+		DA43B6DDF50CE24FA7D672661F9DC19F /* MGXPathV1ObjectMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXPathV1ObjectMapper.m; sourceTree = "<group>"; };
+		DAA19D8049923B7A10C1AEDA81CFA837 /* OXmlXPathMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXmlXPathMapper.m; sourceTree = "<group>"; };
+		DE41680C9A3588E047DAD7B8B1A9CB2B /* MGConnect+EntitySettings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+EntitySettings.m"; sourceTree = "<group>"; };
+		DEC15FD461DF0C4F9E4DBA1DD121565E /* MGWSDLFeature.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLFeature.m; sourceTree = "<group>"; };
+		E0AC010E9C8522D52300D9B653BE2F1F /* MGResource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGResource.h; sourceTree = "<group>"; };
+		E2E776032C9A50008A0720CB9E4167B5 /* MGSAXYObjectMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGSAXYObjectMapper.m; sourceTree = "<group>"; };
+		E3001DDE2F5DCE11F18DEBCB261050D8 /* MGWSDLDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLDescription.m; sourceTree = "<group>"; };
+		E413124715D42D45458AC92E13928D2A /* TraceLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TraceLog.xcconfig; sourceTree = "<group>"; };
+		E425E0D37F3DF01959531EA8FC312756 /* Pods-Connect_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Connect_Example.modulemap"; sourceTree = "<group>"; };
+		E6B6188319349DF264DCE0BDC2D4067B /* MGConnect+EntityActionNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+EntityActionNotification.m"; sourceTree = "<group>"; };
+		E868119170ABBF58D0C299FABE0EEDE9 /* Connect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Connect-dummy.m"; sourceTree = "<group>"; };
+		EDBC93AE79A0A18A5A5A7D0D22481EFC /* MGEntityUpdateAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGEntityUpdateAction.h; sourceTree = "<group>"; };
+		EE3F0573EC9F932866122C19A10618E7 /* MGAssert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGAssert.h; sourceTree = "<group>"; };
+		EFF92A9E5648B6335103C55B72B4F026 /* TraceLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TraceLog-dummy.m"; sourceTree = "<group>"; };
+		F114DB88FE0E10AD8489C65FB324BC19 /* MGRuntimeException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGRuntimeException.h; sourceTree = "<group>"; };
+		F12D7A9E2C2481A7939D0F2484B24F40 /* TLLogLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLLogLevel.h; path = TraceLog/Core/TLLogLevel.h; sourceTree = "<group>"; };
+		F2C9D296667CC6D71D843599BF867DD8 /* OXJSONMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXJSONMapper.m; sourceTree = "<group>"; };
+		F3F91D75EC355A8F170EC03A0B9A4664 /* MGInitializationException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGInitializationException.h; sourceTree = "<group>"; };
+		F4EE9C4AAF0ACEFBC4471DC4ADC7E00D /* OXBlockDef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXBlockDef.h; sourceTree = "<group>"; };
+		F58EE8A9EA2AA3DC6F057A168799E244 /* MGConnect+EntityActionNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGConnect+EntityActionNotification.h"; sourceTree = "<group>"; };
+		F5B77A05A43246F725DF3F46869F5F12 /* MGWebServiceHTTPURLEncodedSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWebServiceHTTPURLEncodedSerializer.h; sourceTree = "<group>"; };
+		F9318248289A4FAEF4B2A019D1CFB5F8 /* OXmlXPathMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OXmlXPathMapper.h; sourceTree = "<group>"; };
+		F9E4CB88B09C2C3A8E35D228EA2E113E /* Pods-Connect_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect_Example-frameworks.sh"; sourceTree = "<group>"; };
+		FA9809ECDBAF2C9DB63E718159AC9707 /* MGConnect+EntityStatistics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGConnect+EntityStatistics.m"; sourceTree = "<group>"; };
+		FBF8C96BFAEB47BB65B2E6705B3650EC /* MGWSDLInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterface.h; sourceTree = "<group>"; };
+		FC823417A3DDA8985D41B1103B0033D6 /* MGWSDLExtendableComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtendableComponent.m; sourceTree = "<group>"; };
+		FEC29D7E6F13B821607A401E21A1610D /* MGDataMergeOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGDataMergeOperation.m; sourceTree = "<group>"; };
+		FF09C93E20249290438D801B3BE92018 /* OXContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OXContext.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		358F51F81B6C06C20A7A51F4BD9963EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C4141A7900C3FCB4F73C0741BBC30B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73490862B0FFA2147B06193BD9220C64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD59E64282E1DDED69B562F4E20461E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC954E434652837B60CA17CC24EEB90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D53FE0329EF760BD74460CD6AC064D1 /* CoreData.framework in Frameworks */,
+				AEDBEFDA60D44EEBC049A80EAE6AA5B9 /* Foundation.framework in Frameworks */,
+				E80FB780503DDCF1663D69FC7D8774A7 /* TraceLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F19329FE2ABA1BDF0F9D0B75F445805F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				694D309B5DB39E24D5E90F0924BCF8D9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08BA792D2E4D9C3E31506E97B1088E15 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				9DBF3A560EC4E4499AFE0C9D60641BE2 /* MGWebServiceHTTPDeserializer.h */,
+				38D20B7D6BCEBF0322E3C2D01CD6A2D3 /* MGWebServiceHTTPDeserializer.m */,
+				906E3B76897089DD1C90DAAEE6681CD3 /* MGWebServiceHTTPJSONDeserializer.h */,
+				18E393EAD1A7AF4C80A48E09BC5F7247 /* MGWebServiceHTTPJSONDeserializer.m */,
+				D12FB2F7EEB37605780E5AAF3D1C5F94 /* MGWebServiceHTTPJSONSerializer.h */,
+				556749FC663F7E848CE5ABC9E3BC5129 /* MGWebServiceHTTPJSONSerializer.m */,
+				427E5E418D4089F3DEDB68FB7E889256 /* MGWebServiceHTTPOperation.h */,
+				411D1CE412785C26ADB76D6B5BC9C3A1 /* MGWebServiceHTTPOperation.m */,
+				9033B5AE080D29E74392CB8452078BE5 /* MGWebServiceHTTPSerializer.h */,
+				B16B19046FD29AA202E7907DB3ABA7CF /* MGWebServiceHTTPSerializer.m */,
+				F5B77A05A43246F725DF3F46869F5F12 /* MGWebServiceHTTPURLEncodedSerializer.h */,
+				5A04D65B466EC3F26D6B9D40E23A8B58 /* MGWebServiceHTTPURLEncodedSerializer.m */,
+				BA42C2C212DBD243D04CACE9682B902A /* MGWebServiceHTTPXMLDeserializer.h */,
+				5F9BFCEE8DD25293B9B8588B960B6BAA /* MGWebServiceHTTPXMLDeserializer.m */,
+				7739EC0C2A301F0184CCF3A272331CA6 /* MGWebServiceHTTPXMLSerializer.h */,
+				7AC41F44BC749FFAC437B482AEE141C3 /* MGWebServiceHTTPXMLSerializer.m */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		104B08B2A67B597D3B2EE671D55AC22A /* BackingStore */ = {
+			isa = PBXGroup;
+			children = (
+				ABD22E3887D5021FA86953DBB701808D /* MGBackingStore.h */,
+				A99206D4CA926DBC25D38B974E1F9CD6 /* MGBackingStore.m */,
+				0A6CE342C12FD61FB2C655580E3F2429 /* MGBackingStoreInitializer.h */,
+			);
+			path = BackingStore;
+			sourceTree = "<group>";
+		};
+		134CC14DDC0F35BFF5085D2EAC3D26CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4557E8DFB3463745870A699C30D143B7 /* TraceLog.framework */,
+				29F53525F536B73B49DF8C9FCCBD712D /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14084B27B79D155F763FB7B60886FF55 /* WSDL */ = {
+			isa = PBXGroup;
+			children = (
+				D352F0400B84125CF13AFF165427B650 /* MGWSDL.h */,
+				902365C52BC53ABD2DF1C8D82F341BA5 /* MGWSDL+HTTP.h */,
+				28BD9879340E3F69E108E083D20852EA /* MGWSDL+HTTP.m */,
+				6EF5A88C08CB4E44BB4E6D1BC520C760 /* MGWSDL+Types.h */,
+				94046AFECFF52C85664E72E2F2782E41 /* MGWSDL+Types.m */,
+				9FE9EAAB54A10452EDB351F70BE627DE /* MGWSDLBinding.h */,
+				824FBEDC79F9282EAF1149877133D0A6 /* MGWSDLBinding.m */,
+				CB7E48F8BC115E3363D88E6552EA3828 /* MGWSDLBindingFault.h */,
+				C597F047EABF942EC747BF7610D07E31 /* MGWSDLBindingFault.m */,
+				112F7ED4364592A3702A97B102BF82CC /* MGWSDLBindingFaultReference.h */,
+				39EEBA4A9AE6889C218D947193F67ECE /* MGWSDLBindingFaultReference.m */,
+				D71C80908BA2120826DF50634BCB9885 /* MGWSDLBindingMessageReference.h */,
+				324CCBF606E4471800106EDE5D793126 /* MGWSDLBindingMessageReference.m */,
+				99392D0DCB4FC95EA0A3567F5B9D8BCF /* MGWSDLBindingOperation.h */,
+				88D2D69EB69EB2E876A46A5C3F277C60 /* MGWSDLBindingOperation.m */,
+				9BFBAA457244815FC2A7F0B2DF34DD7E /* MGWSDLComponent.h */,
+				A32E61A74929896C928787D8391CEA91 /* MGWSDLComponent.m */,
+				0A58DF7B089E5E98436DC4C8E57D1CD7 /* MGWSDLDescription.h */,
+				E3001DDE2F5DCE11F18DEBCB261050D8 /* MGWSDLDescription.m */,
+				37BC748F3D8E2F89FD5DF82457F90306 /* MGWSDLElementDeclaration.h */,
+				6A953C00DC0F3BB3C3AD636995DE05D8 /* MGWSDLElementDeclaration.m */,
+				63AFD3E14374D62FEACD6CDD186FD350 /* MGWSDLEndpoint.h */,
+				815D571667DA29F3B5D04CFF7C051308 /* MGWSDLEndpoint.m */,
+				06F4681490717506A911F49AB9C86D3E /* MGWSDLExtendableComponent.h */,
+				FC823417A3DDA8985D41B1103B0033D6 /* MGWSDLExtendableComponent.m */,
+				76FF892972FEB6348971FD827DE0DB1F /* MGWSDLExtensionElement.h */,
+				4EDA76E52BC24E7ED629C5E337227F12 /* MGWSDLExtensionElement.m */,
+				BDDD332BB897935482CECC137A71C71E /* MGWSDLFeature.h */,
+				DEC15FD461DF0C4F9E4DBA1DD121565E /* MGWSDLFeature.m */,
+				FBF8C96BFAEB47BB65B2E6705B3650EC /* MGWSDLInterface.h */,
+				870862528618A3E57D28F2A0CCD0E1FD /* MGWSDLInterface.m */,
+				3E7E833F3157AA7A11F588D1A29AB5AF /* MGWSDLInterfaceFault.h */,
+				99A5FC9B690D720B5A549C30F31DB9E1 /* MGWSDLInterfaceFault.m */,
+				C8BEFA75238A3671A2420DDEC8DE6F21 /* MGWSDLInterfaceFaultReference.h */,
+				4649559FA286819E5FB73E6B549A9620 /* MGWSDLInterfaceFaultReference.m */,
+				41897B07EF33A9AC9DA422413BDC349E /* MGWSDLInterfaceMessageReference.h */,
+				45B26C0958E5B711EA516B42FE2292B5 /* MGWSDLInterfaceMessageReference.m */,
+				426A4B261381EC85CF7168AB5337E5BE /* MGWSDLInterfaceOperation.h */,
+				770EFB132F833E9B20D555C94C7CE9F3 /* MGWSDLInterfaceOperation.m */,
+				57D03F705BBDE72F2D987ADDE93C87CE /* MGWSDLProperty.h */,
+				242D07567628497FAA1983F25C4655CA /* MGWSDLProperty.m */,
+				5A660C38041C9F9BA2CE06429598A9A8 /* MGWSDLService.h */,
+				392C358E546F1732F1106D308C7B89FC /* MGWSDLService.m */,
+				C709FB011392C443B829424D9A7EBCC8 /* MGWSDLTypeDefinition.h */,
+				C39E51A8FC859175774B74C212A9678C /* MGWSDLTypeDefinition.m */,
+			);
+			path = WSDL;
+			sourceTree = "<group>";
+		};
+		175F3DE6125F902CADDA39398E34D674 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4E0B44A6872326957D570E9EE2C3593F /* OXJSONMapper.h */,
+				F2C9D296667CC6D71D843599BF867DD8 /* OXJSONMapper.m */,
+				85E9E35FD7A90019D91E14D5287C7D7B /* OXJSONObjectMapper.h */,
+				B21EE8C8BB8012F6084C986E2A347621 /* OXJSONObjectMapper.m */,
+				D17E280BD9E60318A3327ACDEB2EAE70 /* OXJSONPathMapper.h */,
+				4EB5A7AD1BF97F3DE65E4E76697C2BDD /* OXJSONPathMapper.m */,
+				B32534512D8CF4A2B1881E5D758D6D1C /* OXJSONReader.h */,
+				4E746A237556176EF791B7A177988216 /* OXJSONReader.m */,
+				43E4464424243C548491F0AF0F999CEA /* OXJSONWriter.h */,
+				1AF59ACC8F633FBD7E2B44038D3FC89C /* OXJSONWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		179B834EA2BA345DDE32628D4D0AEFB9 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D7C5E41518B17647B0B5C663422E9B6 /* Connect */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		1B686EC06C8B3DEB1FDA3BBEDE82EF83 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C847F573671A2545FE1756AACF8E9466 /* Connect.modulemap */,
+				CED2F69AABE89103A304934702E385E1 /* Connect.xcconfig */,
+				E868119170ABBF58D0C299FABE0EEDE9 /* Connect-dummy.m */,
+				211D1F3BFFFB9522D180FBF00BCB255F /* Connect-prefix.pch */,
+				10900E31B643D08572B2A192D082A65F /* Connect-umbrella.h */,
+				37D5CF893547A68F59C11DF294A71F67 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Connect";
+			sourceTree = "<group>";
+		};
+		29F53525F536B73B49DF8C9FCCBD712D /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				76C1F9F7D2D8427D4586D94A032A6F81 /* CoreData.framework */,
+				30F7D399395791507FF957779D2AC611 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		2F5E0977CA49A8D9DC53478480FE3DB5 /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+				07A3BEF550B2766DC52F37918463B8FA /* MGActionQueue.h */,
+				C611727316C125451715FDBE34CD1703 /* MGActionQueue.m */,
+			);
+			path = Queues;
+			sourceTree = "<group>";
+		};
+		46F1C3CA273858FCA18AFB01B0257F5F /* SAX */ = {
+			isa = PBXGroup;
+			children = (
+				AF4BD1A3241091149D04622108086D87 /* OXComplexMapper.h */,
+				5032CB1962C3EB117205545827352E45 /* OXComplexMapper.m */,
+				C082FB51279BF55DE6EBBC4ED8F148C1 /* OXmlContext.h */,
+				86584243EB8EAE58BE189847884EBD73 /* OXmlContext.m */,
+				8CBD5509BA3155E8FCD09B3465B76C82 /* OXmlElementMapper.h */,
+				0066600155A215EFDFD3B14012BFE0B5 /* OXmlElementMapper.m */,
+				BC10E0306CE163A05AC1932F27199249 /* OXmlMapper.h */,
+				CA2701F72BE99D7BD54FC66621CE26B4 /* OXmlMapper.m */,
+				962F74328C08B4A9D589D4F637D2A6E5 /* OXmlPrinter.h */,
+				66283CF0D75EA58590037CAC32EF0A89 /* OXmlPrinter.m */,
+				66712DA4C488F8C1E462A55C5B7B67F7 /* OXmlReader.h */,
+				71135625B875D1F12D809589A1AA73B6 /* OXmlReader.m */,
+				82865E672841228A70DE49447C436A04 /* OXmlWriter.h */,
+				6BF15DA88B28860567441E73A2FDC5A3 /* OXmlWriter.m */,
+				F9318248289A4FAEF4B2A019D1CFB5F8 /* OXmlXPathMapper.h */,
+				DAA19D8049923B7A10C1AEDA81CFA837 /* OXmlXPathMapper.m */,
+				A6AC2FB3A5AAD5CC30B11D8213EADD3E /* OXPathLite.h */,
+				92950689F1295548C6BC17AB958223C9 /* OXPathLite.m */,
+			);
+			path = SAX;
+			sourceTree = "<group>";
+		};
+		5CAF4BD30D26761166348E342BCA655B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				2ACB20593FB7E43676DA7980EB4B6295 /* MGAction.h */,
+				75093F60C38BC55FCBDE07506B31BC88 /* MGAction.m */,
+				23E5995BBF944E75B37CEF8887D8E0E9 /* MGEntityAction.h */,
+				C25B153AA1C04237F83668FD85E8E7F3 /* MGEntityAction.m */,
+				B9A3AAF4EBFBFE6921CAA2AAD7001E0E /* MGEntityDeleteAction.h */,
+				3BA9888DF0D492C58D827BE1C53877D0 /* MGEntityDeleteAction.m */,
+				8673B23E571EB614EA0A01EE37B705FF /* MGEntityInsertAction.h */,
+				978465DF2409301B7FED1477635F0F78 /* MGEntityInsertAction.m */,
+				31FF7F4CCEC75DD8E3F7852CABEE7457 /* MGEntityListAction.h */,
+				298387703DAFA2ECF8414DA9234A550D /* MGEntityListAction.m */,
+				A15F4DC7C5FA47308BC5A1305357988F /* MGEntityReadAction.h */,
+				6EE265B97D8F49710D60CFC94204621F /* MGEntityReadAction.m */,
+				EDBC93AE79A0A18A5A5A7D0D22481EFC /* MGEntityUpdateAction.h */,
+				75251BD78E33D264086D2F8499A275A9 /* MGEntityUpdateAction.m */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		67CEECC1CD48E3256EC6D593554D3A02 /* 3rd-party */ = {
+			isa = PBXGroup;
+			children = (
+				E8C33669E1839B1B593DDC64D969DA68 /* SAXy */,
+			);
+			path = "3rd-party";
+			sourceTree = "<group>";
+		};
+		6BA07FB2BF92676F525FDE9014738BD4 /* Pods-Connect_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7F7365526499FFE1FAA49557CCC533EF /* Info.plist */,
+				3DF6BD1B28CBAD600076390E2681CF7A /* Pods-Connect_Tests.modulemap */,
+				737AA9150F37EE5B2729372F19EE27B4 /* Pods-Connect_Tests-acknowledgements.markdown */,
+				ADEC59908765AD8897383E78FD9D42F7 /* Pods-Connect_Tests-acknowledgements.plist */,
+				60DD2DBEA155A78299A9485B7B90E9BD /* Pods-Connect_Tests-dummy.m */,
+				33694466682244A4509DC5566ADF7D69 /* Pods-Connect_Tests-frameworks.sh */,
+				9B8918FC96621A3D04066CE8DB6323EE /* Pods-Connect_Tests-resources.sh */,
+				5AC73A8D90EDA08B6BA656B1F6A694E1 /* Pods-Connect_Tests-umbrella.h */,
+				B4E65B02DCA2641E0BE72D63191EAD9C /* Pods-Connect_Tests.debug.xcconfig */,
+				D0CC70C3B211E70B5438FFC4544BB3A7 /* Pods-Connect_Tests.release.xcconfig */,
+			);
+			name = "Pods-Connect_Tests";
+			path = "Target Support Files/Pods-Connect_Tests";
+			sourceTree = "<group>";
+		};
+		7903BA4490EF004E7254FE7BF6034476 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				4B62E4B0773369E60E3A64D311A95286 /* TraceLog.h */,
+			);
+			name = ObjC;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				179B834EA2BA345DDE32628D4D0AEFB9 /* Development Pods */,
+				134CC14DDC0F35BFF5085D2EAC3D26CE /* Frameworks */,
+				D30B2B905E5A7D50DF2951A0890F1312 /* Pods */,
+				B2D80CDF4A66FE1D3EFFCCF817DB44D8 /* Products */,
+				93C9A54E0179237AAF069CFE08281819 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7E207E65CCCD77AEFAA708068C03992F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C784591348DB5694D4D9F21DC83EF344 /* Info.plist */,
+				8836B64A7EA947F1BE659AB988925CF5 /* TraceLog.modulemap */,
+				E413124715D42D45458AC92E13928D2A /* TraceLog.xcconfig */,
+				EFF92A9E5648B6335103C55B72B4F026 /* TraceLog-dummy.m */,
+				C14114217A6DCE5D37FC985EF225D998 /* TraceLog-prefix.pch */,
+				8F8593D72D6586A0B9815766B0B0EE7D /* TraceLog-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TraceLog";
+			sourceTree = "<group>";
+		};
+		7E33CD9B44A9DE208F308D4F68763FB6 /* Pods-Connect_Example */ = {
+			isa = PBXGroup;
+			children = (
+				88F9365898470553CF86839CCE8E42DA /* Info.plist */,
+				E425E0D37F3DF01959531EA8FC312756 /* Pods-Connect_Example.modulemap */,
+				AEDD8B4A8E5FED1889990831D4658BA7 /* Pods-Connect_Example-acknowledgements.markdown */,
+				8F85B81607D3FDB6BC76FA49C85AF018 /* Pods-Connect_Example-acknowledgements.plist */,
+				C9D0386E16EA5263BB4BF6CE19ED29FA /* Pods-Connect_Example-dummy.m */,
+				F9E4CB88B09C2C3A8E35D228EA2E113E /* Pods-Connect_Example-frameworks.sh */,
+				92476FD3561597F26AEE75716D3C5DC7 /* Pods-Connect_Example-resources.sh */,
+				1D6231E49CD3BC2D1D362064923AC5AB /* Pods-Connect_Example-umbrella.h */,
+				8534195397DA9A3CFC7680E28CD2B021 /* Pods-Connect_Example.debug.xcconfig */,
+				9E2024CD172BDE34A8550E73EAB43141 /* Pods-Connect_Example.release.xcconfig */,
+			);
+			name = "Pods-Connect_Example";
+			path = "Target Support Files/Pods-Connect_Example";
+			sourceTree = "<group>";
+		};
+		93C9A54E0179237AAF069CFE08281819 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E33CD9B44A9DE208F308D4F68763FB6 /* Pods-Connect_Example */,
+				6BA07FB2BF92676F525FDE9014738BD4 /* Pods-Connect_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9D7C5E41518B17647B0B5C663422E9B6 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				C5D2240B3A460A1FF360D473B90C1DFE /* Connect */,
+				1B686EC06C8B3DEB1FDA3BBEDE82EF83 /* Support Files */,
+			);
+			name = Connect;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		A1F92EF068F77E1FCEF70FEB8CB99DCE /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				333950D914DFCD41A696258F639FCD1E /* MGDataMergeOperation.h */,
+				FEC29D7E6F13B821607A401E21A1610D /* MGDataMergeOperation.m */,
+				3BC0B8D15B75EA3CE0A34AECA7C8E9AF /* MGResourceReferenceDataMergeOperation.h */,
+				9BA9FB4067754993A29EDE9FDB818E5B /* MGResourceReferenceDataMergeOperation.m */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		AA70610BEF6015B9D4A9DF784C4D5AED /* TraceLog */ = {
+			isa = PBXGroup;
+			children = (
+				C52CA95FC188129FD78B4D55222DA240 /* Core */,
+				7903BA4490EF004E7254FE7BF6034476 /* ObjC */,
+				7E207E65CCCD77AEFAA708068C03992F /* Support Files */,
+			);
+			path = TraceLog;
+			sourceTree = "<group>";
+		};
+		ABAD3A02FED33F3DD1BE82190B9C150F /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				EE3F0573EC9F932866122C19A10618E7 /* MGAssert.h */,
+				A69F07B72DA6DEC7093B6DC746C2E9FB /* MGConnect+Private.h */,
+				7956C5B24FA132540104FBEEDC92202F /* MGConnect+Private.m */,
+				53DBF44006DA0DD500B8DB3EF3BF7A06 /* MGConnect+PrivateSettings.h */,
+				2DF1224AA459031B67355F2A433BD79C /* MGConnect+PrivateSettings.m */,
+				698FA18A3C75693C0322437DC6C79830 /* MGDataStoreManager.h */,
+				78B2E655D59D559B7A630680066CCA71 /* MGDataStoreManager.m */,
+				1A170B02A0CC4347EF7221D65854E432 /* MGEntityActionDefinition+Private.h */,
+				E0AC010E9C8522D52300D9B653BE2F1F /* MGResource.h */,
+				05698F9C6F5630A7D37150CC06C1E157 /* MGResource.m */,
+				5CAF4BD30D26761166348E342BCA655B /* Actions */,
+				104B08B2A67B597D3B2EE671D55AC22A /* BackingStore */,
+				ED1E64692AD333A67CA01CD399085623 /* ModelManagement */,
+				C00F94ADD21895A4839761A3B54B61F8 /* Network */,
+				D5C2B3C68A63009575849090B551D164 /* Notification */,
+				A1F92EF068F77E1FCEF70FEB8CB99DCE /* Persistence */,
+				2F5E0977CA49A8D9DC53478480FE3DB5 /* Queues */,
+				AD1E88E9F7C660F3982294B25FFAEC76 /* Services */,
+				CD77930C3D7F79767B660265B7C3F286 /* Transactions */,
+				E144775812E4468626FC0BEE4D888F5D /* Transformation */,
+				C4037B35E69B9F8F29DAA15CC964B6DA /* WebServices */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		AD1E88E9F7C660F3982294B25FFAEC76 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A0507BBE33CCFE78092A6B9E4AD34897 /* WebLinkAccessService.h */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B2D80CDF4A66FE1D3EFFCCF817DB44D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FE572A0B10225BBD883061A34CD0B28 /* Connect.framework */,
+				7C4DB8803F0EA9FD2C85C3AE52EF0410 /* Pods_Connect_Example.framework */,
+				34BCFEDC2557E0FA5F442BD27CBAB7B8 /* Pods_Connect_Tests.framework */,
+				6EEC946862144285F7C03B74551BC157 /* TraceLog.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C00F94ADD21895A4839761A3B54B61F8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CC155ED8F4F09B388748354679C0B7B9 /* MGNetworkMonitor.h */,
+				73D0801EFC6199444C4C7CB1614BDDF7 /* MGNetworkMonitor.m */,
+				D8A729A5C29A6472C88F6AFDA834E5CC /* MGNetworkReachability.h */,
+				B972833326B19B5E18CEDC5D3A112268 /* MGNetworkReachability.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C4037B35E69B9F8F29DAA15CC964B6DA /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				CCC2D96574D222818A72232FBF7BAE97 /* MGWebService.h */,
+				BCDA1BF85DAF43CA2470BC979A780A26 /* MGWebService.m */,
+				C7F625D0EC18DEFF915AF5E2B54DAD47 /* MGWebServiceInMessage.h */,
+				9CDF5737B523468B8BDC0683162299C8 /* MGWebServiceInMessage.m */,
+				1FCB335A4EE00F0C4C058E30C20C35E1 /* MGWebServiceMessage.h */,
+				7029EE0B1E25178FFF1814B0ABC8E569 /* MGWebServiceMessage.m */,
+				163AE365AB2B98B743E78D7235FEC82A /* MGWebServiceOperation.h */,
+				97C79C55B0BB5D0992FCDC724F9C0685 /* MGWebServiceOperation.m */,
+				D54F7AC78056B6C5568E78E3DA8924D5 /* MGWebServiceOutMessage.h */,
+				5BDBA243DE0E7409C67E217485550D12 /* MGWebServiceOutMessage.m */,
+				08BA792D2E4D9C3E31506E97B1088E15 /* HTTP */,
+				14084B27B79D155F763FB7B60886FF55 /* WSDL */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		C52CA95FC188129FD78B4D55222DA240 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				616944163CA350C2ED20ED32A7E9C000 /* TLConsoleWriter.h */,
+				3A7EA5217BA335B8395E4DA90B38B6B2 /* TLConsoleWriter.m */,
+				7CF04C0716089729C1C165B7C2D8BCDF /* TLLogger.h */,
+				4FFB855A745E1840D7176891B187921F /* TLLogger.m */,
+				F12D7A9E2C2481A7939D0F2484B24F40 /* TLLogLevel.h */,
+				972F0D8420BCDB01B746D42DA2B8AED7 /* TLLogLevel.m */,
+				C3C804E2AD020D934B7B999EF0702ED3 /* TLWriter.h */,
+				3F53932DEF5B1280F8C00D8FEB3E2E02 /* TraceLog-Bridging-Header.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		C5D2240B3A460A1FF360D473B90C1DFE /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				3F6CCA88D032BDE363818E008FDF9287 /* MGConnect.h */,
+				64FF820D98B3A13112FBADA438BF6645 /* MGConnect.m */,
+				78E1B3CA316F2B0CF95947689D11CB8D /* MGConnect+Action.h */,
+				B1B2279FB898F1042128C9DDDB68905B /* MGConnect+Action.m */,
+				04ECB635F48EC906B955765F2648A2F4 /* MGConnect+DataStoreConfiguration.h */,
+				47DC8CE438605C699C3D061A175EE111 /* MGConnect+DataStoreConfiguration.m */,
+				22DC9E7DE242BDB959EC8DC384665287 /* MGConnect+EntityAction.h */,
+				A93FCE2506BD0F6F44D90796B45F8B4B /* MGConnect+EntityAction.m */,
+				552D3BEFD057DA6223B90EEB1EA540DB /* MGConnect+EntityActionDefinition.h */,
+				008D10797271036F96C569F3922A6AF3 /* MGConnect+EntityActionDefinition.m */,
+				F58EE8A9EA2AA3DC6F057A168799E244 /* MGConnect+EntityActionNotification.h */,
+				E6B6188319349DF264DCE0BDC2D4067B /* MGConnect+EntityActionNotification.m */,
+				18B0A6EE18E2AC3E7193C9460FAB526F /* MGConnect+EntitySettings.h */,
+				DE41680C9A3588E047DAD7B8B1A9CB2B /* MGConnect+EntitySettings.m */,
+				BBD34DEA9F7844174C0A4711EE0D9BBB /* MGConnect+EntityStatistics.h */,
+				FA9809ECDBAF2C9DB63E718159AC9707 /* MGConnect+EntityStatistics.m */,
+				4C6E50E3870DE6D7BB8B88CFF986C248 /* MGError.h */,
+				6E72EC420F0F23CA34C3CE9BB95FE1BE /* MGError.m */,
+				9AF116933ADACB7A765332EF0C63984D /* MGException.h */,
+				AFEA06FB0C44EB4D9D60D6A16911F656 /* MGException.m */,
+				F3F91D75EC355A8F170EC03A0B9A4664 /* MGInitializationException.h */,
+				A51B96B59572A07AEA0C9CE9A91368FA /* MGInitializationException.m */,
+				F114DB88FE0E10AD8489C65FB324BC19 /* MGRuntimeException.h */,
+				6D3ABF9A0FAD18F016A704AB4C4B6C41 /* MGRuntimeException.m */,
+				67CEECC1CD48E3256EC6D593554D3A02 /* 3rd-party */,
+				ABAD3A02FED33F3DD1BE82190B9C150F /* Internal */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		CD77930C3D7F79767B660265B7C3F286 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				6CC2F25AC9C0EB954976238FF403025D /* MGLoggedManagedObjectContext.h */,
+				341410F1A4AE2F0F7BD6A437904091D2 /* MGLoggedManagedObjectContext.m */,
+				087CA20DDC0F597E74DB0923ECFB9CF6 /* MGTransactionLogManager.h */,
+				72A972B2FF3311E1B989E1CCAFA727E6 /* MGTransactionLogManager.m */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		D30B2B905E5A7D50DF2951A0890F1312 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA70610BEF6015B9D4A9DF784C4D5AED /* TraceLog */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D5C2B3C68A63009575849090B551D164 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				4FA837E30AC409C34D3AE683E1065158 /* MGActionNotificationService.h */,
+				BBF4B38163FF4C64498ADCAAE412369D /* MGActionNotificationService.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		E144775812E4468626FC0BEE4D888F5D /* Transformation */ = {
+			isa = PBXGroup;
+			children = (
+				8C9908700885797EC1D8C2057EA1C97D /* MGObjectMapper.h */,
+				258DE9AA854D308FEED2062CB446EB66 /* MGSAXYObjectMapper.h */,
+				E2E776032C9A50008A0720CB9E4167B5 /* MGSAXYObjectMapper.m */,
+				8B2FEFE6C7477EBE6D48768E2E250130 /* MGXPathV1ObjectMapper.h */,
+				DA43B6DDF50CE24FA7D672661F9DC19F /* MGXPathV1ObjectMapper.m */,
+			);
+			path = Transformation;
+			sourceTree = "<group>";
+		};
+		E8C33669E1839B1B593DDC64D969DA68 /* SAXy */ = {
+			isa = PBXGroup;
+			children = (
+				D1FBE7B4C456B61F18227943FAA17840 /* SAXy-Prefix.pch */,
+				175F3DE6125F902CADDA39398E34D674 /* JSON */,
+				F3AC994839CF5A47F5F0873CED241907 /* OX */,
+				46F1C3CA273858FCA18AFB01B0257F5F /* SAX */,
+			);
+			path = SAXy;
+			sourceTree = "<group>";
+		};
+		ED1E64692AD333A67CA01CD399085623 /* ModelManagement */ = {
+			isa = PBXGroup;
+			children = (
+				4053F28E5296B65F962E813F0F65FEB9 /* MGMetadataModel.h */,
+				7A90CFB6B174967DBA1CA325E6E7D362 /* MGMetadataModel.m */,
+				C027CE490C610FFDA42537DA6EAF44F1 /* MGTransactionLogRecord.h */,
+				7635808F22442027E6FCD2AA81F853BF /* MGTransactionLogRecord.m */,
+			);
+			path = ModelManagement;
+			sourceTree = "<group>";
+		};
+		F3AC994839CF5A47F5F0873CED241907 /* OX */ = {
+			isa = PBXGroup;
+			children = (
+				B9B55F0F75E2D9EC4C5D90802410DA61 /* NSMutableArray+OXStack.h */,
+				910590AF28AE778362FBD8061C6FA6F7 /* NSMutableArray+OXStack.m */,
+				F4EE9C4AAF0ACEFBC4471DC4ADC7E00D /* OXBlockDef.h */,
+				187F4D3B121FDF56745140BAC8CDC6F5 /* OXContext.h */,
+				FF09C93E20249290438D801B3BE92018 /* OXContext.m */,
+				8EDCEB05B9A27DBDCA158F3C6E217B33 /* OXPathMapper.h */,
+				434135660C4A0DFABF74B25BCDB5EEDC /* OXPathMapper.m */,
+				B2D2CAA0DA85CA9C9D7F866DBB8035A3 /* OXProperty.h */,
+				1A5CD434E81FDD942A6846835D5E270C /* OXProperty.m */,
+				B4E3B005A2B257B7C371303AC61C68E6 /* OXTransform.h */,
+				7080977E3DE5688897277D8880332A6D /* OXTransform.m */,
+				5F38F3B8F7B517052D9CF5BB7CE58D3E /* OXType.h */,
+				33A8180A4B245F07DA654F3953A5E95A /* OXType.m */,
+				C32C47104617F427719A781F5CF53089 /* OXUtil.h */,
+				5E592CD563DCE74EC91F8EDAF0A9BCE4 /* OXUtil.m */,
+			);
+			path = OX;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		023ED485351E6D0BC12592FF33959CF6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FBEB2D124D16729F16647FB79A12A9A /* Pods-Connect_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0889BE9E08EA7120921E5DF029EC011E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EF5FA1E44047DC6FBF59B02CD199BE /* Pods-Connect_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90A39C34FE8C611003A162C007FF09C7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D64305755DD444C920E85FD8B07C022 /* Connect-umbrella.h in Headers */,
+				3F749D58C7A1504C0AB819CC4B47225B /* MGAction.h in Headers */,
+				F9C3B6EE05CBDC6E4D363114757AF9E9 /* MGActionNotificationService.h in Headers */,
+				8C86C052EE3C818677A55789689994B8 /* MGActionQueue.h in Headers */,
+				F151B66EC2A69584A0C4F8A157BA4BCD /* MGAssert.h in Headers */,
+				39ECE754EA70177F72E77D26C9A8D38C /* MGBackingStore.h in Headers */,
+				BAB38CD00309C32EF64A50C9A900EEF3 /* MGBackingStoreInitializer.h in Headers */,
+				7FAE6F05E9E6B456B7C5E1085155D5B1 /* MGConnect+Action.h in Headers */,
+				E708BFB154920A1358113992614086AD /* MGConnect+DataStoreConfiguration.h in Headers */,
+				9439102F6AD8494C0875D4861073B846 /* MGConnect+EntityAction.h in Headers */,
+				BDF71D5948F1BBA350833D23D4EBE762 /* MGConnect+EntityActionDefinition.h in Headers */,
+				1E1FADD04E357C0F279721268CF4D8EC /* MGConnect+EntityActionNotification.h in Headers */,
+				38554A09EFB53A6C5AB7EB03B24B13BD /* MGConnect+EntitySettings.h in Headers */,
+				5053CD2E5B87018B1FA68E1CD28EC0C8 /* MGConnect+EntityStatistics.h in Headers */,
+				99EC3610F3F4FF70E74AC29D7E00B5E2 /* MGConnect+Private.h in Headers */,
+				9CECE81090842C3722C6A9D3AFD1948E /* MGConnect+PrivateSettings.h in Headers */,
+				081A71CA28A5BB59839817B023F722BB /* MGConnect.h in Headers */,
+				3336E100B0710D73F724438B28B70867 /* MGDataMergeOperation.h in Headers */,
+				450780A28E4E27FD75CF9C4A3EC25DD6 /* MGDataStoreManager.h in Headers */,
+				621C67962187D1A99B5AFBF80F3B09CD /* MGEntityAction.h in Headers */,
+				ED92732DE53BDFD565DB0079934951CA /* MGEntityActionDefinition+Private.h in Headers */,
+				18AC5F5B2BED1F6FB8FEB50AB9E672B7 /* MGEntityDeleteAction.h in Headers */,
+				ABF8E7E473DFFF1B20BF3208CE4942BE /* MGEntityInsertAction.h in Headers */,
+				4F575CC6A34ACCBAA095BD5F9B73CFC9 /* MGEntityListAction.h in Headers */,
+				A7C3752E645C7562FD016EACAE858C81 /* MGEntityReadAction.h in Headers */,
+				E945FF45A5102E40A42EB202058936FB /* MGEntityUpdateAction.h in Headers */,
+				A89A8A2144DC2F20DCFC1ED8F2F5B049 /* MGError.h in Headers */,
+				91541F851DF2C98DB7C0E05C80F17D31 /* MGException.h in Headers */,
+				8125F67174860CA73BC4D879017E6D48 /* MGInitializationException.h in Headers */,
+				F371112022548C6101904AACB84F2760 /* MGLoggedManagedObjectContext.h in Headers */,
+				744EFEAB09E2B5519611DF1BCC14A983 /* MGMetadataModel.h in Headers */,
+				D1EFA067CB3FC84D34BDA2254DA43CE5 /* MGNetworkMonitor.h in Headers */,
+				195915095DD7651B71D177A1ED6150BE /* MGNetworkReachability.h in Headers */,
+				C064E6B4159E936DEB834B75CA4BFE76 /* MGObjectMapper.h in Headers */,
+				DEB861D82AEC93E74CBF6C302456A9B1 /* MGResource.h in Headers */,
+				0847026F809F66F50B1593418B5174D7 /* MGResourceReferenceDataMergeOperation.h in Headers */,
+				756E3469F53C717DFFDC477D7235F474 /* MGRuntimeException.h in Headers */,
+				AB2CD370C76DBF502E37C81F6774DD44 /* MGSAXYObjectMapper.h in Headers */,
+				D228ACA1BB5D5D5B55CB4AB7AF0C1A05 /* MGTransactionLogManager.h in Headers */,
+				4A0A13303CB36EE08922E1DBBB1738F4 /* MGTransactionLogRecord.h in Headers */,
+				BE95075207FE30E33CA6FA041747ED67 /* MGWebService.h in Headers */,
+				36AFCFFD35F81988355A1423BD63CB52 /* MGWebServiceHTTPDeserializer.h in Headers */,
+				1E7CC90676BD550CEEB2E3609D16ADB2 /* MGWebServiceHTTPJSONDeserializer.h in Headers */,
+				6C3836C6B24A7D44CD496F3CDC7288D3 /* MGWebServiceHTTPJSONSerializer.h in Headers */,
+				48B505804A34443A5E555BBD2ED43406 /* MGWebServiceHTTPOperation.h in Headers */,
+				1659931DA8E14FA71755A0B0EBC74046 /* MGWebServiceHTTPSerializer.h in Headers */,
+				3BE594DC359EBC26D6C4C73388851DD9 /* MGWebServiceHTTPURLEncodedSerializer.h in Headers */,
+				E3E4BD626E1050A196132913B0158182 /* MGWebServiceHTTPXMLDeserializer.h in Headers */,
+				ECD1F954BB7EA5F19BF3C0BD1745453B /* MGWebServiceHTTPXMLSerializer.h in Headers */,
+				0F583C49288BEEB2FC4905C8651FF8D8 /* MGWebServiceInMessage.h in Headers */,
+				D887203314F841FE52817321E92771CD /* MGWebServiceMessage.h in Headers */,
+				20FBBE8418BCED45A0B0E98CE19FF7F4 /* MGWebServiceOperation.h in Headers */,
+				8E875245E4AFC738D1DE8DC8E4020D7E /* MGWebServiceOutMessage.h in Headers */,
+				D895985664666D0D3F90F46C3221AA26 /* MGWSDL+HTTP.h in Headers */,
+				8F7872CDE486FF501C9869E5DAE78121 /* MGWSDL+Types.h in Headers */,
+				A61244979DEC63EBD5C2977EAAD2ED51 /* MGWSDL.h in Headers */,
+				02EBC61ED2C0DB2A41052BF00DD735FA /* MGWSDLBinding.h in Headers */,
+				6FEB1039E4477F5CA04DEF26978477E6 /* MGWSDLBindingFault.h in Headers */,
+				4FA7CF46B9CC59A001812923DA77C0C5 /* MGWSDLBindingFaultReference.h in Headers */,
+				BB3BE0DA473B045C190CEEFB2AB8E2AC /* MGWSDLBindingMessageReference.h in Headers */,
+				D13B8A534C3C840B1435DA78B5483D8E /* MGWSDLBindingOperation.h in Headers */,
+				0E4B0B76EEF84569F669240525DE958D /* MGWSDLComponent.h in Headers */,
+				72575E4EBE411B02060468F00556DB96 /* MGWSDLDescription.h in Headers */,
+				99AE9E0282C1EC72EF1D4D5BF0EC0E1D /* MGWSDLElementDeclaration.h in Headers */,
+				E289F8D70415263F207F075F2AF0201B /* MGWSDLEndpoint.h in Headers */,
+				73A6F1C73FCAECA66BC97F4A8C4A0664 /* MGWSDLExtendableComponent.h in Headers */,
+				2562084054AF14193B17A9AE9047E579 /* MGWSDLExtensionElement.h in Headers */,
+				4A17144FA8AB6B7EA2C55E2A66515E47 /* MGWSDLFeature.h in Headers */,
+				7297C097E4CA29A74495B91315D2AAA3 /* MGWSDLInterface.h in Headers */,
+				4109B93AFD3019C040D58406C47B20E2 /* MGWSDLInterfaceFault.h in Headers */,
+				5C9E2920ACCBF7E1EE3FE27E5A0D9CBB /* MGWSDLInterfaceFaultReference.h in Headers */,
+				168680A7D3711215FB4627120CE64AC6 /* MGWSDLInterfaceMessageReference.h in Headers */,
+				6296974C87182B983B42DEEC4F65F38F /* MGWSDLInterfaceOperation.h in Headers */,
+				2B60F4C53B9BB64989E62C184B2B062D /* MGWSDLProperty.h in Headers */,
+				D6467CEED986CB64757ECC6FF099DD62 /* MGWSDLService.h in Headers */,
+				633E1463709944592CAB02E51DBFB4AA /* MGWSDLTypeDefinition.h in Headers */,
+				C14E565C6E308B4D218CADF4EB3B9073 /* MGXPathV1ObjectMapper.h in Headers */,
+				8AEFE85C45D825289690EE31F4167803 /* NSMutableArray+OXStack.h in Headers */,
+				D1F65B3133C6F4402ECB4F03EE2795B6 /* OXBlockDef.h in Headers */,
+				C5B50A4B71C0351D1FFC945720AF3CB9 /* OXComplexMapper.h in Headers */,
+				AD4E46285E9565EDA7B61D5392E9E9E6 /* OXContext.h in Headers */,
+				CF1651E02518312AA2F8D679A694B99D /* OXJSONMapper.h in Headers */,
+				36BCF7AA5CCA38FE84A305DD6379052D /* OXJSONObjectMapper.h in Headers */,
+				01DC2B8AD35C108A5FBFECF772EA66C6 /* OXJSONPathMapper.h in Headers */,
+				DD5BA61589339B8E99BF8BD961544D57 /* OXJSONReader.h in Headers */,
+				F96FDCD937527D33CA39786F816955ED /* OXJSONWriter.h in Headers */,
+				F717463F537DD37CA9F620DD777E988F /* OXmlContext.h in Headers */,
+				8D1CDA267FF2CE317E7629B7A7F2ADA2 /* OXmlElementMapper.h in Headers */,
+				B599B90129A50FE48470BAC26D93EA1B /* OXmlMapper.h in Headers */,
+				6764F52BD64CE4AE57E97C076786036F /* OXmlPrinter.h in Headers */,
+				A256A46362E5CBBFD464E6DE589C6C77 /* OXmlReader.h in Headers */,
+				A8C6F3EB7C5D83868A610EC4E2498131 /* OXmlWriter.h in Headers */,
+				FAA18351E049B98E3FCC05124EDD3193 /* OXmlXPathMapper.h in Headers */,
+				D479B5F32828A864C0382B1A18977C1F /* OXPathLite.h in Headers */,
+				92599284C8AFF6C8208C05526949E537 /* OXPathMapper.h in Headers */,
+				D978D3EA69E72D5FE740B908F701AFE1 /* OXProperty.h in Headers */,
+				DF71E9E25064AA915369DBD5CF8AD4DD /* OXTransform.h in Headers */,
+				4390FB4D4CE6743A87C06D01A2829179 /* OXType.h in Headers */,
+				14EC5C56414EB5FC17BBB97E434418B0 /* OXUtil.h in Headers */,
+				3ED447B21A74DCDF248725C46DDD1E7E /* WebLinkAccessService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB30E695C1BF14822E41F1EB68CDB840 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B2A200D26731F202DD35A351CC33D2 /* TLConsoleWriter.h in Headers */,
+				4B3D4054186E6DCF76A76279B54C475B /* TLLogger.h in Headers */,
+				5F3A4BCC7687C29317A4B6DAC02FC7E6 /* TLLogLevel.h in Headers */,
+				34669F1850267EF7349B98AB17814512 /* TLWriter.h in Headers */,
+				B994316068674A95E31992FD6BAC1881 /* TraceLog-Bridging-Header.h in Headers */,
+				55060E0B5EE1A65EF8D44BF79B4266B6 /* TraceLog-umbrella.h in Headers */,
+				40031395E8B89FBB3D578FEB655CAF7F /* TraceLog.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		57BA76E90B89CFFEB70DDA44FF072A2B /* Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B9AE538F27092F250A3B93D4B5F4012 /* Build configuration list for PBXNativeTarget "Connect" */;
+			buildPhases = (
+				5EA0BD80E5A56801B5E7A4592F13D2B8 /* Sources */,
+				AEC954E434652837B60CA17CC24EEB90 /* Frameworks */,
+				90A39C34FE8C611003A162C007FF09C7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11129CFA8477772DEBED160315E1DBAA /* PBXTargetDependency */,
+			);
+			name = Connect;
+			productName = Connect;
+			productReference = 7FE572A0B10225BBD883061A34CD0B28 /* Connect.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9FC6E2EAC99314B23A67CB6DD4E1F050 /* TraceLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E0D833E8D966E124CF3B4E9AD57DB28 /* Build configuration list for PBXNativeTarget "TraceLog" */;
+			buildPhases = (
+				023F2EE068D19149A15939ED34BF0103 /* Sources */,
+				F19329FE2ABA1BDF0F9D0B75F445805F /* Frameworks */,
+				BB30E695C1BF14822E41F1EB68CDB840 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TraceLog;
+			productName = TraceLog;
+			productReference = 6EEC946862144285F7C03B74551BC157 /* TraceLog.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E34C272ECA06A3351C6A1A02206BB441 /* Pods-Connect_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F8150BF39289E4E39C16A790FB21368 /* Build configuration list for PBXNativeTarget "Pods-Connect_Tests" */;
+			buildPhases = (
+				AF77A8A8C0A031A01DBD1435E3FBB13F /* Sources */,
+				358F51F81B6C06C20A7A51F4BD9963EE /* Frameworks */,
+				0889BE9E08EA7120921E5DF029EC011E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Connect_Tests";
+			productName = "Pods-Connect_Tests";
+			productReference = 34BCFEDC2557E0FA5F442BD27CBAB7B8 /* Pods_Connect_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FF0EFF214B4AD0218ED438AC996E92C2 /* Pods-Connect_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 879D3F4ACD83807B8A6D66B48843DC02 /* Build configuration list for PBXNativeTarget "Pods-Connect_Example" */;
+			buildPhases = (
+				D0D7FA198FC1860E8441C53070874B5C /* Sources */,
+				73490862B0FFA2147B06193BD9220C64 /* Frameworks */,
+				023ED485351E6D0BC12592FF33959CF6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E39B89DA6A25980EBCD8E7EFA7B3690 /* PBXTargetDependency */,
+				5E6C8826B0955E1B52833122F412856C /* PBXTargetDependency */,
+			);
+			name = "Pods-Connect_Example";
+			productName = "Pods-Connect_Example";
+			productReference = 7C4DB8803F0EA9FD2C85C3AE52EF0410 /* Pods_Connect_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B2D80CDF4A66FE1D3EFFCCF817DB44D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				57BA76E90B89CFFEB70DDA44FF072A2B /* Connect */,
+				FF0EFF214B4AD0218ED438AC996E92C2 /* Pods-Connect_Example */,
+				E34C272ECA06A3351C6A1A02206BB441 /* Pods-Connect_Tests */,
+				9FC6E2EAC99314B23A67CB6DD4E1F050 /* TraceLog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		023F2EE068D19149A15939ED34BF0103 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5019D22A50707CB0F750C401EAD22E2C /* TLConsoleWriter.m in Sources */,
+				0774EA13DD408569BFCBF5FDC8756E59 /* TLLogger.m in Sources */,
+				0F45D5C66B721A86FB6F2DBA3D47CCAF /* TLLogLevel.m in Sources */,
+				C17BADC3D4BA970C478BDFEF3DDCDC39 /* TraceLog-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EA0BD80E5A56801B5E7A4592F13D2B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF84C697785A675277088D845DD2860C /* Connect-dummy.m in Sources */,
+				4B9E5B78A74EFAAD935EE47028F60E73 /* MGAction.m in Sources */,
+				70E67A23932282F861A3EF2F7C31E6E4 /* MGActionNotificationService.m in Sources */,
+				7AB2FB8F9089561C158278EFD6F52DF0 /* MGActionQueue.m in Sources */,
+				126845F7480D24E484163B0E2EFD524F /* MGBackingStore.m in Sources */,
+				806A0EDACA465333FE40FC84821564F6 /* MGConnect+Action.m in Sources */,
+				B1BFFF1DBC98F214359594936A1A1763 /* MGConnect+DataStoreConfiguration.m in Sources */,
+				213EC1900AA92203301135F4C68BEF70 /* MGConnect+EntityAction.m in Sources */,
+				B790F0683DBE554D2EAB7A457251631A /* MGConnect+EntityActionDefinition.m in Sources */,
+				2BD082E54A1FE72B4FAEA55A50C86717 /* MGConnect+EntityActionNotification.m in Sources */,
+				8C5EACE987934E0F9744D866AFC938D5 /* MGConnect+EntitySettings.m in Sources */,
+				B9915BCA6CAE6AB1FE4D1C35BE25F67B /* MGConnect+EntityStatistics.m in Sources */,
+				19C5DD11B59C0F842F9DA328505B6664 /* MGConnect+Private.m in Sources */,
+				A335BB4B540AD102E1EB2DD16E7C78EE /* MGConnect+PrivateSettings.m in Sources */,
+				594E7A7CBF3072B7F46E083740759D3B /* MGConnect.m in Sources */,
+				C6FD8B1519CADE68EAB3FE04FE783991 /* MGDataMergeOperation.m in Sources */,
+				57FF88C2BDAD60C16624CA31B975D784 /* MGDataStoreManager.m in Sources */,
+				EB01BB8E0059C8FB0836E7D1A156C59A /* MGEntityAction.m in Sources */,
+				1885A177525370907CF2B4C92F15177B /* MGEntityDeleteAction.m in Sources */,
+				1A47E2CEAB452B9EB2EEBCBA2C81D1FC /* MGEntityInsertAction.m in Sources */,
+				0D3F6D8A0333A116D95DF94445374D87 /* MGEntityListAction.m in Sources */,
+				7A5A88793B505EB278D873F30C150B69 /* MGEntityReadAction.m in Sources */,
+				48B2EE1F2938B01B36BF39BABD6BE025 /* MGEntityUpdateAction.m in Sources */,
+				6F94164B80B129761BD28457D9BE44D3 /* MGError.m in Sources */,
+				80936988ECC730F9E7E3E648B8BC20C5 /* MGException.m in Sources */,
+				9AB08C52D32953AB710B8A4E3F8123A2 /* MGInitializationException.m in Sources */,
+				EACDA3B86DC0C2DDD4499CEEE0441368 /* MGLoggedManagedObjectContext.m in Sources */,
+				4A3AD813D2956A0691DF1726E813098F /* MGMetadataModel.m in Sources */,
+				A3B3E3AC4F73A46DC5DF684F886F25FE /* MGNetworkMonitor.m in Sources */,
+				6C13A5F38CBD8AE23EA8D951A99C3879 /* MGNetworkReachability.m in Sources */,
+				D4604D2B1CF226914D7DB19052F5DA47 /* MGResource.m in Sources */,
+				71773CC7AB856637AE8CF9523C5AC5CF /* MGResourceReferenceDataMergeOperation.m in Sources */,
+				195EEAFB6D5CA4FFD75D4C9EA894ABAF /* MGRuntimeException.m in Sources */,
+				1347D3CE66BD40563C8F2C476C84ECA4 /* MGSAXYObjectMapper.m in Sources */,
+				1AF91C217C11B3F96B2C21C49D61B8C0 /* MGTransactionLogManager.m in Sources */,
+				48F323056FAFE6D3594DD9D628AD282B /* MGTransactionLogRecord.m in Sources */,
+				4F915FD0BD1D3369B8EF54EF789B8BA6 /* MGWebService.m in Sources */,
+				EE3809066DD69BA65C7740E51D0772A8 /* MGWebServiceHTTPDeserializer.m in Sources */,
+				FC9830E2FA24653F766E0694142F707A /* MGWebServiceHTTPJSONDeserializer.m in Sources */,
+				63B30F5EA6BAD1636B49F2B09216DC42 /* MGWebServiceHTTPJSONSerializer.m in Sources */,
+				CF8F375CBE16E60BFBDE8A6582B73062 /* MGWebServiceHTTPOperation.m in Sources */,
+				9490657A8D8A9BDCCF5142FF9B05F50A /* MGWebServiceHTTPSerializer.m in Sources */,
+				A7E7EBC3852C53BF7392A89FA79009C5 /* MGWebServiceHTTPURLEncodedSerializer.m in Sources */,
+				75167B28AAD926A7AA01F188015E6726 /* MGWebServiceHTTPXMLDeserializer.m in Sources */,
+				4E3AF7C35B73C48546B1EF012D3F2C38 /* MGWebServiceHTTPXMLSerializer.m in Sources */,
+				7EE4D3E727C1C9D04D4CFF395EBA2A06 /* MGWebServiceInMessage.m in Sources */,
+				BEC8C7D9FA175E6A774752BA4CBF710C /* MGWebServiceMessage.m in Sources */,
+				9DFBAA22918BAA03C11B74F4AEC48D1D /* MGWebServiceOperation.m in Sources */,
+				CBE7BBA1531CC37F999B63C24C6B6C01 /* MGWebServiceOutMessage.m in Sources */,
+				C5C82FDB3DDDFB4EBA7FE3D06C7EC813 /* MGWSDL+HTTP.m in Sources */,
+				070469A6771EE7A4557E6F734B334A35 /* MGWSDL+Types.m in Sources */,
+				16406AD34A849E8471E6B1952CD2263D /* MGWSDLBinding.m in Sources */,
+				E424C230489FC3258D90BD3B4F97BB33 /* MGWSDLBindingFault.m in Sources */,
+				4117B99BC2DA97AEB9901BC18DE38A57 /* MGWSDLBindingFaultReference.m in Sources */,
+				BC9DD56459F396D5FCCEE64D644948F2 /* MGWSDLBindingMessageReference.m in Sources */,
+				8B818FD4848E1611A71A815D5B73FBF2 /* MGWSDLBindingOperation.m in Sources */,
+				1AB0C5E0B69C9E86FA9931688A9F966E /* MGWSDLComponent.m in Sources */,
+				5CA609D7579586EC80AA667B20265799 /* MGWSDLDescription.m in Sources */,
+				E3461003F6FC3413FC74FB40256590E0 /* MGWSDLElementDeclaration.m in Sources */,
+				7065E7BFEA1A985E7B1DEE9713A6928A /* MGWSDLEndpoint.m in Sources */,
+				83A8631043D212BCD7B6C1162CC8FFAB /* MGWSDLExtendableComponent.m in Sources */,
+				D931E7E5826BF6BB65B8A33957CD237C /* MGWSDLExtensionElement.m in Sources */,
+				F52F5B112F797C8F676CA809A6F101EE /* MGWSDLFeature.m in Sources */,
+				04F47FDC00576F17AE42C2CEB6007F22 /* MGWSDLInterface.m in Sources */,
+				92032853042C9FCFCCD04197184FC46D /* MGWSDLInterfaceFault.m in Sources */,
+				A91C71E9F833D36EEDC4B786A6026AD4 /* MGWSDLInterfaceFaultReference.m in Sources */,
+				895B965B067DCB0408A7ECA244802A7D /* MGWSDLInterfaceMessageReference.m in Sources */,
+				F4C8EFE60A9CA30E7F1837B7F02DBBED /* MGWSDLInterfaceOperation.m in Sources */,
+				4C1607AA2529C3505C764C2E0EF4FDBD /* MGWSDLProperty.m in Sources */,
+				ADB341A997A0DBBA3772FCCA4AFAE190 /* MGWSDLService.m in Sources */,
+				0F7D702B2A576B68C9288695B71ADB2C /* MGWSDLTypeDefinition.m in Sources */,
+				DFD26C12EA74F2379D4F93B4A269A6B0 /* MGXPathV1ObjectMapper.m in Sources */,
+				61724941DC7BA1977932AC259092EE24 /* NSMutableArray+OXStack.m in Sources */,
+				1A72310CAB4588F5876C020C6211CDE4 /* OXComplexMapper.m in Sources */,
+				EED0B9E2828AA81D263A434AF8E296C5 /* OXContext.m in Sources */,
+				F571B48293238B413D75C811DEC0B9EB /* OXJSONMapper.m in Sources */,
+				84ABCE1FAED946C3A34923AE7BDD9ACA /* OXJSONObjectMapper.m in Sources */,
+				1344F41376EC23C0F29909D678CBBA20 /* OXJSONPathMapper.m in Sources */,
+				A1ED28C0DC371879D82110DABAE89DF4 /* OXJSONReader.m in Sources */,
+				2BC960F6ABED86FCA45A3932E185F8B6 /* OXJSONWriter.m in Sources */,
+				4324E7067684D1BE014040D4B149C361 /* OXmlContext.m in Sources */,
+				716EEA54E2C7F54CFF488AFD2DFE4484 /* OXmlElementMapper.m in Sources */,
+				8DF8FFF34A7EED019992267A50C4F8EE /* OXmlMapper.m in Sources */,
+				89CC04B0E956C6B2111B8A3094253191 /* OXmlPrinter.m in Sources */,
+				17DAB10FC0CD6562F41E25D166C61CAD /* OXmlReader.m in Sources */,
+				CEC788363E38DEF4E1F4083367B0AECB /* OXmlWriter.m in Sources */,
+				2A015B91F5195528864DCCE48347D9BA /* OXmlXPathMapper.m in Sources */,
+				E61020790409B84B41279CB7E8922DFB /* OXPathLite.m in Sources */,
+				D8864F20DDFF84AAC2EF62D16528E2F9 /* OXPathMapper.m in Sources */,
+				10B60D64ABFCCC8D34C368FC2E96DE79 /* OXProperty.m in Sources */,
+				64F901FA23ED520A4FC18F2C1E45170D /* OXTransform.m in Sources */,
+				A4B14D0041B5B997C99948CC08D08E36 /* OXType.m in Sources */,
+				97BF322078919F4F8424928FF9684B2B /* OXUtil.m in Sources */,
+				FDC1108C127C9CD9B7EBFFCBA459E171 /* SAXy-Prefix.pch in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF77A8A8C0A031A01DBD1435E3FBB13F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B24F22EC3A15EDAD3F01D3949E37A04 /* Pods-Connect_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D7FA198FC1860E8441C53070874B5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E25F9CE6516E2AA47D0D05802F5A1FA0 /* Pods-Connect_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11129CFA8477772DEBED160315E1DBAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TraceLog;
+			target = 9FC6E2EAC99314B23A67CB6DD4E1F050 /* TraceLog */;
+			targetProxy = FEA8C4C15881E51C91D4488E9FB51BF8 /* PBXContainerItemProxy */;
+		};
+		1E39B89DA6A25980EBCD8E7EFA7B3690 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Connect;
+			target = 57BA76E90B89CFFEB70DDA44FF072A2B /* Connect */;
+			targetProxy = BCACC7E3507A787CE76B42D09E76B73F /* PBXContainerItemProxy */;
+		};
+		5E6C8826B0955E1B52833122F412856C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TraceLog;
+			target = 9FC6E2EAC99314B23A67CB6DD4E1F050 /* TraceLog */;
+			targetProxy = 0BF654933ACAE98C62ED0E38E2766ABC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03476C7C5A53D105751A7BEFB3850CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CED2F69AABE89103A304934702E385E1 /* Connect.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect/Connect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Connect/Connect.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34492B710B2D1111379350CE9FE0246E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E413124715D42D45458AC92E13928D2A /* TraceLog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		46F9327DFFFA6A703A037F612A7F9C6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4E65B02DCA2641E0BE72D63191EAD9C /* Pods-Connect_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect_Tests/Pods-Connect_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4A8637D4ACEFA4DBE3A788B7C54DB20B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CED2F69AABE89103A304934702E385E1 /* Connect.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect/Connect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Connect/Connect.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		65D3B89A7B3555D66F7244F2EF3FE777 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0CC70C3B211E70B5438FFC4544BB3A7 /* Pods-Connect_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect_Tests/Pods-Connect_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A88D6EC28727E5DD061308D0FA9E9B78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E2024CD172BDE34A8550E73EAB43141 /* Pods-Connect_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect_Example/Pods-Connect_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		F59F70BB67C5987F6CE7D846407F5DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8534195397DA9A3CFC7680E28CD2B021 /* Pods-Connect_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect_Example/Pods-Connect_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FDF4CEB233AB4DB9E3F349E9FB7F0B4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E413124715D42D45458AC92E13928D2A /* TraceLog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E0D833E8D966E124CF3B4E9AD57DB28 /* Build configuration list for PBXNativeTarget "TraceLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34492B710B2D1111379350CE9FE0246E /* Debug */,
+				FDF4CEB233AB4DB9E3F349E9FB7F0B4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F8150BF39289E4E39C16A790FB21368 /* Build configuration list for PBXNativeTarget "Pods-Connect_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46F9327DFFFA6A703A037F612A7F9C6A /* Debug */,
+				65D3B89A7B3555D66F7244F2EF3FE777 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */,
+				0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B9AE538F27092F250A3B93D4B5F4012 /* Build configuration list for PBXNativeTarget "Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03476C7C5A53D105751A7BEFB3850CFD /* Debug */,
+				4A8637D4ACEFA4DBE3A788B7C54DB20B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		879D3F4ACD83807B8A6D66B48843DC02 /* Build configuration list for PBXNativeTarget "Pods-Connect_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F59F70BB67C5987F6CE7D846407F5DE5 /* Debug */,
+				A88D6EC28727E5DD061308D0FA9E9B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
