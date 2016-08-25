@@ -1,0 +1,2612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0025793CC8699F3F6FEFC04A /* MGWADLResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 443C715B4320B8D417DF35C0 /* MGWADLResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00DC87B72AC175C0772B4D5A /* MGWADLResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 39492F448703F3530F64D859 /* MGWADLResource+Extensions.m */; };
+		0292118021E4EE5CFAAC298F /* MGWSDLService.m in Sources */ = {isa = PBXBuildFile; fileRef = 465EE1C89670BA9632A7BECB /* MGWSDLService.m */; };
+		032251979B9A8480A36AA72A /* MGWSDLElementDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F3E5F1C88927144251A6D9 /* MGWSDLElementDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		040D72E93E3BA3D2A681CFDD /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF7395D0821EE82A59A28B1 /* MGWSDLExtendableComponent.m */; };
+		041F64C815D449B7E25CFF46 /* MGWSDLInterfaceFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3E753954A70CB45EE4FD5E /* MGWSDLInterfaceFaultReference.m */; };
+		05858F4365784565A736829A /* MGWADLApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 724DED3D8B5FA997CD7D6874 /* MGWADLApplication.m */; };
+		059948D2234AE23581EB8A4E /* MGXMLComment.h in Headers */ = {isa = PBXBuildFile; fileRef = C955A14AD2CDCAC45375A6CB /* MGXMLComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05B182033CF155C7FF37165D /* MGWADLResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 443C715B4320B8D417DF35C0 /* MGWADLResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06FD1B2BA59A94BF46FD798E /* TraceLog.default-Core-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 708002A43DA4C151E0C4E38B /* TraceLog.default-Core-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		075568116B747F97A44F207D /* MGXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E554A529A3A090B078B95BF0 /* MGXMLNode.m */; };
+		07703208F7BCF7AA58D20A53 /* MGXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 675521099080E898003B3DDC /* MGXMLReader.m */; };
+		08EA47B039F62107AA59CE02 /* EntityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB3BE868294B772BF9DB2E /* EntityAction.swift */; };
+		09092BE5AC7CACCCDD73EF41 /* MGWADLLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 56E0974AF603BE2B1058EB08 /* MGWADLLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0992FF3E88D3FDC7A5DDDECB /* MGWADLResource+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 812897F3C6D87C312A3ABDD5 /* MGWADLResource+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ADD73BED793F4CBA30B1E72 /* MGConnectConfigurationElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3A0A388E8A7C6E9891DAD /* MGConnectConfigurationElement.m */; };
+		0B4DEB467A1921571B64E067 /* MGWSDLBindingMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A17048D278C78BA60A1B6BB /* MGWSDLBindingMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C289EBDEB04D83DF5F20244 /* MGConnectConfigurationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AC695014B8820A4811EA5F /* MGConnectConfigurationEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C32C9ABE287E398B6C16241 /* MGWSDLBindingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B0D820CD36332FA496008B /* MGWSDLBindingOperation.m */; };
+		0CAFA7032C213815275CD746 /* MGWADLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9161D6CEB7F40B2E52470E8 /* MGWADLResponse.m */; };
+		0CF6C56251FFD57F73DE9F96 /* MGWSDLTypeDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A6800CE18EF57CA270BC06 /* MGWSDLTypeDefinition.m */; };
+		0E182B770E36F2E68585ADD6 /* MGConnectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D333CBAF65782AFF723977D0 /* MGConnectConfiguration.m */; };
+		0E3AEA4FA317AC069D1C9C19 /* MGWSDL+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = C009D7ABB17CD06795E00003 /* MGWSDL+HTTP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E70CA8031F5F8ED8665FC2B /* EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D308588A48530A6C6435902 /* EntitySettings.swift */; };
+		0EE22BAC443FCB3BFBAB3460 /* MGWADLApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = DB7E8DE2273AD39E8714AD24 /* MGWADLApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1017BB30E3C6F75A1D68D7AF /* MGXMLElementDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 443F747EB91548F1EE7E70CE /* MGXMLElementDefinition.m */; };
+		10D07AF23B2659B7B601CB2E /* MGWADLParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF205E9381095B18178E82C /* MGWADLParam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		118FA282FD48A5556C981D29 /* Pods-Connect Editor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2554F51D9E6B5CA897708 /* Pods-Connect Editor-dummy.m */; };
+		1196BBD7DFF88BA4E2DC7172 /* MGWSDLExtensionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5FABBE759EFB3FAF421B3D /* MGWSDLExtensionElement.m */; };
+		128B361CFEEA485A2A751BED /* MGWADLGrammars.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C567184F99D756AFF53F /* MGWADLGrammars.m */; };
+		129474872B9B266C69348302 /* MGWADLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D07DCEC2F2B2EBF9CAF66109 /* MGWADLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		130EEDBA4B9C2B2A1CC02A4D /* EntityActionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D0FFBD75ED026081B4689 /* EntityActionNotification.swift */; };
+		1355C7F9DAF9968CBB74B07C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AF432A2DC97C8881CF46B /* Cocoa.framework */; };
+		14B4C8676BA993448276FC5F /* EntityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB3BE868294B772BF9DB2E /* EntityAction.swift */; };
+		14BA5629DED5C3F9E9B13418 /* MGWSDLExtensionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 707C83F4BD5915CB6E806421 /* MGWSDLExtensionElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1623FF686937E2A722FEF8A0 /* TLLogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 48968911D90C43C8B92CBBAE /* TLLogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16F1E49C73A3293A209178C9 /* GenericCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0338009B7329172AC48C9F /* GenericCoreDataStack.swift */; };
+		183835EDEA03601718E8547C /* MGWADLResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1095F0EBE508B00C9FC7F111 /* MGWADLResource.m */; };
+		18FB9A8BDB2BD7FF000E88E0 /* MGWSDLElementDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F3E5F1C88927144251A6D9 /* MGWSDLElementDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19C1D465C0F7C0472ACC7F5C /* MGWADLResources.h in Headers */ = {isa = PBXBuildFile; fileRef = D1E59A5B82897409D2D5D906 /* MGWADLResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AADB079E84202B54BDEAE90 /* MGWSDLService.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F4872C0E9013CE3236C279 /* MGWSDLService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1ADC80A65BA67DA6CA2E3650 /* MGWSDLBindingFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B36C06D5E57AFA4BB1F1EE6 /* MGWSDLBindingFaultReference.m */; };
+		1C7F5355FA4AEF03EE130933 /* TLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE86B698785F72945F0B5E1 /* TLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1D78712FA57485E4B77365D5 /* MGConnectConfigurationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C98E0CEB000CB3B641EFE19 /* MGConnectConfigurationAction.m */; };
+		1E28AAEA772F9E2896EAA4CD /* MGConnectConfigurationCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 390CC7A0B70FD3E8EB4AAE57 /* MGConnectConfigurationCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E3DDEC084200F856F9DAB34 /* MGWSDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7623BF77BB5505A0E4E09FFF /* MGWSDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EAF3F0483598B3BCD372D7E /* Pods-Connect Editor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EF09E3B8026B46F5AB3FD1 /* Pods-Connect Editor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EBA005AC58D1F74035F86DC /* MGWSDLInterfaceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E14358315EADA40C93D2314 /* MGWSDLInterfaceOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21049BCFDAE2B3AF3FBEE7A0 /* MGWADLOption.m in Sources */ = {isa = PBXBuildFile; fileRef = C82D398B36A8086B55B0B8A6 /* MGWADLOption.m */; };
+		219FD6A6C981F5957D52C89E /* MGWSDLExtensionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 707C83F4BD5915CB6E806421 /* MGWSDLExtensionElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24676647C6DDE9976DB19DFE /* MGWSDL+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = D94E5B468C8858472CEFD946 /* MGWSDL+HTTP.m */; };
+		257AC6C9ED28ABABEFF6E37B /* NSEntityDescription+EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A67CF531D7B243A4105A6 /* NSEntityDescription+EntitySettings.swift */; };
+		25E577966E9544BFC9676407 /* Pods-Connect Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E54DD671BA1052B44AA0DDC /* Pods-Connect Example-dummy.m */; };
+		262850B0A89950242FA8B714 /* MGConnectConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E37CB755E84F61786D888F64 /* MGConnectConfigurationModel.m */; };
+		2646C1472F0E22E35F614900 /* MGWSDLBindingFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B36C06D5E57AFA4BB1F1EE6 /* MGWSDLBindingFaultReference.m */; };
+		26A73FD8508767DFCDF5A0CC /* Connect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78D91F9F9CAF61D41DF20FE1 /* Connect.bundle */; };
+		26E8E0B9645D8670429A6051 /* NSManagedObjectModel+EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5EF3F74CF471E08F98DEA /* NSManagedObjectModel+EntitySettings.swift */; };
+		273E5264DE17DD9C57800BCD /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662079CEAB1CC51DA2089654 /* EntityMapper.swift */; };
+		284714DC7A9641F7D612F33A /* MGXMLCDATA.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E859E84A8F6B06A4268545 /* MGXMLCDATA.m */; };
+		2863AA554C93503FF057CF41 /* MGConnectConfigurationRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D177B19A0370045A9C222B0 /* MGConnectConfigurationRelationship.m */; };
+		28CB23636569FB55ADE2C2EA /* TLLogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 48968911D90C43C8B92CBBAE /* TLLogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AC9684720197DC5732C9CE4 /* MGWSDLInterfaceFaultReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3E753954A70CB45EE4FD5E /* MGWSDLInterfaceFaultReference.m */; };
+		2C3163FF0C4D2DEBDC5AA9B2 /* MGWSDLFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 338FBE728D26E94C2F90772E /* MGWSDLFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CF67ACF081DA5CA94C7F40F /* MGConnectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D333CBAF65782AFF723977D0 /* MGConnectConfiguration.m */; };
+		2DD7D8A55AD46CC2121D5E12 /* InMemoryReferenceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A05E0E2B747592A39A80D0 /* InMemoryReferenceObject.swift */; };
+		2F51D22D54879CB6E653A113 /* MGWSDLInterfaceFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = DA97E06E7AC7267DBD38662E /* MGWSDLInterfaceFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F5457D62819A7309ED9F1C6 /* MGXMLCDATA.h in Headers */ = {isa = PBXBuildFile; fileRef = BF759619BB682435EF984ADA /* MGXMLCDATA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FBFC11CD291CBC207CF1406 /* MGWSDL+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = D94E5B468C8858472CEFD946 /* MGWSDL+HTTP.m */; };
+		301D5EE7A7F5B6309686F935 /* MGWSDLDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E8B774EDC7CB4EB7A5F710 /* MGWSDLDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3072B852ECF889A7823552DE /* MGXMLComment.h in Headers */ = {isa = PBXBuildFile; fileRef = C955A14AD2CDCAC45375A6CB /* MGXMLComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30F1A1ADA50EF2A949092691 /* MGWSDLEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D18CE0D392DAC952A25BB6 /* MGWSDLEndpoint.m */; };
+		3123BB02B5E1E94E2BFB1199 /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F5B91F0CFF02C3F0BD5BD9E /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3150977008B51D1A3FB4445D /* MGWADLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C17DFCD5ED857D5C90B52688 /* MGWADLRequest.m */; };
+		31D7D4524A2B642D3B865D4F /* MGConnectConfigurationAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 461E628815F66109A64905FB /* MGConnectConfigurationAuthentication.m */; };
+		338237E6310C05DE80EE3EF1 /* MGXMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF4F14CD8D704F9F37815C /* MGXMLComment.m */; };
+		342D6819827F2073B1EE7FB7 /* MGWSDLComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB66456AA193A1895191B0A /* MGWSDLComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35161CFE8974488C62E9E376 /* MetaLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C67B680CEA5CED9D4D296 /* MetaLogEntry.swift */; };
+		358A2FD3DC766EFF195756EB /* MGWADLResources.h in Headers */ = {isa = PBXBuildFile; fileRef = D1E59A5B82897409D2D5D906 /* MGWADLResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3752CCE6341AA8E05D5A2A35 /* MGConnectConfigurationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 97803C28C18DE0B0B49B1A33 /* MGConnectConfigurationCollection.m */; };
+		378DF18702D4D2A94E7DAA41 /* MGWADLDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = F47373C18B8F550399CD1B0A /* MGWADLDoc.m */; };
+		38A19190E78228F89C703415 /* MGWADL+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 813312D1ECB31A5AA9900017 /* MGWADL+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3953F5CB34A5A10D213D00A7 /* Pods-Connect Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 99072F0A56ABD7033E846F44 /* Pods-Connect Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3970EA90C5EED13025B1C653 /* MGXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2310EE2E6865845DB595FD /* MGXMLElement.m */; };
+		397F2C8650C0DE207BCC6D22 /* MGWSDLInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D4BEB329BF893A3B79B9B76 /* MGWSDLInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A834A4505ADD21E31D3625A /* MGWSDLFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 338FBE728D26E94C2F90772E /* MGWSDLFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A9FB1CCFFB692384B820252 /* MGWSDLInterfaceMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 86883AEC34CA2E6150076C6F /* MGWSDLInterfaceMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ABFDF32B420D6A4F58B07BE /* MGWSDLElementDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = A89086491E23F249D4331ECB /* MGWSDLElementDeclaration.m */; };
+		3BDB3F5C74CB265C0B05B9E1 /* Connect-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D29329FF262ED7BBB23451F /* Connect-iOS-dummy.m */; };
+		3CF0AF51F1DD439C5CF6EED7 /* MGWSDLInterfaceMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C60B1B4FA1D69ABC794827 /* MGWSDLInterfaceMessageReference.m */; };
+		3D5961A18482A4ECAA9C725D /* MGWSDLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B08C5F9E9DA19FCA7ABC60 /* MGWSDLProperty.m */; };
+		3DB4FBD1E340F5DDE47A7328 /* MGXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 675521099080E898003B3DDC /* MGXMLReader.m */; };
+		3EB34FC52A54A432B477E56F /* MGConnectConfigurationAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = CDAF651BE6F7020D5A146155 /* MGConnectConfigurationAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF84E5B66088F681BE819C6 /* MGWSDLFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 80561899B1987DB28F16C5BE /* MGWSDLFeature.m */; };
+		408B2AEB383F20D0E15FA99D /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = 018FE27A6F2D6570D1399613 /* MGWSDLInterfaceFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41E6154EDF2F906222C4F0C2 /* MGWSDLBindingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B0D820CD36332FA496008B /* MGWSDLBindingOperation.m */; };
+		42EAC02642109B0E4EA1C814 /* MGWSDLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = ACA7B679E32FD10AD0A2D053 /* MGWSDLProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42ECD3EC31FC737423834FD6 /* MGXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF9C9744449CF8BB62A7545 /* MGXMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43A720D7087AD1311E70F6D1 /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F73D128D56099DA563E9CA7 /* TraceLog.framework */; };
+		43C2D423738351AED1ABAB18 /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EEA263A652EAA591411E523F /* connect.xsd */; };
+		444127583EB6B2616EDA639B /* AssociatedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB1ED004CB14F1CFB2AA5B8 /* AssociatedStorage.swift */; };
+		45E395C680CC75E0C3A28792 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324754A2E52D1288AFB99D9C /* Foundation.framework */; };
+		46D6BAA1C1B0AC85B391AA02 /* MGWSDLInterfaceFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B801A44BFA12BC5F0D3C3B0 /* MGWSDLInterfaceFault.m */; };
+		489FF93E3E3A4875E5C1541E /* MGWADLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C17DFCD5ED857D5C90B52688 /* MGWADLRequest.m */; };
+		4915DCEFB9585AC143CAE5FF /* MGWADLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9161D6CEB7F40B2E52470E8 /* MGWADLResponse.m */; };
+		496F22238D2BC6365B4E80F5 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B0D2614280ECD19C911BF /* WriteAheadLog.swift */; };
+		4970AAA31CE83407FE3427F5 /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDFF5F3FF7CF69A3BD65025 /* MetaLogEntry+CoreDataProperties.swift */; };
+		4AA60405E8157BC9B1E230AE /* MGWADLDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2400BE9B6F296F5B8F2153F6 /* MGWADLDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4ABD0C8008D3600FAD7C5F88 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733D5ABD4D0CA77848A8994 /* WebService.swift */; };
+		4BB8FCEB5CF1ADF4E6DBE633 /* MGXMLElementDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 443F747EB91548F1EE7E70CE /* MGXMLElementDefinition.m */; };
+		4DB43ED9ACCC5FC67F077D95 /* MGWADLMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED362AB535EBB4690FD44DF /* MGWADLMethod.m */; };
+		4E861152F6A579AEA38F510B /* MGWADLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D07DCEC2F2B2EBF9CAF66109 /* MGWADLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4EB029A8E88D4F7A29303FCB /* MGXMLElementDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D52DAB9A35558EFC6D0CC27 /* MGXMLElementDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5226F09BC5E62FBBC89DAA5F /* InMemoryReferenceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A05E0E2B747592A39A80D0 /* InMemoryReferenceObject.swift */; };
+		522783A3FB7D214C7F1090FA /* MGWSDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7623BF77BB5505A0E4E09FFF /* MGWSDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52A6563F8DC1CB436D2142DF /* MGWADLApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 724DED3D8B5FA997CD7D6874 /* MGWADLApplication.m */; };
+		52DD141EF5F4C27E3E5A7745 /* MGConnectConfigurationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C98E0CEB000CB3B641EFE19 /* MGConnectConfigurationAction.m */; };
+		544A68441A5A2A7D28FC6007 /* AssociatedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB1ED004CB14F1CFB2AA5B8 /* AssociatedStorage.swift */; };
+		548CF3C970263C78E9DCEF70 /* MGWSDLDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9B42E5818B98D57FED28A8 /* MGWSDLDescription.m */; };
+		549FC72055E6D4010633C1B0 /* TraceLog-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = F4512102E839E7D538BD48BE /* TraceLog-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5722B7D8786916264BE5E38E /* MGWSDLFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 80561899B1987DB28F16C5BE /* MGWSDLFeature.m */; };
+		57E4CF661655496F6C75D2CE /* MGConnectConfigurationAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 461E628815F66109A64905FB /* MGConnectConfigurationAuthentication.m */; };
+		58F5A3EF48C7263DBD4720F3 /* MGWSDLBindingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A1D38755B174F49CBC9D275B /* MGWSDLBindingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A9DAF490BF57AE7D3E5F8E5 /* MGXMLElementDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D52DAB9A35558EFC6D0CC27 /* MGXMLElementDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5AC57FEEEDFEF3EDEDB1283B /* MGWADLRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAE54F7CBADB8084274436D /* MGWADLRepresentation.m */; };
+		5BFD0F774A9F29E08707A45B /* EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D308588A48530A6C6435902 /* EntitySettings.swift */; };
+		5C7338729EDCDF8C37FB3B9D /* MGWADLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 95663298A7E551DCCC018749 /* MGWADLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D24DE6336B8FF27533E4AD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324754A2E52D1288AFB99D9C /* Foundation.framework */; };
+		5DDEE64C2F14362FA0F47E3A /* MGWSDL+Types.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB01B9E73D8CF2C7EA5B8F8 /* MGWSDL+Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DEF082AF7F8B697390498CC /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9A82E7D9861258E0DDBDF /* TraceLog.swift */; };
+		5E513A24FD0060346CDBCE60 /* MGXMLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 753BD72979B09EE86931E01C /* MGXMLWhitespace.m */; };
+		60153B0CD345767622F11EC9 /* MGWSDLBindingFault.h in Headers */ = {isa = PBXBuildFile; fileRef = E91F7AB69002C5B23E013A0A /* MGWSDLBindingFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60AADA03398B8279FCFEC255 /* MGWSDLService.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F4872C0E9013CE3236C279 /* MGWSDLService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60B6011AEAEB214570CFD5FA /* MGWSDLBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8C422C14A5F1844AE1B38 /* MGWSDLBinding.m */; };
+		60C2C53BC1747E03F5D42403 /* MGConnectConfigurationElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3A0A388E8A7C6E9891DAD /* MGConnectConfigurationElement.m */; };
+		6105A4659B1F1B29C9B4AF5B /* MGWADLResources+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 540694341100332EB719780D /* MGWADLResources+Extensions.m */; };
+		61D40A11663F60F36E50CC0E /* MGConnectConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA837B014936C5E748FE8F4 /* MGConnectConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6396D91BF8E7182A421A6FB2 /* ConfigurationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC5E95EBF8E471C722A369 /* ConfigurationReader.swift */; };
+		65D67D560110AC9C18DBC330 /* MGWSDLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F399B66EAB7E66CD6F7D8CBC /* MGWSDLComponent.m */; };
+		67042E91AF2E5AC6CEF484BD /* MGConnectConfigurationElement.h in Headers */ = {isa = PBXBuildFile; fileRef = A95ADA637688971CC66BE14E /* MGConnectConfigurationElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6826006E800F1FB0B4B83CF5 /* MGWSDLElementDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = A89086491E23F249D4331ECB /* MGWSDLElementDeclaration.m */; };
+		6842F10B7776C6D577B10B39 /* MGWSDLExtendableComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAD67392686BAD67E50FE5 /* MGWSDLExtendableComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6872F56D733A058CA5F8320F /* MGConnectConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E37CB755E84F61786D888F64 /* MGConnectConfigurationModel.m */; };
+		6AD6E76C6E02D305256E8D30 /* MGWSDLInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D4BEB329BF893A3B79B9B76 /* MGWSDLInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BD586379CE8C4743068DFE6 /* MGWADLResourceType.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6BBDC8B947C4374F214694 /* MGWADLResourceType.m */; };
+		6C00E559810EC5C2E8594395 /* MGWADLOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 897F5A34D2AD3FF78D25953D /* MGWADLOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C27EA0BFD4422C0D5256215 /* MGWSDLInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE86B18ECC3CA65C6A79033 /* MGWSDLInterface.m */; };
+		6F0DC424826600EF8FE5C62D /* MGWSDLInterfaceFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B801A44BFA12BC5F0D3C3B0 /* MGWSDLInterfaceFault.m */; };
+		6F726C760447365FB85DEAAE /* MGWADLParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 6767A961EC49D16777B86507 /* MGWADLParam.m */; };
+		70DFB9E7684459DF610FCAC6 /* MGWADLGrammars.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C567184F99D756AFF53F /* MGWADLGrammars.m */; };
+		7386F4BE36211041CA3BCF0C /* MGWSDLBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF6B9400DBFF91913946CD1 /* MGWSDLBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74C4ECC79DB99ED6CDE6B285 /* MGWSDLBindingFault.m in Sources */ = {isa = PBXBuildFile; fileRef = E336810AECE5B28B83AF0C9B /* MGWSDLBindingFault.m */; };
+		74E470DE742E1A4C77BAE1CF /* MGWSDLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B08C5F9E9DA19FCA7ABC60 /* MGWSDLProperty.m */; };
+		763714465A15B50B66AD5CE4 /* ConfigurationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC5E95EBF8E471C722A369 /* ConfigurationReader.swift */; };
+		7678933AC7F6D9196C9B8A89 /* MGXMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AF4F14CD8D704F9F37815C /* MGXMLComment.m */; };
+		7694ACE7649452D95D7F31AF /* PersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D9475222005D8C141ADEA3 /* PersistentStoreCoordinator.swift */; };
+		76E4C30A09AD25BB1076849F /* TLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CFB902582E70DA80B1EDFC /* TLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		776D7B1AF21521B1ED50F1F1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AF432A2DC97C8881CF46B /* Cocoa.framework */; };
+		7995CF81394F07754F289712 /* MGConnectConfigurationAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A80903CE9F271733DF762F /* MGConnectConfigurationAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79960ECFEA06D6B0CF3987A9 /* MGConnectConfigurationElement.h in Headers */ = {isa = PBXBuildFile; fileRef = A95ADA637688971CC66BE14E /* MGConnectConfigurationElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B1F5ECEB10A5A415E30AC3F /* Connect-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F988201463B21DD25F6FB7 /* Connect-OSX-dummy.m */; };
+		7B23C1C8DD5860D4F25A7786 /* TLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CFB902582E70DA80B1EDFC /* TLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B7FD38C4B0D5C6B30021441 /* TraceLog-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = F4512102E839E7D538BD48BE /* TraceLog-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BA40DE50DC7D7304FAD7548 /* MGWSDLInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE86B18ECC3CA65C6A79033 /* MGWSDLInterface.m */; };
+		7D132A99694A796E506D8ABD /* wadl-schema.xsd in Resources */ = {isa = PBXBuildFile; fileRef = BB64723B3BFC4345A6C093A7 /* wadl-schema.xsd */; };
+		7E6D56E2C17FDC72E9292548 /* MGWSDLBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8C422C14A5F1844AE1B38 /* MGWSDLBinding.m */; };
+		7FD6A26547E52CC8067746D1 /* MGWSDL+Types.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD848B62F4C465B5FB76491 /* MGWSDL+Types.m */; };
+		811A4A790793D9BA117928C8 /* MGWADLInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = A11552B7B1D714667286B8FC /* MGWADLInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81BA9A3A7A8FD0EE5B4EBA77 /* Connect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 759953B0A9A0FEAFFCB4514F /* Connect.bundle */; };
+		83692F9C949921B1ED7BDCC2 /* MGWADLResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3223DC0F905BBE962A706C /* MGWADLResources.m */; };
+		848144EF8C5D71CAC85855D2 /* MGWADLResources+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 540694341100332EB719780D /* MGWADLResources+Extensions.m */; };
+		84B72C74BEEF46C84A382671 /* MGXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF9C9744449CF8BB62A7545 /* MGXMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85221FD407CA4F31026709C4 /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F5B91F0CFF02C3F0BD5BD9E /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		854731C8EF40BDD8806B1A7F /* Connect-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BC722BE62A460E6F1CBBD757 /* Connect-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		865818CB0D3CA04D9013F23E /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49F447B29C9AAF2F0B6878 /* MetaModel.swift */; };
+		8735D970E554397D57D55A08 /* MGWADLResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 39492F448703F3530F64D859 /* MGWADLResource+Extensions.m */; };
+		87572E9E54659FEF24177DAB /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F73D128D56099DA563E9CA7 /* TraceLog.framework */; };
+		87584D9175D77329DB7B3BC6 /* MGWSDLTypeDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A6800CE18EF57CA270BC06 /* MGWSDLTypeDefinition.m */; };
+		881A30495F48B29C5E5498DA /* MGWADLOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 897F5A34D2AD3FF78D25953D /* MGWADLOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88B69E5905E7D5BA4B462809 /* MGXMLCDATA.h in Headers */ = {isa = PBXBuildFile; fileRef = BF759619BB682435EF984ADA /* MGXMLCDATA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D8FD4697BE7F47B200A4B6 /* Pods-Connect Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 43A083D6F14BF48DF1B59CC8 /* Pods-Connect Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A65D2F772F64313180ED164 /* MGWADLResources+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D93E9329982B817F6511F5A /* MGWADLResources+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A81764579BC9E8774525B67 /* MGWADLResource+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 812897F3C6D87C312A3ABDD5 /* MGWADLResource+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CA85DE56849888C601C6EFF /* MGWADLResourceType.h in Headers */ = {isa = PBXBuildFile; fileRef = 81014DE3C685EF6BDA8B0BC5 /* MGWADLResourceType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CE90B3B14EC54D9E69EF6F2 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9A82E7D9861258E0DDBDF /* TraceLog.swift */; };
+		8CF57702E8B4E69D7CDC90E1 /* MGWSDLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F399B66EAB7E66CD6F7D8CBC /* MGWSDLComponent.m */; };
+		8E04107A9D7E85F2E33EA56E /* TLConsoleWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB00670F49FE9A3342D6CC6 /* TLConsoleWriter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8E145B4A496261EBD683C2BD /* TLConsoleWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB00670F49FE9A3342D6CC6 /* TLConsoleWriter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8E17467A3D801103C6778844 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324754A2E52D1288AFB99D9C /* Foundation.framework */; };
+		8F6FEA9A872C41C64B9F542D /* MGWSDLService.m in Sources */ = {isa = PBXBuildFile; fileRef = 465EE1C89670BA9632A7BECB /* MGWSDLService.m */; };
+		8F84E153CD0A0F0403A36794 /* MGConnectConfigurationAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A80903CE9F271733DF762F /* MGConnectConfigurationAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FAFEE8213E296430BFD5235 /* MGXMLReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B85884D5845E6AC75B1D36 /* MGXMLReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90DD6BEE438CB595CB841684 /* InMemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C1A6CF333EE901BB86CF35 /* InMemoryDataStore.swift */; };
+		91742247AF35A497A20840F2 /* MGWADLMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = B83F5EDACD4B30A55E54C181 /* MGWADLMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		938099E1D0C712C412136381 /* MGWSDLInterfaceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE986778A61B88F6DA6AEE7 /* MGWSDLInterfaceOperation.m */; };
+		94505F3EFD6043751D97F518 /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB7A1F4C83A5AD3EA0A4CF /* ActionQueue.swift */; };
+		95768779635624FE97E444F2 /* NSManagedObjectModel+EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5EF3F74CF471E08F98DEA /* NSManagedObjectModel+EntitySettings.swift */; };
+		95D782B0FB7A57F07A89C836 /* MGWADLLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 56E0974AF603BE2B1058EB08 /* MGWADLLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		966B42A996D4774201A87621 /* MGWADLResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1095F0EBE508B00C9FC7F111 /* MGWADLResource.m */; };
+		977AE959AF007CE01218D550 /* MGWSDLTypeDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = DA1D524039DA69BBBE0E2CAF /* MGWSDLTypeDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97DFFB435E8558AF7186C78E /* MGConnectConfigurationRelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = 13050EDA9246F020D3EAFB10 /* MGConnectConfigurationRelationship.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		993545551C77D77B0E8ECCA1 /* MGWADLGrammars.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F38BF0307053DF528E4786C /* MGWADLGrammars.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		999D50DC1189233A29344A84 /* MGWSDL+Types.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD848B62F4C465B5FB76491 /* MGWSDL+Types.m */; };
+		9B5EAC6AF072A17EF72CC782 /* MGWADL+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 813312D1ECB31A5AA9900017 /* MGWADL+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D8E9A597ACCB870BA1895E7 /* MGWSDLEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BC3C83C4599B5F3EF0FD49A /* MGWSDLEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E2C06C8F03CAC880DAFE098 /* MGWADLMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = B83F5EDACD4B30A55E54C181 /* MGWADLMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E3D4DEB03B30ECE99A84F58 /* MGWSDLBindingMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA4BBA2BB7B388AAEC69E05 /* MGWSDLBindingMessageReference.m */; };
+		9F039782F9260DCDD0162978 /* MGWADLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = D96B8213FF84EF4AAC201ACD /* MGWADLLink.m */; };
+		9FE60FDE10001D87BA27D1E1 /* MGWADLInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = A11552B7B1D714667286B8FC /* MGWADLInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2E37FB3288478AAD9FA34B0 /* TLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = BE419E115DBA35D6315500A4 /* TLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A599D106C3574C1B3E0F422C /* MGWSDLBindingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A1D38755B174F49CBC9D275B /* MGWSDLBindingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A636ACD1E045E681597B03FB /* PersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D9475222005D8C141ADEA3 /* PersistentStoreCoordinator.swift */; };
+		A70D9A3C3AD219C7D67DE177 /* MGXMLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 753BD72979B09EE86931E01C /* MGXMLWhitespace.m */; };
+		A89947FAD4E7AD7A9575A413 /* MGConnectConfigurationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = D94EA5BAF15B5CDAA753D596 /* MGConnectConfigurationEntity.m */; };
+		A91B05F9BB3D6E57BE82D650 /* MGWADL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8097E8D378D72E32422500 /* MGWADL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A92A0C29721499FBBDE46D4E /* MGWADLResourceType.h in Headers */ = {isa = PBXBuildFile; fileRef = 81014DE3C685EF6BDA8B0BC5 /* MGWADLResourceType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9929205E1CA0DF0F2B07592 /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF7395D0821EE82A59A28B1 /* MGWSDLExtendableComponent.m */; };
+		AEF588ADA6DEEFF7BE5911CC /* MGWSDLDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E8B774EDC7CB4EB7A5F710 /* MGWSDLDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEF738FD8E6806388E193900 /* MGWADLResources+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D93E9329982B817F6511F5A /* MGWADLResources+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEF9A2F61CF2E0222B76614D /* apigee-wadl-extensions.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EA6C560A1B50BFCB08531C39 /* apigee-wadl-extensions.xsd */; };
+		AF9AA0439593696702EC109E /* WebServiceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E346E4E8613BCD6A1EABA6E /* WebServiceDescription.swift */; };
+		B071ACA6B28D23B61070E898 /* MGXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2310EE2E6865845DB595FD /* MGXMLElement.m */; };
+		B07B250B4A0470509D0CD244 /* MGWSDLBindingFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C23D24173ED84BD59DEAD7B /* MGWSDLBindingFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B217089A5A32D36A6A12E77B /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB7A1F4C83A5AD3EA0A4CF /* ActionQueue.swift */; };
+		B3A809D956C8F60E3166A9CE /* MGConnectConfigurationAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = CDAF651BE6F7020D5A146155 /* MGConnectConfigurationAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3D41877BCE00C63883D9378 /* MGXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CBAB6B04C3F52BFCD5FC5ACB /* MGXMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4CA9D90274F95D9E19757FC /* MGConnectConfigurationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 97803C28C18DE0B0B49B1A33 /* MGConnectConfigurationCollection.m */; };
+		B5D948EBED90E01F93BF257B /* MGWSDL+Types.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB01B9E73D8CF2C7EA5B8F8 /* MGWSDL+Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B646B8F94A6458CB2F6FEE5B /* MGWSDLInterfaceMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 86883AEC34CA2E6150076C6F /* MGWSDLInterfaceMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6CB4A10C24B3799172F204D /* MGWADLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = D96B8213FF84EF4AAC201ACD /* MGWADLLink.m */; };
+		B6D5E9719FB6DEAF741BEF0E /* MGWADLResourceType.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6BBDC8B947C4374F214694 /* MGWADLResourceType.m */; };
+		B82365ED6865BF870769323D /* MGWSDLInterfaceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE986778A61B88F6DA6AEE7 /* MGWSDLInterfaceOperation.m */; };
+		B8BA0D276FC26CA783BE7EF3 /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A39A60E88FBD754D3F768CB5 /* connect.xsd */; };
+		BB764D0F589AB5DF7E58D457 /* MGWADLInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = E50E490B165FF9056756781B /* MGWADLInclude.m */; };
+		BC7679B0B04A597B78F255E3 /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49F447B29C9AAF2F0B6878 /* MetaModel.swift */; };
+		BCBB41CDD403836BD388EC7F /* MGXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E554A529A3A090B078B95BF0 /* MGXMLNode.m */; };
+		BCEF9B9C3B8ADBEC087FB9C2 /* MGWADLDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = F47373C18B8F550399CD1B0A /* MGWADLDoc.m */; };
+		BDF6456147637E211BC30CE4 /* MGConnectConfigurationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 469ACCBB1F740568E13FA0BC /* MGConnectConfigurationModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF7989F51ABA18420968B78 /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EEA263A652EAA591411E523F /* connect.xsd */; };
+		BFBBDAF9898F7FAB916DD6D6 /* TLLogLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E334B8FFC56282DF9ABF8A7 /* TLLogLevel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C172E21316B612572BF62A9F /* MGWADLResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3223DC0F905BBE962A706C /* MGWADLResources.m */; };
+		C2A8492E354A0619BE125982 /* MGWSDL+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = C009D7ABB17CD06795E00003 /* MGWSDL+HTTP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C38C6EBCF13585D85A991ADE /* MGWADLParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 6767A961EC49D16777B86507 /* MGWADLParam.m */; };
+		C4A0BC18DE009FA3CEA379FD /* MGWADLRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D169E13E5D73A0154FC2EBA /* MGWADLRepresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5004666B82F35C85114BE99 /* MGXMLCDATA.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E859E84A8F6B06A4268545 /* MGXMLCDATA.m */; };
+		C726F00F1251C3E7BBE2EE85 /* MGXMLReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B85884D5845E6AC75B1D36 /* MGXMLReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C75F749FEAABEB1BD60929E4 /* Connect-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502B3E6F8747C9A589F7520 /* Connect-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D7198551A4B22F215FAF53 /* MGXMLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 600E2585F7BD4B11960B7B32 /* MGXMLWhitespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C90D88912F84E1D1FAC0A8FD /* MGWSDLTypeDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = DA1D524039DA69BBBE0E2CAF /* MGWSDLTypeDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C93D6DB82015C4BC730B856B /* MGXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = F85935E5BDCBCC8657D1589C /* MGXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9A5F48485EC13B14CC3D9BF /* MGXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 06431BEE6286BBCE95023B1A /* MGXMLDocument.m */; };
+		CA25E55406EF3997239A36E4 /* MGWSDLBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF6B9400DBFF91913946CD1 /* MGWSDLBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA86735B35D5094BB10F7576 /* MGWSDLBindingFault.h in Headers */ = {isa = PBXBuildFile; fileRef = E91F7AB69002C5B23E013A0A /* MGWSDLBindingFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB0EDD05D2C0ED981DCD1440 /* TraceLog-Core-ObjC-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FEF88FAC6562E6EEA4EC41 /* TraceLog-Core-ObjC-Swift-dummy.m */; };
+		CB41858370661E17A8B57658 /* MGWSDLExtensionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5FABBE759EFB3FAF421B3D /* MGWSDLExtensionElement.m */; };
+		CB739832025099F0BE4FF575 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324754A2E52D1288AFB99D9C /* Foundation.framework */; };
+		CBCCA6FD489A0ED96915A216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AF432A2DC97C8881CF46B /* Cocoa.framework */; };
+		CC9EFF2F5C6971F94EC22BCC /* MGXMLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 600E2585F7BD4B11960B7B32 /* MGXMLWhitespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE2C963069835A359CE9FA14 /* TLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE86B698785F72945F0B5E1 /* TLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CF5B39F3818484B18FF94F61 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B0D2614280ECD19C911BF /* WriteAheadLog.swift */; };
+		D0221D952CD15466AE0ECC1D /* MGConnectConfigurationRelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = 13050EDA9246F020D3EAFB10 /* MGConnectConfigurationRelationship.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D064CE7CC2997BEBC290B38A /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662079CEAB1CC51DA2089654 /* EntityMapper.swift */; };
+		D1A4A93420462E4B96B618E0 /* InMemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C1A6CF333EE901BB86CF35 /* InMemoryDataStore.swift */; };
+		D22FABC65FEC85819AF1646C /* MGWSDLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = ACA7B679E32FD10AD0A2D053 /* MGWSDLProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3872AE6119BC375F29DD043 /* MGWADLRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAE54F7CBADB8084274436D /* MGWADLRepresentation.m */; };
+		D3948EA7EA5255B8E3739A58 /* MGWADLApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = DB7E8DE2273AD39E8714AD24 /* MGWADLApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3CECF08B4D1CEC9078A60EA /* TLLogLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E334B8FFC56282DF9ABF8A7 /* TLLogLevel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D43762422C94D958BF22B912 /* MGWSDLInterfaceFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = DA97E06E7AC7267DBD38662E /* MGWSDLInterfaceFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4AAA1FA285B77E10753B1A2 /* MGWADL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8097E8D378D72E32422500 /* MGWADL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5AF454927253358087457EE /* MGXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CBAB6B04C3F52BFCD5FC5ACB /* MGXMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5BD0429A6838D02635123D3 /* MGWADLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 95663298A7E551DCCC018749 /* MGWADLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6754790C0660019C1998D36 /* apigee-wadl-extensions.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EA6C560A1B50BFCB08531C39 /* apigee-wadl-extensions.xsd */; };
+		D689F0B686FB3299506E6F72 /* TraceLog-Core-ObjC-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 381A9F8F01B8297C12677175 /* TraceLog-Core-ObjC-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D75B7DC2690941CF192FA1BE /* MGXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = F85935E5BDCBCC8657D1589C /* MGXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D77A8C08C3B9D1AEA2054E26 /* MGConnectConfigurationCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 390CC7A0B70FD3E8EB4AAE57 /* MGConnectConfigurationCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA8B9415782558B3C45AC99D /* TLConsoleWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = E57305F04E50C690804BB22D /* TLConsoleWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC93AB27F4AB53DC6BA5B4CA /* MGConnectConfigurationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = D94EA5BAF15B5CDAA753D596 /* MGConnectConfigurationEntity.m */; };
+		DE326E5CF10DB1FB835127DD /* MGWADLOption.m in Sources */ = {isa = PBXBuildFile; fileRef = C82D398B36A8086B55B0B8A6 /* MGWADLOption.m */; };
+		DE4A0D76EA9E1BC94452279E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5FD558C2354EFC11B928D /* Action.swift */; };
+		DECB1670D2B0D1CADD844B4F /* MGWSDLBindingFault.m in Sources */ = {isa = PBXBuildFile; fileRef = E336810AECE5B28B83AF0C9B /* MGWSDLBindingFault.m */; };
+		E2A4641CF59A5B78525BE8A7 /* MGWADLInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = E50E490B165FF9056756781B /* MGWADLInclude.m */; };
+		E30EF93574DB20E7511165D9 /* MGXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 06431BEE6286BBCE95023B1A /* MGXMLDocument.m */; };
+		E539D94CC1D379615745C3D5 /* GenericCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0338009B7329172AC48C9F /* GenericCoreDataStack.swift */; };
+		E5C811D9386464D42F58A13C /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDFF5F3FF7CF69A3BD65025 /* MetaLogEntry+CoreDataProperties.swift */; };
+		E6D91407A48ADD10F090D599 /* TLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = BE419E115DBA35D6315500A4 /* TLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8DA943C4BFFBB3E897BD759 /* MGWADLParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF205E9381095B18178E82C /* MGWADLParam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E997C21D4BCC52908A6FD7E9 /* MetaLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C67B680CEA5CED9D4D296 /* MetaLogEntry.swift */; };
+		E99CE12CB23943DAA0ED3E31 /* MGWSDLInterfaceOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E14358315EADA40C93D2314 /* MGWSDLInterfaceOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6C4BD51D6F4D6400B1BE35 /* MappingServiceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C4BD41D6F4D6400B1BE35 /* MappingServiceDescription.swift */; };
+		EA6C4BD61D6F4D6400B1BE35 /* MappingServiceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C4BD41D6F4D6400B1BE35 /* MappingServiceDescription.swift */; };
+		EA6C4BDA1D6F543B00B1BE35 /* EntityActionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C4BD91D6F543B00B1BE35 /* EntityActionDescription.swift */; };
+		EA6C4BDB1D6F543B00B1BE35 /* EntityActionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C4BD91D6F543B00B1BE35 /* EntityActionDescription.swift */; };
+		EA9D421B4EAD12D410AF7B5D /* MGWADLRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D169E13E5D73A0154FC2EBA /* MGWADLRepresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAAB77CB79998DC24922DB39 /* MGWSDLBindingMessageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A17048D278C78BA60A1B6BB /* MGWSDLBindingMessageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAB894CD6F07A837F924E462 /* MGWADLGrammars.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F38BF0307053DF528E4786C /* MGWADLGrammars.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAC115F8DE10691F0A55AA1C /* MGWSDLEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D18CE0D392DAC952A25BB6 /* MGWSDLEndpoint.m */; };
+		EB318FFD51453700C4D983D6 /* Pods-Connect Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F0CEED64F8E34F1E46519 /* Pods-Connect Tests-dummy.m */; };
+		EC02505FA6808DB2AB6675B2 /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = 018FE27A6F2D6570D1399613 /* MGWSDLInterfaceFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDC0B636D0D636170F90E08E /* wadl-schema.xsd in Resources */ = {isa = PBXBuildFile; fileRef = BB64723B3BFC4345A6C093A7 /* wadl-schema.xsd */; };
+		EDFF155E5F833DADFEAD16BA /* MGConnectConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA837B014936C5E748FE8F4 /* MGConnectConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0C432C1B125C90062EF2F45 /* TraceLog.default-Core-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C4319A082C848C3562857C /* TraceLog.default-Core-Swift-dummy.m */; };
+		F13CEA75AC622E386A6D02CC /* MGWADLMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED362AB535EBB4690FD44DF /* MGWADLMethod.m */; };
+		F167D5C37956905519B82891 /* MGWADLDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2400BE9B6F296F5B8F2153F6 /* MGWADLDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A936C5EEA4016F36DBBC7D /* EntityActionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D0FFBD75ED026081B4689 /* EntityActionNotification.swift */; };
+		F4280C557A2EC4EB38AAD369 /* MGWSDLDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9B42E5818B98D57FED28A8 /* MGWSDLDescription.m */; };
+		F58D9C400099B8C5445198E6 /* MGConnectConfigurationRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D177B19A0370045A9C222B0 /* MGConnectConfigurationRelationship.m */; };
+		F6CE263D89FCDF535C94A8B6 /* TLConsoleWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = E57305F04E50C690804BB22D /* TLConsoleWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F802ECC9E3F2FB5729B85429 /* MGWSDLBindingFaultReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C23D24173ED84BD59DEAD7B /* MGWSDLBindingFaultReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F84D13879634DA612A27CE29 /* WebServiceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E346E4E8613BCD6A1EABA6E /* WebServiceDescription.swift */; };
+		F953872429A24494600CFA03 /* connect.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A39A60E88FBD754D3F768CB5 /* connect.xsd */; };
+		F9E370D59A04C3003C2994F0 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5FD558C2354EFC11B928D /* Action.swift */; };
+		FA31472BBA314D657A752366 /* MGWSDLBindingMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA4BBA2BB7B388AAEC69E05 /* MGWSDLBindingMessageReference.m */; };
+		FCC6978887719282E1D8817A /* MGConnectConfigurationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 469ACCBB1F740568E13FA0BC /* MGConnectConfigurationModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD5A505B3705DD14DEC1D45D /* MGWSDLEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BC3C83C4599B5F3EF0FD49A /* MGWSDLEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD71669A069B0AEFC800E53B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733D5ABD4D0CA77848A8994 /* WebService.swift */; };
+		FE931C67F6DFFF1780BEC29E /* MGConnectConfigurationEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AC695014B8820A4811EA5F /* MGConnectConfigurationEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE95518031CAE0FF1DFFE365 /* NSEntityDescription+EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A67CF531D7B243A4105A6 /* NSEntityDescription+EntitySettings.swift */; };
+		FF252DF52632239A7C081560 /* MGWSDLComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB66456AA193A1895191B0A /* MGWSDLComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF62088CDCC897AECD5BF183 /* MGWSDLInterfaceMessageReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C60B1B4FA1D69ABC794827 /* MGWSDLInterfaceMessageReference.m */; };
+		FFB7B20B2A6B9C45E435E44C /* MGWSDLExtendableComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAD67392686BAD67E50FE5 /* MGWSDLExtendableComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F38B75BCC27A39525A3E464 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D800B44C682413F427D0A5B;
+			remoteInfo = "Connect-OSX";
+		};
+		5B2FBF6F2C6B2B9E943E6E44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5D4E86ABA26833925C4221C;
+			remoteInfo = "Connect-iOS";
+		};
+		6A16637873F4993FB1AB3B05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC088731EFFB2E665AA8BDB7;
+			remoteInfo = "Connect-iOS-Connect";
+		};
+		748D196D6B1E85AC926791B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC3C19722989B7041F81E43C;
+			remoteInfo = "TraceLog.default-Core-Swift";
+		};
+		759B6188F4518CF39B236B81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D0E4690642AB72B05BC120A;
+			remoteInfo = "TraceLog-Core-ObjC-Swift";
+		};
+		9B4D9B70C2A6E4628EC1AB92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D0E4690642AB72B05BC120A;
+			remoteInfo = "TraceLog-Core-ObjC-Swift";
+		};
+		AE0D5E48B67C93DA05F7755A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC3C19722989B7041F81E43C;
+			remoteInfo = "TraceLog.default-Core-Swift";
+		};
+		DBAC08FA8A037A397A652051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 763334B649794C9A8CBA3A39;
+			remoteInfo = "Connect-OSX-Connect";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		018FE27A6F2D6570D1399613 /* MGWSDLInterfaceFault.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFault.h; sourceTree = "<group>"; };
+		03A8C422C14A5F1844AE1B38 /* MGWSDLBinding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBinding.m; sourceTree = "<group>"; };
+		06431BEE6286BBCE95023B1A /* MGXMLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLDocument.m; sourceTree = "<group>"; };
+		06DB7A1F4C83A5AD3EA0A4CF /* ActionQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionQueue.swift; sourceTree = "<group>"; };
+		07E3C567184F99D756AFF53F /* MGWADLGrammars.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLGrammars.m; sourceTree = "<group>"; };
+		0E0CE5B277681238F9E0DFFA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1095F0EBE508B00C9FC7F111 /* MGWADLResource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLResource.m; sourceTree = "<group>"; };
+		10A2929D930C29E0933EE0F4 /* Pods-Connect Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Tests-resources.sh"; sourceTree = "<group>"; };
+		13050EDA9246F020D3EAFB10 /* MGConnectConfigurationRelationship.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationRelationship.h; sourceTree = "<group>"; };
+		132C67B680CEA5CED9D4D296 /* MetaLogEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetaLogEntry.swift; sourceTree = "<group>"; };
+		15E8B774EDC7CB4EB7A5F710 /* MGWSDLDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLDescription.h; sourceTree = "<group>"; };
+		16244F3968B7920A4B61D59F /* TraceLog-Core-ObjC-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-Core-ObjC-Swift-prefix.pch"; sourceTree = "<group>"; };
+		1BBC5347913B206D68BF099D /* Pods_Connect_Editor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Editor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC0CCFD7D97E783E3E3D8B0 /* Pods-Connect Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Example-resources.sh"; sourceTree = "<group>"; };
+		1D177B19A0370045A9C222B0 /* MGConnectConfigurationRelationship.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationRelationship.m; sourceTree = "<group>"; };
+		1E3223DC0F905BBE962A706C /* MGWADLResources.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLResources.m; sourceTree = "<group>"; };
+		1EE2554F51D9E6B5CA897708 /* Pods-Connect Editor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Connect Editor-dummy.m"; sourceTree = "<group>"; };
+		1FF6B9400DBFF91913946CD1 /* MGWSDLBinding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBinding.h; sourceTree = "<group>"; };
+		22711C9FC931C989FF7A8660 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D18CE0D392DAC952A25BB6 /* MGWSDLEndpoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLEndpoint.m; sourceTree = "<group>"; };
+		23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Connect-iOS.xcconfig"; path = "../Connect-iOS/Connect-iOS.xcconfig"; sourceTree = "<group>"; };
+		2400BE9B6F296F5B8F2153F6 /* MGWADLDoc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLDoc.h; sourceTree = "<group>"; };
+		2531A69B742123C9A4D7F222 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C1A6CF333EE901BB86CF35 /* InMemoryDataStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InMemoryDataStore.swift; sourceTree = "<group>"; };
+		25E3F81747D42DEF0B17846B /* ResourceBundle-Connect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "ResourceBundle-Connect-Info.plist"; path = "../Connect-iOS/ResourceBundle-Connect-Info.plist"; sourceTree = "<group>"; };
+		28DBBDC14B30FD1E9B63C44F /* TraceLog-Core-ObjC-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TraceLog-Core-ObjC-Swift.xcconfig"; sourceTree = "<group>"; };
+		29C5FD558C2354EFC11B928D /* Action.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		2A17048D278C78BA60A1B6BB /* MGWSDLBindingMessageReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingMessageReference.h; sourceTree = "<group>"; };
+		2AB66456AA193A1895191B0A /* MGWSDLComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLComponent.h; sourceTree = "<group>"; };
+		2C23D24173ED84BD59DEAD7B /* MGWSDLBindingFaultReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFaultReference.h; sourceTree = "<group>"; };
+		2CE86B698785F72945F0B5E1 /* TLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLLogger.m; path = TraceLog/Core/TLLogger.m; sourceTree = "<group>"; };
+		2D409BB5DE6CCA455D7C6282 /* Pods-Connect Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Connect Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2EDF563D5E62F1BDC23775C7 /* Connect-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Connect-OSX-prefix.pch"; sourceTree = "<group>"; };
+		3039ADA0265236EAC5B34F5F /* Pods-Connect Editor-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Connect Editor-acknowledgements.markdown"; sourceTree = "<group>"; };
+		30C60B1B4FA1D69ABC794827 /* MGWSDLInterfaceMessageReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceMessageReference.m; sourceTree = "<group>"; };
+		31AF4F14CD8D704F9F37815C /* MGXMLComment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLComment.m; sourceTree = "<group>"; };
+		324754A2E52D1288AFB99D9C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		338FBE728D26E94C2F90772E /* MGWSDLFeature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLFeature.h; sourceTree = "<group>"; };
+		35AC695014B8820A4811EA5F /* MGConnectConfigurationEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationEntity.h; sourceTree = "<group>"; };
+		36E5EF3F74CF471E08F98DEA /* NSManagedObjectModel+EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectModel+EntitySettings.swift"; sourceTree = "<group>"; };
+		3732FCC4039786EC840227F8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37B0D820CD36332FA496008B /* MGWSDLBindingOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingOperation.m; sourceTree = "<group>"; };
+		37B370A56B815DF7440E0997 /* TraceLog.default-Core-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TraceLog.default-Core-Swift-prefix.pch"; path = "../TraceLog.default-Core-Swift/TraceLog.default-Core-Swift-prefix.pch"; sourceTree = "<group>"; };
+		381A9F8F01B8297C12677175 /* TraceLog-Core-ObjC-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-Core-ObjC-Swift-umbrella.h"; sourceTree = "<group>"; };
+		390CC7A0B70FD3E8EB4AAE57 /* MGConnectConfigurationCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationCollection.h; sourceTree = "<group>"; };
+		39492F448703F3530F64D859 /* MGWADLResource+Extensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWADLResource+Extensions.m"; sourceTree = "<group>"; };
+		3B36C06D5E57AFA4BB1F1EE6 /* MGWSDLBindingFaultReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFaultReference.m; sourceTree = "<group>"; };
+		3D52DAB9A35558EFC6D0CC27 /* MGXMLElementDefinition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLElementDefinition.h; sourceTree = "<group>"; };
+		3D93E9329982B817F6511F5A /* MGWADLResources+Extensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWADLResources+Extensions.h"; sourceTree = "<group>"; };
+		3DB1ED004CB14F1CFB2AA5B8 /* AssociatedStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssociatedStorage.swift; sourceTree = "<group>"; };
+		3E6D0FFBD75ED026081B4689 /* EntityActionNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntityActionNotification.swift; sourceTree = "<group>"; };
+		4048D8DEC76437029F375028 /* Pods-Connect Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Tests-frameworks.sh"; sourceTree = "<group>"; };
+		43A083D6F14BF48DF1B59CC8 /* Pods-Connect Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Connect Example-umbrella.h"; sourceTree = "<group>"; };
+		443C715B4320B8D417DF35C0 /* MGWADLResource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLResource.h; sourceTree = "<group>"; };
+		443F747EB91548F1EE7E70CE /* MGXMLElementDefinition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLElementDefinition.m; sourceTree = "<group>"; };
+		461E628815F66109A64905FB /* MGConnectConfigurationAuthentication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationAuthentication.m; sourceTree = "<group>"; };
+		465EE1C89670BA9632A7BECB /* MGWSDLService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLService.m; sourceTree = "<group>"; };
+		469ACCBB1F740568E13FA0BC /* MGConnectConfigurationModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationModel.h; sourceTree = "<group>"; };
+		46D9475222005D8C141ADEA3 /* PersistentStoreCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistentStoreCoordinator.swift; sourceTree = "<group>"; };
+		48968911D90C43C8B92CBBAE /* TLLogLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLLogLevel.h; path = TraceLog/Core/TLLogLevel.h; sourceTree = "<group>"; };
+		48AC5E95EBF8E471C722A369 /* ConfigurationReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationReader.swift; sourceTree = "<group>"; };
+		4BC3C83C4599B5F3EF0FD49A /* MGWSDLEndpoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLEndpoint.h; sourceTree = "<group>"; };
+		4BDFF5F3FF7CF69A3BD65025 /* MetaLogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MetaLogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C871D0C2C61F6D2A009752A /* Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9AF432A2DC97C8881CF46B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		4FE86B18ECC3CA65C6A79033 /* MGWSDLInterface.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterface.m; sourceTree = "<group>"; };
+		530E7ACF6268E0AFFD6C7682 /* Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		540694341100332EB719780D /* MGWADLResources+Extensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWADLResources+Extensions.m"; sourceTree = "<group>"; };
+		551F0CEED64F8E34F1E46519 /* Pods-Connect Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Connect Tests-dummy.m"; sourceTree = "<group>"; };
+		56E0974AF603BE2B1058EB08 /* MGWADLLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLLink.h; sourceTree = "<group>"; };
+		5B801A44BFA12BC5F0D3C3B0 /* MGWSDLInterfaceFault.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFault.m; sourceTree = "<group>"; };
+		5E334B8FFC56282DF9ABF8A7 /* TLLogLevel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLLogLevel.m; path = TraceLog/Core/TLLogLevel.m; sourceTree = "<group>"; };
+		5F73D128D56099DA563E9CA7 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA837B014936C5E748FE8F4 /* MGConnectConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfiguration.h; sourceTree = "<group>"; };
+		600E2585F7BD4B11960B7B32 /* MGXMLWhitespace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLWhitespace.h; sourceTree = "<group>"; };
+		662079CEAB1CC51DA2089654 /* EntityMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
+		665B0D2614280ECD19C911BF /* WriteAheadLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WriteAheadLog.swift; sourceTree = "<group>"; };
+		675521099080E898003B3DDC /* MGXMLReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLReader.m; sourceTree = "<group>"; };
+		6767A961EC49D16777B86507 /* MGWADLParam.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLParam.m; sourceTree = "<group>"; };
+		6C047AD455D443D99613CC47 /* Pods-Connect Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D308588A48530A6C6435902 /* EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntitySettings.swift; sourceTree = "<group>"; };
+		6E346E4E8613BCD6A1EABA6E /* WebServiceDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebServiceDescription.swift; sourceTree = "<group>"; };
+		6ED362AB535EBB4690FD44DF /* MGWADLMethod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLMethod.m; sourceTree = "<group>"; };
+		70797175DB3B4F47ACD1AE9A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../TraceLog.default-Core-Swift/Info.plist"; sourceTree = "<group>"; };
+		707C83F4BD5915CB6E806421 /* MGWSDLExtensionElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtensionElement.h; sourceTree = "<group>"; };
+		708002A43DA4C151E0C4E38B /* TraceLog.default-Core-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TraceLog.default-Core-Swift-umbrella.h"; path = "../TraceLog.default-Core-Swift/TraceLog.default-Core-Swift-umbrella.h"; sourceTree = "<group>"; };
+		724DED3D8B5FA997CD7D6874 /* MGWADLApplication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLApplication.m; sourceTree = "<group>"; };
+		7502B3E6F8747C9A589F7520 /* Connect-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Connect-iOS-umbrella.h"; path = "../Connect-iOS/Connect-iOS-umbrella.h"; sourceTree = "<group>"; };
+		753BD72979B09EE86931E01C /* MGXMLWhitespace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLWhitespace.m; sourceTree = "<group>"; };
+		759953B0A9A0FEAFFCB4514F /* Connect.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Connect.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		7623BF77BB5505A0E4E09FFF /* MGWSDL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDL.h; sourceTree = "<group>"; };
+		7733D5ABD4D0CA77848A8994 /* WebService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		780081D351C549A8E5A31C9F /* Pods-Connect Editor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Editor.debug.xcconfig"; sourceTree = "<group>"; };
+		7802E63F7A01BBF83AD5DC28 /* Pods-Connect Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Example-frameworks.sh"; sourceTree = "<group>"; };
+		78D91F9F9CAF61D41DF20FE1 /* Connect.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Connect.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		78FC4845B5054E142789EA24 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78FEF88FAC6562E6EEA4EC41 /* TraceLog-Core-ObjC-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TraceLog-Core-ObjC-Swift-dummy.m"; sourceTree = "<group>"; };
+		7C98E0CEB000CB3B641EFE19 /* MGConnectConfigurationAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationAction.m; sourceTree = "<group>"; };
+		7CCD53611185830E9528455F /* Pods_Connect_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D29329FF262ED7BBB23451F /* Connect-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Connect-iOS-dummy.m"; path = "../Connect-iOS/Connect-iOS-dummy.m"; sourceTree = "<group>"; };
+		7D4BEB329BF893A3B79B9B76 /* MGWSDLInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterface.h; sourceTree = "<group>"; };
+		7EC3A0A388E8A7C6E9891DAD /* MGConnectConfigurationElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationElement.m; sourceTree = "<group>"; };
+		7FCEB4C3B38D382024649A48 /* Pods-Connect Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Editor.release.xcconfig"; sourceTree = "<group>"; };
+		7FEBC8637AC2F7C81DC7C86B /* ResourceBundle-Connect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Connect-Info.plist"; sourceTree = "<group>"; };
+		80561899B1987DB28F16C5BE /* MGWSDLFeature.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLFeature.m; sourceTree = "<group>"; };
+		81014DE3C685EF6BDA8B0BC5 /* MGWADLResourceType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLResourceType.h; sourceTree = "<group>"; };
+		812897F3C6D87C312A3ABDD5 /* MGWADLResource+Extensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWADLResource+Extensions.h"; sourceTree = "<group>"; };
+		813312D1ECB31A5AA9900017 /* MGWADL+Extensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWADL+Extensions.h"; sourceTree = "<group>"; };
+		83F8EB1CEAC5AB688CDCE20E /* Pods-Connect Editor-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Connect Editor-acknowledgements.plist"; sourceTree = "<group>"; };
+		85920C843B6AECC8B5E855BF /* TraceLog.default-Core-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "TraceLog.default-Core-Swift.modulemap"; path = "../TraceLog.default-Core-Swift/TraceLog.default-Core-Swift.modulemap"; sourceTree = "<group>"; };
+		86883AEC34CA2E6150076C6F /* MGWSDLInterfaceMessageReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceMessageReference.h; sourceTree = "<group>"; };
+		87A6800CE18EF57CA270BC06 /* MGWSDLTypeDefinition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLTypeDefinition.m; sourceTree = "<group>"; };
+		8817B048E27C905AA1BD1C3A /* Pods-Connect Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Connect Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		897F5A34D2AD3FF78D25953D /* MGWADLOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLOption.h; sourceTree = "<group>"; };
+		8AF9C9744449CF8BB62A7545 /* MGXMLDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLDocument.h; sourceTree = "<group>"; };
+		8C36B9768F866019E47D5FC1 /* Pods-Connect Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Connect Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		8E14358315EADA40C93D2314 /* MGWSDLInterfaceOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceOperation.h; sourceTree = "<group>"; };
+		8E54DD671BA1052B44AA0DDC /* Pods-Connect Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Connect Example-dummy.m"; sourceTree = "<group>"; };
+		8F2FC4D885CCEA83674B79FF /* Pods-Connect Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8F8097E8D378D72E32422500 /* MGWADL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADL.h; sourceTree = "<group>"; };
+		90B85884D5845E6AC75B1D36 /* MGXMLReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLReader.h; sourceTree = "<group>"; };
+		95663298A7E551DCCC018749 /* MGWADLResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLResponse.h; sourceTree = "<group>"; };
+		97803C28C18DE0B0B49B1A33 /* MGConnectConfigurationCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationCollection.m; sourceTree = "<group>"; };
+		98B47E847C7C3E3DC4FB9AA4 /* Connect-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Connect-OSX.modulemap"; sourceTree = "<group>"; };
+		99072F0A56ABD7033E846F44 /* Pods-Connect Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Connect Tests-umbrella.h"; sourceTree = "<group>"; };
+		9977E49AC14C3C777FD0DEDE /* Pods-Connect Editor-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Editor-resources.sh"; sourceTree = "<group>"; };
+		9A0338009B7329172AC48C9F /* GenericCoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericCoreDataStack.swift; sourceTree = "<group>"; };
+		9CF205E9381095B18178E82C /* MGWADLParam.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLParam.h; sourceTree = "<group>"; };
+		9CFDAA142340F9614621C2FF /* Connect-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Connect-iOS.modulemap"; path = "../Connect-iOS/Connect-iOS.modulemap"; sourceTree = "<group>"; };
+		9D169E13E5D73A0154FC2EBA /* MGWADLRepresentation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLRepresentation.h; sourceTree = "<group>"; };
+		9F38BF0307053DF528E4786C /* MGWADLGrammars.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLGrammars.h; sourceTree = "<group>"; };
+		9F5B91F0CFF02C3F0BD5BD9E /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = TraceLog/ObjC/TraceLog.h; sourceTree = "<group>"; };
+		A11552B7B1D714667286B8FC /* MGWADLInclude.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLInclude.h; sourceTree = "<group>"; };
+		A1D38755B174F49CBC9D275B /* MGWSDLBindingOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingOperation.h; sourceTree = "<group>"; };
+		A39A60E88FBD754D3F768CB5 /* connect.xsd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = connect.xsd; sourceTree = "<group>"; };
+		A5EF09E3B8026B46F5AB3FD1 /* Pods-Connect Editor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Connect Editor-umbrella.h"; sourceTree = "<group>"; };
+		A78EA8EA387D97A30D6C18A4 /* Pods-Connect Editor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Connect Editor.modulemap"; sourceTree = "<group>"; };
+		A89086491E23F249D4331ECB /* MGWSDLElementDeclaration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLElementDeclaration.m; sourceTree = "<group>"; };
+		A95ADA637688971CC66BE14E /* MGConnectConfigurationElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationElement.h; sourceTree = "<group>"; };
+		AAE986778A61B88F6DA6AEE7 /* MGWSDLInterfaceOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceOperation.m; sourceTree = "<group>"; };
+		ACA7B679E32FD10AD0A2D053 /* MGWSDLProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLProperty.h; sourceTree = "<group>"; };
+		AD6BBDC8B947C4374F214694 /* MGWADLResourceType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLResourceType.m; sourceTree = "<group>"; };
+		B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Connect-OSX.xcconfig"; sourceTree = "<group>"; };
+		B33A8214D3432B5CABFE512E /* Pods-Connect Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Example.release.xcconfig"; sourceTree = "<group>"; };
+		B5F4872C0E9013CE3236C279 /* MGWSDLService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLService.h; sourceTree = "<group>"; };
+		B5F7EC638E1D7CA6AE39E886 /* Pods-Connect Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Connect Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B7D9A82E7D9861258E0DDBDF /* TraceLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TraceLog.swift; path = TraceLog/Swift/TraceLog.swift; sourceTree = "<group>"; };
+		B83F5EDACD4B30A55E54C181 /* MGWADLMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLMethod.h; sourceTree = "<group>"; };
+		B8EAD67392686BAD67E50FE5 /* MGWSDLExtendableComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLExtendableComponent.h; sourceTree = "<group>"; };
+		BA5FABBE759EFB3FAF421B3D /* MGWSDLExtensionElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtensionElement.m; sourceTree = "<group>"; };
+		BAAE54F7CBADB8084274436D /* MGWADLRepresentation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLRepresentation.m; sourceTree = "<group>"; };
+		BAC0B7A42CAF76629141EEAB /* TraceLog.default-Core-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "TraceLog.default-Core-Swift.xcconfig"; path = "../TraceLog.default-Core-Swift/TraceLog.default-Core-Swift.xcconfig"; sourceTree = "<group>"; };
+		BB64723B3BFC4345A6C093A7 /* wadl-schema.xsd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = "wadl-schema.xsd"; sourceTree = "<group>"; };
+		BBB1C17B29097E136FAE9628 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Connect-iOS/Info.plist"; sourceTree = "<group>"; };
+		BBF7395D0821EE82A59A28B1 /* MGWSDLExtendableComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLExtendableComponent.m; sourceTree = "<group>"; };
+		BC722BE62A460E6F1CBBD757 /* Connect-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Connect-OSX-umbrella.h"; sourceTree = "<group>"; };
+		BC8C97572CB8584917C77F89 /* Pods-Connect Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Connect Example.modulemap"; sourceTree = "<group>"; };
+		BD3A67CF531D7B243A4105A6 /* NSEntityDescription+EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+EntitySettings.swift"; sourceTree = "<group>"; };
+		BD9B42E5818B98D57FED28A8 /* MGWSDLDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLDescription.m; sourceTree = "<group>"; };
+		BDB01B9E73D8CF2C7EA5B8F8 /* MGWSDL+Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+Types.h"; sourceTree = "<group>"; };
+		BE419E115DBA35D6315500A4 /* TLWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLWriter.h; path = TraceLog/Core/TLWriter.h; sourceTree = "<group>"; };
+		BF759619BB682435EF984ADA /* MGXMLCDATA.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLCDATA.h; sourceTree = "<group>"; };
+		C009D7ABB17CD06795E00003 /* MGWSDL+HTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGWSDL+HTTP.h"; sourceTree = "<group>"; };
+		C17DFCD5ED857D5C90B52688 /* MGWADLRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLRequest.m; sourceTree = "<group>"; };
+		C6CFB902582E70DA80B1EDFC /* TLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLLogger.h; path = TraceLog/Core/TLLogger.h; sourceTree = "<group>"; };
+		C7ACDAB177DEB1673E52B178 /* Pods-Connect Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Connect Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C7F988201463B21DD25F6FB7 /* Connect-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Connect-OSX-dummy.m"; sourceTree = "<group>"; };
+		C82D398B36A8086B55B0B8A6 /* MGWADLOption.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLOption.m; sourceTree = "<group>"; };
+		C955A14AD2CDCAC45375A6CB /* MGXMLComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLComment.h; sourceTree = "<group>"; };
+		CBAB6B04C3F52BFCD5FC5ACB /* MGXMLNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLNode.h; sourceTree = "<group>"; };
+		CDAF651BE6F7020D5A146155 /* MGConnectConfigurationAuthentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationAuthentication.h; sourceTree = "<group>"; };
+		CE2310EE2E6865845DB595FD /* MGXMLElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLElement.m; sourceTree = "<group>"; };
+		D00F70DC7961D7E34F3FD549 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D07DCEC2F2B2EBF9CAF66109 /* MGWADLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLRequest.h; sourceTree = "<group>"; };
+		D1E59A5B82897409D2D5D906 /* MGWADLResources.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLResources.h; sourceTree = "<group>"; };
+		D333CBAF65782AFF723977D0 /* MGConnectConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfiguration.m; sourceTree = "<group>"; };
+		D5F3E5F1C88927144251A6D9 /* MGWSDLElementDeclaration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLElementDeclaration.h; sourceTree = "<group>"; };
+		D70886D282AB3DE6D870BE04 /* Pods-Connect Editor-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Connect Editor-frameworks.sh"; sourceTree = "<group>"; };
+		D9161D6CEB7F40B2E52470E8 /* MGWADLResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLResponse.m; sourceTree = "<group>"; };
+		D94E5B468C8858472CEFD946 /* MGWSDL+HTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+HTTP.m"; sourceTree = "<group>"; };
+		D94EA5BAF15B5CDAA753D596 /* MGConnectConfigurationEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationEntity.m; sourceTree = "<group>"; };
+		D96B8213FF84EF4AAC201ACD /* MGWADLLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLLink.m; sourceTree = "<group>"; };
+		D9B08C5F9E9DA19FCA7ABC60 /* MGWSDLProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLProperty.m; sourceTree = "<group>"; };
+		DA1D524039DA69BBBE0E2CAF /* MGWSDLTypeDefinition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLTypeDefinition.h; sourceTree = "<group>"; };
+		DA97E06E7AC7267DBD38662E /* MGWSDLInterfaceFaultReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLInterfaceFaultReference.h; sourceTree = "<group>"; };
+		DB49F447B29C9AAF2F0B6878 /* MetaModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetaModel.swift; sourceTree = "<group>"; };
+		DB7E8DE2273AD39E8714AD24 /* MGWADLApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWADLApplication.h; sourceTree = "<group>"; };
+		DD3E753954A70CB45EE4FD5E /* MGWSDLInterfaceFaultReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLInterfaceFaultReference.m; sourceTree = "<group>"; };
+		DDA4BBA2BB7B388AAEC69E05 /* MGWSDLBindingMessageReference.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingMessageReference.m; sourceTree = "<group>"; };
+		DDB00670F49FE9A3342D6CC6 /* TLConsoleWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TLConsoleWriter.m; path = TraceLog/Core/TLConsoleWriter.m; sourceTree = "<group>"; };
+		DEBB3BE868294B772BF9DB2E /* EntityAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntityAction.swift; sourceTree = "<group>"; };
+		E1C4319A082C848C3562857C /* TraceLog.default-Core-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "TraceLog.default-Core-Swift-dummy.m"; path = "../TraceLog.default-Core-Swift/TraceLog.default-Core-Swift-dummy.m"; sourceTree = "<group>"; };
+		E336810AECE5B28B83AF0C9B /* MGWSDLBindingFault.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLBindingFault.m; sourceTree = "<group>"; };
+		E34197BA4079939967429783 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E37CB755E84F61786D888F64 /* MGConnectConfigurationModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGConnectConfigurationModel.m; sourceTree = "<group>"; };
+		E50E490B165FF9056756781B /* MGWADLInclude.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLInclude.m; sourceTree = "<group>"; };
+		E554A529A3A090B078B95BF0 /* MGXMLNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLNode.m; sourceTree = "<group>"; };
+		E57305F04E50C690804BB22D /* TLConsoleWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TLConsoleWriter.h; path = TraceLog/Core/TLConsoleWriter.h; sourceTree = "<group>"; };
+		E6A80903CE9F271733DF762F /* MGConnectConfigurationAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGConnectConfigurationAction.h; sourceTree = "<group>"; };
+		E91F7AB69002C5B23E013A0A /* MGWSDLBindingFault.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFault.h; sourceTree = "<group>"; };
+		EA6C4BD41D6F4D6400B1BE35 /* MappingServiceDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingServiceDescription.swift; sourceTree = "<group>"; };
+		EA6C4BD91D6F543B00B1BE35 /* EntityActionDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityActionDescription.swift; sourceTree = "<group>"; };
+		EA6C560A1B50BFCB08531C39 /* apigee-wadl-extensions.xsd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = "apigee-wadl-extensions.xsd"; sourceTree = "<group>"; };
+		EDD848B62F4C465B5FB76491 /* MGWSDL+Types.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGWSDL+Types.m"; sourceTree = "<group>"; };
+		EEA263A652EAA591411E523F /* connect.xsd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = connect.xsd; sourceTree = "<group>"; };
+		EECF499ADA2147923FD788FD /* TraceLog-Core-ObjC-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "TraceLog-Core-ObjC-Swift.modulemap"; sourceTree = "<group>"; };
+		EF33194761E3AF5194287F89 /* Connect-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Connect-iOS-prefix.pch"; path = "../Connect-iOS/Connect-iOS-prefix.pch"; sourceTree = "<group>"; };
+		EF36AF521CC931A7DD9CF8DE /* Pods_Connect_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F399B66EAB7E66CD6F7D8CBC /* MGWSDLComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWSDLComponent.m; sourceTree = "<group>"; };
+		F4512102E839E7D538BD48BE /* TraceLog-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TraceLog-Bridging-Header.h"; path = "TraceLog/Core/TraceLog-Bridging-Header.h"; sourceTree = "<group>"; };
+		F47373C18B8F550399CD1B0A /* MGWADLDoc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGWADLDoc.m; sourceTree = "<group>"; };
+		F5A05E0E2B747592A39A80D0 /* InMemoryReferenceObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InMemoryReferenceObject.swift; sourceTree = "<group>"; };
+		F7E859E84A8F6B06A4268545 /* MGXMLCDATA.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MGXMLCDATA.m; sourceTree = "<group>"; };
+		F85935E5BDCBCC8657D1589C /* MGXMLElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGXMLElement.h; sourceTree = "<group>"; };
+		FDBB324E7983BFA4F1BF761E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE5122C9BAD9FBFFCB9BAAD7 /* Pods-Connect Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Connect Tests.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0359DBA6F967B6E455FA3AFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776D7B1AF21521B1ED50F1F1 /* Cocoa.framework in Frameworks */,
+				87572E9E54659FEF24177DAB /* TraceLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FCF4BEFEB93A0BE13ED7FD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		620D001E2DDD7B6764FEF00F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D24DE6336B8FF27533E4AD9 /* Foundation.framework in Frameworks */,
+				43A720D7087AD1311E70F6D1 /* TraceLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3AA3F2A7F517D3B3FB62254 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E17467A3D801103C6778844 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A462CDC94C1541B11FB1DAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5BDF1279E03F695D31428E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45E395C680CC75E0C3A28792 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A4D3AEC99D82A7828FC0BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB739832025099F0BE4FF575 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D17BDB6E199AA85F791EA915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1355C7F9DAF9968CBB74B07C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D549D1CCC8393478D6108379 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBCCA6FD489A0ED96915A216 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A40601C766E9AB8777D4359 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				50C2C847FA5E1CBFCCDC478C /* Classes */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		1651A4F4E25328C0086D80B2 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4A1C0360A2958191047CDA4E /* InMemory */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		1CFC55AD1FFF1BDC5BB4B957 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				38907408F539CE68EE0DE053 /* Pods-Connect Editor */,
+				1D4EB37E7EA26F2181A8E83E /* Pods-Connect Example */,
+				D0F22EFDBDB1DEF09E39A1D5 /* Pods-Connect Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		1D4EB37E7EA26F2181A8E83E /* Pods-Connect Example */ = {
+			isa = PBXGroup;
+			children = (
+				0E0CE5B277681238F9E0DFFA /* Info.plist */,
+				BC8C97572CB8584917C77F89 /* Pods-Connect Example.modulemap */,
+				B5F7EC638E1D7CA6AE39E886 /* Pods-Connect Example-acknowledgements.markdown */,
+				8C36B9768F866019E47D5FC1 /* Pods-Connect Example-acknowledgements.plist */,
+				8E54DD671BA1052B44AA0DDC /* Pods-Connect Example-dummy.m */,
+				7802E63F7A01BBF83AD5DC28 /* Pods-Connect Example-frameworks.sh */,
+				1BC0CCFD7D97E783E3E3D8B0 /* Pods-Connect Example-resources.sh */,
+				43A083D6F14BF48DF1B59CC8 /* Pods-Connect Example-umbrella.h */,
+				C7ACDAB177DEB1673E52B178 /* Pods-Connect Example.debug.xcconfig */,
+				B33A8214D3432B5CABFE512E /* Pods-Connect Example.release.xcconfig */,
+			);
+			name = "Pods-Connect Example";
+			path = "Target Support Files/Pods-Connect Example";
+			sourceTree = "<group>";
+		};
+		2237F9D5E34FCD3AC8F79958 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				9A0338009B7329172AC48C9F /* GenericCoreDataStack.swift */,
+				132C67B680CEA5CED9D4D296 /* MetaLogEntry.swift */,
+				4BDFF5F3FF7CF69A3BD65025 /* MetaLogEntry+CoreDataProperties.swift */,
+				DB49F447B29C9AAF2F0B6878 /* MetaModel.swift */,
+				665B0D2614280ECD19C911BF /* WriteAheadLog.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		2271449D868DA1C961CB1E36 /* Schemas */ = {
+			isa = PBXGroup;
+			children = (
+				EA6C560A1B50BFCB08531C39 /* apigee-wadl-extensions.xsd */,
+				BB64723B3BFC4345A6C093A7 /* wadl-schema.xsd */,
+				61F86A7682BBBD4B65C23AE5 /* Connect */,
+			);
+			path = Schemas;
+			sourceTree = "<group>";
+		};
+		27EDFE6BE01254ADD009F5CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D6EE7CDEFC18376ABE8F872E /* Connect */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29690271408D4EC8550C2E08 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				3DB1ED004CB14F1CFB2AA5B8 /* AssociatedStorage.swift */,
+				48AC5E95EBF8E471C722A369 /* ConfigurationReader.swift */,
+				D0B554735FAA2919635EA073 /* Models */,
+				1651A4F4E25328C0086D80B2 /* Persistence */,
+				54000E26358AF1B86CABD14E /* Queues */,
+				2237F9D5E34FCD3AC8F79958 /* Transactions */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		2B4A1099B33AD67BF5576956 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				70797175DB3B4F47ACD1AE9A /* Info.plist */,
+				D00F70DC7961D7E34F3FD549 /* Info.plist */,
+				EECF499ADA2147923FD788FD /* TraceLog-Core-ObjC-Swift.modulemap */,
+				28DBBDC14B30FD1E9B63C44F /* TraceLog-Core-ObjC-Swift.xcconfig */,
+				78FEF88FAC6562E6EEA4EC41 /* TraceLog-Core-ObjC-Swift-dummy.m */,
+				16244F3968B7920A4B61D59F /* TraceLog-Core-ObjC-Swift-prefix.pch */,
+				381A9F8F01B8297C12677175 /* TraceLog-Core-ObjC-Swift-umbrella.h */,
+				85920C843B6AECC8B5E855BF /* TraceLog.default-Core-Swift.modulemap */,
+				BAC0B7A42CAF76629141EEAB /* TraceLog.default-Core-Swift.xcconfig */,
+				E1C4319A082C848C3562857C /* TraceLog.default-Core-Swift-dummy.m */,
+				37B370A56B815DF7440E0997 /* TraceLog.default-Core-Swift-prefix.pch */,
+				708002A43DA4C151E0C4E38B /* TraceLog.default-Core-Swift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TraceLog-Core-ObjC-Swift";
+			sourceTree = "<group>";
+		};
+		2F23E01EA4DDD15F34828C2D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2271449D868DA1C961CB1E36 /* Schemas */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		34E88FFCB2463A6858FEB59F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A42E88EA61FAD2C5466EC4B0 /* Connect */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		38907408F539CE68EE0DE053 /* Pods-Connect Editor */ = {
+			isa = PBXGroup;
+			children = (
+				FDBB324E7983BFA4F1BF761E /* Info.plist */,
+				A78EA8EA387D97A30D6C18A4 /* Pods-Connect Editor.modulemap */,
+				3039ADA0265236EAC5B34F5F /* Pods-Connect Editor-acknowledgements.markdown */,
+				83F8EB1CEAC5AB688CDCE20E /* Pods-Connect Editor-acknowledgements.plist */,
+				1EE2554F51D9E6B5CA897708 /* Pods-Connect Editor-dummy.m */,
+				D70886D282AB3DE6D870BE04 /* Pods-Connect Editor-frameworks.sh */,
+				9977E49AC14C3C777FD0DEDE /* Pods-Connect Editor-resources.sh */,
+				A5EF09E3B8026B46F5AB3FD1 /* Pods-Connect Editor-umbrella.h */,
+				780081D351C549A8E5A31C9F /* Pods-Connect Editor.debug.xcconfig */,
+				7FCEB4C3B38D382024649A48 /* Pods-Connect Editor.release.xcconfig */,
+			);
+			name = "Pods-Connect Editor";
+			path = "Target Support Files/Pods-Connect Editor";
+			sourceTree = "<group>";
+		};
+		4A1C0360A2958191047CDA4E /* InMemory */ = {
+			isa = PBXGroup;
+			children = (
+				25C1A6CF333EE901BB86CF35 /* InMemoryDataStore.swift */,
+				F5A05E0E2B747592A39A80D0 /* InMemoryReferenceObject.swift */,
+			);
+			path = InMemory;
+			sourceTree = "<group>";
+		};
+		50040E4C54AB40C6B0143343 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				EEA263A652EAA591411E523F /* connect.xsd */,
+			);
+			path = V2;
+			sourceTree = "<group>";
+		};
+		50C2C847FA5E1CBFCCDC478C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				29C5FD558C2354EFC11B928D /* Action.swift */,
+				DEBB3BE868294B772BF9DB2E /* EntityAction.swift */,
+				EA6C4BD91D6F543B00B1BE35 /* EntityActionDescription.swift */,
+				6E346E4E8613BCD6A1EABA6E /* WebServiceDescription.swift */,
+				EA6C4BD41D6F4D6400B1BE35 /* MappingServiceDescription.swift */,
+				3E6D0FFBD75ED026081B4689 /* EntityActionNotification.swift */,
+				662079CEAB1CC51DA2089654 /* EntityMapper.swift */,
+				6D308588A48530A6C6435902 /* EntitySettings.swift */,
+				BD3A67CF531D7B243A4105A6 /* NSEntityDescription+EntitySettings.swift */,
+				36E5EF3F74CF471E08F98DEA /* NSManagedObjectModel+EntitySettings.swift */,
+				46D9475222005D8C141ADEA3 /* PersistentStoreCoordinator.swift */,
+				7733D5ABD4D0CA77848A8994 /* WebService.swift */,
+				29690271408D4EC8550C2E08 /* Internal */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		54000E26358AF1B86CABD14E /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+				06DB7A1F4C83A5AD3EA0A4CF /* ActionQueue.swift */,
+			);
+			path = Queues;
+			sourceTree = "<group>";
+		};
+		5968138E1EE07FE360E44F1A /* WSDL */ = {
+			isa = PBXGroup;
+			children = (
+				7623BF77BB5505A0E4E09FFF /* MGWSDL.h */,
+				C009D7ABB17CD06795E00003 /* MGWSDL+HTTP.h */,
+				D94E5B468C8858472CEFD946 /* MGWSDL+HTTP.m */,
+				BDB01B9E73D8CF2C7EA5B8F8 /* MGWSDL+Types.h */,
+				EDD848B62F4C465B5FB76491 /* MGWSDL+Types.m */,
+				1FF6B9400DBFF91913946CD1 /* MGWSDLBinding.h */,
+				03A8C422C14A5F1844AE1B38 /* MGWSDLBinding.m */,
+				E91F7AB69002C5B23E013A0A /* MGWSDLBindingFault.h */,
+				E336810AECE5B28B83AF0C9B /* MGWSDLBindingFault.m */,
+				2C23D24173ED84BD59DEAD7B /* MGWSDLBindingFaultReference.h */,
+				3B36C06D5E57AFA4BB1F1EE6 /* MGWSDLBindingFaultReference.m */,
+				2A17048D278C78BA60A1B6BB /* MGWSDLBindingMessageReference.h */,
+				DDA4BBA2BB7B388AAEC69E05 /* MGWSDLBindingMessageReference.m */,
+				A1D38755B174F49CBC9D275B /* MGWSDLBindingOperation.h */,
+				37B0D820CD36332FA496008B /* MGWSDLBindingOperation.m */,
+				2AB66456AA193A1895191B0A /* MGWSDLComponent.h */,
+				F399B66EAB7E66CD6F7D8CBC /* MGWSDLComponent.m */,
+				15E8B774EDC7CB4EB7A5F710 /* MGWSDLDescription.h */,
+				BD9B42E5818B98D57FED28A8 /* MGWSDLDescription.m */,
+				D5F3E5F1C88927144251A6D9 /* MGWSDLElementDeclaration.h */,
+				A89086491E23F249D4331ECB /* MGWSDLElementDeclaration.m */,
+				4BC3C83C4599B5F3EF0FD49A /* MGWSDLEndpoint.h */,
+				22D18CE0D392DAC952A25BB6 /* MGWSDLEndpoint.m */,
+				B8EAD67392686BAD67E50FE5 /* MGWSDLExtendableComponent.h */,
+				BBF7395D0821EE82A59A28B1 /* MGWSDLExtendableComponent.m */,
+				707C83F4BD5915CB6E806421 /* MGWSDLExtensionElement.h */,
+				BA5FABBE759EFB3FAF421B3D /* MGWSDLExtensionElement.m */,
+				338FBE728D26E94C2F90772E /* MGWSDLFeature.h */,
+				80561899B1987DB28F16C5BE /* MGWSDLFeature.m */,
+				7D4BEB329BF893A3B79B9B76 /* MGWSDLInterface.h */,
+				4FE86B18ECC3CA65C6A79033 /* MGWSDLInterface.m */,
+				018FE27A6F2D6570D1399613 /* MGWSDLInterfaceFault.h */,
+				5B801A44BFA12BC5F0D3C3B0 /* MGWSDLInterfaceFault.m */,
+				DA97E06E7AC7267DBD38662E /* MGWSDLInterfaceFaultReference.h */,
+				DD3E753954A70CB45EE4FD5E /* MGWSDLInterfaceFaultReference.m */,
+				86883AEC34CA2E6150076C6F /* MGWSDLInterfaceMessageReference.h */,
+				30C60B1B4FA1D69ABC794827 /* MGWSDLInterfaceMessageReference.m */,
+				8E14358315EADA40C93D2314 /* MGWSDLInterfaceOperation.h */,
+				AAE986778A61B88F6DA6AEE7 /* MGWSDLInterfaceOperation.m */,
+				ACA7B679E32FD10AD0A2D053 /* MGWSDLProperty.h */,
+				D9B08C5F9E9DA19FCA7ABC60 /* MGWSDLProperty.m */,
+				B5F4872C0E9013CE3236C279 /* MGWSDLService.h */,
+				465EE1C89670BA9632A7BECB /* MGWSDLService.m */,
+				DA1D524039DA69BBBE0E2CAF /* MGWSDLTypeDefinition.h */,
+				87A6800CE18EF57CA270BC06 /* MGWSDLTypeDefinition.m */,
+			);
+			path = WSDL;
+			sourceTree = "<group>";
+		};
+		5CED27FC3FAA1DB399F5D9D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E438AA5EF2053E927880BE9E /* TraceLog */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		61F86A7682BBBD4B65C23AE5 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				A5729E3AD45A99E11EB54CB3 /* V1 */,
+				50040E4C54AB40C6B0143343 /* V2 */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		6B5E6890445261D293A599CF /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9A82E7D9861258E0DDBDF /* TraceLog.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		79BE350E11C9052D6BDB0CE6 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				5FA837B014936C5E748FE8F4 /* MGConnectConfiguration.h */,
+				D333CBAF65782AFF723977D0 /* MGConnectConfiguration.m */,
+				E6A80903CE9F271733DF762F /* MGConnectConfigurationAction.h */,
+				7C98E0CEB000CB3B641EFE19 /* MGConnectConfigurationAction.m */,
+				CDAF651BE6F7020D5A146155 /* MGConnectConfigurationAuthentication.h */,
+				461E628815F66109A64905FB /* MGConnectConfigurationAuthentication.m */,
+				390CC7A0B70FD3E8EB4AAE57 /* MGConnectConfigurationCollection.h */,
+				97803C28C18DE0B0B49B1A33 /* MGConnectConfigurationCollection.m */,
+				A95ADA637688971CC66BE14E /* MGConnectConfigurationElement.h */,
+				7EC3A0A388E8A7C6E9891DAD /* MGConnectConfigurationElement.m */,
+				35AC695014B8820A4811EA5F /* MGConnectConfigurationEntity.h */,
+				D94EA5BAF15B5CDAA753D596 /* MGConnectConfigurationEntity.m */,
+				469ACCBB1F740568E13FA0BC /* MGConnectConfigurationModel.h */,
+				E37CB755E84F61786D888F64 /* MGConnectConfigurationModel.m */,
+				13050EDA9246F020D3EAFB10 /* MGConnectConfigurationRelationship.h */,
+				1D177B19A0370045A9C222B0 /* MGConnectConfigurationRelationship.m */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		7C514A6C4F139D4DC367E4CF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				324754A2E52D1288AFB99D9C /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7F7B2BDABB75C9CACAC4359F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78D91F9F9CAF61D41DF20FE1 /* Connect.bundle */,
+				759953B0A9A0FEAFFCB4514F /* Connect.bundle */,
+				530E7ACF6268E0AFFD6C7682 /* Connect.framework */,
+				4C871D0C2C61F6D2A009752A /* Connect.framework */,
+				1BBC5347913B206D68BF099D /* Pods_Connect_Editor.framework */,
+				EF36AF521CC931A7DD9CF8DE /* Pods_Connect_Example.framework */,
+				7CCD53611185830E9528455F /* Pods_Connect_Tests.framework */,
+				78FC4845B5054E142789EA24 /* TraceLog.framework */,
+				22711C9FC931C989FF7A8660 /* TraceLog.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9853C3B60F848CB2827999C6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9CFDAA142340F9614621C2FF /* Connect-iOS.modulemap */,
+				23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */,
+				7D29329FF262ED7BBB23451F /* Connect-iOS-dummy.m */,
+				EF33194761E3AF5194287F89 /* Connect-iOS-prefix.pch */,
+				7502B3E6F8747C9A589F7520 /* Connect-iOS-umbrella.h */,
+				98B47E847C7C3E3DC4FB9AA4 /* Connect-OSX.modulemap */,
+				B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */,
+				C7F988201463B21DD25F6FB7 /* Connect-OSX-dummy.m */,
+				2EDF563D5E62F1BDC23775C7 /* Connect-OSX-prefix.pch */,
+				BC722BE62A460E6F1CBBD757 /* Connect-OSX-umbrella.h */,
+				BBB1C17B29097E136FAE9628 /* Info.plist */,
+				3732FCC4039786EC840227F8 /* Info.plist */,
+				25E3F81747D42DEF0B17846B /* ResourceBundle-Connect-Info.plist */,
+				7FEBC8637AC2F7C81DC7C86B /* ResourceBundle-Connect-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Connect-OSX";
+			sourceTree = "<group>";
+		};
+		9B3C7A95EE8B900DF1F53480 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				813312D1ECB31A5AA9900017 /* MGWADL+Extensions.h */,
+				812897F3C6D87C312A3ABDD5 /* MGWADLResource+Extensions.h */,
+				39492F448703F3530F64D859 /* MGWADLResource+Extensions.m */,
+				3D93E9329982B817F6511F5A /* MGWADLResources+Extensions.h */,
+				540694341100332EB719780D /* MGWADLResources+Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A42E88EA61FAD2C5466EC4B0 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				0A40601C766E9AB8777D4359 /* Connect */,
+				27EDFE6BE01254ADD009F5CD /* Resources */,
+				9853C3B60F848CB2827999C6 /* Support Files */,
+			);
+			name = Connect;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		A5729E3AD45A99E11EB54CB3 /* V1 */ = {
+			isa = PBXGroup;
+			children = (
+				A39A60E88FBD754D3F768CB5 /* connect.xsd */,
+			);
+			path = V1;
+			sourceTree = "<group>";
+		};
+		A688A5655409F57D34B29BBD /* WADL */ = {
+			isa = PBXGroup;
+			children = (
+				8F8097E8D378D72E32422500 /* MGWADL.h */,
+				DB7E8DE2273AD39E8714AD24 /* MGWADLApplication.h */,
+				724DED3D8B5FA997CD7D6874 /* MGWADLApplication.m */,
+				2400BE9B6F296F5B8F2153F6 /* MGWADLDoc.h */,
+				F47373C18B8F550399CD1B0A /* MGWADLDoc.m */,
+				9F38BF0307053DF528E4786C /* MGWADLGrammars.h */,
+				07E3C567184F99D756AFF53F /* MGWADLGrammars.m */,
+				A11552B7B1D714667286B8FC /* MGWADLInclude.h */,
+				E50E490B165FF9056756781B /* MGWADLInclude.m */,
+				56E0974AF603BE2B1058EB08 /* MGWADLLink.h */,
+				D96B8213FF84EF4AAC201ACD /* MGWADLLink.m */,
+				B83F5EDACD4B30A55E54C181 /* MGWADLMethod.h */,
+				6ED362AB535EBB4690FD44DF /* MGWADLMethod.m */,
+				897F5A34D2AD3FF78D25953D /* MGWADLOption.h */,
+				C82D398B36A8086B55B0B8A6 /* MGWADLOption.m */,
+				9CF205E9381095B18178E82C /* MGWADLParam.h */,
+				6767A961EC49D16777B86507 /* MGWADLParam.m */,
+				9D169E13E5D73A0154FC2EBA /* MGWADLRepresentation.h */,
+				BAAE54F7CBADB8084274436D /* MGWADLRepresentation.m */,
+				D07DCEC2F2B2EBF9CAF66109 /* MGWADLRequest.h */,
+				C17DFCD5ED857D5C90B52688 /* MGWADLRequest.m */,
+				443C715B4320B8D417DF35C0 /* MGWADLResource.h */,
+				1095F0EBE508B00C9FC7F111 /* MGWADLResource.m */,
+				D1E59A5B82897409D2D5D906 /* MGWADLResources.h */,
+				1E3223DC0F905BBE962A706C /* MGWADLResources.m */,
+				81014DE3C685EF6BDA8B0BC5 /* MGWADLResourceType.h */,
+				AD6BBDC8B947C4374F214694 /* MGWADLResourceType.m */,
+				95663298A7E551DCCC018749 /* MGWADLResponse.h */,
+				D9161D6CEB7F40B2E52470E8 /* MGWADLResponse.m */,
+				9B3C7A95EE8B900DF1F53480 /* Extensions */,
+			);
+			path = WADL;
+			sourceTree = "<group>";
+		};
+		BFAA2281C86291D90D22186A /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				9F5B91F0CFF02C3F0BD5BD9E /* TraceLog.h */,
+			);
+			name = ObjC;
+			sourceTree = "<group>";
+		};
+		D0A76C47C380C30B5C032A49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F73D128D56099DA563E9CA7 /* TraceLog.framework */,
+				7C514A6C4F139D4DC367E4CF /* iOS */,
+				EF26B774115F9A7197C5D239 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0B554735FAA2919635EA073 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				90B85884D5845E6AC75B1D36 /* MGXMLReader.h */,
+				675521099080E898003B3DDC /* MGXMLReader.m */,
+				79BE350E11C9052D6BDB0CE6 /* Connect */,
+				A688A5655409F57D34B29BBD /* WADL */,
+				5968138E1EE07FE360E44F1A /* WSDL */,
+				E09D6E547B8DDC687C240F9B /* XML */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0F22EFDBDB1DEF09E39A1D5 /* Pods-Connect Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2531A69B742123C9A4D7F222 /* Info.plist */,
+				FE5122C9BAD9FBFFCB9BAAD7 /* Pods-Connect Tests.modulemap */,
+				8817B048E27C905AA1BD1C3A /* Pods-Connect Tests-acknowledgements.markdown */,
+				2D409BB5DE6CCA455D7C6282 /* Pods-Connect Tests-acknowledgements.plist */,
+				551F0CEED64F8E34F1E46519 /* Pods-Connect Tests-dummy.m */,
+				4048D8DEC76437029F375028 /* Pods-Connect Tests-frameworks.sh */,
+				10A2929D930C29E0933EE0F4 /* Pods-Connect Tests-resources.sh */,
+				99072F0A56ABD7033E846F44 /* Pods-Connect Tests-umbrella.h */,
+				6C047AD455D443D99613CC47 /* Pods-Connect Tests.debug.xcconfig */,
+				8F2FC4D885CCEA83674B79FF /* Pods-Connect Tests.release.xcconfig */,
+			);
+			name = "Pods-Connect Tests";
+			path = "Target Support Files/Pods-Connect Tests";
+			sourceTree = "<group>";
+		};
+		D6EE7CDEFC18376ABE8F872E /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				2F23E01EA4DDD15F34828C2D /* Assets */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		E09D6E547B8DDC687C240F9B /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				BF759619BB682435EF984ADA /* MGXMLCDATA.h */,
+				F7E859E84A8F6B06A4268545 /* MGXMLCDATA.m */,
+				C955A14AD2CDCAC45375A6CB /* MGXMLComment.h */,
+				31AF4F14CD8D704F9F37815C /* MGXMLComment.m */,
+				8AF9C9744449CF8BB62A7545 /* MGXMLDocument.h */,
+				06431BEE6286BBCE95023B1A /* MGXMLDocument.m */,
+				F85935E5BDCBCC8657D1589C /* MGXMLElement.h */,
+				CE2310EE2E6865845DB595FD /* MGXMLElement.m */,
+				3D52DAB9A35558EFC6D0CC27 /* MGXMLElementDefinition.h */,
+				443F747EB91548F1EE7E70CE /* MGXMLElementDefinition.m */,
+				CBAB6B04C3F52BFCD5FC5ACB /* MGXMLNode.h */,
+				E554A529A3A090B078B95BF0 /* MGXMLNode.m */,
+				600E2585F7BD4B11960B7B32 /* MGXMLWhitespace.h */,
+				753BD72979B09EE86931E01C /* MGXMLWhitespace.m */,
+			);
+			path = XML;
+			sourceTree = "<group>";
+		};
+		E438AA5EF2053E927880BE9E /* TraceLog */ = {
+			isa = PBXGroup;
+			children = (
+				E771DA14F5F837EDC5E8A8EA /* Core */,
+				BFAA2281C86291D90D22186A /* ObjC */,
+				2B4A1099B33AD67BF5576956 /* Support Files */,
+				6B5E6890445261D293A599CF /* Swift */,
+			);
+			path = TraceLog;
+			sourceTree = "<group>";
+		};
+		E771DA14F5F837EDC5E8A8EA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E57305F04E50C690804BB22D /* TLConsoleWriter.h */,
+				DDB00670F49FE9A3342D6CC6 /* TLConsoleWriter.m */,
+				C6CFB902582E70DA80B1EDFC /* TLLogger.h */,
+				2CE86B698785F72945F0B5E1 /* TLLogger.m */,
+				48968911D90C43C8B92CBBAE /* TLLogLevel.h */,
+				5E334B8FFC56282DF9ABF8A7 /* TLLogLevel.m */,
+				BE419E115DBA35D6315500A4 /* TLWriter.h */,
+				F4512102E839E7D538BD48BE /* TraceLog-Bridging-Header.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		EF26B774115F9A7197C5D239 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				4D9AF432A2DC97C8881CF46B /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		FA53F772477FB89E145F4E99 = {
+			isa = PBXGroup;
+			children = (
+				E34197BA4079939967429783 /* Podfile */,
+				34E88FFCB2463A6858FEB59F /* Development Pods */,
+				D0A76C47C380C30B5C032A49 /* Frameworks */,
+				5CED27FC3FAA1DB399F5D9D8 /* Pods */,
+				7F7B2BDABB75C9CACAC4359F /* Products */,
+				1CFC55AD1FFF1BDC5BB4B957 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		164FE41024A4F14B95ED7C82 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3953F5CB34A5A10D213D00A7 /* Pods-Connect Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3EE2F21A382A6162A6123C60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				854731C8EF40BDD8806B1A7F /* Connect-OSX-umbrella.h in Headers */,
+				EDFF155E5F833DADFEAD16BA /* MGConnectConfiguration.h in Headers */,
+				8F84E153CD0A0F0403A36794 /* MGConnectConfigurationAction.h in Headers */,
+				B3A809D956C8F60E3166A9CE /* MGConnectConfigurationAuthentication.h in Headers */,
+				1E28AAEA772F9E2896EAA4CD /* MGConnectConfigurationCollection.h in Headers */,
+				79960ECFEA06D6B0CF3987A9 /* MGConnectConfigurationElement.h in Headers */,
+				FE931C67F6DFFF1780BEC29E /* MGConnectConfigurationEntity.h in Headers */,
+				FCC6978887719282E1D8817A /* MGConnectConfigurationModel.h in Headers */,
+				D0221D952CD15466AE0ECC1D /* MGConnectConfigurationRelationship.h in Headers */,
+				38A19190E78228F89C703415 /* MGWADL+Extensions.h in Headers */,
+				D4AAA1FA285B77E10753B1A2 /* MGWADL.h in Headers */,
+				0EE22BAC443FCB3BFBAB3460 /* MGWADLApplication.h in Headers */,
+				4AA60405E8157BC9B1E230AE /* MGWADLDoc.h in Headers */,
+				EAB894CD6F07A837F924E462 /* MGWADLGrammars.h in Headers */,
+				9FE60FDE10001D87BA27D1E1 /* MGWADLInclude.h in Headers */,
+				95D782B0FB7A57F07A89C836 /* MGWADLLink.h in Headers */,
+				9E2C06C8F03CAC880DAFE098 /* MGWADLMethod.h in Headers */,
+				6C00E559810EC5C2E8594395 /* MGWADLOption.h in Headers */,
+				10D07AF23B2659B7B601CB2E /* MGWADLParam.h in Headers */,
+				C4A0BC18DE009FA3CEA379FD /* MGWADLRepresentation.h in Headers */,
+				129474872B9B266C69348302 /* MGWADLRequest.h in Headers */,
+				8A81764579BC9E8774525B67 /* MGWADLResource+Extensions.h in Headers */,
+				05B182033CF155C7FF37165D /* MGWADLResource.h in Headers */,
+				8A65D2F772F64313180ED164 /* MGWADLResources+Extensions.h in Headers */,
+				358A2FD3DC766EFF195756EB /* MGWADLResources.h in Headers */,
+				A92A0C29721499FBBDE46D4E /* MGWADLResourceType.h in Headers */,
+				D5BD0429A6838D02635123D3 /* MGWADLResponse.h in Headers */,
+				0E3AEA4FA317AC069D1C9C19 /* MGWSDL+HTTP.h in Headers */,
+				5DDEE64C2F14362FA0F47E3A /* MGWSDL+Types.h in Headers */,
+				1E3DDEC084200F856F9DAB34 /* MGWSDL.h in Headers */,
+				7386F4BE36211041CA3BCF0C /* MGWSDLBinding.h in Headers */,
+				60153B0CD345767622F11EC9 /* MGWSDLBindingFault.h in Headers */,
+				B07B250B4A0470509D0CD244 /* MGWSDLBindingFaultReference.h in Headers */,
+				EAAB77CB79998DC24922DB39 /* MGWSDLBindingMessageReference.h in Headers */,
+				A599D106C3574C1B3E0F422C /* MGWSDLBindingOperation.h in Headers */,
+				342D6819827F2073B1EE7FB7 /* MGWSDLComponent.h in Headers */,
+				AEF588ADA6DEEFF7BE5911CC /* MGWSDLDescription.h in Headers */,
+				032251979B9A8480A36AA72A /* MGWSDLElementDeclaration.h in Headers */,
+				FD5A505B3705DD14DEC1D45D /* MGWSDLEndpoint.h in Headers */,
+				FFB7B20B2A6B9C45E435E44C /* MGWSDLExtendableComponent.h in Headers */,
+				219FD6A6C981F5957D52C89E /* MGWSDLExtensionElement.h in Headers */,
+				2C3163FF0C4D2DEBDC5AA9B2 /* MGWSDLFeature.h in Headers */,
+				6AD6E76C6E02D305256E8D30 /* MGWSDLInterface.h in Headers */,
+				EC02505FA6808DB2AB6675B2 /* MGWSDLInterfaceFault.h in Headers */,
+				D43762422C94D958BF22B912 /* MGWSDLInterfaceFaultReference.h in Headers */,
+				B646B8F94A6458CB2F6FEE5B /* MGWSDLInterfaceMessageReference.h in Headers */,
+				E99CE12CB23943DAA0ED3E31 /* MGWSDLInterfaceOperation.h in Headers */,
+				42EAC02642109B0E4EA1C814 /* MGWSDLProperty.h in Headers */,
+				60AADA03398B8279FCFEC255 /* MGWSDLService.h in Headers */,
+				977AE959AF007CE01218D550 /* MGWSDLTypeDefinition.h in Headers */,
+				2F5457D62819A7309ED9F1C6 /* MGXMLCDATA.h in Headers */,
+				059948D2234AE23581EB8A4E /* MGXMLComment.h in Headers */,
+				84B72C74BEEF46C84A382671 /* MGXMLDocument.h in Headers */,
+				D75B7DC2690941CF192FA1BE /* MGXMLElement.h in Headers */,
+				4EB029A8E88D4F7A29303FCB /* MGXMLElementDefinition.h in Headers */,
+				B3D41877BCE00C63883D9378 /* MGXMLNode.h in Headers */,
+				8FAFEE8213E296430BFD5235 /* MGXMLReader.h in Headers */,
+				C8D7198551A4B22F215FAF53 /* MGXMLWhitespace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BCA38AEA524640D5943E14 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA8B9415782558B3C45AC99D /* TLConsoleWriter.h in Headers */,
+				76E4C30A09AD25BB1076849F /* TLLogger.h in Headers */,
+				1623FF686937E2A722FEF8A0 /* TLLogLevel.h in Headers */,
+				E6D91407A48ADD10F090D599 /* TLWriter.h in Headers */,
+				7B7FD38C4B0D5C6B30021441 /* TraceLog-Bridging-Header.h in Headers */,
+				06FD1B2BA59A94BF46FD798E /* TraceLog.default-Core-Swift-umbrella.h in Headers */,
+				85221FD407CA4F31026709C4 /* TraceLog.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8182FAE761378D536F7A609 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D8FD4697BE7F47B200A4B6 /* Pods-Connect Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9CC6414DDDAF6BDAE3DCBD8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6CE263D89FCDF535C94A8B6 /* TLConsoleWriter.h in Headers */,
+				7B23C1C8DD5860D4F25A7786 /* TLLogger.h in Headers */,
+				28CB23636569FB55ADE2C2EA /* TLLogLevel.h in Headers */,
+				A2E37FB3288478AAD9FA34B0 /* TLWriter.h in Headers */,
+				549FC72055E6D4010633C1B0 /* TraceLog-Bridging-Header.h in Headers */,
+				D689F0B686FB3299506E6F72 /* TraceLog-Core-ObjC-Swift-umbrella.h in Headers */,
+				3123BB02B5E1E94E2BFB1199 /* TraceLog.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC17B7BF927380B1A2F24F0D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EAF3F0483598B3BCD372D7E /* Pods-Connect Editor-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D348D37CE354DB91D5F9FF33 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C75F749FEAABEB1BD60929E4 /* Connect-iOS-umbrella.h in Headers */,
+				61D40A11663F60F36E50CC0E /* MGConnectConfiguration.h in Headers */,
+				7995CF81394F07754F289712 /* MGConnectConfigurationAction.h in Headers */,
+				3EB34FC52A54A432B477E56F /* MGConnectConfigurationAuthentication.h in Headers */,
+				D77A8C08C3B9D1AEA2054E26 /* MGConnectConfigurationCollection.h in Headers */,
+				67042E91AF2E5AC6CEF484BD /* MGConnectConfigurationElement.h in Headers */,
+				0C289EBDEB04D83DF5F20244 /* MGConnectConfigurationEntity.h in Headers */,
+				BDF6456147637E211BC30CE4 /* MGConnectConfigurationModel.h in Headers */,
+				97DFFB435E8558AF7186C78E /* MGConnectConfigurationRelationship.h in Headers */,
+				9B5EAC6AF072A17EF72CC782 /* MGWADL+Extensions.h in Headers */,
+				A91B05F9BB3D6E57BE82D650 /* MGWADL.h in Headers */,
+				D3948EA7EA5255B8E3739A58 /* MGWADLApplication.h in Headers */,
+				F167D5C37956905519B82891 /* MGWADLDoc.h in Headers */,
+				993545551C77D77B0E8ECCA1 /* MGWADLGrammars.h in Headers */,
+				811A4A790793D9BA117928C8 /* MGWADLInclude.h in Headers */,
+				09092BE5AC7CACCCDD73EF41 /* MGWADLLink.h in Headers */,
+				91742247AF35A497A20840F2 /* MGWADLMethod.h in Headers */,
+				881A30495F48B29C5E5498DA /* MGWADLOption.h in Headers */,
+				E8DA943C4BFFBB3E897BD759 /* MGWADLParam.h in Headers */,
+				EA9D421B4EAD12D410AF7B5D /* MGWADLRepresentation.h in Headers */,
+				4E861152F6A579AEA38F510B /* MGWADLRequest.h in Headers */,
+				0992FF3E88D3FDC7A5DDDECB /* MGWADLResource+Extensions.h in Headers */,
+				0025793CC8699F3F6FEFC04A /* MGWADLResource.h in Headers */,
+				AEF738FD8E6806388E193900 /* MGWADLResources+Extensions.h in Headers */,
+				19C1D465C0F7C0472ACC7F5C /* MGWADLResources.h in Headers */,
+				8CA85DE56849888C601C6EFF /* MGWADLResourceType.h in Headers */,
+				5C7338729EDCDF8C37FB3B9D /* MGWADLResponse.h in Headers */,
+				C2A8492E354A0619BE125982 /* MGWSDL+HTTP.h in Headers */,
+				B5D948EBED90E01F93BF257B /* MGWSDL+Types.h in Headers */,
+				522783A3FB7D214C7F1090FA /* MGWSDL.h in Headers */,
+				CA25E55406EF3997239A36E4 /* MGWSDLBinding.h in Headers */,
+				CA86735B35D5094BB10F7576 /* MGWSDLBindingFault.h in Headers */,
+				F802ECC9E3F2FB5729B85429 /* MGWSDLBindingFaultReference.h in Headers */,
+				0B4DEB467A1921571B64E067 /* MGWSDLBindingMessageReference.h in Headers */,
+				58F5A3EF48C7263DBD4720F3 /* MGWSDLBindingOperation.h in Headers */,
+				FF252DF52632239A7C081560 /* MGWSDLComponent.h in Headers */,
+				301D5EE7A7F5B6309686F935 /* MGWSDLDescription.h in Headers */,
+				18FB9A8BDB2BD7FF000E88E0 /* MGWSDLElementDeclaration.h in Headers */,
+				9D8E9A597ACCB870BA1895E7 /* MGWSDLEndpoint.h in Headers */,
+				6842F10B7776C6D577B10B39 /* MGWSDLExtendableComponent.h in Headers */,
+				14BA5629DED5C3F9E9B13418 /* MGWSDLExtensionElement.h in Headers */,
+				3A834A4505ADD21E31D3625A /* MGWSDLFeature.h in Headers */,
+				397F2C8650C0DE207BCC6D22 /* MGWSDLInterface.h in Headers */,
+				408B2AEB383F20D0E15FA99D /* MGWSDLInterfaceFault.h in Headers */,
+				2F51D22D54879CB6E653A113 /* MGWSDLInterfaceFaultReference.h in Headers */,
+				3A9FB1CCFFB692384B820252 /* MGWSDLInterfaceMessageReference.h in Headers */,
+				1EBA005AC58D1F74035F86DC /* MGWSDLInterfaceOperation.h in Headers */,
+				D22FABC65FEC85819AF1646C /* MGWSDLProperty.h in Headers */,
+				1AADB079E84202B54BDEAE90 /* MGWSDLService.h in Headers */,
+				C90D88912F84E1D1FAC0A8FD /* MGWSDLTypeDefinition.h in Headers */,
+				88B69E5905E7D5BA4B462809 /* MGXMLCDATA.h in Headers */,
+				3072B852ECF889A7823552DE /* MGXMLComment.h in Headers */,
+				42ECD3EC31FC737423834FD6 /* MGXMLDocument.h in Headers */,
+				C93D6DB82015C4BC730B856B /* MGXMLElement.h in Headers */,
+				5A9DAF490BF57AE7D3E5F8E5 /* MGXMLElementDefinition.h in Headers */,
+				D5AF454927253358087457EE /* MGXMLNode.h in Headers */,
+				C726F00F1251C3E7BBE2EE85 /* MGXMLReader.h in Headers */,
+				CC9EFF2F5C6971F94EC22BCC /* MGXMLWhitespace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0D0E4690642AB72B05BC120A /* TraceLog-Core-ObjC-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F49A4A8D3C83F36B68FD59B /* Build configuration list for PBXNativeTarget "TraceLog-Core-ObjC-Swift" */;
+			buildPhases = (
+				371879359A78059B8612F53C /* Sources */,
+				A3AA3F2A7F517D3B3FB62254 /* Frameworks */,
+				B9CC6414DDDAF6BDAE3DCBD8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TraceLog-Core-ObjC-Swift";
+			productName = "TraceLog-Core-ObjC-Swift";
+			productReference = 22711C9FC931C989FF7A8660 /* TraceLog.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0FE49647EFB257CAD066A010 /* Pods-Connect Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1540B0692A32DAC3ECF6BD7 /* Build configuration list for PBXNativeTarget "Pods-Connect Example" */;
+			buildPhases = (
+				5727F070BC46531D3A4400CF /* Sources */,
+				A5BDF1279E03F695D31428E6 /* Frameworks */,
+				A8182FAE761378D536F7A609 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				495398ED112C67FD7AFF7A6F /* PBXTargetDependency */,
+				B2A2D2407AF69AB2B7F5ECAE /* PBXTargetDependency */,
+			);
+			name = "Pods-Connect Example";
+			productName = "Pods-Connect Example";
+			productReference = EF36AF521CC931A7DD9CF8DE /* Pods_Connect_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		763334B649794C9A8CBA3A39 /* Connect-OSX-Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E4A679DBF53AC900884DCD8 /* Build configuration list for PBXNativeTarget "Connect-OSX-Connect" */;
+			buildPhases = (
+				A385699B7647E201DD55A7C5 /* Sources */,
+				0FCF4BEFEB93A0BE13ED7FD5 /* Frameworks */,
+				C6BFA3B59FDD096E16719693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Connect-OSX-Connect";
+			productName = "Connect-OSX-Connect";
+			productReference = 759953B0A9A0FEAFFCB4514F /* Connect.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		7D800B44C682413F427D0A5B /* Connect-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C014CE12C9A284EDA60B39FE /* Build configuration list for PBXNativeTarget "Connect-OSX" */;
+			buildPhases = (
+				D4F889019D8177C8C265C1B7 /* Sources */,
+				0359DBA6F967B6E455FA3AFF /* Frameworks */,
+				4BA3AE1976152DE8E3330549 /* Resources */,
+				3EE2F21A382A6162A6123C60 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2849171B657A9663B57B2D6A /* PBXTargetDependency */,
+				28F7B71FF9C64A11EB319941 /* PBXTargetDependency */,
+			);
+			name = "Connect-OSX";
+			productName = "Connect-OSX";
+			productReference = 530E7ACF6268E0AFFD6C7682 /* Connect.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C0D48CC5B12BF73FB2485DCF /* Pods-Connect Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A379620384D70DAF5AFF3E15 /* Build configuration list for PBXNativeTarget "Pods-Connect Editor" */;
+			buildPhases = (
+				B8472018017E2DF5147A0B36 /* Sources */,
+				D549D1CCC8393478D6108379 /* Frameworks */,
+				CC17B7BF927380B1A2F24F0D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FF9F21A2BD80DA11A4A5766 /* PBXTargetDependency */,
+				AF040D9813500E3EC7975732 /* PBXTargetDependency */,
+			);
+			name = "Pods-Connect Editor";
+			productName = "Pods-Connect Editor";
+			productReference = 1BBC5347913B206D68BF099D /* Pods_Connect_Editor.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CC088731EFFB2E665AA8BDB7 /* Connect-iOS-Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC30063D27229577ECE50966 /* Build configuration list for PBXNativeTarget "Connect-iOS-Connect" */;
+			buildPhases = (
+				E8BF4637D4E166EF1634A326 /* Sources */,
+				A462CDC94C1541B11FB1DAA7 /* Frameworks */,
+				9AD636D1C2BE28819339761D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Connect-iOS-Connect";
+			productName = "Connect-iOS-Connect";
+			productReference = 78D91F9F9CAF61D41DF20FE1 /* Connect.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		CC3C19722989B7041F81E43C /* TraceLog.default-Core-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE63D9ECBEA23F6DBF0F1DE0 /* Build configuration list for PBXNativeTarget "TraceLog.default-Core-Swift" */;
+			buildPhases = (
+				BA1DFB2FEA7B9EDC0DC595FD /* Sources */,
+				D17BDB6E199AA85F791EA915 /* Frameworks */,
+				48BCA38AEA524640D5943E14 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TraceLog.default-Core-Swift";
+			productName = "TraceLog.default-Core-Swift";
+			productReference = 78FC4845B5054E142789EA24 /* TraceLog.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E959794A439357C970469FED /* Pods-Connect Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1672A58D794C286C332B4A9 /* Build configuration list for PBXNativeTarget "Pods-Connect Tests" */;
+			buildPhases = (
+				291032FD451D56ADFFAA868C /* Sources */,
+				B7A4D3AEC99D82A7828FC0BE /* Frameworks */,
+				164FE41024A4F14B95ED7C82 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Connect Tests";
+			productName = "Pods-Connect Tests";
+			productReference = 7CCD53611185830E9528455F /* Pods_Connect_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F5D4E86ABA26833925C4221C /* Connect-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDF51DEBC711FA42C4A59A24 /* Build configuration list for PBXNativeTarget "Connect-iOS" */;
+			buildPhases = (
+				F866824F10A2D5F451E49A48 /* Sources */,
+				620D001E2DDD7B6764FEF00F /* Frameworks */,
+				41E94D80D67EB55D237EAEC0 /* Resources */,
+				D348D37CE354DB91D5F9FF33 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D3820E3BB9F951C7984737F /* PBXTargetDependency */,
+				C51A8757C588D7C3F2BF3711 /* PBXTargetDependency */,
+			);
+			name = "Connect-iOS";
+			productName = "Connect-iOS";
+			productReference = 4C871D0C2C61F6D2A009752A /* Connect.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FD6F5E3554CCFE4E64157DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = E79395E89E11085D138B2E62 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA53F772477FB89E145F4E99;
+			productRefGroup = 7F7B2BDABB75C9CACAC4359F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5D4E86ABA26833925C4221C /* Connect-iOS */,
+				CC088731EFFB2E665AA8BDB7 /* Connect-iOS-Connect */,
+				7D800B44C682413F427D0A5B /* Connect-OSX */,
+				763334B649794C9A8CBA3A39 /* Connect-OSX-Connect */,
+				C0D48CC5B12BF73FB2485DCF /* Pods-Connect Editor */,
+				0FE49647EFB257CAD066A010 /* Pods-Connect Example */,
+				E959794A439357C970469FED /* Pods-Connect Tests */,
+				0D0E4690642AB72B05BC120A /* TraceLog-Core-ObjC-Swift */,
+				CC3C19722989B7041F81E43C /* TraceLog.default-Core-Swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41E94D80D67EB55D237EAEC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26A73FD8508767DFCDF5A0CC /* Connect.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BA3AE1976152DE8E3330549 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81BA9A3A7A8FD0EE5B4EBA77 /* Connect.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AD636D1C2BE28819339761D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF9A2F61CF2E0222B76614D /* apigee-wadl-extensions.xsd in Resources */,
+				F953872429A24494600CFA03 /* connect.xsd in Resources */,
+				43C2D423738351AED1ABAB18 /* connect.xsd in Resources */,
+				7D132A99694A796E506D8ABD /* wadl-schema.xsd in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6BFA3B59FDD096E16719693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6754790C0660019C1998D36 /* apigee-wadl-extensions.xsd in Resources */,
+				B8BA0D276FC26CA783BE7EF3 /* connect.xsd in Resources */,
+				BEF7989F51ABA18420968B78 /* connect.xsd in Resources */,
+				EDC0B636D0D636170F90E08E /* wadl-schema.xsd in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		291032FD451D56ADFFAA868C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB318FFD51453700C4D983D6 /* Pods-Connect Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		371879359A78059B8612F53C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E04107A9D7E85F2E33EA56E /* TLConsoleWriter.m in Sources */,
+				CE2C963069835A359CE9FA14 /* TLLogger.m in Sources */,
+				BFBBDAF9898F7FAB916DD6D6 /* TLLogLevel.m in Sources */,
+				CB0EDD05D2C0ED981DCD1440 /* TraceLog-Core-ObjC-Swift-dummy.m in Sources */,
+				5DEF082AF7F8B697390498CC /* TraceLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5727F070BC46531D3A4400CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25E577966E9544BFC9676407 /* Pods-Connect Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A385699B7647E201DD55A7C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8472018017E2DF5147A0B36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				118FA282FD48A5556C981D29 /* Pods-Connect Editor-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1DFB2FEA7B9EDC0DC595FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E145B4A496261EBD683C2BD /* TLConsoleWriter.m in Sources */,
+				1C7F5355FA4AEF03EE130933 /* TLLogger.m in Sources */,
+				D3CECF08B4D1CEC9078A60EA /* TLLogLevel.m in Sources */,
+				F0C432C1B125C90062EF2F45 /* TraceLog.default-Core-Swift-dummy.m in Sources */,
+				8CE90B3B14EC54D9E69EF6F2 /* TraceLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4F889019D8177C8C265C1B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE4A0D76EA9E1BC94452279E /* Action.swift in Sources */,
+				B217089A5A32D36A6A12E77B /* ActionQueue.swift in Sources */,
+				444127583EB6B2616EDA639B /* AssociatedStorage.swift in Sources */,
+				6396D91BF8E7182A421A6FB2 /* ConfigurationReader.swift in Sources */,
+				7B1F5ECEB10A5A415E30AC3F /* Connect-OSX-dummy.m in Sources */,
+				14B4C8676BA993448276FC5F /* EntityAction.swift in Sources */,
+				AF9AA0439593696702EC109E /* WebServiceDescription.swift in Sources */,
+				F2A936C5EEA4016F36DBBC7D /* EntityActionNotification.swift in Sources */,
+				D064CE7CC2997BEBC290B38A /* EntityMapper.swift in Sources */,
+				0E70CA8031F5F8ED8665FC2B /* EntitySettings.swift in Sources */,
+				E539D94CC1D379615745C3D5 /* GenericCoreDataStack.swift in Sources */,
+				90DD6BEE438CB595CB841684 /* InMemoryDataStore.swift in Sources */,
+				5226F09BC5E62FBBC89DAA5F /* InMemoryReferenceObject.swift in Sources */,
+				4970AAA31CE83407FE3427F5 /* MetaLogEntry+CoreDataProperties.swift in Sources */,
+				E997C21D4BCC52908A6FD7E9 /* MetaLogEntry.swift in Sources */,
+				BC7679B0B04A597B78F255E3 /* MetaModel.swift in Sources */,
+				0E182B770E36F2E68585ADD6 /* MGConnectConfiguration.m in Sources */,
+				1D78712FA57485E4B77365D5 /* MGConnectConfigurationAction.m in Sources */,
+				31D7D4524A2B642D3B865D4F /* MGConnectConfigurationAuthentication.m in Sources */,
+				3752CCE6341AA8E05D5A2A35 /* MGConnectConfigurationCollection.m in Sources */,
+				60C2C53BC1747E03F5D42403 /* MGConnectConfigurationElement.m in Sources */,
+				DC93AB27F4AB53DC6BA5B4CA /* MGConnectConfigurationEntity.m in Sources */,
+				6872F56D733A058CA5F8320F /* MGConnectConfigurationModel.m in Sources */,
+				2863AA554C93503FF057CF41 /* MGConnectConfigurationRelationship.m in Sources */,
+				52A6563F8DC1CB436D2142DF /* MGWADLApplication.m in Sources */,
+				BCEF9B9C3B8ADBEC087FB9C2 /* MGWADLDoc.m in Sources */,
+				128B361CFEEA485A2A751BED /* MGWADLGrammars.m in Sources */,
+				E2A4641CF59A5B78525BE8A7 /* MGWADLInclude.m in Sources */,
+				9F039782F9260DCDD0162978 /* MGWADLLink.m in Sources */,
+				F13CEA75AC622E386A6D02CC /* MGWADLMethod.m in Sources */,
+				DE326E5CF10DB1FB835127DD /* MGWADLOption.m in Sources */,
+				C38C6EBCF13585D85A991ADE /* MGWADLParam.m in Sources */,
+				5AC57FEEEDFEF3EDEDB1283B /* MGWADLRepresentation.m in Sources */,
+				489FF93E3E3A4875E5C1541E /* MGWADLRequest.m in Sources */,
+				8735D970E554397D57D55A08 /* MGWADLResource+Extensions.m in Sources */,
+				183835EDEA03601718E8547C /* MGWADLResource.m in Sources */,
+				6105A4659B1F1B29C9B4AF5B /* MGWADLResources+Extensions.m in Sources */,
+				83692F9C949921B1ED7BDCC2 /* MGWADLResources.m in Sources */,
+				B6D5E9719FB6DEAF741BEF0E /* MGWADLResourceType.m in Sources */,
+				EA6C4BD61D6F4D6400B1BE35 /* MappingServiceDescription.swift in Sources */,
+				4915DCEFB9585AC143CAE5FF /* MGWADLResponse.m in Sources */,
+				24676647C6DDE9976DB19DFE /* MGWSDL+HTTP.m in Sources */,
+				7FD6A26547E52CC8067746D1 /* MGWSDL+Types.m in Sources */,
+				60B6011AEAEB214570CFD5FA /* MGWSDLBinding.m in Sources */,
+				DECB1670D2B0D1CADD844B4F /* MGWSDLBindingFault.m in Sources */,
+				2646C1472F0E22E35F614900 /* MGWSDLBindingFaultReference.m in Sources */,
+				FA31472BBA314D657A752366 /* MGWSDLBindingMessageReference.m in Sources */,
+				0C32C9ABE287E398B6C16241 /* MGWSDLBindingOperation.m in Sources */,
+				8CF57702E8B4E69D7CDC90E1 /* MGWSDLComponent.m in Sources */,
+				F4280C557A2EC4EB38AAD369 /* MGWSDLDescription.m in Sources */,
+				6826006E800F1FB0B4B83CF5 /* MGWSDLElementDeclaration.m in Sources */,
+				EAC115F8DE10691F0A55AA1C /* MGWSDLEndpoint.m in Sources */,
+				040D72E93E3BA3D2A681CFDD /* MGWSDLExtendableComponent.m in Sources */,
+				CB41858370661E17A8B57658 /* MGWSDLExtensionElement.m in Sources */,
+				5722B7D8786916264BE5E38E /* MGWSDLFeature.m in Sources */,
+				6C27EA0BFD4422C0D5256215 /* MGWSDLInterface.m in Sources */,
+				6F0DC424826600EF8FE5C62D /* MGWSDLInterfaceFault.m in Sources */,
+				041F64C815D449B7E25CFF46 /* MGWSDLInterfaceFaultReference.m in Sources */,
+				3CF0AF51F1DD439C5CF6EED7 /* MGWSDLInterfaceMessageReference.m in Sources */,
+				938099E1D0C712C412136381 /* MGWSDLInterfaceOperation.m in Sources */,
+				3D5961A18482A4ECAA9C725D /* MGWSDLProperty.m in Sources */,
+				8F6FEA9A872C41C64B9F542D /* MGWSDLService.m in Sources */,
+				0CF6C56251FFD57F73DE9F96 /* MGWSDLTypeDefinition.m in Sources */,
+				284714DC7A9641F7D612F33A /* MGXMLCDATA.m in Sources */,
+				7678933AC7F6D9196C9B8A89 /* MGXMLComment.m in Sources */,
+				E30EF93574DB20E7511165D9 /* MGXMLDocument.m in Sources */,
+				3970EA90C5EED13025B1C653 /* MGXMLElement.m in Sources */,
+				4BB8FCEB5CF1ADF4E6DBE633 /* MGXMLElementDefinition.m in Sources */,
+				BCBB41CDD403836BD388EC7F /* MGXMLNode.m in Sources */,
+				EA6C4BDB1D6F543B00B1BE35 /* EntityActionDescription.swift in Sources */,
+				3DB4FBD1E340F5DDE47A7328 /* MGXMLReader.m in Sources */,
+				A70D9A3C3AD219C7D67DE177 /* MGXMLWhitespace.m in Sources */,
+				257AC6C9ED28ABABEFF6E37B /* NSEntityDescription+EntitySettings.swift in Sources */,
+				95768779635624FE97E444F2 /* NSManagedObjectModel+EntitySettings.swift in Sources */,
+				7694ACE7649452D95D7F31AF /* PersistentStoreCoordinator.swift in Sources */,
+				FD71669A069B0AEFC800E53B /* WebService.swift in Sources */,
+				CF5B39F3818484B18FF94F61 /* WriteAheadLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BF4637D4E166EF1634A326 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F866824F10A2D5F451E49A48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9E370D59A04C3003C2994F0 /* Action.swift in Sources */,
+				94505F3EFD6043751D97F518 /* ActionQueue.swift in Sources */,
+				544A68441A5A2A7D28FC6007 /* AssociatedStorage.swift in Sources */,
+				763714465A15B50B66AD5CE4 /* ConfigurationReader.swift in Sources */,
+				3BDB3F5C74CB265C0B05B9E1 /* Connect-iOS-dummy.m in Sources */,
+				08EA47B039F62107AA59CE02 /* EntityAction.swift in Sources */,
+				F84D13879634DA612A27CE29 /* WebServiceDescription.swift in Sources */,
+				130EEDBA4B9C2B2A1CC02A4D /* EntityActionNotification.swift in Sources */,
+				273E5264DE17DD9C57800BCD /* EntityMapper.swift in Sources */,
+				5BFD0F774A9F29E08707A45B /* EntitySettings.swift in Sources */,
+				16F1E49C73A3293A209178C9 /* GenericCoreDataStack.swift in Sources */,
+				D1A4A93420462E4B96B618E0 /* InMemoryDataStore.swift in Sources */,
+				2DD7D8A55AD46CC2121D5E12 /* InMemoryReferenceObject.swift in Sources */,
+				E5C811D9386464D42F58A13C /* MetaLogEntry+CoreDataProperties.swift in Sources */,
+				35161CFE8974488C62E9E376 /* MetaLogEntry.swift in Sources */,
+				865818CB0D3CA04D9013F23E /* MetaModel.swift in Sources */,
+				2CF67ACF081DA5CA94C7F40F /* MGConnectConfiguration.m in Sources */,
+				52DD141EF5F4C27E3E5A7745 /* MGConnectConfigurationAction.m in Sources */,
+				57E4CF661655496F6C75D2CE /* MGConnectConfigurationAuthentication.m in Sources */,
+				B4CA9D90274F95D9E19757FC /* MGConnectConfigurationCollection.m in Sources */,
+				0ADD73BED793F4CBA30B1E72 /* MGConnectConfigurationElement.m in Sources */,
+				A89947FAD4E7AD7A9575A413 /* MGConnectConfigurationEntity.m in Sources */,
+				262850B0A89950242FA8B714 /* MGConnectConfigurationModel.m in Sources */,
+				F58D9C400099B8C5445198E6 /* MGConnectConfigurationRelationship.m in Sources */,
+				05858F4365784565A736829A /* MGWADLApplication.m in Sources */,
+				378DF18702D4D2A94E7DAA41 /* MGWADLDoc.m in Sources */,
+				70DFB9E7684459DF610FCAC6 /* MGWADLGrammars.m in Sources */,
+				BB764D0F589AB5DF7E58D457 /* MGWADLInclude.m in Sources */,
+				B6CB4A10C24B3799172F204D /* MGWADLLink.m in Sources */,
+				4DB43ED9ACCC5FC67F077D95 /* MGWADLMethod.m in Sources */,
+				21049BCFDAE2B3AF3FBEE7A0 /* MGWADLOption.m in Sources */,
+				6F726C760447365FB85DEAAE /* MGWADLParam.m in Sources */,
+				D3872AE6119BC375F29DD043 /* MGWADLRepresentation.m in Sources */,
+				3150977008B51D1A3FB4445D /* MGWADLRequest.m in Sources */,
+				00DC87B72AC175C0772B4D5A /* MGWADLResource+Extensions.m in Sources */,
+				966B42A996D4774201A87621 /* MGWADLResource.m in Sources */,
+				848144EF8C5D71CAC85855D2 /* MGWADLResources+Extensions.m in Sources */,
+				C172E21316B612572BF62A9F /* MGWADLResources.m in Sources */,
+				6BD586379CE8C4743068DFE6 /* MGWADLResourceType.m in Sources */,
+				EA6C4BD51D6F4D6400B1BE35 /* MappingServiceDescription.swift in Sources */,
+				0CAFA7032C213815275CD746 /* MGWADLResponse.m in Sources */,
+				2FBFC11CD291CBC207CF1406 /* MGWSDL+HTTP.m in Sources */,
+				999D50DC1189233A29344A84 /* MGWSDL+Types.m in Sources */,
+				7E6D56E2C17FDC72E9292548 /* MGWSDLBinding.m in Sources */,
+				74C4ECC79DB99ED6CDE6B285 /* MGWSDLBindingFault.m in Sources */,
+				1ADC80A65BA67DA6CA2E3650 /* MGWSDLBindingFaultReference.m in Sources */,
+				9E3D4DEB03B30ECE99A84F58 /* MGWSDLBindingMessageReference.m in Sources */,
+				41E6154EDF2F906222C4F0C2 /* MGWSDLBindingOperation.m in Sources */,
+				65D67D560110AC9C18DBC330 /* MGWSDLComponent.m in Sources */,
+				548CF3C970263C78E9DCEF70 /* MGWSDLDescription.m in Sources */,
+				3ABFDF32B420D6A4F58B07BE /* MGWSDLElementDeclaration.m in Sources */,
+				30F1A1ADA50EF2A949092691 /* MGWSDLEndpoint.m in Sources */,
+				A9929205E1CA0DF0F2B07592 /* MGWSDLExtendableComponent.m in Sources */,
+				1196BBD7DFF88BA4E2DC7172 /* MGWSDLExtensionElement.m in Sources */,
+				3FF84E5B66088F681BE819C6 /* MGWSDLFeature.m in Sources */,
+				7BA40DE50DC7D7304FAD7548 /* MGWSDLInterface.m in Sources */,
+				46D6BAA1C1B0AC85B391AA02 /* MGWSDLInterfaceFault.m in Sources */,
+				2AC9684720197DC5732C9CE4 /* MGWSDLInterfaceFaultReference.m in Sources */,
+				FF62088CDCC897AECD5BF183 /* MGWSDLInterfaceMessageReference.m in Sources */,
+				B82365ED6865BF870769323D /* MGWSDLInterfaceOperation.m in Sources */,
+				74E470DE742E1A4C77BAE1CF /* MGWSDLProperty.m in Sources */,
+				0292118021E4EE5CFAAC298F /* MGWSDLService.m in Sources */,
+				87584D9175D77329DB7B3BC6 /* MGWSDLTypeDefinition.m in Sources */,
+				C5004666B82F35C85114BE99 /* MGXMLCDATA.m in Sources */,
+				338237E6310C05DE80EE3EF1 /* MGXMLComment.m in Sources */,
+				C9A5F48485EC13B14CC3D9BF /* MGXMLDocument.m in Sources */,
+				B071ACA6B28D23B61070E898 /* MGXMLElement.m in Sources */,
+				1017BB30E3C6F75A1D68D7AF /* MGXMLElementDefinition.m in Sources */,
+				075568116B747F97A44F207D /* MGXMLNode.m in Sources */,
+				EA6C4BDA1D6F543B00B1BE35 /* EntityActionDescription.swift in Sources */,
+				07703208F7BCF7AA58D20A53 /* MGXMLReader.m in Sources */,
+				5E513A24FD0060346CDBCE60 /* MGXMLWhitespace.m in Sources */,
+				FE95518031CAE0FF1DFFE365 /* NSEntityDescription+EntitySettings.swift in Sources */,
+				26E8E0B9645D8670429A6051 /* NSManagedObjectModel+EntitySettings.swift in Sources */,
+				A636ACD1E045E681597B03FB /* PersistentStoreCoordinator.swift in Sources */,
+				4ABD0C8008D3600FAD7C5F88 /* WebService.swift in Sources */,
+				496F22238D2BC6365B4E80F5 /* WriteAheadLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2849171B657A9663B57B2D6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Connect-OSX-Connect";
+			target = 763334B649794C9A8CBA3A39 /* Connect-OSX-Connect */;
+			targetProxy = DBAC08FA8A037A397A652051 /* PBXContainerItemProxy */;
+		};
+		28F7B71FF9C64A11EB319941 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TraceLog.default-Core-Swift";
+			target = CC3C19722989B7041F81E43C /* TraceLog.default-Core-Swift */;
+			targetProxy = 748D196D6B1E85AC926791B4 /* PBXContainerItemProxy */;
+		};
+		2D3820E3BB9F951C7984737F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Connect-iOS-Connect";
+			target = CC088731EFFB2E665AA8BDB7 /* Connect-iOS-Connect */;
+			targetProxy = 6A16637873F4993FB1AB3B05 /* PBXContainerItemProxy */;
+		};
+		495398ED112C67FD7AFF7A6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Connect-iOS";
+			target = F5D4E86ABA26833925C4221C /* Connect-iOS */;
+			targetProxy = 5B2FBF6F2C6B2B9E943E6E44 /* PBXContainerItemProxy */;
+		};
+		6FF9F21A2BD80DA11A4A5766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Connect-OSX";
+			target = 7D800B44C682413F427D0A5B /* Connect-OSX */;
+			targetProxy = 0F38B75BCC27A39525A3E464 /* PBXContainerItemProxy */;
+		};
+		AF040D9813500E3EC7975732 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TraceLog.default-Core-Swift";
+			target = CC3C19722989B7041F81E43C /* TraceLog.default-Core-Swift */;
+			targetProxy = AE0D5E48B67C93DA05F7755A /* PBXContainerItemProxy */;
+		};
+		B2A2D2407AF69AB2B7F5ECAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TraceLog-Core-ObjC-Swift";
+			target = 0D0E4690642AB72B05BC120A /* TraceLog-Core-ObjC-Swift */;
+			targetProxy = 759B6188F4518CF39B236B81 /* PBXContainerItemProxy */;
+		};
+		C51A8757C588D7C3F2BF3711 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TraceLog-Core-ObjC-Swift";
+			target = 0D0E4690642AB72B05BC120A /* TraceLog-Core-ObjC-Swift */;
+			targetProxy = 9B4D9B70C2A6E4628EC1AB92 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		173ADE9B148F6EECD5396DF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Connect-iOS";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Connect-iOS/ResourceBundle-Connect-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		19903D541BC59E1C37781272 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect-OSX/Connect-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Connect-OSX/Connect-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1B54761B9BA220FC3EEC9E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect-iOS/Connect-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Connect-iOS/Connect-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		21019263D459E9DF6107EB5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C047AD455D443D99613CC47 /* Pods-Connect Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Tests/Pods-Connect Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		344C58D1D9355C9E69263366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Connect-OSX";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Connect-OSX/ResourceBundle-Connect-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		3B08C1F7D88711CA7D49A668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAC0B7A42CAF76629141EEAB /* TraceLog.default-Core-Swift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog.default-Core-Swift/TraceLog.default-Core-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog.default-Core-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/TraceLog.default-Core-Swift/TraceLog.default-Core-Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		64E3B635F2A121BCA7E35713 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 780081D351C549A8E5A31C9F /* Pods-Connect Editor.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Editor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Editor/Pods-Connect Editor.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Editor;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		72BA4EA421873A5CE0296DC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28DBBDC14B30FD1E9B63C44F /* TraceLog-Core-ObjC-Swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog-Core-ObjC-Swift/TraceLog-Core-ObjC-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog-Core-ObjC-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog-Core-ObjC-Swift/TraceLog-Core-ObjC-Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		751742FC1E2938CD871B390C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Connect-OSX";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Connect-OSX/ResourceBundle-Connect-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		762A3A08372D20CC48B3AAE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7ACDAB177DEB1673E52B178 /* Pods-Connect Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Example/Pods-Connect Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7A320B3FC323A2891A380F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect-iOS/Connect-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Connect-iOS/Connect-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		83F2333487453178DAF8C80E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28DBBDC14B30FD1E9B63C44F /* TraceLog-Core-ObjC-Swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog-Core-ObjC-Swift/TraceLog-Core-ObjC-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog-Core-ObjC-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog-Core-ObjC-Swift/TraceLog-Core-ObjC-Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		917CF13EA3E4796CDC1BAF96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9BA7FA0305E08BCA82CD6EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23417B4F8D64C7FC513669EE /* Connect-iOS.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Connect-iOS";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Connect-iOS/ResourceBundle-Connect-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Connect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		AE282374311F390EB9CFDDAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAC0B7A42CAF76629141EEAB /* TraceLog.default-Core-Swift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog.default-Core-Swift/TraceLog.default-Core-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog.default-Core-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/TraceLog.default-Core-Swift/TraceLog.default-Core-Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B46343828A163627E113B378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F2FC4D885CCEA83674B79FF /* Pods-Connect Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Tests/Pods-Connect Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B78473055FA8B06FA5597F31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1DF8157D597A37A19D983A8 /* Connect-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Connect-OSX/Connect-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Connect-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Connect-OSX/Connect-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Connect;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D4914D87E644D35635588EB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B33A8214D3432B5CABFE512E /* Pods-Connect Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Example/Pods-Connect Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E4A837ADEC17D741CD7A2656 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FCEB4C3B38D382024649A48 /* Pods-Connect Editor.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Connect Editor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Connect Editor/Pods-Connect Editor.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Connect_Editor;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EC6CB16C8CDCC6FDB2F95CE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E4A679DBF53AC900884DCD8 /* Build configuration list for PBXNativeTarget "Connect-OSX-Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				751742FC1E2938CD871B390C /* Debug */,
+				344C58D1D9355C9E69263366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F49A4A8D3C83F36B68FD59B /* Build configuration list for PBXNativeTarget "TraceLog-Core-ObjC-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72BA4EA421873A5CE0296DC3 /* Debug */,
+				83F2333487453178DAF8C80E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1672A58D794C286C332B4A9 /* Build configuration list for PBXNativeTarget "Pods-Connect Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21019263D459E9DF6107EB5D /* Debug */,
+				B46343828A163627E113B378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A379620384D70DAF5AFF3E15 /* Build configuration list for PBXNativeTarget "Pods-Connect Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64E3B635F2A121BCA7E35713 /* Debug */,
+				E4A837ADEC17D741CD7A2656 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1540B0692A32DAC3ECF6BD7 /* Build configuration list for PBXNativeTarget "Pods-Connect Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				762A3A08372D20CC48B3AAE1 /* Debug */,
+				D4914D87E644D35635588EB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C014CE12C9A284EDA60B39FE /* Build configuration list for PBXNativeTarget "Connect-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19903D541BC59E1C37781272 /* Debug */,
+				B78473055FA8B06FA5597F31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC30063D27229577ECE50966 /* Build configuration list for PBXNativeTarget "Connect-iOS-Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BA7FA0305E08BCA82CD6EEF /* Debug */,
+				173ADE9B148F6EECD5396DF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE63D9ECBEA23F6DBF0F1DE0 /* Build configuration list for PBXNativeTarget "TraceLog.default-Core-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B08C1F7D88711CA7D49A668 /* Debug */,
+				AE282374311F390EB9CFDDAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E79395E89E11085D138B2E62 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				917CF13EA3E4796CDC1BAF96 /* Debug */,
+				EC6CB16C8CDCC6FDB2F95CE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDF51DEBC711FA42C4A59A24 /* Build configuration list for PBXNativeTarget "Connect-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B54761B9BA220FC3EEC9E16 /* Debug */,
+				7A320B3FC323A2891A380F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FD6F5E3554CCFE4E64157DA /* Project object */;
+}
