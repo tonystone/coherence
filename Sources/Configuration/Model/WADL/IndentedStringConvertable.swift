@@ -6,4 +6,8 @@
 //
 //
 
-import Foundation
+import Swift
+
+internal protocol IndentedStringConvertable {
+    func description(indent indent: Int) -> String
+}

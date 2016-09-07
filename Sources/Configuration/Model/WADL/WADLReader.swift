@@ -88,7 +88,8 @@ class WADLReader {
             
             if let element = node as? XMLElement , element.name == "application" {
 
-                let application = try self.application(element)
+                // The parent of this application Element is always nil because Application has no parent in our model.
+                let application = try self.application(element, parent: nil)
                 
                 // Resolve references
                 
@@ -212,7 +213,7 @@ class WADLReader {
         guard let baseString = element.attributes["base"] else {
             throw Errors.invalidWADL("Resources element missing \"base\" attribute")
         }
-        guard let base = URI(string: baseString) else {
+        guard let base = URL(string: baseString) else {
             throw Errors.invalidWADL("Incorrect format for \"base\" attribute")
         }
         
@@ -243,18 +244,14 @@ class WADLReader {
      */
     private func resource(_ element: XMLElement, parent: WADLElement?) throws -> WADLResource {
         
-        let resource = WADLResource(parent: parent)
-        
         // Attributes
-        resource.id = element.attributes["id"]
-        resource.type = element.attributes["type"]
+        var queryType: WADLQueryType? = nil
         
-        if let queryTypeString = element.attributes["queryType"],
-           let queryType = WADLQueryType(rawValue: queryTypeString) {
-            
-            resource.queryType = queryType
+        if let queryTypeString = element.attributes["queryType"] {
+           queryType = WADLQueryType(rawValue: queryTypeString)
         }
-        resource.path = element.attributes["path"]
+
+        let resource = WADLResource(id: element.attributes["id"], path: element.attributes["path"], type: element.attributes["type"], queryType: queryType, parent: parent)
         
         // Collect all the child elements for this element
         let elements = XMLNodeCollection<XMLElement>(nodes: element.children)
@@ -360,7 +357,7 @@ class WADLReader {
             //       allow an id for all method elements so we are relaxing the 
             //       restriction the WADL spec specifies.
             //
-            if parent.name == "application" {
+            if parent is WADLApplication {
                 guard id != nil else {
                    throw Errors.invalidWADL("id attribute is required for globally defined Method elements.")
                 }

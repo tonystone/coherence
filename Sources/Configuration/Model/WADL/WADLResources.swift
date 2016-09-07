@@ -18,13 +18,13 @@ import Swift
  */
 class WADLResources : WADLElement {
     
-    init(base: URI, parent: WADLElement?) {
+    init(base: URL, parent: WADLElement?) {
         self.base = base
         self.parent = parent
     }
     
     // Attributes
-    let base: URI
+    let base: URL
     
     var otherAttributes: [String : String] = [:]
     
@@ -36,3 +36,39 @@ class WADLResources : WADLElement {
     
     weak var parent: WADLElement?
 }
+
+
+extension WADLResources : IndentedStringConvertable {
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))resources: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent + 1))base: \'\(base.description)\'")
+        
+        for resource in self.resources {
+            description.append("\r\(resource.description(indent: indent + 1))")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
+}
+
+extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+}
+
+

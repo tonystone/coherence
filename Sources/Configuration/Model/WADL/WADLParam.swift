@@ -8,8 +8,6 @@
 
 import Swift
 
-
-
 /**
     WADL Param Element
  
@@ -83,6 +81,58 @@ class WADLParam : WADLElement  {
     
     var otherElements: [XMLElement] = []
     
-    
     weak var parent: WADLElement?
+}
+
+extension WADLParam : IndentedStringConvertable {
+    
+    func description(indent indent: Int) -> String {
+     
+        var description = "\(String(repeating: "\t", count: indent))param: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent + 1))name: \'\(self.name)\', style: \'\(self.style)\', required: \(self.required), repeating: \(self.repeating)")
+        
+        if let id = self.id {
+            description.append(", id: \'\(id)\'")
+        }
+        
+        if let type = self.type {
+            description.append(", type: \'\(type)\'")
+        }
+        
+        if let path = self.path {
+            description.append(", path: \'\(path)\'")
+        }
+        
+        if let fixed = self.fixed {
+            description.append(", fixed: \'\(fixed)\'")
+        }
+        
+        if let defaultValue = self.defaultValue {
+            description.append(", defaultValue: \'\(defaultValue)\'")
+        }
+        
+        for option in self.options {
+            description.append("\r\(option)")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
+}
+
+extension WADLParam : CustomStringConvertible, CustomDebugStringConvertible {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
 }

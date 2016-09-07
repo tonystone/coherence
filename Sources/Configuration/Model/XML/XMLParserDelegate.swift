@@ -48,7 +48,7 @@ class XMLParserDelegate : NSObject, Foundation.XMLParserDelegate {
                 currentElement.add(XMLText(data: currentStringValue.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)))
             }
             // Link to the parent
-            if var parentNode = nodeQueue.last {
+            if let parentNode = nodeQueue.last {
                 parentNode.add(currentElement)
             }
         }
@@ -72,21 +72,21 @@ class XMLParserDelegate : NSObject, Foundation.XMLParserDelegate {
     
     // The parser reports ignorable whitespace in the same way as characters it's found.
     public func parser(_ parser: XMLParser, foundIgnorableWhitespace whitespaceString: String) {
-        if var node = nodeQueue.last {
+        if let node = nodeQueue.last {
             node.add(XMLText(data: whitespaceString))
         }
     }
 
     // A comment (Text in a <!-- --> block) is reported to the delegate as a single string
     func parser(_ parser: XMLParser, foundComment comment: String) {
-        if var node = nodeQueue.last {
+        if let node = nodeQueue.last {
             node.add(XMLComment(data: comment))
         }
     }
     
     // this reports a CDATA block to the delegate as an NSData.
     func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data) {
-        if var node = nodeQueue.last {
+        if let node = nodeQueue.last {
             node.add(XMLCDATA(data: String(describing: CDATABlock)))
         }
     }

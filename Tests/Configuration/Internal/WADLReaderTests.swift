@@ -19,7 +19,7 @@ class WADLReaderTests: XCTestCase {
         
             let application = try WADLReader().read(contentsOfURL: url)
             
-            print(application)
+            print(application.description)
             
         } else {
             XCTFail("Failed to find test data file.")
@@ -33,8 +33,7 @@ class WADLReaderTests: XCTestCase {
             
             let application = try WADLReader().read(contentsOfURL: url)
             
-            print(application)
-            
+            print(application.description)
         } else {
             XCTFail("Failed to find test data file.")
         }
@@ -46,11 +45,50 @@ class WADLReaderTests: XCTestCase {
         if let url = bundle.url(forResource: "rightscale-v1", withExtension: "wadl") {
             
             let application = try WADLReader().read(contentsOfURL: url)
-                
-            print(application)
+            
+            print(application.description)
 
         } else {
             XCTFail("Failed to find test data file.")
         }
     }
+    
+    
+    // Internal printing functions
+    func describe(application: WADLApplication) {
+        
+        for resources in application.resources {
+            
+            for resource in resources.resources {
+                describe(resource: resource, level: 0)
+            }
+        }
+    }
+    
+    func describe(resource: WADLResource, level: Int) {
+        
+        print("\r" + String(repeating: "\t", count: level) + "\(resource.templatedURI)\r")
+        
+        if resource.params.count > 0 {
+            print(String(repeating: "\t", count: level) + "Params:\n")
+            for param in resource.params {
+                print(param.description)
+            }
+        }
+        
+        print(String(repeating: "\t", count: level) + "Methods:\n")
+        for method in resource.methods {
+            print(method.description)
+        }
+        
+        for resource in resource.resources {
+            describe(resource: resource, level: level + 1)
+        }
+    }
+    
+    func describe(request: WADLRequest, level: Int) {
+
+        print("\(request.description)")
+    }
+    
 }

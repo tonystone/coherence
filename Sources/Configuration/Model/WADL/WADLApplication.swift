@@ -17,6 +17,10 @@ import Swift
  */
 class WADLApplication : WADLElement {
     
+    init(parent: WADLElement?) {
+        self.parent = parent
+    }
+    
     // Elements
     var docs: [WADLDoc]                         = []
     var grammars: WADLGrammars?                 = nil
@@ -28,6 +32,56 @@ class WADLApplication : WADLElement {
     
     var otherElements: [XMLElement]             = []
     
-    // The parent of this application Element is always nil because Application has no parent in our model.
-    weak var parent: WADLElement?               = nil
+    weak var parent: WADLElement?
+}
+
+extension WADLApplication : IndentedStringConvertable {
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))application: {"
+    
+        if let grammers = self.grammars {
+            description.append("\r\(grammers.description(indent: indent + 1))")
+        }
+        
+        for resources in self.resources {
+            description.append("\r\(resources.description(indent: indent + 1))")
+        }
+        
+        for resourceType in self.resourceTypes {
+            description.append("\r\(resourceType)") // FIXME: needs indent
+        }
+        
+        for method in self.methods {
+            description.append("\r\(method.description(indent: indent + 1))")
+        }
+        
+        for representation in self.representations {
+            description.append("\r\(representation)") // FIXME: needs indent
+        }
+        
+        for param in self.params {
+            description.append("\r\(param.description(indent: indent + 1))")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
+}
+
+extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertible {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
 }

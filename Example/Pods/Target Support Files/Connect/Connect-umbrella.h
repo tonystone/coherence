@@ -1,16 +1,5 @@
 #import <UIKit/UIKit.h>
 
-#import "MGConnectConfiguration.h"
-#import "MGConnectConfigurationAction.h"
-#import "MGConnectConfigurationAuthentication.h"
-#import "MGConnectConfigurationCollection.h"
-#import "MGConnectConfigurationElement.h"
-#import "MGConnectConfigurationEntity.h"
-#import "MGConnectConfigurationModel.h"
-#import "MGConnectConfigurationRelationship.h"
-#import "MGWADL+Extensions.h"
-#import "MGWADLResource+Extensions.h"
-#import "MGWADLResources+Extensions.h"
 #import "MGWSDL+HTTP.h"
 #import "MGWSDL+Types.h"
 #import "MGWSDL.h"

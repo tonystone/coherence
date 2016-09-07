@@ -2,4 +2,17 @@
 
 import UIKit
 
-var str = "Hello, playground"
+let url = URLComponents(string: "http://example.com/widgets/reports/stock;instockonly;accountID=12323?id=1234")
+
+url?.string
+
+url?.queryItems
+url?.path
+url?.fragment
+url?.query
+url?.host
+
+URL(string: "/temp")?.absoluteString
+
+
+

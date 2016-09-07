@@ -56,7 +56,7 @@ protocol WebServiceDescription {
 
     // Optional items
 
-    var authenticationScheme: MGConnectConfigurationAuthentication? { get }
+    var authenticationScheme: String { get }  //FIXME: MGConnectConfigurationAuthentication? { get }
     var authenticationRealm:  String? { get } // TODO: Change to a specific enum or string
 
     /**
@@ -118,7 +118,7 @@ extension WebServiceDescription {
     
     // Optional items
     
-    var authenticationScheme: MGConnectConfigurationAuthentication? {
+    var authenticationScheme: String? { // FIXME: MGConnectConfigurationAuthentication? {
         get { return nil }
     }
     

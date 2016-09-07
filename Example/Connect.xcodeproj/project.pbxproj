@@ -14,8 +14,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		D9D47A21983A126E6E11D1BF /* Pods_Connect_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632E0C5F6C83F575E2A7F0C6 /* Pods_Connect_Example.framework */; };
 		E7CAA70601D27850F27550EF /* Pods_Connect_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE932A25E11A51DE46E63D1F /* Pods_Connect_Tests.framework */; };
-		EA81C9471D78CE6D002586A5 /* ConfigurationReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */; };
-		EA81C9481D78CE6D002586A5 /* WADLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */; };
+		EA81C9491D78CF08002586A5 /* WADLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */; };
+		EA81C94A1D78CF0C002586A5 /* ConfigurationReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */; };
+		EA98CBD11D78D93500DDFF51 /* XMLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */; };
 		EAE16FE41D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */; };
 		EAE16FE51D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */; };
 		EAE16FE61D70C2C3002FADE5 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA41D70C2C3002FADE5 /* Device.swift */; };
@@ -169,8 +170,10 @@
 		979B1D7C8A44A324594FCB3B /* Pods-Connect Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect Tests/Pods-Connect Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AE932A25E11A51DE46E63D1F /* Pods_Connect_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17F82C44785F574AA74D6C4 /* Pods-Connect_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect_Example/Pods-Connect_Example.release.xcconfig"; sourceTree = "<group>"; };
+		EA6077F21D7F282000C76301 /* Connect.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Connect.playground; sourceTree = "<group>"; };
 		EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationReaderTests.swift; sourceTree = "<group>"; };
 		EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WADLReaderTests.swift; sourceTree = "<group>"; };
+		EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReaderTests.swift; sourceTree = "<group>"; };
 		EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EAE16FA41D70C2C3002FADE5 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		EAE16FA51D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GlobalSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 				607FACD21AFB9204008FA782 /* Example for Connect */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				EAE16FA01D70C2C3002FADE5 /* Fixtures */,
+				EA6077F11D7F27D000C76301 /* Playgrounds */,
 				607FACD11AFB9204008FA782 /* Products */,
 				7CA6D36D82EA379DE7C39BAF /* Pods */,
 				3751533D6F6D21031C9A25FA /* Frameworks */,
@@ -354,6 +358,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EA6077F11D7F27D000C76301 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				EA6077F21D7F282000C76301 /* Connect.playground */,
+			);
+			name = Playgrounds;
+			sourceTree = "<group>";
+		};
 		EA81C93D1D78CE4B002586A5 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +386,7 @@
 		EA81C9441D78CE6D002586A5 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */,
 				EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */,
 				EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */,
 			);
@@ -744,7 +757,6 @@
 				EAE170221D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */,
 				EAE16FF01D70C2C3002FADE5 /* Provider.swift in Sources */,
 				EAE1704C1D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift in Sources */,
-				EA81C9471D78CE6D002586A5 /* ConfigurationReaderTests.swift in Sources */,
 				EAE1702C1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */,
 				EAE170081D70C2C3002FADE5 /* Datacenter.swift in Sources */,
 				EAE16FF21D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift in Sources */,
@@ -755,7 +767,6 @@
 				EAE170041D70C2C3002FADE5 /* Cloud.swift in Sources */,
 				EAE170441D70C2C3002FADE5 /* Tag+CoreDataProperties.swift in Sources */,
 				EAE1703A1D70C2C3002FADE5 /* Server.swift in Sources */,
-				EA81C9481D78CE6D002586A5 /* WADLReaderTests.swift in Sources */,
 				EAE170021D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				EAE1700E1D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift in Sources */,
@@ -801,6 +812,7 @@
 				EAE16FF71D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift in Sources */,
 				EAE170151D70C2C3002FADE5 /* Event.swift in Sources */,
 				EAE170311D70C2C3002FADE5 /* MonitoringMetricData.swift in Sources */,
+				EA81C9491D78CF08002586A5 /* WADLReaderTests.swift in Sources */,
 				EAE170491D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift in Sources */,
 				EAE1702D1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */,
 				EAE170431D70C2C3002FADE5 /* ServerTemplate.swift in Sources */,
@@ -821,6 +833,7 @@
 				EAE1701D1D70C2C3002FADE5 /* GraphViewTemplate.swift in Sources */,
 				EAE1703D1D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift in Sources */,
 				EAE170231D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */,
+				EA98CBD11D78D93500DDFF51 /* XMLReaderTests.swift in Sources */,
 				EAE170271D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift in Sources */,
 				EAE1704F1D70C2C3002FADE5 /* WatchMonitoringMetric.swift in Sources */,
 				EAE1700B1D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift in Sources */,
@@ -832,6 +845,7 @@
 				EAE170071D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift in Sources */,
 				EAE170251D70C2C3002FADE5 /* Instance.swift in Sources */,
 				EAE16FFF1D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift in Sources */,
+				EA81C94A1D78CF0C002586A5 /* ConfigurationReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
