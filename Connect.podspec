@@ -32,10 +32,10 @@ TODO: Add long description of the pod here.
   s.requires_arc  = true
   
   s.module_name   = 'Connect'
-  s.source_files  = 'Connect/Classes/**/*'
+  s.source_files  = 'Sources/**/*'
 
   s.resource_bundles = {
-    'Connect' => ['Connect/Assets/**/*.xsd']
+    'Connect' => ['Resources/**/*']
   }
 
   s.dependency 'TraceLog/ObjC', "~> 1.0"

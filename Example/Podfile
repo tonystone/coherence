@@ -12,11 +12,3 @@ target 'Connect Example' do
 
   end
 end
-
-
-target 'Connect Editor' do
-    platform :osx, '10.10'
-    
-    pod 'Connect', :path => '../'
-    pod 'TraceLog', '~> 1.0'
-end
