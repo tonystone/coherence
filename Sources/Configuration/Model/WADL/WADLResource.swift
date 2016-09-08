@@ -41,7 +41,7 @@ import Swift
 
 class WADLResource : WADLElement {
     
-    init(id: String?, path: String?, type: String?, queryType: WADLQueryType?, parent: WADLElement?) {
+    init(id: String?, path: String?, type: String?, queryType: WADLMediaType?, parent: WADLElement?) {
         self.id = id
         self.path = path
         self.type = type
@@ -53,7 +53,7 @@ class WADLResource : WADLElement {
     let id: String?
     let path: String?
     let type: String?
-    let queryType: WADLQueryType
+    let queryType: WADLMediaType
     
     var otherAttributes: [String : String] = [:]
     
@@ -68,7 +68,19 @@ class WADLResource : WADLElement {
     weak var parent: WADLElement?
 }
 
-extension WADLResource : IndentedStringConvertable {
+extension WADLResource : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
     
     func description(indent indent: Int) -> String {
         
@@ -94,6 +106,10 @@ extension WADLResource : IndentedStringConvertable {
         description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")queryType: \'\(self.queryType.rawValue)\'")
         first = false
         
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
         for param in self.params {
             description.append("\r\(param.description(indent: indent + 1))")
         }
@@ -109,21 +125,6 @@ extension WADLResource : IndentedStringConvertable {
         description.append("\r\(String(repeating: "\t", count: indent))}")
         
         return description
-    }
-}
-
-extension WADLResource : CustomStringConvertible, CustomDebugStringConvertible {
-    
-    var description: String {
-        get {
-            return description(indent: 0)
-        }
-    }
-    
-    var debugDescription: String {
-        get {
-            return description(indent: 0)
-        }
     }
 }
 

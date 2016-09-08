@@ -10,9 +10,44 @@ import Swift
 
 class WADLOption : WADLElement  {
     
-    init(parent: WADLElement?) {
+    init(value: String, mediaType: WADLMediaType?, parent: WADLElement?) {
+        self.value = value
+        self.mediaType = mediaType
         self.parent = parent
     }
     
+    let value: String
+    let mediaType: WADLMediaType?
+    
     weak var parent: WADLElement?
+}
+
+extension WADLOption : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))param: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent + 1))value: \'\(self.value)\'")
+        
+        if let mediaType = self.mediaType {
+            description.append(", mediaType: \'\(mediaType)\'")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
 }

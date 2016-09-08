@@ -84,7 +84,19 @@ class WADLParam : WADLElement  {
     weak var parent: WADLElement?
 }
 
-extension WADLParam : IndentedStringConvertable {
+extension WADLParam : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
     
     func description(indent indent: Int) -> String {
      
@@ -112,27 +124,16 @@ extension WADLParam : IndentedStringConvertable {
             description.append(", defaultValue: \'\(defaultValue)\'")
         }
         
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
         for option in self.options {
-            description.append("\r\(option)")
+            description.append("\r\(option.description(indent: indent + 1))")
         }
         
         description.append("\r\(String(repeating: "\t", count: indent))}")
         
         return description
-    }
-}
-
-extension WADLParam : CustomStringConvertible, CustomDebugStringConvertible {
-    
-    var description: String {
-        get {
-            return description(indent: 0)
-        }
-    }
-    
-    var debugDescription: String {
-        get {
-            return description(indent: 0)
-        }
     }
 }

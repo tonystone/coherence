@@ -35,3 +35,46 @@ class WADLResponse : WADLElement  {
     
     weak var parent: WADLElement?
 }
+
+extension WADLResponse : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))response: {"
+        
+        var first = true
+        
+        if let status = self.status {
+            description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")status: \'\(status)\'")
+            first = false
+        }
+        
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
+        for representation in self.representations {
+            description.append("\r\(representation.description(indent: indent + 1))")
+        }
+        
+        for param in self.params {
+            description.append("\r\(param.description(indent: indent + 1))")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
+}

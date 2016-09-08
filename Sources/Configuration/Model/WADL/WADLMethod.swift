@@ -45,7 +45,11 @@ class WADLMethod : WADLElement  {
     var otherElements: [XMLElement]             = []
     
     weak var parent: WADLElement?
-    
+
+}
+
+extension WADLMethod : CustomStringConvertible, CustomDebugStringConvertible,  IndentedStringConvertable {
+
     var description: String {
         get {
             return self.description(indent: 0)
@@ -57,10 +61,7 @@ class WADLMethod : WADLElement  {
             return self.description(indent: 0)
         }
     }
-}
-
-extension WADLMethod : IndentedStringConvertable {
-
+    
     func description(indent indent: Int) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))method: {"
@@ -77,9 +78,17 @@ extension WADLMethod : IndentedStringConvertable {
             first = false
         }
         
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
         if let request = self.request {
             description.append("\r\(request.description(indent: indent + 1))")
             first = false
+        }
+        
+        for response in self.responses {
+            description.append("\r\(response.description(indent: indent + 1))")
         }
         
         description.append("\r\(String(repeating: "\t", count: indent))}")

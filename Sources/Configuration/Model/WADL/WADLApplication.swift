@@ -35,43 +35,7 @@ class WADLApplication : WADLElement {
     weak var parent: WADLElement?
 }
 
-extension WADLApplication : IndentedStringConvertable {
-    
-    func description(indent indent: Int) -> String {
-        
-        var description = "\(String(repeating: "\t", count: indent))application: {"
-    
-        if let grammers = self.grammars {
-            description.append("\r\(grammers.description(indent: indent + 1))")
-        }
-        
-        for resources in self.resources {
-            description.append("\r\(resources.description(indent: indent + 1))")
-        }
-        
-        for resourceType in self.resourceTypes {
-            description.append("\r\(resourceType)") // FIXME: needs indent
-        }
-        
-        for method in self.methods {
-            description.append("\r\(method.description(indent: indent + 1))")
-        }
-        
-        for representation in self.representations {
-            description.append("\r\(representation)") // FIXME: needs indent
-        }
-        
-        for param in self.params {
-            description.append("\r\(param.description(indent: indent + 1))")
-        }
-        
-        description.append("\r\(String(repeating: "\t", count: indent))}")
-        
-        return description
-    }
-}
-
-extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertible {
+extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable  {
     
     var description: String {
         get {
@@ -84,4 +48,42 @@ extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertibl
             return description(indent: 0)
         }
     }
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))application: {"
+        
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
+        if let grammers = self.grammars {
+            description.append("\r\(grammers.description(indent: indent + 1))")
+        }
+        
+        for resources in self.resources {
+            description.append("\r\(resources.description(indent: indent + 1))")
+        }
+        
+        for resourceType in self.resourceTypes {
+            description.append("\r\(resourceType.description(indent: indent + 1))")
+        }
+        
+        for method in self.methods {
+            description.append("\r\(method.description(indent: indent + 1))")
+        }
+        
+        for representation in self.representations {
+            description.append("\r\(representation.description(indent: indent + 1))")
+        }
+        
+        for param in self.params {
+            description.append("\r\(param.description(indent: indent + 1))")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
 }
+

@@ -32,6 +32,9 @@ class WADLRequest : WADLElement  {
     var otherElements: [XMLElement]             = []
     
     weak var parent: WADLElement?
+}
+
+extension WADLRequest : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
         get {
@@ -44,16 +47,21 @@ class WADLRequest : WADLElement  {
             return description(indent: 0)
         }
     }
-}
-
-extension WADLRequest : IndentedStringConvertable {
     
     func description(indent indent: Int) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))request: {"
         
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
         for param in self.params {
             description.append("\r\(param.description(indent: indent + 1))")
+        }
+        
+        for representation in self.representations {
+            description.append("\r\(representation.description(indent: indent + 1))")
         }
         
         description.append("\r\(String(repeating: "\t", count: indent))}")

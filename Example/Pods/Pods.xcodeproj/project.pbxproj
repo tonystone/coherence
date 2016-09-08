@@ -124,7 +124,7 @@
 		E86DD7B41160739CAAF6E172 /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E50E1EC006EB75A8A8E1DE2 /* MGWSDLExtendableComponent.m */; };
 		EAF40BB41D7FB2A000A81ED5 /* IndentedStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF40BB31D7FB29F00A81ED5 /* IndentedStringConvertable.swift */; };
 		ECD1D4237AE80A06EE6EA91B /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = DB71117FAFBAD6B73B809161 /* MGWSDLInterfaceFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED2B9928561C249558385017 /* WADLQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E7F667020299F6355C36A /* WADLQueryType.swift */; };
+		ED2B9928561C249558385017 /* WADLMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E7F667020299F6355C36A /* WADLMediaType.swift */; };
 		EF62CECA9876A604E111B49B /* WADLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D143D6FD533ED4B8F7D75 /* WADLReader.swift */; };
 		EFFBD1511FCA24DD7073A842 /* MGWSDLEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0039DAB844EC8BBC83F0A38A /* MGWSDLEndpoint.m */; };
 		F17FE4C6C2FDE15D7A5DC840 /* XMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E0307A87A0F39FA949CCB9 /* XMLText.swift */; };
@@ -246,7 +246,7 @@
 		796DE82CCEFD3A5EE1F9B0AC /* EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntitySettings.swift; sourceTree = "<group>"; };
 		7D0EC0981879C82258AC042D /* XMLCharacterData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XMLCharacterData.swift; sourceTree = "<group>"; };
 		7FF343708A3D6885FC8D5A2F /* Schemas */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Schemas; sourceTree = "<group>"; };
-		824E7F667020299F6355C36A /* WADLQueryType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WADLQueryType.swift; sourceTree = "<group>"; };
+		824E7F667020299F6355C36A /* WADLMediaType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WADLMediaType.swift; sourceTree = "<group>"; };
 		82CCE8DDDD42CF48F528A0FA /* MGWSDLFeature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLFeature.h; sourceTree = "<group>"; };
 		848F66C1BB4DFB0E897B42FF /* Action.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		856212E30E8422E0689D8095 /* CoreData */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = CoreData; sourceTree = "<group>"; };
@@ -528,6 +528,7 @@
 		6F63D46E2433FC045669B971 /* XML */ = {
 			isa = PBXGroup;
 			children = (
+				3E99AB6108207E04C0FEDDCC /* XMLReader.swift */,
 				513FBA116AB906495988E34D /* XMLCDATA.swift */,
 				7D0EC0981879C82258AC042D /* XMLCharacterData.swift */,
 				025122FD0189EB8B036B5FDE /* XMLComment.swift */,
@@ -535,7 +536,6 @@
 				0878DAB84E81D01354021C94 /* XMLElement.swift */,
 				95EE0FCA0C890354CC266B62 /* XMLNode.swift */,
 				AC4FDEFC91F9CC715DDA0E0B /* XMLParserDelegate.swift */,
-				3E99AB6108207E04C0FEDDCC /* XMLReader.swift */,
 				27E0307A87A0F39FA949CCB9 /* XMLText.swift */,
 			);
 			path = XML;
@@ -759,6 +759,7 @@
 		F4E45C3030689B6B20019A8C /* WADL */ = {
 			isa = PBXGroup;
 			children = (
+				CC0D143D6FD533ED4B8F7D75 /* WADLReader.swift */,
 				A6174447AC246BD99A8F4D9B /* URI.swift */,
 				36C99693ECD81973E0CD7120 /* WADLApplication.swift */,
 				DCA6D6FB651577BFA33D3DA0 /* WADLDoc.swift */,
@@ -769,8 +770,7 @@
 				6347BEA4F697122071922A6F /* WADLMethod.swift */,
 				11AEB1D76D5E671AAE75FD19 /* WADLOption.swift */,
 				37B400D40D353D0477FD4FCD /* WADLParam.swift */,
-				824E7F667020299F6355C36A /* WADLQueryType.swift */,
-				CC0D143D6FD533ED4B8F7D75 /* WADLReader.swift */,
+				824E7F667020299F6355C36A /* WADLMediaType.swift */,
 				AC0D880586E3DB5B98AC79B2 /* WADLRepresentation.swift */,
 				9ED69C0FCFE953701166250C /* WADLRequest.swift */,
 				F9E6737B06E31E773320F6AA /* WADLResource.swift */,
@@ -1103,7 +1103,7 @@
 				71C52CA5058D48B197578A28 /* WADLMethod.swift in Sources */,
 				7891A2A44F011046BA4D5E88 /* WADLOption.swift in Sources */,
 				BF269456114346F05AF9241E /* WADLParam.swift in Sources */,
-				ED2B9928561C249558385017 /* WADLQueryType.swift in Sources */,
+				ED2B9928561C249558385017 /* WADLMediaType.swift in Sources */,
 				EF62CECA9876A604E111B49B /* WADLReader.swift in Sources */,
 				C372F2882FA934F2394986EF /* WADLRepresentation.swift in Sources */,
 				6E4A639D943E290D0A4CF250 /* WADLRequest.swift in Sources */,

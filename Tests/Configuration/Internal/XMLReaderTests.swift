@@ -15,9 +15,10 @@ class XMLReaderTests: XCTestCase {
     func testParser() throws {
         let bundle = Bundle(for: type(of: self))
         
-        if let url = bundle.url(forResource: "hr-rest", withExtension: "wadl") {
-            
-            let document = try XMLReader.document(contentsOfURL: url)
+        if let url = bundle.url(forResource: "hr-rest", withExtension: "wadl"),
+            let stream = InputStream(url: url) {
+
+            let document = try XMLReader.document(stream: stream)
             
             print(document)
             

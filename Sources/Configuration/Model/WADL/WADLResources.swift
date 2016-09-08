@@ -37,26 +37,7 @@ class WADLResources : WADLElement {
     weak var parent: WADLElement?
 }
 
-
-extension WADLResources : IndentedStringConvertable {
-    
-    func description(indent indent: Int) -> String {
-        
-        var description = "\(String(repeating: "\t", count: indent))resources: {"
-        
-        description.append("\r\(String(repeating: "\t", count: indent + 1))base: \'\(base.description)\'")
-        
-        for resource in self.resources {
-            description.append("\r\(resource.description(indent: indent + 1))")
-        }
-        
-        description.append("\r\(String(repeating: "\t", count: indent))}")
-        
-        return description
-    }
-}
-
-extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible {
+extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
         get {
@@ -69,6 +50,24 @@ extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible 
             return description(indent: 0)
         }
     }
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))resources: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent + 1))base: \'\(base.description)\'")
+        
+        for doc in self.docs {
+            description.append("\r\(doc.description(indent: indent + 1))")
+        }
+        
+        for resource in self.resources {
+            description.append("\r\(resource.description(indent: indent + 1))")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
 }
-
 

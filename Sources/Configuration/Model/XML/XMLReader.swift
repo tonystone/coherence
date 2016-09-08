@@ -10,18 +10,18 @@ import Foundation
 
 class XMLReader {
     
-    class func document(contentsOfURL url: URL) throws -> XMLDocument {
+    class func document(stream stream: InputStream) throws -> XMLDocument {
         let delegate = XMLParserDelegate()
         
-        if let parser = XMLParser(contentsOf: url) {
+        let parser = XMLParser(stream: stream)
             
-            parser.delegate = delegate
-            parser.shouldProcessNamespaces = true
-            parser.shouldReportNamespacePrefixes = true
-            parser.shouldResolveExternalEntities = true
+        parser.delegate = delegate
+        parser.shouldProcessNamespaces = true
+        parser.shouldReportNamespacePrefixes = true
+        parser.shouldResolveExternalEntities = true
         
-            parser.parse()
-        }
+        parser.parse()
+
         return delegate.document
     }
 }

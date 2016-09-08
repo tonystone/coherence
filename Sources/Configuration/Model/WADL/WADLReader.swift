@@ -75,19 +75,19 @@ class WADLReader {
         self.elementsByID[id] = element
     }
     
-    func read(contentsOfURL url: URL) throws -> WADLApplication {
+    func read(stream stream: InputStream) throws -> WADLApplication {
         
         // parse the XML into an XMLDocument object first
-        let document = try XMLReader.document(contentsOfURL: url)
+        let document = try XMLReader.document(stream: stream)
         
-        // Now parse the XMLDocument object 
+        // Now parse the XMLDocument object
         //
         // In this case we only care about the application element, we ignore all others.
         //
         for node in document.children {
             
             if let element = node as? XMLElement , element.name == "application" {
-
+                
                 // The parent of this application Element is always nil because Application has no parent in our model.
                 let application = try self.application(element, parent: nil)
                 
@@ -99,7 +99,7 @@ class WADLReader {
         // If no Application Element this is an error
         throw Errors.invalidWADL("Invalid wadl...")
     }
-
+    
     /*
         WADL Application Element
      */
@@ -245,10 +245,10 @@ class WADLReader {
     private func resource(_ element: XMLElement, parent: WADLElement?) throws -> WADLResource {
         
         // Attributes
-        var queryType: WADLQueryType? = nil
+        var queryType: WADLMediaType? = nil
         
         if let queryTypeString = element.attributes["queryType"] {
-           queryType = WADLQueryType(rawValue: queryTypeString)
+           queryType = WADLMediaType(rawValue: queryTypeString)
         }
 
         let resource = WADLResource(id: element.attributes["id"], path: element.attributes["path"], type: element.attributes["type"], queryType: queryType, parent: parent)
@@ -303,8 +303,20 @@ class WADLReader {
             resourceType.docs.append(try self.doc($0, parent: resourceType))
         }
         
+        // Zero or more param elements (see section 2.12 ) with one of the following values for its style attribute:
+        //      query
+        //          Specifies a URI query parameter for all child method elements of the resource type.
+        //      header
+        //          Specifies a HTTP header for use in the request part of all child method elements of the resource type.
+        //
         try elements.accept(min: 0, matching: element.name == "param") {
-            resourceType.params.append(try self.param($0, parent: resourceType))
+            
+            let param = try self.param($0, parent: resourceType)
+            
+            if ![WADLParam.Style.query, WADLParam.Style.header].contains(param.style) {
+                throw Errors.invalidWADL("Param elemenst within a resourceType can only be one of style \'query\' or \'heder\'.")
+            }
+            resourceType.params.append(param)
         }
         
         try elements.accept(min: 0, matching: element.name == "method") {
@@ -477,7 +489,7 @@ class WADLReader {
                 throw Errors.invalidWADL("Representation element missing required \"mediaType\" attribute")
             }
             
-            let representation = WADLRepresentation(mediaType: mediaType, id: element.attributes["id"], element: element.attributes["element"], profile: element.attributes["profile"], parent: parent)
+            let representation = WADLRepresentation(mediaType: WADLMediaType(rawValue: mediaType), id: element.attributes["id"], element: element.attributes["element"], profile: element.attributes["profile"], parent: parent)
             
             // Collect all the child elements for this element
             let elements = XMLNodeCollection<XMLElement>(nodes: element.children)
@@ -577,7 +589,18 @@ class WADLReader {
     }
     
     private func option(_ element: XMLElement, parent: WADLElement?) throws -> WADLOption {
-        return WADLOption(parent: parent)
+        
+        guard let value = element.attributes["value"] else {
+            throw Errors.invalidWADL("Param element missing required \"value\" attribute")
+        }
+        
+        var queryType: WADLMediaType? = nil
+        
+        if let queryTypeString = element.attributes["queryType"] {
+            queryType = WADLMediaType(rawValue: queryTypeString)
+        }
+        
+        return WADLOption(value: value, mediaType: queryType, parent: parent)
     }
     private func link(_ element: XMLElement, parent: WADLElement?) throws -> WADLLink {
         return WADLLink(parent: parent)

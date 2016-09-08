@@ -35,3 +35,34 @@ class WADLDoc : WADLElement  {
     
     weak var parent: WADLElement?
 }
+
+extension WADLDoc : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
+    
+    var description: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return description(indent: 0)
+        }
+    }
+    
+    func description(indent indent: Int) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))resources: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent + 1))lang: \'\(self.lang)\', title: \'\(self.title)\'")
+        
+        if let text = self.text {
+            description.append("\r text: \'\(text)\'")
+        }
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
+    }
+}
+
