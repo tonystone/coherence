@@ -1,20 +1,67 @@
-language: objective-c
-xcode_workspace: Example/Coherence.xcworkspace
-xcode_scheme: Coherence-Example
-osx_image: xcode7.3
-sudo: true
+language: generic
+
+git:
+  submodules: false
+
+matrix:
+  include:
+    -
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="pod lint"
+    - 
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6s" 
+         - TEST_SDK=iphonesimulator
+         - SCHEME=Coherence-Example
+    - 
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6" 
+         - TEST_SDK=iphonesimulator
+         - SCHEME=Coherence-Example
+    - 
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6" 
+         - TEST_SDK=iphonesimulator
+         - SCHEME=Coherence-Example
+    - 
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s" 
+         - TEST_SDK=iphonesimulator
+         - SCHEME=Coherence-Example
+    - 
+      os: osx
+      osx_image: xcode8
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s" 
+         - TEST_SDK=iphonesimulator
+         - SCHEME=Coherence-Example
+
 
 before_install:
-- brew install xctool
-- gem install cocoapods --quiet
-- pod --version
-- pod setup --silent
-- pod repo update --silent
+  #
+  # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
+  #
+  - if [ -e Gemfile ]; then gem install bundler ; fi
+  - if [ -e Gemfile ]; then bundler install ; fi
 
 script:
-- travis_wait pod lib lint
-
-- xctool -workspace Example/Coherence.xcworkspace -scheme Coherence-Example -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES build
+  - if [[ "$BUILD" == "pod lint"  ]]; then bundler exec pod lib lint ; fi
+  - if [[ "$BUILD" == "xcodebuild" ]]; then xcodebuild clean test -workspace Example/TraceLog.xcworkspace -scheme "$SCHEME" -destination "$TEST_DEST" -sdk "$TEST_SDK" GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | bundler exec xcpretty ; fi
 
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
