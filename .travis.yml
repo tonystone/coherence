@@ -58,6 +58,7 @@ before_install:
   #
   - if [ -e Gemfile ]; then gem install bundler ; fi
   - if [ -e Gemfile ]; then bundler install ; fi
+  - if [ -e Gemfile ]; then bundler exec pod repo update ; fi
 
 script:
   - if [[ "$BUILD" == "pod lint"  ]]; then bundler exec pod lib lint ; fi
