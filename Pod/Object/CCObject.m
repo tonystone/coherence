@@ -8,7 +8,8 @@
 
 #import "CCObject.h"
 #import <objc/runtime.h>
-#import <TraceLog/TraceLog.h>
+
+@import TraceLog;
 
 //
 // Forward declarations

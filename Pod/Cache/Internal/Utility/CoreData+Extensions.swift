@@ -29,7 +29,7 @@ internal extension NSManagedObjectModel {
         var hash = 0;
         
         for entityHash in self.entityVersionHashesByName.values {
-            hash = 31 &* hash &+ entityHash.hash;
+            hash = 31 &* hash &+ (entityHash as NSData).hash;
         }
         return String(hash);
     }

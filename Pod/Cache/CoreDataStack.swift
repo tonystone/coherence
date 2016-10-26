@@ -23,9 +23,9 @@ import TraceLog
 
 @objc public final class CoreDataStack: NSObject  {
     
-    private typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
+    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
-    private let impl: CoreDataStackType!
+    fileprivate let impl: CoreDataStackType!
     
     /**
         Initializes the receiver with a managed object model.
@@ -37,7 +37,7 @@ import TraceLog
     public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) {
 
         do {
-            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(CoreDataStack.self))
+            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(describing: CoreDataStack.self))
         
             super.init()
         } catch {
@@ -56,7 +56,7 @@ import TraceLog
     public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) {
         
         do {
-            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(CoreDataStack.self))
+            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: CoreDataStack.self))
             
             super.init()
         } catch {

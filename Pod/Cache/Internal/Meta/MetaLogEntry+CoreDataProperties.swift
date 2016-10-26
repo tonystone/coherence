@@ -25,7 +25,7 @@ internal extension MetaLogEntry {
     @NSManaged var sequenceNumber: Int32
     @NSManaged var previousSequenceNumber: Int32
     @NSManaged var transactionID: TransactionID?
-    @NSManaged var timestamp: NSTimeInterval
+    @NSManaged var timestamp: TimeInterval
     @NSManaged var type: MetaLogEntryType
     @NSManaged var updateEntityName: String?
     @NSManaged var updateObjectID: String?

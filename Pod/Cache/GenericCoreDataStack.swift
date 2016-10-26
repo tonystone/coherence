@@ -38,7 +38,7 @@ public let CCOverwriteIncompatibleStoreOption: String = "overwriteIncompatibleSt
 /**
     Default options passed to attached and configure the persistent stores.
  */
-public let defaultStoreOptions: [NSObject : AnyObject] = [
+public let defaultStoreOptions: [AnyHashable: Any] = [
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true
 ]
@@ -46,7 +46,7 @@ public let defaultStoreOptions: [NSObject : AnyObject] = [
 /**
     PersistentStore configuration settings.
  */
-public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [NSObject : AnyObject]?, migrationManager: NSMigrationManager?)
+public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?, migrationManager: NSMigrationManager?)
 
 /**
     Configuration options dictionary keyed by configuration name.  
@@ -69,13 +69,13 @@ public typealias asynErrorHandlerBlock = (NSError) -> Void
 /**
     A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
  */
-public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
+open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
     
-    private let managedObjectModel: NSManagedObjectModel
-    private let persistentStoreCoordinator: CoordinatorType
-    private let tag: String
-    private let mainContext: ContextType
-    private let errorHandlerBlock: (error: NSError) -> Void
+    fileprivate let managedObjectModel: NSManagedObjectModel
+    fileprivate let persistentStoreCoordinator: CoordinatorType
+    fileprivate let tag: String
+    fileprivate let mainContext: ContextType
+    fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
     
     /**
         Initializes the receiver with a managed object model.
@@ -86,7 +86,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
           - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
           - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
      */
-    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((error: NSError) -> Void)? = nil, logTag tag: String = String(GenericCoreDataStack.self)) throws {
+    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
         self.tag = tag
@@ -103,7 +103,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
         
         // Now the main thread context
-        mainContext = ContextType(concurrencyType: .MainQueueConcurrencyType)
+        mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
         
         //
@@ -111,7 +111,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         //
         // Note: We use the applications bundle not the classes or modules.
         //
-        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        let cachesURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         
         logInfo(tag) { "Store path: \(cachesURL.path ?? "Unknown")" }
         
@@ -120,7 +120,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         // There is only one so it's the default configuration
         if configurations.count == 1 {
             
-            let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix).sqlite")
+            let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).sqlite")
             
             if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
                 try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
@@ -133,7 +133,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                 
                 if configuration != defaultModelConfigurationName {
                     
-                    let storeURL = cachesURL.URLByAppendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
+                    let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
                     
                     if let (storeType, storeOptions, migrationManager) = options[configuration] {
                         try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
@@ -144,30 +144,30 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                 }
             }
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GenericCoreDataStack.handleContextDidSaveNotification(_:)), name: NSManagedObjectContextDidSaveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GenericCoreDataStack.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    public func mainThreadContext () -> NSManagedObjectContext {
+    open func mainThreadContext () -> NSManagedObjectContext {
         return mainContext
     }
     
-    public func editContext () -> NSManagedObjectContext {
+    open func editContext () -> NSManagedObjectContext {
         
-        logInfo(tag) { "Creating edit context for \(NSThread .currentThread())..." }
+        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
         
-        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-        context.parentContext = mainContext
+        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        context.parent = mainContext
         
         logInfo(tag) { "Edit context created." }
         
         return context
     }
     
-    private func addPersistentStore(storeType: String, configuration: String?, URL storeURL: NSURL, options: [NSObject : AnyObject]?, migrationManger migrator: NSMigrationManager?) throws {
+    fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?, migrationManger migrator: NSMigrationManager?) throws {
         
         do {
             //
@@ -175,18 +175,19 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             //
             if let migrationManager = migrator {
                 
-                if let mappingModel = NSMappingModel(fromBundles: nil, forSourceModel: migrationManager.sourceModel, destinationModel: migrationManager.destinationModel) {
+                if let mappingModel = NSMappingModel(from: nil, forSourceModel: migrationManager.sourceModel, destinationModel: migrationManager.destinationModel) {
                     
                     // TODO: Rename old file first
-                    try migrationManager.migrateStoreFromURL(storeURL, type: storeType, options: options, withMappingModel: mappingModel, toDestinationURL: storeURL, destinationType: storeType, destinationOptions: options)
+                    try migrationManager.migrateStore(from: storeURL, sourceType: storeType, options: options, with: mappingModel, toDestinationURL: storeURL, destinationType: storeType, destinationOptions: options)
                 }
             }
             
             logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
 
-            let fileManager = NSFileManager.defaultManager()
+            let fileManager = FileManager.default
+            let storePath = storeURL.path
             
-            if let storePath = storeURL.path where fileManager.fileExistsAtPath(storePath) {
+            if fileManager.fileExists(atPath: storePath) {
                 
                 let storeShmPath = "\(storePath)-shm"
                 let storeWalPath = "\(storePath)-wal"
@@ -196,10 +197,10 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                     
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
                     
-                    let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
+                    let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
                     logTrace(4) { "metadata: \(metadata)" }
                     
-                    if !persistentStoreCoordinator.managedObjectModel.isConfiguration(configuration, compatibleWithStoreMetadata: metadata) {
+                    if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
                         
                         try deleteIfExists(storePath)
                         try deleteIfExists(storeShmPath)
@@ -210,7 +211,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             
             logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
             
-            try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration:  configuration, URL: storeURL, options: options)
+            try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
 
             logInfo(tag) { "Persistent store attached successfully." }
             
@@ -238,29 +239,29 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         }
     }
     
-    private func deleteIfExists(path: String) throws {
+    fileprivate func deleteIfExists(_ path: String) throws {
         
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
-        if fileManager.fileExistsAtPath(path) {
+        if fileManager.fileExists(atPath: path) {
             
             logInfo(tag) { "Removing file \(path)." }
             
-            try fileManager.removeItemAtPath(path)
+            try fileManager.removeItem(atPath: path)
         }
     }
     
-    private func updateFileProtectionIfNeeded(path: String, requiredProtection: String) throws {
+    fileprivate func updateFileProtectionIfNeeded(_ path: String, requiredProtection: String) throws {
         
         logInfo(tag) { "Checking file protection attribute for file \(path)." }
         
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
-        if fileManager.fileExistsAtPath(path) {
+        if fileManager.fileExists(atPath: path) {
             
-            let currentAttributes = try fileManager.attributesOfItemAtPath(path)
+            let currentAttributes = try fileManager.attributesOfItem(atPath: path)
             
-            if let currentProtection = currentAttributes[NSFileProtectionKey] as? String {
+            if let currentProtection = currentAttributes[FileAttributeKey.protectionKey] as? String {
                 
                 logTrace(tag, level: 1) { "Current file protection \"\(currentProtection)\"." }
                 
@@ -268,7 +269,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
                     
                     logTrace(tag, level: 1) { "Updating file protection to \"\(requiredProtection)\"." }
                     
-                    try fileManager.setAttributes([NSFileProtectionKey: requiredProtection], ofItemAtPath: path)
+                    try fileManager.setAttributes([FileAttributeKey.protectionKey: requiredProtection], ofItemAtPath: path)
                 
                 } else {
                     logTrace(tag, level: 1) { "No update required." }
@@ -277,7 +278,7 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
         }
     }
     
-    private dynamic func handleContextDidSaveNotification(notification: NSNotification)  {
+    fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
         if let context = notification.object as? NSManagedObjectContext {
             
@@ -285,13 +286,13 @@ public class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator,
             // If the saved context has it's parent set to our 
             // mainThreadContext auto save the main context
             //
-            if context.parentContext == mainContext {
+            if context.parent == mainContext {
                 
-                mainContext.performBlock( { () -> Void in
+                mainContext.perform( { () -> Void in
                     do {
                         try self.mainContext.save()
                     } catch let error as NSError {
-                        self.errorHandlerBlock(error: error)
+                        self.errorHandlerBlock(error)
                     }
                 })
             }

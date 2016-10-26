@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public class SimpleEntity: NSManagedObjectModel {
+open class SimpleEntity: NSManagedObjectModel {
     
     @NSManaged var userId: NSNumber?
     @NSManaged var transactionId: String?

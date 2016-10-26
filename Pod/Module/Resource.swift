@@ -20,14 +20,14 @@
 import Foundation
 
 @objc public enum CCJSONType: Int {
-    case INSERT, UPDATE, FULL
+    case insert, update, full
 }
 
 @objc
 public protocol CCResource  : NSObjectProtocol  {
     
-    static func resourceWithJSONDictionary(jsonDictionary: [NSObject : AnyObject]!) -> CCResource!
+    static func resourceWithJSONDictionary(_ jsonDictionary: [AnyHashable: Any]!) -> CCResource!
     
-    func toJSONDictionary(type: CCJSONType) -> [NSObject : AnyObject]!
+    func toJSONDictionary(_ type: CCJSONType) -> [AnyHashable: Any]!
 
 }
