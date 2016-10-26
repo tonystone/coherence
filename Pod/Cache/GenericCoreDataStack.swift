@@ -113,7 +113,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         //
         let cachesURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         
-        logInfo(tag) { "Store path: \(cachesURL.path ?? "Unknown")" }
+        logInfo(tag) { "Store path: \(cachesURL.path)" }
         
         let configurations = managedObjectModel.configurations
         
@@ -182,7 +182,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 }
             }
             
-            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
+            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(persistentStoreType)."}
 
             let fileManager = FileManager.default
             let storePath = storeURL.path
@@ -209,7 +209,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 }
             }
             
-            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent ?? "Unknown")\" for type: \(persistentStoreType)."}
+            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(persistentStoreType)."}
             
             try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
 
