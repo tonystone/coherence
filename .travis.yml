@@ -3,6 +3,11 @@ language: generic
 git:
   submodules: false
 
+env:
+  global:
+    - WORKSPACE=Example/Coherence.xcworkspace
+    - SCHEME=Coherence-Example
+
 matrix:
   include:
     -
@@ -17,7 +22,6 @@ matrix:
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6s" 
          - TEST_SDK=iphonesimulator
-         - SCHEME=Coherence-Example
     - 
       os: osx
       osx_image: xcode8
@@ -25,7 +29,6 @@ matrix:
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6" 
          - TEST_SDK=iphonesimulator
-         - SCHEME=Coherence-Example
     - 
       os: osx
       osx_image: xcode8
@@ -33,7 +36,6 @@ matrix:
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6" 
          - TEST_SDK=iphonesimulator
-         - SCHEME=Coherence-Example
     - 
       os: osx
       osx_image: xcode8
@@ -41,7 +43,7 @@ matrix:
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s" 
          - TEST_SDK=iphonesimulator
-         - SCHEME=Coherence-Example
+
     - 
       os: osx
       osx_image: xcode8
@@ -49,20 +51,35 @@ matrix:
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s" 
          - TEST_SDK=iphonesimulator
-         - SCHEME=Coherence-Example
-
 
 before_install:
   #
   # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
   #
-  - if [ -e Gemfile ]; then gem install bundler ; fi
-  - if [ -e Gemfile ]; then bundler install ; fi
-  - if [ -e Gemfile ]; then bundler exec pod repo update ; fi
+  - |
+    if [ -e Gemfile."$TRAVIS_OS_NAME" ]; then
+       export BUNDLE_GEMFILE=Gemfile."$TRAVIS_OS_NAME"
+       gem install bundler
+       bundler install
+    fi
 
 script:
-  - if [[ "$BUILD" == "pod lint"  ]]; then bundler exec pod lib lint ; fi
-  - if [[ "$BUILD" == "xcodebuild" ]]; then xcodebuild clean test -workspace Example/Coherence.xcworkspace -scheme "$SCHEME" -destination "$TEST_DEST" -sdk "$TEST_SDK" GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | bundler exec xcpretty ; fi
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+       # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
+       rvm get head --auto-dotfiles || true
+    fi
+  - |
+    if [[ "$BUILD" == "pod lint" ]]; then
+        bundler exec pod repo update
+        bundler exec pod lib lint
+    fi
+  - |
+    if [[ "$BUILD" == "xcodebuild"  ]]; then
+        set -o pipefail
+        xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$TEST_DEST" -sdk "$TEST_SDK" -enableCodeCoverage YES -destination-timeout 240 | bundler exec xcpretty
+    fi
 
 after_success:
+  - sleep 5
   - bash <(curl -s https://codecov.io/bash)
