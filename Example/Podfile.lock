@@ -1,16 +1,16 @@
 PODS:
-  - Coherence (1.1.2):
-    - Coherence/No-Arc (= 1.1.2)
-    - TraceLog/ObjC (~> 1.0)
-    - TraceLog/Swift (~> 1.0)
-  - Coherence/No-Arc (1.1.2):
-    - TraceLog/ObjC (~> 1.0)
-    - TraceLog/Swift (~> 1.0)
-  - TraceLog/Core (1.0.2)
-  - TraceLog/ObjC (1.0.2):
-    - TraceLog/Core
-  - TraceLog/Swift (1.0.2):
-    - TraceLog/Core
+  - Coherence (2.0.0):
+    - Coherence/No-Arc (= 2.0.0)
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
+  - Coherence/No-Arc (2.0.0):
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
+  - TraceLog (2.0.1):
+    - TraceLog/Swift (= 2.0.1)
+  - TraceLog/ObjC (2.0.1):
+    - TraceLog/Swift
+  - TraceLog/Swift (2.0.1)
 
 DEPENDENCIES:
   - Coherence (from `../`)
@@ -20,7 +20,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: adefb2c5c5d6a68507ee7e665d8e846fba22cdea
-  TraceLog: 43ba29772366fa785112945cc8f689bd889cfd06
+  Coherence: 6825dc4e99bad4d4dec6c3f26c31abca2a80b800
+  TraceLog: 37035b5d79653592f949a8cd50ec044a45d6dfc1
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 7c7691c49031c69f23034d5a0df73dbc5aaaa7fb
+
+COCOAPODS: 1.1.1
