@@ -23,11 +23,11 @@ import CoreData
 internal typealias TransactionID = String
 
 @objc internal enum MetaLogEntryType: Int32 {
-    case BeginMarker = 1
-    case EndMarker   = 2
-    case Insert      = 3
-    case Update      = 4
-    case Delete      = 5
+    case beginMarker = 1
+    case endMarker   = 2
+    case insert      = 3
+    case update      = 4
+    case delete      = 5
 }
 
 @objc(MetaLogEntry) internal class MetaLogEntry: NSManagedObject {
@@ -36,7 +36,7 @@ internal typealias TransactionID = String
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
         }
-        func encodeWithCoder(aCoder: NSCoder) {
+        func encode(with aCoder: NSCoder) {
         }
     }
     /**
@@ -52,8 +52,8 @@ internal typealias TransactionID = String
             
             attributesAndValues = aDecoder.decodeObject() as? [String : AnyObject]
         }
-        override func encodeWithCoder(aCoder: NSCoder) {
-            aCoder.encodeObject(attributesAndValues)
+        override func encode(with aCoder: NSCoder) {
+            aCoder.encode(attributesAndValues)
         }
 
     }
@@ -69,9 +69,9 @@ internal typealias TransactionID = String
             updatedAttributes   = aDecoder.decodeObject() as? [String]
         }
         
-        override func encodeWithCoder(aCoder: NSCoder) {
-            aCoder.encodeObject(attributesAndValues)
-            aCoder.encodeObject(updatedAttributes)
+        override func encode(with aCoder: NSCoder) {
+            aCoder.encode(attributesAndValues)
+            aCoder.encode(updatedAttributes)
         }
 
     }
@@ -80,7 +80,7 @@ internal typealias TransactionID = String
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
         }
-        override func encodeWithCoder(aCoder: NSCoder) {}
+        override func encode(with aCoder: NSCoder) {}
     }
 
 }

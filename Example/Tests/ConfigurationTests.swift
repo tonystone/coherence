@@ -85,7 +85,7 @@ let intReadonlyTestValue: Int           = 1
 class TestSubClassConfigurationClass : Configuration<TestSubClassConfiguration> {
     
     override class func defaults () -> [String : AnyObject] {
-        return ["stringPropertyReadonly" : stringReadonlyTestValue, "intPropertyReadonly": intReadonlyTestValue]
+        return ["stringPropertyReadonly" : stringReadonlyTestValue as AnyObject, "intPropertyReadonly": intReadonlyTestValue as AnyObject]
     }
 }
 

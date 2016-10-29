@@ -16,16 +16,16 @@ let userName  = "First Last"
 
 class CoreDataStackTests: XCTestCase {
 
-    private var coreDataStack: CoreDataStack!
+    fileprivate var coreDataStack: CoreDataStack!
     
     override  func setUp() {
         super.setUp()
         
-        let bundle = NSBundle(forClass: CoreDataStackTests.self)
+        let bundle = Bundle(for: CoreDataStackTests.self)
         
-        if let dataModelURL = bundle.URLForResource("TestModel", withExtension: "momd") {
+        if let dataModelURL = bundle.url(forResource: "TestModel", withExtension: "momd") {
             
-            let model = NSManagedObjectModel(contentsOfURL: dataModelURL)
+            let model = NSManagedObjectModel(contentsOf: dataModelURL)
             coreDataStack = CoreDataStack(managedObjectModel: model!, storeNamePrefix: "TestModel")
         }
     }
@@ -47,7 +47,7 @@ class CoreDataStackTests: XCTestCase {
         
         let model = SimpleEntityModel()
         
-        var options: [NSObject:AnyObject] = defaultStoreOptions
+        var options: [AnyHashable: Any] = defaultStoreOptions
         options[CCOverwriteIncompatibleStoreOption] = true
 
         coreDataStack = CoreDataStack(managedObjectModel: model, storeNamePrefix: "TestModel", configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
@@ -57,12 +57,12 @@ class CoreDataStackTests: XCTestCase {
         // clean up
         coreDataStack = nil
         
-        let cachesURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
-        let storeURL = cachesURL.URLByAppendingPathComponent("TestModel.sqlite")
+        let cachesURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let storeURL = cachesURL.appendingPathComponent("TestModel.sqlite")
         
         try deleteIfExists(fileURL: storeURL)
-        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(storeURL.path!)-shm"))
-        try deleteIfExists(fileURL: NSURL(fileURLWithPath: "\(storeURL.path!)-wal"))
+        try deleteIfExists(fileURL: URL(fileURLWithPath: "\(storeURL.path)-shm"))
+        try deleteIfExists(fileURL: URL(fileURLWithPath: "\(storeURL.path)-wal"))
     }
     
     func testCRUD () {
@@ -72,9 +72,9 @@ class CoreDataStackTests: XCTestCase {
         
         var userId: NSManagedObjectID? = nil
         
-        editContext.performBlockAndWait {
+        editContext.performAndWait {
             
-            if let insertedUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext:editContext) as? User {
+            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "User", into:editContext) as? User {
                 
                 insertedUser.firstName = firstName
                 insertedUser.lastName  = lastName
@@ -91,9 +91,9 @@ class CoreDataStackTests: XCTestCase {
         
         var savedUser: NSManagedObject? = nil
         
-        mainThreadContext.performBlockAndWait {
+        mainThreadContext.performAndWait {
             if let userId = userId {
-                savedUser = mainThreadContext.objectWithID(userId)
+                savedUser = mainThreadContext.object(with: userId)
             }
         }
         
@@ -111,14 +111,13 @@ class CoreDataStackTests: XCTestCase {
 
     }
 
-    private func deleteIfExists(fileURL url: NSURL) throws {
+    fileprivate func deleteIfExists(fileURL url: URL) throws {
     
-        let fileManager = NSFileManager.defaultManager()
-        
-        if let path = url.path {
-            if fileManager.fileExistsAtPath(path) {
-                try fileManager.removeItemAtURL(url)
-            }
+        let fileManager = FileManager.default
+        let path = url.path
+
+        if fileManager.fileExists(atPath: path) {
+            try fileManager.removeItem(at: url)
         }
     }
 }

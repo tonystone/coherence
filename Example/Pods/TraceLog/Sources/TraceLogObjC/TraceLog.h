@@ -21,9 +21,6 @@
 #ifndef Pods_TraceLog_h
 #define Pods_TraceLog_h
 
-#import "TLLogger.h"
-#import "TLWriter.h"
-
 // Instance level macros
 
 /**
@@ -123,6 +120,15 @@
  */
 #define LogTrace(level,format,...) CLogTrace(level,NSStringFromClass([self class]), format, ##__VA_ARGS__)
 
+/*
+ WARNING:  LogIfEnabled is private and should not be used directly
+ */
+#if !TRACELOG_DISABLED
+    #define LogIfEnabled(logLevel,tagName,format,...) [TLLogger logPrimitive: logLevel tag: tagName file: [NSString stringWithUTF8String: __FILE__] function: [NSString stringWithUTF8String: __FUNCTION__] line: __LINE__ message: ^{ return [NSString stringWithFormat: format, ##__VA_ARGS__]; }]
+#else
+    #define LogIfEnabled(logLevel,label, format, ...) ((void)0)
+#endif
+
 // Low level - for use in mixed low level C code.
 /**
  * CLogError logs an message with LogLevel Error to the LogWriters.
@@ -133,7 +139,7 @@
  *
  * @Note Raises an NSInvalidArgumentException if format is nil.
  */
-#define CLogError(tag,format,...) LogIfEnabled(LogLevelError, tag, format, ##__VA_ARGS__)
+#define CLogError(tag,format,...) LogIfEnabled(TLLogger.LogLevelError, tag, format, ##__VA_ARGS__)
 
 /**
  * CLogWarning logs an message with LogLevel Error to the LogWriters.
@@ -144,7 +150,7 @@
  *
  * @Note Raises an NSInvalidArgumentException if format is nil.
  */
-#define CLogWarning(tag,format,...) LogIfEnabled(LogLevelWarning, tag, format, ##__VA_ARGS__)
+#define CLogWarning(tag,format,...) LogIfEnabled(TLLogger.LogLevelWarning, tag, format, ##__VA_ARGS__)
 
 /**
  * CLogInfo logs an message with LogLevel Error to the LogWriters.
@@ -155,7 +161,7 @@
  *
  * @Note Raises an NSInvalidArgumentException if format is nil.
  */
-#define CLogInfo(tag,format,...) LogIfEnabled(LogLevelInfo, tag, format, ##__VA_ARGS__)
+#define CLogInfo(tag,format,...) LogIfEnabled(TLLogger.LogLevelInfo, tag, format, ##__VA_ARGS__)
 
 /**
  * CLogTrace logs an message with LogLevel Error to the LogWriters.
@@ -167,6 +173,6 @@
  *
  * @Note Raises an NSInvalidArgumentException if format is nil.
  */
-#define CLogTrace(level,tag,format,...) LogIfEnabled((LogLevel) LogLevelTrace1 + ((int)level) - 1, tag, format, ##__VA_ARGS__)
+#define CLogTrace(level,tag,format,...) LogIfEnabled(TLLogger.LogLevelTrace1 + ((int)level) - 1, tag, format, ##__VA_ARGS__)
 
 #endif

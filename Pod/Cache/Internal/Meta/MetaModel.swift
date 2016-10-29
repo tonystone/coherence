@@ -33,62 +33,62 @@ internal class MetaModel: NSManagedObjectModel {
         super.init(coder: aDecoder)
     }
 
-    private func metaLogEntry() -> NSEntityDescription {
+    fileprivate func metaLogEntry() -> NSEntityDescription {
 
         var attributes = [NSAttributeDescription]()
 
         let sequenceNumber = NSAttributeDescription()
         sequenceNumber.name = "sequenceNumber"
-        sequenceNumber.optional = false
-        sequenceNumber.attributeType = NSAttributeType.Integer32AttributeType
+        sequenceNumber.isOptional = false
+        sequenceNumber.attributeType = NSAttributeType.integer32AttributeType
         attributes.append(sequenceNumber)
 
         let previousSequenceNumber = NSAttributeDescription()
         previousSequenceNumber.name = "previousSequenceNumber"
-        previousSequenceNumber.optional = false
-        previousSequenceNumber.attributeType = NSAttributeType.Integer32AttributeType
+        previousSequenceNumber.isOptional = false
+        previousSequenceNumber.attributeType = NSAttributeType.integer32AttributeType
         attributes.append(previousSequenceNumber)
 
         let transactionID = NSAttributeDescription()
         transactionID.name = "transactionID"
-        transactionID.optional = false
-        transactionID.attributeType = NSAttributeType.StringAttributeType
+        transactionID.isOptional = false
+        transactionID.attributeType = NSAttributeType.stringAttributeType
         attributes.append(transactionID)
 
         let timestamp = NSAttributeDescription()
         timestamp.name = "timestamp"
-        timestamp.optional = false
-        timestamp.attributeType = NSAttributeType.DateAttributeType
+        timestamp.isOptional = false
+        timestamp.attributeType = NSAttributeType.dateAttributeType
         attributes.append(timestamp)
 
         let type = NSAttributeDescription()
         type.name = "type"
-        type.optional = false
-        type.attributeType = NSAttributeType.Integer32AttributeType
+        type.isOptional = false
+        type.attributeType = NSAttributeType.integer32AttributeType
         attributes.append(type)
 
         let updateEntityName = NSAttributeDescription()
         updateEntityName.name = "updateEntityName"
-        updateEntityName.optional = true
-        updateEntityName.attributeType = NSAttributeType.StringAttributeType
+        updateEntityName.isOptional = true
+        updateEntityName.attributeType = NSAttributeType.stringAttributeType
         attributes.append(updateEntityName)
 
         let updateObjectID = NSAttributeDescription()
         updateObjectID.name = "updateObjectID"
-        updateObjectID.optional = true
-        updateObjectID.attributeType = NSAttributeType.StringAttributeType
+        updateObjectID.isOptional = true
+        updateObjectID.attributeType = NSAttributeType.stringAttributeType
         attributes.append(updateObjectID)
 
         let updateUniqueID = NSAttributeDescription()
         updateUniqueID.name = "updateUniqueID"
-        updateUniqueID.optional = true
-        updateUniqueID.attributeType = NSAttributeType.StringAttributeType
+        updateUniqueID.isOptional = true
+        updateUniqueID.attributeType = NSAttributeType.stringAttributeType
         attributes.append(updateUniqueID)
 
         let updateData = NSAttributeDescription()
         updateData.name = "updateData"
-        updateData.optional = true
-        updateData.attributeType = NSAttributeType.TransformableAttributeType
+        updateData.isOptional = true
+        updateData.attributeType = NSAttributeType.transformableAttributeType
         attributes.append(updateData)
 
         let entity = NSEntityDescription()
@@ -100,46 +100,46 @@ internal class MetaModel: NSManagedObjectModel {
         return entity;
     }
 
-    private func refreshStatus() -> NSEntityDescription {
+    fileprivate func refreshStatus() -> NSEntityDescription {
 
         var attributes = [NSAttributeDescription]()
 
         let name = NSAttributeDescription()
         name.name = "name"
-        name.optional = false
-        name.attributeType = NSAttributeType.StringAttributeType
+        name.isOptional = false
+        name.attributeType = NSAttributeType.stringAttributeType
         attributes.append(name)
 
         let type = NSAttributeDescription()
         type.name = "type"
-        type.optional = false
-        type.attributeType = NSAttributeType.StringAttributeType
+        type.isOptional = false
+        type.attributeType = NSAttributeType.stringAttributeType
 //        type.defaultValue = kDefaultRefreshType
         attributes.append(type)
 
         let scope = NSAttributeDescription()
         scope.name = "scope"
-        scope.optional = true
-        scope.attributeType = NSAttributeType.StringAttributeType
-        scope.indexed = true
+        scope.isOptional = true
+        scope.attributeType = NSAttributeType.stringAttributeType
+        scope.isIndexed = true
         attributes.append(scope)
 
         let lastSyncError = NSAttributeDescription()
         lastSyncError.name = "lastSyncError"
-        lastSyncError.optional = true
-        lastSyncError.attributeType = NSAttributeType.TransformableAttributeType
+        lastSyncError.isOptional = true
+        lastSyncError.attributeType = NSAttributeType.transformableAttributeType
         attributes.append(lastSyncError)
 
         let lastSyncStatus = NSAttributeDescription()
         lastSyncStatus.name = "lastSyncStatus"
-        lastSyncStatus.optional = true
-        lastSyncStatus.attributeType = NSAttributeType.Integer32AttributeType
+        lastSyncStatus.isOptional = true
+        lastSyncStatus.attributeType = NSAttributeType.integer32AttributeType
         attributes.append(lastSyncStatus)
 
         let lastSyncTime = NSAttributeDescription()
         lastSyncTime.name = "lastSyncTime"
-        lastSyncTime.optional = true
-        lastSyncTime.attributeType = NSAttributeType.DateAttributeType
+        lastSyncTime.isOptional = true
+        lastSyncTime.attributeType = NSAttributeType.dateAttributeType
         attributes.append(lastSyncTime)
 
         let entity = NSEntityDescription()

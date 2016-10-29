@@ -18,7 +18,7 @@ class SwiftTestModule : NSObject, CCModule {
     func start () {}
     func stop () {}
     
-    func serviceForProtocol(aProtocol: Protocol!) -> AnyObject! {
+    func serviceForProtocol(_ aProtocol: Protocol!) -> AnyObject! {
         return nil
     }
     

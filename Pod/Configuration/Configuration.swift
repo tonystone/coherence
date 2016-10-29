@@ -26,7 +26,7 @@ public let defaultDefaults  = [String: AnyObject]()
 /**
     Main Configuration implementation
 */
-public class Configuration<P: NSObjectProtocol> {
+open class Configuration<P: NSObjectProtocol> {
     
     /**
      *  This method should return a dictionary keyed by property name
@@ -34,7 +34,7 @@ public class Configuration<P: NSObjectProtocol> {
      *  be of the correct type for the property or be able to be converted
      *  to the correct type.
      */
-    public class func defaults () -> [String: AnyObject] {
+    open class func defaults () -> [String: AnyObject] {
         return defaultDefaults
     }
     
@@ -44,7 +44,7 @@ public class Configuration<P: NSObjectProtocol> {
      *
      * @default TCCConfiguration
      */
-    public class func bundleKey () -> String {
+    open class func bundleKey () -> String {
         return defaultBundleKey
     }
     
@@ -57,8 +57,8 @@ public class Configuration<P: NSObjectProtocol> {
      
         - Returns: An instance of an Object that implements the protocol specified by P.
      */
-    @warn_unused_result
-    public final class func instance(defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P {
+    
+    public final class func instance(_ defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
 
@@ -74,7 +74,7 @@ public class Configuration<P: NSObjectProtocol> {
 }
 
 @objc
-public class CCConfiguration : NSObject {
+open class CCConfiguration : NSObject {
 
     /**
         Creates an implementation and instance of an object for the protocol (P) specified.
@@ -85,8 +85,8 @@ public class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    @warn_unused_result
-    public final class func configurationForProtocol (objcProtocol: Protocol) -> AnyObject? {
+    
+    public final class func configurationForProtocol (_ objcProtocol: Protocol) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaultDefaults, bundleKey: defaultBundleKey)
     }
     
@@ -100,8 +100,8 @@ public class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    @warn_unused_result
-    public final class func configurationForProtocol (objcProtocol: Protocol, defaults: [String: AnyObject]) -> AnyObject? {
+    
+    public final class func configurationForProtocol (_ objcProtocol: Protocol, defaults: [String: AnyObject]) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaults, bundleKey: defaultBundleKey)
     }
     
@@ -116,8 +116,8 @@ public class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    @warn_unused_result
-    public final class func configurationForProtocol (objcProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject? {
+    
+    public final class func configurationForProtocol (_ objcProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaults, bundleKey: bundleKey)
     }
 }
@@ -126,31 +126,31 @@ public class CCConfiguration : NSObject {
  Internal load exstension
  */
 
-private enum Error: ErrorType {
-    case FailedInitialization(message: String)
+private enum Errors: Error {
+    case failedInitialization(message: String)
 }
 
-private func createInstance(conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject {
+private func createInstance(_ conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject {
     
-    guard let config = CCObject.instanceForProtocol(conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? NSObject else {
+    guard let config = CCObject.instance(for: conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? NSObject else {
         fatalError ("Could not create instance for protoocol \(NSStringFromProtocol(conformingProtocol))")
     }
     do {
         try loadObject(conformingProtocol, anObject: config, bundleKey: bundleKey, defaults: defaults)
         
         return config
-    } catch Error.FailedInitialization(let message) {
+    } catch Errors.failedInitialization(let message) {
         fatalError (message)
     } catch {
         fatalError ("\(error)")
     }
 }
 
-private func loadObject(conformingProtocol: Protocol, anObject: NSObject, bundleKey: String, defaults: [NSObject : AnyObject]) throws {
+private func loadObject(_ conformingProtocol: Protocol, anObject: NSObject, bundleKey: String, defaults: [AnyHashable: Any]) throws {
     
     var errorString = String()
     
-    let values = NSBundle.mainBundle().infoDictionary?[bundleKey] as? [NSObject: AnyObject]
+    let values = Bundle.main.infoDictionary?[bundleKey] as? [AnyHashable: Any]
     
     if values == nil  {
         logWarning { "Bundle key \(bundleKey) missing from Info.plist file or is an invalid type.  The type must be a dictionary." }
@@ -159,14 +159,14 @@ private func loadObject(conformingProtocol: Protocol, anObject: NSObject, bundle
     var propertyCount: UInt32 = 0
     let properties = protocol_copyPropertyList(conformingProtocol, &propertyCount)
     
-    defer { properties.destroy()
-        properties.dealloc(1)
+    defer { properties?.deinitialize()
+        properties?.deallocate(capacity: 1)
     }
     
     for index in 0..<propertyCount {
-        let property = properties[Int(index)]
+        let property = properties?[Int(index)]
         
-        if let propertyName = String.fromCString(property_getName(property)) {
+        if let propertyName = String(validatingUTF8: property_getName(property)) {
             
             if let value = values?[propertyName] {
                 
@@ -188,7 +188,7 @@ private func loadObject(conformingProtocol: Protocol, anObject: NSObject, bundle
     if errorString.characters.count > 0  {
         logError { errorString }
         
-        throw Error.FailedInitialization(message: "Failed to load \(String(anObject)) for protocol \(String(conformingProtocol)), Required values were missing from the info.plist and no default values were found.")
+        throw Errors.failedInitialization(message: "Failed to load \(String(describing: anObject)) for protocol \(String(describing: conformingProtocol)), Required values were missing from the info.plist and no default values were found.")
     }
 }
 

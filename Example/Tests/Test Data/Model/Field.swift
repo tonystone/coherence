@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 @objc(Field)
-public class Field: NSManagedObject {
+open class Field: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

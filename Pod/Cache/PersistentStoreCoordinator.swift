@@ -21,10 +21,10 @@ import Foundation
 import CoreData
 import TraceLog
 
-public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
+open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
     
     // The internal write ahead log for logging transactions
-    private let writeAheadLog: WriteAheadLog?
+    fileprivate let writeAheadLog: WriteAheadLog?
     
     override public convenience init(managedObjectModel model: NSManagedObjectModel) {
         self.init(managedObjectModel: model, enableLogging: true)
@@ -38,7 +38,7 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
             //
             // Figure out where to put things
             //
-            let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
+            let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
             
             //
             // Create our write ahead logger
@@ -60,7 +60,7 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
         logInfo { "Instance initialized." }
     }
     
-    override public func addPersistentStoreWithType(storeType: String, configuration: String?, URL storeURL: NSURL?, options: [NSObject : AnyObject]?) throws -> NSPersistentStore {
+    override open func addPersistentStore(ofType storeType: String, configurationName configuration: String?, at storeURL: URL?, options: [AnyHashable: Any]?) throws -> NSPersistentStore {
         
         logInfo {
             "Attaching persistent store for type: \(storeType) at path: \(storeURL?.absoluteString)..."
@@ -68,7 +68,7 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
         var persistentStore: NSPersistentStore? = nil;
         
         do {
-            persistentStore = try super.addPersistentStoreWithType(storeType, configuration: configuration, URL: storeURL, options: options)
+            persistentStore = try super.addPersistentStore(ofType: storeType, configurationName: configuration, at: storeURL, options: options)
         
             logInfo { "Persistent Store attached." }
 
@@ -80,27 +80,27 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
         return persistentStore!
     }
     
-    override public func removePersistentStore(store: NSPersistentStore) throws {
-        logInfo { "Removing persistent store for type: \(store.type) at path: \(store.URL)..." }
+    override open func remove(_ store: NSPersistentStore) throws {
+        logInfo { "Removing persistent store for type: \(store.type) at path: \(store.url)..." }
         
-        try super.removePersistentStore(store)
+        try super.remove(store)
 
         logInfo { "Persistent Store removed." }
     }
     
-    override public func executeRequest(request: NSPersistentStoreRequest, withContext context: NSManagedObjectContext) throws -> AnyObject {
+    override open func execute(_ request: NSPersistentStoreRequest, with context: NSManagedObjectContext) throws -> Any {
         
         switch (request.requestType) {
             
-        case NSPersistentStoreRequestType.SaveRequestType: fallthrough
-        case NSPersistentStoreRequestType.BatchUpdateRequestType:
+        case NSPersistentStoreRequestType.saveRequestType: fallthrough
+        case NSPersistentStoreRequestType.batchUpdateRequestType:
             
             if let log = self.writeAheadLog {
                 
                 //
                 // Obtain permanent IDs for all inserted objects
                 //
-                try context.obtainPermanentIDsForObjects([NSManagedObject](context.insertedObjects))
+                try context.obtainPermanentIDs(for: [NSManagedObject](context.insertedObjects))
                 
                 //
                 // Log the changes from the context in a transaction
@@ -111,7 +111,7 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
                 // Save the main context
                 //
                 do {
-                    let results = try super.executeRequest(request, withContext:context)
+                    let results = try super.execute(request, with:context)
                     
                     return results;
                 } catch {
@@ -122,9 +122,9 @@ public class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
             } else {
                 fallthrough
             }
-        case NSPersistentStoreRequestType.FetchRequestType: fallthrough
+        case NSPersistentStoreRequestType.fetchRequestType: fallthrough
         default:
-            return try super.executeRequest(request, withContext:context)
+            return try super.execute(request, with:context)
         }
     }
     

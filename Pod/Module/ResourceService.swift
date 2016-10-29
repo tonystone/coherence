@@ -25,12 +25,12 @@ public protocol CCResourceService : NSObjectProtocol {
     /**
         Start the service
      */
-    @available(*,deprecated=0.4.1)
+    @objc @available(*,deprecated: 0.4.1)
     optional func start ()
     
     /**
         Stop the service
      */
-    @available(*,deprecated=0.4.1)
+    @objc @available(*,deprecated: 0.4.1)
     optional func stop ()
 }

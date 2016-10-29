@@ -21,20 +21,20 @@ internal class SimpleEntityModel: NSManagedObjectModel {
         super.init(coder: aDecoder)
     }
     
-    private func simpleEntity() -> NSEntityDescription {
+    fileprivate func simpleEntity() -> NSEntityDescription {
         
         var attributes = [NSAttributeDescription]()
         
         let userId = NSAttributeDescription()
         userId.name = "userId"
-        userId.optional = false
-        userId.attributeType = NSAttributeType.Integer32AttributeType
+        userId.isOptional = false
+        userId.attributeType = NSAttributeType.integer32AttributeType
         attributes.append(userId)
         
         let transactionID = NSAttributeDescription()
         transactionID.name = "transactionID"
-        transactionID.optional = false
-        transactionID.attributeType = NSAttributeType.StringAttributeType
+        transactionID.isOptional = false
+        transactionID.attributeType = NSAttributeType.stringAttributeType
         attributes.append(transactionID)
         
         let entity = NSEntityDescription()
