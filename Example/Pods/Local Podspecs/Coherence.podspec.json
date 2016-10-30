@@ -15,8 +15,8 @@
   },
   "requires_arc": true,
   "module_name": "Coherence",
-  "source_files": "Pod/**/*",
-  "exclude_files": "Pod/Object/CCObject.*",
+  "source_files": "Sources/**/*",
+  "exclude_files": "Sources/Configuration/Internal/CCObject.*",
   "dependencies": {
     "TraceLog": [
       "~> 2.0"
@@ -29,7 +29,7 @@
     {
       "name": "No-Arc",
       "requires_arc": false,
-      "source_files": "Pod/Object/CCObject.*"
+      "source_files": "Sources/Configuration/Internal/CCObject.*"
     }
   ]
 }

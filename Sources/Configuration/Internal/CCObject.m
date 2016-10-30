@@ -64,9 +64,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
     Class implClass = [self classForProtocol: aProtocol baseClass: self];
     
     id instance = [[implClass alloc] init];
-//    
-//    [self loadObject: instance protocol: aProtocol bundle: [NSBundle mainBundle] bundleKey: bundleKey defaults: defaults];
-//    
+
 #if !__has_feature(objc_arc)
     return [instance autorelease];
 #else

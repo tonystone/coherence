@@ -182,7 +182,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 }
             }
             
-            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(persistentStoreType)."}
+            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
 
             let fileManager = FileManager.default
             let storePath = storeURL.path
@@ -209,7 +209,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 }
             }
             
-            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(persistentStoreType)."}
+            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
             
             try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
 

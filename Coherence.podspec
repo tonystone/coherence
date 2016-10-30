@@ -23,12 +23,12 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   
   s.module_name   = 'Coherence'
-  s.source_files  = 'Pod/**/*'
-  s.exclude_files = 'Pod/Object/CCObject.*'
+  s.source_files  = 'Sources/**/*'
+  s.exclude_files = 'Sources/Configuration/Internal/CCObject.*'
 
   s.subspec 'No-Arc' do |sp|
     sp.requires_arc = false
-    sp.source_files = 'Pod/Object/CCObject.*'
+    sp.source_files = 'Sources/Configuration/Internal/CCObject.*'
   end
 
   s.dependency 'TraceLog', "~> 2.0"
