@@ -1,5 +1,5 @@
 //
-//  SimpleEntityModel.swift
+//  TestModel2.swift
 //
 //
 //  Created by Paul Chang on 4/6/16.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-internal class SimpleEntityModel: NSManagedObjectModel {
+internal class TestModel2: NSManagedObjectModel {
     
     override init() {
         super.init()

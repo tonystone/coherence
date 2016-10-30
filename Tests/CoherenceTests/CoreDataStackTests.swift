@@ -21,13 +21,7 @@ class CoreDataStackTests: XCTestCase {
     override  func setUp() {
         super.setUp()
         
-        let bundle = Bundle(for: CoreDataStackTests.self)
-        
-        if let dataModelURL = bundle.url(forResource: "TestModel", withExtension: "momd") {
-            
-            let model = NSManagedObjectModel(contentsOf: dataModelURL)
-            coreDataStack = CoreDataStack(managedObjectModel: model!, storeNamePrefix: "TestModel")
-        }
+        coreDataStack = CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
     }
     
     override  func tearDown() {
@@ -45,12 +39,12 @@ class CoreDataStackTests: XCTestCase {
         
         coreDataStack = nil
         
-        let model = SimpleEntityModel()
+        let model = TestModel2()
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[CCOverwriteIncompatibleStoreOption] = true
 
-        coreDataStack = CoreDataStack(managedObjectModel: model, storeNamePrefix: "TestModel", configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+        coreDataStack = CoreDataStack(managedObjectModel: model, storeNamePrefix: String(describing: TestModel1.self), configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
         
         XCTAssertNotNil(coreDataStack)
         
