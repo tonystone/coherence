@@ -16,7 +16,7 @@
   "requires_arc": true,
   "module_name": "Coherence",
   "source_files": "Sources/**/*",
-  "exclude_files": "Sources/Configuration/Internal/CCObject.*",
+  "exclude_files": "Sources/ConfigurationCore/**/*",
   "dependencies": {
     "TraceLog": [
       "~> 2.0"
@@ -29,7 +29,7 @@
     {
       "name": "No-Arc",
       "requires_arc": false,
-      "source_files": "Sources/Configuration/Internal/CCObject.*"
+      "source_files": "Sources/ConfigurationCore/**/*"
     }
   ]
 }

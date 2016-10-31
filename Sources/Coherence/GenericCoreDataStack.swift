@@ -251,33 +251,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         }
     }
     
-    fileprivate func updateFileProtectionIfNeeded(_ path: String, requiredProtection: String) throws {
-        
-        logInfo(tag) { "Checking file protection attribute for file \(path)." }
-        
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: path) {
-            
-            let currentAttributes = try fileManager.attributesOfItem(atPath: path)
-            
-            if let currentProtection = currentAttributes[FileAttributeKey.protectionKey] as? String {
-                
-                logTrace(tag, level: 1) { "Current file protection \"\(currentProtection)\"." }
-                
-                if currentProtection != requiredProtection {
-                    
-                    logTrace(tag, level: 1) { "Updating file protection to \"\(requiredProtection)\"." }
-                    
-                    try fileManager.setAttributes([FileAttributeKey.protectionKey: requiredProtection], ofItemAtPath: path)
-                
-                } else {
-                    logTrace(tag, level: 1) { "No update required." }
-                }
-            }
-        }
-    }
-    
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
         if let context = notification.object as? NSManagedObjectContext {
