@@ -25,7 +25,7 @@ import TraceLog
     
     fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
-    fileprivate let impl: CoreDataStackType!
+    fileprivate let impl: CoreDataStackType
     
     /**
         Initializes the receiver with a managed object model.
@@ -34,15 +34,8 @@ import TraceLog
           - managedObjectModel: A managed object model.
           - storeNamePrefix: A unique name prefix for the persistent store to be created.
     */
-    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) {
-
-        do {
-            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(describing: CoreDataStack.self))
-        
-            super.init()
-        } catch {
-            return nil
-        }
+    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) throws {
+        impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(describing: CoreDataStack.self))
     }
     
     /**
@@ -53,15 +46,8 @@ import TraceLog
           - storeNamePrefix: A unique name prefix for the persistent store to be created.
           - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
      */
-    public init?(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) {
-        
-        do {
-            impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: CoreDataStack.self))
-            
-            super.init()
-        } catch {
-            return nil
-        }
+    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) throws {
+        impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: CoreDataStack.self))
     }
     
     public func mainThreadContext () -> NSManagedObjectContext {

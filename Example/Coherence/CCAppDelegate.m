@@ -19,10 +19,16 @@
     
     NSURL *                dataCacheModelURL = [bundle URLForResource: @"Example" withExtension: @"momd"];
     NSManagedObjectModel * model = [[NSManagedObjectModel alloc] initWithContentsOfURL: dataCacheModelURL];
-     
-    CoreDataStack * coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model storeNamePrefix:@"Example"];
     
-    NSLog(@"%@", coreDataStack);
+    NSError * error = nil;
+    
+    CoreDataStack * coreDataStack = [[CoreDataStack alloc] initWithManagedObjectModel: model storeNamePrefix:@"Example" error: &error];
+    
+    if (error) {
+        NSLog(@"Failed to initialize the CoreDataStack: %@", error.localizedDescription);
+    } else {
+        NSLog(@"%@", coreDataStack);
+    }
     
     return YES;
 }
