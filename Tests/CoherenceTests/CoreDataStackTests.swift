@@ -21,7 +21,11 @@ class CoreDataStackTests: XCTestCase {
     override  func setUp() {
         super.setUp()
         
-        coreDataStack = CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
+        do {
+            coreDataStack = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
     
     override  func tearDown() {
@@ -44,7 +48,7 @@ class CoreDataStackTests: XCTestCase {
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[CCOverwriteIncompatibleStoreOption] = true
 
-        coreDataStack = CoreDataStack(managedObjectModel: model, storeNamePrefix: String(describing: TestModel1.self), configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+        coreDataStack = try CoreDataStack(managedObjectModel: model, storeNamePrefix: String(describing: TestModel1.self), configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
         
         XCTAssertNotNil(coreDataStack)
         
