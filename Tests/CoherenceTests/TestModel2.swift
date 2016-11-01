@@ -26,36 +26,75 @@ internal class TestModel2: NSManagedObjectModel {
     override init() {
         super.init()
         
-        self.entities = [self.simpleEntity()]
-        self.versionIdentifiers = [1]
+        let userEntity = self.userEntity()
+        let roleEntity = self.roleEntity()
+        
+        self.entities = [userEntity, roleEntity]
+        
+        self.setEntities([userEntity], forConfigurationName: "PersistentEntities")
+        self.setEntities([userEntity], forConfigurationName: "TransientEntities")
+        
+        self.versionIdentifiers = [2]
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    fileprivate func simpleEntity() -> NSEntityDescription {
+    fileprivate func userEntity() -> NSEntityDescription {
         
         var attributes = [NSAttributeDescription]()
         
-        let userId = NSAttributeDescription()
-        userId.name = "userId"
-        userId.isOptional = false
-        userId.attributeType = NSAttributeType.integer32AttributeType
-        attributes.append(userId)
+        var attribute = NSAttributeDescription()
+        attribute.name = "firstName"
+        attribute.isOptional = true
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
         
-        let transactionID = NSAttributeDescription()
-        transactionID.name = "transactionID"
-        transactionID.isOptional = false
-        transactionID.attributeType = NSAttributeType.stringAttributeType
-        attributes.append(transactionID)
+        attribute = NSAttributeDescription()
+        attribute.name = "lastName"
+        attribute.isOptional = true
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        attribute = NSAttributeDescription()
+        attribute.name = "userName"
+        attribute.isOptional = false
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
         
         let entity = NSEntityDescription()
-        entity.name = "SimpleEntity"
-        entity.managedObjectClassName = "SimpleEntity"
+        entity.name = "User"
+        entity.managedObjectClassName = "User"
+        
+        entity.properties = attributes
+        
+        return entity;
+    }
+    
+    fileprivate func roleEntity() -> NSEntityDescription {
+        
+        var attributes = [NSAttributeDescription]()
+        
+        var attribute = NSAttributeDescription()
+        attribute.name = "name"
+        attribute.isOptional = false
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        attribute = NSAttributeDescription()
+        attribute.name = "description"
+        attribute.isOptional = true
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        let entity = NSEntityDescription()
+        entity.name = "Role"
+        entity.managedObjectClassName = "NSManagedObject"
         
         entity.properties = attributes
         
         return entity;
     }
 }
+

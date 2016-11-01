@@ -22,60 +22,64 @@ import XCTest
 import CoreData
 import Coherence
 
-let firstName = "First"
-let lastName  = "Last"
-let userName  = "First Last"
+fileprivate let firstName = "First"
+fileprivate let lastName  = "Last"
+fileprivate let userName  = "First Last"
 
 class CoreDataStackTests: XCTestCase {
-
-    fileprivate var coreDataStack: CoreDataStack!
     
-    override  func setUp() {
+    override func setUp() {
         super.setUp()
         
         do {
-            coreDataStack = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
+            try removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    override  func tearDown() {
-        coreDataStack = nil
-        
+    override func tearDown() {
+        do {
+            try removePersistentStoreCache()
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
         super.tearDown()
     }
+    
 
     func testConstruction () {
-    
-        XCTAssertNotNil(coreDataStack)
+        
+        let storePrefix = String(describing: TestModel1.self)
+        
+        do {
+            let _ = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix)
+            
+            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
     
-    func testStackCreation_OverrideStoreIfModelIncompatible() throws {
+    func testConstruction_WithOptions () {
         
-        coreDataStack = nil
-        
-        let model = TestModel2()
-        
+        let storePrefix                 = String(describing: TestModel1.self)
         var options: [AnyHashable: Any] = defaultStoreOptions
-        options[CCOverwriteIncompatibleStoreOption] = true
-
-        coreDataStack = try CoreDataStack(managedObjectModel: model, storeNamePrefix: String(describing: TestModel1.self), configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
         
-        XCTAssertNotNil(coreDataStack)
+        options[OverwriteIncompatibleStoreOption] = true
         
-        // clean up
-        coreDataStack = nil
-        
-        let cachesURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        let storeURL = cachesURL.appendingPathComponent("TestModel.sqlite")
-        
-        try deleteIfExists(fileURL: storeURL)
-        try deleteIfExists(fileURL: URL(fileURLWithPath: "\(storeURL.path)-shm"))
-        try deleteIfExists(fileURL: URL(fileURLWithPath: "\(storeURL.path)-wal"))
+        do {
+            let _ = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix, configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            
+            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
     
-    func testCRUD () {
+    func testCRUD () throws {
+    
+        let coreDataStack = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
         
         let editContext       = coreDataStack.editContext()
         let mainThreadContext = coreDataStack.mainThreadContext()

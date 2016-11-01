@@ -27,13 +27,13 @@ import TraceLog
 
     Use this name if you override the options passed.
 */
-public let defaultModelConfigurationName: String = "Default"
+public let defaultModelConfigurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
 
 /**
     An option – when set to true – will check if the persistent store and the model are incompatible.
     If so, the underlying persistent store will be removed and replaced.
  */
-public let CCOverwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
+public let OverwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
 
 /**
     Default options passed to attached and configure the persistent stores.
@@ -42,6 +42,11 @@ public let defaultStoreOptions: [AnyHashable: Any] = [
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true
 ]
+
+/**
+    If no storeType is passed in, this store type will be used
+ */
+public let defaultStoreType = NSSQLiteStoreType
 
 /**
     PersistentStore configuration settings.
@@ -57,7 +62,7 @@ public typealias ConfigurationOptionsType = [String : PersistentStoreConfigurati
 /**
     The detault configuration options used to configure the persistent store when no override is supplied.
  */
-public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: NSSQLiteStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
+public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
 
 /**
     There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently 
@@ -120,26 +125,32 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         // There is only one so it's the default configuration
         if configurations.count == 1 {
             
-            let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).sqlite")
-            
             if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
+                
+                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(storeType)")
+                
                 try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                 
             } else {
-                try self.addPersistentStore(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
+                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(defaultStoreType)")
+                
+                try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
             }
         } else {
             for configuration in configurations {
                 
                 if configuration != defaultModelConfigurationName {
                     
-                    let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).sqlite")
-                    
                     if let (storeType, storeOptions, migrationManager) = options[configuration] {
+                        
+                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(storeType)")
+                        
                         try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         
                     } else {
-                        try self.addPersistentStore(NSSQLiteStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
+                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(defaultStoreType)")
+                        
+                        try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
                     }
                 }
             }
@@ -193,7 +204,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 let storeWalPath = "\(storePath)-wal"
                 
                 // Check the store for compatibility if requested by developer.
-                if options?[CCOverwriteIncompatibleStoreOption] as? Bool == true {
+                if options?[OverwriteIncompatibleStoreOption] as? Bool == true {
                     
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
                     
