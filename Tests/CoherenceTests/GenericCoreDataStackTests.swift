@@ -78,6 +78,19 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
+    func testConstruction_WithEmptyOptions() {
+        
+        let storePrefix = String(describing: TestModel1.self)
+        
+        do {
+            let _ = try CoreDataStackType(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix, configurationOptions: [:])
+            
+            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     func testConstruction_MultiConfiguration_SQLiteStoreType() throws {
         
         let storePrefix = String(describing: TestModel2.self)
