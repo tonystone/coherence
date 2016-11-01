@@ -186,6 +186,22 @@ class GenericCoreDataStackTests: XCTestCase {
         XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: storeType, configuration: nil))
     }
     
+    func testConstruction_WithAsyncErrorHandler() {
+        
+        let storePrefix = String(describing: TestModel1.self)
+        
+        do {
+            let _ = try CoreDataStackType(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix, asyncErrorBlock: { (error) -> Void in
+                // Async Error block
+                print(error.localizedDescription)
+            })
+            
+            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     func testCRUD () throws {
         
         let coreDataStack = try CoreDataStackType(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
