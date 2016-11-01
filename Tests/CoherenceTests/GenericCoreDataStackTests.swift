@@ -183,8 +183,8 @@ class GenericCoreDataStackTests: XCTestCase {
         let prefix      = String(describing: type(of: model.self))
         let storeType   = NSSQLiteStoreType
         
-        // Initialize model 3 (no configurations), with model 1s name
-        let _ = try CoreDataStackType(managedObjectModel: TestModel3(), storeNamePrefix: prefix)
+        // Initialize model 2 (no configurations), with model 1s name
+        let _ = try CoreDataStackType(managedObjectModel: TestModel2(), storeNamePrefix: prefix)
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
@@ -261,4 +261,5 @@ class GenericCoreDataStackTests: XCTestCase {
             XCTFail()
         }
     }
+
 }
