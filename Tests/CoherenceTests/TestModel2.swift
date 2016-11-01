@@ -31,9 +31,6 @@ internal class TestModel2: NSManagedObjectModel {
         
         self.entities = [userEntity, roleEntity]
         
-        self.setEntities([userEntity], forConfigurationName: "PersistentEntities")
-        self.setEntities([userEntity], forConfigurationName: "TransientEntities")
-        
         self.versionIdentifiers = [2]
     }
     

@@ -27,9 +27,8 @@ internal class TestModel1: NSManagedObjectModel {
         super.init()
         
         let userEntity = self.userEntity()
-        let roleEntity = self.roleEntity()
         
-        self.entities = [userEntity, roleEntity]
+        self.entities = [userEntity]
         
         self.versionIdentifiers = [1]
     }
@@ -63,26 +62,6 @@ internal class TestModel1: NSManagedObjectModel {
         let entity = NSEntityDescription()
         entity.name = "User"
         entity.managedObjectClassName = "User"
-        
-        entity.properties = attributes
-        
-        return entity;
-    }
-    
-    fileprivate func roleEntity() -> NSEntityDescription {
-        
-        var attributes = [NSAttributeDescription]()
-        
-        let attribute = NSAttributeDescription()
-        attribute.name = "name"
-        attribute.isOptional = false
-        attribute.attributeType = NSAttributeType.stringAttributeType
-        attributes.append(attribute)
-        
-        
-        let entity = NSEntityDescription()
-        entity.name = "Role"
-        entity.managedObjectClassName = "NSManagedObject"
         
         entity.properties = attributes
         

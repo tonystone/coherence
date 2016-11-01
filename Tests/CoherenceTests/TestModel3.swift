@@ -26,10 +26,14 @@ internal class TestModel3: NSManagedObjectModel {
         super.init()
         
         let userEntity = self.userEntity()
+        let roleEntity = self.roleEntity()
         
-        self.entities = [userEntity]
+        self.entities = [userEntity, roleEntity]
         
-        self.versionIdentifiers = [1]
+        self.setEntities([userEntity], forConfigurationName: "PersistentEntities")
+        self.setEntities([userEntity], forConfigurationName: "TransientEntities")
+        
+        self.versionIdentifiers = [3]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,5 +70,31 @@ internal class TestModel3: NSManagedObjectModel {
         
         return entity;
     }
+    
+    fileprivate func roleEntity() -> NSEntityDescription {
+        
+        var attributes = [NSAttributeDescription]()
+        
+        var attribute = NSAttributeDescription()
+        attribute.name = "name"
+        attribute.isOptional = false
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        attribute = NSAttributeDescription()
+        attribute.name = "description"
+        attribute.isOptional = true
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        let entity = NSEntityDescription()
+        entity.name = "Role"
+        entity.managedObjectClassName = "NSManagedObject"
+        
+        entity.properties = attributes
+        
+        return entity;
+    }
+
     
 }
