@@ -66,7 +66,7 @@ class CoreDataStackTests: XCTestCase {
         let storePrefix                 = String(describing: TestModel1.self)
         var options: [AnyHashable: Any] = defaultStoreOptions
         
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
         
         do {
             let _ = try CoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix, configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])

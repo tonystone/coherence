@@ -33,7 +33,7 @@ public let defaultModelConfigurationName: String = "PF_DEFAULT_CONFIGURATION_NAM
     An option – when set to true – will check if the persistent store and the model are incompatible.
     If so, the underlying persistent store will be removed and replaced.
  */
-public let OverwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
+public let overwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
 
 /**
     Default options passed to attached and configure the persistent stores.
@@ -204,7 +204,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 let storeWalPath = "\(storePath)-wal"
                 
                 // Check the store for compatibility if requested by developer.
-                if options?[OverwriteIncompatibleStoreOption] as? Bool == true {
+                if options?[overwriteIncompatibleStoreOption] as? Bool == true {
                     
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
                     

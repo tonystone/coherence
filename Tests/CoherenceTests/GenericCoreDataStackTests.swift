@@ -70,7 +70,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
         
         do {
             let _ = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix, configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
@@ -101,7 +101,7 @@ class GenericCoreDataStackTests: XCTestCase {
         let prefix = String(describing: type(of: model.self))
         
         var options: [AnyHashable: Any] = defaultStoreOptions
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
@@ -123,7 +123,7 @@ class GenericCoreDataStackTests: XCTestCase {
         let prefix = String(describing: type(of: model.self))
         
         var options: [AnyHashable: Any] = defaultStoreOptions
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
@@ -145,7 +145,7 @@ class GenericCoreDataStackTests: XCTestCase {
         let prefix = String(describing: type(of: model.self))
         
         var options: [AnyHashable: Any] = defaultStoreOptions
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
@@ -187,7 +187,7 @@ class GenericCoreDataStackTests: XCTestCase {
         let _ = try CoreDataStackType(managedObjectModel: TestModel3(), storeNamePrefix: prefix)
         
         var options: [AnyHashable: Any] = defaultStoreOptions
-        options[OverwriteIncompatibleStoreOption] = true
+        options[overwriteIncompatibleStoreOption] = true
 
         // Now use model 1 with model 1s name
         let _ = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix, configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options, migrationManager: nil)])
