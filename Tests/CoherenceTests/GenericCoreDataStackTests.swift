@@ -186,13 +186,17 @@ class GenericCoreDataStackTests: XCTestCase {
         // Initialize model 2 (no configurations), with model 1s name
         let _ = try CoreDataStackType(managedObjectModel: TestModel2(), storeNamePrefix: prefix)
         
+        let storeDate = try persistentStoreDate(storePrefix: prefix, storeType: storeType, configuration: nil)
+        
+        sleep(2)
+        
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
 
         // Now use model 1 with model 1s name
         let _ = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix, configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options, migrationManager: nil)])
         
-        XCTAssertTrue(try persistentStoreExists(storePrefix: prefix, storeType: storeType, configuration: nil))
+        XCTAssertTrue(try persistentStoreDate(storePrefix: prefix, storeType: storeType, configuration: nil) > storeDate)
     }
     
     func testConstruction_WithAsyncErrorHandler() {
