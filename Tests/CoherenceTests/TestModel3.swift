@@ -1,7 +1,6 @@
 ///
-///  TestModel1.swift
+///  TestModel3.swift
 ///
-///  Copyright 2016 The Climate Corporation
 ///  Copyright 2016 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,21 +15,25 @@
 ///  See the License for the specific language governing permissions and
 ///  limitations under the License.
 ///
-///  Created by Tony Stone on 10/30/16.
+///  Created by Tony Stone on 10/31/16.
 ///
 import Foundation
 import CoreData
 
-internal class TestModel1: NSManagedObjectModel {
+internal class TestModel3: NSManagedObjectModel {
     
     override init() {
         super.init()
         
         let userEntity = self.userEntity()
+        let roleEntity = self.roleEntity()
         
-        self.entities = [userEntity]
+        self.entities = [userEntity, roleEntity]
         
-        self.versionIdentifiers = [1]
+        self.setEntities([userEntity], forConfigurationName: "PersistentEntities")
+        self.setEntities([userEntity], forConfigurationName: "TransientEntities")
+        
+        self.versionIdentifiers = [3]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,5 +70,31 @@ internal class TestModel1: NSManagedObjectModel {
         
         return entity;
     }
-}
+    
+    fileprivate func roleEntity() -> NSEntityDescription {
+        
+        var attributes = [NSAttributeDescription]()
+        
+        var attribute = NSAttributeDescription()
+        attribute.name = "name"
+        attribute.isOptional = false
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        attribute = NSAttributeDescription()
+        attribute.name = "description"
+        attribute.isOptional = true
+        attribute.attributeType = NSAttributeType.stringAttributeType
+        attributes.append(attribute)
+        
+        let entity = NSEntityDescription()
+        entity.name = "Role"
+        entity.managedObjectClassName = "NSManagedObject"
+        
+        entity.properties = attributes
+        
+        return entity;
+    }
 
+    
+}

@@ -20,7 +20,7 @@
 import TraceLog
 
 // Default values for override methods
-public let defaultBundleKey = "TCCConfiguration"
+public let defaultBundleKey = "CCConfiguration"
 public let defaultDefaults  = [String: AnyObject]()
 
 /**

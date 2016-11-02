@@ -9,10 +9,12 @@ All significant changes to this project will be documented in this file.
 - This CHANGELOG.md file.
 
 #### Updated
-- Changed from Swift 2.0 to Swift 3
-- Changed from CocoaPods 0.39.0 to 1.1.0
+- Changed from Swift 2.0 to Swift 3.
+- Changed from CocoaPods 0.39.0 to 1.1.0.
 - Change CoreDataStack init methods to throw instead of be failable.
-- Changed to TraceLog 2.0
+- Changed default Info.plist key to CCCOnfiguration.
+- Changed CCOverwriteIncompatibleStore to overwriteIncompatibleStore
+- Changed to TraceLog 2.0.
 
 #### Removed
 - Removed PersistentStoreCoordinator until the remainder of the implementation is complete.
