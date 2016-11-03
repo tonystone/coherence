@@ -43,12 +43,13 @@ let stringTestValue: String             = "String test value 2"
 let stringReadonlyTestValue: String     = "Readonly string test value"
 let intReadonlyTestValue: Int           = 1
 
-
 //
 // Test configuration when developers are using a pure protocol
 // for their configuration construction.
 //
-@objc protocol TestPureProtocolConfiguration : NSObjectProtocol {
+@objc
+internal
+protocol TestPureProtocolConfiguration : NSObjectProtocol {
 
 //    var charProperty: Character      { get set }
     var boolProperty: Bool      { get set }
@@ -65,7 +66,9 @@ let intReadonlyTestValue: Int           = 1
 //
 // Test configuration when developers are using a subclass
 // of CCConfiguration for their configuration using default values.
-@objc protocol TestSubClassConfiguration  : NSObjectProtocol {
+@objc
+internal
+protocol TestSubClassConfiguration  : NSObjectProtocol {
     
     //    var charProperty: Character      { get set }
     var boolProperty: Bool      { get set }
@@ -95,7 +98,7 @@ class ConfigurationTests : XCTestCase {
         
         XCTAssertNotNil(Configuration<TestPureProtocolConfiguration>.instance())
     }
-
+    
     func testPureProtocolConfigurationCRUD () {
         
         let configuration = Configuration<TestPureProtocolConfiguration>.instance()

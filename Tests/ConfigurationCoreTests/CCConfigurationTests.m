@@ -37,7 +37,7 @@ static NSString * stringReadonlyTestValue  = @"Readonly string test value";
 // Test configuration when developers are using a pure protocol
 // for their configuration construction.
 //
-@protocol TestPureProtocolConfiguration <NSObject>
+@protocol TestCCConfigurationProtocol1 <NSObject>
 
     @property(nonatomic, readwrite, assign) char       charProperty;
     @property(nonatomic, readwrite, assign) BOOL       boolProperty;
@@ -52,6 +52,23 @@ static NSString * stringReadonlyTestValue  = @"Readonly string test value";
 
 @end
 
+//
+// Test configuration when developers are using a pure protocol
+// for their configuration construction.
+//
+@protocol TestCCConfigurationProtocol2 <NSObject>
+
+    @property(nonatomic, readonly, strong) NSString * stringReadonlyProperty;
+
+@end
+
+@protocol TestCCConfigurationProtocol3 <NSObject>
+
+    @property(nonatomic, readwrite, strong) NSString * stringProperty;
+    @property(nonatomic, readonly, strong)  NSString * stringReadonlyProperty;
+
+@end
+
 @interface CCConfigurationTests : XCTestCase
 @end
 
@@ -59,11 +76,26 @@ static NSString * stringReadonlyTestValue  = @"Readonly string test value";
 
     - (void)testPureProtocolConfigurationConstruction {
     
-        XCTAssertNotNil([CCConfiguration configurationForProtocol:@protocol(TestPureProtocolConfiguration)]);
+        XCTAssertNotNil([CCConfiguration configurationForProtocol:@protocol(TestCCConfigurationProtocol1)]);
+    }
+
+    - (void)testPureProtocolConfigurationConstruction_WithDefaults {
+    
+        NSObject <TestCCConfigurationProtocol2> * configuration = [CCConfiguration configurationForProtocol:@protocol(TestCCConfigurationProtocol2) defaults:@{@"stringReadonlyProperty": stringReadonlyTestValue}];
+
+        XCTAssertTrue([configuration.stringReadonlyProperty isEqualToString: stringReadonlyTestValue]);
+    }
+
+    - (void)testPureProtocolConfigurationConstruction_WithDefaultsAndBundleKey {
+    
+        NSObject <TestCCConfigurationProtocol3> * configuration = [CCConfiguration configurationForProtocol:@protocol(TestCCConfigurationProtocol3) defaults:@{@"stringReadonlyProperty": stringReadonlyTestValue} bundleKey: @"CCCustomConfiguration"];
+        
+        XCTAssertTrue([configuration.stringProperty isEqualToString: stringPListTestValue]);
+        XCTAssertTrue([configuration.stringReadonlyProperty isEqualToString: stringReadonlyTestValue]);
     }
 
     - (void) testPureProtocolConfigurationCRUD {
-        NSObject <TestPureProtocolConfiguration> * configuration = [CCConfiguration configurationForProtocol:@protocol(TestPureProtocolConfiguration)];
+        NSObject <TestCCConfigurationProtocol1> * configuration = [CCConfiguration configurationForProtocol:@protocol(TestCCConfigurationProtocol1)];
 
         // Note all values are filled with the values from the info.plist
 

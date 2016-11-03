@@ -46,7 +46,6 @@ class CoreDataStackTests: XCTestCase {
         }
         super.tearDown()
     }
-    
 
     func testConstruction () {
         

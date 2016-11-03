@@ -25,7 +25,6 @@
 		DF2C9319F526BF93032E1EB2 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E24CF33E7AF94B910E2D265 /* Pods_Tests.framework */; };
 		EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = EA4D365C1C3DF58C003DC554 /* .travis.yml */; };
 		EAA8A3731D35C12700D0C1EA /* Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */; };
-		EABEDD381DC6732700D5785D /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABEDD251DC6732700D5785D /* SimpleEntity.swift */; };
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
 		EACAA3E91DC6CDCD00D3D371 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E61DC6CDCD00D3D371 /* CoreDataStackTests.swift */; };
 		EACAA3EA1DC6CDCD00D3D371 /* TestModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E71DC6CDCD00D3D371 /* TestModel2.swift */; };
@@ -73,7 +72,6 @@
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
 		EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Example.xcdatamodel; sourceTree = "<group>"; };
-		EABEDD251DC6732700D5785D /* SimpleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEntity.swift; sourceTree = "<group>"; };
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EABEDD4B1DC69B3400D5785D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				EACAA3FC1DC84EEB00D3D371 /* TestModel3.swift */,
 				EACAA3F01DC6D1DF00D3D371 /* User.swift */,
 				EACAA3F11DC6D1DF00D3D371 /* User+CoreDataProperties.swift */,
-				EABEDD251DC6732700D5785D /* SimpleEntity.swift */,
 				EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */,
 			);
 			path = CoherenceTests;
@@ -479,7 +476,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EACAA3EA1DC6CDCD00D3D371 /* TestModel2.swift in Sources */,
-				EABEDD381DC6732700D5785D /* SimpleEntity.swift in Sources */,
 				EACAA3F61DC6D22D00D3D371 /* TestModel1.swift in Sources */,
 				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
 				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,

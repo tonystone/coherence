@@ -61,7 +61,6 @@ open class Configuration<P: NSObjectProtocol> {
     public final class func instance(_ defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
-
         guard let conformingProtocol: Protocol = objc_getProtocol(String(reflecting: P.self)) else {
             fatalError ("Could not create instance for protoocol \(P.self)")
         }
@@ -85,7 +84,6 @@ open class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    
     public final class func configurationForProtocol (_ objcProtocol: Protocol) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaultDefaults, bundleKey: defaultBundleKey)
     }
@@ -100,7 +98,6 @@ open class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    
     public final class func configurationForProtocol (_ objcProtocol: Protocol, defaults: [String: AnyObject]) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaults, bundleKey: defaultBundleKey)
     }
@@ -116,7 +113,6 @@ open class CCConfiguration : NSObject {
         - Returns: An instance of an Object that implements the protocol specified by objcProtocol.
      */
     @objc
-    
     public final class func configurationForProtocol (_ objcProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject? {
         return createInstance(objcProtocol, defaults: defaults, bundleKey: bundleKey)
     }
@@ -125,7 +121,6 @@ open class CCConfiguration : NSObject {
 /**
  Internal load exstension
  */
-
 private enum Errors: Error {
     case failedInitialization(message: String)
 }
@@ -178,7 +173,7 @@ private func loadObject(_ conformingProtocol: Protocol, anObject: NSObject, bund
             } else {
                 
                 if errorString.characters.count == 0 {
-                    errorString += "The follwoing keys were missing from the info.plist and no default was supplied, a value is required.\r"
+                    errorString += "The following keys were missing from the info.plist and no default was supplied, a value is required.\r"
                 }
                 errorString += "\t\(propertyName)\r"
             }

@@ -27,6 +27,17 @@ internal func removePersistentStoreCache() throws {
     }
 }
 
+internal func persistentStoreDate(storePrefix: String, storeType: String,  configuration: String? = nil) throws -> Date {
+    
+    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration ?? "").\(storeType)").path
+    
+    let attributes = try FileManager.default.attributesOfItem(atPath: storePath)
+    
+    guard let date = attributes[FileAttributeKey.creationDate] as? Date else {
+        throw NSError(domain: "TestErrorDomain", code: 100, userInfo: [NSLocalizedDescriptionKey: "No creation date returned"])
+    }
+    return date
+}
 
 internal func persistentStoreExists(storePrefix: String, storeType: String,  configuration: String? = nil) throws -> Bool {
     
