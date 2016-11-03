@@ -173,7 +173,7 @@ private func loadObject(_ conformingProtocol: Protocol, anObject: NSObject, bund
             } else {
                 
                 if errorString.characters.count == 0 {
-                    errorString += "The follwoing keys were missing from the info.plist and no default was supplied, a value is required.\r"
+                    errorString += "The following keys were missing from the info.plist and no default was supplied, a value is required.\r"
                 }
                 errorString += "\t\(propertyName)\r"
             }
