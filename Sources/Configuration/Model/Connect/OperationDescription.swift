@@ -13,7 +13,7 @@ class OperationDescription : ConfigurationElement {
     ///
     /// MethodDescriptions must be complete on construction
     ///
-    init(type: String, consumes: [MediaType], produces: [MediaType], parameters: [ParameterDescription], responses: [ResponseDescription]) {
+    init(type: String, consumes: [MediaType], produces: [MediaType], parameters: [ParameterDescription], responses: [String : ResponseDescription]) {
         self.type = type
         self.consumes = consumes
         self.produces = produces
@@ -30,7 +30,7 @@ class OperationDescription : ConfigurationElement {
     let consumes: [MediaType]
     let produces: [MediaType]
     let parameters: [ParameterDescription]
-    let responses: [ResponseDescription]
+    let responses: [String : ResponseDescription]
     
     weak var resource: ResourceDescription?
 }
@@ -54,8 +54,8 @@ extension OperationDescription : CustomStringConvertible, CustomDebugStringConve
         
         description.append("\r\(String(repeating: "\t", count: indent + 1))type: '\(type)', consumes: \(self.consumes), produces: \(self.produces)")
         
-        for response in self.responses {
-            description.append("\r\(response.description(indent: indent + 1))")
+        for (code, response) in self.responses {
+            description.append("\r\(code) {\r\(response.description(indent: indent + 1))\r\(String(repeating: "\t", count: indent + 1))}")
         }
         
         description.append("\r\(String(repeating: "\t", count: indent))}")

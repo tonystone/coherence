@@ -26,3 +26,11 @@ struct MediaType : CustomStringConvertible {
         }
     }
 }
+
+extension MediaType : Hashable {
+    var hashValue: Int { return self.rawValue.hashValue }
+}
+
+internal func == (lhs: MediaType, rhs: MediaType) -> Bool {
+    return lhs.rawValue == rhs.rawValue
+}

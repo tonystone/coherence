@@ -1,24 +1,23 @@
 //
-//  ResponseDescription.swift
+//  RequestDescription.swift
 //  Pods
 //
-//  Created by Tony Stone on 9/19/16.
+//  Created by Tony Stone on 11/4/16.
 //
 //
 import Swift
 
-class ResponseDescription : ConfigurationElement {
+class RequestDescription : ConfigurationElement {
     
-    init(code: String, headers: [String : String], content:  [MediaType : SchemaType]) {
-        self.code = code
+    init(headers: [String : String], content: [MediaType : SchemaType]) {
         self.headers = headers
         self.content = content
     }
     
     var id: String {
-        return "\(self.code)"
+        return ""
     }
-    let code: String
+    
     let headers: [String : String]
     let content: [MediaType : SchemaType]
 }
@@ -26,7 +25,7 @@ class ResponseDescription : ConfigurationElement {
 ///
 /// Custom String Printing
 ///
-extension ResponseDescription : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable  {
+extension RequestDescription : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable  {
     
     var description: String {
         return description(indent: 0)
@@ -39,8 +38,6 @@ extension ResponseDescription : CustomStringConvertible, CustomDebugStringConver
     func description(indent indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indentFirst ? indent : 0))response: {"
-        
-        description.append("\r\(String(repeating: "\t", count: indent + 1))code: '\(self.code)'")
         
         for (key, value) in self.headers {
             description.append("\r\(String(repeating: "\t", count: indent + 1))header: \(key) : \(value)")
@@ -55,4 +52,5 @@ extension ResponseDescription : CustomStringConvertible, CustomDebugStringConver
         return description
     }
 }
+
 

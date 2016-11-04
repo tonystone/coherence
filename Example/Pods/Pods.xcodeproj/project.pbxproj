@@ -123,15 +123,14 @@
 		E86DD7B41160739CAAF6E172 /* MGWSDLExtendableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E50E1EC006EB75A8A8E1DE2 /* MGWSDLExtendableComponent.m */; };
 		EA0EBE251D930FF4002E5211 /* SchemaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EBE241D930FF4002E5211 /* SchemaObject.swift */; };
 		EA0EBE271D93102D002E5211 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EBE261D93102D002E5211 /* Scheme.swift */; };
-		EA1499C61DBE72000095E26F /* QueryParameterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1499C51DBE72000095E26F /* QueryParameterDescription.swift */; };
 		EA5737CD1D873C8C005C9D54 /* OpenAPIReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737CC1D873C8C005C9D54 /* OpenAPIReader.swift */; };
 		EA5737D81D87774A005C9D54 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737D51D87774A005C9D54 /* Configuration.swift */; };
 		EA5737D91D87774A005C9D54 /* ConfigurationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737D61D87774A005C9D54 /* ConfigurationReader.swift */; };
 		EA5737DA1D87774A005C9D54 /* ServiceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737D71D87774A005C9D54 /* ServiceDescription.swift */; };
 		EA5737DC1D8777F7005C9D54 /* ResourceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737DB1D8777F7005C9D54 /* ResourceDescription.swift */; };
 		EA5D86991D88D05B00154A9D /* OperationDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D86981D88D05B00154A9D /* OperationDescription.swift */; };
+		EA634EFB1DCD074200AC93E7 /* RequestDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA634EFA1DCD074200AC93E7 /* RequestDescription.swift */; };
 		EA64EC6E1DBBBA5900461F42 /* ParameterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA64EC6D1DBBBA5900461F42 /* ParameterDescription.swift */; };
-		EA64EC701DBBBD5200461F42 /* BodyParameterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA64EC6F1DBBBD5200461F42 /* BodyParameterDescription.swift */; };
 		EA9F52C11D958ECD00853E15 /* ConfigurationElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F52C01D958ECD00853E15 /* ConfigurationElement.swift */; };
 		EA9F52C31D95F5EA00853E15 /* SchemaArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F52C21D95F5EA00853E15 /* SchemaArray.swift */; };
 		EA9F52C61D95FD6A00853E15 /* SchemaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F52C51D95FD6A00853E15 /* SchemaType.swift */; };
@@ -144,7 +143,6 @@
 		EAA18ACD1D944722000AD30C /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA18ACC1D944722000AD30C /* DataType.swift */; };
 		EACDA6011D905D4100023339 /* ResponseDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACDA6001D905D4100023339 /* ResponseDescription.swift */; };
 		EACDA6031D907B4A00023339 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACDA6021D907B4A00023339 /* MediaType.swift */; };
-		EACDA6051D9091A300023339 /* HeaderParameterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACDA6041D9091A300023339 /* HeaderParameterDescription.swift */; };
 		EAF40BB41D7FB2A000A81ED5 /* IndentedStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF40BB31D7FB29F00A81ED5 /* IndentedStringConvertable.swift */; };
 		ECD1D4237AE80A06EE6EA91B /* MGWSDLInterfaceFault.h in Headers */ = {isa = PBXBuildFile; fileRef = DB71117FAFBAD6B73B809161 /* MGWSDLInterfaceFault.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED2B9928561C249558385017 /* WADLMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E7F667020299F6355C36A /* WADLMediaType.swift */; };
@@ -342,15 +340,14 @@
 		E7F921C2D17CDF7035F2DD10 /* Connect.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Connect.xcconfig; sourceTree = "<group>"; };
 		EA0EBE241D930FF4002E5211 /* SchemaObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchemaObject.swift; path = Connect/SchemaObject.swift; sourceTree = "<group>"; };
 		EA0EBE261D93102D002E5211 /* Scheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scheme.swift; path = Connect/Scheme.swift; sourceTree = "<group>"; };
-		EA1499C51DBE72000095E26F /* QueryParameterDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryParameterDescription.swift; path = Connect/QueryParameterDescription.swift; sourceTree = "<group>"; };
 		EA5737CC1D873C8C005C9D54 /* OpenAPIReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenAPIReader.swift; path = OpenAPI/OpenAPIReader.swift; sourceTree = "<group>"; };
 		EA5737D51D87774A005C9D54 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Connect/Configuration.swift; sourceTree = "<group>"; };
 		EA5737D61D87774A005C9D54 /* ConfigurationReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationReader.swift; path = Connect/ConfigurationReader.swift; sourceTree = "<group>"; };
 		EA5737D71D87774A005C9D54 /* ServiceDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceDescription.swift; path = Connect/ServiceDescription.swift; sourceTree = "<group>"; };
 		EA5737DB1D8777F7005C9D54 /* ResourceDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDescription.swift; path = Connect/ResourceDescription.swift; sourceTree = "<group>"; };
 		EA5D86981D88D05B00154A9D /* OperationDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OperationDescription.swift; path = Connect/OperationDescription.swift; sourceTree = "<group>"; };
+		EA634EFA1DCD074200AC93E7 /* RequestDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestDescription.swift; path = Connect/RequestDescription.swift; sourceTree = "<group>"; };
 		EA64EC6D1DBBBA5900461F42 /* ParameterDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterDescription.swift; path = Connect/ParameterDescription.swift; sourceTree = "<group>"; };
-		EA64EC6F1DBBBD5200461F42 /* BodyParameterDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BodyParameterDescription.swift; path = Connect/BodyParameterDescription.swift; sourceTree = "<group>"; };
 		EA9F52C01D958ECD00853E15 /* ConfigurationElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationElement.swift; path = Connect/ConfigurationElement.swift; sourceTree = "<group>"; };
 		EA9F52C21D95F5EA00853E15 /* SchemaArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchemaArray.swift; path = Connect/SchemaArray.swift; sourceTree = "<group>"; };
 		EA9F52C51D95FD6A00853E15 /* SchemaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchemaType.swift; path = Connect/SchemaType.swift; sourceTree = "<group>"; };
@@ -363,7 +360,6 @@
 		EAA18ACC1D944722000AD30C /* DataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataType.swift; path = Connect/DataType.swift; sourceTree = "<group>"; };
 		EACDA6001D905D4100023339 /* ResponseDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseDescription.swift; path = Connect/ResponseDescription.swift; sourceTree = "<group>"; };
 		EACDA6021D907B4A00023339 /* MediaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaType.swift; path = Connect/MediaType.swift; sourceTree = "<group>"; };
-		EACDA6041D9091A300023339 /* HeaderParameterDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderParameterDescription.swift; path = Connect/HeaderParameterDescription.swift; sourceTree = "<group>"; };
 		EAF40BB31D7FB29F00A81ED5 /* IndentedStringConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentedStringConvertable.swift; sourceTree = "<group>"; };
 		EB040B3125F62F4BA0DB803B /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78D018E82E7846DC11913BD /* MGWSDLBindingFaultReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MGWSDLBindingFaultReference.h; sourceTree = "<group>"; };
@@ -811,11 +807,9 @@
 				EA5737D71D87774A005C9D54 /* ServiceDescription.swift */,
 				EA5737DB1D8777F7005C9D54 /* ResourceDescription.swift */,
 				EA5D86981D88D05B00154A9D /* OperationDescription.swift */,
+				EA634EFA1DCD074200AC93E7 /* RequestDescription.swift */,
 				EACDA6001D905D4100023339 /* ResponseDescription.swift */,
 				EA64EC6D1DBBBA5900461F42 /* ParameterDescription.swift */,
-				EA1499C51DBE72000095E26F /* QueryParameterDescription.swift */,
-				EACDA6041D9091A300023339 /* HeaderParameterDescription.swift */,
-				EA64EC6F1DBBBD5200461F42 /* BodyParameterDescription.swift */,
 				EA9F52C51D95FD6A00853E15 /* SchemaType.swift */,
 				EA0EBE241D930FF4002E5211 /* SchemaObject.swift */,
 				EA9F52C21D95F5EA00853E15 /* SchemaArray.swift */,
@@ -1151,12 +1145,12 @@
 				EA5737D91D87774A005C9D54 /* ConfigurationReader.swift in Sources */,
 				EAA18ACD1D944722000AD30C /* DataType.swift in Sources */,
 				E60C2AF72C513ADE06AA959D /* InMemoryDataStore.swift in Sources */,
+				EA634EFB1DCD074200AC93E7 /* RequestDescription.swift in Sources */,
 				9B21B71A9055F1CCA929695C /* InMemoryReferenceObject.swift in Sources */,
 				0349D962C766109385A5A685 /* MappingServiceDescription.swift in Sources */,
 				B170C45CFC4497235073AF2D /* MetaLogEntry+CoreDataProperties.swift in Sources */,
 				27C1BEF3DA5BDEC3317F9BFB /* MetaLogEntry.swift in Sources */,
 				962819835E554D2CE672C70A /* MetaModel.swift in Sources */,
-				EA1499C61DBE72000095E26F /* QueryParameterDescription.swift in Sources */,
 				EA9F52CC1D96DCF700853E15 /* SchemaPrimitiveType.swift in Sources */,
 				BEEF12611A9F4DE7705728F3 /* MGWSDL+HTTP.m in Sources */,
 				3DBF3ECFA20913FADA7C5E5E /* MGWSDL+Types.m in Sources */,
@@ -1200,7 +1194,6 @@
 				641CDD3E0E47C8E0B1059745 /* WADLInclude.swift in Sources */,
 				369158FFFF3D8CD78D8DDC8D /* WADLLink.swift in Sources */,
 				71C52CA5058D48B197578A28 /* WADLMethod.swift in Sources */,
-				EACDA6051D9091A300023339 /* HeaderParameterDescription.swift in Sources */,
 				7891A2A44F011046BA4D5E88 /* WADLOption.swift in Sources */,
 				BF269456114346F05AF9241E /* WADLParam.swift in Sources */,
 				EA9F52C11D958ECD00853E15 /* ConfigurationElement.swift in Sources */,
@@ -1222,7 +1215,6 @@
 				EA9F52C81D95FE0D00853E15 /* SchemaString.swift in Sources */,
 				C4C9A59B3B1804228B0F10C3 /* XMLCDATA.swift in Sources */,
 				5203DE6BE51710A5AD24AEDE /* XMLCharacterData.swift in Sources */,
-				EA64EC701DBBBD5200461F42 /* BodyParameterDescription.swift in Sources */,
 				EA5737DA1D87774A005C9D54 /* ServiceDescription.swift in Sources */,
 				FD136DB36443F3093298A1ED /* XMLComment.swift in Sources */,
 				6DE7C4C2EFD3C3524F2D6836 /* XMLDocument.swift in Sources */,

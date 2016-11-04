@@ -13,18 +13,23 @@ import Swift
 ///
 enum ParameterLocation : String {
     case query
-    case header
     case path
-    case formData
-    case body
 }
+struct ParameterDescription : ConfigurationElement, IndentedStringConvertable  {
 
-protocol ParameterDescription : ConfigurationElement, CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable  {
-
-    var name: String { get }
-    var location: ParameterLocation { get }
-    var type: SchemaType { get }
-    var required: Bool { get }
+    init(name: String, location: ParameterLocation, type: SchemaPrimitiveType) {
+        self.name = name
+        self.location = location
+        self.type = type
+    }
+    
+    var id: String {
+        return "\(name):\(location)"
+    }
+    
+    let name: String
+    let location: ParameterLocation
+    let type: SchemaPrimitiveType
 }
 
 
@@ -45,7 +50,7 @@ extension ParameterDescription  {
         
         var description = "\(String(repeating: "\t", count: indentFirst ? indent : 0))parameter: {"
         
-        description.append("\r\(String(repeating: "\t", count: indent + 1))name: '\(self.name)', type: '\(self.type.description(indent: indent, indentFirst: false))', location: '\(self.location)', required: \(self.required ? "true" : "false"))")
+        description.append("\r\(String(repeating: "\t", count: indent + 1))name: '\(self.name)', type: '\(self.type.description(indent: indent, indentFirst: false))'")
         
         description.append("\r\(String(repeating: "\t", count: indent))}")
         
