@@ -58,8 +58,38 @@ final class OpenAPIReader : ConfigurationReader {
     private var consumes: [MediaType] = [MediaType.applicationJSON]
     private var produces: [MediaType] = [MediaType.applicationJSON]
     
-    private var references: [String : [String : Any]] = [:]
-    
+    ///
+    /// reference stores a dictionary of dictionaries that contains the OpenAPI json objects.
+    ///
+    /// Example:
+    ///
+    /// ["parameters" : [
+    ///                   "regionId" : [
+    ///                                 "name": "regionId",
+    ///                                 "in": "path",
+    ///                                 "description": "regionID to fetch",
+    ///                                 "required": true,
+    ///                                 "type": "integer"
+    ///                                ]
+    ///                 ],
+    ///  "definitions": [
+    ///                   "Country" : [
+    ///                                 "type": "object",
+    ///                                 "properties": [
+    ///                                                 "id": [
+    ///                                                        "type": "integer"
+    ///                                                       ],
+    ///                                                 "name": [
+    ///                                                         "type": "string"
+    ///                                                         ]
+    ///                                                ],
+    ///                                 "required": [ "id", "name" ]
+    ///                               ]
+    ///                 ]
+    /// ]
+    ///
+    private var references: [String : [String : [String : Any]]] = [:]
+
     ///
     /// Parse the OpenAPI spec input stream.
     ///
@@ -153,21 +183,21 @@ final class OpenAPIReader : ConfigurationReader {
         // First the parameters
         if let paramaters = spec["parameters"] as? [String : [String : Any]] {
             for (name, value) in paramaters {
-                try self.addReference(object: try self.parameter(value: value), key: name, at: "parameters")
+                try self.addReference(object: value, key: name, at: "parameters")
             }
         }
         // Now the definitions
         if let definitions = spec["definitions"] as? [String : [String : Any]] {
             for (name, value) in definitions {
                 /// Note a definition objects are JSON schema objects so we call self.schema
-                try self.addReference(object: try self.schema(value: value), key: name, at: "definitions")
+                try self.addReference(object: value, key: name, at: "definitions")
             }
         }
         
         var resources: [ResourceDescription] = []
         
         for (path, value) in paths {
-            resources.append(try self.path(path: path, value: value))
+            resources.append(try self.resource(path: path, value: value))
         }
         let basePath = spec["basePath"] as? String
 
@@ -179,7 +209,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     /// Parse an path element from the OpenAPI spec.
     ///
-    private func path(path: String, value: [String : Any]) throws -> ResourceDescription {
+    private func resource(path: String, value: [String : Any]) throws -> ResourceDescription {
         
         var pathParameters = try path.pathTemplateParameters()
         
@@ -239,7 +269,7 @@ final class OpenAPIReader : ConfigurationReader {
         
         // If this is a reference param, simply look it up
         if let ref = value["$ref"] as? String {
-            return try self.resolveReference(reference: ref)
+            return try parameter(value: try self.resolveReference(reference: ref))
         }
         //
         // It's not a reference parameter
@@ -270,16 +300,21 @@ final class OpenAPIReader : ConfigurationReader {
             required = requiredValue
         }
         
-        // Optional attributes
-        var type: DataType = .string
+        return ParameterDescription(name: name, location: location, type: try schemaPrimitiveType(value: value, required: required))
+    }
+    
+    private func schemaPrimitiveType(value: [String : Any], required: Bool) throws -> SchemaPrimitiveType {
         
         if let typeString = value["type"] as? String {
-            if let dataType = DataType(rawValue: typeString) {
-                type = dataType
+            switch typeString {
+                case "string":  return try schemaString(value: value, required: required)
+                case "number":  return try schemaNumber(value: value, required: required)
+                case "integer": return try schemaInteger(value: value, required: required)
+                case "boolean": return try schemaBoolean(value: value, required: required)
+            default: break
             }
         }
-        
-        return ParameterDescription(name: name, location: location, type: type, required: required)
+        throw Errors.InvalidSpecification("Parameter missing required 'type' attribute")
     }
     
     ///
@@ -288,14 +323,14 @@ final class OpenAPIReader : ConfigurationReader {
     private func operation(type: String, value: [String : Any]) throws -> OperationDescription {
         
         /// Requried attributes
-        var responses: [ResponseDescription] = []
+        var responses: [String : ResponseDescription] = [:]
         
         guard let responseObjects = value["responses"] as? [String : [String : Any]]  else {
             throw Errors.InvalidSpecification("Operation missing required 'responses' attribute")
         }
         
         for (name, value) in responseObjects {
-            responses.append(try self.response(name: name, value: value))
+//            responses.append(try self.response(name: name, value: value))
         }
         
         /// Optional attributes
@@ -322,7 +357,7 @@ final class OpenAPIReader : ConfigurationReader {
         
         if let values = value["parameters"] as? [[String : Any]] {
             for value in values {
-                parameters.append(try self.parameter(value: value))
+//                parameters.append(try self.parameter(value: value))
             }
         }
         
@@ -334,13 +369,13 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     private func response(name: String, value: [String : Any]) throws -> ResponseDescription {
         
-        var headers: [ParameterDescription] = []
+        var headers: [String : String] = [:]
         
-        if let values = value["headers"] as? [[String : Any]] {
-            for value in values {
-                headers.append(try self.parameter(value: value))
-            }
-        }
+//        if let values = value["headers"] as? [[String : Any]] {
+//            for value in values {
+//                headers.append()
+//            }
+//        }
         
         var schema: SchemaType? = nil
         
@@ -348,8 +383,9 @@ final class OpenAPIReader : ConfigurationReader {
             schema = try self.schema(value: values)
         }
         
-        return ResponseDescription(code: name, schema: schema, headers: headers)
+        return ResponseDescription(code: name, headers: headers, content: [MediaType.applicationJSON : schema!])
     }
+    
     
     ///
     /// Parse an definition element from the OpenAPI spec.
@@ -358,7 +394,7 @@ final class OpenAPIReader : ConfigurationReader {
         
         // If this is a reference param, simply look it up
         if let ref = value["$ref"] as? String {
-            return try self.resolveReference(reference: ref)
+            return try schema(value: try self.resolveReference(reference: ref), required: required)
         }
         //
         // It's not a reference definition
@@ -461,7 +497,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     /// Store a reference object in the index
     ///
-    private func addReference<T>(object: T, key: String, at path: String) throws {
+    private func addReference(object: [String : Any], key: String, at path: String) throws {
         
         if let targets = references[path] {
             references[path]?[key] = object
@@ -473,7 +509,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     /// Resolve a reference link either externally or internally
     ///
-    private func resolveReference<R>(reference: String) throws -> R {
+    private func resolveReference(reference: String) throws -> [String : Any] {
         
         let components = reference.components(separatedBy: "/")
         
@@ -487,7 +523,7 @@ final class OpenAPIReader : ConfigurationReader {
                     /// Locate the path for the object and the object itself,
                     /// if found, return it
                     ///
-                    if let object = references[path]?[target] as? R {
+                    if let object = references[path]?[target]  {
                         return object
                     }
                     throw Errors.InvalidSpecification("Reference object not found for reference '\(reference)'")
