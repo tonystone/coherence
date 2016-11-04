@@ -8,13 +8,13 @@
 
 import Swift
 
-/**
-    WADL Request Element
- 
-    - Seealso:
- 
-        [Web Application Description Language, 2.11 Representation](https://www.w3.org/Submission/wadl/#x3-90002.11)
- */
+///
+///    WADL Request Element
+///
+///    - Seealso:
+///
+///        [Web Application Description Language, 2.11 Representation](https://www.w3.org/Submission/wadl/#x3-90002.11)
+///
 class WADLRepresentation : WADLElement  {
     
     init(mediaType: WADLMediaType, id: String?, element: String?, profile: String?, parent: WADLElement?) {
@@ -25,7 +25,7 @@ class WADLRepresentation : WADLElement  {
         self.parent = parent
     }
     
-    // Attributes
+    /// Attributes
     let mediaType: WADLMediaType
     
     let id: String?
@@ -34,7 +34,7 @@ class WADLRepresentation : WADLElement  {
     
     var otherAttributes: [String : String]      = [:]
     
-    // Elements
+    /// Elements
     var docs: [WADLDoc]                         = []
     var params: [WADLParam]                     = []
     
@@ -43,6 +43,9 @@ class WADLRepresentation : WADLElement  {
     weak var parent: WADLElement?
 }
 
+///
+/// Custom String Printing
+///
 extension WADLRepresentation : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
@@ -57,7 +60,7 @@ extension WADLRepresentation : CustomStringConvertible, CustomDebugStringConvert
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))representation: {"
         

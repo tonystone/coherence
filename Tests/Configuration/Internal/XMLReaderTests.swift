@@ -18,9 +18,12 @@ class XMLReaderTests: XCTestCase {
         if let url = bundle.url(forResource: "hr-rest", withExtension: "wadl"),
             let stream = InputStream(url: url) {
 
-            let document = try XMLReader.document(stream: stream)
+            do {
+                let _ = try XMLReader.document(stream: stream)
             
-            print(document)
+            } catch {
+                XCTFail("\(error)")
+            }
             
         } else {
             XCTFail("Failed to find test data file.")

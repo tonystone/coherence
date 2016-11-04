@@ -24,20 +24,10 @@ class WADLGrammars : WADLElement  {
     weak var parent: WADLElement?
 }
 
-
-extension WADLGrammars : IndentedStringConvertable {
-    
-    func description(indent indent: Int) -> String {
-        
-        var description = "\(String(repeating: "\t", count: indent))grammers: {"
-        
-        description.append("\r\(String(repeating: "\t", count: indent))}")
-        
-        return description
-    }
-}
-
-extension WADLGrammars : CustomStringConvertible, CustomDebugStringConvertible {
+///
+/// Custom String Printing
+///
+extension WADLGrammars : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
         get {
@@ -49,5 +39,14 @@ extension WADLGrammars : CustomStringConvertible, CustomDebugStringConvertible {
         get {
             return description(indent: 0)
         }
+    }
+    
+    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+        
+        var description = "\(String(repeating: "\t", count: indent))grammers: {"
+        
+        description.append("\r\(String(repeating: "\t", count: indent))}")
+        
+        return description
     }
 }

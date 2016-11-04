@@ -18,9 +18,11 @@ class WADLReaderTests: XCTestCase {
         if let url = bundle.url(forResource: "hr-rest", withExtension: "wadl"),
            let stream = InputStream(url: url) {
             
-            let application = try WADLReader().read(stream: stream)
-            
-            print(application.description)
+            do {
+                let _ = try WADLReader().read(stream: stream)
+            } catch {
+                XCTFail("\(error)")
+            }
             
         } else {
             XCTFail("Failed to find test data file.")
@@ -33,24 +35,11 @@ class WADLReaderTests: XCTestCase {
         if let url = bundle.url(forResource: "hr-legacy", withExtension: "wadl"),
            let stream = InputStream(url: url) {
             
-            let application = try WADLReader().read(stream: stream)
-            
-            print(application.description)
-        } else {
-            XCTFail("Failed to find test data file.")
-        }
-    }
-    
-    func testRead_RightScale_v1() throws {
-        let bundle = Bundle(for: type(of: self))
-        
-        if let url = bundle.url(forResource: "rightscale-v1", withExtension: "wadl"),
-           let stream = InputStream(url: url) {
-            
-            let application = try WADLReader().read(stream: stream)
-            
-            print(application.description)
-
+            do {
+                let _ = try WADLReader().read(stream: stream)
+            } catch {
+                 XCTFail("\(error)")
+            }
         } else {
             XCTFail("Failed to find test data file.")
         }
@@ -68,9 +57,8 @@ class WADLReaderTests: XCTestCase {
             let inputStream = InputStream(data: input)
         
             do {
-                let application = try WADLReader().read(stream: inputStream )
+                let _ = try WADLReader().read(stream: inputStream )
         
-                print(application.description)
             } catch {
                 // Success
             }

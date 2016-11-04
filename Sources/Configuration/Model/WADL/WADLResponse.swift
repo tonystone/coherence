@@ -36,6 +36,9 @@ class WADLResponse : WADLElement  {
     weak var parent: WADLElement?
 }
 
+///
+/// Custom String Printing
+///
 extension WADLResponse : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
@@ -50,7 +53,7 @@ extension WADLResponse : CustomStringConvertible, CustomDebugStringConvertible, 
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))response: {"
         

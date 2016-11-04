@@ -68,6 +68,9 @@ class WADLResource : WADLElement {
     weak var parent: WADLElement?
 }
 
+///
+/// Custom String Printing
+///
 extension WADLResource : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
@@ -82,7 +85,7 @@ extension WADLResource : CustomStringConvertible, CustomDebugStringConvertible, 
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))resource: {"
         
@@ -132,19 +135,18 @@ extension WADLResource {
     
     var templatedURI: String {
         
-        // http://www.w3.org/Submission/wadl/#x3-38000C
-        //
-        // The URI for a resource element is obtained using the following rules:
-        //
-        // (1) Set identifier equal to the URI computed (using this process) for the parent element (resource or resources)
-        // (2) If identifier doesn't end with a '/' then append a '/' character to identifier
-        // (3) Substitute the values of any URI template parameters into the value of the path attribute
-        // (4) Append the value obtained in the previous step to identifier
-        // (5) For each child param element (see section 2.12), in document order, that has a value of 'matrix' for its style attribute, append a representation of the parameter value to identifier according to the following rules:
-        //      * Non-boolean matrix parameters are represented as: ';' name '=' value
-        //      * Boolean matrix parameters are represented as: ';' name when value is true and are omitted from identifier when value is false
-        //        where name is the value of the param element's name attribute and value is the runtime value of the parameter.
-        
+        /// http://www.w3.org/Submission/wadl/#x3-38000C
+        ///
+        /// The URI for a resource element is obtained using the following rules:
+        ///
+        /// (1) Set identifier equal to the URI computed (using this process) for the parent element (resource or resources)
+        /// (2) If identifier doesn't end with a '/' then append a '/' character to identifier
+        /// (3) Substitute the values of any URI template parameters into the value of the path attribute
+        /// (4) Append the value obtained in the previous step to identifier
+        /// (5) For each child param element (see section 2.12), in document order, that has a value of 'matrix' for its style attribute, append a representation of the parameter value to identifier according to the following rules:
+        ///      * Non-boolean matrix parameters are represented as: ';' name '=' value
+        ///      * Boolean matrix parameters are represented as: ';' name when value is true and are omitted from identifier when value is false
+        ///        where name is the value of the param element's name attribute and value is the runtime value of the parameter.
         var uri: String = ""
         
         // (1)

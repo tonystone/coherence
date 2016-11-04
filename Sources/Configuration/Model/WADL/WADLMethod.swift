@@ -48,6 +48,9 @@ class WADLMethod : WADLElement  {
 
 }
 
+///
+/// Custom String Printing
+///
 extension WADLMethod : CustomStringConvertible, CustomDebugStringConvertible,  IndentedStringConvertable {
 
     var description: String {
@@ -62,7 +65,7 @@ extension WADLMethod : CustomStringConvertible, CustomDebugStringConvertible,  I
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))method: {"
         
