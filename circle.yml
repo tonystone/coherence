@@ -2,10 +2,6 @@ machine:
   xcode:
     version: 8.0
 
-  environment:
-    XCODE_WORKSPACE: Example/Connect.xcworkspace
-    XCODE_SCHEME: Connect-Example
-
 database:
   override:
     - echo "Skipping DB section."
