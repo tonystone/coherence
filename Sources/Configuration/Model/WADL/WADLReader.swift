@@ -9,12 +9,12 @@
 import Swift
 
 
-// TODO: When swift fixes the limitation on nested types in generics, this should move inside XMLNodeCollectionErrors and renamed Errors
+/// TODO: When swift fixes the limitation on nested types in generics, this should move inside XMLNodeCollectionErrors and renamed Errors
 fileprivate enum XMLNodeCollectionErrors : Error {
     case ConstraintViolation(String)
 }
 
-// Special collection that will aggragate in order elements matching a criteria
+/// Special collection that will aggragate in order elements matching a criteria
 fileprivate class XMLNodeCollection<T: XMLNode> {
     private var nodes: [T] = []
     private var index: Int
@@ -63,10 +63,10 @@ class WADLReader {
         case duplicateElementID(String)
     }
     
-    // Maps into the referencable elements for resolution later.
+    /// Maps into the referencable elements for resolution later.
     private var elementsByID: [String : WADLElement] = [:]
     
-    // Register an element by ID for second pass resolution of references
+    /// Register an element by ID for second pass resolution of references
     private func registerElement(id: String, element: WADLElement) throws {
         
         if self.elementsByID[id] != nil {
@@ -75,42 +75,42 @@ class WADLReader {
         self.elementsByID[id] = element
     }
     
-    func read(stream stream: InputStream) throws -> WADLApplication {
+    func read(stream: InputStream) throws -> WADLApplication {
         
-        // parse the XML into an XMLDocument object first
+        /// parse the XML into an XMLDocument object first
         let document = try XMLReader.document(stream: stream)
         
-        // Now parse the XMLDocument object
-        //
-        // In this case we only care about the application element, we ignore all others.
-        //
+        /// Now parse the XMLDocument object
+        ///
+        /// In this case we only care about the application element, we ignore all others.
+        ///
         for node in document.children {
             
             if let element = node as? XMLElement , element.name == "application" {
                 
-                // The parent of this application Element is always nil because Application has no parent in our model.
+                /// The parent of this application Element is always nil because Application has no parent in our model.
                 let application = try self.application(element, parent: nil)
                 
-                // Resolve references
+                /// Resolve references
                 
                 return application
             }
         }
-        // If no Application Element this is an error
+        /// If no Application Element this is an error
         throw Errors.invalidWADL("Invalid wadl...")
     }
     
-    /*
-        WADL Application Element
-     */
+    ///
+    /// WADL Application Element
+    ///
     private func application(_ element: XMLElement, parent: WADLElement?) throws -> WADLApplication {
         
         let application = WADLApplication(parent: parent)
         
-        // At this level we collect the resources elements without processing yet
-        // They will be processed in a different order than they appear so that
-        // we can make sure referencable items are registered before they are required
-        //
+        /// At this level we collect the resources elements without processing yet
+        /// They will be processed in a different order than they appear so that
+        /// we can make sure referencable items are registered before they are required
+        ///
         var resourcesElements:      [XMLElement] = []
         var resourceTypeElements:   [XMLElement] = []
         var methodElements:         [XMLElement] = []
@@ -119,7 +119,7 @@ class WADLReader {
         
         let elements = XMLNodeCollection<XMLElement>(nodes: element.children)
         
-        // Doc elements
+        /// Doc elements
         try elements.accept(min: 0, matching: element.name == "doc") {
             application.docs.append(try self.doc($0, parent: application))
         }
@@ -180,7 +180,7 @@ class WADLReader {
      */
     private func doc(_ element: XMLElement, parent: WADLElement?) throws -> WADLDoc {
         
-        guard let lang = element.attributes["lang"] else {
+        guard let lang = element.attributes["xml:lang"] else {
             throw Errors.invalidWADL("Doc element missing \"lang\" attribute")
         }
         guard let title = element.attributes["title"] else {
@@ -449,8 +449,16 @@ class WADLReader {
             response.docs.append(try self.doc($0, parent: response))
         }
         
+        /// Zero or more param elements (see section 2.12 ) with a value of 'header' for their style attribute, each of which specifies the details of a HTTP header for the response
         try elements.accept(min: 0, matching: element.name == "param") {
-            response.params.append(try self.param($0, parent: response))
+            
+            let param = try self.param($0, parent: response)
+            
+            if ![WADLParam.Style.header].contains(param.style) {
+                throw Errors.invalidWADL("Param elemenst within a response can only be one of style \'heder\'.")
+            }
+            
+            response.params.append(param)
         }
         
         try elements.accept(min: 0, matching: element.name == "representation") {
@@ -602,6 +610,7 @@ class WADLReader {
         
         return WADLOption(value: value, mediaType: queryType, parent: parent)
     }
+    
     private func link(_ element: XMLElement, parent: WADLElement?) throws -> WADLLink {
         return WADLLink(parent: parent)
     }

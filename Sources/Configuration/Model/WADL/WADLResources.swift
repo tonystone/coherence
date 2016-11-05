@@ -37,6 +37,9 @@ class WADLResources : WADLElement {
     weak var parent: WADLElement?
 }
 
+///
+/// Custom String Printing
+///
 extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable {
     
     var description: String {
@@ -51,7 +54,7 @@ extension WADLResources : CustomStringConvertible, CustomDebugStringConvertible,
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))resources: {"
         

@@ -10,7 +10,7 @@ import Foundation
 
 class XMLReader {
     
-    class func document(stream stream: InputStream) throws -> XMLDocument {
+    class func document(stream: InputStream) throws -> XMLDocument {
         let delegate = XMLParserDelegate()
         
         let parser = XMLParser(stream: stream)

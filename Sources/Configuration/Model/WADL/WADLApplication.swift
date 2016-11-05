@@ -8,20 +8,20 @@
 
 import Swift
 
-/**
-    WADL Application Element
- 
-    - Seealso: 
- 
-        [Web Application Description Language, 2.2 Application](https://www.w3.org/Submission/wadl/#x3-70002.2)
- */
+///
+/// WADL Application Element
+///
+///     - Seealso:
+///
+///        [Web Application Description Language, 2.2 Application](https://www.w3.org/Submission/wadl/#x3-70002.2)
+///
 class WADLApplication : WADLElement {
     
     init(parent: WADLElement?) {
         self.parent = parent
     }
     
-    // Elements
+    /// Elements
     var docs: [WADLDoc]                         = []
     var grammars: WADLGrammars?                 = nil
     var resources: [WADLResources]              = []
@@ -35,6 +35,9 @@ class WADLApplication : WADLElement {
     weak var parent: WADLElement?
 }
 
+///
+/// Custom String Printing
+///
 extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertible, IndentedStringConvertable  {
     
     var description: String {
@@ -49,7 +52,7 @@ extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertibl
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))application: {"
         

@@ -14,131 +14,16 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		D9D47A21983A126E6E11D1BF /* Pods_Connect_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632E0C5F6C83F575E2A7F0C6 /* Pods_Connect_Example.framework */; };
 		E7CAA70601D27850F27550EF /* Pods_Connect_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE932A25E11A51DE46E63D1F /* Pods_Connect_Tests.framework */; };
+		EA5737DE1D887C97005C9D54 /* OpenAPIReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5737DD1D887C97005C9D54 /* OpenAPIReaderTests.swift */; };
 		EA81C9491D78CF08002586A5 /* WADLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */; };
-		EA81C94A1D78CF0C002586A5 /* ConfigurationReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */; };
 		EA98CBD11D78D93500DDFF51 /* XMLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */; };
-		EAE16FE41D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */; };
-		EAE16FE51D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */; };
-		EAE16FE61D70C2C3002FADE5 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA41D70C2C3002FADE5 /* Device.swift */; };
-		EAE16FE71D70C2C3002FADE5 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA41D70C2C3002FADE5 /* Device.swift */; };
-		EAE16FE81D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA51D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift */; };
-		EAE16FE91D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA51D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift */; };
-		EAE16FEA1D70C2C3002FADE5 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA61D70C2C3002FADE5 /* GlobalSettings.swift */; };
-		EAE16FEB1D70C2C3002FADE5 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA61D70C2C3002FADE5 /* GlobalSettings.swift */; };
-		EAE16FEC1D70C2C3002FADE5 /* MetaData.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA71D70C2C3002FADE5 /* MetaData.xcdatamodel */; };
-		EAE16FED1D70C2C3002FADE5 /* MetaData.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA71D70C2C3002FADE5 /* MetaData.xcdatamodel */; };
-		EAE16FEE1D70C2C3002FADE5 /* Provider+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA81D70C2C3002FADE5 /* Provider+CoreDataProperties.swift */; };
-		EAE16FEF1D70C2C3002FADE5 /* Provider+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA81D70C2C3002FADE5 /* Provider+CoreDataProperties.swift */; };
-		EAE16FF01D70C2C3002FADE5 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA91D70C2C3002FADE5 /* Provider.swift */; };
-		EAE16FF11D70C2C3002FADE5 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FA91D70C2C3002FADE5 /* Provider.swift */; };
-		EAE16FF21D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAA1D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift */; };
-		EAE16FF31D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAA1D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift */; };
-		EAE16FF41D70C2C3002FADE5 /* ProviderUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAB1D70C2C3002FADE5 /* ProviderUser.swift */; };
-		EAE16FF51D70C2C3002FADE5 /* ProviderUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAB1D70C2C3002FADE5 /* ProviderUser.swift */; };
-		EAE16FF61D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAC1D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift */; };
-		EAE16FF71D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAC1D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift */; };
-		EAE16FF81D70C2C3002FADE5 /* ProviderUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAD1D70C2C3002FADE5 /* ProviderUserAccount.swift */; };
-		EAE16FF91D70C2C3002FADE5 /* ProviderUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAD1D70C2C3002FADE5 /* ProviderUserAccount.swift */; };
-		EAE16FFA1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAE1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift */; };
-		EAE16FFB1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAE1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift */; };
-		EAE16FFC1D70C2C3002FADE5 /* RootResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAF1D70C2C3002FADE5 /* RootResource.swift */; };
-		EAE16FFD1D70C2C3002FADE5 /* RootResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FAF1D70C2C3002FADE5 /* RootResource.swift */; };
-		EAE16FFE1D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB11D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift */; };
-		EAE16FFF1D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB11D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift */; };
-		EAE170001D70C2C3002FADE5 /* AuditedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB21D70C2C3002FADE5 /* AuditedResource.swift */; };
-		EAE170011D70C2C3002FADE5 /* AuditedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB21D70C2C3002FADE5 /* AuditedResource.swift */; };
-		EAE170021D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB31D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift */; };
-		EAE170031D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB31D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift */; };
-		EAE170041D70C2C3002FADE5 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB41D70C2C3002FADE5 /* Cloud.swift */; };
-		EAE170051D70C2C3002FADE5 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB41D70C2C3002FADE5 /* Cloud.swift */; };
-		EAE170061D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB51D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift */; };
-		EAE170071D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB51D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift */; };
-		EAE170081D70C2C3002FADE5 /* Datacenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB61D70C2C3002FADE5 /* Datacenter.swift */; };
-		EAE170091D70C2C3002FADE5 /* Datacenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB61D70C2C3002FADE5 /* Datacenter.swift */; };
-		EAE1700A1D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB71D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift */; };
-		EAE1700B1D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB71D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift */; };
-		EAE1700C1D70C2C3002FADE5 /* Deployment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB81D70C2C3002FADE5 /* Deployment.swift */; };
-		EAE1700D1D70C2C3002FADE5 /* Deployment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB81D70C2C3002FADE5 /* Deployment.swift */; };
-		EAE1700E1D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB91D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift */; };
-		EAE1700F1D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FB91D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift */; };
-		EAE170101D70C2C3002FADE5 /* DeploymentResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBA1D70C2C3002FADE5 /* DeploymentResource.swift */; };
-		EAE170111D70C2C3002FADE5 /* DeploymentResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBA1D70C2C3002FADE5 /* DeploymentResource.swift */; };
-		EAE170121D70C2C3002FADE5 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBB1D70C2C3002FADE5 /* Event+CoreDataProperties.swift */; };
-		EAE170131D70C2C3002FADE5 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBB1D70C2C3002FADE5 /* Event+CoreDataProperties.swift */; };
-		EAE170141D70C2C3002FADE5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBC1D70C2C3002FADE5 /* Event.swift */; };
-		EAE170151D70C2C3002FADE5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBC1D70C2C3002FADE5 /* Event.swift */; };
-		EAE170161D70C2C3002FADE5 /* Executable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBD1D70C2C3002FADE5 /* Executable+CoreDataProperties.swift */; };
-		EAE170171D70C2C3002FADE5 /* Executable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBD1D70C2C3002FADE5 /* Executable+CoreDataProperties.swift */; };
-		EAE170181D70C2C3002FADE5 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBE1D70C2C3002FADE5 /* Executable.swift */; };
-		EAE170191D70C2C3002FADE5 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBE1D70C2C3002FADE5 /* Executable.swift */; };
-		EAE1701A1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBF1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift */; };
-		EAE1701B1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FBF1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift */; };
-		EAE1701C1D70C2C3002FADE5 /* GraphViewTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC01D70C2C3002FADE5 /* GraphViewTemplate.swift */; };
-		EAE1701D1D70C2C3002FADE5 /* GraphViewTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC01D70C2C3002FADE5 /* GraphViewTemplate.swift */; };
-		EAE1701E1D70C2C3002FADE5 /* Input+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC11D70C2C3002FADE5 /* Input+CoreDataProperties.swift */; };
-		EAE1701F1D70C2C3002FADE5 /* Input+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC11D70C2C3002FADE5 /* Input+CoreDataProperties.swift */; };
-		EAE170201D70C2C3002FADE5 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC21D70C2C3002FADE5 /* Input.swift */; };
-		EAE170211D70C2C3002FADE5 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC21D70C2C3002FADE5 /* Input.swift */; };
-		EAE170221D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC31D70C2C3002FADE5 /* Instance+CoreDataProperties.swift */; };
-		EAE170231D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC31D70C2C3002FADE5 /* Instance+CoreDataProperties.swift */; };
-		EAE170241D70C2C3002FADE5 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC41D70C2C3002FADE5 /* Instance.swift */; };
-		EAE170251D70C2C3002FADE5 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC41D70C2C3002FADE5 /* Instance.swift */; };
-		EAE170261D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC51D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift */; };
-		EAE170271D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC51D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift */; };
-		EAE170281D70C2C3002FADE5 /* InstanceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC61D70C2C3002FADE5 /* InstanceType.swift */; };
-		EAE170291D70C2C3002FADE5 /* InstanceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC61D70C2C3002FADE5 /* InstanceType.swift */; };
-		EAE1702A1D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC71D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift */; };
-		EAE1702B1D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC71D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift */; };
-		EAE1702C1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC81D70C2C3002FADE5 /* MonitoringMetric.swift */; };
-		EAE1702D1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC81D70C2C3002FADE5 /* MonitoringMetric.swift */; };
-		EAE1702E1D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC91D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift */; };
-		EAE1702F1D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FC91D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift */; };
-		EAE170301D70C2C3002FADE5 /* MonitoringMetricData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCA1D70C2C3002FADE5 /* MonitoringMetricData.swift */; };
-		EAE170311D70C2C3002FADE5 /* MonitoringMetricData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCA1D70C2C3002FADE5 /* MonitoringMetricData.swift */; };
-		EAE170321D70C2C3002FADE5 /* Resource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCB1D70C2C3002FADE5 /* Resource+CoreDataProperties.swift */; };
-		EAE170331D70C2C3002FADE5 /* Resource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCB1D70C2C3002FADE5 /* Resource+CoreDataProperties.swift */; };
-		EAE170341D70C2C3002FADE5 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCC1D70C2C3002FADE5 /* Resource.swift */; };
-		EAE170351D70C2C3002FADE5 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCC1D70C2C3002FADE5 /* Resource.swift */; };
-		EAE170361D70C2C3002FADE5 /* RightScale.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCD1D70C2C3002FADE5 /* RightScale.xcdatamodel */; };
-		EAE170371D70C2C3002FADE5 /* RightScale.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCD1D70C2C3002FADE5 /* RightScale.xcdatamodel */; };
-		EAE170381D70C2C3002FADE5 /* Server+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCE1D70C2C3002FADE5 /* Server+CoreDataProperties.swift */; };
-		EAE170391D70C2C3002FADE5 /* Server+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCE1D70C2C3002FADE5 /* Server+CoreDataProperties.swift */; };
-		EAE1703A1D70C2C3002FADE5 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCF1D70C2C3002FADE5 /* Server.swift */; };
-		EAE1703B1D70C2C3002FADE5 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FCF1D70C2C3002FADE5 /* Server.swift */; };
-		EAE1703C1D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD01D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift */; };
-		EAE1703D1D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD01D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift */; };
-		EAE1703E1D70C2C3002FADE5 /* ServerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD11D70C2C3002FADE5 /* ServerArray.swift */; };
-		EAE1703F1D70C2C3002FADE5 /* ServerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD11D70C2C3002FADE5 /* ServerArray.swift */; };
-		EAE170401D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD21D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift */; };
-		EAE170411D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD21D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift */; };
-		EAE170421D70C2C3002FADE5 /* ServerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD31D70C2C3002FADE5 /* ServerTemplate.swift */; };
-		EAE170431D70C2C3002FADE5 /* ServerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD31D70C2C3002FADE5 /* ServerTemplate.swift */; };
-		EAE170441D70C2C3002FADE5 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD41D70C2C3002FADE5 /* Tag+CoreDataProperties.swift */; };
-		EAE170451D70C2C3002FADE5 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD41D70C2C3002FADE5 /* Tag+CoreDataProperties.swift */; };
-		EAE170461D70C2C3002FADE5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD51D70C2C3002FADE5 /* Tag.swift */; };
-		EAE170471D70C2C3002FADE5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD51D70C2C3002FADE5 /* Tag.swift */; };
-		EAE170481D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD61D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift */; };
-		EAE170491D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD61D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift */; };
-		EAE1704A1D70C2C3002FADE5 /* VersionedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD71D70C2C3002FADE5 /* VersionedResource.swift */; };
-		EAE1704B1D70C2C3002FADE5 /* VersionedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD71D70C2C3002FADE5 /* VersionedResource.swift */; };
-		EAE1704C1D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD81D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift */; };
-		EAE1704D1D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD81D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift */; };
-		EAE1704E1D70C2C3002FADE5 /* WatchMonitoringMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD91D70C2C3002FADE5 /* WatchMonitoringMetric.swift */; };
-		EAE1704F1D70C2C3002FADE5 /* WatchMonitoringMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE16FD91D70C2C3002FADE5 /* WatchMonitoringMetric.swift */; };
+		EAE0FB691D83484F008CB3EB /* HR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAE0FB671D83484F008CB3EB /* HR.xcdatamodeld */; };
 		EAE170501D70C2C3002FADE5 /* hr-legacy.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */; };
 		EAE170511D70C2C3002FADE5 /* hr-legacy.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */; };
 		EAE170521D70C2C3002FADE5 /* hr-rest.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */; };
 		EAE170531D70C2C3002FADE5 /* hr-rest.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */; };
-		EAE170541D70C2C3002FADE5 /* rightscale-v1.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDE1D70C2C3002FADE5 /* rightscale-v1.wadl */; };
-		EAE170551D70C2C3002FADE5 /* rightscale-v1.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDE1D70C2C3002FADE5 /* rightscale-v1.wadl */; };
-		EAE170561D70C2C3002FADE5 /* rightscale-v1-common.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE01D70C2C3002FADE5 /* rightscale-v1-common.xsd */; };
-		EAE170571D70C2C3002FADE5 /* rightscale-v1-common.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE01D70C2C3002FADE5 /* rightscale-v1-common.xsd */; };
-		EAE170581D70C2C3002FADE5 /* rightscale-v1.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE11D70C2C3002FADE5 /* rightscale-v1.wsdl */; };
-		EAE170591D70C2C3002FADE5 /* rightscale-v1.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE11D70C2C3002FADE5 /* rightscale-v1.wsdl */; };
-		EAE1705A1D70C2C3002FADE5 /* rightscale-v1.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE21D70C2C3002FADE5 /* rightscale-v1.xsd */; };
-		EAE1705B1D70C2C3002FADE5 /* rightscale-v1.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE21D70C2C3002FADE5 /* rightscale-v1.xsd */; };
-		EAE1705C1D70C2C3002FADE5 /* rightscale-v2.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE31D70C2C3002FADE5 /* rightscale-v2.wsdl */; };
-		EAE1705D1D70C2C3002FADE5 /* rightscale-v2.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FE31D70C2C3002FADE5 /* rightscale-v2.wsdl */; };
+		EAF40BB71D82445F00A81ED5 /* hr-rest.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF40BB61D82445F00A81ED5 /* hr-rest.json */; };
+		EAF40BB81D82445F00A81ED5 /* hr-rest.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF40BB61D82445F00A81ED5 /* hr-rest.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,72 +55,18 @@
 		979B1D7C8A44A324594FCB3B /* Pods-Connect Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect Tests/Pods-Connect Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AE932A25E11A51DE46E63D1F /* Pods_Connect_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17F82C44785F574AA74D6C4 /* Pods-Connect_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect_Example/Pods-Connect_Example.release.xcconfig"; sourceTree = "<group>"; };
+		EA4CFECD1DCCFF8D0050634D /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = circle.yml; path = ../circle.yml; sourceTree = "<group>"; };
+		EA5737DD1D887C97005C9D54 /* OpenAPIReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAPIReaderTests.swift; sourceTree = "<group>"; };
 		EA6077F21D7F282000C76301 /* Connect.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Connect.playground; sourceTree = "<group>"; };
-		EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationReaderTests.swift; sourceTree = "<group>"; };
+		EA634EFC1DCD72A800AC93E7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WADLReaderTests.swift; sourceTree = "<group>"; };
+		EA84931B1DB05E7E001F91A9 /* Gemfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReaderTests.swift; sourceTree = "<group>"; };
-		EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FA41D70C2C3002FADE5 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		EAE16FA51D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GlobalSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FA61D70C2C3002FADE5 /* GlobalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
-		EAE16FA71D70C2C3002FADE5 /* MetaData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MetaData.xcdatamodel; sourceTree = "<group>"; };
-		EAE16FA81D70C2C3002FADE5 /* Provider+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FA91D70C2C3002FADE5 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		EAE16FAA1D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProviderUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FAB1D70C2C3002FADE5 /* ProviderUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderUser.swift; sourceTree = "<group>"; };
-		EAE16FAC1D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProviderUserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FAD1D70C2C3002FADE5 /* ProviderUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderUserAccount.swift; sourceTree = "<group>"; };
-		EAE16FAE1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootResource+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FAF1D70C2C3002FADE5 /* RootResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootResource.swift; sourceTree = "<group>"; };
-		EAE16FB11D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuditedResource+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FB21D70C2C3002FADE5 /* AuditedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditedResource.swift; sourceTree = "<group>"; };
-		EAE16FB31D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Cloud+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FB41D70C2C3002FADE5 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
-		EAE16FB51D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Datacenter+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FB61D70C2C3002FADE5 /* Datacenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datacenter.swift; sourceTree = "<group>"; };
-		EAE16FB71D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Deployment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FB81D70C2C3002FADE5 /* Deployment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deployment.swift; sourceTree = "<group>"; };
-		EAE16FB91D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeploymentResource+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FBA1D70C2C3002FADE5 /* DeploymentResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeploymentResource.swift; sourceTree = "<group>"; };
-		EAE16FBB1D70C2C3002FADE5 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FBC1D70C2C3002FADE5 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		EAE16FBD1D70C2C3002FADE5 /* Executable+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Executable+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FBE1D70C2C3002FADE5 /* Executable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executable.swift; sourceTree = "<group>"; };
-		EAE16FBF1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GraphViewTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FC01D70C2C3002FADE5 /* GraphViewTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewTemplate.swift; sourceTree = "<group>"; };
-		EAE16FC11D70C2C3002FADE5 /* Input+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Input+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FC21D70C2C3002FADE5 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
-		EAE16FC31D70C2C3002FADE5 /* Instance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Instance+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FC41D70C2C3002FADE5 /* Instance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
-		EAE16FC51D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InstanceType+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FC61D70C2C3002FADE5 /* InstanceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceType.swift; sourceTree = "<group>"; };
-		EAE16FC71D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MonitoringMetric+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FC81D70C2C3002FADE5 /* MonitoringMetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringMetric.swift; sourceTree = "<group>"; };
-		EAE16FC91D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MonitoringMetricData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FCA1D70C2C3002FADE5 /* MonitoringMetricData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringMetricData.swift; sourceTree = "<group>"; };
-		EAE16FCB1D70C2C3002FADE5 /* Resource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Resource+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FCC1D70C2C3002FADE5 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		EAE16FCD1D70C2C3002FADE5 /* RightScale.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RightScale.xcdatamodel; sourceTree = "<group>"; };
-		EAE16FCE1D70C2C3002FADE5 /* Server+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FCF1D70C2C3002FADE5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		EAE16FD01D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerArray+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FD11D70C2C3002FADE5 /* ServerArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerArray.swift; sourceTree = "<group>"; };
-		EAE16FD21D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FD31D70C2C3002FADE5 /* ServerTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTemplate.swift; sourceTree = "<group>"; };
-		EAE16FD41D70C2C3002FADE5 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FD51D70C2C3002FADE5 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		EAE16FD61D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VersionedResource+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FD71D70C2C3002FADE5 /* VersionedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionedResource.swift; sourceTree = "<group>"; };
-		EAE16FD81D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchMonitoringMetric+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EAE16FD91D70C2C3002FADE5 /* WatchMonitoringMetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMonitoringMetric.swift; sourceTree = "<group>"; };
+		EAE0FB681D83484F008CB3EB /* HR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HR.xcdatamodel; sourceTree = "<group>"; };
 		EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-legacy.wadl"; sourceTree = "<group>"; };
 		EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-rest.wadl"; sourceTree = "<group>"; };
-		EAE16FDE1D70C2C3002FADE5 /* rightscale-v1.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rightscale-v1.wadl"; sourceTree = "<group>"; };
-		EAE16FE01D70C2C3002FADE5 /* rightscale-v1-common.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rightscale-v1-common.xsd"; sourceTree = "<group>"; };
-		EAE16FE11D70C2C3002FADE5 /* rightscale-v1.wsdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rightscale-v1.wsdl"; sourceTree = "<group>"; };
-		EAE16FE21D70C2C3002FADE5 /* rightscale-v1.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rightscale-v1.xsd"; sourceTree = "<group>"; };
-		EAE16FE31D70C2C3002FADE5 /* rightscale-v2.wsdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rightscale-v2.wsdl"; sourceTree = "<group>"; };
 		EAE170621D70C32D002FADE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Tests/Info.plist; sourceTree = "<group>"; };
+		EAF40BB61D82445F00A81ED5 /* hr-rest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "hr-rest.json"; path = "OpenAPI/hr-rest.json"; sourceTree = "<group>"; };
 		F6AB45E09C260EB52A230358 /* Pods-Connect_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect_Example/Pods-Connect_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE412EC5FB46C425589B890F /* Pods-Connect Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect Tests/Pods-Connect Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF965377B8F4A58FFF2F90DC /* Pods-Connect Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect Example/Pods-Connect Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +170,9 @@
 				312EDB5EDE92DECFB5877409 /* Connect.podspec */,
 				2409743DC192C971E2FCDCAD /* README.md */,
 				024E615EF1936886127D123D /* LICENSE */,
+				EA84931B1DB05E7E001F91A9 /* Gemfile */,
+				EA4CFECD1DCCFF8D0050634D /* circle.yml */,
+				EA634EFC1DCD72A800AC93E7 /* .gitignore */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -387,10 +221,18 @@
 			isa = PBXGroup;
 			children = (
 				EA98CBD01D78D93500DDFF51 /* XMLReaderTests.swift */,
-				EA81C9451D78CE6D002586A5 /* ConfigurationReaderTests.swift */,
 				EA81C9461D78CE6D002586A5 /* WADLReaderTests.swift */,
+				EA5737DD1D887C97005C9D54 /* OpenAPIReaderTests.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		EAE0FB661D83484F008CB3EB /* HR */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0FB671D83484F008CB3EB /* HR.xcdatamodeld */,
+			);
+			path = HR;
 			sourceTree = "<group>";
 		};
 		EAE16FA01D70C2C3002FADE5 /* Fixtures */ = {
@@ -406,85 +248,16 @@
 		EAE16FA11D70C2C3002FADE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EAE16FA21D70C2C3002FADE5 /* MetaData */,
-				EAE16FB01D70C2C3002FADE5 /* RightScale */,
+				EAE0FB661D83484F008CB3EB /* HR */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EAE16FA21D70C2C3002FADE5 /* MetaData */ = {
-			isa = PBXGroup;
-			children = (
-				EAE16FA31D70C2C3002FADE5 /* Device+CoreDataProperties.swift */,
-				EAE16FA41D70C2C3002FADE5 /* Device.swift */,
-				EAE16FA51D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift */,
-				EAE16FA61D70C2C3002FADE5 /* GlobalSettings.swift */,
-				EAE16FA71D70C2C3002FADE5 /* MetaData.xcdatamodel */,
-				EAE16FA81D70C2C3002FADE5 /* Provider+CoreDataProperties.swift */,
-				EAE16FA91D70C2C3002FADE5 /* Provider.swift */,
-				EAE16FAA1D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift */,
-				EAE16FAB1D70C2C3002FADE5 /* ProviderUser.swift */,
-				EAE16FAC1D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift */,
-				EAE16FAD1D70C2C3002FADE5 /* ProviderUserAccount.swift */,
-				EAE16FAE1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift */,
-				EAE16FAF1D70C2C3002FADE5 /* RootResource.swift */,
-			);
-			path = MetaData;
-			sourceTree = "<group>";
-		};
-		EAE16FB01D70C2C3002FADE5 /* RightScale */ = {
-			isa = PBXGroup;
-			children = (
-				EAE16FB11D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift */,
-				EAE16FB21D70C2C3002FADE5 /* AuditedResource.swift */,
-				EAE16FB31D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift */,
-				EAE16FB41D70C2C3002FADE5 /* Cloud.swift */,
-				EAE16FB51D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift */,
-				EAE16FB61D70C2C3002FADE5 /* Datacenter.swift */,
-				EAE16FB71D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift */,
-				EAE16FB81D70C2C3002FADE5 /* Deployment.swift */,
-				EAE16FB91D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift */,
-				EAE16FBA1D70C2C3002FADE5 /* DeploymentResource.swift */,
-				EAE16FBB1D70C2C3002FADE5 /* Event+CoreDataProperties.swift */,
-				EAE16FBC1D70C2C3002FADE5 /* Event.swift */,
-				EAE16FBD1D70C2C3002FADE5 /* Executable+CoreDataProperties.swift */,
-				EAE16FBE1D70C2C3002FADE5 /* Executable.swift */,
-				EAE16FBF1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift */,
-				EAE16FC01D70C2C3002FADE5 /* GraphViewTemplate.swift */,
-				EAE16FC11D70C2C3002FADE5 /* Input+CoreDataProperties.swift */,
-				EAE16FC21D70C2C3002FADE5 /* Input.swift */,
-				EAE16FC31D70C2C3002FADE5 /* Instance+CoreDataProperties.swift */,
-				EAE16FC41D70C2C3002FADE5 /* Instance.swift */,
-				EAE16FC51D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift */,
-				EAE16FC61D70C2C3002FADE5 /* InstanceType.swift */,
-				EAE16FC71D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift */,
-				EAE16FC81D70C2C3002FADE5 /* MonitoringMetric.swift */,
-				EAE16FC91D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift */,
-				EAE16FCA1D70C2C3002FADE5 /* MonitoringMetricData.swift */,
-				EAE16FCB1D70C2C3002FADE5 /* Resource+CoreDataProperties.swift */,
-				EAE16FCC1D70C2C3002FADE5 /* Resource.swift */,
-				EAE16FCD1D70C2C3002FADE5 /* RightScale.xcdatamodel */,
-				EAE16FCE1D70C2C3002FADE5 /* Server+CoreDataProperties.swift */,
-				EAE16FCF1D70C2C3002FADE5 /* Server.swift */,
-				EAE16FD01D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift */,
-				EAE16FD11D70C2C3002FADE5 /* ServerArray.swift */,
-				EAE16FD21D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift */,
-				EAE16FD31D70C2C3002FADE5 /* ServerTemplate.swift */,
-				EAE16FD41D70C2C3002FADE5 /* Tag+CoreDataProperties.swift */,
-				EAE16FD51D70C2C3002FADE5 /* Tag.swift */,
-				EAE16FD61D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift */,
-				EAE16FD71D70C2C3002FADE5 /* VersionedResource.swift */,
-				EAE16FD81D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift */,
-				EAE16FD91D70C2C3002FADE5 /* WatchMonitoringMetric.swift */,
-			);
-			path = RightScale;
 			sourceTree = "<group>";
 		};
 		EAE16FDA1D70C2C3002FADE5 /* Schemas */ = {
 			isa = PBXGroup;
 			children = (
+				EAF40BB51D82441F00A81ED5 /* OpenAPI */,
 				EAE16FDB1D70C2C3002FADE5 /* WADL */,
-				EAE16FDF1D70C2C3002FADE5 /* WSDL */,
 			);
 			path = Schemas;
 			sourceTree = "<group>";
@@ -494,20 +267,16 @@
 			children = (
 				EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */,
 				EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */,
-				EAE16FDE1D70C2C3002FADE5 /* rightscale-v1.wadl */,
 			);
 			path = WADL;
 			sourceTree = "<group>";
 		};
-		EAE16FDF1D70C2C3002FADE5 /* WSDL */ = {
+		EAF40BB51D82441F00A81ED5 /* OpenAPI */ = {
 			isa = PBXGroup;
 			children = (
-				EAE16FE01D70C2C3002FADE5 /* rightscale-v1-common.xsd */,
-				EAE16FE11D70C2C3002FADE5 /* rightscale-v1.wsdl */,
-				EAE16FE21D70C2C3002FADE5 /* rightscale-v1.xsd */,
-				EAE16FE31D70C2C3002FADE5 /* rightscale-v2.wsdl */,
+				EAF40BB61D82445F00A81ED5 /* hr-rest.json */,
 			);
-			path = WSDL;
+			name = OpenAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -561,7 +330,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -600,15 +369,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE170501D70C2C3002FADE5 /* hr-legacy.wadl in Resources */,
+				EAF40BB71D82445F00A81ED5 /* hr-rest.json in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				EAE170541D70C2C3002FADE5 /* rightscale-v1.wadl in Resources */,
-				EAE170561D70C2C3002FADE5 /* rightscale-v1-common.xsd in Resources */,
-				EAE170581D70C2C3002FADE5 /* rightscale-v1.wsdl in Resources */,
 				EAE170521D70C2C3002FADE5 /* hr-rest.wadl in Resources */,
-				EAE1705A1D70C2C3002FADE5 /* rightscale-v1.xsd in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				EAE1705C1D70C2C3002FADE5 /* rightscale-v2.wsdl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,13 +381,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE1705B1D70C2C3002FADE5 /* rightscale-v1.xsd in Resources */,
+				EAF40BB81D82445F00A81ED5 /* hr-rest.json in Resources */,
 				EAE170511D70C2C3002FADE5 /* hr-legacy.wadl in Resources */,
-				EAE170571D70C2C3002FADE5 /* rightscale-v1-common.xsd in Resources */,
-				EAE1705D1D70C2C3002FADE5 /* rightscale-v2.wsdl in Resources */,
 				EAE170531D70C2C3002FADE5 /* hr-rest.wadl in Resources */,
-				EAE170551D70C2C3002FADE5 /* rightscale-v1.wadl in Resources */,
-				EAE170591D70C2C3002FADE5 /* rightscale-v1.wsdl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		99744E62F664B0196B7F17FE /* [CP] Embed Pods Frameworks */ = {
@@ -701,7 +462,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FE41A1D29C326654FC5B0112 /* [CP] Copy Pods Resources */ = {
@@ -726,62 +487,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE1703C1D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift in Sources */,
-				EAE170061D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift in Sources */,
-				EAE1701A1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift in Sources */,
-				EAE1701C1D70C2C3002FADE5 /* GraphViewTemplate.swift in Sources */,
-				EAE170201D70C2C3002FADE5 /* Input.swift in Sources */,
-				EAE1700C1D70C2C3002FADE5 /* Deployment.swift in Sources */,
-				EAE170421D70C2C3002FADE5 /* ServerTemplate.swift in Sources */,
-				EAE1704A1D70C2C3002FADE5 /* VersionedResource.swift in Sources */,
-				EAE1701E1D70C2C3002FADE5 /* Input+CoreDataProperties.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				EAE170161D70C2C3002FADE5 /* Executable+CoreDataProperties.swift in Sources */,
-				EAE16FFC1D70C2C3002FADE5 /* RootResource.swift in Sources */,
-				EAE170321D70C2C3002FADE5 /* Resource+CoreDataProperties.swift in Sources */,
-				EAE170461D70C2C3002FADE5 /* Tag.swift in Sources */,
-				EAE16FFA1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift in Sources */,
-				EAE170101D70C2C3002FADE5 /* DeploymentResource.swift in Sources */,
-				EAE170121D70C2C3002FADE5 /* Event+CoreDataProperties.swift in Sources */,
-				EAE16FEC1D70C2C3002FADE5 /* MetaData.xcdatamodel in Sources */,
-				EAE16FE41D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */,
-				EAE170341D70C2C3002FADE5 /* Resource.swift in Sources */,
-				EAE170301D70C2C3002FADE5 /* MonitoringMetricData.swift in Sources */,
-				EAE1703E1D70C2C3002FADE5 /* ServerArray.swift in Sources */,
-				EAE170261D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift in Sources */,
-				EAE1700A1D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift in Sources */,
-				EAE170141D70C2C3002FADE5 /* Event.swift in Sources */,
-				EAE16FE81D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift in Sources */,
-				EAE170481D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift in Sources */,
-				EAE16FFE1D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift in Sources */,
-				EAE170221D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */,
-				EAE16FF01D70C2C3002FADE5 /* Provider.swift in Sources */,
-				EAE1704C1D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift in Sources */,
-				EAE1702C1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */,
-				EAE170081D70C2C3002FADE5 /* Datacenter.swift in Sources */,
-				EAE16FF21D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift in Sources */,
-				EAE170181D70C2C3002FADE5 /* Executable.swift in Sources */,
-				EAE16FF81D70C2C3002FADE5 /* ProviderUserAccount.swift in Sources */,
-				EAE170001D70C2C3002FADE5 /* AuditedResource.swift in Sources */,
-				EAE170241D70C2C3002FADE5 /* Instance.swift in Sources */,
-				EAE170041D70C2C3002FADE5 /* Cloud.swift in Sources */,
-				EAE170441D70C2C3002FADE5 /* Tag+CoreDataProperties.swift in Sources */,
-				EAE1703A1D70C2C3002FADE5 /* Server.swift in Sources */,
-				EAE170021D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift in Sources */,
+				EAE0FB691D83484F008CB3EB /* HR.xcdatamodeld in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				EAE1700E1D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift in Sources */,
-				EAE16FF41D70C2C3002FADE5 /* ProviderUser.swift in Sources */,
-				EAE170401D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift in Sources */,
-				EAE170281D70C2C3002FADE5 /* InstanceType.swift in Sources */,
-				EAE1704E1D70C2C3002FADE5 /* WatchMonitoringMetric.swift in Sources */,
-				EAE16FE61D70C2C3002FADE5 /* Device.swift in Sources */,
-				EAE16FF61D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift in Sources */,
-				EAE170381D70C2C3002FADE5 /* Server+CoreDataProperties.swift in Sources */,
-				EAE16FEE1D70C2C3002FADE5 /* Provider+CoreDataProperties.swift in Sources */,
-				EAE170361D70C2C3002FADE5 /* RightScale.xcdatamodel in Sources */,
-				EAE16FEA1D70C2C3002FADE5 /* GlobalSettings.swift in Sources */,
-				EAE1702A1D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift in Sources */,
-				EAE1702E1D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,63 +497,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE170471D70C2C3002FADE5 /* Tag.swift in Sources */,
-				EAE16FE71D70C2C3002FADE5 /* Device.swift in Sources */,
-				EAE1701F1D70C2C3002FADE5 /* Input+CoreDataProperties.swift in Sources */,
-				EAE170051D70C2C3002FADE5 /* Cloud.swift in Sources */,
-				EAE1703F1D70C2C3002FADE5 /* ServerArray.swift in Sources */,
-				EAE1700D1D70C2C3002FADE5 /* Deployment.swift in Sources */,
-				EAE170291D70C2C3002FADE5 /* InstanceType.swift in Sources */,
-				EAE16FFD1D70C2C3002FADE5 /* RootResource.swift in Sources */,
-				EAE1701B1D70C2C3002FADE5 /* GraphViewTemplate+CoreDataProperties.swift in Sources */,
-				EAE16FF51D70C2C3002FADE5 /* ProviderUser.swift in Sources */,
-				EAE170371D70C2C3002FADE5 /* RightScale.xcdatamodel in Sources */,
-				EAE170131D70C2C3002FADE5 /* Event+CoreDataProperties.swift in Sources */,
-				EAE170031D70C2C3002FADE5 /* Cloud+CoreDataProperties.swift in Sources */,
-				EAE16FED1D70C2C3002FADE5 /* MetaData.xcdatamodel in Sources */,
-				EAE1700F1D70C2C3002FADE5 /* DeploymentResource+CoreDataProperties.swift in Sources */,
-				EAE170091D70C2C3002FADE5 /* Datacenter.swift in Sources */,
-				EAE16FEF1D70C2C3002FADE5 /* Provider+CoreDataProperties.swift in Sources */,
-				EAE1704D1D70C2C3002FADE5 /* WatchMonitoringMetric+CoreDataProperties.swift in Sources */,
-				EAE170451D70C2C3002FADE5 /* Tag+CoreDataProperties.swift in Sources */,
-				EAE170411D70C2C3002FADE5 /* ServerTemplate+CoreDataProperties.swift in Sources */,
-				EAE16FF71D70C2C3002FADE5 /* ProviderUserAccount+CoreDataProperties.swift in Sources */,
-				EAE170151D70C2C3002FADE5 /* Event.swift in Sources */,
-				EAE170311D70C2C3002FADE5 /* MonitoringMetricData.swift in Sources */,
+				EA5737DE1D887C97005C9D54 /* OpenAPIReaderTests.swift in Sources */,
 				EA81C9491D78CF08002586A5 /* WADLReaderTests.swift in Sources */,
-				EAE170491D70C2C3002FADE5 /* VersionedResource+CoreDataProperties.swift in Sources */,
-				EAE1702D1D70C2C3002FADE5 /* MonitoringMetric.swift in Sources */,
-				EAE170431D70C2C3002FADE5 /* ServerTemplate.swift in Sources */,
-				EAE170391D70C2C3002FADE5 /* Server+CoreDataProperties.swift in Sources */,
-				EAE16FFB1D70C2C3002FADE5 /* RootResource+CoreDataProperties.swift in Sources */,
-				EAE170011D70C2C3002FADE5 /* AuditedResource.swift in Sources */,
-				EAE1702F1D70C2C3002FADE5 /* MonitoringMetricData+CoreDataProperties.swift in Sources */,
-				EAE16FF11D70C2C3002FADE5 /* Provider.swift in Sources */,
-				EAE1703B1D70C2C3002FADE5 /* Server.swift in Sources */,
-				EAE170191D70C2C3002FADE5 /* Executable.swift in Sources */,
-				EAE16FF91D70C2C3002FADE5 /* ProviderUserAccount.swift in Sources */,
-				EAE16FE51D70C2C3002FADE5 /* Device+CoreDataProperties.swift in Sources */,
-				EAE170211D70C2C3002FADE5 /* Input.swift in Sources */,
-				EAE170351D70C2C3002FADE5 /* Resource.swift in Sources */,
-				EAE16FEB1D70C2C3002FADE5 /* GlobalSettings.swift in Sources */,
-				EAE16FE91D70C2C3002FADE5 /* GlobalSettings+CoreDataProperties.swift in Sources */,
-				EAE1704B1D70C2C3002FADE5 /* VersionedResource.swift in Sources */,
-				EAE1701D1D70C2C3002FADE5 /* GraphViewTemplate.swift in Sources */,
-				EAE1703D1D70C2C3002FADE5 /* ServerArray+CoreDataProperties.swift in Sources */,
-				EAE170231D70C2C3002FADE5 /* Instance+CoreDataProperties.swift in Sources */,
 				EA98CBD11D78D93500DDFF51 /* XMLReaderTests.swift in Sources */,
-				EAE170271D70C2C3002FADE5 /* InstanceType+CoreDataProperties.swift in Sources */,
-				EAE1704F1D70C2C3002FADE5 /* WatchMonitoringMetric.swift in Sources */,
-				EAE1700B1D70C2C3002FADE5 /* Deployment+CoreDataProperties.swift in Sources */,
-				EAE1702B1D70C2C3002FADE5 /* MonitoringMetric+CoreDataProperties.swift in Sources */,
-				EAE170111D70C2C3002FADE5 /* DeploymentResource.swift in Sources */,
-				EAE170171D70C2C3002FADE5 /* Executable+CoreDataProperties.swift in Sources */,
-				EAE170331D70C2C3002FADE5 /* Resource+CoreDataProperties.swift in Sources */,
-				EAE16FF31D70C2C3002FADE5 /* ProviderUser+CoreDataProperties.swift in Sources */,
-				EAE170071D70C2C3002FADE5 /* Datacenter+CoreDataProperties.swift in Sources */,
-				EAE170251D70C2C3002FADE5 /* Instance.swift in Sources */,
-				EAE16FFF1D70C2C3002FADE5 /* AuditedResource+CoreDataProperties.swift in Sources */,
-				EA81C94A1D78CF0C002586A5 /* ConfigurationReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,8 +546,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -916,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -937,8 +593,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -954,9 +612,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -965,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70DE41666A7211DF3CB87F16 /* Pods-Connect Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Connect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -979,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF965377B8F4A58FFF2F90DC /* Pods-Connect Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Connect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -993,10 +654,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE412EC5FB46C425589B890F /* Pods-Connect Tests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1014,10 +671,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 979B1D7C8A44A324594FCB3B /* Pods-Connect Tests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = ../Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1058,6 +711,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EAE0FB671D83484F008CB3EB /* HR.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAE0FB681D83484F008CB3EB /* HR.xcdatamodel */,
+			);
+			currentVersion = EAE0FB681D83484F008CB3EB /* HR.xcdatamodel */;
+			path = HR.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }

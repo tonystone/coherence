@@ -9,5 +9,5 @@
 import Swift
 
 internal protocol IndentedStringConvertable {
-    func description(indent indent: Int) -> String
+    func description(indent: Int, indentFirst: Bool) -> String
 }

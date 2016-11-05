@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var persistentStoreCoordinator1: NSPersistentStoreCoordinator? = nil
     var persistentStoreCoordinator2: NSPersistentStoreCoordinator? = nil
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let bundle = Bundle(for: type(of: self))
         let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let model = NSManagedObjectModel(contentsOf: url) {
                     let persistentStoreCoordinator = PersistentStoreCoordinator(managedObjectModel: model)
                     
-                    try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: nil,   at: URL(fileURLWithPath: "\(cachePath)/MetaData.sqlite"), options: nil)
+                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: nil,   at: URL(fileURLWithPath: "\(cachePath)/MetaData.sqlite"), options: nil)
                     
                     persistentStoreCoordinator1 = persistentStoreCoordinator
                 }
@@ -44,9 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let model = NSManagedObjectModel(contentsOf: url) {
                     let persistentStoreCoordinator = PersistentStoreCoordinator(managedObjectModel: model)
                     
-                    try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "GlobalPersistentData",   at: URL(fileURLWithPath: "\(cachePath)/GlobalPersistentData.sqlite"), options: nil)
-                    try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "InstancePersistentData", at: URL(fileURLWithPath: "\(cachePath)/InstancePersistentData.sqlite"), options: nil)
-                    try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: "InstanceTransienttData", at: nil, options: nil)
+                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "GlobalPersistentData",   at: URL(fileURLWithPath: "\(cachePath)/GlobalPersistentData.sqlite"), options: nil)
+                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "InstancePersistentData", at: URL(fileURLWithPath: "\(cachePath)/InstancePersistentData.sqlite"), options: nil)
+                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: "InstanceTransienttData", at: nil, options: nil)
                     
                     persistentStoreCoordinator2 = persistentStoreCoordinator
                 }

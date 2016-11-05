@@ -48,6 +48,9 @@ class WADLMethod : WADLElement  {
 
 }
 
+///
+/// Custom String Printing
+///
 extension WADLMethod : CustomStringConvertible, CustomDebugStringConvertible,  IndentedStringConvertable {
 
     var description: String {
@@ -62,14 +65,14 @@ extension WADLMethod : CustomStringConvertible, CustomDebugStringConvertible,  I
         }
     }
     
-    func description(indent indent: Int) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))method: {"
         
         var first = true
         
         if let id = self.id {
-            description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")id: \'\(id)\'")
+            description.append("\("\r" + String(repeating: "\t", count: indent + 1))id: \'\(id)\'")
             first = false
         }
         
