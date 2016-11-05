@@ -18,7 +18,7 @@ test:
         CODE_SIGN_IDENTITY=
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 6s'
+        -destination 'id=5F273E3F-7B26-436D-A8EB-36460917614D'
         -workspace "$XCODE_WORKSPACE"
         -scheme "$XCODE_SCHEME"
         clean build test |
