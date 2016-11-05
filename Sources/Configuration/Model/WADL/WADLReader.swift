@@ -75,7 +75,7 @@ class WADLReader {
         self.elementsByID[id] = element
     }
     
-    func read(stream stream: InputStream) throws -> WADLApplication {
+    func read(stream: InputStream) throws -> WADLApplication {
         
         /// parse the XML into an XMLDocument object first
         let document = try XMLReader.document(stream: stream)

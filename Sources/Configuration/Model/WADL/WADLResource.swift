@@ -85,14 +85,14 @@ extension WADLResource : CustomStringConvertible, CustomDebugStringConvertible, 
         }
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))resource: {"
         
         var first = true
         
         if let id = self.id {
-            description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")id: \'\(id)\'")
+            description.append("\("\r" + String(repeating: "\t", count: indent + 1))id: \'\(id)\'")
             first = false
         }
         
@@ -169,7 +169,7 @@ extension WADLResource {
             
             for param in self.params {
                 if param.style == .template, let value = param.fixed {
-                    substitutedPath.replacingOccurrences(of: "{\(param.name)}", with: value)
+                    let _ = substitutedPath.replacingOccurrences(of: "{\(param.name)}", with: value)
                 }
             }
             
@@ -237,7 +237,7 @@ extension WADLResource {
         
             for param in self.params {
                 if param.style == .template, let value = param.fixed {
-                    substitutedPath.replacingOccurrences(of: "{\(param.name)}", with: value)
+                    let _ = substitutedPath.replacingOccurrences(of: "{\(param.name)}", with: value)
                 }
             }
             

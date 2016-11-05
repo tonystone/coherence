@@ -29,7 +29,7 @@ extension SchemaPrimitiveType {
         return description(indent: 0)
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         return "\(String(repeating: "\t", count: indentFirst ? indent : 0)) \(self.type)\(self.required ? " *" : "")"
     }
 }

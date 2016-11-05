@@ -10,5 +10,5 @@ import Swift
 
 protocol ConfigurationReader {
     
-    static func read(stream stream: InputStream, sourceURL: URL?) throws -> Configuration
+    static func read(stream: InputStream, sourceURL: URL?) throws -> Configuration
 }

@@ -30,7 +30,7 @@ extension SchemaObject : CustomStringConvertible, CustomDebugStringConvertible, 
         return description(indent: 0)
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indentFirst ? indent : 0)){"
 

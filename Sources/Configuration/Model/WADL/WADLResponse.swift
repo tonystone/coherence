@@ -53,15 +53,12 @@ extension WADLResponse : CustomStringConvertible, CustomDebugStringConvertible, 
         }
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))response: {"
         
-        var first = true
-        
         if let status = self.status {
-            description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")status: \'\(status)\'")
-            first = false
+            description.append("\("\r" + String(repeating: "\t", count: indent + 1))status: \'\(status)\'")
         }
         
         for doc in self.docs {

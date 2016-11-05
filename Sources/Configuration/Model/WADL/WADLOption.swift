@@ -39,7 +39,7 @@ extension WADLOption : CustomStringConvertible, CustomDebugStringConvertible, In
         }
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))param: {"
         

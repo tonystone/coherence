@@ -41,7 +41,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     /// Primary method for parsing OpenAPI spec streams
     ///
-    static func read(stream stream: InputStream, sourceURL: URL? = nil) throws -> Configuration {
+    static func read(stream: InputStream, sourceURL: URL? = nil) throws -> Configuration {
         
         let reader = self.init()
         
@@ -93,7 +93,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     /// Parse the OpenAPI spec input stream.
     ///
-    private func parse(stream stream: InputStream, sourceURL: URL? = nil) throws -> Configuration {
+    private func parse(stream: InputStream, sourceURL: URL? = nil) throws -> Configuration {
 
         let json = try JSONSerialization.jsonObject(with: stream, options: [])
         
@@ -121,11 +121,11 @@ final class OpenAPIReader : ConfigurationReader {
             throw Errors.InvalidSpecification("Specification missing 'paths' attribute.")
         }
     
-        let requiredComponents = version.characters.split(separator: ".", maxSplits: 2, omittingEmptySubsequences: false).map{ String($0) }.flatMap{ Int($0) }.filter{ $0 >= 0 }
-        
-        let major = requiredComponents[0]
-        let minor = requiredComponents[1]
-        let patch = requiredComponents[2]
+//        let requiredComponents = version.characters.split(separator: ".", maxSplits: 2, omittingEmptySubsequences: false).map{ String($0) }.flatMap{ Int($0) }.filter{ $0 >= 0 }
+//        
+//        let major = requiredComponents[0]
+//        let minor = requiredComponents[1]
+//        let patch = requiredComponents[2]
         
         /// Optionals attributes
         if let values = spec["consumes"] as? [String] {
@@ -323,13 +323,13 @@ final class OpenAPIReader : ConfigurationReader {
     private func operation(type: String, value: [String : Any]) throws -> OperationDescription {
         
         /// Requried attributes
-        var responses: [String : ResponseDescription] = [:]
+        let responses: [String : ResponseDescription] = [:]
         
         guard let responseObjects = value["responses"] as? [String : [String : Any]]  else {
             throw Errors.InvalidSpecification("Operation missing required 'responses' attribute")
         }
         
-        for (name, value) in responseObjects {
+        for (_, _) in responseObjects {
 //            responses.append(try self.response(name: name, value: value))
         }
         
@@ -353,10 +353,10 @@ final class OpenAPIReader : ConfigurationReader {
             }
         }
         
-        var parameters: [ParameterDescription] = []
+        let parameters: [ParameterDescription] = []
         
         if let values = value["parameters"] as? [[String : Any]] {
-            for value in values {
+            for _ in values {
 //                parameters.append(try self.parameter(value: value))
             }
         }
@@ -369,7 +369,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     private func response(name: String, value: [String : Any]) throws -> ResponseDescription {
         
-        var headers: [String : String] = [:]
+        let headers: [String : String] = [:]
         
 //        if let values = value["headers"] as? [[String : Any]] {
 //            for value in values {
@@ -499,7 +499,7 @@ final class OpenAPIReader : ConfigurationReader {
     ///
     private func addReference(object: [String : Any], key: String, at path: String) throws {
         
-        if let targets = references[path] {
+        if var _ = references[path] {
             references[path]?[key] = object
         } else {
             references[path] = [key : object]

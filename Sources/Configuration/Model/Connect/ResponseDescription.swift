@@ -36,7 +36,7 @@ extension ResponseDescription : CustomStringConvertible, CustomDebugStringConver
         return description(indent: 0)
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indentFirst ? indent : 0))response: {"
         
@@ -46,7 +46,7 @@ extension ResponseDescription : CustomStringConvertible, CustomDebugStringConver
             description.append("\r\(String(repeating: "\t", count: indent + 1))header: \(key) : \(value)")
         }
         
-        for (mediaType, schema) in self.content {
+        for (_, schema) in self.content {
             description.append("\r\(String(repeating: "\t", count: indent + 1))schema: \(schema.description(indent: indent + 1, indentFirst: false))")
         }
         

@@ -52,7 +52,7 @@ extension WADLApplication : CustomStringConvertible, CustomDebugStringConvertibl
         }
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))application: {"
         

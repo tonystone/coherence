@@ -60,7 +60,7 @@ extension WADLRepresentation : CustomStringConvertible, CustomDebugStringConvert
         }
     }
     
-    func description(indent indent: Int, indentFirst: Bool = true) -> String {
+    func description(indent: Int, indentFirst: Bool = true) -> String {
         
         var description = "\(String(repeating: "\t", count: indent))representation: {"
         
@@ -69,7 +69,7 @@ extension WADLRepresentation : CustomStringConvertible, CustomDebugStringConvert
         var first = true
         
         if let id = self.id {
-            description.append("\(first ? "\r" + String(repeating: "\t", count: indent + 1) : ", ")id: \'\(id)\'")
+            description.append("\("\r" + String(repeating: "\t", count: indent + 1))id: \'\(id)\'")
             first = false
         }
         
