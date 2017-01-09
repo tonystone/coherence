@@ -40,6 +40,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Connect' do |sp|
+      sp.dependency 'Coherence/CoreDataStack'
       sp.source_files  = 'Sources/Connect/*'
   end
 
