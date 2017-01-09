@@ -23,12 +23,24 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   
   s.module_name   = 'Coherence'
-  s.source_files  = 'Sources/**/*'
-  s.exclude_files = 'Sources/ConfigurationCore/**/*'
+  s.default_subspecs = ['Configuration', 'CoreDataStack']
 
-  s.subspec 'No-Arc' do |sp|
-    sp.requires_arc = false
-    sp.source_files = 'Sources/ConfigurationCore/**/*'
+  s.subspec 'ConfigurationCore' do |sp|
+      sp.requires_arc = false
+      sp.source_files = 'Sources/ConfigurationCore/**/*'
+  end
+
+  s.subspec 'Configuration' do |sp|
+      sp.dependency 'Coherence/ConfigurationCore'
+      sp.source_files  = 'Sources/Configuration/*'
+  end
+
+  s.subspec 'CoreDataStack' do |sp|
+      sp.source_files  = 'Sources/CoreDataStack/*'
+  end
+
+  s.subspec 'Connect' do |sp|
+      sp.source_files  = 'Sources/Connect/*'
   end
 
   s.dependency 'TraceLog', "~> 2.0"

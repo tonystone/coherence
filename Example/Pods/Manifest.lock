@@ -1,9 +1,20 @@
 PODS:
   - Coherence (2.0.1):
-    - Coherence/No-Arc (= 2.0.1)
+    - Coherence/Configuration (= 2.0.1)
+    - Coherence/CoreDataStack (= 2.0.1)
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
-  - Coherence/No-Arc (2.0.1):
+  - Coherence/Configuration (2.0.1):
+    - Coherence/ConfigurationCore
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
+  - Coherence/ConfigurationCore (2.0.1):
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
+  - Coherence/Connect (2.0.1):
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
+  - Coherence/CoreDataStack (2.0.1):
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
   - TraceLog (2.0.1):
@@ -14,15 +25,16 @@ PODS:
 
 DEPENDENCIES:
   - Coherence (from `../`)
+  - Coherence/Connect (from `../`)
 
 EXTERNAL SOURCES:
   Coherence:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: a09af9b558b4d06eca412ada951ebbf9de0ded58
+  Coherence: 30aef19130de5100334b747a2ecd40dbdfa84d9f
   TraceLog: 37035b5d79653592f949a8cd50ec044a45d6dfc1
 
-PODFILE CHECKSUM: 7c7691c49031c69f23034d5a0df73dbc5aaaa7fb
+PODFILE CHECKSUM: 155d1d57e355a59423888cffebbb68c6bcad291c
 
 COCOAPODS: 1.1.1

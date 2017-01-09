@@ -15,8 +15,10 @@
   },
   "requires_arc": true,
   "module_name": "Coherence",
-  "source_files": "Sources/**/*",
-  "exclude_files": "Sources/ConfigurationCore/**/*",
+  "default_subspecs": [
+    "Configuration",
+    "CoreDataStack"
+  ],
   "dependencies": {
     "TraceLog": [
       "~> 2.0"
@@ -27,9 +29,26 @@
   },
   "subspecs": [
     {
-      "name": "No-Arc",
+      "name": "ConfigurationCore",
       "requires_arc": false,
       "source_files": "Sources/ConfigurationCore/**/*"
+    },
+    {
+      "name": "Configuration",
+      "dependencies": {
+        "Coherence/ConfigurationCore": [
+
+        ]
+      },
+      "source_files": "Sources/Configuration/*"
+    },
+    {
+      "name": "CoreDataStack",
+      "source_files": "Sources/CoreDataStack/*"
+    },
+    {
+      "name": "Connect",
+      "source_files": "Sources/Connect/*"
     }
   ]
 }
