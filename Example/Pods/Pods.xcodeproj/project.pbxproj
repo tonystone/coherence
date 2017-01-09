@@ -7,34 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0219AC79BD665245353EBB487CF3ADC3 /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C67D5F1F54CF668411E57280B1027 /* CoreData+Extensions.swift */; };
+		06BF0D3EF2CBFBF73E6DBC0236950B96 /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8575D69273BDAB529DC22F7BB9DB3C77 /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13F624F24B4367F92D5D1065ADF7ECD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
 		15A1940B0A06B8B003FF756A07D0128B /* Pods-Coherence-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BC2B31164781D4951776F65EF89E27D /* Pods-Coherence-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15D5FF3FB4C8048076DE1CF9067E5BDA /* Coherence-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62E7A6AB584B9A2F7CD31F9AE7478F6F /* Coherence-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18C03549903F62DF122D69F2FFF67408 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
-		25932398364AB0AC2AF878FEB7C71B6A /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30917CE6D15C387E1FBACE524118941F /* Writer.swift */; };
-		2AEFDC2BE32963EC494860A77F6641D8 /* CCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E754E534B5EBBACFD5BEC388D7E59CA9 /* CCObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		43B4C52A9401C58F452FF0BA9B26F0A1 /* RuntimeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71130B96F929DCD0EFEF6C3C040997B /* RuntimeContext.swift */; };
+		3C5B17D81011F6F4846920C730C69127 /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3062D95E32CBF4C421B1DAB781EB9D85 /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C904E7A5EA3662684585BDD6E512798 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51964D17BE3D443E2F0874067757B06 /* CoreDataStack.swift */; };
+		41176D97BCA26A3ECC64D64E8F307F2A /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E434BD19C0335EA55F180090D6BAF28 /* ConsoleWriter.swift */; };
+		43CCBACA00BEFC3966338BF8ACE35D03 /* Coherence-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D94589D8DB299D73C03D24DABF59A91 /* Coherence-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4980E8B98F1712C1EB1100A727DB4F07 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4C42FBFD61A9776150452FC5D7D56E /* Pods-Tests-dummy.m */; };
-		6F469CC56046EC7FDCF0DB82A1D1BE1F /* Coherence-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B695E81F8A0DEC17C91429BBE8A2EA5E /* Coherence-dummy.m */; };
-		814AAB703CC9972A61DCD19972782892 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485694EC3662A5F2DBCBE685C0A8347 /* Configuration.swift */; };
-		8ACFDA2D8239843B945593F4E80305D1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09695DCD72D1E3D6C84E4742A27D139 /* CoreDataStack.swift */; };
-		937C8E5A83A01A2E36387D044EA6CCE2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1559E80D567FA7DE7A0D9EE7EE62D /* Logger.swift */; };
-		97632E86E9D7120A8B35246EAB81622D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
-		A47914D148C6DB07DB05AB1355BBBF65 /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E434BD19C0335EA55F180090D6BAF28 /* ConsoleWriter.swift */; };
-		A882339D16EE6FB83F089CF198FDA8B1 /* TraceLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC62A37A51356A88B0DE3EC01147FE09 /* TraceLog-dummy.m */; };
+		5A6EFC024E88F3E8529D354950D06979 /* CCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EFF97B7E45197CB19BF5F81CA31BD4D5 /* CCObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63834F4D9C8788AE6A44130D77BA47AA /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F955D4B58FF9309E7BEE005785B2EE /* MetaLogEntry+CoreDataProperties.swift */; };
+		63B1054CDAA1F0E0F8EB83BAD2524B20 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8C3B11072C6751E8339D1D8174D0D /* WriteAheadLog.swift */; };
+		7A3A735F8086A98D305BA51861831AE9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32BAA22E73D96C109480898B68FA58 /* Configuration.swift */; };
+		8CF78690CC7AAD85F0D0E1AA939DEABB /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4A49F686E06F42CB169462649FE889 /* MetaModel.swift */; };
+		929645B1AFF7B9207F907F145F3765B3 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD53C6D71D25BBE05B05C6EEA3528DF /* TraceLog.swift */; };
+		9AF94946467EA36C750F427F5117DC5D /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30917CE6D15C387E1FBACE524118941F /* Writer.swift */; };
+		A312CED37988F5311933E6E93EFE1C48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
+		A81AFC4CE17A22826B32054842BD11F7 /* StaticContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911F6D2DE601F49A50B91F297E34950 /* StaticContext.swift */; };
+		A8AF5AB93902494B415B7E6789C59335 /* MetaLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC37871F6011D2B65743348556A9883 /* MetaLogEntry.swift */; };
 		B5026B98264DD29EA94FFA7E9F04DD88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
-		B8433CDD516F82523C143F03F3F882AF /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E020244B1A18187BABA37F0C6860BB3 /* Environment.swift */; };
-		BD3BC32A656D8ABEB27837C1C5B1946B /* GenericCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA83DC99CCCFDCA02FF1486BA683B2 /* GenericCoreDataStack.swift */; };
-		BEDB484176D189C4701F1AA2DF32120C /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8575D69273BDAB529DC22F7BB9DB3C77 /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B86365C46E784A0C84FB344771F27B3E /* RuntimeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71130B96F929DCD0EFEF6C3C040997B /* RuntimeContext.swift */; };
 		C3852E9959761781B24B863AC6BEA0DD /* Pods-Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8686EFE4414CEB39A964C04ACA675A7D /* Pods-Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C61B4367E132E30FBF00CC680C700C33 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78747C847CDFCE9DF6ABE667F71EEED /* Configuration.swift */; };
-		D27B56D08615DB319B8AEDA87BEF73D8 /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3062D95E32CBF4C421B1DAB781EB9D85 /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C632ECBAE70D33054917630F71FDBD08 /* TraceLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC62A37A51356A88B0DE3EC01147FE09 /* TraceLog-dummy.m */; };
+		C6946F07DD194B8E39EE7CD887C304D1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E020244B1A18187BABA37F0C6860BB3 /* Environment.swift */; };
+		C9006EB75C86B2D507E28FEA433EFFDA /* PersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B039257DBCA51B5FBA6686DF11B53161 /* PersistentStoreCoordinator.swift */; };
+		CBAB98CD971A5D9CA05285D47F79DB1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */; };
+		CE5FF38626EEED4E08D2D9C31F2E7B41 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AFA947A2B6D711D20289FC00C64E1 /* LogLevel.swift */; };
+		D37EE5332C18E24B0DB8CBD592E26F14 /* Coherence-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C9EE97718710E0B48B61222F9E282C /* Coherence-dummy.m */; };
 		D44F2C0F4F3907FDB4A157DC569D6DD1 /* Pods-Coherence-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7081E6915D75B015782CFC12EBDE739 /* Pods-Coherence-dummy.m */; };
-		DBF369F3C07D36877AAA02F116911CCF /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327BB803022DBC0ECFF1D2980F79726B /* TraceLog.framework */; };
-		EAE52D4402EF7921329D63DAAA310439 /* CCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD8887D9DB147410A47670AF6944380 /* CCObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE2140A1D1EDE3E43265366463C33758 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD53C6D71D25BBE05B05C6EEA3528DF /* TraceLog.swift */; };
-		F646818022F326B953069DC56710116F /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AFA947A2B6D711D20289FC00C64E1 /* LogLevel.swift */; };
-		F92768D44C2220E9EB779FEAFA044EC9 /* StaticContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911F6D2DE601F49A50B91F297E34950 /* StaticContext.swift */; };
+		E499C8C85BB0DCD073485B8148E3838D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485694EC3662A5F2DBCBE685C0A8347 /* Configuration.swift */; };
+		E8659B3C9EFE134C21F0115F297136CD /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327BB803022DBC0ECFF1D2980F79726B /* TraceLog.framework */; };
+		E885B32D7FF7B326AB5A8E58E0844139 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1559E80D567FA7DE7A0D9EE7EE62D /* Logger.swift */; };
+		EC7A8B657E0AE95C684A0EA50197984B /* GenericCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A0D5DE64B36FFB7B5F87B9BDE54D8 /* GenericCoreDataStack.swift */; };
+		F32125BF2E01C9536B5F1EEDC940B5CF /* CCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F461625B26C66CBF6BCA09393D727F9D /* CCObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,89 +48,95 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9E7B37363DA1DD95625264CBF47BFA2C;
+			remoteGlobalIDString = F19201DFBD7594AE17D27FEC9C1D6E68;
 			remoteInfo = Coherence;
 		};
 		5865FF798FBE8152A22CCE06DD739571 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0211F992A0F50CE384A4AA11D078D8E7;
+			remoteGlobalIDString = 174506AD1756E9ED84E7D93644C23A55;
 			remoteInfo = TraceLog;
 		};
-		5A2DCA44213E54436F8BC0F916488751 /* PBXContainerItemProxy */ = {
+		AC25A898F85D4DBCBCEF3A970AA6E8C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0211F992A0F50CE384A4AA11D078D8E7;
+			remoteGlobalIDString = 174506AD1756E9ED84E7D93644C23A55;
 			remoteInfo = TraceLog;
 		};
 		BA4A39895CC93424B9B47CB6D7EE0ADF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9E7B37363DA1DD95625264CBF47BFA2C;
+			remoteGlobalIDString = F19201DFBD7594AE17D27FEC9C1D6E68;
 			remoteInfo = Coherence;
 		};
 		FD13CB7118E1527B25205C33E134E80B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0211F992A0F50CE384A4AA11D078D8E7;
+			remoteGlobalIDString = 174506AD1756E9ED84E7D93644C23A55;
 			remoteInfo = TraceLog;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06F955D4B58FF9309E7BEE005785B2EE /* MetaLogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MetaLogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0D4A49F686E06F42CB169462649FE889 /* MetaModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetaModel.swift; sourceTree = "<group>"; };
+		18D676B41770B149CA17D1A339F14A55 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
 		20738F72A6FB1DF9185E8DE7DC14C804 /* Pods-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-frameworks.sh"; sourceTree = "<group>"; };
-		25642C5849E6E23FA21307142F02DF0B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29DF49B8C40835D72B39B6605881C605 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1D5D32448D5BFAB1633390C60FECBB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DD8887D9DB147410A47670AF6944380 /* CCObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCObject.h; sourceTree = "<group>"; };
 		2E434BD19C0335EA55F180090D6BAF28 /* ConsoleWriter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleWriter.swift; path = Sources/TraceLog/ConsoleWriter.swift; sourceTree = "<group>"; };
-		2EBA83DC99CCCFDCA02FF1486BA683B2 /* GenericCoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericCoreDataStack.swift; sourceTree = "<group>"; };
 		3062D95E32CBF4C421B1DAB781EB9D85 /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = Sources/TraceLogObjC/TraceLog.h; sourceTree = "<group>"; };
 		30917CE6D15C387E1FBACE524118941F /* Writer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Writer.swift; path = Sources/TraceLog/Writer.swift; sourceTree = "<group>"; };
 		327BB803022DBC0ECFF1D2980F79726B /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F9E55F31804772001E1E9D6E5514E1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CD53C6D71D25BBE05B05C6EEA3528DF /* TraceLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TraceLog.swift; path = Sources/TraceLog/TraceLog.swift; sourceTree = "<group>"; };
+		3D94589D8DB299D73C03D24DABF59A91 /* Coherence-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-umbrella.h"; sourceTree = "<group>"; };
 		3DC1559E80D567FA7DE7A0D9EE7EE62D /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Sources/TraceLog/Logger.swift; sourceTree = "<group>"; };
-		408CAE7E6971B4A629A96C0E9854B1C0 /* Coherence.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Coherence.modulemap; sourceTree = "<group>"; };
 		483DEE207B5E920CE1825E228191AFB6 /* Pods-Coherence-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Coherence-frameworks.sh"; sourceTree = "<group>"; };
 		4913AEA87A443D3EF129B8F87E553B83 /* Pods-Coherence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence.release.xcconfig"; sourceTree = "<group>"; };
-		4935B1DB8575D73D049A5506ABD6BF92 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
 		4BC2B31164781D4951776F65EF89E27D /* Pods-Coherence-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence-umbrella.h"; sourceTree = "<group>"; };
 		4D47DCA2896AEBE6D0B1766723803104 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
 		4E1965D166E1EF870BC16A6F2F2C3B3F /* Pods-Coherence-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Coherence-acknowledgements.plist"; sourceTree = "<group>"; };
 		626AFA947A2B6D711D20289FC00C64E1 /* LogLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Sources/TraceLog/LogLevel.swift; sourceTree = "<group>"; };
-		62E7A6AB584B9A2F7CD31F9AE7478F6F /* Coherence-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-umbrella.h"; sourceTree = "<group>"; };
+		6F5A0D5DE64B36FFB7B5F87B9BDE54D8 /* GenericCoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericCoreDataStack.swift; sourceTree = "<group>"; };
 		704DA03F52322329CE2CEF2F500D5AC7 /* TraceLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TraceLog.xcconfig; sourceTree = "<group>"; };
+		758DAEE3BB0BB61B6FE643E152C681E4 /* Coherence-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-prefix.pch"; sourceTree = "<group>"; };
+		77C9EE97718710E0B48B61222F9E282C /* Coherence-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Coherence-dummy.m"; sourceTree = "<group>"; };
 		7E020244B1A18187BABA37F0C6860BB3 /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Sources/TraceLog/Environment.swift; sourceTree = "<group>"; };
 		7EF87EBA214EB23A07A3392FA209A377 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F3C67D5F1F54CF668411E57280B1027 /* CoreData+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
 		84879E20D200A59D3A33C59728BBD225 /* Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8575D69273BDAB529DC22F7BB9DB3C77 /* TraceLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-umbrella.h"; sourceTree = "<group>"; };
 		8686EFE4414CEB39A964C04ACA675A7D /* Pods-Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-umbrella.h"; sourceTree = "<group>"; };
 		8CC121E81BE0C529BE269DFB1253D434 /* TraceLog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-prefix.pch"; sourceTree = "<group>"; };
+		8E4E786777EFE72216D92C5836E73C98 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A2C3429B7E631E2630BBF967BF62EAED /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A5A8B4C34FB87B752EC616AC20482A4E /* Pods-Coherence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence.debug.xcconfig"; sourceTree = "<group>"; };
+		A640DAA6803A1BBBD973BAB6C92C7574 /* Coherence.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Coherence.modulemap; sourceTree = "<group>"; };
 		AAE0F955D1CCD9107B28EC52EF4DD9E4 /* Pods_Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC62A37A51356A88B0DE3EC01147FE09 /* TraceLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TraceLog-dummy.m"; sourceTree = "<group>"; };
-		B09695DCD72D1E3D6C84E4742A27D139 /* CoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B695E81F8A0DEC17C91429BBE8A2EA5E /* Coherence-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Coherence-dummy.m"; sourceTree = "<group>"; };
+		B039257DBCA51B5FBA6686DF11B53161 /* PersistentStoreCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistentStoreCoordinator.swift; sourceTree = "<group>"; };
+		B5E8C3B11072C6751E8339D1D8174D0D /* WriteAheadLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WriteAheadLog.swift; sourceTree = "<group>"; };
 		B7081E6915D75B015782CFC12EBDE739 /* Pods-Coherence-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence-dummy.m"; sourceTree = "<group>"; };
 		BA6435735C680B15E1FF61D30EE69EB6 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TraceLog.modulemap; sourceTree = "<group>"; };
-		C78747C847CDFCE9DF6ABE667F71EEED /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C911F6D2DE601F49A50B91F297E34950 /* StaticContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StaticContext.swift; path = Sources/TraceLog/StaticContext.swift; sourceTree = "<group>"; };
+		CDC37871F6011D2B65743348556A9883 /* MetaLogEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetaLogEntry.swift; sourceTree = "<group>"; };
 		D316E57B9F4BA26A3F9BE8CEA666FB99 /* Pods-Coherence-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Coherence-resources.sh"; sourceTree = "<group>"; };
-		D4349D4E8558234C5A6AFDB4FAFC036A /* Coherence-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-prefix.pch"; sourceTree = "<group>"; };
 		D485694EC3662A5F2DBCBE685C0A8347 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/TraceLog/Configuration.swift; sourceTree = "<group>"; };
+		D51964D17BE3D443E2F0874067757B06 /* CoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D65D5CB53ED305BBF31DDED73BBEE163 /* Pods-Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Tests.modulemap"; sourceTree = "<group>"; };
 		D665B96425057727FFB2CF473AD11B45 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D70FA97DCFCC535C41879C741D4B6BEE /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E731A1EE62B23E8DBE627B354FC1A3F8 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E754E534B5EBBACFD5BEC388D7E59CA9 /* CCObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CCObject.m; sourceTree = "<group>"; };
+		EE32BAA22E73D96C109480898B68FA58 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		EEA1983A38F84D46FB3F6B0990B6793E /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EFF97B7E45197CB19BF5F81CA31BD4D5 /* CCObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCObject.h; sourceTree = "<group>"; };
+		F461625B26C66CBF6BCA09393D727F9D /* CCObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CCObject.m; sourceTree = "<group>"; };
 		F49FA2D25623BD4F84286D9AD01E1D4A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F71130B96F929DCD0EFEF6C3C040997B /* RuntimeContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuntimeContext.swift; path = Sources/TraceLog/RuntimeContext.swift; sourceTree = "<group>"; };
 		F96D56252086FB96299B480712E679B7 /* Pods-Coherence.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Coherence.modulemap"; sourceTree = "<group>"; };
@@ -141,6 +153,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CBC8B1437D335D27D0E03C0F24B96E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBAB98CD971A5D9CA05285D47F79DB1E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E173A740691A024ABDBFFE7DD83BC5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A312CED37988F5311933E6E93EFE1C48 /* Foundation.framework in Frameworks */,
+				E8659B3C9EFE134C21F0115F297136CD /* TraceLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6B8171DA3F95C47D19E3A143CCE47A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,26 +178,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D715C32AA65C54594FC1D3A4ED4456B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				18C03549903F62DF122D69F2FFF67408 /* Foundation.framework in Frameworks */,
-				DBF369F3C07D36877AAA02F116911CCF /* TraceLog.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD3B277C93B9939B0EC57D5F58F3E40F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97632E86E9D7120A8B35246EAB81622D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E86DFCA7DBB83D71C4F10A4D562863 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				377F53E3535EE35E53C9FD2B8BDFE8DF /* Configuration */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		076A872D25F01714B134B04FDD6096EB /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				4E628AB2951832938AD040A3D0285F96 /* Sources */,
+			);
+			name = Connect;
+			sourceTree = "<group>";
+		};
+		10335B9397A76EBCE94F29E00B44D31B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9DE84058D8420AD80DC352FBB54D4D4A /* Stack */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1209F1D142798A951D28991B79C05E80 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C67D5F1F54CF668411E57280B1027 /* CoreData+Extensions.swift */,
+				CDC37871F6011D2B65743348556A9883 /* MetaLogEntry.swift */,
+				06F955D4B58FF9309E7BEE005785B2EE /* MetaLogEntry+CoreDataProperties.swift */,
+				0D4A49F686E06F42CB169462649FE889 /* MetaModel.swift */,
+				B039257DBCA51B5FBA6686DF11B53161 /* PersistentStoreCoordinator.swift */,
+				B5E8C3B11072C6751E8339D1D8174D0D /* WriteAheadLog.swift */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
 		170173F225ECECE2B8689E2C12042A21 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,14 +232,6 @@
 				30917CE6D15C387E1FBACE524118941F /* Writer.swift */,
 			);
 			name = Swift;
-			sourceTree = "<group>";
-		};
-		21E3064032DA951777F55C0C4CDA7E95 /* No-Arc */ = {
-			isa = PBXGroup;
-			children = (
-				EC2651110A0D7CFA799A67A86B60F95A /* Sources */,
-			);
-			name = "No-Arc";
 			sourceTree = "<group>";
 		};
 		267CDECC7AE653EC3FFDCAEC4CF1DFB6 /* Support Files */ = {
@@ -216,12 +257,36 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		35962C9A03B9EC2278A3A28AC586EF76 /* Development Pods */ = {
+		35FC6F28B072D87FF771D90FC6998C73 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				878BB02665F1541A975D51B73222C258 /* Coherence */,
+				865C933D279E2AC8B8E9FF8538903F68 /* ConfigurationCore */,
 			);
-			name = "Development Pods";
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		377F53E3535EE35E53C9FD2B8BDFE8DF /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EE32BAA22E73D96C109480898B68FA58 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		379EF2DAEAA28BDFE452B6D2B3EAB15D /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				06E86DFCA7DBB83D71C4F10A4D562863 /* Sources */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		4E628AB2951832938AD040A3D0285F96 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1209F1D142798A951D28991B79C05E80 /* Connect */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		5245E7FC196FAB4F55453B528EA4AC4F /* Frameworks */ = {
@@ -231,6 +296,20 @@
 				910C0F820F7078F9386163AAE9947537 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53FE82F6457CBC143B95D25E162EB19A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A640DAA6803A1BBBD973BAB6C92C7574 /* Coherence.modulemap */,
+				18D676B41770B149CA17D1A339F14A55 /* Coherence.xcconfig */,
+				77C9EE97718710E0B48B61222F9E282C /* Coherence-dummy.m */,
+				758DAEE3BB0BB61B6FE643E152C681E4 /* Coherence-prefix.pch */,
+				3D94589D8DB299D73C03D24DABF59A91 /* Coherence-umbrella.h */,
+				8E4E786777EFE72216D92C5836E73C98 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Coherence";
 			sourceTree = "<group>";
 		};
 		564CB580E9D1EBB9528F3C4D3FFBDD33 /* TraceLog */ = {
@@ -265,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				35962C9A03B9EC2278A3A28AC586EF76 /* Development Pods */,
+				89CFC2230958F68E35FF3A4FD29E5007 /* Development Pods */,
 				5245E7FC196FAB4F55453B528EA4AC4F /* Frameworks */,
 				D30B2B905E5A7D50DF2951A0890F1312 /* Pods */,
 				EE46ED62F1891A5F69578C8F6DC0C549 /* Products */,
@@ -273,15 +352,21 @@
 			);
 			sourceTree = "<group>";
 		};
-		878BB02665F1541A975D51B73222C258 /* Coherence */ = {
+		865C933D279E2AC8B8E9FF8538903F68 /* ConfigurationCore */ = {
 			isa = PBXGroup;
 			children = (
-				21E3064032DA951777F55C0C4CDA7E95 /* No-Arc */,
-				98B96F67AFE54C8802E9EE08C9BAB56A /* Sources */,
-				C41AE460944E7FBEBF9D7DAAB0F3EEE3 /* Support Files */,
+				F461625B26C66CBF6BCA09393D727F9D /* CCObject.m */,
+				EAE226EF3479B7E70CDDF35E2BFD2BD1 /* include */,
 			);
-			name = Coherence;
-			path = ../..;
+			path = ConfigurationCore;
+			sourceTree = "<group>";
+		};
+		89CFC2230958F68E35FF3A4FD29E5007 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC01576A7AB52B3837F23380F289FC19 /* Coherence */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		910C0F820F7078F9386163AAE9947537 /* iOS */ = {
@@ -292,12 +377,13 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		98B96F67AFE54C8802E9EE08C9BAB56A /* Sources */ = {
+		9DE84058D8420AD80DC352FBB54D4D4A /* Stack */ = {
 			isa = PBXGroup;
 			children = (
-				AFEC0329957383720EB9D7FF43703FAF /* Coherence */,
+				D51964D17BE3D443E2F0874067757B06 /* CoreDataStack.swift */,
+				6F5A0D5DE64B36FFB7B5F87B9BDE54D8 /* GenericCoreDataStack.swift */,
 			);
-			path = Sources;
+			path = Stack;
 			sourceTree = "<group>";
 		};
 		A8D4ABF2F658B03F9E524D330897CF85 /* Pods-Coherence */ = {
@@ -318,45 +404,25 @@
 			path = "Target Support Files/Pods-Coherence";
 			sourceTree = "<group>";
 		};
-		AA8587A5B1EF7223A79E9FCE74286C22 /* ConfigurationCore */ = {
+		B42F57D5911C2AD97DBA5B00CD3F667E /* ConfigurationCore */ = {
 			isa = PBXGroup;
 			children = (
-				E754E534B5EBBACFD5BEC388D7E59CA9 /* CCObject.m */,
-				B9784E496980F170A1030448326622DA /* include */,
+				35FC6F28B072D87FF771D90FC6998C73 /* Sources */,
 			);
-			path = ConfigurationCore;
+			name = ConfigurationCore;
 			sourceTree = "<group>";
 		};
-		AFEC0329957383720EB9D7FF43703FAF /* Coherence */ = {
+		BC01576A7AB52B3837F23380F289FC19 /* Coherence */ = {
 			isa = PBXGroup;
 			children = (
-				C78747C847CDFCE9DF6ABE667F71EEED /* Configuration.swift */,
-				B09695DCD72D1E3D6C84E4742A27D139 /* CoreDataStack.swift */,
-				2EBA83DC99CCCFDCA02FF1486BA683B2 /* GenericCoreDataStack.swift */,
+				379EF2DAEAA28BDFE452B6D2B3EAB15D /* Configuration */,
+				B42F57D5911C2AD97DBA5B00CD3F667E /* ConfigurationCore */,
+				076A872D25F01714B134B04FDD6096EB /* Connect */,
+				DB2F8D970871B26DDD9DED0077BEEB5C /* Stack */,
+				53FE82F6457CBC143B95D25E162EB19A /* Support Files */,
 			);
-			path = Coherence;
-			sourceTree = "<group>";
-		};
-		B9784E496980F170A1030448326622DA /* include */ = {
-			isa = PBXGroup;
-			children = (
-				2DD8887D9DB147410A47670AF6944380 /* CCObject.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		C41AE460944E7FBEBF9D7DAAB0F3EEE3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				408CAE7E6971B4A629A96C0E9854B1C0 /* Coherence.modulemap */,
-				4935B1DB8575D73D049A5506ABD6BF92 /* Coherence.xcconfig */,
-				B695E81F8A0DEC17C91429BBE8A2EA5E /* Coherence-dummy.m */,
-				D4349D4E8558234C5A6AFDB4FAFC036A /* Coherence-prefix.pch */,
-				62E7A6AB584B9A2F7CD31F9AE7478F6F /* Coherence-umbrella.h */,
-				25642C5849E6E23FA21307142F02DF0B /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Coherence";
+			name = Coherence;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		D30B2B905E5A7D50DF2951A0890F1312 /* Pods */ = {
@@ -367,12 +433,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EC2651110A0D7CFA799A67A86B60F95A /* Sources */ = {
+		DB2F8D970871B26DDD9DED0077BEEB5C /* Stack */ = {
 			isa = PBXGroup;
 			children = (
-				AA8587A5B1EF7223A79E9FCE74286C22 /* ConfigurationCore */,
+				10335B9397A76EBCE94F29E00B44D31B /* Sources */,
 			);
-			path = Sources;
+			name = Stack;
+			sourceTree = "<group>";
+		};
+		EAE226EF3479B7E70CDDF35E2BFD2BD1 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EFF97B7E45197CB19BF5F81CA31BD4D5 /* CCObject.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		EE46ED62F1891A5F69578C8F6DC0C549 /* Products */ = {
@@ -397,12 +471,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6D77CAE9AC4C5F778B5E35B64670512D /* Headers */ = {
+		8F78C386CA063EBF1DBE35B244F66CE3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE52D4402EF7921329D63DAAA310439 /* CCObject.h in Headers */,
-				15D5FF3FB4C8048076DE1CF9067E5BDA /* Coherence-umbrella.h in Headers */,
+				06BF0D3EF2CBFBF73E6DBC0236950B96 /* TraceLog-umbrella.h in Headers */,
+				3C5B17D81011F6F4846920C730C69127 /* TraceLog.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96231BFD3946D3E5DD649AE97838ECB7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A6EFC024E88F3E8529D354950D06979 /* CCObject.h in Headers */,
+				43CCBACA00BEFC3966338BF8ACE35D03 /* Coherence-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,15 +494,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A1940B0A06B8B003FF756A07D0128B /* Pods-Coherence-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAD39AD22AE8E3A69223248225F8F0B3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BEDB484176D189C4701F1AA2DF32120C /* TraceLog-umbrella.h in Headers */,
-				D27B56D08615DB319B8AEDA87BEF73D8 /* TraceLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,13 +508,13 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0211F992A0F50CE384A4AA11D078D8E7 /* TraceLog */ = {
+		174506AD1756E9ED84E7D93644C23A55 /* TraceLog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 052A0C83CF053FC8A9F9A474A9892884 /* Build configuration list for PBXNativeTarget "TraceLog" */;
+			buildConfigurationList = 9DD4A89C40E41EF79B92D94F19F4CC95 /* Build configuration list for PBXNativeTarget "TraceLog" */;
 			buildPhases = (
-				DF2CB286112D717FAFC23A3BAA1422EB /* Sources */,
-				FD3B277C93B9939B0EC57D5F58F3E40F /* Frameworks */,
-				CAD39AD22AE8E3A69223248225F8F0B3 /* Headers */,
+				5039DDE8FCF916B2659CA5CC1EE3E3FF /* Sources */,
+				3CBC8B1437D335D27D0E03C0F24B96E7 /* Frameworks */,
+				8F78C386CA063EBF1DBE35B244F66CE3 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -470,18 +544,18 @@
 			productReference = E731A1EE62B23E8DBE627B354FC1A3F8 /* Pods_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9E7B37363DA1DD95625264CBF47BFA2C /* Coherence */ = {
+		F19201DFBD7594AE17D27FEC9C1D6E68 /* Coherence */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B153D97237060ABA6BBB7022D2A42368 /* Build configuration list for PBXNativeTarget "Coherence" */;
+			buildConfigurationList = 524942119AF89CC93FA27A33E0230327 /* Build configuration list for PBXNativeTarget "Coherence" */;
 			buildPhases = (
-				194E439E170323D630A606D749F63C20 /* Sources */,
-				D715C32AA65C54594FC1D3A4ED4456B8 /* Frameworks */,
-				6D77CAE9AC4C5F778B5E35B64670512D /* Headers */,
+				D9B49321641B148E8E78473DC1C9E349 /* Sources */,
+				6E173A740691A024ABDBFFE7DD83BC5D /* Frameworks */,
+				96231BFD3946D3E5DD649AE97838ECB7 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				84B0F9175627F167C616FB057095AB3F /* PBXTargetDependency */,
+				52493944E04C692E82EEAC4E71FA3366 /* PBXTargetDependency */,
 			);
 			name = Coherence;
 			productName = Coherence;
@@ -528,24 +602,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E7B37363DA1DD95625264CBF47BFA2C /* Coherence */,
+				F19201DFBD7594AE17D27FEC9C1D6E68 /* Coherence */,
 				FD2D88FA0697131961365676942A3CD1 /* Pods-Coherence */,
 				431487C3EBA4E7B68DF978D346C704B3 /* Pods-Tests */,
-				0211F992A0F50CE384A4AA11D078D8E7 /* TraceLog */,
+				174506AD1756E9ED84E7D93644C23A55 /* TraceLog */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		194E439E170323D630A606D749F63C20 /* Sources */ = {
+		5039DDE8FCF916B2659CA5CC1EE3E3FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AEFDC2BE32963EC494860A77F6641D8 /* CCObject.m in Sources */,
-				6F469CC56046EC7FDCF0DB82A1D1BE1F /* Coherence-dummy.m in Sources */,
-				C61B4367E132E30FBF00CC680C700C33 /* Configuration.swift in Sources */,
-				8ACFDA2D8239843B945593F4E80305D1 /* CoreDataStack.swift in Sources */,
-				BD3BC32A656D8ABEB27837C1C5B1946B /* GenericCoreDataStack.swift in Sources */,
+				E499C8C85BB0DCD073485B8148E3838D /* Configuration.swift in Sources */,
+				41176D97BCA26A3ECC64D64E8F307F2A /* ConsoleWriter.swift in Sources */,
+				C6946F07DD194B8E39EE7CD887C304D1 /* Environment.swift in Sources */,
+				E885B32D7FF7B326AB5A8E58E0844139 /* Logger.swift in Sources */,
+				CE5FF38626EEED4E08D2D9C31F2E7B41 /* LogLevel.swift in Sources */,
+				B86365C46E784A0C84FB344771F27B3E /* RuntimeContext.swift in Sources */,
+				A81AFC4CE17A22826B32054842BD11F7 /* StaticContext.swift in Sources */,
+				C632ECBAE70D33054917630F71FDBD08 /* TraceLog-dummy.m in Sources */,
+				929645B1AFF7B9207F907F145F3765B3 /* TraceLog.swift in Sources */,
+				9AF94946467EA36C750F427F5117DC5D /* Writer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +636,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9B49321641B148E8E78473DC1C9E349 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32125BF2E01C9536B5F1EEDC940B5CF /* CCObject.m in Sources */,
+				D37EE5332C18E24B0DB8CBD592E26F14 /* Coherence-dummy.m in Sources */,
+				7A3A735F8086A98D305BA51861831AE9 /* Configuration.swift in Sources */,
+				0219AC79BD665245353EBB487CF3ADC3 /* CoreData+Extensions.swift in Sources */,
+				3C904E7A5EA3662684585BDD6E512798 /* CoreDataStack.swift in Sources */,
+				EC7A8B657E0AE95C684A0EA50197984B /* GenericCoreDataStack.swift in Sources */,
+				63834F4D9C8788AE6A44130D77BA47AA /* MetaLogEntry+CoreDataProperties.swift in Sources */,
+				A8AF5AB93902494B415B7E6789C59335 /* MetaLogEntry.swift in Sources */,
+				8CF78690CC7AAD85F0D0E1AA939DEABB /* MetaModel.swift in Sources */,
+				C9006EB75C86B2D507E28FEA433EFFDA /* PersistentStoreCoordinator.swift in Sources */,
+				63B1054CDAA1F0E0F8EB83BAD2524B20 /* WriteAheadLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA83BBF5B8701E7D762CF53B94FA2C61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -565,54 +662,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF2CB286112D717FAFC23A3BAA1422EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				814AAB703CC9972A61DCD19972782892 /* Configuration.swift in Sources */,
-				A47914D148C6DB07DB05AB1355BBBF65 /* ConsoleWriter.swift in Sources */,
-				B8433CDD516F82523C143F03F3F882AF /* Environment.swift in Sources */,
-				937C8E5A83A01A2E36387D044EA6CCE2 /* Logger.swift in Sources */,
-				F646818022F326B953069DC56710116F /* LogLevel.swift in Sources */,
-				43B4C52A9401C58F452FF0BA9B26F0A1 /* RuntimeContext.swift in Sources */,
-				F92768D44C2220E9EB779FEAFA044EC9 /* StaticContext.swift in Sources */,
-				A882339D16EE6FB83F089CF198FDA8B1 /* TraceLog-dummy.m in Sources */,
-				EE2140A1D1EDE3E43265366463C33758 /* TraceLog.swift in Sources */,
-				25932398364AB0AC2AF878FEB7C71B6A /* Writer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		52493944E04C692E82EEAC4E71FA3366 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TraceLog;
+			target = 174506AD1756E9ED84E7D93644C23A55 /* TraceLog */;
+			targetProxy = AC25A898F85D4DBCBCEF3A970AA6E8C3 /* PBXContainerItemProxy */;
+		};
 		5E5E4557C26828EC3256D83EAABBC247 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Coherence;
-			target = 9E7B37363DA1DD95625264CBF47BFA2C /* Coherence */;
+			target = F19201DFBD7594AE17D27FEC9C1D6E68 /* Coherence */;
 			targetProxy = BA4A39895CC93424B9B47CB6D7EE0ADF /* PBXContainerItemProxy */;
 		};
 		6007554CFC52FBC25E060973ACAD92D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TraceLog;
-			target = 0211F992A0F50CE384A4AA11D078D8E7 /* TraceLog */;
+			target = 174506AD1756E9ED84E7D93644C23A55 /* TraceLog */;
 			targetProxy = FD13CB7118E1527B25205C33E134E80B /* PBXContainerItemProxy */;
-		};
-		84B0F9175627F167C616FB057095AB3F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TraceLog;
-			target = 0211F992A0F50CE384A4AA11D078D8E7 /* TraceLog */;
-			targetProxy = 5A2DCA44213E54436F8BC0F916488751 /* PBXContainerItemProxy */;
 		};
 		D6E9673485078D8B3E130A2673174416 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Coherence;
-			target = 9E7B37363DA1DD95625264CBF47BFA2C /* Coherence */;
+			target = F19201DFBD7594AE17D27FEC9C1D6E68 /* Coherence */;
 			targetProxy = 4ED2FAEDBCEBC29F4D77BDBF77AE5EE2 /* PBXContainerItemProxy */;
 		};
 		F9C99798F54C7F5673A074C301E317CA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TraceLog;
-			target = 0211F992A0F50CE384A4AA11D078D8E7 /* TraceLog */;
+			target = 174506AD1756E9ED84E7D93644C23A55 /* TraceLog */;
 			targetProxy = 5865FF798FBE8152A22CCE06DD739571 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -662,71 +742,6 @@
 			};
 			name = Debug;
 		};
-		0357164E1E0674335593445C661561D6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 704DA03F52322329CE2CEF2F500D5AC7 /* TraceLog.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = TraceLog;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		17941D5E7B07C9BE626D48B58C724A68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4935B1DB8575D73D049A5506ABD6BF92 /* Coherence.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Coherence/Coherence-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Coherence/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Coherence/Coherence.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Coherence;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		1E660B2951A2AF28FCCD4D8E1A71E934 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2C3429B7E631E2630BBF967BF62EAED /* Pods-Tests.release.xcconfig */;
@@ -756,71 +771,6 @@
 				PRODUCT_NAME = Pods_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1EE810BF0DB8121461B93C9863B36F25 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 704DA03F52322329CE2CEF2F500D5AC7 /* TraceLog.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = TraceLog;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2EA3602CD5FF8F1FABC2940286C75B95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4935B1DB8575D73D049A5506ABD6BF92 /* Coherence.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Coherence/Coherence-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Coherence/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Coherence/Coherence.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Coherence;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -903,6 +853,71 @@
 			};
 			name = Debug;
 		};
+		7C308FEFF22C97FBB43A4621E6B509E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18D676B41770B149CA17D1A339F14A55 /* Coherence.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Coherence/Coherence-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Coherence/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Coherence/Coherence.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Coherence;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C4FE39B228460882D2F2CB81F6BAA8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 704DA03F52322329CE2CEF2F500D5AC7 /* TraceLog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		8EC28A1D0F1DD77913C5497F6026D4B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5A8B4C34FB87B752EC616AC20482A4E /* Pods-Coherence.debug.xcconfig */;
@@ -974,18 +989,74 @@
 			};
 			name = Release;
 		};
+		9008E394E01D4AC2C94C845DC44DB6D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18D676B41770B149CA17D1A339F14A55 /* Coherence.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Coherence/Coherence-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Coherence/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Coherence/Coherence.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Coherence;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98F073A651399D77C5608B44553DD302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 704DA03F52322329CE2CEF2F500D5AC7 /* TraceLog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TraceLog/TraceLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TraceLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TraceLog/TraceLog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TraceLog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		052A0C83CF053FC8A9F9A474A9892884 /* Build configuration list for PBXNativeTarget "TraceLog" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1EE810BF0DB8121461B93C9863B36F25 /* Debug */,
-				0357164E1E0674335593445C661561D6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -995,11 +1066,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B153D97237060ABA6BBB7022D2A42368 /* Build configuration list for PBXNativeTarget "Coherence" */ = {
+		524942119AF89CC93FA27A33E0230327 /* Build configuration list for PBXNativeTarget "Coherence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				17941D5E7B07C9BE626D48B58C724A68 /* Debug */,
-				2EA3602CD5FF8F1FABC2940286C75B95 /* Release */,
+				7C308FEFF22C97FBB43A4621E6B509E2 /* Debug */,
+				9008E394E01D4AC2C94C845DC44DB6D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD4A89C40E41EF79B92D94F19F4CC95 /* Build configuration list for PBXNativeTarget "TraceLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98F073A651399D77C5608B44553DD302 /* Debug */,
+				8C4FE39B228460882D2F2CB81F6BAA8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
