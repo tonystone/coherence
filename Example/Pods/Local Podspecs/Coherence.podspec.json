@@ -17,7 +17,7 @@
   "module_name": "Coherence",
   "default_subspecs": [
     "Configuration",
-    "CoreDataStack"
+    "Stack"
   ],
   "dependencies": {
     "TraceLog": [
@@ -43,13 +43,13 @@
       "source_files": "Sources/Configuration/*"
     },
     {
-      "name": "CoreDataStack",
-      "source_files": "Sources/CoreDataStack/*"
+      "name": "Stack",
+      "source_files": "Sources/Stack/*"
     },
     {
       "name": "Connect",
       "dependencies": {
-        "Coherence/CoreDataStack": [
+        "Coherence/Stack": [
 
         ]
       },

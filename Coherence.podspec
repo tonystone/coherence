@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   
   s.module_name   = 'Coherence'
-  s.default_subspecs = ['Configuration', 'CoreDataStack']
+  s.default_subspecs = ['Configuration', 'Stack']
 
   s.subspec 'ConfigurationCore' do |sp|
       sp.requires_arc = false
@@ -35,12 +35,12 @@ Pod::Spec.new do |s|
       sp.source_files  = 'Sources/Configuration/*'
   end
 
-  s.subspec 'CoreDataStack' do |sp|
-      sp.source_files  = 'Sources/CoreDataStack/*'
+  s.subspec 'Stack' do |sp|
+      sp.source_files  = 'Sources/Stack/*'
   end
 
   s.subspec 'Connect' do |sp|
-      sp.dependency 'Coherence/CoreDataStack'
+      sp.dependency 'Coherence/Stack'
       sp.source_files  = 'Sources/Connect/*'
   end
 
