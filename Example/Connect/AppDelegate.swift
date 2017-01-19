@@ -16,45 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var persistentStoreCoordinator1: NSPersistentStoreCoordinator? = nil
-    var persistentStoreCoordinator2: NSPersistentStoreCoordinator? = nil
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        /// Configure TraceLog to read the environment first.
         TraceLog.configure()
-        
+
+        logInfo { "Starting..." }
+
         let bundle = Bundle(for: type(of: self))
         let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
-        
+
         do {
-            if let url = bundle.url(forResource: "MetaData", withExtension: "mom") {
+            if let url = bundle.url(forResource: "HR", withExtension: "momd") {
                 if let model = NSManagedObjectModel(contentsOf: url) {
                     let persistentStoreCoordinator = PersistentStoreCoordinator(managedObjectModel: model)
-                    
-                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: nil,   at: URL(fileURLWithPath: "\(cachePath)/MetaData.sqlite"), options: nil)
-                    
-                    persistentStoreCoordinator1 = persistentStoreCoordinator
+
+                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: nil,   at: URL(fileURLWithPath: "\(cachePath)/hr.sqlite"), options: nil)
                 }
             }
         } catch {
-            logError { "failed to create CoreData stack for MetaData model: \(error)" }
-        }
-        
-        do {
-        
-            if let url = bundle.url(forResource: "RightScale", withExtension: "mom") {
-                if let model = NSManagedObjectModel(contentsOf: url) {
-                    let persistentStoreCoordinator = PersistentStoreCoordinator(managedObjectModel: model)
-                    
-                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "GlobalPersistentData",   at: URL(fileURLWithPath: "\(cachePath)/GlobalPersistentData.sqlite"), options: nil)
-                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,   configurationName: "InstancePersistentData", at: URL(fileURLWithPath: "\(cachePath)/InstancePersistentData.sqlite"), options: nil)
-                    let _ = try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: "InstanceTransienttData", at: nil, options: nil)
-                    
-                    persistentStoreCoordinator2 = persistentStoreCoordinator
-                }
-            }
-        } catch {
-            logError { "failed to create CoreData stack for RightScale model: \(error)" }
+            logError { "failed to create CoreData stack for HR model: \(error)" }
         }
         return true
     }

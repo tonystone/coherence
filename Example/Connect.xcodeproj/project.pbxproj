@@ -22,63 +22,6 @@
 		EAE170511D70C2C3002FADE5 /* hr-legacy.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */; };
 		EAE170521D70C2C3002FADE5 /* hr-rest.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */; };
 		EAE170531D70C2C3002FADE5 /* hr-rest.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */; };
-		EAF396891E315DAA00038CD4 /* Cloud.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAF396851E315DAA00038CD4 /* Cloud.wsdl */; };
-		EAF3968A1E315DAA00038CD4 /* RightScale-v1.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EAF396861E315DAA00038CD4 /* RightScale-v1.wsdl */; };
-		EAF3968B1E315DAA00038CD4 /* RightScaleCloud.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAF396871E315DAA00038CD4 /* RightScaleCloud.xsd */; };
-		EAF3968C1E315DAA00038CD4 /* RightScaleCommon.xsd in Resources */ = {isa = PBXBuildFile; fileRef = EAF396881E315DAA00038CD4 /* RightScaleCommon.xsd */; };
-		EAF3970F1E315DD100038CD4 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF3969E1E315DD100038CD4 /* Device.m */; };
-		EAF397101E315DD100038CD4 /* Device+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396A11E315DD100038CD4 /* Device+Extensions.m */; };
-		EAF397111E315DD100038CD4 /* GlobalSettings+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396A31E315DD100038CD4 /* GlobalSettings+Extensions.m */; };
-		EAF397121E315DD100038CD4 /* ProviderUser+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396A51E315DD100038CD4 /* ProviderUser+Extensions.m */; };
-		EAF397131E315DD100038CD4 /* ProviderUserAccount+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396A71E315DD100038CD4 /* ProviderUserAccount+Extensions.m */; };
-		EAF397141E315DD100038CD4 /* Resource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396A91E315DD100038CD4 /* Resource+Extensions.m */; };
-		EAF397151E315DD100038CD4 /* RootResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396AB1E315DD100038CD4 /* RootResource+Extensions.m */; };
-		EAF397161E315DD100038CD4 /* GlobalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396AD1E315DD100038CD4 /* GlobalSettings.m */; };
-		EAF397171E315DD100038CD4 /* MetaData.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAF396AE1E315DD100038CD4 /* MetaData.xcdatamodel */; };
-		EAF397181E315DD100038CD4 /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396B01E315DD100038CD4 /* Provider.m */; };
-		EAF397191E315DD100038CD4 /* ProviderUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396B21E315DD100038CD4 /* ProviderUser.m */; };
-		EAF3971A1E315DD100038CD4 /* ProviderUserAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396B41E315DD100038CD4 /* ProviderUserAccount.m */; };
-		EAF3971B1E315DD100038CD4 /* Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396B61E315DD100038CD4 /* Resource.m */; };
-		EAF3971C1E315DD100038CD4 /* RootResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396B81E315DD100038CD4 /* RootResource.m */; };
-		EAF3971D1E315DD100038CD4 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396BA1E315DD100038CD4 /* Tag.m */; };
-		EAF3971E1E315DD100038CD4 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396BC1E315DD100038CD4 /* NSData+AES256.m */; };
-		EAF3971F1E315DD100038CD4 /* AuditedResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396BF1E315DD100038CD4 /* AuditedResource.m */; };
-		EAF397201E315DD100038CD4 /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396C11E315DD100038CD4 /* Cloud.m */; };
-		EAF397211E315DD100038CD4 /* Datacenter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396C31E315DD100038CD4 /* Datacenter.m */; };
-		EAF397221E315DD100038CD4 /* Deployment.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396C51E315DD100038CD4 /* Deployment.m */; };
-		EAF397231E315DD100038CD4 /* DeploymentResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396C71E315DD100038CD4 /* DeploymentResource.m */; };
-		EAF397241E315DD100038CD4 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396C91E315DD100038CD4 /* Event.m */; };
-		EAF397251E315DD100038CD4 /* Executable.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396CB1E315DD100038CD4 /* Executable.m */; };
-		EAF397261E315DD100038CD4 /* AuditedResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396CE1E315DD100038CD4 /* AuditedResource+Extensions.m */; };
-		EAF397271E315DD100038CD4 /* Cloud+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396D01E315DD100038CD4 /* Cloud+Extensions.m */; };
-		EAF397281E315DD100038CD4 /* Datacenter+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396D21E315DD100038CD4 /* Datacenter+Extensions.m */; };
-		EAF397291E315DD100038CD4 /* Deployment+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396D41E315DD100038CD4 /* Deployment+Extensions.m */; };
-		EAF3972A1E315DD100038CD4 /* DeploymentResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396D61E315DD100038CD4 /* DeploymentResource+Extensions.m */; };
-		EAF3972B1E315DD100038CD4 /* Event+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396D81E315DD100038CD4 /* Event+Extensions.m */; };
-		EAF3972C1E315DD100038CD4 /* Executable+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396DA1E315DD100038CD4 /* Executable+Extensions.m */; };
-		EAF3972D1E315DD100038CD4 /* GraphViewTemplate+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396DC1E315DD100038CD4 /* GraphViewTemplate+Extensions.m */; };
-		EAF3972E1E315DD100038CD4 /* Input+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396DE1E315DD100038CD4 /* Input+Extensions.m */; };
-		EAF3972F1E315DD100038CD4 /* Instance+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396E01E315DD100038CD4 /* Instance+Extensions.m */; };
-		EAF397301E315DD100038CD4 /* InstanceType+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396E21E315DD100038CD4 /* InstanceType+Extensions.m */; };
-		EAF397311E315DD100038CD4 /* MonitoringMetric+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396E41E315DD100038CD4 /* MonitoringMetric+Extensions.m */; };
-		EAF397321E315DD100038CD4 /* MonitoringMetricData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396E61E315DD100038CD4 /* MonitoringMetricData+Extensions.m */; };
-		EAF397331E315DD100038CD4 /* Server+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396E81E315DD100038CD4 /* Server+Extensions.m */; };
-		EAF397341E315DD100038CD4 /* ServerArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396EA1E315DD100038CD4 /* ServerArray+Extensions.m */; };
-		EAF397351E315DD100038CD4 /* ServerTemplate+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396EC1E315DD100038CD4 /* ServerTemplate+Extensions.m */; };
-		EAF397361E315DD100038CD4 /* Tag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396EE1E315DD100038CD4 /* Tag+Extensions.m */; };
-		EAF397371E315DD100038CD4 /* VersionedResource+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396F01E315DD100038CD4 /* VersionedResource+Extensions.m */; };
-		EAF397381E315DD100038CD4 /* GraphViewTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396F21E315DD100038CD4 /* GraphViewTemplate.m */; };
-		EAF397391E315DD100038CD4 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396F41E315DD100038CD4 /* Input.m */; };
-		EAF3973A1E315DD100038CD4 /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396F61E315DD100038CD4 /* Instance.m */; };
-		EAF3973B1E315DD100038CD4 /* InstanceType.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396F81E315DD100038CD4 /* InstanceType.m */; };
-		EAF3973C1E315DD100038CD4 /* MonitoringMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396FA1E315DD100038CD4 /* MonitoringMetric.m */; };
-		EAF3973D1E315DD100038CD4 /* MonitoringMetricData.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396FC1E315DD100038CD4 /* MonitoringMetricData.m */; };
-		EAF3973E1E315DD100038CD4 /* RightScale.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAF396FD1E315DD100038CD4 /* RightScale.xcdatamodel */; };
-		EAF3973F1E315DD100038CD4 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF396FF1E315DD100038CD4 /* Server.m */; };
-		EAF397401E315DD100038CD4 /* ServerArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF397011E315DD100038CD4 /* ServerArray.m */; };
-		EAF397411E315DD100038CD4 /* ServerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF397031E315DD100038CD4 /* ServerTemplate.m */; };
-		EAF397421E315DD100038CD4 /* VersionedResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF397051E315DD100038CD4 /* VersionedResource.m */; };
-		EAF397431E315DD100038CD4 /* WatchMonitoringMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF397071E315DD100038CD4 /* WatchMonitoringMetric.m */; };
 		EAF40BB71D82445F00A81ED5 /* hr-rest.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF40BB61D82445F00A81ED5 /* hr-rest.json */; };
 		EAF40BB81D82445F00A81ED5 /* hr-rest.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF40BB61D82445F00A81ED5 /* hr-rest.json */; };
 /* End PBXBuildFile section */
@@ -123,116 +66,6 @@
 		EAE16FDC1D70C2C3002FADE5 /* hr-legacy.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-legacy.wadl"; sourceTree = "<group>"; };
 		EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-rest.wadl"; sourceTree = "<group>"; };
 		EAE170621D70C32D002FADE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Tests/Info.plist; sourceTree = "<group>"; };
-		EAF396851E315DAA00038CD4 /* Cloud.wsdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cloud.wsdl; sourceTree = "<group>"; };
-		EAF396861E315DAA00038CD4 /* RightScale-v1.wsdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "RightScale-v1.wsdl"; sourceTree = "<group>"; };
-		EAF396871E315DAA00038CD4 /* RightScaleCloud.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RightScaleCloud.xsd; sourceTree = "<group>"; };
-		EAF396881E315DAA00038CD4 /* RightScaleCommon.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RightScaleCommon.xsd; sourceTree = "<group>"; };
-		EAF3969B1E315DD100038CD4 /* CLConstents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLConstents.h; sourceTree = "<group>"; };
-		EAF3969D1E315DD100038CD4 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		EAF3969E1E315DD100038CD4 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		EAF396A01E315DD100038CD4 /* Device+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Device+Extensions.h"; sourceTree = "<group>"; };
-		EAF396A11E315DD100038CD4 /* Device+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Device+Extensions.m"; sourceTree = "<group>"; };
-		EAF396A21E315DD100038CD4 /* GlobalSettings+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalSettings+Extensions.h"; sourceTree = "<group>"; };
-		EAF396A31E315DD100038CD4 /* GlobalSettings+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GlobalSettings+Extensions.m"; sourceTree = "<group>"; };
-		EAF396A41E315DD100038CD4 /* ProviderUser+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProviderUser+Extensions.h"; sourceTree = "<group>"; };
-		EAF396A51E315DD100038CD4 /* ProviderUser+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProviderUser+Extensions.m"; sourceTree = "<group>"; };
-		EAF396A61E315DD100038CD4 /* ProviderUserAccount+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProviderUserAccount+Extensions.h"; sourceTree = "<group>"; };
-		EAF396A71E315DD100038CD4 /* ProviderUserAccount+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProviderUserAccount+Extensions.m"; sourceTree = "<group>"; };
-		EAF396A81E315DD100038CD4 /* Resource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Resource+Extensions.h"; sourceTree = "<group>"; };
-		EAF396A91E315DD100038CD4 /* Resource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Resource+Extensions.m"; sourceTree = "<group>"; };
-		EAF396AA1E315DD100038CD4 /* RootResource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RootResource+Extensions.h"; sourceTree = "<group>"; };
-		EAF396AB1E315DD100038CD4 /* RootResource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RootResource+Extensions.m"; sourceTree = "<group>"; };
-		EAF396AC1E315DD100038CD4 /* GlobalSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalSettings.h; sourceTree = "<group>"; };
-		EAF396AD1E315DD100038CD4 /* GlobalSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalSettings.m; sourceTree = "<group>"; };
-		EAF396AE1E315DD100038CD4 /* MetaData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MetaData.xcdatamodel; sourceTree = "<group>"; };
-		EAF396AF1E315DD100038CD4 /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
-		EAF396B01E315DD100038CD4 /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
-		EAF396B11E315DD100038CD4 /* ProviderUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderUser.h; sourceTree = "<group>"; };
-		EAF396B21E315DD100038CD4 /* ProviderUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderUser.m; sourceTree = "<group>"; };
-		EAF396B31E315DD100038CD4 /* ProviderUserAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderUserAccount.h; sourceTree = "<group>"; };
-		EAF396B41E315DD100038CD4 /* ProviderUserAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderUserAccount.m; sourceTree = "<group>"; };
-		EAF396B51E315DD100038CD4 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
-		EAF396B61E315DD100038CD4 /* Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resource.m; sourceTree = "<group>"; };
-		EAF396B71E315DD100038CD4 /* RootResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootResource.h; sourceTree = "<group>"; };
-		EAF396B81E315DD100038CD4 /* RootResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootResource.m; sourceTree = "<group>"; };
-		EAF396B91E315DD100038CD4 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		EAF396BA1E315DD100038CD4 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
-		EAF396BB1E315DD100038CD4 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
-		EAF396BC1E315DD100038CD4 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
-		EAF396BE1E315DD100038CD4 /* AuditedResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditedResource.h; sourceTree = "<group>"; };
-		EAF396BF1E315DD100038CD4 /* AuditedResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditedResource.m; sourceTree = "<group>"; };
-		EAF396C01E315DD100038CD4 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
-		EAF396C11E315DD100038CD4 /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
-		EAF396C21E315DD100038CD4 /* Datacenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Datacenter.h; sourceTree = "<group>"; };
-		EAF396C31E315DD100038CD4 /* Datacenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Datacenter.m; sourceTree = "<group>"; };
-		EAF396C41E315DD100038CD4 /* Deployment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deployment.h; sourceTree = "<group>"; };
-		EAF396C51E315DD100038CD4 /* Deployment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deployment.m; sourceTree = "<group>"; };
-		EAF396C61E315DD100038CD4 /* DeploymentResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeploymentResource.h; sourceTree = "<group>"; };
-		EAF396C71E315DD100038CD4 /* DeploymentResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeploymentResource.m; sourceTree = "<group>"; };
-		EAF396C81E315DD100038CD4 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		EAF396C91E315DD100038CD4 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		EAF396CA1E315DD100038CD4 /* Executable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Executable.h; sourceTree = "<group>"; };
-		EAF396CB1E315DD100038CD4 /* Executable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Executable.m; sourceTree = "<group>"; };
-		EAF396CD1E315DD100038CD4 /* AuditedResource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AuditedResource+Extensions.h"; sourceTree = "<group>"; };
-		EAF396CE1E315DD100038CD4 /* AuditedResource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AuditedResource+Extensions.m"; sourceTree = "<group>"; };
-		EAF396CF1E315DD100038CD4 /* Cloud+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cloud+Extensions.h"; sourceTree = "<group>"; };
-		EAF396D01E315DD100038CD4 /* Cloud+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Cloud+Extensions.m"; sourceTree = "<group>"; };
-		EAF396D11E315DD100038CD4 /* Datacenter+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Datacenter+Extensions.h"; sourceTree = "<group>"; };
-		EAF396D21E315DD100038CD4 /* Datacenter+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Datacenter+Extensions.m"; sourceTree = "<group>"; };
-		EAF396D31E315DD100038CD4 /* Deployment+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deployment+Extensions.h"; sourceTree = "<group>"; };
-		EAF396D41E315DD100038CD4 /* Deployment+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deployment+Extensions.m"; sourceTree = "<group>"; };
-		EAF396D51E315DD100038CD4 /* DeploymentResource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DeploymentResource+Extensions.h"; sourceTree = "<group>"; };
-		EAF396D61E315DD100038CD4 /* DeploymentResource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DeploymentResource+Extensions.m"; sourceTree = "<group>"; };
-		EAF396D71E315DD100038CD4 /* Event+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+Extensions.h"; sourceTree = "<group>"; };
-		EAF396D81E315DD100038CD4 /* Event+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+Extensions.m"; sourceTree = "<group>"; };
-		EAF396D91E315DD100038CD4 /* Executable+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Executable+Extensions.h"; sourceTree = "<group>"; };
-		EAF396DA1E315DD100038CD4 /* Executable+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Executable+Extensions.m"; sourceTree = "<group>"; };
-		EAF396DB1E315DD100038CD4 /* GraphViewTemplate+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GraphViewTemplate+Extensions.h"; sourceTree = "<group>"; };
-		EAF396DC1E315DD100038CD4 /* GraphViewTemplate+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GraphViewTemplate+Extensions.m"; sourceTree = "<group>"; };
-		EAF396DD1E315DD100038CD4 /* Input+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Input+Extensions.h"; sourceTree = "<group>"; };
-		EAF396DE1E315DD100038CD4 /* Input+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Input+Extensions.m"; sourceTree = "<group>"; };
-		EAF396DF1E315DD100038CD4 /* Instance+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Instance+Extensions.h"; sourceTree = "<group>"; };
-		EAF396E01E315DD100038CD4 /* Instance+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Instance+Extensions.m"; sourceTree = "<group>"; };
-		EAF396E11E315DD100038CD4 /* InstanceType+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstanceType+Extensions.h"; sourceTree = "<group>"; };
-		EAF396E21E315DD100038CD4 /* InstanceType+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InstanceType+Extensions.m"; sourceTree = "<group>"; };
-		EAF396E31E315DD100038CD4 /* MonitoringMetric+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonitoringMetric+Extensions.h"; sourceTree = "<group>"; };
-		EAF396E41E315DD100038CD4 /* MonitoringMetric+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MonitoringMetric+Extensions.m"; sourceTree = "<group>"; };
-		EAF396E51E315DD100038CD4 /* MonitoringMetricData+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonitoringMetricData+Extensions.h"; sourceTree = "<group>"; };
-		EAF396E61E315DD100038CD4 /* MonitoringMetricData+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MonitoringMetricData+Extensions.m"; sourceTree = "<group>"; };
-		EAF396E71E315DD100038CD4 /* Server+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Server+Extensions.h"; sourceTree = "<group>"; };
-		EAF396E81E315DD100038CD4 /* Server+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Server+Extensions.m"; sourceTree = "<group>"; };
-		EAF396E91E315DD100038CD4 /* ServerArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ServerArray+Extensions.h"; sourceTree = "<group>"; };
-		EAF396EA1E315DD100038CD4 /* ServerArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ServerArray+Extensions.m"; sourceTree = "<group>"; };
-		EAF396EB1E315DD100038CD4 /* ServerTemplate+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ServerTemplate+Extensions.h"; sourceTree = "<group>"; };
-		EAF396EC1E315DD100038CD4 /* ServerTemplate+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ServerTemplate+Extensions.m"; sourceTree = "<group>"; };
-		EAF396ED1E315DD100038CD4 /* Tag+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+Extensions.h"; sourceTree = "<group>"; };
-		EAF396EE1E315DD100038CD4 /* Tag+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+Extensions.m"; sourceTree = "<group>"; };
-		EAF396EF1E315DD100038CD4 /* VersionedResource+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VersionedResource+Extensions.h"; sourceTree = "<group>"; };
-		EAF396F01E315DD100038CD4 /* VersionedResource+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VersionedResource+Extensions.m"; sourceTree = "<group>"; };
-		EAF396F11E315DD100038CD4 /* GraphViewTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewTemplate.h; sourceTree = "<group>"; };
-		EAF396F21E315DD100038CD4 /* GraphViewTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewTemplate.m; sourceTree = "<group>"; };
-		EAF396F31E315DD100038CD4 /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
-		EAF396F41E315DD100038CD4 /* Input.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Input.m; sourceTree = "<group>"; };
-		EAF396F51E315DD100038CD4 /* Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instance.h; sourceTree = "<group>"; };
-		EAF396F61E315DD100038CD4 /* Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instance.m; sourceTree = "<group>"; };
-		EAF396F71E315DD100038CD4 /* InstanceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceType.h; sourceTree = "<group>"; };
-		EAF396F81E315DD100038CD4 /* InstanceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstanceType.m; sourceTree = "<group>"; };
-		EAF396F91E315DD100038CD4 /* MonitoringMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringMetric.h; sourceTree = "<group>"; };
-		EAF396FA1E315DD100038CD4 /* MonitoringMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringMetric.m; sourceTree = "<group>"; };
-		EAF396FB1E315DD100038CD4 /* MonitoringMetricData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringMetricData.h; sourceTree = "<group>"; };
-		EAF396FC1E315DD100038CD4 /* MonitoringMetricData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringMetricData.m; sourceTree = "<group>"; };
-		EAF396FD1E315DD100038CD4 /* RightScale.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RightScale.xcdatamodel; sourceTree = "<group>"; };
-		EAF396FE1E315DD100038CD4 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
-		EAF396FF1E315DD100038CD4 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
-		EAF397001E315DD100038CD4 /* ServerArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerArray.h; sourceTree = "<group>"; };
-		EAF397011E315DD100038CD4 /* ServerArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerArray.m; sourceTree = "<group>"; };
-		EAF397021E315DD100038CD4 /* ServerTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerTemplate.h; sourceTree = "<group>"; };
-		EAF397031E315DD100038CD4 /* ServerTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerTemplate.m; sourceTree = "<group>"; };
-		EAF397041E315DD100038CD4 /* VersionedResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionedResource.h; sourceTree = "<group>"; };
-		EAF397051E315DD100038CD4 /* VersionedResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionedResource.m; sourceTree = "<group>"; };
-		EAF397061E315DD100038CD4 /* WatchMonitoringMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchMonitoringMetric.h; sourceTree = "<group>"; };
-		EAF397071E315DD100038CD4 /* WatchMonitoringMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchMonitoringMetric.m; sourceTree = "<group>"; };
-		EAF397081E315DD100038CD4 /* RMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMModel.h; sourceTree = "<group>"; };
 		EAF40BB61D82445F00A81ED5 /* hr-rest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "hr-rest.json"; path = "OpenAPI/hr-rest.json"; sourceTree = "<group>"; };
 		F6AB45E09C260EB52A230358 /* Pods-Connect_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect_Example/Pods-Connect_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE412EC5FB46C425589B890F /* Pods-Connect Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect Tests/Pods-Connect Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -271,7 +104,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACF51AFB993E008FA782 /* Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Connect */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				EAE16FA01D70C2C3002FADE5 /* Fixtures */,
@@ -299,8 +132,6 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				EAF396841E315DAA00038CD4 /* Configuration */,
-				EAF3969A1E315DD100038CD4 /* Model */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for Connect";
@@ -333,7 +164,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+		607FACF51AFB993E008FA782 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				312EDB5EDE92DECFB5877409 /* Connect.podspec */,
@@ -343,7 +174,7 @@
 				EA4CFECD1DCCFF8D0050634D /* circle.yml */,
 				EA634EFC1DCD72A800AC93E7 /* .gitignore */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		7CA6D36D82EA379DE7C39BAF /* Pods */ = {
@@ -438,162 +269,6 @@
 				EAE16FDD1D70C2C3002FADE5 /* hr-rest.wadl */,
 			);
 			path = WADL;
-			sourceTree = "<group>";
-		};
-		EAF396841E315DAA00038CD4 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				EAF396851E315DAA00038CD4 /* Cloud.wsdl */,
-				EAF396861E315DAA00038CD4 /* RightScale-v1.wsdl */,
-				EAF396871E315DAA00038CD4 /* RightScaleCloud.xsd */,
-				EAF396881E315DAA00038CD4 /* RightScaleCommon.xsd */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		EAF3969A1E315DD100038CD4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EAF3969B1E315DD100038CD4 /* CLConstents.h */,
-				EAF3969C1E315DD100038CD4 /* MetaData */,
-				EAF396BB1E315DD100038CD4 /* NSData+AES256.h */,
-				EAF396BC1E315DD100038CD4 /* NSData+AES256.m */,
-				EAF396BD1E315DD100038CD4 /* RightScale */,
-				EAF397081E315DD100038CD4 /* RMModel.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EAF3969C1E315DD100038CD4 /* MetaData */ = {
-			isa = PBXGroup;
-			children = (
-				EAF3969D1E315DD100038CD4 /* Device.h */,
-				EAF3969E1E315DD100038CD4 /* Device.m */,
-				EAF3969F1E315DD100038CD4 /* Extensions */,
-				EAF396AC1E315DD100038CD4 /* GlobalSettings.h */,
-				EAF396AD1E315DD100038CD4 /* GlobalSettings.m */,
-				EAF396AE1E315DD100038CD4 /* MetaData.xcdatamodel */,
-				EAF396AF1E315DD100038CD4 /* Provider.h */,
-				EAF396B01E315DD100038CD4 /* Provider.m */,
-				EAF396B11E315DD100038CD4 /* ProviderUser.h */,
-				EAF396B21E315DD100038CD4 /* ProviderUser.m */,
-				EAF396B31E315DD100038CD4 /* ProviderUserAccount.h */,
-				EAF396B41E315DD100038CD4 /* ProviderUserAccount.m */,
-				EAF396B51E315DD100038CD4 /* Resource.h */,
-				EAF396B61E315DD100038CD4 /* Resource.m */,
-				EAF396B71E315DD100038CD4 /* RootResource.h */,
-				EAF396B81E315DD100038CD4 /* RootResource.m */,
-				EAF396B91E315DD100038CD4 /* Tag.h */,
-				EAF396BA1E315DD100038CD4 /* Tag.m */,
-			);
-			path = MetaData;
-			sourceTree = "<group>";
-		};
-		EAF3969F1E315DD100038CD4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				EAF396A01E315DD100038CD4 /* Device+Extensions.h */,
-				EAF396A11E315DD100038CD4 /* Device+Extensions.m */,
-				EAF396A21E315DD100038CD4 /* GlobalSettings+Extensions.h */,
-				EAF396A31E315DD100038CD4 /* GlobalSettings+Extensions.m */,
-				EAF396A41E315DD100038CD4 /* ProviderUser+Extensions.h */,
-				EAF396A51E315DD100038CD4 /* ProviderUser+Extensions.m */,
-				EAF396A61E315DD100038CD4 /* ProviderUserAccount+Extensions.h */,
-				EAF396A71E315DD100038CD4 /* ProviderUserAccount+Extensions.m */,
-				EAF396A81E315DD100038CD4 /* Resource+Extensions.h */,
-				EAF396A91E315DD100038CD4 /* Resource+Extensions.m */,
-				EAF396AA1E315DD100038CD4 /* RootResource+Extensions.h */,
-				EAF396AB1E315DD100038CD4 /* RootResource+Extensions.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		EAF396BD1E315DD100038CD4 /* RightScale */ = {
-			isa = PBXGroup;
-			children = (
-				EAF396BE1E315DD100038CD4 /* AuditedResource.h */,
-				EAF396BF1E315DD100038CD4 /* AuditedResource.m */,
-				EAF396C01E315DD100038CD4 /* Cloud.h */,
-				EAF396C11E315DD100038CD4 /* Cloud.m */,
-				EAF396C21E315DD100038CD4 /* Datacenter.h */,
-				EAF396C31E315DD100038CD4 /* Datacenter.m */,
-				EAF396C41E315DD100038CD4 /* Deployment.h */,
-				EAF396C51E315DD100038CD4 /* Deployment.m */,
-				EAF396C61E315DD100038CD4 /* DeploymentResource.h */,
-				EAF396C71E315DD100038CD4 /* DeploymentResource.m */,
-				EAF396C81E315DD100038CD4 /* Event.h */,
-				EAF396C91E315DD100038CD4 /* Event.m */,
-				EAF396CA1E315DD100038CD4 /* Executable.h */,
-				EAF396CB1E315DD100038CD4 /* Executable.m */,
-				EAF396CC1E315DD100038CD4 /* Extensions */,
-				EAF396F11E315DD100038CD4 /* GraphViewTemplate.h */,
-				EAF396F21E315DD100038CD4 /* GraphViewTemplate.m */,
-				EAF396F31E315DD100038CD4 /* Input.h */,
-				EAF396F41E315DD100038CD4 /* Input.m */,
-				EAF396F51E315DD100038CD4 /* Instance.h */,
-				EAF396F61E315DD100038CD4 /* Instance.m */,
-				EAF396F71E315DD100038CD4 /* InstanceType.h */,
-				EAF396F81E315DD100038CD4 /* InstanceType.m */,
-				EAF396F91E315DD100038CD4 /* MonitoringMetric.h */,
-				EAF396FA1E315DD100038CD4 /* MonitoringMetric.m */,
-				EAF396FB1E315DD100038CD4 /* MonitoringMetricData.h */,
-				EAF396FC1E315DD100038CD4 /* MonitoringMetricData.m */,
-				EAF396FD1E315DD100038CD4 /* RightScale.xcdatamodel */,
-				EAF396FE1E315DD100038CD4 /* Server.h */,
-				EAF396FF1E315DD100038CD4 /* Server.m */,
-				EAF397001E315DD100038CD4 /* ServerArray.h */,
-				EAF397011E315DD100038CD4 /* ServerArray.m */,
-				EAF397021E315DD100038CD4 /* ServerTemplate.h */,
-				EAF397031E315DD100038CD4 /* ServerTemplate.m */,
-				EAF397041E315DD100038CD4 /* VersionedResource.h */,
-				EAF397051E315DD100038CD4 /* VersionedResource.m */,
-				EAF397061E315DD100038CD4 /* WatchMonitoringMetric.h */,
-				EAF397071E315DD100038CD4 /* WatchMonitoringMetric.m */,
-			);
-			path = RightScale;
-			sourceTree = "<group>";
-		};
-		EAF396CC1E315DD100038CD4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				EAF396CD1E315DD100038CD4 /* AuditedResource+Extensions.h */,
-				EAF396CE1E315DD100038CD4 /* AuditedResource+Extensions.m */,
-				EAF396CF1E315DD100038CD4 /* Cloud+Extensions.h */,
-				EAF396D01E315DD100038CD4 /* Cloud+Extensions.m */,
-				EAF396D11E315DD100038CD4 /* Datacenter+Extensions.h */,
-				EAF396D21E315DD100038CD4 /* Datacenter+Extensions.m */,
-				EAF396D31E315DD100038CD4 /* Deployment+Extensions.h */,
-				EAF396D41E315DD100038CD4 /* Deployment+Extensions.m */,
-				EAF396D51E315DD100038CD4 /* DeploymentResource+Extensions.h */,
-				EAF396D61E315DD100038CD4 /* DeploymentResource+Extensions.m */,
-				EAF396D71E315DD100038CD4 /* Event+Extensions.h */,
-				EAF396D81E315DD100038CD4 /* Event+Extensions.m */,
-				EAF396D91E315DD100038CD4 /* Executable+Extensions.h */,
-				EAF396DA1E315DD100038CD4 /* Executable+Extensions.m */,
-				EAF396DB1E315DD100038CD4 /* GraphViewTemplate+Extensions.h */,
-				EAF396DC1E315DD100038CD4 /* GraphViewTemplate+Extensions.m */,
-				EAF396DD1E315DD100038CD4 /* Input+Extensions.h */,
-				EAF396DE1E315DD100038CD4 /* Input+Extensions.m */,
-				EAF396DF1E315DD100038CD4 /* Instance+Extensions.h */,
-				EAF396E01E315DD100038CD4 /* Instance+Extensions.m */,
-				EAF396E11E315DD100038CD4 /* InstanceType+Extensions.h */,
-				EAF396E21E315DD100038CD4 /* InstanceType+Extensions.m */,
-				EAF396E31E315DD100038CD4 /* MonitoringMetric+Extensions.h */,
-				EAF396E41E315DD100038CD4 /* MonitoringMetric+Extensions.m */,
-				EAF396E51E315DD100038CD4 /* MonitoringMetricData+Extensions.h */,
-				EAF396E61E315DD100038CD4 /* MonitoringMetricData+Extensions.m */,
-				EAF396E71E315DD100038CD4 /* Server+Extensions.h */,
-				EAF396E81E315DD100038CD4 /* Server+Extensions.m */,
-				EAF396E91E315DD100038CD4 /* ServerArray+Extensions.h */,
-				EAF396EA1E315DD100038CD4 /* ServerArray+Extensions.m */,
-				EAF396EB1E315DD100038CD4 /* ServerTemplate+Extensions.h */,
-				EAF396EC1E315DD100038CD4 /* ServerTemplate+Extensions.m */,
-				EAF396ED1E315DD100038CD4 /* Tag+Extensions.h */,
-				EAF396EE1E315DD100038CD4 /* Tag+Extensions.m */,
-				EAF396EF1E315DD100038CD4 /* VersionedResource+Extensions.h */,
-				EAF396F01E315DD100038CD4 /* VersionedResource+Extensions.m */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EAF40BB51D82441F00A81ED5 /* OpenAPI */ = {
@@ -693,16 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF3968C1E315DAA00038CD4 /* RightScaleCommon.xsd in Resources */,
 				EAE170501D70C2C3002FADE5 /* hr-legacy.wadl in Resources */,
 				EAF40BB71D82445F00A81ED5 /* hr-rest.json in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				EAF3968B1E315DAA00038CD4 /* RightScaleCloud.xsd in Resources */,
 				EAE170521D70C2C3002FADE5 /* hr-rest.wadl in Resources */,
-				EAF3968A1E315DAA00038CD4 /* RightScale-v1.wsdl in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				EAF396891E315DAA00038CD4 /* Cloud.wsdl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,62 +487,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF3971C1E315DD100038CD4 /* RootResource.m in Sources */,
-				EAF397281E315DD100038CD4 /* Datacenter+Extensions.m in Sources */,
-				EAF3971A1E315DD100038CD4 /* ProviderUserAccount.m in Sources */,
-				EAF3971B1E315DD100038CD4 /* Resource.m in Sources */,
-				EAF397351E315DD100038CD4 /* ServerTemplate+Extensions.m in Sources */,
-				EAF397371E315DD100038CD4 /* VersionedResource+Extensions.m in Sources */,
-				EAF3973F1E315DD100038CD4 /* Server.m in Sources */,
-				EAF397101E315DD100038CD4 /* Device+Extensions.m in Sources */,
-				EAF3971F1E315DD100038CD4 /* AuditedResource.m in Sources */,
-				EAF3973B1E315DD100038CD4 /* InstanceType.m in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				EAE0FB691D83484F008CB3EB /* HR.xcdatamodeld in Sources */,
-				EAF397191E315DD100038CD4 /* ProviderUser.m in Sources */,
-				EAF397111E315DD100038CD4 /* GlobalSettings+Extensions.m in Sources */,
-				EAF3972A1E315DD100038CD4 /* DeploymentResource+Extensions.m in Sources */,
-				EAF397251E315DD100038CD4 /* Executable.m in Sources */,
-				EAF3972C1E315DD100038CD4 /* Executable+Extensions.m in Sources */,
-				EAF397311E315DD100038CD4 /* MonitoringMetric+Extensions.m in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				EAF397181E315DD100038CD4 /* Provider.m in Sources */,
-				EAF397391E315DD100038CD4 /* Input.m in Sources */,
-				EAF3970F1E315DD100038CD4 /* Device.m in Sources */,
-				EAF397321E315DD100038CD4 /* MonitoringMetricData+Extensions.m in Sources */,
-				EAF397341E315DD100038CD4 /* ServerArray+Extensions.m in Sources */,
-				EAF397241E315DD100038CD4 /* Event.m in Sources */,
-				EAF3971D1E315DD100038CD4 /* Tag.m in Sources */,
-				EAF397231E315DD100038CD4 /* DeploymentResource.m in Sources */,
-				EAF397331E315DD100038CD4 /* Server+Extensions.m in Sources */,
-				EAF397291E315DD100038CD4 /* Deployment+Extensions.m in Sources */,
-				EAF397381E315DD100038CD4 /* GraphViewTemplate.m in Sources */,
-				EAF3972D1E315DD100038CD4 /* GraphViewTemplate+Extensions.m in Sources */,
-				EAF397421E315DD100038CD4 /* VersionedResource.m in Sources */,
-				EAF3972F1E315DD100038CD4 /* Instance+Extensions.m in Sources */,
-				EAF397361E315DD100038CD4 /* Tag+Extensions.m in Sources */,
-				EAF397221E315DD100038CD4 /* Deployment.m in Sources */,
-				EAF397201E315DD100038CD4 /* Cloud.m in Sources */,
-				EAF397131E315DD100038CD4 /* ProviderUserAccount+Extensions.m in Sources */,
-				EAF397411E315DD100038CD4 /* ServerTemplate.m in Sources */,
-				EAF397401E315DD100038CD4 /* ServerArray.m in Sources */,
-				EAF3973D1E315DD100038CD4 /* MonitoringMetricData.m in Sources */,
-				EAF3972E1E315DD100038CD4 /* Input+Extensions.m in Sources */,
-				EAF397141E315DD100038CD4 /* Resource+Extensions.m in Sources */,
-				EAF397211E315DD100038CD4 /* Datacenter.m in Sources */,
-				EAF397271E315DD100038CD4 /* Cloud+Extensions.m in Sources */,
-				EAF3973A1E315DD100038CD4 /* Instance.m in Sources */,
-				EAF3971E1E315DD100038CD4 /* NSData+AES256.m in Sources */,
-				EAF397431E315DD100038CD4 /* WatchMonitoringMetric.m in Sources */,
-				EAF397151E315DD100038CD4 /* RootResource+Extensions.m in Sources */,
-				EAF397161E315DD100038CD4 /* GlobalSettings.m in Sources */,
-				EAF397171E315DD100038CD4 /* MetaData.xcdatamodel in Sources */,
-				EAF3973E1E315DD100038CD4 /* RightScale.xcdatamodel in Sources */,
-				EAF3972B1E315DD100038CD4 /* Event+Extensions.m in Sources */,
-				EAF397301E315DD100038CD4 /* InstanceType+Extensions.m in Sources */,
-				EAF397121E315DD100038CD4 /* ProviderUser+Extensions.m in Sources */,
-				EAF3973C1E315DD100038CD4 /* MonitoringMetric.m in Sources */,
-				EAF397261E315DD100038CD4 /* AuditedResource+Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
