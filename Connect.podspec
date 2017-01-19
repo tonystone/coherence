@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Connect'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Connect.'
+  s.summary          = 'Connect'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -26,12 +26,16 @@ TODO: Add long description of the pod here.
   s.author           = { "Tony Stone" => "https://github.com/tonystone" }
   s.source           = { :git => 'https://github.com/tonystone/connect1.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target     = '8.0'
+  s.osx.deployment_target     = '10.10'
 
-  s.source_files = 'Connect/**/*'
+  s.module_name   = 'Connect'
+  s.source_files = 'Sources/**/*'
   s.public_header_files = 'Pod/*.h'
 
-  s.dependency 'TraceLog/ObjC', '~> 1.0'
+  s.dependency 'TraceLog', "~> 2.0"
+  s.dependency 'TraceLog/ObjC', "~> 2.0"
+
 
   s.frameworks = 'CoreData'
   s.libraries = 'xml2'

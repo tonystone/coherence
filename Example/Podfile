@@ -1,11 +1,14 @@
 use_frameworks!
 
-target 'Connect_Example' do
+install! 'cocoapods', :deterministic_uuids => false
+
+target 'Connect Example' do
+  platform :ios, '8.0'
+      
   pod 'Connect', :path => '../'
 
-  target 'Connect_Tests' do
+  target 'Connect Tests' do
     inherit! :search_paths
 
-    
   end
 end
