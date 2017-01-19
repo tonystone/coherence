@@ -8,6 +8,7 @@
 
 import Foundation
 import TraceLog
+import CoreData
 
 internal
 class ActionQueue {
@@ -45,7 +46,7 @@ class ActionQueue {
     }
     
     internal
-    func addAction(_ action: EntityAction, waitUntilDone wait: Bool) {
+    func addAction<T: NSManagedObject>(_ action: EntityAction<T>, waitUntilDone wait: Bool) {
     
         //
         // Register the operation first so the users get notifications

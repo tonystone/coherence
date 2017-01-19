@@ -3,9 +3,11 @@
 //
 
 import Foundation
+import CoreData
 
-@objc
-open
-class EntityAction : Operation {
+///
+/// An action for a specific entity type
+///
+open class EntityAction<EntityType: NSManagedObject>: Action {
 
 }
