@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		E10C19D1829542ABE4FFF9BC /* Pods_Connect_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD82CCBF46EE0431B37B3FC1 /* Pods_Connect_Example.framework */; };
+		EA4033C71D87304800B45D10 /* RightScale-v1.wsdl in Resources */ = {isa = PBXBuildFile; fileRef = EA4033C61D87304800B45D10 /* RightScale-v1.wsdl */; };
 		EA4046B01D6A1F9700D92BB4 /* CloudEntityActionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4046311D6A1F9700D92BB4 /* CloudEntityActionDefinition.m */; };
 		EA4046B11D6A1F9700D92BB4 /* DatacenterEntityActionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4046331D6A1F9700D92BB4 /* DatacenterEntityActionDefinition.m */; };
 		EA4046B21D6A1F9700D92BB4 /* DeploymentEntityActionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4046351D6A1F9700D92BB4 /* DeploymentEntityActionDefinition.m */; };
@@ -121,6 +122,7 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A62AEA88E78EB0D0766CA28E /* Pods-Connect_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect_Example/Pods-Connect_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DD82CCBF46EE0431B37B3FC1 /* Pods_Connect_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4033C61D87304800B45D10 /* RightScale-v1.wsdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "RightScale-v1.wsdl"; sourceTree = "<group>"; };
 		EA40462B1D6A1F5000D92BB4 /* Connect High Level Architecture.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect High Level Architecture.graffle"; sourceTree = "<group>"; };
 		EA4046301D6A1F9700D92BB4 /* CloudEntityActionDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudEntityActionDefinition.h; sourceTree = "<group>"; };
 		EA4046311D6A1F9700D92BB4 /* CloudEntityActionDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudEntityActionDefinition.m; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		EA40463C1D6A1F9700D92BB4 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				EA4033C61D87304800B45D10 /* RightScale-v1.wsdl */,
 				EA40463D1D6A1F9700D92BB4 /* Cloud.wsdl */,
 				EA40463E1D6A1F9700D92BB4 /* RightScaleCloud.wsdl */,
 				EA40463F1D6A1F9700D92BB4 /* RightScaleCloud.xsd */,
@@ -646,6 +649,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA4033C71D87304800B45D10 /* RightScale-v1.wsdl in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
