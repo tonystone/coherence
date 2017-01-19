@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6003F589195388D20070C39A"
-               BuildableName = "Connect_Example.app"
-               BlueprintName = "Connect_Example"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "Connect Example.app"
+               BlueprintName = "Connect Example"
+               ReferencedContainer = "container:Connect.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Connect Tests.xctest"
+               BlueprintName = "Connect Tests"
                ReferencedContainer = "container:Connect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "Connect_Tests.xctest"
-               BlueprintName = "Connect_Tests"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Connect Tests.xctest"
+               BlueprintName = "Connect Tests"
                ReferencedContainer = "container:Connect.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "Connect_Example.app"
-            BlueprintName = "Connect_Example"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Connect Example.app"
+            BlueprintName = "Connect Example"
             ReferencedContainer = "container:Connect.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,13 +79,18 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "Connect_Example.app"
-            BlueprintName = "Connect_Example"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Connect Example.app"
+            BlueprintName = "Connect Example"
             ReferencedContainer = "container:Connect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
          <EnvironmentVariable
             key = "LOG_ALL"
             value = "TRACE4"
@@ -91,9 +110,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "Connect_Example.app"
-            BlueprintName = "Connect_Example"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Connect Example.app"
+            BlueprintName = "Connect Example"
             ReferencedContainer = "container:Connect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

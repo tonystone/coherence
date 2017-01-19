@@ -1,7 +1,7 @@
 {
   "name": "Connect",
   "version": "0.1.0",
-  "summary": "A short description of Connect.",
+  "summary": "Connect",
   "description": "TODO: Add long description of the pod here.",
   "license": "Apache License, Version 2.0",
   "homepage": "https://github.com/tonystone/connect1",
@@ -13,13 +13,18 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "8.0",
+    "osx": "10.10"
   },
-  "source_files": "Connect/**/*",
+  "module_name": "Connect",
+  "source_files": "Sources/**/*",
   "public_header_files": "Pod/*.h",
   "dependencies": {
+    "TraceLog": [
+      "~> 2.0"
+    ],
     "TraceLog/ObjC": [
-      "~> 1.0"
+      "~> 2.0"
     ]
   },
   "frameworks": "CoreData",
