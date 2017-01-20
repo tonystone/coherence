@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Connect' do |sp|
       sp.dependency 'Coherence/Stack'
-      sp.source_files  = 'Sources/Connect/*'
+      sp.source_files  = 'Sources/Connect/**/*'
   end
 
   s.dependency 'TraceLog', "~> 2.0"

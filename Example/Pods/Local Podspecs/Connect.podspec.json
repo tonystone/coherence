@@ -1,0 +1,35 @@
+{
+  "name": "Connect",
+  "version": "0.1.0",
+  "summary": "Connect",
+  "description": "TODO: Add long description of the pod here.",
+  "license": "Apache License, Version 2.0",
+  "homepage": "https://github.com/tonystone/connect1",
+  "authors": {
+    "Tony Stone": "https://github.com/tonystone"
+  },
+  "source": {
+    "git": "https://github.com/tonystone/connect1.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0",
+    "osx": "10.10"
+  },
+  "module_name": "Connect",
+  "source_files": "Sources/**/*",
+  "public_header_files": "Pod/*.h",
+  "dependencies": {
+    "TraceLog": [
+      "~> 2.0"
+    ],
+    "TraceLog/ObjC": [
+      "~> 2.0"
+    ]
+  },
+  "frameworks": "CoreData",
+  "libraries": "xml2",
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "$(SDKROOT)/usr/include/libxml2"
+  }
+}

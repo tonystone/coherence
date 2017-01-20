@@ -11,11 +11,6 @@
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
-		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* CCAppDelegate.m */; };
-		6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F59F195388D20070C39A /* Main_iPhone.storyboard */; };
-		6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A2195388D20070C39A /* Main_iPad.storyboard */; };
-		6003F5A7195388D20070C39A /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* CCViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -24,7 +19,6 @@
 		DAE4A5B38D3270EECB1AFF1C /* Pods_Coherence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F21D5A8916C100CEDC80687 /* Pods_Coherence.framework */; };
 		DF2C9319F526BF93032E1EB2 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E24CF33E7AF94B910E2D265 /* Pods_Tests.framework */; };
 		EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = EA4D365C1C3DF58C003DC554 /* .travis.yml */; };
-		EAA8A3731D35C12700D0C1EA /* Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */; };
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
 		EACAA3E91DC6CDCD00D3D371 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E61DC6CDCD00D3D371 /* CoreDataStackTests.swift */; };
 		EACAA3EA1DC6CDCD00D3D371 /* TestModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E71DC6CDCD00D3D371 /* TestModel2.swift */; };
@@ -35,6 +29,14 @@
 		EACAA3F91DC7E9E300D3D371 /* GenericCoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3F81DC7E9E300D3D371 /* GenericCoreDataStackTests.swift */; };
 		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
 		EACAA3FD1DC84EEB00D3D371 /* TestModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FC1DC84EEB00D3D371 /* TestModel3.swift */; };
+		EAF397451E318A8900038CD4 /* Gemfile in Resources */ = {isa = PBXBuildFile; fileRef = EAF397441E318A8900038CD4 /* Gemfile */; };
+		EAF397511E31917000038CD4 /* HR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF397491E31917000038CD4 /* HR.xcdatamodeld */; };
+		EAF397521E31917000038CD4 /* hr-rest.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF3974D1E31917000038CD4 /* hr-rest.json */; };
+		EAF397531E31917000038CD4 /* hr-legacy.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAF3974F1E31917000038CD4 /* hr-legacy.wadl */; };
+		EAF397541E31917000038CD4 /* hr-rest.wadl in Resources */ = {isa = PBXBuildFile; fileRef = EAF397501E31917000038CD4 /* hr-rest.wadl */; };
+		EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF397551E31926A00038CD4 /* AppDelegate.swift */; };
+		EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF397571E31927B00038CD4 /* LaunchScreen.xib */; };
+		EAF3975C1E31927B00038CD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF397591E31927B00038CD4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,22 +45,15 @@
 		387FD13B580E0398D458F786 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		40A707AC1AAD93073D43D43B /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5E24CF33E7AF94B910E2D265 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F58A195388D20070C39A /* Coherence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coherence.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* Coherence Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coherence Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6003F595195388D20070C39A /* Coherence-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Coherence-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* Coherence-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coherence-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* CCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* CCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A0195388D20070C39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		6003F5A3195388D20070C39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* CCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* CCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* Coherence Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coherence Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -68,10 +63,8 @@
 		CBF446C4B5F6CB3431A2835D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
-		EA8519E41DC035A4007CAB43 /* Gemfile.osx */ = {isa = PBXFileReference; lastKnownFileType = text; name = Gemfile.osx; path = ../Gemfile.osx; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
-		EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Example.xcdatamodel; sourceTree = "<group>"; };
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EABEDD4B1DC69B3400D5785D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
@@ -86,6 +79,14 @@
 		EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoherenceTestUtilities.swift; sourceTree = "<group>"; };
 		EACAA3FC1DC84EEB00D3D371 /* TestModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel3.swift; sourceTree = "<group>"; };
 		EAE527531DC4E94F00AA65AE /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = codecov.yml; path = ../codecov.yml; sourceTree = "<group>"; };
+		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
+		EAF3974A1E31917000038CD4 /* HR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HR.xcdatamodel; sourceTree = "<group>"; };
+		EAF3974D1E31917000038CD4 /* hr-rest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hr-rest.json"; sourceTree = "<group>"; };
+		EAF3974F1E31917000038CD4 /* hr-legacy.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-legacy.wadl"; sourceTree = "<group>"; };
+		EAF397501E31917000038CD4 /* hr-rest.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-rest.wadl"; sourceTree = "<group>"; };
+		EAF397551E31926A00038CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EAF397581E31927B00038CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EAF3975A1E31927B00038CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Coherence.podspec; path = ../Coherence.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -118,10 +119,11 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
-				6003F593195388D20070C39A /* Coherence */,
-				6003F5B5195388D20070C39A /* Tests */,
+				60FF7A9C1954A5C5007DD14C /* Metadata */,
+				6003F593195388D20070C39A /* Coherence Example */,
 				EA5FD52A1C1A5918002A7B8A /* Playground */,
+				EAF397461E31917000038CD4 /* Fixtures */,
+				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				CD42041A0CB5857DB21E4061 /* Pods */,
@@ -131,8 +133,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* Coherence.app */,
-				6003F5AE195388D20070C39A /* Tests.xctest */,
+				6003F58A195388D20070C39A /* Coherence Example.app */,
+				6003F5AE195388D20070C39A /* Coherence Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,18 +152,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6003F593195388D20070C39A /* Coherence */ = {
+		6003F593195388D20070C39A /* Coherence Example */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* CCAppDelegate.h */,
-				6003F59D195388D20070C39A /* CCAppDelegate.m */,
-				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
-				6003F5A2195388D20070C39A /* Main_iPad.storyboard */,
-				6003F5A5195388D20070C39A /* CCViewController.h */,
-				6003F5A6195388D20070C39A /* CCViewController.m */,
+				EAF397551E31926A00038CD4 /* AppDelegate.swift */,
+				EAF397571E31927B00038CD4 /* LaunchScreen.xib */,
+				EAF397591E31927B00038CD4 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
+			name = "Coherence Example";
 			path = Coherence;
 			sourceTree = "<group>";
 		};
@@ -170,9 +170,7 @@
 			children = (
 				6003F595195388D20070C39A /* Coherence-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
-				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* Coherence-Prefix.pch */,
-				EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -199,21 +197,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
+		60FF7A9C1954A5C5007DD14C /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */,
 				CBF446C4B5F6CB3431A2835D /* README.md */,
 				387FD13B580E0398D458F786 /* LICENSE */,
 				EA4D365C1C3DF58C003DC554 /* .travis.yml */,
-				EA8519E41DC035A4007CAB43 /* Gemfile.osx */,
+				EAF397441E318A8900038CD4 /* Gemfile */,
 				EA8519E51DC0FC3F007CAB43 /* .gitignore */,
 				EA8519E61DC113C2007CAB43 /* .swift-version */,
 				EAE527531DC4E94F00AA65AE /* codecov.yml */,
 				EABEDD4B1DC69B3400D5785D /* Package.swift */,
 				EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		CD42041A0CB5857DB21E4061 /* Pods */ = {
@@ -259,12 +257,64 @@
 			path = ConfigurationCoreTests;
 			sourceTree = "<group>";
 		};
+		EAF397461E31917000038CD4 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				EAF397471E31917000038CD4 /* Models */,
+				EAF3974B1E31917000038CD4 /* Schemas */,
+			);
+			name = Fixtures;
+			path = ../Fixtures;
+			sourceTree = "<group>";
+		};
+		EAF397471E31917000038CD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EAF397481E31917000038CD4 /* HR */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EAF397481E31917000038CD4 /* HR */ = {
+			isa = PBXGroup;
+			children = (
+				EAF397491E31917000038CD4 /* HR.xcdatamodeld */,
+			);
+			path = HR;
+			sourceTree = "<group>";
+		};
+		EAF3974B1E31917000038CD4 /* Schemas */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3974C1E31917000038CD4 /* OpenAPI */,
+				EAF3974E1E31917000038CD4 /* WADL */,
+			);
+			path = Schemas;
+			sourceTree = "<group>";
+		};
+		EAF3974C1E31917000038CD4 /* OpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3974D1E31917000038CD4 /* hr-rest.json */,
+			);
+			path = OpenAPI;
+			sourceTree = "<group>";
+		};
+		EAF3974E1E31917000038CD4 /* WADL */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3974F1E31917000038CD4 /* hr-legacy.wadl */,
+				EAF397501E31917000038CD4 /* hr-rest.wadl */,
+			);
+			path = WADL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* Coherence */ = {
+		6003F589195388D20070C39A /* Coherence Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence Example" */;
 			buildPhases = (
 				9398D1F0014083DB5F71490F /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
@@ -277,14 +327,14 @@
 			);
 			dependencies = (
 			);
-			name = Coherence;
+			name = "Coherence Example";
 			productName = Coherence;
-			productReference = 6003F58A195388D20070C39A /* Coherence.app */;
+			productReference = 6003F58A195388D20070C39A /* Coherence Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* Tests */ = {
+		6003F5AD195388D20070C39A /* Coherence Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence Tests" */;
 			buildPhases = (
 				109D47ECC5B8051A0F5A95A8 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
@@ -297,9 +347,9 @@
 			);
 			dependencies = (
 			);
-			name = Tests;
+			name = "Coherence Tests";
 			productName = CoherenceTests;
-			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* Coherence Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -314,7 +364,7 @@
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 					6003F5AD195388D20070C39A = {
@@ -337,8 +387,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* Coherence */,
-				6003F5AD195388D20070C39A /* Tests */,
+				6003F589195388D20070C39A /* Coherence Example */,
+				6003F5AD195388D20070C39A /* Coherence Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -348,10 +398,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF397531E31917000038CD4 /* hr-legacy.wadl in Resources */,
+				EAF397451E318A8900038CD4 /* Gemfile in Resources */,
 				EA4D365D1C3DF58C003DC554 /* .travis.yml in Resources */,
-				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
+				EAF397521E31917000038CD4 /* hr-rest.json in Resources */,
+				EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */,
+				EAF397541E31917000038CD4 /* hr-rest.wadl in Resources */,
+				EAF3975C1E31927B00038CD4 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,10 +518,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAA8A3731D35C12700D0C1EA /* Example.xcdatamodeld in Sources */,
-				6003F59E195388D20070C39A /* CCAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* CCViewController.m in Sources */,
-				6003F59A195388D20070C39A /* main.m in Sources */,
+				EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */,
+				EAF397511E31917000038CD4 /* HR.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,28 +551,28 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		6003F59F195388D20070C39A /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6003F5A0195388D20070C39A /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		6003F5A2195388D20070C39A /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6003F5A3195388D20070C39A /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6003F5B9195388D20070C39A /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EAF397571E31927B00038CD4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAF397581E31927B00038CD4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EAF397591E31927B00038CD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAF3975A1E31927B00038CD4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -605,6 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -612,11 +665,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -627,17 +683,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -715,7 +774,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
@@ -724,7 +783,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Coherence Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,
@@ -736,13 +795,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EAA8A3711D35C12700D0C1EA /* Example.xcdatamodeld */ = {
+		EAF397491E31917000038CD4 /* HR.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */,
+				EAF3974A1E31917000038CD4 /* HR.xcdatamodel */,
 			);
-			currentVersion = EAA8A3721D35C12700D0C1EA /* Example.xcdatamodel */;
-			path = Example.xcdatamodeld;
+			currentVersion = EAF3974A1E31917000038CD4 /* HR.xcdatamodel */;
+			path = HR.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

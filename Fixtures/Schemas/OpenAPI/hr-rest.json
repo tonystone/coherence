@@ -1,0 +1,460 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "HR Rest Specification",
+        "description": "This is the test HR API for Connect.",
+        "contact": {
+            "name": "Mobile Grid, Inc.",
+            "url": "http://www.mobilegridinc.com",
+            "email": "info@mobilegridinc.com"
+        },
+        "license": {
+            "name": "Apache License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/rest",
+     "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+     ],
+    "paths": {
+        "/regions": {
+            "get": {
+                "responses": {
+                  "200": {
+                    "description": "regions returned.",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Region"
+                        }
+                    }
+                  }
+               }
+            },
+            "post": {
+                "parameters": [
+                   {
+                      "name": "region",
+                      "in": "body",
+                      "description": "region to add to the system",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/Region"
+                      }
+                    }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "regions inserted."
+                  }
+                }
+            }
+        },
+        "/regions/{regionId}": {
+            "parameters": [
+              { "$ref": "#/parameters/regionId" }
+            ],
+            "get": {
+              "responses": {
+                  "200": {
+                    "description": "regions returned.",
+                   "schema": {
+                          "$ref": "#/definitions/Region"
+                    }
+                }
+              }
+           }
+        },
+        "/regions/{regionId}/countries": {
+          "parameters": [
+              { "$ref": "#/parameters/regionId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "An array of Countrys returned.",
+                    "schema": {
+                        "$schema": "http://json-schema.org/schema#",
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Country"
+                        }
+                    }
+                  }
+              }
+          }
+        },
+        "/regions/{regionId}/countries/{countryCode}": {
+          "parameters": [
+              { "$ref": "#/parameters/regionId" },
+              { "$ref": "#/parameters/countryCode" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "A spcific Country returned.",
+                    "schema": {
+                          "$ref": "#/definitions/Country"
+                    }
+                  }
+              }
+          }
+        },
+        "/regions/{regionId}/countries/{countryCode}/locations": {
+          "parameters": [
+              { "$ref": "#/parameters/regionId" },
+              { "$ref": "#/parameters/countryCode" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/regions/{regionId}/countries/{countryCode}/locations/{locationId}": {
+          "parameters": [
+              { "$ref": "#/parameters/regionId" },
+              { "$ref": "#/parameters/countryCode" },
+              { "$ref": "#/parameters/locationId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/countries": {
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/countries/{countryCode}": {
+          "parameters": [
+              { "$ref": "#/parameters/countryCode" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/locations": {
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/locations/{locationId}": {
+          "parameters": [
+              { "$ref": "#/parameters/locationId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/locations/{locationId}/employees": {
+          "parameters": [
+              { "$ref": "#/parameters/locationId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "An array of Employees for the locationId returned.",
+                    "schema": {
+                        "$schema": "http://json-schema.org/schema#",
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Employee"
+                        }
+                     }
+                  }
+              }
+          }
+        },
+        "/locations/{locationId}/employees/{employeeId}": {
+          "parameters": [
+              { "$ref": "#/parameters/locationId" },
+              { "$ref": "#/parameters/employeeId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "A specific Employee at the locationId.",
+                    "schema": {
+                          "$ref": "#/definitions/Employee"
+                     }
+                  }
+              }
+          }
+        },
+        "/jobs": {
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/jobs/{jobId}": {
+          "parameters": [
+              { "$ref": "#/parameters/jobId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/employees": {
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "An array of Empolyees returned.",
+                    "schema": {
+                        "$schema": "http://json-schema.org/schema#",
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Employee"
+                        }
+                     }
+                  }
+              }
+          }
+        },
+        "/employees/{employeeId}": {
+          "parameters": [
+              { "$ref": "#/parameters/employeeId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "An Employee returned.",
+                    "schema": {
+                          "$ref": "#/definitions/Employee"
+                     }
+                  }
+              }
+          }
+        },
+        "/employees/{employeeId}/jobhistory": {
+          "parameters": [
+              { "$ref": "#/parameters/employeeId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/employees/{employeeId}/jobhistory/{startDate}": {
+          "parameters": [
+              { "$ref": "#/parameters/employeeId" },
+              { "$ref": "#/parameters/startDate" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/departments": {
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/departments/{departmentId}": {
+          "parameters": [
+              { "$ref": "#/parameters/departmentId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/departments/{departmentId}/employees": {
+          "parameters": [
+              { "$ref": "#/parameters/departmentId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        },
+        "/departments/{departmentId}/employees/{employeeId}": {
+          "parameters": [
+              { "$ref": "#/parameters/departmentId" },
+              { "$ref": "#/parameters/employeeId" }
+          ],
+          "get": {
+              "responses": {
+                  "200": {
+                    "description": "TBD."
+                  }
+              }
+          }
+        }
+    }, 
+    "parameters": {
+      "regionId": {
+                "name": "regionId",
+                "in": "path",
+                "description": "regionID to fetch",
+                "required": true,
+                "type": "integer"
+       },
+      "countryCode": {
+                "name": "countryCode",
+                "in": "path",
+                "description": "country to fetch",
+                "required": true,
+                "type": "string"
+       },
+      "locationId": {
+                "name": "locationId",
+                "in": "path",
+                "description": "locationId to fetch",
+                "required": true,
+                "type": "integer"
+       },
+      "employeeId": {
+                "name": "employeeId",
+                "in": "path",
+                "description": "employeeId to fetch",
+                "required": true,
+                "type": "integer"
+      },
+      "jobId": {
+                "name": "jobId",
+                "in": "path",
+                "description": "jobId to fetch",
+                "required": true,
+                "type": "integer"
+      },
+      "startDate": {
+                "name": "startDate",
+                "in": "path",
+                "description": "date to fetch",
+                "required": true,
+                "type": "string",
+                "format": "date"
+      },
+      "departmentId": {
+                "name": "departmentId",
+                "in": "path",
+                "description": "departmentId to fetch",
+                "required": true,
+                "type": "integer"
+      }
+    },
+    "definitions": {
+        "Region": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [ "id", "name" ]
+        },
+        "Country": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [ "id", "name" ]
+        },
+        "Employee": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+               "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+               "lastName": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "hireDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "salary": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "commisionPercentage": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "additionalProperties": false,
+            "required": [ "id", "email" ]
+        }
+    }
+}
+
+

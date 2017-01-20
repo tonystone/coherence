@@ -2,30 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CCConfiguration</key>
-	<dict>
-		<key>boolProperty</key>
-		<true/>
-		<key>charProperty</key>
-		<integer>65</integer>
-		<key>doubleProperty</key>
-		<real>12345.67</real>
-		<key>floatProperty</key>
-		<real>12345.67</real>
-		<key>integerProperty</key>
-		<string>12345</string>
-		<key>stringProperty</key>
-		<string>String test value</string>
-		<key>unsignedIntegerProperty</key>
-		<integer>12345</integer>
-	</dict>
-	<key>CCCustomConfiguration</key>
-	<dict>
-		<key>stringProperty</key>
-		<string>String test value</string>
-		<key>stringReadonlyProperty</key>
-		<string>Readonly string test value</string>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -46,16 +22,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>Main_iPhone</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main_iPhone</string>
-	<key>UIMainStoryboardFile~ipad</key>
-	<string>Main_iPad</string>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -3,6 +3,9 @@ This application makes use of the following third party libraries:
 
 ## Coherence
 
+
+Copyright (c) 2016 Tony Stone ([https://github.com/tonystone] (https://github.com/tonystone))
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -204,8 +207,6 @@ This application makes use of the following third party libraries:
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
-
 
 
 ## TraceLog
