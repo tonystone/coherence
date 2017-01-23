@@ -77,20 +77,24 @@ public typealias asynErrorHandlerBlock = (NSError) -> Void
 open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
     
     fileprivate let managedObjectModel: NSManagedObjectModel
-    fileprivate let persistentStoreCoordinator: CoordinatorType
     fileprivate let tag: String
     fileprivate let mainContext: ContextType
     fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
-    
-    /**
-        Initializes the receiver with a managed object model.
-     
-        - parameters:
-          - managedObjectModel: A managed object model.
-          - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-          - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
-          - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
-     */
+
+    ///
+    /// Holds the NSPersistentStoreCoordinator for this stack.
+    ///
+    public let persistentStoreCoordinator: CoordinatorType
+
+    ///
+    ///  Initializes the receiver with a managed object model.
+    ///
+    ///   - parameters:
+    ///      - managedObjectModel: A managed object model.
+    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///      - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
+    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
     public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
@@ -209,7 +213,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
                     
                     let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
-                    logTrace(4) { "metadata: \(metadata)" }
                     
                     if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
                         

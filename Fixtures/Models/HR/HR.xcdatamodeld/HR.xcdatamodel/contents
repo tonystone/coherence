@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1108" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Country" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" syncable="YES"/>
     </entity>
-    <entity name="Department" syncable="YES">
+    <entity name="Department" representedClassName="Department" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employee" inverseName="department" inverseEntity="Employee" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" syncable="YES"/>
         <relationship name="manager" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" syncable="YES"/>
     </entity>
-    <entity name="Employee" syncable="YES">
+    <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
         <attribute name="commisionPercentage" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,26 +22,30 @@
         <relationship name="job" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Job" syncable="YES"/>
         <relationship name="manager" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" syncable="YES"/>
     </entity>
-    <entity name="Job" syncable="YES">
+    <entity name="Job" representedClassName="Job" syncable="YES" codeGenerationType="class">
         <attribute name="maxSalary" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="minSalary" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <userInfo>
+            <entry key="logTransactions" value="true"/>
+            <entry key="stalenessInterval" value="3000"/>
+        </userInfo>
     </entity>
-    <entity name="JobHistory" syncable="YES">
+    <entity name="JobHistory" representedClassName="JobHistory" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="department" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" syncable="YES"/>
         <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" syncable="YES"/>
         <relationship name="job" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Job" syncable="YES"/>
     </entity>
-    <entity name="Location" syncable="YES">
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" syncable="YES"/>
     </entity>
-    <entity name="Region" syncable="YES">
+    <entity name="Region" representedClassName="Region" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <configuration name="Persistent">
@@ -55,12 +59,12 @@
     </configuration>
     <configuration name="Transient"/>
     <elements>
-        <element name="Country" positionX="387" positionY="260" width="128" height="73"/>
-        <element name="Department" positionX="189" positionY="95" width="128" height="103"/>
-        <element name="Employee" positionX="-216" positionY="-148" width="128" height="193"/>
-        <element name="Job" positionX="90" positionY="-16" width="128" height="88"/>
+        <element name="Country" positionX="387" positionY="260" width="128" height="75"/>
+        <element name="Department" positionX="189" positionY="95" width="128" height="105"/>
+        <element name="Employee" positionX="-216" positionY="-148" width="128" height="195"/>
+        <element name="Job" positionX="90" positionY="-16" width="128" height="90"/>
         <element name="JobHistory" positionX="99" positionY="-288" width="128" height="120"/>
-        <element name="Location" positionX="187" positionY="267" width="128" height="118"/>
-        <element name="Region" positionX="385" positionY="72" width="128" height="58"/>
+        <element name="Location" positionX="187" positionY="267" width="128" height="120"/>
+        <element name="Region" positionX="385" positionY="72" width="128" height="60"/>
     </elements>
 </model>

@@ -1,40 +1,86 @@
-/**
- *   PersistentStoreCoordinator.swift
- *
- *   Copyright 2015 Tony Stone
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- *
- *   Created by Tony Stone on 12/8/15.
- */
+///
+///  PersistentStoreCoordinator.swift
+///
+///  Copyright 2015 Tony Stone
+///
+///  Licensed under the Apache License, Version 2.0 (the "License");
+///  you may not use this file except in compliance with the License.
+///  You may obtain a copy of the License at
+///
+///  http://www.apache.org/licenses/LICENSE-2.0
+///
+///  Unless required by applicable law or agreed to in writing, software
+///  distributed under the License is distributed on an "AS IS" BASIS,
+///  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+///  See the License for the specific language governing permissions and
+///  limitations under the License.
+///
+///  Created by Tony Stone on 12/8/15.
+///
 import Foundation
 import CoreData
 import TraceLog
 
 open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
-    
+
+    enum Errors: Error {
+        case unmanagedEntity(String)
+    }
+
     // The internal write ahead log for logging transactions
-    fileprivate let writeAheadLog: WriteAheadLog?
-    
+    fileprivate var writeAheadLog: WriteAheadLog? = nil
+    fileprivate let actionNotificationService: ActionNotificationService
+
+    fileprivate var genericQueue: ActionQueue
+    fileprivate var entityQueues: [String: ActionQueue] = [:]
+
     override public convenience init(managedObjectModel model: NSManagedObjectModel) {
         self.init(managedObjectModel: model, enableLogging: true)
     }
     
-    init(managedObjectModel model: NSManagedObjectModel, enableLogging: Bool) {
-        
+    public init(managedObjectModel model: NSManagedObjectModel, enableLogging: Bool) {
+
         logInfo { "Initializing instance..." }
-        
+
+        logInfo { "Creating action notification service..." }
+
+        self.actionNotificationService = ActionNotificationService()
+
+        logInfo { "Creating generic queue..." }
+
+        self.genericQueue = ActionQueue(name: "connect.entity.queue.generic", concurrencyMode: .concurrent)
+
+        ///
+        /// Now that all of our local vaeriables are assigned, we
+        /// must call super init so we can use our variables 
+        /// from this point on.
+        ///
+        super.init(managedObjectModel: model)
+
+        ///
+        /// Initialize the entity queues
+        ///
+        for (name, entity) in model.entitiesByName {
+            let queueName = "connect.entity.queue.\(name.lowercased())"
+
+            logInfo { "Initializing entity '\(name)'." }
+
+            if let userInfo = entity.userInfo, userInfo.count > 0 {
+                logInfo { "UserInfo found on entity '\(name)', reading static settings (if any)." }
+                entity.setSetttings(from: userInfo)
+            }
+
+            logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
+
+            self.entityQueues[name] = ActionQueue(name: queueName, concurrencyMode: .serial)
+
+            entity.managed = true
+        }
+
         if enableLogging {
+
+            logInfo { "Logging enabled, creating write ahead log..." }
+
             //
             // Figure out where to put things
             //
@@ -46,17 +92,12 @@ open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
             do {
                 writeAheadLog = try WriteAheadLog(identifier: model.uniqueIdentifier(), path: cachePath)
             } catch {
-                writeAheadLog = nil
-                
                 logError { "Failed to enable logging." }
             }
         } else {
-            writeAheadLog = nil
-            
-            logInfo { "Logging is diabled." }
+            logInfo { "Logging is disabled." }
         }
-        super.init(managedObjectModel: model)
-        
+
         logInfo { "Instance initialized." }
     }
     
@@ -127,5 +168,66 @@ open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
             return try super.execute(request, with:context)
         }
     }
-    
 }
+
+///
+///
+///
+public extension PersistentStoreCoordinator {
+
+    func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) throws -> ActionProxy {
+
+        let container = GenericActionContainer<ActionType>(action: action, notificationService: self.actionNotificationService, completionBlock: completionBlock)
+
+        logTrace(1) { "Queing \(container) on queue `\(self.genericQueue)'" }
+
+        self.genericQueue.addAction(container, waitUntilDone: false)
+
+        return container
+    }
+
+    func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) throws -> ActionProxy {
+
+        let entityQueue = try queue(entity: ActionType.EntityType.self)
+
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = self
+
+        let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
+
+        logTrace(1) { "Queing \(container) on queue `\(entityQueue)'" }
+
+        entityQueue.addAction(container, waitUntilDone: false)
+
+        return container
+    }
+}
+
+fileprivate extension PersistentStoreCoordinator {
+
+    func queue<EntityType: NSManagedObject>(entity: EntityType.Type) throws -> ActionQueue {
+        let entityName = String(describing: entity)
+
+        guard let queue = self.entityQueues[entityName] else {
+            throw Errors.unmanagedEntity("Entity '\(entityName)' not managed by \(self)")
+        }
+        return queue
+    }
+}
+
+fileprivate extension NSManagedObjectModel {
+
+    func uniqueIdentifier() -> String {
+        //
+        // Calculate the hash of the Models entityVersionHashes
+        //
+        var hash = 0;
+
+        for entityHash in self.entityVersionHashesByName.values {
+            hash = 31 &* hash &+ (entityHash as NSData).hash;
+        }
+        return String(hash);
+    }
+
+}
+

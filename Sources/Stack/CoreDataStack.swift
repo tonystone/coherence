@@ -21,6 +21,7 @@ import Foundation
 import CoreData
 import TraceLog
 
+@available(*, deprecated, message: "Use GenericCoreDataStack instead.")
 @objc public final class CoreDataStack: NSObject  {
     
     fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>

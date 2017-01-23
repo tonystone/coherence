@@ -37,6 +37,14 @@
                BlueprintName = "Coherence Tests"
                ReferencedContainer = "container:Coherence.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CCConfigurationTests">
+               </Test>
+               <Test
+                  Identifier = "ConfigurationTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

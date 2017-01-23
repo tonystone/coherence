@@ -4,12 +4,12 @@ use_frameworks!
 
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'Coherence' do
+target 'Coherence Example' do
   pod "Coherence", :path => "../"
   pod "Coherence/Connect", :path => "../"
 end
 
-target 'Tests' do
+target 'Coherence Tests' do
   pod "Coherence", :path => "../"
   pod "Coherence/Connect", :path => "../"
 end

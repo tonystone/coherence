@@ -1,28 +1,36 @@
-//
-//  ActionQueue.swift
-//  Pods
-//
-//  Created by Tony Stone on 8/22/16.
-//
-//
-
+///
+///  ActionQueue.swift
+///
+///  Copyright 2016 Tony Stone
+///
+///  Licensed under the Apache License, Version 2.0 (the "License");
+///  you may not use this file except in compliance with the License.
+///  You may obtain a copy of the License at
+///
+///  http://www.apache.org/licenses/LICENSE-2.0
+///
+///  Unless required by applicable law or agreed to in writing, software
+///  distributed under the License is distributed on an "AS IS" BASIS,
+///  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+///  See the License for the specific language governing permissions and
+///  limitations under the License.
+///
+///  Created by Tony Stone on 8/22/16.
+///
 import Foundation
 import TraceLog
 import CoreData
 
-internal
-class ActionQueue {
+internal class ActionQueue {
     
-    internal
-    enum Mode {
+    public enum Mode {
         case serial
         case concurrent
     }
     
     fileprivate let queue: OperationQueue
     
-    internal
-    init(name: String, concurrencyMode: Mode) {
+    public init(name: String, concurrencyMode: Mode) {
         
         queue = OperationQueue()
         queue.name = name
@@ -31,35 +39,35 @@ class ActionQueue {
             case .serial:     queue.maxConcurrentOperationCount = 1
             case .concurrent: queue.maxConcurrentOperationCount = 5
         }
-        
-        logTrace(1) { "Created queue \(name)" }
     }
     
-    internal
-    func suspend() {
+    public func suspend() {
         queue.isSuspended = true
     }
     
-    internal
-    func resume() {
+    public func resume() {
         queue.isSuspended = false
     }
     
-    internal
-    func addAction<T: NSManagedObject>(_ action: EntityAction<T>, waitUntilDone wait: Bool) {
-    
-        //
-        // Register the operation first so the users get notifications
-        //
-        // [MGActionNotificationService registerActionForNotification: anAction];
+    public func addAction<T: Operation>(_ action: T, waitUntilDone wait: Bool) {
     
         queue.addOperations([action], waitUntilFinished: wait)
     }
     
-    internal
-    var actions: [AnyObject] {
+    public var actions: [AnyObject] {
         get {
             return queue.operations
         }
+    }
+}
+
+extension ActionQueue: CustomStringConvertible, CustomDebugStringConvertible {
+
+    public var description: String {
+        return "\(type(of: self)) (\(self.queue.name ?? "unknown"))"
+    }
+
+    public var debugDescription: String {
+        return self.description
     }
 }
