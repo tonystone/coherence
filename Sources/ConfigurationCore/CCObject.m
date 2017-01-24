@@ -324,8 +324,12 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            id value = object_getIvar(_self, ivar);
-                           
+
+#if !__has_feature(objc_arc)
+                           return [value autorelease];
+#else
                            return value;
+#endif
                        } copy]
                    );
             
