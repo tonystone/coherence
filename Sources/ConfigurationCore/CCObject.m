@@ -30,8 +30,8 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
 
 @interface CCPropertyAttributes : NSObject {
 @public
-    NSString * name;
     char       type;
+    NSString * name;
     NSString * ivarName;
     NSUInteger ivarSize;
     NSUInteger ivarAlignment;
@@ -51,6 +51,16 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
 - (NSString *)description;
 @end
 @implementation CCPropertyAttributes
+
+#if !__has_feature(objc_arc)
+- (void) dealloc {
+    if (name)     { [name release];     name = nil; }
+    if (ivarName) { [ivarName release]; ivarName = nil; }
+
+    [super dealloc];
+}
+#endif
+
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"\n\tname=%@", name];
@@ -106,12 +116,10 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
             objc_registerClassPair(newClass);
 
             LogInfo(@"Class \"%@\" created...", NSStringFromClass(newClass));
-
         } else {
 
             NSAssert([newClass superclass] == baseClass, @"Error: You have previously created a class for \"%@\" using the base class \"%@\".  You can not redefine the class.  Please use \"%@\" to instantiate your configuration or change your original configuration to use \"%@\".", NSStringFromProtocol(aProtocol), NSStringFromClass([newClass superclass]), NSStringFromClass([newClass superclass]), NSStringFromClass(baseClass));
         }
-
         return newClass;
     }
 }
@@ -127,10 +135,10 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         
         unsigned int attributeCount = 0;
         objc_property_attribute_t * propertyAttributeList = property_copyAttributeList (properties[i], &attributeCount);
-        
+
         CCPropertyAttributes * attributes = [[CCPropertyAttributes alloc] init];
-        
-        attributes->name = [NSString stringWithUTF8String: propertyName];
+
+        attributes->name = [[NSString alloc] initWithUTF8String: propertyName];
         
         NSGetSizeAndAlignment(propertyAttributes, &attributes->ivarSize, &attributes->ivarAlignment);
         
@@ -163,7 +171,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                     attributes->flags.dynamic = TRUE;
                     break;
                 case 'V':   // ivar name
-                    attributes->ivarName = [component substringFromIndex: 1];
+                    attributes->ivarName = [[component substringFromIndex: 1] copy];
                     break;
                 case 'W':   // The property is a weak reference (__weak).
                 case 'P':   // The property is eligible for garbage collection.
@@ -175,7 +183,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         }
         
         if (!attributes->ivarName) {
-            attributes->ivarName = [NSString stringWithUTF8String: propertyName];
+            attributes->ivarName = [[NSString alloc] initWithUTF8String: propertyName];
         }
         if (!attributes->getter) {
             attributes->getter = getterSelectorFromPropertyName(propertyName);
@@ -230,27 +238,27 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'c':   // char
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((char *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case 'B':   //  BOOL and C++ bool or a C99 _Bool (for arm64)
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((BOOL *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case 'i':   // NSInteger
@@ -258,14 +266,14 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'q':   // NSInteger (64 bit Mac OS)
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((NSInteger *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case 'I':   // NSUInteger
@@ -273,52 +281,52 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'Q':   // NSUInteger (64 bit Mac OS)
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((NSUInteger *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case 'f':   // float
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((float *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case 'd':
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
                            unsigned char * selfBytes = (unsigned char *)(__bridge void *)_self;
 
                            return *((double *)(selfBytes + offset));
-                       }
+                       } copy]
                    );
             
         case '@':   // NSObject * or id
             
             return imp_implementationWithBlock(
-                       ^(id _self) {
+                       [^(id _self) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            id value = object_getIvar(_self, ivar);
                            
                            return value;
-                       }
+                       } copy]
                    );
             
         default:
@@ -334,7 +342,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'c':   // char
             
             return imp_implementationWithBlock(
-                       ^(id _self, char newValue) {
+                       [^(id _self, char newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -345,13 +353,13 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((char *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case 'B':   //  BOOL and C++ bool or a C99 _Bool (for arm64)
             
             return imp_implementationWithBlock(
-                       ^(id _self, BOOL newValue) {
+                       [^(id _self, BOOL newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -362,7 +370,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((BOOL *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case 'i':   // NSInteger
@@ -370,7 +378,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'q':   // NSInteger (64 bit Mac OS)
             
             return imp_implementationWithBlock(
-                       ^(id _self, NSInteger newValue) {
+                       [^(id _self, NSInteger newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -381,7 +389,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((NSInteger *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case 'I':   // NSUInteger
@@ -389,7 +397,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
         case 'Q':   // NSUInteger (64 bit Mac OS)
             
             return imp_implementationWithBlock(
-                       ^(id _self, NSUInteger newValue) {
+                       [^(id _self, NSUInteger newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -400,13 +408,13 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((NSUInteger *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case 'f':   // float
             
             return imp_implementationWithBlock(
-                       ^(id _self, float newValue) {
+                       [^(id _self, float newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -417,13 +425,13 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((float *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case 'd':
             
             return imp_implementationWithBlock(
-                       ^(id _self, double newValue) {
+                       [^(id _self, double newValue) {
                            Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                            ptrdiff_t offset = ivar_getOffset(ivar);
@@ -434,12 +442,12 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
                            if (oldValue != newValue) {
                                *((double *)(selfBytes + offset)) = newValue;
                            }
-                       }
+                       } copy]
                    );
             
         case '@':   // NSObject * or id
             return imp_implementationWithBlock(
-                   ^(id _self, id newValue) {
+                   [^(id _self, id newValue) {
                        Ivar ivar = class_getInstanceVariable([_self class], [ivarName UTF8String]);
 
                        id oldValue = object_getIvar(_self, ivar);
@@ -451,7 +459,7 @@ static SEL getterSelectorFromPropertyName(const char * nameCStr);
 #endif
                            object_setIvar(_self, ivar, newValue);
                        }
-                   }
+                   } copy]
                );
         default:
             LogTrace(1, @"Type '%c' not supported, can not create Implementation for property %@ .", type, ivarName);
@@ -478,4 +486,3 @@ static SEL setterSelectorFromPropertyName(const char * nameCStr) {
     
     return NSSelectorFromString([NSString stringWithFormat: @"set%@%@:", upperCaseFirstLetter, [name substringWithRange: NSMakeRange(1, [name length] - 1)]]);
 }
-
