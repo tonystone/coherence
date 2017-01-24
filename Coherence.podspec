@@ -39,11 +39,6 @@ Pod::Spec.new do |s|
       sp.source_files  = 'Sources/Stack/*'
   end
 
-  s.subspec 'Connect' do |sp|
-      sp.dependency 'Coherence/Stack'
-      sp.source_files  = 'Sources/Connect/*'
-  end
-
   s.dependency 'TraceLog', "~> 2.0"
   s.dependency 'TraceLog/ObjC', "~> 2.0"
 end

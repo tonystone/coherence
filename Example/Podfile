@@ -4,10 +4,8 @@ use_frameworks!
 
 target 'Coherence' do
   pod "Coherence", :path => "../"
-  pod "Coherence/Connect", :path => "../"
 end
 
 target 'Tests' do
   pod "Coherence", :path => "../"
-  pod "Coherence/Connect", :path => "../"
 end
