@@ -66,6 +66,7 @@
 		6F21D5A8916C100CEDC80687 /* Pods_Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E0A52AB6E160D59F17EFE2 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBF446C4B5F6CB3431A2835D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
 		EA8519E41DC035A4007CAB43 /* Gemfile.osx */ = {isa = PBXFileReference; lastKnownFileType = text; name = Gemfile.osx; path = ../Gemfile.osx; sourceTree = "<group>"; };
@@ -118,7 +119,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				60FF7A9C1954A5C5007DD14C /* Metadata */,
 				6003F593195388D20070C39A /* Coherence */,
 				6003F5B5195388D20070C39A /* Tests */,
 				EA5FD52A1C1A5918002A7B8A /* Playground */,
@@ -199,13 +200,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
+		60FF7A9C1954A5C5007DD14C /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */,
 				CBF446C4B5F6CB3431A2835D /* README.md */,
 				387FD13B580E0398D458F786 /* LICENSE */,
 				EA4D365C1C3DF58C003DC554 /* .travis.yml */,
+				EA2CC5E41E384F9F00054305 /* .travis */,
 				EA8519E41DC035A4007CAB43 /* Gemfile.osx */,
 				EA8519E51DC0FC3F007CAB43 /* .gitignore */,
 				EA8519E61DC113C2007CAB43 /* .swift-version */,
@@ -213,7 +215,7 @@
 				EABEDD4B1DC69B3400D5785D /* Package.swift */,
 				EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		CD42041A0CB5857DB21E4061 /* Pods */ = {
