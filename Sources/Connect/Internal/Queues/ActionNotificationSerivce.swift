@@ -24,7 +24,14 @@ internal class ActionNotificationService {
 
     public init() {}
 
-    func action(_ actionProxy: ActionProxy, actionState: ActionState) {
-        /// do something
+    func actionProxy(_ actionProxy: ActionProxy, didChangeState newState: ActionState ) {
+
+        switch newState {
+
+        case .executing: fallthrough
+        case .finished: fallthrough
+        default:
+            break
+        }
     }
 }

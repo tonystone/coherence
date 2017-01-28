@@ -32,7 +32,7 @@ internal class ActionContainer: Operation, ActionProxy {
 
         didSet {
             /// Notify the service that this action state changed
-            self.notificationService.action(self, actionState: state)
+            self.notificationService.actionProxy(self, didChangeState: state)
         }
     }
     public private(set) var completionStatus: ActionCompletionStatus
