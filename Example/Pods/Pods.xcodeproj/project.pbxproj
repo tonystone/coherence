@@ -42,7 +42,7 @@
 		9097D54E00943F55BE35FEDC /* Coherence-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9068C005150571BB2E938D96 /* Coherence-dummy.m */; };
 		9925FE52198AE667A40FC202 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D3D65B31209DC2C0182AB0 /* Foundation.framework */; };
 		9ADFDE6E48F1C35AD256F96F /* TraceLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CEB264A8241140D0C2EC41 /* TraceLog.framework */; };
-		9BEF7E0CAB65CE53F16F7452 /* PersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896AD5E1894412A4986F4A5 /* PersistentStoreCoordinator.swift */; };
+		9BEF7E0CAB65CE53F16F7452 /* ConnectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896AD5E1894412A4986F4A5 /* ConnectCoordinator.swift */; };
 		9BF08805E77D9F3C934F2C73 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAD8C557CAB4BDE9EFD4EB /* Logger.swift */; };
 		9CD3869D7B85595BD4816003 /* ActionContianer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687E1DE81FF21EE73815910 /* ActionContianer.swift */; };
 		C09B12FC2F46E82D0FB554E7 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2683081536968D04FF89CEFC /* TraceLog.swift */; };
@@ -54,6 +54,7 @@
 		CFBFA140E05CA42B5D5DDB62 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001894C1E00782D438410CDA /* Writer.swift */; };
 		DEDB6F4A9E1455F8DFC7E096 /* EntityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA1B72BB8B95DEE810B4EC /* EntityAction.swift */; };
 		DFA1522B3B3C5A14355AABD6 /* EntityActionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E623D1E38BDCEB9FA06564 /* EntityActionContainer.swift */; };
+		EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C13FD1E3D040C002E63BD /* Connect.swift */; };
 		EF872B2767CE313D24238F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D3D65B31209DC2C0182AB0 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,11 +163,12 @@
 		DF9FEBFF0D94F189D45312D1 /* Pods-Coherence Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E3A14BA224C88344C6586359 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TraceLog.framework; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E729C12361EE5B5955D027B1 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
+		EA1C13FD1E3D040C002E63BD /* Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 		EA4D27357DD61CBE20CE5EA7 /* GenericAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		EB137E49C05AE8BCBA541B27 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0A0C9202C24008C5E77EEC8 /* Pods-Coherence Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Tests-umbrella.h"; sourceTree = "<group>"; };
 		F511076A6D642DE47DEE81D2 /* Pods-Coherence Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Example.release.xcconfig"; sourceTree = "<group>"; };
-		F896AD5E1894412A4986F4A5 /* PersistentStoreCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistentStoreCoordinator.swift; sourceTree = "<group>"; };
+		F896AD5E1894412A4986F4A5 /* ConnectCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConnectCoordinator.swift; sourceTree = "<group>"; };
 		F92DDF9970D32E8CE45CA99B /* NSEntityDescription+EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+EntitySettings.swift"; sourceTree = "<group>"; };
 		FBB18D0103F8FB4405FAFC78 /* MetaLogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MetaLogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FCE5F8187D5637A6F0FF3534 /* GenericActionContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericActionContainer.swift; sourceTree = "<group>"; };
@@ -753,6 +755,7 @@
 				7976B7E529FA897986808018 /* GenericAction.swift in Sources */,
 				14263318E1754638880F89BF /* GenericActionContainer.swift in Sources */,
 				81474BEA8DDB9E487A7A365D /* GenericCoreDataStack.swift in Sources */,
+				EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */,
 				40D53306574CAAB088C4E9F0 /* InMemoryDataStore.swift in Sources */,
 				10C9C4B533829B4953A11FDF /* InMemoryReferenceObject.swift in Sources */,
 				72330B1540DA8C17C3D8DFBD /* MetaLogEntry+CoreDataProperties.swift in Sources */,
@@ -760,7 +763,7 @@
 				361C84C6C6604B81C74CFC38 /* MetaModel.swift in Sources */,
 				6E30D471FC597E6AD0862B6A /* NSEntityDescription+EntitySettings.swift in Sources */,
 				49332872A3FEC21B339998C8 /* NSManagedObjectModel+EntitySettings.swift in Sources */,
-				9BEF7E0CAB65CE53F16F7452 /* PersistentStoreCoordinator.swift in Sources */,
+				9BEF7E0CAB65CE53F16F7452 /* ConnectCoordinator.swift in Sources */,
 				13E17C305AF4643692F120E8 /* WriteAheadLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
