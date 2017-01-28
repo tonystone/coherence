@@ -11,17 +11,12 @@ import TraceLog
 import CoreData
 import Coherence
 
-///
-/// Define the CoreDataStack type the application will use globally
-///
-typealias CoreDataStackType = GenericCoreDataStack<PersistentStoreCoordinator, NSManagedObjectContext>
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var coreDataStack: CoreDataStackType!
+    var connect: Connect!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -50,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
         do {
-            self.coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: modelName, configurationOptions: configurationOptions)
+            self.connect = try Connect(managedObjectModel: model, storeName: modelName, configurationOptions: configurationOptions)
         } catch {
             fatalError("\(error)")
         }

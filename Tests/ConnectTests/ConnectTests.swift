@@ -1,5 +1,5 @@
 ///
-///  PersistentStoreCoordinatorTests.swift
+///  ConnectTests.swift
 ///
 ///  Copyright 2016 Tony Stone
 ///
@@ -25,11 +25,11 @@ class PersistentStoreCoordinatorTests: XCTestCase {
 
     var testModel:     NSManagedObjectModel! = nil
     var testDirectory: URL! = nil
+    let modelName = "HR"
 
     override func setUp() {
         super.setUp()
 
-        let modelName = "HR"
         let bundle    = Bundle(for: type(of: self))
 
         guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
@@ -65,15 +65,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         let input = self.testModel!
         let expected = input
 
-        XCTAssertEqual(PersistentStoreCoordinator(managedObjectModel: input).managedObjectModel , expected)
-    }
-
-    func testConstructionNoWriteAheadLog() {
-
-        let input = self.testModel!
-        let expected = input
-
-        XCTAssertEqual(PersistentStoreCoordinator(managedObjectModel: input, enableLogging: false).managedObjectModel , expected)
+        XCTAssertEqual(try Connect(managedObjectModel: input, storeName: modelName).managedObjectModel , expected)
     }
 
     func testExecuteGenericAction() throws {
@@ -83,7 +75,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
 
         let expecation = self.expectation(description: "Completion Block Gets Called")
 
-        let proxy = try PersistentStoreCoordinator(managedObjectModel: self.testModel).execute(input) { _ in
+        let proxy = try Connect(managedObjectModel: self.testModel, storeName: self.modelName).execute(input) { _ in
             expecation.fulfill()
         }
 
@@ -105,7 +97,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
 
         let expecation = self.expectation(description: "Completion Block Gets Called")
 
-        let proxy = try PersistentStoreCoordinator(managedObjectModel: self.testModel).execute(input) { _ in
+        let proxy = try Connect(managedObjectModel: self.testModel, storeName: self.modelName).execute(input) { _ in
             expecation.fulfill()
         }
 

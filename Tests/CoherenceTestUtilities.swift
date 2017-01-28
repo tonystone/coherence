@@ -27,9 +27,9 @@ internal func removePersistentStoreCache() throws {
     }
 }
 
-internal func persistentStoreDate(storePrefix: String, storeType: String,  configuration: String? = nil) throws -> Date {
+internal func persistentStoreDate(storePrefix: String, storeType: String, configuration: String? = nil) throws -> Date {
     
-    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration ?? "").\(storeType)").path
+    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     
     let attributes = try FileManager.default.attributesOfItem(atPath: storePath)
     
@@ -41,16 +41,16 @@ internal func persistentStoreDate(storePrefix: String, storeType: String,  confi
 
 internal func persistentStoreExists(storePrefix: String, storeType: String,  configuration: String? = nil) throws -> Bool {
     
-    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration ?? "").\(storeType)").path
+    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     
     return FileManager.default.fileExists(atPath: storePath)
 }
 
-internal func deletePersistentStoreFilesIfExist(storePrefix: String, storeType: String,  configuration: String? = nil) throws {
+internal func deletePersistentStoreFilesIfExist(storePrefix: String, storeType: String, configuration: String? = nil) throws {
     
     let storeDirectory = try cachesDirectory()
     
-    let storePath = storeDirectory.appendingPathComponent("\(storePrefix)\(configuration ?? "").\(storeType)").path
+    let storePath = storeDirectory.appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     
     let storeShmPath = "\(storePath)-shm"
     let storeWalPath = "\(storePath)-wal"
