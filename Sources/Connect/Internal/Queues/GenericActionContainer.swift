@@ -17,23 +17,24 @@
 ///
 ///  Created by Tony Stone on 1/19/17.
 ///
+import Foundation
 import TraceLog
 
 class GenericActionContainer<ActionType: GenericAction>: ActionContainer {
 
-    private let action: ActionType
+    private let genericAction: ActionType
 
     internal init(action: ActionType, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
-        self.action = action
+        self.genericAction = action
 
-        super.init(notificationService: notificationService, completionBlock: completionBlock)
+        super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
         logTrace(1) { "Proxy \(self) created for action \(self.action)." }
     }
 
     internal override func execute() -> ActionCompletionStatus {
     
-        let (status, _, _, _) = self.action.execute()
+        let (status, _, _, _) = self.genericAction.execute()
 
         switch status {
 

@@ -26,7 +26,10 @@ internal class ActionContainer: Operation, ActionProxy {
     private let notificationService: ActionNotificationService
     private let completion: ((_ actionProxy: ActionProxy) -> Void)?
 
+    public let action: Action
+    
     public internal(set) var state: ActionState  {
+
         didSet {
             /// Notify the service that this action state changed
             self.notificationService.action(self, actionState: state)
@@ -39,7 +42,8 @@ internal class ActionContainer: Operation, ActionProxy {
     public private(set) var finishTime: Date?
     public private(set) var executionTime: TimeInterval?
 
-    internal init(notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+    internal init(action: Action, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+        self.action              = action
         self.notificationService = notificationService
         self.completionStatus    = .unknown
         self.state               = .created
@@ -91,6 +95,7 @@ internal class ActionContainer: Operation, ActionProxy {
     }
 
     override func cancel() {
+        self.action.cancel()
         super.cancel()
         
         self.completionStatus = .canceled

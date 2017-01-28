@@ -17,26 +17,27 @@
 ///
 ///  Created by Tony Stone on 1/22/17.
 ///
+import Foundation
 import TraceLog
 import CoreData
 
 class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
 
-    private let action: ActionType
+    private let entityAction: ActionType
     private let context: NSManagedObjectContext
 
     internal init(action: ActionType, context: NSManagedObjectContext, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
-        self.action = action
-        self.context = context
+        self.entityAction = action
+        self.context      = context
 
-        super.init(notificationService: notificationService, completionBlock: completionBlock)
+        super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
         logTrace(1) { "Proxy \(self) created for action \(self.action)." }
     }
 
     internal override func execute() -> ActionCompletionStatus {
 
-        let (status, _, _, _) = self.action.execute(context: context)
+        let (status, _, _, _) = self.entityAction.execute(context: context)
 
         switch status {
 
