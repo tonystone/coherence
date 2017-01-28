@@ -101,18 +101,52 @@ extension NSEntityDescription  {
 
 internal extension NSEntityDescription {
 
-    internal func setSetttings(from dictionary: [AnyHashable: Any]) {
+    internal func setSettings(from dictionary: [AnyHashable: Any]) {
 
-        if let stringValue = dictionary["stalenessInterval"] as? String,
-           let value = Int(stringValue) {
+        if let rawValue = dictionary["uniquenessAttributes"] {
 
-            self.stalenessInterval = value
+            switch rawValue {
+            case let value as [String]:
+                self.uniquenessAttributes = value
+                break
+            case let value as String:
+                self.uniquenessAttributes = value.components(separatedBy: ",").map{ $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                break
+            default:
+                break
+            }
         }
 
-        if let stringValue = dictionary["logTransactions"] as? String,
-            let value = Bool(stringValue) {
+        if let rawValue = dictionary["stalenessInterval"] {
 
-            self.logTransactions = value
+            switch rawValue {
+            case let value as Int:
+                self.stalenessInterval = value
+                break
+            case let string as String:
+                if let value = Int(string) {
+                    self.stalenessInterval = value
+                }
+                break
+            default:
+                break
+            }
+        }
+
+        if let rawValue = dictionary["logTransactions"] {
+
+            switch rawValue {
+            case let value as Bool:
+                self.logTransactions = value
+                break
+            case let string as String:
+                if let value = Bool(string) {
+                    self.logTransactions = value
+                }
+                break
+            default:
+                break
+            }
         }
     }
 }
