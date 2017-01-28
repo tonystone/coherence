@@ -21,6 +21,11 @@
         <relationship name="department" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department" syncable="YES"/>
         <relationship name="job" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Job" syncable="YES"/>
         <relationship name="manager" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Job" representedClassName="Job" syncable="YES" codeGenerationType="class">
         <attribute name="maxSalary" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -44,6 +49,9 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" syncable="YES"/>
+        <userInfo>
+            <entry key="uniquenessAttributes" value="address,zip"/>
+        </userInfo>
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
