@@ -94,11 +94,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
 
     ///
-    /// Holds the NSPersistentStoreCoordinator for this stack.
-    ///
-    public let persistentStoreCoordinator: CoordinatorType
-
-    ///
     ///  Initializes the receiver with a managed object model.
     ///
     ///   - parameters:
