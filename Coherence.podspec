@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "2.0.2"
+  s.version          = "2.0.3"
   s.summary          = "Coherence"
   s.description      = <<-DESC
                        Coherence is a collection of base frameworks that help set the groundwork for module development.
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   
   s.module_name   = 'Coherence'
-  s.default_subspecs = ['Configuration', 'Stack']
+  s.default_subspecs = ['Configuration', 'Stack', 'Connect']
 
   s.subspec 'ConfigurationCore' do |sp|
       sp.requires_arc = false

@@ -1,6 +1,6 @@
 {
   "name": "Coherence",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "summary": "Coherence",
   "description": "Coherence is a collection of base frameworks that help set the groundwork for module development.",
   "homepage": "https://github.com/tonystone/coherence",
@@ -8,7 +8,7 @@
   "authors": "Tony Stone",
   "source": {
     "git": "https://github.com/tonystone/coherence.git",
-    "tag": "2.0.2"
+    "tag": "2.0.3"
   },
   "platforms": {
     "ios": "8.0"
@@ -17,7 +17,8 @@
   "module_name": "Coherence",
   "default_subspecs": [
     "Configuration",
-    "Stack"
+    "Stack",
+    "Connect"
   ],
   "dependencies": {
     "TraceLog": [

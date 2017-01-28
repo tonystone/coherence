@@ -6,10 +6,8 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'Coherence Example' do
   pod "Coherence", :path => "../"
-  pod "Coherence/Connect", :path => "../"
 end
 
 target 'Coherence Tests' do
   pod "Coherence", :path => "../"
-  pod "Coherence/Connect", :path => "../"
 end

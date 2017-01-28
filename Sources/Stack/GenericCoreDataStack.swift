@@ -75,8 +75,20 @@ public typealias asynErrorHandlerBlock = (NSError) -> Void
     A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
  */
 open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
-    
-    fileprivate let managedObjectModel: NSManagedObjectModel
+
+    /// 
+    /// The model this `GenericCoreDataStack` was constructed with.
+    ///
+    public let managedObjectModel: NSManagedObjectModel
+
+    ///
+    /// Returns the `NSPersistentStoreCoordinate` instance that
+    /// this `GenericCoreDataStack` contains.  It's type will
+    /// be `CoordinatorType` which was given as a generic
+    /// parameter during construction.
+    ///
+    public let persistentStoreCoordinator: CoordinatorType
+
     fileprivate let tag: String
     fileprivate let mainContext: ContextType
     fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
