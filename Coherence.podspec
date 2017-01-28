@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "2.0.2"
+  s.version          = "2.0.3"
   s.summary          = "Coherence"
   s.description      = <<-DESC
                        Coherence is a collection of base frameworks that help set the groundwork for module development.
@@ -37,11 +37,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'Stack' do |sp|
       sp.source_files  = 'Sources/Stack/*'
-  end
-
-  s.subspec 'Connect' do |sp|
-      sp.dependency 'Coherence/Stack'
-      sp.source_files  = 'Sources/Connect/*'
   end
 
   s.dependency 'TraceLog', "~> 2.0"
