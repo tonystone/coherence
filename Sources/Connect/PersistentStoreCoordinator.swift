@@ -58,23 +58,13 @@ open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
         super.init(managedObjectModel: model)
 
         ///
-        /// Initialize the entity queues
+        /// Initialize the entities
         ///
         for (name, entity) in model.entitiesByName {
-            let queueName = "connect.entity.queue.\(name.lowercased())"
 
-            logInfo { "Initializing entity '\(name)'." }
+            logInfo { "Found entity '\(name)'." }
 
-            if let userInfo = entity.userInfo, userInfo.count > 0 {
-                logInfo { "UserInfo found on entity '\(name)', reading static settings (if any)." }
-                entity.setSetttings(from: userInfo)
-            }
-
-            logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
-
-            self.entityQueues[name] = ActionQueue(name: queueName, concurrencyMode: .serial)
-
-            entity.managed = true
+            self.manage(name: name, entity: entity)
         }
 
         if enableLogging {
@@ -171,7 +161,7 @@ open class PersistentStoreCoordinator : NSPersistentStoreCoordinator {
 }
 
 ///
-///
+/// Action Execution methods
 ///
 public extension PersistentStoreCoordinator {
 
@@ -179,7 +169,7 @@ public extension PersistentStoreCoordinator {
 
         let container = GenericActionContainer<ActionType>(action: action, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
-        logTrace(1) { "Queing \(container) on queue `\(self.genericQueue)'" }
+        logTrace(1) { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
         self.genericQueue.addAction(container, waitUntilDone: false)
 
@@ -195,7 +185,7 @@ public extension PersistentStoreCoordinator {
 
         let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
-        logTrace(1) { "Queing \(container) on queue `\(entityQueue)'" }
+        logTrace(1) { "Queuing \(container) on queue `\(entityQueue)'" }
 
         entityQueue.addAction(container, waitUntilDone: false)
 
@@ -203,7 +193,88 @@ public extension PersistentStoreCoordinator {
     }
 }
 
+///
+/// Utility methods
+///
 fileprivate extension PersistentStoreCoordinator {
+
+    func manage(name: String, entity: NSEntityDescription) -> Bool {
+        logInfo { "Determining if entity '\(name)' can be managed...."}
+
+        var canBeManaged = true
+
+        if let userInfo = entity.userInfo, userInfo.count > 0 {
+            logInfo { "UserInfo found on entity '\(name)', reading static settings (if any)." }
+            entity.setSettings(from: userInfo)
+        }
+
+        if let uniquenessAttributes = entity.uniquenessAttributes {
+            var valid = true
+
+            for attribute in uniquenessAttributes {
+                if !entity.attributesByName.keys.contains(attribute) {
+                    valid = false
+
+                    logWarning { "Uniqueness attribute '\(attribute)' specified but it is not present on entity." }
+                    break
+                }
+            }
+
+            if !valid {
+                canBeManaged = false
+
+                logWarning { "Setting value '\(uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
+            }
+
+        } else {
+
+            if #available(iOS 9.0, *), entity.uniquenessConstraints.count > 0 {
+
+                logInfo { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
+
+                var shortest = entity.uniquenessConstraints[0]
+
+                for attributes in entity.uniquenessConstraints {
+                    if attributes.count < shortest.count {
+                        shortest = attributes
+                    }
+                }
+
+                entity.uniquenessAttributes = {
+                    var array: [String] = []
+
+                    for case let attribute as NSAttributeDescription in shortest {
+                        array.append(attribute.name)
+                    }
+                    return array
+                }()
+
+            } else {
+                canBeManaged = false
+
+                logInfo { "Missing 'uniquenessAttributes' setting."}
+            }
+        }
+
+        if canBeManaged {
+
+            let queueName = "connect.entity.queue.\(name.lowercased())"
+
+            logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
+
+            self.entityQueues[name] = ActionQueue(name: queueName, concurrencyMode: .serial)
+
+            entity.managed = true
+
+            logInfo { "Entity '\(name)' marked as managed."}
+        } else {
+
+            logInfo { "Entity '\(name)' cannot be managed."}
+        }
+
+        return entity.managed
+    }
+
 
     func queue<EntityType: NSManagedObject>(entity: EntityType.Type) throws -> ActionQueue {
         let entityName = String(describing: entity)
