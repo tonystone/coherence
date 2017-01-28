@@ -21,59 +21,59 @@ import Foundation
 import CoreData
 import TraceLog
 
-/**
-    The name of the default configuration in the model.  If you have not 
-    created any configurations, this will be the only configuration avaialble.
-
-    Use this name if you override the options passed.
-*/
+///
+/// The name of the default configuration in the model.  If you have not
+/// created any configurations, this will be the only configuration avaialble.
+///
+/// Use this name if you override the options passed.
+///
 public let defaultModelConfigurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
 
-/**
-    An option – when set to true – will check if the persistent store and the model are incompatible.
-    If so, the underlying persistent store will be removed and replaced.
- */
+///
+/// An option – when set to true – will check if the persistent store and the model are incompatible.
+/// If so, the underlying persistent store will be removed and replaced.
+///
 public let overwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
 
-/**
-    Default options passed to attached and configure the persistent stores.
- */
+///
+/// Default options passed to attached and configure the persistent stores.
+///
 public let defaultStoreOptions: [AnyHashable: Any] = [
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true
 ]
 
-/**
-    If no storeType is passed in, this store type will be used
- */
+///
+/// If no storeType is passed in, this store type will be used
+///
 public let defaultStoreType = NSSQLiteStoreType
 
-/**
-    PersistentStore configuration settings.
- */
+///
+/// PersistentStore configuration settings.
+///
 public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?, migrationManager: NSMigrationManager?)
 
-/**
-    Configuration options dictionary keyed by configuration name.  
-    The name is the name you listed in your model.
- */
+///
+/// Configuration options dictionary keyed by configuration name.
+/// The name is the name you listed in your model.
+///
 public typealias ConfigurationOptionsType = [String : PersistentStoreConfiguration]
 
-/**
-    The detault configuration options used to configure the persistent store when no override is supplied.
- */
+///
+/// The detault configuration options used to configure the persistent store when no override is supplied.
+///
 public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
 
-/**
-    There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently 
-    logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take 
-    an alternate action.
- */
+///
+/// There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently
+/// logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take
+/// an alternate action.
+///
 public typealias asynErrorHandlerBlock = (NSError) -> Void
 
-/**
-    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
- */
+///
+///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+///
 open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
 
     /// 
@@ -98,11 +98,31 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     ///   - parameters:
     ///      - managedObjectModel: A managed object model.
+    ///      - storeNamePrefix: A String which is appended to the beginning of the persistent store's name.
     ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-    ///      - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
     ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
     ///
-    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+    public convenience init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+        //
+        // Figure out where to put things
+        //
+        // Note: We use the applications bundle not the classes or modules.
+        //
+        let baseURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+        try self.init(managedObjectModel: model, storeLocationURL: baseURL, storeNamePrefix: storeNamePrefix, configurationOptions: options, asyncErrorBlock: asyncErrorBlock, logTag: tag)
+    }
+
+    ///
+    ///  Initializes the receiver with a managed object model.
+    ///
+    ///   - parameters:
+    ///      - managedObjectModel: A managed object model.
+    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///      - storeURL: An optional String which is appended to the beginning of the persistent store's name.
+    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
+    required public init(managedObjectModel model: NSManagedObjectModel, storeLocationURL: URL, storeNamePrefix: String? = nil, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
         self.tag = tag
@@ -121,45 +141,54 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         // Now the main thread context
         mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-        
-        //
-        // Figure out where to put things
-        //
-        // Note: We use the applications bundle not the classes or modules.
-        //
-        let cachesURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        
-        logInfo(tag) { "Store path: \(cachesURL.path)" }
+
+        logInfo(tag) { "Store path: \(storeLocationURL)" }
         
         let configurations = managedObjectModel.configurations
         
         // There is only one so it's the default configuration
         if configurations.count == 1 {
-            
+
+            let storeName: String
+
+            if let prefix = storeNamePrefix {
+                storeName = prefix
+            } else {
+                storeName = "default"
+            }
+
             if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
                 
-                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(storeType)")
+                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                 
                 try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                 
             } else {
-                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(defaultStoreType)")
+                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                 
                 try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
             }
         } else {
             for configuration in configurations {
-                
+
+                let storeName: String
+
+                if let prefix = storeNamePrefix {
+                    storeName = "\(prefix)\(configuration.lowercased())"
+                } else {
+                    storeName = configuration.lowercased()
+                }
+
                 if configuration != defaultModelConfigurationName {
                     
                     if let (storeType, storeOptions, migrationManager) = options[configuration] {
                         
-                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(storeType)")
+                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                         
                         try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         
                     } else {
-                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(defaultStoreType)")
+                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                         
                         try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
                     }
@@ -172,7 +201,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
 
     ///
     /// Gets the main context.
