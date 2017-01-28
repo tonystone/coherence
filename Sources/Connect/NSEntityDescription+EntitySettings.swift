@@ -21,7 +21,6 @@ import Foundation
 import CoreData
 import TraceLog
 
-
 extension NSEntityDescription  {
 
     /**
@@ -29,10 +28,10 @@ extension NSEntityDescription  {
      */
     public internal(set) var managed: Bool {
         get {
-            return associatedValue(self, key: &managedKey, defaultValue: managedDefault as NSNumber) as Bool
+            return associatedValue(self, key: &managedKey, defaultValue: managedDefault)
         }
         set {
-            associatedValue(self, key: &managedKey, value: NSNumber(value: newValue))
+            associatedValue(self, key: &managedKey, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
@@ -45,10 +44,10 @@ extension NSEntityDescription  {
      */
     public var stalenessInterval: Int {
         get {
-            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: self.managedObjectModel.stalenessInterval as NSNumber) as Int
+            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: self.managedObjectModel.stalenessInterval)
         }
         set {
-            associatedValue(self, key: &stalenessIntervalKey, value: NSNumber(value: newValue))
+            associatedValue(self, key: &stalenessIntervalKey, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
@@ -61,10 +60,10 @@ extension NSEntityDescription  {
     */
     public var logTransactions: Bool {
         get {
-            return associatedValue(self, key: &logTransactionsKey, defaultValue: self.managedObjectModel.logTransactions as NSNumber) as Bool
+            return associatedValue(self, key: &logTransactionsKey, defaultValue: self.managedObjectModel.logTransactions)
         }
         set {
-            associatedValue(self, key: &logTransactionsKey, value: NSNumber(value: newValue))
+            associatedValue(self, key: &logTransactionsKey, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
@@ -74,6 +73,16 @@ extension NSEntityDescription  {
     fileprivate
     func logUpdate<T>(_ funcName: String, value: T) {
         logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(value)'" }
+    }
+    @inline(__always)
+    fileprivate
+    func logUpdate<T>(_ funcName: String, value: T?) {
+        var newValue: Any = "nil"
+
+        if let value = value {
+            newValue = value
+        }
+        logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(newValue)'" }
     }
 }
 

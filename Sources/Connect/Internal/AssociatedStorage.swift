@@ -20,15 +20,32 @@
 import Foundation
 import TraceLog
 
-internal func associatedValue<T: AnyObject>(_ object: AnyObject, key: UnsafePointer<UInt8>, defaultValue: @autoclosure () -> T) -> T {
+internal func associatedValue<T: Any>(_ object: Any, key: UnsafePointer<UInt8>, defaultValue: T) -> T {
     
     //If there is already a value, return it
     if let value = objc_getAssociatedObject(object, key) as? T {
         return value
     }
-    return defaultValue()
+    return defaultValue
 }
 
-internal func associatedValue<T: AnyObject>(_ object: AnyObject, key: UnsafePointer<UInt8>, value: T) {
+internal func associatedValue<T: Any>(_ object: Any, key: UnsafePointer<UInt8>, value: T) {
     objc_setAssociatedObject(object, key, value, .OBJC_ASSOCIATION_RETAIN)
+}
+
+internal func associatedValue<T: Any>(_ object: Any, key: UnsafePointer<UInt8>, defaultValue: T?) -> T? {
+
+    //If there is already a value, return it
+    if let value = objc_getAssociatedObject(object, key) as? T {
+        return value
+    }
+    return defaultValue
+}
+
+internal func associatedValue<T: Any>(_ object: Any, key: UnsafePointer<UInt8>, value: T?) {
+    if let value = value {
+        objc_setAssociatedObject(object, key, value, .OBJC_ASSOCIATION_RETAIN)
+    } else {
+        objc_setAssociatedObject(object, key, nil, .OBJC_ASSOCIATION_RETAIN)
+    }
 }

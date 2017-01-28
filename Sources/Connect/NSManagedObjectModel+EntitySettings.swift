@@ -24,10 +24,10 @@ extension NSManagedObjectModel {
     
     public var stalenessInterval: Int {
         get {
-            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: stalenessIntervalDefault as NSNumber) as Int
+            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: stalenessIntervalDefault)
         }
         set {
-            associatedValue(self, key: &stalenessIntervalKey, value: NSNumber(value: newValue))
+            associatedValue(self, key: &stalenessIntervalKey, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
@@ -35,10 +35,10 @@ extension NSManagedObjectModel {
     
     public var logTransactions: Bool {
         get {
-            return associatedValue(self, key: &logTransactionsKey, defaultValue: logTransactionsDefault as NSNumber) as Bool
+            return associatedValue(self, key: &logTransactionsKey, defaultValue: logTransactionsDefault)
         }
         set {
-            associatedValue(self, key: &logTransactionsKey, value: NSNumber(value: newValue))
+            associatedValue(self, key: &logTransactionsKey, value: newValue)
             
             logUpdate("logTransactions", value: newValue)
         }
