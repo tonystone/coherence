@@ -36,7 +36,20 @@ extension NSEntityDescription  {
             logUpdate(#function, value: newValue)
         }
     }
-    
+
+    /**
+     */
+    public internal(set) var uniquenessAttributes: [String]? {
+        get {
+            return associatedValue(self, key: &uniquenessAttributesKey, defaultValue: uniquenessAttributesDefault)
+        }
+        set {
+            associatedValue(self, key: &uniquenessAttributesKey, value: newValue)
+
+            logUpdate(#function, value: newValue)
+        }
+    }
+
     /**
         Sets the amount of time before the resource is updated again from the master source
      

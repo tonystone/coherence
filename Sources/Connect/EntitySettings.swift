@@ -22,13 +22,15 @@ import Foundation
 //
 // Default Entity settings for system
 //
-public let managedDefault           = false
-public let stalenessIntervalDefault = 60
-public let logTransactionsDefault   = true
+public let managedDefault: Bool                   = false
+public let uniquenessAttributesDefault: [String]? = nil
+public let stalenessIntervalDefault: Int          = 60
+public let logTransactionsDefault: Bool           = true
 
 //
 // Method keys
 //
-internal var managedKey: UInt8 = 0
-internal var stalenessIntervalKey: UInt8 = 0
-internal var logTransactionsKey: UInt8 = 0
+internal var managedKey:              UInt8 = 0
+internal var uniquenessAttributesKey: UInt8 = 0
+internal var stalenessIntervalKey:    UInt8 = 0
+internal var logTransactionsKey:      UInt8 = 0
