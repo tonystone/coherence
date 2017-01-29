@@ -89,8 +89,38 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     public let persistentStoreCoordinator: CoordinatorType
 
+    ///
+    /// The main context.
+    ///
+    /// This context should be used for read operations only.  Use it for all fetches and NSFechtedResultsControllers.
+    ///
+    /// It will be maintained automatically and be kept consistent.
+    ///
+    /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
+    ///
+    public let mainContext: ContextType
+
+    ///
+    /// Gets a new NSManagedObjectContext that can be used for updating objects.
+    ///
+    /// At save time, resource manager will merge those changes back to the mainManagedObjectContext.
+    ///
+    /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
+    ///
+    public var editContext: ContextType {
+
+        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
+
+        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = self.persistentStoreCoordinator
+
+        logInfo(tag) { "Edit context created." }
+
+        return context
+    }
+
+    fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
-    fileprivate let mainContext: ContextType
     fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
 
     ///
@@ -135,12 +165,16 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
             }
         }
         
-        // Create the coordinator
-        persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
-        
-        // Now the main thread context
-        mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
-        mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+        /// Create the coordinator
+        self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
+
+        /// Create teh root context for saving
+        self.rootContext = ContextType(concurrencyType: .privateQueueConcurrencyType)
+        self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+
+        /// Now the main thread context
+        self.mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
+        self.mainContext.parent = self.rootContext
 
         logInfo(tag) { "Store path: \(storeLocationURL)" }
         
@@ -202,38 +236,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         NotificationCenter.default.removeObserver(self)
     }
 
-    ///
-    /// The main context.
-    ///
-    /// This context should be used for read operations only.  Use it for all fetches and NSFechtedResultsControllers.
-    ///
-    /// It will be maintained automatically and be kept consistent.
-    ///
-    /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
-    ///
-    public var mainThreadContext: NSManagedObjectContext {
-        return mainContext
-    }
-
-    ///
-    /// Gets a new NSManagedObjectContext that can be used for updating objects.
-    ///
-    /// At save time, resource manager will merge those changes back to the mainManagedObjectContext.
-    ///
-    /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
-    ///
-    public var editContext: NSManagedObjectContext {
-        
-        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
-        
-        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
-        context.parent = mainContext
-        
-        logInfo(tag) { "Edit context created." }
-        
-        return context
-    }
-    
     fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?, migrationManger migrator: NSMigrationManager?) throws {
         
         do {
@@ -316,24 +318,56 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
             try fileManager.removeItem(atPath: path)
         }
     }
-    
+
+    @inline(__always)
+    fileprivate func isEditContext(_ context: NSManagedObjectContext) -> Bool {
+        ///
+        /// Note: you must use the identity operator `===` for the comparison.
+        ///
+        return context.persistentStoreCoordinator === self.persistentStoreCoordinator &&    /// Ensure it is one of this instances contexts
+               context !== self.rootContext &&                                              /// and that is it not the rootContext
+               context !== self.mainContext                                                 /// and not the main context
+    }
+
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
-        if let context = notification.object as? NSManagedObjectContext {
+        if let context = notification.object as? ContextType {
             
-            //
-            // If the saved context has it's parent set to our 
-            // mainThreadContext auto save the main context
-            //
-            if context.parent == mainContext {
+            ///
+            /// If the context has it's persistentStoreCoordinate as our coordinator
+            /// and it does not have a parent, the context is one of our edit
+            /// contexts so we propogate the changes to our main context and
+            /// up the stack.
+
+            if isEditContext(context) {
                 
-                mainContext.perform( { () -> Void in
+                self.mainContext.perform {
+
                     do {
+                        ///
+                        /// Merge the changes from the edit context to the main
+                        /// conntext.
+                        ///
+                        self.mainContext.mergeChanges(fromContextDidSave: notification)
+
+                        /// Now save it to propagate the changes to the root.
                         try self.mainContext.save()
-                    } catch let error as NSError {
+
+                        ////
+                        /// And finally save the root context to the persistent store
+                        /// on a background thread.
+                        ///
+                        self.rootContext.perform {
+                            do {
+                                try self.rootContext.save()
+                            } catch {
+                                self.errorHandlerBlock(error)
+                            }
+                        }
+                    } catch {
                         self.errorHandlerBlock(error)
                     }
-                })
+                }
             }
         }
     }

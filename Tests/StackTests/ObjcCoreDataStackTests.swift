@@ -80,8 +80,8 @@ class ObjcCoreDataStackTests: XCTestCase {
     
         let coreDataStack = try ObjcCoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
         
-        let editContext       = coreDataStack.editContext
-        let mainThreadContext = coreDataStack.mainThreadContext
+        let editContext = coreDataStack.editContext
+        let mainContext = coreDataStack.mainContext
         
         var userId: NSManagedObjectID? = nil
         
@@ -104,9 +104,9 @@ class ObjcCoreDataStackTests: XCTestCase {
         
         var savedUser: NSManagedObject? = nil
         
-        mainThreadContext.performAndWait {
+        mainContext.performAndWait {
             if let userId = userId {
-                savedUser = mainThreadContext.object(with: userId)
+                savedUser = mainContext.object(with: userId)
             }
         }
         

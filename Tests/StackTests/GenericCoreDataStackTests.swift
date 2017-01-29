@@ -223,8 +223,8 @@ class GenericCoreDataStackTests: XCTestCase {
         
         let coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix)
         
-        let editContext       = coreDataStack.editContext
-        let mainThreadContext = coreDataStack.mainThreadContext
+        let editContext = coreDataStack.editContext
+        let mainContext = coreDataStack.mainContext
         
         var userId: NSManagedObjectID? = nil
         
@@ -247,9 +247,9 @@ class GenericCoreDataStackTests: XCTestCase {
         
         var savedUser: NSManagedObject? = nil
         
-        mainThreadContext.performAndWait {
+        mainContext.performAndWait {
             if let userId = userId {
-                savedUser = mainThreadContext.object(with: userId)
+                savedUser = mainContext.object(with: userId)
             }
         }
         

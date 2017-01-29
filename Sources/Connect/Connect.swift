@@ -187,10 +187,13 @@ public class Connect {
     }
 }
 
+///
+/// Connect CoreDataStack implementation
+///
 extension Connect: CoreDataStack {
 
-    public var mainThreadContext: NSManagedObjectContext {
-        return self.dataCache.mainThreadContext
+    public var mainContext: NSManagedObjectContext {
+        return self.dataCache.mainContext
     }
 
     public var editContext: NSManagedObjectContext {
