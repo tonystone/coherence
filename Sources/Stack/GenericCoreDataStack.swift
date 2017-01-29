@@ -69,7 +69,7 @@ public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModel
 /// logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take
 /// an alternate action.
 ///
-public typealias asynErrorHandlerBlock = (NSError) -> Void
+public typealias AsynErrorHandlerBlock = (Error) -> Void
 
 ///
 ///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
@@ -121,7 +121,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
 
     fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
-    fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
+    fileprivate let errorHandlerBlock: AsynErrorHandlerBlock
 
     ///
     ///  Initializes the receiver with a managed object model.
@@ -132,7 +132,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
     ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
     ///
-    public convenience init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+    public convenience init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         //
         // Figure out where to put things
         //
@@ -152,7 +152,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///      - storeURL: An optional String which is appended to the beginning of the persistent store's name.
     ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
     ///
-    required public init(managedObjectModel model: NSManagedObjectModel, storeLocationURL: URL, storeNamePrefix: String? = nil, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+    required public init(managedObjectModel model: NSManagedObjectModel, storeLocationURL: URL, storeNamePrefix: String? = nil, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
         self.tag = tag
@@ -160,8 +160,8 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         if let asyncErrorBlock = asyncErrorBlock {
             self.errorHandlerBlock = asyncErrorBlock
         } else {
-            self.errorHandlerBlock = { (error: NSError) -> Void in
-                logError { error.localizedDescription }
+            self.errorHandlerBlock = { (error: Error) -> Void in
+                logError { "\(error)" }
             }
         }
         
