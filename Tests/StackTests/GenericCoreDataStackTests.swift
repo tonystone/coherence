@@ -188,7 +188,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         let storeDate = try persistentStoreDate(storePrefix: prefix, storeType: storeType, configuration: nil)
         
-        sleep(2)
+        sleep(1)
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
