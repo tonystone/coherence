@@ -26,6 +26,7 @@
 		EA1C14181E3D8104002E63BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140A1E3D80E1002E63BD /* User.swift */; };
 		EA1C14191E3D8107002E63BD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140B1E3D80E1002E63BD /* User+CoreDataProperties.swift */; };
 		EA2CC5D31E35808100054305 /* HR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF397491E31917000038CD4 /* HR.xcdatamodeld */; };
+		EA1C141D1E3E6E9B002E63BD /* ConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C141A1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodeld */; };
 		EA2CC5D51E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */; };
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
@@ -83,6 +84,7 @@
 		EA1C14091E3D80E1002E63BD /* TestModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel3.swift; sourceTree = "<group>"; };
 		EA1C140A1E3D80E1002E63BD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA1C140B1E3D80E1002E63BD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA1C141B1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ConnectTestModel.xcdatamodel; sourceTree = "<group>"; };
 		EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSEntityDescription+EntitySettingsTests.swift"; path = "ConnectTests/NSEntityDescription+EntitySettingsTests.swift"; sourceTree = "<group>"; };
 		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockGenericAction.swift; path = ConnectTests/MockGenericAction.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				EA31505B1E35359800FB9905 /* MockGenericAction.swift */,
 				EA31505D1E35533400FB9905 /* MockListAction.swift */,
 				EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */,
+				EA1C141A1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodeld */,
 			);
 			name = ConnectTests;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1C141D1E3E6E9B002E63BD /* ConnectTestModel.xcdatamodeld in Sources */,
 				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
 				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,
 				EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */,
@@ -853,6 +857,17 @@
 
 /* Begin XCVersionGroup section */
 		EAF397491E31917000038CD4 /* HR.xcdatamodeld */ = {
+		EA1C141A1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA1C141B1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodel */,
+			);
+			currentVersion = EA1C141B1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodel */;
+			name = ConnectTestModel.xcdatamodeld;
+			path = ConnectTests/ConnectTestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 			isa = XCVersionGroup;
 			children = (
 				EAF3974A1E31917000038CD4 /* HR.xcdatamodel */,

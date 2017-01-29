@@ -24,7 +24,7 @@ import Coherence
 
 class MockListAction: EntityAction {
 
-    typealias EntityType = Employee
+    typealias EntityType = ConnectEntity1
 
     public func execute(context: NSManagedObjectContext) -> (status: Int, headers: [String : String], objects: [Any], error: Error?) {
 

@@ -25,7 +25,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
 
     var testModel:     NSManagedObjectModel! = nil
     var testDirectory: URL! = nil
-    let modelName = "HR"
+    let modelName = "ConnectTestModel"
 
     override func setUp() {
         super.setUp()
@@ -68,47 +68,59 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         XCTAssertEqual(try Connect(managedObjectModel: input, storeName: modelName).managedObjectModel , expected)
     }
 
-    func testExecuteGenericAction() throws {
+    func testExecuteGenericAction()  {
 
         let input = MockGenericAction()
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
-        let expecation = self.expectation(description: "Completion Block Gets Called")
+        do {
+            let connect = try Connect(managedObjectModel: self.testModel, storeName: modelName)
 
-        let proxy = try Connect(managedObjectModel: self.testModel, storeName: self.modelName).execute(input) { _ in
-            expecation.fulfill()
-        }
+            let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
 
-        self.waitForExpectations(timeout: 5) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            } else {
-
-                XCTAssertEqual(proxy.state,            expected.state)
-                XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
+            let proxy = try connect.execute(input) { _ in
+                expecation.fulfill()
             }
+
+            self.waitForExpectations(timeout: 5) { error in
+                if let error = error {
+                    XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+                } else {
+
+                    XCTAssertEqual(proxy.state,            expected.state)
+                    XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
+                }
+            }
+        } catch {
+            XCTFail("\(error)")
         }
     }
 
-    func testExecuteEntityAction() throws {
-
+    func testExecuteEntityAction() {
+    
         let input = MockListAction()
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
-        let expecation = self.expectation(description: "Completion Block Gets Called")
+        do {
+            let connect = try Connect(managedObjectModel: self.testModel, storeName: modelName)
 
-        let proxy = try Connect(managedObjectModel: self.testModel, storeName: self.modelName).execute(input) { _ in
-            expecation.fulfill()
-        }
+            let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
 
-        self.waitForExpectations(timeout: 5) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            } else {
-
-                XCTAssertEqual(proxy.state,            expected.state)
-                XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
+            let proxy = try connect.execute(input) { _ in
+                expecation.fulfill()
             }
+
+            self.waitForExpectations(timeout: 5) { error in
+                if let error = error {
+                    XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+                } else {
+
+                    XCTAssertEqual(proxy.state,            expected.state)
+                    XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
+                }
+            }
+        } catch {
+            XCTFail("\(error)")
         }
     }
 }
