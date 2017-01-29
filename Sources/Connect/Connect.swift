@@ -187,6 +187,17 @@ public class Connect {
     }
 }
 
+extension Connect: CoreDataStack {
+
+    public var mainThreadContext: NSManagedObjectContext {
+        return self.dataCache.mainThreadContext
+    }
+
+    public var editContext: NSManagedObjectContext {
+        return self.dataCache.editContext
+    }
+}
+
 ///
 /// Action Execution methods
 ///

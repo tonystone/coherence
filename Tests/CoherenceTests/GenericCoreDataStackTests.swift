@@ -223,8 +223,8 @@ class GenericCoreDataStackTests: XCTestCase {
         
         let coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix)
         
-        let editContext       = coreDataStack.editContext()
-        let mainThreadContext = coreDataStack.mainThreadContext()
+        let editContext       = coreDataStack.editContext
+        let mainThreadContext = coreDataStack.mainThreadContext
         
         var userId: NSManagedObjectID? = nil
         

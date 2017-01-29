@@ -23,7 +23,7 @@
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
-		EACAA3E91DC6CDCD00D3D371 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E61DC6CDCD00D3D371 /* CoreDataStackTests.swift */; };
+		EACAA3E91DC6CDCD00D3D371 /* ObjcCoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E61DC6CDCD00D3D371 /* ObjcCoreDataStackTests.swift */; };
 		EACAA3EA1DC6CDCD00D3D371 /* TestModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E71DC6CDCD00D3D371 /* TestModel2.swift */; };
 		EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */; };
 		EACAA3F31DC6D1DF00D3D371 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3F01DC6D1DF00D3D371 /* User.swift */; };
@@ -87,7 +87,7 @@
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EABEDD4B1DC69B3400D5785D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
-		EACAA3E61DC6CDCD00D3D371 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
+		EACAA3E61DC6CDCD00D3D371 /* ObjcCoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjcCoreDataStackTests.swift; sourceTree = "<group>"; };
 		EACAA3E71DC6CDCD00D3D371 /* TestModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel2.swift; sourceTree = "<group>"; };
 		EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConfigurationTests.m; sourceTree = "<group>"; };
 		EACAA3F01DC6D1DF00D3D371 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */,
-				EACAA3E61DC6CDCD00D3D371 /* CoreDataStackTests.swift */,
+				EACAA3E61DC6CDCD00D3D371 /* ObjcCoreDataStackTests.swift */,
 				EACAA3F81DC7E9E300D3D371 /* GenericCoreDataStackTests.swift */,
 				EACAA3F51DC6D22D00D3D371 /* TestModel1.swift */,
 				EACAA3E71DC6CDCD00D3D371 /* TestModel2.swift */,
@@ -573,7 +573,7 @@
 				EA2CC5D31E35808100054305 /* HR.xcdatamodeld in Sources */,
 				EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */,
 				EACAA3F91DC7E9E300D3D371 /* GenericCoreDataStackTests.swift in Sources */,
-				EACAA3E91DC6CDCD00D3D371 /* CoreDataStackTests.swift in Sources */,
+				EACAA3E91DC6CDCD00D3D371 /* ObjcCoreDataStackTests.swift in Sources */,
 				EACAA3FD1DC84EEB00D3D371 /* TestModel3.swift in Sources */,
 				EACAA3F41DC6D1DF00D3D371 /* User+CoreDataProperties.swift in Sources */,
 				EA2CC5D51E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift in Sources */,

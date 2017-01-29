@@ -78,7 +78,7 @@ internal class WriteAheadLog {
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sequenceNumber", ascending:false)]
         
-        if let lastLogRecord = try (metadataContext().fetch(fetchRequest).last) as? MetaLogEntry {
+        if let lastLogRecord = try (metadataContext.fetch(fetchRequest).last) as? MetaLogEntry {
             
             return Int(lastLogRecord.sequenceNumber)
         }
@@ -121,7 +121,7 @@ internal class WriteAheadLog {
         var transactionID: TransactionID? = nil
         var writeError: NSError? = nil
         
-        let metadataContext = coreDataStack.editContext()
+        let metadataContext = coreDataStack.editContext
         
         metadataContext.performAndWait {
 

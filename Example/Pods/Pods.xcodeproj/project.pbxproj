@@ -14,7 +14,7 @@
 		13E17C305AF4643692F120E8 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755CEC537ECAF67037468FB /* WriteAheadLog.swift */; };
 		14263318E1754638880F89BF /* GenericActionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE5F8187D5637A6F0FF3534 /* GenericActionContainer.swift */; };
 		2157D41CB6BB4BBE147A952E /* Pods-Coherence Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF6C2A6AE06FC23BA613A67 /* Pods-Coherence Tests-dummy.m */; };
-		2BBAB698F9437AAC6FCEA797 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3B892FE81DC320FD00B80 /* CoreDataStack.swift */; };
+		2BBAB698F9437AAC6FCEA797 /* ObjcCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3B892FE81DC320FD00B80 /* ObjcCoreDataStack.swift */; };
 		2DE1E0B1AB106ABC9156726F /* ActionNotificationSerivce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A33EEB15A959FC2500442 /* ActionNotificationSerivce.swift */; };
 		347E61CEC9476504482DAF78 /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F13F87C54020B8F089E7E0 /* ConsoleWriter.swift */; };
 		361C84C6C6604B81C74CFC38 /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2335A2FB6131488EFD204 /* MetaModel.swift */; };
@@ -52,6 +52,7 @@
 		DEDB6F4A9E1455F8DFC7E096 /* EntityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA1B72BB8B95DEE810B4EC /* EntityAction.swift */; };
 		DFA1522B3B3C5A14355AABD6 /* EntityActionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E623D1E38BDCEB9FA06564 /* EntityActionContainer.swift */; };
 		EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C13FD1E3D040C002E63BD /* Connect.swift */; };
+		EA1C14021E3D7945002E63BD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14011E3D7945002E63BD /* CoreDataStack.swift */; };
 		EF872B2767CE313D24238F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D3D65B31209DC2C0182AB0 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +98,7 @@
 		001894C1E00782D438410CDA /* Writer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Writer.swift; path = Sources/TraceLog/Writer.swift; sourceTree = "<group>"; };
 		00767A8376BE9475830645A0 /* LogLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Sources/TraceLog/LogLevel.swift; sourceTree = "<group>"; };
 		080DD22E0DA580D2324F7FED /* EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntitySettings.swift; sourceTree = "<group>"; };
-		0BF3B892FE81DC320FD00B80 /* CoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0BF3B892FE81DC320FD00B80 /* ObjcCoreDataStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ObjcCoreDataStack.swift; sourceTree = "<group>"; };
 		128D446C8319697C3059BA60 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TraceLog.modulemap; sourceTree = "<group>"; };
 		25A424CE76422E1895380748 /* Pods-Coherence Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2683081536968D04FF89CEFC /* TraceLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TraceLog.swift; path = Sources/TraceLog/TraceLog.swift; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		E3A14BA224C88344C6586359 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E729C12361EE5B5955D027B1 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
 		EA1C13FD1E3D040C002E63BD /* Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
+		EA1C14011E3D7945002E63BD /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EA4D27357DD61CBE20CE5EA7 /* GenericAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		EB137E49C05AE8BCBA541B27 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0A0C9202C24008C5E77EEC8 /* Pods-Coherence Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -354,7 +356,8 @@
 		39F6E773A271E6023EFE2006 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
-				0BF3B892FE81DC320FD00B80 /* CoreDataStack.swift */,
+				EA1C14011E3D7945002E63BD /* CoreDataStack.swift */,
+				0BF3B892FE81DC320FD00B80 /* ObjcCoreDataStack.swift */,
 				D8925BEB83B94E187F490F6A /* GenericCoreDataStack.swift */,
 			);
 			path = Stack;
@@ -709,12 +712,13 @@
 				4E06224E98AF8ECE3A26AAE3 /* CCObject.m in Sources */,
 				9097D54E00943F55BE35FEDC /* Coherence-dummy.m in Sources */,
 				133D84B672541C36EF8FE486 /* Configuration.swift in Sources */,
-				2BBAB698F9437AAC6FCEA797 /* CoreDataStack.swift in Sources */,
+				2BBAB698F9437AAC6FCEA797 /* ObjcCoreDataStack.swift in Sources */,
 				DEDB6F4A9E1455F8DFC7E096 /* EntityAction.swift in Sources */,
 				DFA1522B3B3C5A14355AABD6 /* EntityActionContainer.swift in Sources */,
 				40B0352B7095B9D4A27CE4FF /* EntitySettings.swift in Sources */,
 				7976B7E529FA897986808018 /* GenericAction.swift in Sources */,
 				14263318E1754638880F89BF /* GenericActionContainer.swift in Sources */,
+				EA1C14021E3D7945002E63BD /* CoreDataStack.swift in Sources */,
 				81474BEA8DDB9E487A7A365D /* GenericCoreDataStack.swift in Sources */,
 				EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */,
 				72330B1540DA8C17C3D8DFBD /* MetaLogEntry+CoreDataProperties.swift in Sources */,

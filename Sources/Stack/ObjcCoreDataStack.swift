@@ -21,7 +21,7 @@ import Foundation
 import CoreData
 import TraceLog
 
-@objc public final class ObjcCoreDataStack: NSObject  {
+@objc public final class ObjcCoreDataStack: NSObject, CoreDataStack  {
     
     fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
@@ -50,11 +50,11 @@ import TraceLog
         impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: ObjcCoreDataStack.self))
     }
     
-    public func mainThreadContext () -> NSManagedObjectContext {
-        return impl.mainThreadContext()
+    public var mainThreadContext: NSManagedObjectContext {
+        return impl.mainThreadContext
     }
     
-    public func editContext () -> NSManagedObjectContext {
-        return impl.editContext()
+    public var editContext: NSManagedObjectContext {
+        return impl.editContext
     }
 }
