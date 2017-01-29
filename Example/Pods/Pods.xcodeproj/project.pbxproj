@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		06300431F15BAC4EB3BC762A /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECF950504A025A14E23857C /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A697A72ABF27BDC94866D0 /* StaticContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57506D647B2753BA9A119B4 /* StaticContext.swift */; };
-		10C9C4B533829B4953A11FDF /* InMemoryReferenceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4751D0884BA270985F4CE6 /* InMemoryReferenceObject.swift */; };
 		10CBFBB69854436D749934F5 /* ActionProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448E6E36024AD6B6801533 /* ActionProxy.swift */; };
 		133D84B672541C36EF8FE486 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0A1967C024DD9EC5B48CC /* Configuration.swift */; };
 		13E17C305AF4643692F120E8 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755CEC537ECAF67037468FB /* WriteAheadLog.swift */; };
@@ -21,7 +20,6 @@
 		361C84C6C6604B81C74CFC38 /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2335A2FB6131488EFD204 /* MetaModel.swift */; };
 		36CABAA5A943929C5F90B847 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00767A8376BE9475830645A0 /* LogLevel.swift */; };
 		40B0352B7095B9D4A27CE4FF /* EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DD22E0DA580D2324F7FED /* EntitySettings.swift */; };
-		40D53306574CAAB088C4E9F0 /* InMemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1AD378E67CA95A0B99E07E /* InMemoryDataStore.swift */; };
 		42F79DDDA7E8ACEA23B0F6F6 /* TraceLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B948B0E4D52929BD639558D /* TraceLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48B94ADA8160522EBBE0197C /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8751167756B2174C79EFAEA /* ActionQueue.swift */; };
 		48EA51CB86128BFB18AB12F0 /* Coherence-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D48DD725666433418F850AFB /* Coherence-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,7 +104,6 @@
 		2755CEC537ECAF67037468FB /* WriteAheadLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WriteAheadLog.swift; sourceTree = "<group>"; };
 		2774BCCCA305EFEF2644BF30 /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Sources/TraceLog/Environment.swift; sourceTree = "<group>"; };
 		2B8830880BAF664939DF2E12 /* TraceLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TraceLog.xcconfig; sourceTree = "<group>"; };
-		2E1AD378E67CA95A0B99E07E /* InMemoryDataStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InMemoryDataStore.swift; sourceTree = "<group>"; };
 		2E3FC808E228BA78B58F16AF /* Pods-Coherence Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Coherence Example.modulemap"; sourceTree = "<group>"; };
 		2FCD475E2DF5579438AE8FFC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FCF1E6388728526A41E1643 /* Pods-Coherence Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -117,7 +114,6 @@
 		3A11DC8A2579840D76D7AD76 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/TraceLog/Configuration.swift; sourceTree = "<group>"; };
 		3B948B0E4D52929BD639558D /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = Sources/TraceLogObjC/TraceLog.h; sourceTree = "<group>"; };
 		3CBA3B0B82F85CC9A92DBF4C /* Coherence-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-prefix.pch"; sourceTree = "<group>"; };
-		3D4751D0884BA270985F4CE6 /* InMemoryReferenceObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InMemoryReferenceObject.swift; sourceTree = "<group>"; };
 		3ECF950504A025A14E23857C /* TraceLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-umbrella.h"; sourceTree = "<group>"; };
 		3FF6C2A6AE06FC23BA613A67 /* Pods-Coherence Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence Tests-dummy.m"; sourceTree = "<group>"; };
 		56A0A1967C024DD9EC5B48CC /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -263,14 +259,6 @@
 			path = "Target Support Files/Pods-Coherence Example";
 			sourceTree = "<group>";
 		};
-		0D588FAB77377EE469BB52FE /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				69ED9AAB1A0F7AF2A004FBD1 /* InMemory */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
 		1D73DBDA66BEFA01E609D0DD /* Connect */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,15 +382,6 @@
 				8C5DCA3FB675B5AB97120E42 /* ConfigurationCore */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		69ED9AAB1A0F7AF2A004FBD1 /* InMemory */ = {
-			isa = PBXGroup;
-			children = (
-				2E1AD378E67CA95A0B99E07E /* InMemoryDataStore.swift */,
-				3D4751D0884BA270985F4CE6 /* InMemoryReferenceObject.swift */,
-			);
-			path = InMemory;
 			sourceTree = "<group>";
 		};
 		6CD273FA2DB415BD24E91066 /* Support Files */ = {
@@ -543,7 +522,6 @@
 				F92DDF9970D32E8CE45CA99B /* NSEntityDescription+EntitySettings.swift */,
 				F896AD5E1894412A4986F4A5 /* ConnectCoordinator.swift */,
 				597DF44EDC0F52B96A5D7E8C /* AssociatedStorage.swift */,
-				0D588FAB77377EE469BB52FE /* Persistence */,
 				38EB9DE399B65CB75AD8E282 /* Queues */,
 				7B17D1BCA2327448A140D589 /* Transactions */,
 			);
@@ -739,8 +717,6 @@
 				14263318E1754638880F89BF /* GenericActionContainer.swift in Sources */,
 				81474BEA8DDB9E487A7A365D /* GenericCoreDataStack.swift in Sources */,
 				EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */,
-				40D53306574CAAB088C4E9F0 /* InMemoryDataStore.swift in Sources */,
-				10C9C4B533829B4953A11FDF /* InMemoryReferenceObject.swift in Sources */,
 				72330B1540DA8C17C3D8DFBD /* MetaLogEntry+CoreDataProperties.swift in Sources */,
 				C70BE45E1DE98E53724FF811 /* MetaLogEntry.swift in Sources */,
 				361C84C6C6604B81C74CFC38 /* MetaModel.swift in Sources */,
