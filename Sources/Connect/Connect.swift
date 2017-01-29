@@ -1,7 +1,7 @@
 ///
 ///  Connect.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 ///  limitations under the License.
 ///
 ///  Created by Tony Stone on 3/26/13.
+///  Rewriten by Tony Stone on 1/28/17.
 ///
 import CoreData
 import TraceLog
@@ -25,6 +26,11 @@ import UIKit
 /// The extension of the store bundle created for this store.
 ///
 private let connectBundleExtension: String = "connect"
+
+///
+/// Location to store the connect store bundle.
+///
+private let connectBundleDirectory: FileManager.SearchPathDirectory = .documentDirectory
 
 ///
 /// Connect
@@ -96,16 +102,22 @@ public class Connect {
         return self.dataCache.persistentStoreCoordinator
     }
 
+    ///
+    /// Internal class to create the connect bundle.
+    ///
+    /// - Note: you can not use a func on self for this
+    ///         since we are initializing a content in self.
+    ///
     private class BundleManager {
 
-         class func createIfAbsent(bundleName: String) throws -> URL {
+        class func createIfAbsent(bundleName: String, in directory: FileManager.SearchPathDirectory) throws -> URL {
 
             //
             // Figure out where to put things
             //
             // Note: We use the applications bundle not the classes or modules.
             //
-            let baseURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let baseURL = try FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: false)
 
             ///
             /// The individual stores are stored in a directory with the extension of connect.
@@ -137,7 +149,7 @@ public class Connect {
 
         self.managedObjectModel = model
 
-        let bundleURL = try BundleManager.createIfAbsent(bundleName: storeName)
+        let bundleURL = try BundleManager.createIfAbsent(bundleName: storeName, in: connectBundleDirectory)
 
         logInfo { "Creating the user data cache...." }
 
@@ -354,20 +366,4 @@ fileprivate extension Connect {
         }
         return queue
     }
-}
-
-fileprivate extension NSManagedObjectModel {
-    
-    func uniqueIdentifier() -> String {
-        //
-        // Calculate the hash of the Models entityVersionHashes
-        //
-        var hash = 0;
-        
-        for entityHash in self.entityVersionHashesByName.values {
-            hash = 31 &* hash &+ (entityHash as NSData).hash;
-        }
-        return String(hash);
-    }
-    
 }
