@@ -28,7 +28,7 @@ class MockListAction: EntityAction {
 
     public func execute(context: NSManagedObjectContext) -> (status: Int, headers: [String : String], objects: [Any], error: Error?) {
 
-        logInfo { "\(String(describing: self)).\(#function) executed..." }
+        logInfo { "Executed..." }
 
         return (200, [:], [], nil)
     }

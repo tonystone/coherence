@@ -67,7 +67,7 @@ internal class ActionContainer: Operation, ActionProxy {
 
         self.state = .executing
 
-        logTrace(1) { "Proxy \(self) executing on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
+        logInfo { "Proxy \(self) executing on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
 
         ///
         /// Execute the action
@@ -87,7 +87,7 @@ internal class ActionContainer: Operation, ActionProxy {
         let elapsedTime = finish.timeIntervalSince(start)
         self.executionTime = elapsedTime
         
-        logTrace(1) { "Proxy \(self) finished, total run time \(elapsedTime)." }
+        logInfo { "Proxy \(self) finished, total run time \(elapsedTime)." }
 
         if let completionBlock = completion {
             completionBlock(self)
@@ -100,7 +100,7 @@ internal class ActionContainer: Operation, ActionProxy {
         
         self.completionStatus = .canceled
 
-        logTrace(1) { "Proxy \(self) canceled." }
+        logInfo { "Proxy \(self) canceled." }
     }
 }
 

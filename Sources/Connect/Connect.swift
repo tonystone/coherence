@@ -196,7 +196,7 @@ public extension Connect {
 
         let container = GenericActionContainer<ActionType>(action: action, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
-        logTrace(1) { "Queuing \(container) on queue `\(self.genericQueue)'" }
+        logInfo { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
         self.genericQueue.addAction(container, waitUntilDone: false)
 
@@ -212,7 +212,7 @@ public extension Connect {
 
         let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
-        logTrace(1) { "Queuing \(container) on queue `\(entityQueue)'" }
+        logInfo { "Queuing \(container) on queue `\(entityQueue)'" }
 
         entityQueue.addAction(container, waitUntilDone: false)
 

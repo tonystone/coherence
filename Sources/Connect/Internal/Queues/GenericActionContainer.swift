@@ -29,7 +29,7 @@ class GenericActionContainer<ActionType: GenericAction>: ActionContainer {
 
         super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
-        logTrace(1) { "Proxy \(self) created for action \(self.action)." }
+        logInfo { "Proxy \(self) created for action \(self.action)." }
     }
 
     internal override func execute() -> ActionCompletionStatus {
