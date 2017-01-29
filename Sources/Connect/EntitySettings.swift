@@ -27,10 +27,35 @@ public let uniquenessAttributesDefault: [String]? = nil
 public let stalenessIntervalDefault: Int          = 60
 public let logTransactionsDefault: Bool           = true
 
-//
-// Method keys
-//
-internal var managedKey:              UInt8 = 0
-internal var uniquenessAttributesKey: UInt8 = 0
-internal var stalenessIntervalKey:    UInt8 = 0
-internal var logTransactionsKey:      UInt8 = 0
+///
+/// Settings available for each entity defined in our model.
+///
+/// - Note: You can override each of these per entity in the model or from the NSEntityDescription programatically.
+///
+public protocol EntitySettings {
+
+    ///
+    /// Is this entity managed by Connect?
+    ///
+    var managed: Bool { get }
+
+    ///
+    /// Gets the attributes used to define a unique record for this entity type.  This can only be set
+    /// statically in the  ManagedObjectModel for this entity.
+    ///
+    var uniquenessAttributes: [String]? { get }
+
+    ///
+    /// Sets the amount of time before the resource is updated again from the master source
+    ///
+    /// - Note: if this value is not set at this level, the model value will be used.
+    ///
+    var stalenessInterval: Int { get set }
+
+    ///
+    /// Should Connect log transactions for this entity?
+    ///
+    /// Note: if this value is not set at this level, the model value will be used.
+    ///
+    var logTransactions: Bool { get set }
+}
