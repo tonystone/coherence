@@ -21,7 +21,7 @@ import Foundation
 import CoreData
 import TraceLog
 
-open class ConnectCoordinator : NSPersistentStoreCoordinator {
+internal class ConnectCoordinator : NSPersistentStoreCoordinator {
     
     override open func execute(_ request: NSPersistentStoreRequest, with context: NSManagedObjectContext) throws -> Any {
         

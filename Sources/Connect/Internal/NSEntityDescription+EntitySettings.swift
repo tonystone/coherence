@@ -21,11 +21,28 @@ import Foundation
 import CoreData
 import TraceLog
 
-extension NSEntityDescription  {
+///
+/// Method keys
+///
+fileprivate var managedKey:              UInt8 = 0
+fileprivate var uniquenessAttributesKey: UInt8 = 0
+fileprivate var stalenessIntervalKey:    UInt8 = 0
+fileprivate var logTransactionsKey:      UInt8 = 0
 
-    /**
-        Is this entity managed by Connect?
-     */
+
+///
+/// This extension defines the properties that can be defined
+/// for each NSEntityDescription.  Some properties can be set 
+/// for the entire model. see `NSManagedObjectModel+EntitySettings`
+/// for specifics.
+///
+/// - SeeAlso: `NSManagedObjectModel+EntitySettings`
+///
+extension NSEntityDescription: EntitySettings  {
+
+    ///
+    /// - SeeAlso: `EntitySettings` for description.
+    ///
     public internal(set) var managed: Bool {
         get {
             return associatedValue(self, key: &managedKey, defaultValue: managedDefault)
@@ -37,8 +54,9 @@ extension NSEntityDescription  {
         }
     }
 
-    /**
-     */
+    ///
+    /// - SeeAlso: `EntitySettings` for description.
+    ///
     public internal(set) var uniquenessAttributes: [String]? {
         get {
             return associatedValue(self, key: &uniquenessAttributesKey, defaultValue: uniquenessAttributesDefault)
@@ -50,14 +68,12 @@ extension NSEntityDescription  {
         }
     }
 
-    /**
-        Sets the amount of time before the resource is updated again from the master source
-     
-        Note: if this value is not set at this level, the model value will be used.
-     */
+    ///
+    /// - SeeAlso: `EntitySettings` for description.
+    ///
     public var stalenessInterval: Int {
         get {
-            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: self.managedObjectModel.stalenessInterval)
+            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: stalenessIntervalDefault)
         }
         set {
             associatedValue(self, key: &stalenessIntervalKey, value: newValue)
@@ -66,14 +82,12 @@ extension NSEntityDescription  {
         }
     }
     
-    /**
-        Should Connect log transactions for this entity?
-     
-        Note: if this value is not set at this level, the model value will be used.
-    */
+    ///
+    /// - SeeAlso: `EntitySettings` for description.
+    ///
     public var logTransactions: Bool {
         get {
-            return associatedValue(self, key: &logTransactionsKey, defaultValue: self.managedObjectModel.logTransactions)
+            return associatedValue(self, key: &logTransactionsKey, defaultValue: logTransactionsDefault)
         }
         set {
             associatedValue(self, key: &logTransactionsKey, value: newValue)
@@ -83,13 +97,11 @@ extension NSEntityDescription  {
     }
     
     @inline(__always)
-    fileprivate
-    func logUpdate<T>(_ funcName: String, value: T) {
+    private func logUpdate<T>(_ funcName: String, value: T) {
         logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(value)'" }
     }
     @inline(__always)
-    fileprivate
-    func logUpdate<T>(_ funcName: String, value: T?) {
+    private func logUpdate<T>(_ funcName: String, value: T?) {
         var newValue: Any = "nil"
 
         if let value = value {
