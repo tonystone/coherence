@@ -53,6 +53,7 @@
 		DFA1522B3B3C5A14355AABD6 /* EntityActionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E623D1E38BDCEB9FA06564 /* EntityActionContainer.swift */; };
 		EA1C13FE1E3D040C002E63BD /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C13FD1E3D040C002E63BD /* Connect.swift */; };
 		EA1C14021E3D7945002E63BD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14011E3D7945002E63BD /* CoreDataStack.swift */; };
+		EA1C14221E3E76C1002E63BD /* ConnectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14211E3E76C1002E63BD /* ConnectContext.swift */; };
 		EF872B2767CE313D24238F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D3D65B31209DC2C0182AB0 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,7 @@
 		E729C12361EE5B5955D027B1 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
 		EA1C13FD1E3D040C002E63BD /* Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 		EA1C14011E3D7945002E63BD /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		EA1C14211E3E76C1002E63BD /* ConnectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectContext.swift; sourceTree = "<group>"; };
 		EA4D27357DD61CBE20CE5EA7 /* GenericAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		EB137E49C05AE8BCBA541B27 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0A0C9202C24008C5E77EEC8 /* Pods-Coherence Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -357,8 +359,8 @@
 			isa = PBXGroup;
 			children = (
 				EA1C14011E3D7945002E63BD /* CoreDataStack.swift */,
-				0BF3B892FE81DC320FD00B80 /* ObjcCoreDataStack.swift */,
 				D8925BEB83B94E187F490F6A /* GenericCoreDataStack.swift */,
+				0BF3B892FE81DC320FD00B80 /* ObjcCoreDataStack.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -524,6 +526,7 @@
 			children = (
 				F92DDF9970D32E8CE45CA99B /* NSEntityDescription+EntitySettings.swift */,
 				F896AD5E1894412A4986F4A5 /* ConnectCoordinator.swift */,
+				EA1C14211E3E76C1002E63BD /* ConnectContext.swift */,
 				597DF44EDC0F52B96A5D7E8C /* AssociatedStorage.swift */,
 				38EB9DE399B65CB75AD8E282 /* Queues */,
 				7B17D1BCA2327448A140D589 /* Transactions */,
@@ -709,6 +712,7 @@
 				10CBFBB69854436D749934F5 /* ActionProxy.swift in Sources */,
 				48B94ADA8160522EBBE0197C /* ActionQueue.swift in Sources */,
 				851C85E7E05ABA4AB351DC78 /* AssociatedStorage.swift in Sources */,
+				EA1C14221E3E76C1002E63BD /* ConnectContext.swift in Sources */,
 				4E06224E98AF8ECE3A26AAE3 /* CCObject.m in Sources */,
 				9097D54E00943F55BE35FEDC /* Coherence-dummy.m in Sources */,
 				133D84B672541C36EF8FE486 /* Configuration.swift in Sources */,

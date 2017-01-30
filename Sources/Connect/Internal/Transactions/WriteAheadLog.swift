@@ -30,24 +30,22 @@ internal enum WriteAheadLogErrors: Error {
 
 internal let MetaLogEntryName    = "MetaLogEntry"
 internal let persistentStoreType = NSSQLiteStoreType
-internal let sqliteFileExts      = ["sqlite", "sqlite-shm", "sqlite-wal"]
-internal let metaModel           = MetaModel()
 
 internal class WriteAheadLog {
 
-    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
+    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
     
-    fileprivate let coreDataStack: CoreDataStackType!
+    fileprivate let coreDataStack: CoreDataStackType
     
     var nextSequenceNumber = 0
 
-    init(identifier: String, path: String) throws {
+    init(coreDataStack: CoreDataStackType) throws {
         
         logInfo {
             "Initializing instance..."
         }
         
-        coreDataStack = try CoreDataStackType(managedObjectModel: metaModel, storeNamePrefix: "meta", logTag: String(describing: WriteAheadLog.self))
+        self.coreDataStack = coreDataStack
         
         nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
         
@@ -66,7 +64,7 @@ internal class WriteAheadLog {
         defer {
             objc_sync_exit(self)
         }
-        let metadataContext = coreDataStack.editContext
+        let metadataContext = coreDataStack.newBackgroundContext()
         
         //
         // We need to find the last log entry and get it's
@@ -121,7 +119,7 @@ internal class WriteAheadLog {
         var transactionID: TransactionID? = nil
         var writeError: NSError? = nil
         
-        let metadataContext = coreDataStack.editContext
+        let metadataContext = coreDataStack.newBackgroundContext()
         
         metadataContext.performAndWait {
 
@@ -226,25 +224,31 @@ internal class WriteAheadLog {
         
         for object in insertedRecords {
 
-            let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.insert, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
-            //
-            // Get the object attribute change data
-            //
-            let data = MetaLogEntry.MetaLogEntryInsertData()
+            ///
+            /// Only log entities when enabled for the entity type.
+            ///
+            if object.entity.logTransactions {
 
-            let attributes = [String](object.entity.attributesByName.keys)
-            
-            data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
+                let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.insert, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
+                //
+                // Get the object attribute change data
+                //
+                let data = MetaLogEntry.MetaLogEntryInsertData()
 
-            metaLogEntry.updateData = data
-            
-            //
-            // Increment the sequence for this record
-            //
-            sequenceNumber += 1
-            
-            logTrace(4) {
-                "Log entry created: \(metaLogEntry)"
+                let attributes = [String](object.entity.attributesByName.keys)
+
+                data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
+
+                metaLogEntry.updateData = data
+
+                //
+                // Increment the sequence for this record
+                //
+                sequenceNumber += 1
+
+                logTrace(4) {
+                    "Log entry created: \(metaLogEntry)"
+                }
             }
         }
     }
@@ -252,27 +256,33 @@ internal class WriteAheadLog {
     fileprivate func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) {
         
         for object in updatedRecords {
-            
-            let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.update, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
-            //
-            // Get the object attribute change data
-            //
-            let data = MetaLogEntry.MetaLogEntryUpdateData()
 
-            let attributes = [String](object.entity.attributesByName.keys)
-            
-            data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
-            data.updatedAttributes   = [String](object.changedValues().keys)
+            ///
+            /// Only log entities when enabled for the entity type.
+            ///
+            if object.entity.logTransactions {
 
-            metaLogEntry.updateData = data
+                let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.update, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
+                //
+                // Get the object attribute change data
+                //
+                let data = MetaLogEntry.MetaLogEntryUpdateData()
 
-            //
-            // Increment the sequence for this record
-            //
-            sequenceNumber += 1
-            
-            logTrace(4) {
-                "Log entry created: \(metaLogEntry)"
+                let attributes = [String](object.entity.attributesByName.keys)
+
+                data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
+                data.updatedAttributes   = [String](object.changedValues().keys)
+
+                metaLogEntry.updateData = data
+
+                //
+                // Increment the sequence for this record
+                //
+                sequenceNumber += 1
+
+                logTrace(4) {
+                    "Log entry created: \(metaLogEntry)"
+                }
             }
         }
     }
@@ -281,15 +291,21 @@ internal class WriteAheadLog {
         
         for object in deletedRecords {
 
-            let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.delete, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
-           
-            //
-            // Increment the sequence for this record
-            //
-            sequenceNumber += 1
-            
-            logTrace(4) {
-                "Log entry created: \(metaLogEntry)"
+            ///
+            /// Only log entities when enabled for the entity type.
+            ///
+            if object.entity.logTransactions {
+
+                let metaLogEntry = self.transactionLogEntry(MetaLogEntryType.delete, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
+
+                //
+                // Increment the sequence for this record
+                //
+                sequenceNumber += 1
+
+                logTrace(4) {
+                    "Log entry created: \(metaLogEntry)"
+                }
             }
         }
     }

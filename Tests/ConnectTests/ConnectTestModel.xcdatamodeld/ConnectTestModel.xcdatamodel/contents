@@ -11,6 +11,9 @@
                 <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
+        <userInfo>
+            <entry key="logTransactions" value="true"/>
+        </userInfo>
     </entity>
     <entity name="ConnectEntity2" representedClassName="ConnectEntity2" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -20,6 +23,9 @@
                 <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
+        <userInfo>
+            <entry key="logTransactions" value="true"/>
+        </userInfo>
     </entity>
     <elements>
         <element name="ConnectEntity1" positionX="-54" positionY="-9" width="128" height="120"/>

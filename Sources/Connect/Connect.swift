@@ -50,7 +50,7 @@ public class Connect {
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
     fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
-    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, NSManagedObjectContext>
+    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, ConnectContext>
 
     ///
     /// Stack used to manage meta data about the main cache
@@ -65,7 +65,7 @@ public class Connect {
     ///
     /// The internal write ahead log for logging transactions
     ///
-    fileprivate var writeAheadLog: WriteAheadLog? = nil
+    fileprivate var writeAheadLog: WriteAheadLog
 
     ///
     /// Action notification service used by action containers
@@ -157,7 +157,12 @@ public class Connect {
 
         logInfo { "Creating the meta data cache...." }
 
-        self.metaCache = try MetaCacheType(managedObjectModel: MetaModel(), storeLocationURL: bundleURL, logTag: logTag)
+        let meta = try MetaCacheType(managedObjectModel: MetaModel(), storeLocationURL: bundleURL, logTag: logTag)
+        self.metaCache = meta
+
+        logInfo { "Creating the write ahead log..." }
+
+        self.writeAheadLog = try WriteAheadLog(coreDataStack: meta)
 
         logInfo { "Creating action notification service..." }
 
@@ -199,6 +204,20 @@ extension Connect: CoreDataStack {
     public func newBackgroundContext() -> NSManagedObjectContext {
         return self.newBackgroundContext(logged: true)
     }
+
+    public func newBackgroundContext(logged: Bool) -> NSManagedObjectContext {
+
+        let context = self.dataCache.newBackgroundContext()
+
+        if logged {
+            ///
+            /// Attached the logger to the context
+            /// so updates can be looged.
+            ///
+            context.logger = self.writeAheadLog
+        }
+        return context
+    }
 }
 
 ///
@@ -221,8 +240,7 @@ public extension Connect {
 
         let entityQueue = try queue(entity: ActionType.EntityType.self)
 
-        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        context.persistentStoreCoordinator = self.dataCache.persistentStoreCoordinator
+        let context = self.newBackgroundContext(logged: false) /// Get an unlogged context
 
         let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
