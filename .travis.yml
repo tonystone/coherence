@@ -20,14 +20,14 @@ matrix:
       osx_image: xcode8.2
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.2,name=iPhone 6s"
+         - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6s"
          - TEST_SDK=iphonesimulator
     - 
       os: osx
       osx_image: xcode8.2
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.2,name=iPhone 6"
+         - TEST_DEST="platform=iOS Simulator,OS=10.1,name=iPhone 7"
          - TEST_SDK=iphonesimulator
     - 
       os: osx
