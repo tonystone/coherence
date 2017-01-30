@@ -30,6 +30,6 @@ internal extension MetaLogEntry {
     @NSManaged var updateEntityName: String?
     @NSManaged var updateObjectID: String?
     @NSManaged var updateUniqueID: String?
-    @NSManaged var updateData: LogEntryUpdateData?
+    @NSManaged var updateData: ChangeData?
 
 }

@@ -233,7 +233,7 @@ internal class WriteAheadLog {
                 //
                 // Get the object attribute change data
                 //
-                let data = MetaLogEntry.MetaLogEntryInsertData()
+                let data = MetaLogEntry.InsertData()
 
                 let attributes = [String](object.entity.attributesByName.keys)
 
@@ -266,7 +266,7 @@ internal class WriteAheadLog {
                 //
                 // Get the object attribute change data
                 //
-                let data = MetaLogEntry.MetaLogEntryUpdateData()
+                let data = MetaLogEntry.UpdateData()
 
                 let attributes = [String](object.entity.attributesByName.keys)
 

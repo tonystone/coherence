@@ -22,7 +22,8 @@ import CoreData
 
 internal typealias TransactionID = String
 
-@objc internal enum MetaLogEntryType: Int32 {
+@objc
+internal enum MetaLogEntryType: Int32 {
     case beginMarker = 1
     case endMarker   = 2
     case insert      = 3
@@ -30,9 +31,12 @@ internal typealias TransactionID = String
     case delete      = 5
 }
 
-@objc(MetaLogEntry) internal class MetaLogEntry: NSManagedObject {
+@objc(MetaLogEntry)
+internal class MetaLogEntry: NSManagedObject {
 
-    class LogEntryUpdateData : NSObject, NSCoding  {
+    typealias ValueContainerType = [AnyHashable: Any]
+
+    internal class ChangeData : NSObject, NSCoding  {
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
         }
@@ -44,13 +48,13 @@ internal typealias TransactionID = String
         it is considered a structure.  We had to make this a class
         to suite the CoreData requirements.
     */
-    class MetaLogEntryInsertData : LogEntryUpdateData {
-        var attributesAndValues: [String : AnyObject]?
+    internal class InsertData : ChangeData {
+        var attributesAndValues: ValueContainerType?
 
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
             
-            attributesAndValues = aDecoder.decodeObject() as? [String : AnyObject]
+            attributesAndValues = aDecoder.decodeObject() as? ValueContainerType
         }
         override func encode(with aCoder: NSCoder) {
             aCoder.encode(attributesAndValues)
@@ -58,14 +62,14 @@ internal typealias TransactionID = String
 
     }
 
-    class MetaLogEntryUpdateData : LogEntryUpdateData  {
-        var attributesAndValues: [String : AnyObject]?
+    internal class UpdateData : ChangeData  {
+        var attributesAndValues: ValueContainerType?
         var updatedAttributes:   [String]?
 
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
             
-            attributesAndValues = aDecoder.decodeObject() as? [String : AnyObject]
+            attributesAndValues = aDecoder.decodeObject() as? ValueContainerType
             updatedAttributes   = aDecoder.decodeObject() as? [String]
         }
         
@@ -76,11 +80,10 @@ internal typealias TransactionID = String
 
     }
 
-    class MetaLogEntryDeleteData : LogEntryUpdateData   {
+    internal class DeleteData : ChangeData   {
         required convenience init?(coder aDecoder: NSCoder) {
             self.init()
         }
         override func encode(with aCoder: NSCoder) {}
     }
-
 }
