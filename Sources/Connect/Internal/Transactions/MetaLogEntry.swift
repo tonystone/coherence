@@ -37,11 +37,9 @@ internal class MetaLogEntry: NSManagedObject {
     typealias ValueContainerType = [AnyHashable: Any]
 
     internal class ChangeData : NSObject, NSCoding  {
-        required convenience init?(coder aDecoder: NSCoder) {
-            self.init()
-        }
-        func encode(with aCoder: NSCoder) {
-        }
+        required override init() {}
+        required init?(coder aDecoder: NSCoder) {}
+        func encode(with aCoder: NSCoder) {}
     }
     /**
         NOTE: the attributes in this class are all public because
@@ -51,23 +49,31 @@ internal class MetaLogEntry: NSManagedObject {
     internal class InsertData : ChangeData {
         var attributesAndValues: ValueContainerType?
 
-        required convenience init?(coder aDecoder: NSCoder) {
-            self.init()
+        required override init() {
+            super.init()
+        }
+
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
             
             attributesAndValues = aDecoder.decodeObject() as? ValueContainerType
         }
         override func encode(with aCoder: NSCoder) {
             aCoder.encode(attributesAndValues)
+            super.encode(with: aCoder)
         }
-
     }
 
     internal class UpdateData : ChangeData  {
         var attributesAndValues: ValueContainerType?
         var updatedAttributes:   [String]?
 
-        required convenience init?(coder aDecoder: NSCoder) {
-            self.init()
+        required override init() {
+            super.init()
+        }
+
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
             
             attributesAndValues = aDecoder.decodeObject() as? ValueContainerType
             updatedAttributes   = aDecoder.decodeObject() as? [String]
@@ -76,14 +82,21 @@ internal class MetaLogEntry: NSManagedObject {
         override func encode(with aCoder: NSCoder) {
             aCoder.encode(attributesAndValues)
             aCoder.encode(updatedAttributes)
+            super.encode(with: aCoder)
         }
-
     }
 
     internal class DeleteData : ChangeData   {
-        required convenience init?(coder aDecoder: NSCoder) {
-            self.init()
+
+        required override init() {
+            super.init()
         }
-        override func encode(with aCoder: NSCoder) {}
+
+        required  init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
+        override func encode(with aCoder: NSCoder) {
+            super.encode(with: aCoder)
+        }
     }
 }
