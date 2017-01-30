@@ -85,6 +85,9 @@
 		EA1C140B1E3D80E1002E63BD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA1C141B1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ConnectTestModel.xcdatamodel; sourceTree = "<group>"; };
 		EA1C141F1E3E6FF0002E63BD /* HR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HR.xcdatamodel; sourceTree = "<group>"; };
+		EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect Architecture & Design.graffle"; sourceTree = "<group>"; };
+		EA1C14251E3EF986002E63BD /* Connect High Level Architecture.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect High Level Architecture.graffle"; sourceTree = "<group>"; };
+		EA1C14261E3EF986002E63BD /* Connect High Level Architecture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connect High Level Architecture.png"; sourceTree = "<group>"; };
 		EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSEntityDescription+EntitySettingsTests.swift"; path = "ConnectTests/NSEntityDescription+EntitySettingsTests.swift"; sourceTree = "<group>"; };
 		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockGenericAction.swift; path = ConnectTests/MockGenericAction.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 				60FF7A9C1954A5C5007DD14C /* Metadata */,
 				6003F593195388D20070C39A /* Coherence Example */,
 				EA5FD52A1C1A5918002A7B8A /* Playground */,
+				EA1C14231E3EF956002E63BD /* Docs */,
 				6003F5B5195388D20070C39A /* Tests */,
 				EAF397461E31917000038CD4 /* Fixtures */,
 				6003F58C195388D20070C39A /* Frameworks */,
@@ -278,6 +282,17 @@
 				EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */,
 			);
 			path = ConfigurationTests;
+			sourceTree = "<group>";
+		};
+		EA1C14231E3EF956002E63BD /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */,
+				EA1C14251E3EF986002E63BD /* Connect High Level Architecture.graffle */,
+				EA1C14261E3EF986002E63BD /* Connect High Level Architecture.png */,
+			);
+			name = Docs;
+			path = ../Docs;
 			sourceTree = "<group>";
 		};
 		EA5FD52A1C1A5918002A7B8A /* Playground */ = {
