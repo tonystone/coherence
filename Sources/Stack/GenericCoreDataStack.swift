@@ -22,6 +22,11 @@ import CoreData
 import TraceLog
 
 ///
+/// Location to store the persistent stores.
+///
+private let coreDataStackStoreDirectory: FileManager.SearchPathDirectory = .documentDirectory
+
+///
 /// The name of the default configuration in the model.  If you have not
 /// created any configurations, this will be the only configuration avaialble.
 ///
@@ -98,7 +103,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
     ///
-    public let mainContext: ContextType
+    public let viewContext: ContextType
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
@@ -107,7 +112,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
-    public var editContext: ContextType {
+    public func newBackgroundContext() -> ContextType {
 
         logInfo(tag) { "Creating edit context for \(Thread.current)..." }
 
@@ -138,7 +143,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         //
         // Note: We use the applications bundle not the classes or modules.
         //
-        let baseURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let baseURL = try FileManager.default.url(for: coreDataStackStoreDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
 
         try self.init(managedObjectModel: model, storeLocationURL: baseURL, storeNamePrefix: storeNamePrefix, configurationOptions: options, asyncErrorBlock: asyncErrorBlock, logTag: tag)
     }
@@ -169,12 +174,12 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
 
         /// Create teh root context for saving
-        self.rootContext = ContextType(concurrencyType: .privateQueueConcurrencyType)
+        self.rootContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
 
         /// Now the main thread context
-        self.mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
-        self.mainContext.parent = self.rootContext
+        self.viewContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
+        self.viewContext.parent = self.rootContext
 
         logInfo(tag) { "Store path: \(storeLocationURL)" }
         
@@ -326,7 +331,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         ///
         return context.persistentStoreCoordinator === self.persistentStoreCoordinator &&    /// Ensure it is one of this instances contexts
                context !== self.rootContext &&                                              /// and that is it not the rootContext
-               context !== self.mainContext                                                 /// and not the main context
+               context !== self.viewContext                                                 /// and not the main context
     }
 
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
@@ -341,17 +346,17 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
 
             if isEditContext(context) {
                 
-                self.mainContext.perform {
+                self.viewContext.perform {
 
                     do {
                         ///
                         /// Merge the changes from the edit context to the main
                         /// conntext.
                         ///
-                        self.mainContext.mergeChanges(fromContextDidSave: notification)
+                        self.viewContext.mergeChanges(fromContextDidSave: notification)
 
                         /// Now save it to propagate the changes to the root.
-                        try self.mainContext.save()
+                        try self.viewContext.save()
 
                         ////
                         /// And finally save the root context to the persistent store

@@ -22,7 +22,7 @@ public protocol CoreDataStack {
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
     ///
-    var mainContext: ContextType { get }
+    var viewContext: ContextType { get }
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
@@ -31,5 +31,5 @@ public protocol CoreDataStack {
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
-    var editContext: ContextType { get }
+    func newBackgroundContext() -> ContextType
 }

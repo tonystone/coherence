@@ -50,11 +50,11 @@ import TraceLog
         impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: ObjcCoreDataStack.self))
     }
     
-    public var mainContext: NSManagedObjectContext {
-        return impl.mainContext
+    public var viewContext: NSManagedObjectContext {
+        return impl.viewContext
     }
     
-    public var editContext: NSManagedObjectContext {
-        return impl.editContext
+    public func newBackgroundContext() -> NSManagedObjectContext {
+        return impl.newBackgroundContext()
     }
 }

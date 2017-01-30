@@ -80,8 +80,8 @@ class ObjcCoreDataStackTests: XCTestCase {
     
         let coreDataStack = try ObjcCoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
         
-        let editContext = coreDataStack.editContext
-        let mainContext = coreDataStack.mainContext
+        let editContext = coreDataStack.newBackgroundContext()
+        let mainContext = coreDataStack.viewContext
         
         var userId: NSManagedObjectID? = nil
         

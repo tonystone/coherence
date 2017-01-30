@@ -192,12 +192,12 @@ public class Connect {
 ///
 extension Connect: CoreDataStack {
 
-    public var mainContext: NSManagedObjectContext {
-        return self.dataCache.mainContext
+    public var viewContext: NSManagedObjectContext {
+        return self.dataCache.viewContext
     }
 
-    public var editContext: NSManagedObjectContext {
-        return self.dataCache.editContext
+    public func newBackgroundContext() -> NSManagedObjectContext {
+        return self.newBackgroundContext(logged: true)
     }
 }
 
