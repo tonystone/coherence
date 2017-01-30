@@ -21,10 +21,9 @@ import XCTest
 import CoreData
 import Coherence
 
-class PersistentStoreCoordinatorTests: XCTestCase {
+class ConnectTests: XCTestCase {
 
-    var testModel:     NSManagedObjectModel! = nil
-    var testDirectory: URL! = nil
+    var testModel: NSManagedObjectModel! = nil
     let modelName = "ConnectTestModel"
 
     override func setUp() {
@@ -43,21 +42,10 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         self.testModel = model
 
         do {
-            self.testDirectory = try cachesDirectory()
-
             try removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
-    }
-
-    override func tearDown() {
-        do {
-            try removePersistentStoreCache()
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
-        super.tearDown()
     }
 
     func testConstruction() {
