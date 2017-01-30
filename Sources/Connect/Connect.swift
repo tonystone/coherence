@@ -313,6 +313,7 @@ private extension Connect {
 ///
 fileprivate extension Connect {
 
+    @discardableResult
     func manage(name: String, entity: NSEntityDescription) -> Bool {
         logInfo { "Determining if entity '\(name)' can be managed...."}
 
