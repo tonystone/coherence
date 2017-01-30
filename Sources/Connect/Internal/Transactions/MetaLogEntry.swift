@@ -49,7 +49,7 @@ internal class MetaLogEntry: NSManagedObject {
     internal class InsertData : ChangeData {
         var attributesAndValues: ValueContainerType?
 
-        required override init() {
+        required init() {
             super.init()
         }
 
@@ -68,7 +68,7 @@ internal class MetaLogEntry: NSManagedObject {
         var attributesAndValues: ValueContainerType?
         var updatedAttributes:   [String]?
 
-        required override init() {
+        required init() {
             super.init()
         }
 
@@ -88,7 +88,7 @@ internal class MetaLogEntry: NSManagedObject {
 
     internal class DeleteData : ChangeData   {
 
-        required override init() {
+        required init() {
             super.init()
         }
 
