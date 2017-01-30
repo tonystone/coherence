@@ -27,6 +27,7 @@
 		EA1C14191E3D8107002E63BD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140B1E3D80E1002E63BD /* User+CoreDataProperties.swift */; };
 		EA1C141D1E3E6E9B002E63BD /* ConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C141A1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodeld */; };
 		EA1C14201E3E6FF0002E63BD /* HR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C141E1E3E6FF0002E63BD /* HR.xcdatamodeld */; };
+		EA1C14291E3EF9EB002E63BD /* MetaLogEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */; };
 		EA2CC5D51E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */; };
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
@@ -88,6 +89,7 @@
 		EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect Architecture & Design.graffle"; sourceTree = "<group>"; };
 		EA1C14251E3EF986002E63BD /* Connect High Level Architecture.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect High Level Architecture.graffle"; sourceTree = "<group>"; };
 		EA1C14261E3EF986002E63BD /* Connect High Level Architecture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connect High Level Architecture.png"; sourceTree = "<group>"; };
+		EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetaLogEntryTests.swift; path = ConnectTests/MetaLogEntryTests.swift; sourceTree = "<group>"; };
 		EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSEntityDescription+EntitySettingsTests.swift"; path = "ConnectTests/NSEntityDescription+EntitySettingsTests.swift"; sourceTree = "<group>"; };
 		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockGenericAction.swift; path = ConnectTests/MockGenericAction.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				EA31505D1E35533400FB9905 /* MockListAction.swift */,
 				EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */,
 				EA1C141A1E3E6C7D002E63BD /* ConnectTestModel.xcdatamodeld */,
+				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 			);
 			name = ConnectTests;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1C14291E3EF9EB002E63BD /* MetaLogEntryTests.swift in Sources */,
 				EA1C141D1E3E6E9B002E63BD /* ConnectTestModel.xcdatamodeld in Sources */,
 				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
 				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,
