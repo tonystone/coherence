@@ -65,7 +65,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         let input = self.testModel!
         let expected = input
 
-        XCTAssertEqual(try Connect(managedObjectModel: input, storeName: modelName).managedObjectModel , expected)
+        XCTAssertEqual(try Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
     func testExecuteGenericAction()  {
@@ -74,7 +74,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect = try Connect(managedObjectModel: self.testModel, storeName: modelName)
+            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
 
             let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
 
@@ -102,7 +102,7 @@ class PersistentStoreCoordinatorTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect = try Connect(managedObjectModel: self.testModel, storeName: modelName)
+            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
 
             let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
 

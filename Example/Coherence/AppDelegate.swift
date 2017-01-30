@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
         do {
-            self.connect = try Connect(managedObjectModel: model, storeName: modelName, configurationOptions: configurationOptions)
+            self.connect = try Connect(name: modelName, managedObjectModel: model, configurationOptions: configurationOptions)
         } catch {
             fatalError("\(error)")
         }

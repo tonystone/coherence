@@ -143,13 +143,13 @@ public class Connect {
     ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
     ///      - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
     ///
-    public init(managedObjectModel model: NSManagedObjectModel, storeName: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
+    public init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
 
-        logInfo { "Initializing instance..." }
+        logInfo { "Initializing instance '\(name)'..." }
 
         self.managedObjectModel = model
 
-        let bundleURL = try BundleManager.createIfAbsent(bundleName: storeName, in: connectBundleDirectory)
+        let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: connectBundleDirectory)
 
         logInfo { "Creating the user data cache...." }
 
