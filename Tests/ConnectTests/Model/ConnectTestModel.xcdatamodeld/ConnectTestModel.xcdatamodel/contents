@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ConnectEntity1" representedClassName="ConnectEntity1" syncable="YES" codeGenerationType="class">
+    <entity name="ConnectEntity1" representedClassName="ConnectEntity1" syncable="YES">
         <attribute name="binaryAttribute" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="boolAttribute" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -15,7 +15,7 @@
             <entry key="logTransactions" value="true"/>
         </userInfo>
     </entity>
-    <entity name="ConnectEntity2" representedClassName="ConnectEntity2" syncable="YES" codeGenerationType="class">
+    <entity name="ConnectEntity2" representedClassName="ConnectEntity2" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stringAttribute" optional="YES" attributeType="String" syncable="YES"/>
         <uniquenessConstraints>
