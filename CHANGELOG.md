@@ -4,12 +4,18 @@ All significant changes to this project will be documented in this file.
 ## [3.0.0-beta.1](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.1) 
 
 #### Added 
-- Added Connect framework.
-- New init to GenericCoreDataStack whick accepts a URL for the location of the persistent stores and an optional prefix for the file.
+- Added Connect framework with base features.
+- New init to GenericCoreDataStack which accepts a URL for the location of the persistent stores and an optional prefix for the file.
+- Added CoreDataStack protocol.
 
-#### Updated 
-- Changed GenericCoreDataStack & CoreDataStack peristent store file extension to lower case.
-- Changed GenericCoreDataStack & CoreDataStack persistent store file configuration name to lower
+#### Breaking Updates 
+- Changed `GenericCoreDataStack` & `CoreDataStack` persistent store file extension to lower case.
+- Changed `GenericCoreDataStack` & `CoreDataStack` persistent store file configuration name to lower.
+- Changed name of `CoreDataStack` to `ObjcCoreDataStack`.
+- Renamed `func editContext()` to `func newBackgroundContext()`.
+- Renamed `func mainContext()` to `var viewContext()`.
+- Changed async error handler error type from `NSError` to `Error`.
+- Changed context model to be a hybrid model that connects the backgroundContexts directory to the persistent store and maintains the viewContext. Data from the viewContext is propagated to a root context that is persisted in a background thread.
 
 ## [2.0.3](https://github.com/tonystone/coherence/releases/tag/2.0.3) 
 
