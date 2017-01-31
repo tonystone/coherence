@@ -21,60 +21,65 @@ import Foundation
 import CoreData
 import TraceLog
 
-/**
-    The name of the default configuration in the model.  If you have not 
-    created any configurations, this will be the only configuration avaialble.
+///
+/// Location to store the persistent stores.
+///
+private let coreDataStackStoreDirectory: FileManager.SearchPathDirectory = .documentDirectory
 
-    Use this name if you override the options passed.
-*/
+///
+/// The name of the default configuration in the model.  If you have not
+/// created any configurations, this will be the only configuration avaialble.
+///
+/// Use this name if you override the options passed.
+///
 public let defaultModelConfigurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
 
-/**
-    An option – when set to true – will check if the persistent store and the model are incompatible.
-    If so, the underlying persistent store will be removed and replaced.
- */
+///
+/// An option – when set to true – will check if the persistent store and the model are incompatible.
+/// If so, the underlying persistent store will be removed and replaced.
+///
 public let overwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
 
-/**
-    Default options passed to attached and configure the persistent stores.
- */
+///
+/// Default options passed to attached and configure the persistent stores.
+///
 public let defaultStoreOptions: [AnyHashable: Any] = [
     NSMigratePersistentStoresAutomaticallyOption    : true,
     NSInferMappingModelAutomaticallyOption          : true
 ]
 
-/**
-    If no storeType is passed in, this store type will be used
- */
+///
+/// If no storeType is passed in, this store type will be used
+///
 public let defaultStoreType = NSSQLiteStoreType
 
-/**
-    PersistentStore configuration settings.
- */
+///
+/// PersistentStore configuration settings.
+///
 public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?, migrationManager: NSMigrationManager?)
 
-/**
-    Configuration options dictionary keyed by configuration name.  
-    The name is the name you listed in your model.
- */
+///
+/// Configuration options dictionary keyed by configuration name.
+/// The name is the name you listed in your model.
+///
 public typealias ConfigurationOptionsType = [String : PersistentStoreConfiguration]
 
-/**
-    The detault configuration options used to configure the persistent store when no override is supplied.
- */
+///
+/// The detault configuration options used to configure the persistent store when no override is supplied.
+///
 public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
 
-/**
-    There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently 
-    logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take 
-    an alternate action.
- */
-public typealias asynErrorHandlerBlock = (NSError) -> Void
+///
+/// There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently
+/// logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take
+/// an alternate action.
+///
+public typealias AsynErrorHandlerBlock = (Error) -> Void
 
-/**
-    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
- */
-open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext> {
+///
+///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+///
+open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext>: CoreDataStack {
 
     /// 
     /// The model this `GenericCoreDataStack` was constructed with.
@@ -89,20 +94,70 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     public let persistentStoreCoordinator: CoordinatorType
 
+    ///
+    /// The main context.
+    ///
+    /// This context should be used for read operations only.  Use it for all fetches and NSFechtedResultsControllers.
+    ///
+    /// It will be maintained automatically and be kept consistent.
+    ///
+    /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
+    ///
+    public let viewContext: ContextType
+
+    ///
+    /// Gets a new NSManagedObjectContext that can be used for updating objects.
+    ///
+    /// At save time, resource manager will merge those changes back to the mainManagedObjectContext.
+    ///
+    /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
+    ///
+    public func newBackgroundContext() -> ContextType {
+
+        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
+
+        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = self.persistentStoreCoordinator
+
+        logInfo(tag) { "Edit context created." }
+
+        return context
+    }
+
+    fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
-    fileprivate let mainContext: ContextType
-    fileprivate let errorHandlerBlock: (_ error: NSError) -> Void
-    
-    /**
-        Initializes the receiver with a managed object model.
-     
-        - parameters:
-          - managedObjectModel: A managed object model.
-          - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-          - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
-          - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
-     */
-    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: ((_ error: NSError) -> Void)? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+    fileprivate let errorHandlerBlock: AsynErrorHandlerBlock
+
+    ///
+    ///  Initializes the receiver with a managed object model.
+    ///
+    ///   - parameters:
+    ///      - managedObjectModel: A managed object model.
+    ///      - storeNamePrefix: A String which is appended to the beginning of the persistent store's name.
+    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
+    public convenience init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
+        //
+        // Figure out where to put things
+        //
+        // Note: We use the applications bundle not the classes or modules.
+        //
+        let baseURL = try FileManager.default.url(for: coreDataStackStoreDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+        try self.init(managedObjectModel: model, storeLocationURL: baseURL, storeNamePrefix: storeNamePrefix, configurationOptions: options, asyncErrorBlock: asyncErrorBlock, logTag: tag)
+    }
+
+    ///
+    ///  Initializes the receiver with a managed object model.
+    ///
+    ///   - parameters:
+    ///      - managedObjectModel: A managed object model.
+    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///      - storeURL: An optional String which is appended to the beginning of the persistent store's name.
+    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
+    required public init(managedObjectModel model: NSManagedObjectModel, storeLocationURL: URL, storeNamePrefix: String? = nil, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) throws {
         
         self.managedObjectModel = model
         self.tag = tag
@@ -110,56 +165,69 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         if let asyncErrorBlock = asyncErrorBlock {
             self.errorHandlerBlock = asyncErrorBlock
         } else {
-            self.errorHandlerBlock = { (error: NSError) -> Void in
-                logError { error.localizedDescription }
+            self.errorHandlerBlock = { (error: Error) -> Void in
+                logError { "\(error)" }
             }
         }
         
-        // Create the coordinator
-        persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
-        
-        // Now the main thread context
-        mainContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
-        mainContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-        
-        //
-        // Figure out where to put things
-        //
-        // Note: We use the applications bundle not the classes or modules.
-        //
-        let cachesURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        
-        logInfo(tag) { "Store path: \(cachesURL.path)" }
+        /// Create the coordinator
+        self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
+
+        /// Create teh root context for saving
+        self.rootContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+
+        /// Now the main thread context
+        self.viewContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
+        self.viewContext.parent = self.rootContext
+
+        logInfo(tag) { "Store path: \(storeLocationURL)" }
         
         let configurations = managedObjectModel.configurations
         
         // There is only one so it's the default configuration
         if configurations.count == 1 {
-            
+
+            let storeName: String
+
+            if let prefix = storeNamePrefix {
+                storeName = prefix
+            } else {
+                storeName = "default"
+            }
+
             if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
                 
-                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(storeType)")
+                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                 
                 try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                 
             } else {
-                let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix).\(defaultStoreType)")
+                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                 
                 try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
             }
         } else {
             for configuration in configurations {
-                
+
+                let storeName: String
+
+                if let prefix = storeNamePrefix {
+                    storeName = "\(prefix)\(configuration.lowercased())"
+                } else {
+                    storeName = configuration.lowercased()
+                }
+
                 if configuration != defaultModelConfigurationName {
                     
                     if let (storeType, storeOptions, migrationManager) = options[configuration] {
                         
-                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(storeType)")
+                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                         
                         try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
                         
                     } else {
-                        let storeURL = cachesURL.appendingPathComponent("\(storeNamePrefix)\(configuration).\(defaultStoreType)")
+                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                         
                         try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
                     }
@@ -172,23 +240,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    open func mainThreadContext () -> NSManagedObjectContext {
-        return mainContext
-    }
-    
-    open func editContext () -> NSManagedObjectContext {
-        
-        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
-        
-        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
-        context.parent = mainContext
-        
-        logInfo(tag) { "Edit context created." }
-        
-        return context
-    }
-    
+
     fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?, migrationManger migrator: NSMigrationManager?) throws {
         
         do {
@@ -220,7 +272,6 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                     logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
                     
                     let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
-                    logTrace(4) { "metadata: \(metadata)" }
                     
                     if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
                         
@@ -272,24 +323,56 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
             try fileManager.removeItem(atPath: path)
         }
     }
-    
+
+    @inline(__always)
+    fileprivate func isEditContext(_ context: NSManagedObjectContext) -> Bool {
+        ///
+        /// Note: you must use the identity operator `===` for the comparison.
+        ///
+        return context.persistentStoreCoordinator === self.persistentStoreCoordinator &&    /// Ensure it is one of this instances contexts
+               context !== self.rootContext &&                                              /// and that is it not the rootContext
+               context !== self.viewContext                                                 /// and not the main context
+    }
+
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
-        if let context = notification.object as? NSManagedObjectContext {
+        if let context = notification.object as? ContextType {
             
-            //
-            // If the saved context has it's parent set to our 
-            // mainThreadContext auto save the main context
-            //
-            if context.parent == mainContext {
+            ///
+            /// If the context has it's persistentStoreCoordinate as our coordinator
+            /// and it does not have a parent, the context is one of our edit
+            /// contexts so we propogate the changes to our main context and
+            /// up the stack.
+
+            if isEditContext(context) {
                 
-                mainContext.perform( { () -> Void in
+                self.viewContext.perform {
+
                     do {
-                        try self.mainContext.save()
-                    } catch let error as NSError {
+                        ///
+                        /// Merge the changes from the edit context to the main
+                        /// conntext.
+                        ///
+                        self.viewContext.mergeChanges(fromContextDidSave: notification)
+
+                        /// Now save it to propagate the changes to the root.
+                        try self.viewContext.save()
+
+                        ////
+                        /// And finally save the root context to the persistent store
+                        /// on a background thread.
+                        ///
+                        self.rootContext.perform {
+                            do {
+                                try self.rootContext.save()
+                            } catch {
+                                self.errorHandlerBlock(error)
+                            }
+                        }
+                    } catch {
                         self.errorHandlerBlock(error)
                     }
-                })
+                }
             }
         }
     }

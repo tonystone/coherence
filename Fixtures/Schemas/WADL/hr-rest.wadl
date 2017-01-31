@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ ~ Copyright (c) 2014 Mobile Grid, Inc. All rights reserved.
+ -->
+
+<application xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://wadl.dev.java.net/2009/02 ../../../Resources/Schemas/wadl-schema.xsd">
+
+    <resources base="http://localhost:8080/rest/">
+
+        <doc title="resources" xml:lang="eng">
+            This is the resources base for all contained resources.
+        </doc>
+        
+        <resource path="/regions">
+            
+            <doc title="resource" xml:lang="eng">
+                This is the specific resource for the following realtive path:
+                
+                /regions
+            </doc>
+            
+            <method href="#listRegions"/>
+            <method href="#insertRegion"/>
+
+            <resource path="/{regionId}">
+
+                <method href="#readRegion"/>
+                <method href="#updateRegion"/>
+                <method href="#deleteRegion"/>
+            </resource>
+        </resource>
+
+        <!--
+            /regions/{regionId}/countries/{countryCode}
+        -->
+
+        <resource path="/regions/{regionId}/countries">
+
+            <method href="#listRegionCountries"/>
+            <method href="#insertRegionCountry"/>
+
+            <resource path="/{countryCode}">
+
+                <method href="#readRegionCountry"/>
+                <method href="#updateRegionCountry"/>
+                <method href="#deleteRegionCountry"/>
+
+
+                <resource path="/locations">
+
+
+                    <resource path="{locationId">
+
+                    </resource>
+                </resource>
+
+            </resource>
+        </resource>
+
+        <!--
+            /countries/{countryCode}
+        -->
+
+        <resource path="/countries">
+
+            <method href="#listCountries"/>
+            <method href="#insertCountry"/>
+
+            <resource path="/{countryCode}">
+
+                <method href="#readCountry"/>
+                <method href="#updateCountry"/>
+                <method href="#deleteCountry"/>
+            </resource>
+        </resource>
+
+        <!--
+            /locations/{locationId}
+        -->
+
+        <resource path="/locations">
+
+            <method href="#listLocations"/>
+            <method href="#insertLocation"/>
+
+            <resource path="/{locationId}">
+
+                <method href="#readLocation"/>
+                <method href="#updateLocation"/>
+                <method href="#deleteLocation"/>
+            </resource>
+        </resource>
+
+        <!--
+            /locations/{locationId}/employees/{employeeId}
+        -->
+
+        <resource path="/locations/{locationId}/employees">
+
+            <method href="#listLocationEmployees"/>
+            <method href="#insertLocationEmployee"/>
+
+            <resource path="/{employeeId}">
+
+                <method href="#readLocationEmployee"/>
+                <method href="#updateLocationEmployee"/>
+                <method href="#deleteLocationEmployee"/>
+            </resource>
+        </resource>
+
+        <!--
+            /jobs/{jobId}
+        -->
+
+        <resource path="/jobs">
+
+            <method href="#listJobs"/>
+            <method href="#insertJob"/>
+
+            <resource path="/{jobId}">
+
+                <method href="#readJob"/>
+                <method href="#updateJob"/>
+                <method href="#deleteJob"/>
+            </resource>
+        </resource>
+
+        <!--
+            /employees/{employeeId}
+        -->
+
+        <resource path="/employees">
+
+            <method href="#listEmployees"/>
+            <method href="#insertEmployee"/>
+
+            <resource path="/{employeeId}">
+
+                <method href="#readEmployee"/>
+                <method href="#updateEmployee"/>
+                <method href="#deleteEmployee"/>
+            </resource>
+        </resource>
+
+        <!--
+            /employees/{employeeId}/{employeeId}/jobhistory/{startDate}
+        -->
+
+        <resource path="/employees/{employeeId}/jobhistory">
+
+            <method href="#listEmployeeJobHistory"/>
+            <method href="#insertEmployeeJobHistory"/>
+
+            <resource path="/{startDate}">
+
+                <method href="#readEmployeeJobHistory"/>
+                <method href="#updateEmployeeJobHistory"/>
+                <method href="#deleteEmployeeJobHistory"/>
+            </resource>
+        </resource>
+
+        <!--
+           /department/{departmentId}
+       -->
+
+        <resource path="/departments">
+
+            <method href="#listDepartments"/>
+            <method href="#insertDepartment"/>
+
+            <resource path="/{departmentId}">
+
+                <method href="#readDepartment"/>
+                <method href="#updateDepartment"/>
+                <method href="#deleteDepartment"/>
+            </resource>
+        </resource>
+
+        <!--
+            /departments/{departmentId}/employees/{employeeId}
+        -->
+
+        <resource path="/departments/{departmentId}/employees">
+
+            <method href="#listDepartmentEmployees"/>
+            <method href="#insertDepartmentEmployee"/>
+
+            <resource path="/{employeeId}">
+
+                <method href="#readDepartmentEmployee"/>
+                <method href="#updateDepartmentEmployee"/>
+                <method href="#deleteDepartmentEmployee"/>
+            </resource>
+        </resource>
+
+    </resources>
+
+    <!--
+        Regions Resource Methods
+    -->
+
+    <method id="listRegions" name="GET">
+        <request/>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readRegion" name="GET">
+        <request>
+            <param name="regionId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertRegion" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201"> <!-- 201 Created -->
+            <!-- Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateRegion" name="PUT">
+        <request>
+            <param name="regionId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteRegion" name="DELETE">
+        <request>
+            <param name="regionId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <!--
+        Countries Resource Methods
+    -->
+
+    <method id="listCountries" name="GET">
+        <request/>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readCountry" name="GET">
+        <request>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertCountry" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201"> <!-- 201 Created -->
+            <!-- Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateCountry" name="PUT">
+        <request>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteCountry" name="DELETE">
+        <request>
+            <param name="regionId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="listRegionCountries" name="GET">
+        <request>
+            <param name="regionId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readRegionCountry" name="GET">
+        <request>
+            <param name="regionId"    type="xs:int"    style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertRegionCountry" name="POST">
+        <request>
+            <param name="regionId"    type="xs:int"    style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201"> <!-- 201 Created -->
+            <!-- Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateRegionCountry" name="PUT">
+        <request>
+            <param name="regionId"    type="xs:int"    style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteRegionCountry" name="DELETE">
+        <request>
+            <param name="regionId"    type="xs:int"    style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="countryCode" type="xs:string" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204"> <!-- 204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+
+    <!--
+        Locations Resource Methods
+    -->
+
+    <method id="listLocations" name="GET">
+        <request/>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readLocation" name="GET">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertLocation" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+            <!-- 201 Created -->
+            <!-- Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateLocation" name="PUT">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteLocation" name="DELETE">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <!--
+        Jobs Resource Methods
+    -->
+
+    <method id="listJobs" name="GET">
+        <request/>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readJob" name="GET">
+        <request>
+            <param name="jobId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertJob" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+             <!--201 Created -->
+             <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateJob" name="PUT">
+        <request>
+            <param name="jobId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteJob" name="DELETE">
+        <request>
+            <param name="jobId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+            <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <!--
+        Employees Resource Methods
+    -->
+
+    <method id="listEmployees" name="GET">
+        <request>
+            <representation mediaType="application/x-www-form-urlencoded"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readEmployee" name="GET">
+        <request>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertEmployee" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+             <!--201 Created -->
+             <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateEmployee" name="PUT">
+        <request>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteEmployee" name="DELETE">
+        <request>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="listLocationEmployees" name="GET">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readLocationEmployee" name="GET">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertLocationEmployee" name="POST">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+            <!--201 Created -->
+            <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateLocationEmployee" name="PUT">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+            <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteLocationEmployee" name="DELETE">
+        <request>
+            <param name="locationId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+            <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+
+
+    <method id="listDepartmentEmployees" name="GET">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readDepartmentEmployee" name="GET">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertDepartmentEmployee" name="POST">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+             <!--201 Created -->
+             <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateDepartmentEmployee" name="PUT">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteDepartmentEmployee" name="DELETE">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <!--
+        JobHistory Resource Methods
+    -->
+
+    <method id="listEmployeeJobHistory" name="GET">
+        <request>
+            <param name="employeeId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readEmployeeJobHistory" name="GET">
+        <request>
+            <param name="employeeId" type="xs:int"  style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="startDate"  type="xs:date" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertEmployeeJobHistory" name="POST">
+        <request>
+            <param name="employeeId" type="xs:int"  style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+             <!--201 Created -->
+             <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateEmployeeJobHistory" name="PUT">
+        <request>
+            <param name="employeeId" type="xs:int"  style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="startDate"  type="xs:date" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteEmployeeJobHistory" name="DELETE">
+        <request>
+            <param name="employeeId" type="xs:int"  style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="startDate"  type="xs:date" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <!--
+        Departments Resource Methods
+    -->
+
+    <method id="listDepartments" name="GET">
+        <request/>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="readDepartment" name="GET">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="insertDepartment" name="POST">
+        <request>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="201">
+             <!--201 Created -->
+             <!--Must also send back the location in the header -->
+            <param name="Location" type="xs:string" style="header" required="true"  xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="updateDepartment" name="PUT">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+    <method id="deleteDepartment" name="DELETE">
+        <request>
+            <param name="departmentId" type="xs:int" style="template" required="true" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="204">
+             <!--204 No Content -->
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+        </response>
+    </method>
+
+</application>

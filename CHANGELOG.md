@@ -1,6 +1,16 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0-beta.1](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.1) 
+
+#### Added 
+- Added Connect framework.
+- New init to GenericCoreDataStack whick accepts a URL for the location of the persistent stores and an optional prefix for the file.
+
+#### Updated 
+- Changed GenericCoreDataStack & CoreDataStack peristent store file extension to lower case.
+- Changed GenericCoreDataStack & CoreDataStack persistent store file configuration name to lower
+
 ## [2.0.3](https://github.com/tonystone/coherence/releases/tag/2.0.3) 
 
 #### Added

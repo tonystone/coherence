@@ -24,19 +24,18 @@ coverage:
         branches: null
 
   ignore:
-    - Example/*
-    - Scripts/*
-    - Docs/*
-    - Pods/*
+    - Example/**/*
+    - Scripts/**/*
+    - Docs/**/*
+    - Pods/**/*
     - Sources/ConfigurationCore/*
-    - Applications/Xcode.app/*
-    - vendor/*
-    - Carthage/*
-    - build/*
-    - .build/*
-    - .vagrant/*
-    - Tests/*
-    - Sources/Connect/*
+    - Applications/Xcode.app/**/*
+    - vendor/**/*
+    - Carthage/**/*
+    - build/**/*
+    - .build/**/*
+    - .vagrant/**/*
+    - Tests/**/*
 
 comment:
   layout: "header, diff, changes, sunburst, uncovered, tree"
