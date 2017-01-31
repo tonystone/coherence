@@ -56,6 +56,168 @@ class ConnectTests: XCTestCase {
         XCTAssertEqual(try Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
+    func testCRUDCreateAndRead () throws {
+
+        let input = (id: Int64(1), string: "Test String 1")
+        let expected = input
+
+        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+        let editContext = connect.newBackgroundContext()
+        let mainContext = connect.viewContext
+
+        var objectId: NSManagedObjectID? = nil
+
+        editContext.performAndWait {
+
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+
+                object.id              = input.id
+                object.stringAttribute = input.string
+
+                do {
+                    try editContext.save()
+                } catch {
+                    XCTFail()
+                }
+                objectId = object.objectID
+            }
+        }
+
+        var savedObject: NSManagedObject? = nil
+
+            mainContext.performAndWait {
+                if let objectId = objectId {
+                    do {
+                        savedObject = try mainContext.existingObject(with: objectId)
+                    } catch {
+                        XCTFail("\(error)")
+                    }
+                }
+            }
+
+            XCTAssertNotNil(savedObject)
+
+            if let savedObject = savedObject as? ConnectEntity1 {
+
+                XCTAssertEqual(savedObject.id,              expected.id)
+                XCTAssertEqual(savedObject.stringAttribute, expected.string)
+                
+            } else {
+                XCTFail()
+            }
+
+    }
+
+    func testCRUDUpdate () throws {
+
+        let input = (insert: (id: Int64(1), string: "Test String 1"),
+                     update: (id: Int64(1), string: "Test String 2"))
+        let expected = input.update
+
+        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+        let editContext = connect.newBackgroundContext()
+        let mainContext = connect.viewContext
+
+        var objectId: NSManagedObjectID? = nil
+
+        editContext.performAndWait {
+
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+
+                object.id              = input.insert.id
+                object.stringAttribute = input.insert.string
+
+                do {
+                    try editContext.save()
+                } catch {
+                    XCTFail()
+                }
+
+                object.id              = input.update.id
+                object.stringAttribute = input.update.string
+
+                do {
+                    try editContext.save()
+                } catch {
+                    XCTFail()
+                }
+
+                objectId = object.objectID
+            }
+        }
+
+        var savedObject: NSManagedObject? = nil
+
+        mainContext.performAndWait {
+            if let objectId = objectId {
+                do {
+                    savedObject = try mainContext.existingObject(with: objectId)
+                } catch {
+                    XCTFail("\(error)")
+                }
+            }
+        }
+
+        XCTAssertNotNil(savedObject)
+
+        if let savedObject = savedObject as? ConnectEntity1 {
+
+            XCTAssertEqual(savedObject.id,              expected.id)
+            XCTAssertEqual(savedObject.stringAttribute, expected.string)
+
+        } else {
+            XCTFail()
+        }
+    }
+
+    func testCRUDDelete () throws {
+
+        let input = (id: Int64(1), string: "Test String 1")
+
+        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+        let editContext = connect.newBackgroundContext()
+        let mainContext = connect.viewContext
+
+        editContext.performAndWait {
+
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+
+                object.id              = input.id
+                object.stringAttribute = input.string
+
+                do {
+                    try editContext.save()
+                } catch {
+                    XCTFail()
+                }
+
+                editContext.delete(object)
+                
+                do {
+                    try editContext.save()
+                } catch {
+                    XCTFail()
+                }
+            }
+        }
+
+        mainContext.performAndWait {
+            let fetchRequest: NSFetchRequest<ConnectEntity1> = ConnectEntity1.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %ld", input.id)
+
+            do {
+                let result = try mainContext.count(for: fetchRequest)
+
+                XCTAssertEqual(result, 0)
+            } catch {
+                XCTFail()
+            }
+        }
+    }
+
     func testExecuteGenericAction()  {
 
         let input = MockGenericAction()
