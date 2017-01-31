@@ -19,16 +19,8 @@
 ///
 import Foundation
 
-//
-// Default Entity settings for system
-//
-public let managedDefault: Bool                   = false
-public let uniquenessAttributesDefault: [String]? = nil
-public let stalenessIntervalDefault: Int          = 60
-public let logTransactionsDefault: Bool           = true
-
 ///
-/// Settings available for each entity defined in our model.
+/// Settings available for each entity defined in your model.
 ///
 /// - Note: You can override each of these per entity in the model or from the NSEntityDescription programatically.
 ///
@@ -37,25 +29,39 @@ public protocol EntitySettings {
     ///
     /// Is this entity managed by Connect?
     ///
+    /// By default, objects are not managed until they pass
+    /// the criteria that Connect sets for being able to
+    /// manage a specific entity.
+    ///
     var managed: Bool { get }
 
     ///
     /// Gets the attributes used to define a unique record for this entity type.  This can only be set
     /// statically in the  ManagedObjectModel for this entity.
     ///
+    /// The default is nil for this value.
+    ///
     var uniquenessAttributes: [String]? { get }
 
     ///
     /// Sets the amount of time before the resource is updated again from the master source
-    ///
-    /// - Note: if this value is not set at this level, the model value will be used.
     ///
     var stalenessInterval: Int { get set }
 
     ///
     /// Should Connect log transactions for this entity?
     ///
-    /// Note: if this value is not set at this level, the model value will be used.
+    /// The default value is false for all entities.  You must set
+    /// this value if you want Connect to log transactions for this
+    /// entity.
     ///
     var logTransactions: Bool { get set }
 }
+
+//
+// Default Entity settings for system
+//
+internal let managedDefault: Bool = false
+internal let uniquenessAttributesDefault: [String]? = nil
+internal let stalenessIntervalDefault: Int          = 600
+internal let logTransactionsDefault: Bool           = false
