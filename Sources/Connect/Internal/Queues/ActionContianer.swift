@@ -1,7 +1,7 @@
 ///
 ///  ActionContainer.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -30,6 +30,16 @@ internal class ActionContainer: Operation, ActionProxy {
     
     public internal(set) var state: ActionState  {
 
+        willSet {
+            if newValue == .executing {
+
+                self._statistics.start()
+
+            } else if newValue == .finished {
+
+                self._statistics.stop()
+            }
+        }
         didSet {
             /// Notify the service that this action state changed
             self.notificationService.actionProxy(self, didChangeState: state)
@@ -37,10 +47,10 @@ internal class ActionContainer: Operation, ActionProxy {
     }
     public private(set) var completionStatus: ActionCompletionStatus
     public private(set) var error: Error?
-
-    public private(set) var startTime:  Date?
-    public private(set) var finishTime: Date?
-    public private(set) var executionTime: TimeInterval?
+    public var statistics: ActionStatistics {
+        return _statistics
+    }
+    private let _statistics: Statistics
 
     internal init(action: Action, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.action              = action
@@ -49,21 +59,14 @@ internal class ActionContainer: Operation, ActionProxy {
         self.state               = .created
         self.error               = nil
         self.completion          = completionBlock
-
-        self.startTime           = nil
-        self.finishTime          = nil
-        self.executionTime       = nil
+        self._statistics         = ActionContainer.Statistics()
 
         super.init()
     }
 
-    internal func execute() -> ActionCompletionStatus {
-        return .successful
-    }
+    internal func execute() throws {}
 
     override func main() {
-        let start = Date()
-        self.startTime = start
 
         self.state = .executing
 
@@ -72,22 +75,21 @@ internal class ActionContainer: Operation, ActionProxy {
         ///
         /// Execute the action
         ///
-        self.completionStatus = self.execute()
+        do {
+            try autoreleasepool {
+                try self.execute()
+            }
+            completionStatus = .successful
+        } catch {
+            self.error = error
 
-        /// Note: setting the finishTime before
-        /// setting the state to .finished is 
-        /// intentional so that the finish time
-        /// is available when the notification
-        /// is sent.
-        let finish = Date()
-        self.finishTime = finish
+            completionStatus = .failed
 
+            logError { "Proxy \(self): action \(self.action) failed with error: \(error)." }
+        }
         self.state = .finished
 
-        let elapsedTime = finish.timeIntervalSince(start)
-        self.executionTime = elapsedTime
-        
-        logInfo { "Proxy \(self) finished, total run time \(elapsedTime)." }
+        logInfo { "Proxy \(self) finished, statistics: \(self._statistics)" }
 
         if let completionBlock = completion {
             completionBlock(self)
@@ -112,5 +114,46 @@ extension ActionContainer {
 
     public override var debugDescription: String {
         return self.description
+    }
+}
+
+/// Note: Due to a bug in the current implementation of the compiler, inner classes in extensions must be defined in the same file as the primary class.
+
+///
+/// Extension to implement the Statistics implementation of ActionContainer.
+///
+internal extension ActionContainer {
+
+    ///
+    /// ActionStatistics implementation for rhe container.
+    ///
+    internal class Statistics: ActionStatistics {
+
+        public private(set) var startTime:  Date? = nil
+        public private(set) var finishTime: Date? = nil
+
+        public var executionTime: TimeInterval {
+            guard let start = self.startTime, let finish = self.finishTime else {
+                return 0
+            }
+            return finish.timeIntervalSince(start)
+        }
+
+        @inline(__always)
+        fileprivate func start() { self.startTime = Date() }
+
+        @inline(__always)
+        fileprivate func stop() { self.finishTime = Date() }
+    }
+}
+
+extension ActionContainer.Statistics: CustomStringConvertible {
+
+    public var description: String {
+        return String(format: "{\r\texecutionTime: %.4f {" +
+            "\r\t\t startTime: %@" +
+            "\r\t\tfinishTime: %@" +
+            "\r\t\t}\r\t}",
+                      self.executionTime, self.startTime?.description ?? "(not started)", self.finishTime?.description ?? "(not started)")
     }
 }

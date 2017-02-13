@@ -1,7 +1,7 @@
 ///
 ///  ActionProxy.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -19,6 +19,57 @@
 ///
 import Foundation
 
+///
+/// A type representing the current execution state
+/// of an `Action`.
+///
+public enum ActionState {
+    case created    /// The `Action` was created but has not executed.
+    case pending    /// The `Action` is pending execution in a queue.
+    case executing  /// The `Action` is currently executing.
+    case finished   /// The `Action` has completed executing.
+}
+
+///
+/// The completion status of an `Action`.
+///
+public enum ActionCompletionStatus {
+    case unknown        /// If the `Action` has not executed, its `ActionCompletionStatus` will be `.unknown`.
+    case successful     /// The `Action` completed successfully.
+    case canceled       /// The `Action` was canceled either before or during exection.
+    case failed         /// The `Action` failed to execute completely.
+}
+
+///
+/// Statistics of an `Action` during and 
+/// after its been executed.
+///
+public protocol ActionStatistics {
+
+    ///
+    /// If the `Action` has started, startTime will be set
+    /// with the start time.
+    ///
+    var startTime: Date? { get }
+
+    ///
+    /// If the `Action` has finished, finshTime will be set
+    /// with the finish time.
+    ///
+    var finishTime: Date? { get }
+
+    ///
+    /// If the `Action` has run, executionTime will be set
+    /// with the total execution time (minus your completion block time).
+    ///
+    var executionTime: TimeInterval { get }
+}
+
+///
+/// The executing an `Action`, an instance of `ActionProxy` will
+/// be returned which allows control and monitoring of the executing
+/// `Action`.
+///
 public protocol ActionProxy {
 
     ///
@@ -55,25 +106,14 @@ public protocol ActionProxy {
     ///
     var error: Error? { get }
 
-    // MARK: - Statistics 
+    // MARK: - Statistics
 
     ///
-    /// If the `Action` has started, startTime will be set 
-    /// with the start time.
+    /// The current statistics objects associated with this proxy.
     ///
-    var startTime: Date? { get }
-
+    /// - SeeAlso: `ActionStatistics`
     ///
-    /// If the `Action` has finished, finshTime will be set
-    /// with the finish time.
-    ///
-    var finishTime: Date? { get }
-
-    ///
-    /// If the `Action` has run, executionTime will be set
-    /// with the total execution time (minus your completion block time).
-    ///
-    var executionTime: TimeInterval? { get }
+    var statistics: ActionStatistics { get }
 
     // MARK - Control
 

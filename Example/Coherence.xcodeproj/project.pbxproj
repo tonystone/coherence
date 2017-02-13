@@ -49,6 +49,15 @@
 		EA2CC5D51E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */; };
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
+		EA4A2E881E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E871E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift */; };
+		EA4A2E8B1E50DBE600C68540 /* ReadOnlyContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8A1E50DBE600C68540 /* ReadOnlyContextTests.swift */; };
+		EA4A2E8D1E512FC600C68540 /* MockListActionUnmanaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */; };
+		EA4A2E901E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8E1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift */; };
+		EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */; };
+		EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */; };
+		EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */; };
+		EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
+		EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */; };
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
 		EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */; };
 		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
@@ -130,8 +139,17 @@
 		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockGenericAction.swift; path = ConnectTests/MockGenericAction.swift; sourceTree = "<group>"; };
 		EA31505D1E35533400FB9905 /* MockListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockListAction.swift; path = ConnectTests/MockListAction.swift; sourceTree = "<group>"; };
+		EA4A2E871E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ManagedObjectContext+ExtensionsTests.swift"; path = "ConnectTests/ManagedObjectContext+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		EA4A2E8A1E50DBE600C68540 /* ReadOnlyContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyContextTests.swift; sourceTree = "<group>"; };
+		EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockListActionUnmanaged.swift; path = ConnectTests/MockListActionUnmanaged.swift; sourceTree = "<group>"; };
+		EA4A2E8E1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity3Unmanaged+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity3Unmanaged+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
+		EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContext+MergeTests.swift"; path = "ConnectTests/ActionContext+MergeTests.swift"; sourceTree = "<group>"; };
+		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -305,6 +323,7 @@
 			children = (
 				EA1C14051E3D80E1002E63BD /* GenericCoreDataStackTests.swift */,
 				EA1C14061E3D80E1002E63BD /* ObjcCoreDataStackTests.swift */,
+				EA4A2E8A1E50DBE600C68540 /* ReadOnlyContextTests.swift */,
 				EA1C14071E3D80E1002E63BD /* TestModel1.swift */,
 				EA1C14081E3D80E1002E63BD /* TestModel2.swift */,
 				EA1C14091E3D80E1002E63BD /* TestModel3.swift */,
@@ -362,6 +381,10 @@
 				EA1C144F1E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift */,
 				EA1C14501E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift */,
 				EA1C14511E3FA0B0002E63BD /* ConnectEntity2+CoreDataProperties.swift */,
+				EA4A2E8E1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift */,
+				EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */,
+				EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */,
+				EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */,
 				EA1C144B1E3FA08A002E63BD /* ConnectTestModel.xcdatamodeld */,
 			);
 			name = Model;
@@ -388,8 +411,12 @@
 			isa = PBXGroup;
 			children = (
 				EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */,
+				EA4A2E871E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift */,
+				EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */,
+				EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */,
 				EA31505B1E35359800FB9905 /* MockGenericAction.swift */,
 				EA31505D1E35533400FB9905 /* MockListAction.swift */,
+				EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */,
 				EA2CC5D41E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift */,
 				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 				EA1C144A1E3FA044002E63BD /* Model */,
@@ -663,12 +690,17 @@
 				EA1C144D1E3FA08A002E63BD /* ConnectTestModel.xcdatamodeld in Sources */,
 				EA1C14291E3EF9EB002E63BD /* MetaLogEntryTests.swift in Sources */,
 				EA1C14521E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift in Sources */,
+				EA4A2E8B1E50DBE600C68540 /* ReadOnlyContextTests.swift in Sources */,
 				EA1C14531E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
+				EA4A2E8D1E512FC600C68540 /* MockListActionUnmanaged.swift in Sources */,
 				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,
+				EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */,
 				EA1C14541E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift in Sources */,
+				EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
 				EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */,
+				EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */,
 				EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */,
 				EA1C14181E3D8104002E63BD /* User.swift in Sources */,
 				EA1C14161E3D80FD002E63BD /* TestModel2.swift in Sources */,
@@ -676,8 +708,12 @@
 				EA1C14131E3D80F3002E63BD /* GenericCoreDataStackTests.swift in Sources */,
 				EA1C14551E3FA0B0002E63BD /* ConnectEntity2+CoreDataProperties.swift in Sources */,
 				EA1C14141E3D80F6002E63BD /* ObjcCoreDataStackTests.swift in Sources */,
+				EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */,
 				EA2CC5D51E36B17300054305 /* NSEntityDescription+EntitySettingsTests.swift in Sources */,
+				EA4A2E881E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift in Sources */,
+				EA4A2E901E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */,
 				EA1C14171E3D8101002E63BD /* TestModel3.swift in Sources */,
+				EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */,
 				EA1C14151E3D80FA002E63BD /* TestModel1.swift in Sources */,
 			);

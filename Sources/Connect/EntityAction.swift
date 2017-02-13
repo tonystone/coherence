@@ -1,7 +1,7 @@
 ///
 ///  EntityAction.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -22,7 +22,18 @@ import CoreData
 
 public protocol EntityAction: Action {
 
-    associatedtype EntityType: NSManagedObject
+    associatedtype ManagedObjectType: NSManagedObject
 
-    func execute(context: NSManagedObjectContext) -> (status: Int, headers: [String: String], objects: [Any], error: Error?)
+    ///
+    /// Execute Action on a background thread.
+    ///
+    /// Actions that do not throw an exception or are canceled 
+    /// will complete with an `ActionCompletionStatus.successfull`
+    /// in the `ActionProxy` that is reqeturned when you execute
+    /// this action.
+    ///
+    /// - SeeAlso: `ActionCompletionStatus`
+    /// - SeeAlso: `ActionProxy`
+    ///
+    func execute(context: ActionContext) throws
 }

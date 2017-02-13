@@ -1,5 +1,5 @@
 ///
-///  GenericAction.swift
+///  MockUnmanagedEntityAction.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -15,22 +15,21 @@
 ///  See the License for the specific language governing permissions and
 ///  limitations under the License.
 ///
-///  Created by Tony Stone on 1/22/17.
+///  Created by Tony Stone on 2/12/17.
 ///
-import Foundation
+import UIKit
+import CoreData
+import TraceLog
+import Coherence
 
-public protocol GenericAction: Action {
+class MockListActionUnmanaged: EntityAction {
+
+    typealias ManagedObjectType = ConnectEntity3Unmanaged
+
+    public func execute(context: ActionContext) throws {}
 
     ///
-    /// Execute Action on a background thread.
+    /// All Actions must be cancelable
     ///
-    /// Actions that do not throw an exception or are canceled
-    /// will complete with an `ActionCompletionStatus.successfull`
-    /// in the `ActionProxy` that is reqeturned when you execute
-    /// this action.
-    ///
-    /// - SeeAlso: `ActionCompletionStatus`
-    /// - SeeAlso: `ActionProxy`
-    ///
-    func execute() throws
+    public func cancel() {}
 }

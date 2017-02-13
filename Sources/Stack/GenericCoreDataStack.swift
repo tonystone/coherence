@@ -79,7 +79,7 @@ public typealias AsynErrorHandlerBlock = (Error) -> Void
 ///
 ///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
-open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ContextType: NSManagedObjectContext>: CoreDataStack {
+open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, BackgroundContextType: NSManagedObjectContext>: CoreDataStack {
 
     /// 
     /// The model this `GenericCoreDataStack` was constructed with.
@@ -103,7 +103,14 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
     ///
-    public let viewContext: ContextType
+    public var viewContext: NSManagedObjectContext {
+        return self.mainContext
+    }
+
+    ///
+    /// This is the main internal context that is kept up to date.
+    ///
+    private let mainContext: ReadOnlyContext
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
@@ -112,11 +119,11 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
-    public func newBackgroundContext() -> ContextType {
+    public func newBackgroundContext() -> BackgroundContextType {
 
         logInfo(tag) { "Creating edit context for \(Thread.current)..." }
 
-        let context = ContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        let context = BackgroundContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         context.persistentStoreCoordinator = self.persistentStoreCoordinator
 
         logInfo(tag) { "Edit context created." }
@@ -178,8 +185,8 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
         self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
 
         /// Now the main thread context
-        self.viewContext = ContextType(concurrencyType: .mainQueueConcurrencyType)
-        self.viewContext.parent = self.rootContext
+        self.mainContext = ReadOnlyContext(concurrencyType: .mainQueueConcurrencyType)
+        self.mainContext.parent = self.rootContext
 
         logInfo(tag) { "Store path: \(storeLocationURL)" }
         
@@ -336,7 +343,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
 
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
-        if let context = notification.object as? ContextType {
+        if let context = notification.object as? NSManagedObjectContext {
             
             ///
             /// If the context has it's persistentStoreCoordinate as our coordinator
@@ -355,8 +362,13 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                         ///
                         self.viewContext.mergeChanges(fromContextDidSave: notification)
 
+                        ///
                         /// Now save it to propagate the changes to the root.
-                        try self.viewContext.save()
+                        ///
+                        /// Note: Since the main context is readonly we must 
+                        ///       override the save method.
+                        ///
+                        try self.mainContext.save(override: true)
 
                         ////
                         /// And finally save the root context to the persistent store

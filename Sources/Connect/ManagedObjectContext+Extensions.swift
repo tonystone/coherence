@@ -1,8 +1,7 @@
-
 ///
-///  ManagedObjectContext+PerformAndWait.swift
+///  NSManagedObjectContext+Extensions.swift
 ///
-///  Copyright 2015 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -16,24 +15,23 @@
 ///  See the License for the specific language governing permissions and
 ///  limitations under the License.
 ///
-///  Created by Tony Stone on 1/29/17.
+///  Created by Tony Stone on 2/6/17.
 ///
 import CoreData
 
-///
-/// Extensions for use in Actions and other places tha use ManagedObjectContexts
-///
-public extension NSManagedObjectContext {
+extension NSManagedObjectContext {
 
     ///
     /// synchronously performs the block on the context's queue with a throwing block.  May safely be called reentrantly and throw Errors from this block.
     ///
+    @nonobjc
     public func performAndWait(_ block: @escaping () throws -> Void) throws {
         var error: Error? = nil
 
-        self.performAndWait {
+        self.performAndWait { () -> Void in
             do {
                 try block()
+
             } catch let blockError {
                 error = blockError
             }
@@ -43,4 +41,3 @@ public extension NSManagedObjectContext {
         }
     }
 }
-

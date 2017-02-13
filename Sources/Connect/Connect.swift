@@ -1,7 +1,7 @@
 ///
 ///  Connect.swift
 ///
-///  Copyright 2017 Tony Stone
+///  Copyright 2013 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ public class Connect {
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
     fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
-    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, ConnectContext>
+    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, LoggingContext>
 
     ///
     /// Stack used to manage meta data about the main cache
@@ -218,6 +218,15 @@ extension Connect: CoreDataStack {
         }
         return context
     }
+
+    internal func newActionContext() -> ActionContext {
+
+        let context = ActionContext(concurrencyType: .privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = self.dataCache.persistentStoreCoordinator
+        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+
+        return context
+    }
 }
 
 ///
@@ -225,7 +234,8 @@ extension Connect: CoreDataStack {
 ///
 public extension Connect {
 
-    func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) throws -> ActionProxy {
+    @discardableResult
+    func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
         let container = GenericActionContainer<ActionType>(action: action, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
@@ -236,11 +246,12 @@ public extension Connect {
         return container
     }
 
-    func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) throws -> ActionProxy {
+    @discardableResult
+    func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
-        let entityQueue = try queue(entity: ActionType.EntityType.self)
+        let entityQueue = try queue(entity: ActionType.ManagedObjectType.self)
 
-        let context = self.newBackgroundContext(logged: false) /// Get an unlogged context
+        let context = self.newActionContext()
 
         let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
 
@@ -273,37 +284,43 @@ public extension Connect {
 ///
 /// Connect Notification handling
 ///
-private extension Connect {
+fileprivate extension Connect {
 
     func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationDidEnterBackground(notification:)),       name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillEnterForeground(notification:)),      name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillTerminate(notification:)),            name: Notification.Name.UIApplicationWillTerminate, object: nil)
 
     }
 
     func unregisterForNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    dynamic func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
 
     }
 
-    func handleProtectedDataWillBecomeUnavailable(notification: NSNotification) {
+    dynamic func handleProtectedDataWillBecomeUnavailable(notification: NSNotification) {
 
     }
 
-    func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
+    dynamic func handleApplicationDidEnterBackground(notification: NSNotification) {
 
     }
 
-    func handleApplicationWillTerminate(notification: NSNotification) {
+    dynamic func handleApplicationWillEnterForeground(notification: NSNotification) {
+        
+    }
+
+    dynamic func handleApplicationWillTerminate(notification: NSNotification) {
 
     }
 
-    func handleApplicationDidEnterBackground(notification: NSNotification) {
-
-    }
-
-    func handleApplicationWillEnterForeground(notification: NSNotification) {
-
-    }
-
-    func handleConnectivityChanged(notification: NSNotification) {
+    dynamic func handleConnectivityChanged(notification: NSNotification) {
 
     }
 }

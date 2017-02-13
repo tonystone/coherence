@@ -1,7 +1,7 @@
 ///
 ///  GenericActionContainer.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -32,16 +32,13 @@ class GenericActionContainer<ActionType: GenericAction>: ActionContainer {
         logInfo { "Proxy \(self) created for action \(self.action)." }
     }
 
-    internal override func execute() -> ActionCompletionStatus {
-    
-        let (status, _, _, _) = self.genericAction.execute()
+    internal override func execute() throws {
+        try self.genericAction.execute()
+    }
 
-        switch status {
+    override func cancel() {
+        self.genericAction.cancel()
 
-        case 200:
-            return .successful
-        default:
-            return .failed
-        }
+        super.cancel()
     }
 }

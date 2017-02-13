@@ -1,7 +1,7 @@
 ///
 ///  EntityActionContainer.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -24,9 +24,9 @@ import CoreData
 class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
 
     private let entityAction: ActionType
-    private let context: NSManagedObjectContext
+    private let context: ActionContext
 
-    internal init(action: ActionType, context: NSManagedObjectContext, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+    internal init(action: ActionType, context: ActionContext, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.entityAction = action
         self.context      = context
 
@@ -35,16 +35,15 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
         logInfo { "Proxy \(self) created for action \(self.action)." }
     }
 
-    internal override func execute() -> ActionCompletionStatus {
+    internal override func execute() throws {
+        try self.entityAction.execute(context: context)
 
-        let (status, _, _, _) = self.entityAction.execute(context: context)
+        logInfo { "Proxy \(self): context statistics: \(self.context.statistics)" }
+    }
 
-        switch status {
+    override func cancel() {
+        self.entityAction.cancel()
 
-        case 200:
-            return .successful
-        default:
-            return .failed
-        }
+        super.cancel()
     }
 }

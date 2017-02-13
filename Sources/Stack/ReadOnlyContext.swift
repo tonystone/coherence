@@ -1,5 +1,5 @@
 ///
-///  GenericAction.swift
+///  ReadOnlyContext.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -15,22 +15,26 @@
 ///  See the License for the specific language governing permissions and
 ///  limitations under the License.
 ///
-///  Created by Tony Stone on 1/22/17.
+///  Created by Tony Stone on 2/5/17.
 ///
-import Foundation
+import CoreData
 
-public protocol GenericAction: Action {
-
-    ///
-    /// Execute Action on a background thread.
-    ///
-    /// Actions that do not throw an exception or are canceled
-    /// will complete with an `ActionCompletionStatus.successfull`
-    /// in the `ActionProxy` that is reqeturned when you execute
-    /// this action.
-    ///
-    /// - SeeAlso: `ActionCompletionStatus`
-    /// - SeeAlso: `ActionProxy`
-    ///
-    func execute() throws
+public enum ReadOnlyContextErrors: Error {
+    case readOnlyContext(String)
 }
+
+internal class ReadOnlyContext: NSManagedObjectContext {
+
+    public override func save() throws {
+        try self.save(override: false)
+    }
+
+    internal func save(override: Bool) throws {
+        if override {
+            try super.save()
+        } else {
+            throw ReadOnlyContextErrors.readOnlyContext("Cannot save, context is read only.")
+        }
+    }
+}
+

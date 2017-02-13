@@ -1,7 +1,7 @@
 ///
 ///  ConnectTests.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 ///
 import XCTest
 import CoreData
-import Coherence
+@testable import Coherence
 
 class ConnectTests: XCTestCase {
 
@@ -56,6 +56,97 @@ class ConnectTests: XCTestCase {
         XCTAssertEqual(try Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
+    func testConnectEntityMissingCanBeManaged() {
+
+        let input = self.testModel.entitiesByName["ConnectEntity1"]
+        let expected = true
+
+        do {
+            let _ = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+            XCTAssertEqual(input?.managed, expected)
+
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+
+    func testConnectMissingUniquenessAttributeEntityCannotBeManaged() {
+
+        let input = self.testModel.entitiesByName["ConnectEntity4MissingUniquenessAttribute"]
+        let expected = false
+
+        do {
+            let _ = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+            XCTAssertEqual(input?.managed, expected)
+
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+
+    func testPersistentStoreCoordinator() {
+
+        do {
+            let input = (id: Int64(1), string: "Test String 1")
+            let expected = input
+
+            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+            ////
+            /// Create a custom context which write directoy to the connect.persistentStoreCoordinator
+            ///
+            let editContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            editContext.persistentStoreCoordinator = connect.persistentStoreCoordinator
+
+            ///
+            /// View context to make sure we same threw the stack
+            ///
+            let viewContext = connect.viewContext
+
+            var objectId: NSManagedObjectID? = nil
+
+            try editContext.performAndWait {
+
+                if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
+                    let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into: editContext) as? ConnectEntity1 {
+
+                    entity.logTransactions = true
+
+                    object.id              = input.id
+                    object.stringAttribute = input.string
+
+
+                    try editContext.save()
+
+                    objectId = object.objectID
+                }
+            }
+
+            var savedObject: NSManagedObject? = nil
+
+            try viewContext.performAndWait {
+                if let objectId = objectId {
+                    savedObject = try viewContext.existingObject(with: objectId)
+                }
+            }
+
+            XCTAssertNotNil(savedObject)
+            
+            if let savedObject = savedObject as? ConnectEntity1 {
+                
+                XCTAssertEqual(savedObject.id,              expected.id)
+                XCTAssertEqual(savedObject.stringAttribute, expected.string)
+                
+            } else {
+                XCTFail()
+            }
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+
     func testCRUDCreateAndRead () throws {
 
         let input = (id: Int64(1), string: "Test String 1")
@@ -71,7 +162,7 @@ class ConnectTests: XCTestCase {
         editContext.performAndWait {
 
             if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
-               let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+                let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
 
                 entity.logTransactions = true
 
@@ -89,27 +180,26 @@ class ConnectTests: XCTestCase {
 
         var savedObject: NSManagedObject? = nil
 
-            mainContext.performAndWait {
-                if let objectId = objectId {
-                    do {
-                        savedObject = try mainContext.existingObject(with: objectId)
-                    } catch {
-                        XCTFail("\(error)")
-                    }
+        mainContext.performAndWait {
+            if let objectId = objectId {
+                do {
+                    savedObject = try mainContext.existingObject(with: objectId)
+                } catch {
+                    XCTFail("\(error)")
                 }
             }
+        }
 
-            XCTAssertNotNil(savedObject)
+        XCTAssertNotNil(savedObject)
 
-            if let savedObject = savedObject as? ConnectEntity1 {
+        if let savedObject = savedObject as? ConnectEntity1 {
 
-                XCTAssertEqual(savedObject.id,              expected.id)
-                XCTAssertEqual(savedObject.stringAttribute, expected.string)
-                
-            } else {
-                XCTFail()
-            }
-
+            XCTAssertEqual(savedObject.id,              expected.id)
+            XCTAssertEqual(savedObject.stringAttribute, expected.string)
+            
+        } else {
+            XCTFail()
+        }
     }
 
     func testCRUDUpdate () throws {
@@ -257,7 +347,7 @@ class ConnectTests: XCTestCase {
 
     func testExecuteEntityAction() {
     
-        let input = MockListAction()
+        let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
@@ -265,7 +355,7 @@ class ConnectTests: XCTestCase {
 
             let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
 
-            let proxy = try connect.execute(input) { _ in
+            let proxy = try connect.execute(MockListAction(testValues: input)) { _ in
                 expecation.fulfill()
             }
 
@@ -276,6 +366,27 @@ class ConnectTests: XCTestCase {
 
                     XCTAssertEqual(proxy.state,            expected.state)
                     XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
+                }
+            }
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+
+    func testExecuteEntityActionUnmanagedEntity() {
+    
+        let input = MockListActionUnmanaged()
+        let expected = "Entity 'ConnectEntity3Unmanaged' not managed by Coherence.Connect"
+
+        do {
+            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+
+            XCTAssertThrowsError( try connect.execute(input) ) { (error) in
+
+                if case Connect.Errors.unmanagedEntity(let message) = error {
+                    XCTAssertEqual(message, expected)
+                } else {
+                    XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
                 }
             }
         } catch {

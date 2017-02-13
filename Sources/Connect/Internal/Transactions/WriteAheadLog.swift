@@ -30,9 +30,13 @@ internal class WriteAheadLog {
         case failedToCreateLogEntry(String)
         case failedToObtainPermanentIDs(String)
         case transactionWriteFailed(String)
+        case nilEntityName(String)
     }
 
-    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
+    internal typealias TransactionContextType = NSManagedObjectContext
+    internal typealias MetadataContextType    = NSManagedObjectContext
+
+    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, MetadataContextType>
     
     fileprivate let coreDataStack: CoreDataStackType
     
@@ -96,52 +100,44 @@ internal class WriteAheadLog {
         return sequenceNumberBlockStart...sequenceNumberBlockEnd
     }
 
-    internal func logTransactionForContextChanges(_ transactionContext: NSManagedObjectContext) throws -> TransactionID {
+    internal func logTransactionForContextChanges(_ transactionContext: TransactionContextType) throws -> TransactionID {
 
-        //
-        // NOTE: This method must be reentrent.  Be sure to use only stack variables asside from
-        //       the protected access method nextSequenceNumberBlock
-        //
-        let inserted = transactionContext.insertedObjects
-        let updated  = transactionContext.updatedObjects
-        let deleted  = transactionContext.deletedObjects
-
-        //
-        // Get a block of sequence numbers to use for the records
-        // that need recording.
-        //
-        // Sequence number = begin + end + inserted + updated + deleted
-        //
-        let sequenceNumberBlock = self.nextSequenceNumberBlock(2 + inserted.count + updated.count + deleted.count)
-        
-        var sequenceNumber = sequenceNumberBlock.lowerBound
-        
         var transactionID: TransactionID = "temp"
-        var writeError: NSError? = nil
-        
-        let metadataContext = coreDataStack.newBackgroundContext()
-        
-        metadataContext.performAndWait {
 
-            do {
-                transactionID = try self.logBeginTransactionEntry(metadataContext, sequenceNumber: &sequenceNumber)
-                    
-                try self.logInsertEntries(inserted, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
-                try self.logUpdateEntries(updated,  transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
-                try self.logDeleteEntries(deleted,  transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
+        try transactionContext.performAndWait {
+            ///
+            /// NOTE: This method must be reentrent.  Be sure to use only stack variables asside from
+            ///       the protected access method nextSequenceNumberBlock
+            ///
+            let inserted = transactionContext.insertedObjects
+            let updated  = transactionContext.updatedObjects
+            let deleted  = transactionContext.deletedObjects
 
-                try self.logEndTransactionEntry(transactionID, metadataContext: metadataContext, sequenceNumber:  &sequenceNumber)
+            ///
+            /// Get a block of sequence numbers to use for the records
+            /// that need recording.
+            ///
+            /// Sequence number = begin + end + inserted + updated + deleted
+            ///
+            let sequenceNumberBlock = self.nextSequenceNumberBlock(2 + inserted.count + updated.count + deleted.count)
+            var sequenceNumber = sequenceNumberBlock.lowerBound
+
+            let metadataContext = self.coreDataStack.newBackgroundContext()
+
+            transactionID = try self.logBeginTransactionEntry(metadataContext, sequenceNumber: &sequenceNumber)
+
+            try self.logInsertEntries(inserted, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
+            try self.logUpdateEntries(updated,  transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
+            try self.logDeleteEntries(deleted,  transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: &sequenceNumber)
+
+            try self.logEndTransactionEntry(transactionID, metadataContext: metadataContext, sequenceNumber:  &sequenceNumber)
+
+            try metadataContext.performAndWait {
 
                 if metadataContext.hasChanges {
                     try metadataContext.save()
                 }
-            } catch let error as NSError {
-                writeError = error
             }
-        }
-        
-        if let error = writeError {
-            throw Errors.transactionWriteFailed(error.localizedDescription)
         }
         return transactionID
     }
@@ -149,79 +145,116 @@ internal class WriteAheadLog {
     internal func removeTransaction(_ transactionID: TransactionID) {
     }
 
-    internal func transactionLogEntriesForTransaction(_ transactionID: TransactionID, context: NSManagedObjectContext) -> [MetaLogEntry] {
+    internal func transactionLogEntriesForTransaction(_ transactionID: TransactionID) -> [MetaLogEntry] {
         return []
     }
 
-    internal func transactionLogRecordsForEntity(_ entityDescription: NSEntityDescription, context: NSManagedObjectContext) throws -> [MetaLogEntry] {
+    internal func transactionLogRecordsForEntity(_ entityDescription: NSEntityDescription) throws -> [MetaLogEntry] {
 
-        let fetchRequest = NSFetchRequest<NSManagedObject>()
+        let context = self.coreDataStack.newBackgroundContext()
+        let fetchRequest = NSFetchRequest<MetaLogEntry>()
 
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: context)
         fetchRequest.predicate = NSPredicate(format: "updateEntityName == %@", entityDescription.name!)
 
-        return try context.fetch(fetchRequest) as! [MetaLogEntry]
+        var results: [MetaLogEntry] = []
+
+        try context.performAndWait {
+            results = try context.fetch(fetchRequest)
+        }
+        return results
     }
 
-    fileprivate func logBeginTransactionEntry(_ metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws -> TransactionID {
+    fileprivate func logBeginTransactionEntry(_ metadataContext: MetadataContextType, sequenceNumber: inout Int) throws -> TransactionID {
 
-        guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-            throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction begin marker.")
+        var transactionID = "tmp"
+        let sequence      = Int32(sequenceNumber)
+
+        try metadataContext.performAndWait {
+
+            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
+                throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction begin marker.")
+            }
+
+            do {
+                try metadataContext.obtainPermanentIDs(for: [metaLogEntry])
+
+            } catch let error as NSError {
+                throw  Errors.failedToObtainPermanentIDs("Failed to obtain perminent id for transaction log record: \(error.localizedDescription)")
+            }
+
+            ///
+            /// We use the URI representation of the object id as the transactionID
+            ///
+            transactionID = metaLogEntry.objectID.uriRepresentation().absoluteString
+
+            metaLogEntry.transactionID = transactionID
+            metaLogEntry.sequenceNumber = sequence
+            metaLogEntry.previousSequenceNumber = sequence - 1
+            metaLogEntry.type = MetaLogEntryType.beginMarker
+            metaLogEntry.timestamp = Date().timeIntervalSinceNow
+
+            logTrace(4) {
+                var message: String = ""
+
+                ///
+                /// Note: TraceLog blocks are exscaping closures so
+                /// if we are to bring an NSManagedObject in it, you
+                /// must wrap it in a context.perform which is
+                /// eecuted when the closure is evaluated
+                ///
+                metadataContext.performAndWait { () -> Void in
+                    message = "Log entry created: \(metaLogEntry)"
+                }
+                return message
+            }
         }
+        ///
+        /// Increment the sequence for this record
+        ///
+        sequenceNumber = sequenceNumber + 1
 
-        do {
-            try metadataContext.obtainPermanentIDs(for: [metaLogEntry])
-
-        } catch let error as NSError {
-            throw  Errors.failedToObtainPermanentIDs("Failed to obtain perminent id for transaction log record: \(error.localizedDescription)")
-        }
-
-        //
-        // We use the URI representation of the object id as the transactionID
-        //
-        let transactionID = metaLogEntry.objectID.uriRepresentation().absoluteString
-
-        metaLogEntry.transactionID = transactionID
-        metaLogEntry.sequenceNumber = Int32(sequenceNumber)
-        metaLogEntry.previousSequenceNumber = Int32(sequenceNumber - 1)
-        metaLogEntry.type = MetaLogEntryType.beginMarker
-        metaLogEntry.timestamp = Date().timeIntervalSinceNow
-        
-        //
-        // Increment the sequence for this record
-        //
-        sequenceNumber += 1
-        
-        logTrace(4) {
-            "Log entry created: \(metaLogEntry)"
-        }
-        
         return transactionID
     }
 
-    fileprivate func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
+    fileprivate func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
 
-        guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-            throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction end marker.")
+        let sequence = Int32(sequenceNumber)
+
+        try metadataContext.performAndWait {
+
+            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
+                throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction end marker.")
+            }
+
+            metaLogEntry.transactionID = transactionID
+            metaLogEntry.sequenceNumber = sequence
+            metaLogEntry.previousSequenceNumber = sequence
+            metaLogEntry.type = MetaLogEntryType.endMarker
+            metaLogEntry.timestamp = Date().timeIntervalSinceNow
+
+            logTrace(4) {
+                var message: String = ""
+
+                ///
+                /// Note: TraceLog blocks are exscaping closures so
+                /// if we are to bring an NSManagedObject in it, you
+                /// must wrap it in a context.perform which is
+                /// eecuted when the closure is evaluated
+                ///
+                metadataContext.performAndWait { () -> Void in
+                    message = "Log entry created: \(metaLogEntry)"
+                }
+                return message
+            }
         }
-
-        metaLogEntry.transactionID = transactionID
-        metaLogEntry.sequenceNumber = Int32(sequenceNumber)
-        metaLogEntry.previousSequenceNumber = Int32(sequenceNumber - 1)
-        metaLogEntry.type = MetaLogEntryType.endMarker
-        metaLogEntry.timestamp = Date().timeIntervalSinceNow
-        
-        //
-        // Increment the sequence for this record
-        //
+        ///
+        /// Increment the sequence for this record
+        ///
         sequenceNumber += 1
-        
-        logTrace(4) {
-            "Log entry created: \(metaLogEntry)"
-        }
     }
-    
-    fileprivate func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext,  sequenceNumber: inout Int) throws {
+
+    fileprivate func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in insertedRecords {
 
@@ -229,8 +262,6 @@ internal class WriteAheadLog {
             /// Only log entities when enabled for the entity type.
             ///
             if object.entity.logTransactions {
-
-                let metaLogEntry = try self.transactionLogEntry(MetaLogEntryType.insert, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
                 //
                 // Get the object attribute change data
                 //
@@ -240,21 +271,22 @@ internal class WriteAheadLog {
 
                 data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
 
-                metaLogEntry.updateData = data
-
-                //
-                // Increment the sequence for this record
-                //
+                try self.insertTransactionLogEntry(entity: object.entity,
+                                        objectID: object.objectID.uriRepresentation().absoluteString,
+                                        updateData: data,
+                                        type: .insert,
+                                        transactionID: transactionID,
+                                        metadataContext: metadataContext,
+                                        sequenceNumber: sequenceNumber)
+                ///
+                /// Increment the sequence for this record
+                ///
                 sequenceNumber += 1
-
-                logTrace(4) {
-                    "Log entry created: \(metaLogEntry)"
-                }
             }
         }
     }
-    
-    fileprivate func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
+
+    fileprivate func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in updatedRecords {
 
@@ -262,8 +294,6 @@ internal class WriteAheadLog {
             /// Only log entities when enabled for the entity type.
             ///
             if object.entity.logTransactions {
-
-                let metaLogEntry = try self.transactionLogEntry(MetaLogEntryType.update, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
                 //
                 // Get the object attribute change data
                 //
@@ -274,21 +304,22 @@ internal class WriteAheadLog {
                 data.attributesAndValues = object.dictionaryWithValues(forKeys: attributes) as [String : AnyObject]
                 data.updatedAttributes   = [String](object.changedValues().keys)
 
-                metaLogEntry.updateData = data
-
-                //
-                // Increment the sequence for this record
-                //
+                try self.insertTransactionLogEntry(entity: object.entity,
+                                                   objectID: object.objectID.uriRepresentation().absoluteString,
+                                                   updateData: data,
+                                                   type: .update,
+                                                   transactionID: transactionID,
+                                                   metadataContext: metadataContext,
+                                                   sequenceNumber: sequenceNumber)
+                ///
+                /// Increment the sequence for this record
+                ///
                 sequenceNumber += 1
-
-                logTrace(4) {
-                    "Log entry created: \(metaLogEntry)"
-                }
             }
         }
     }
 
-    fileprivate func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
+    fileprivate func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in deletedRecords {
 
@@ -297,38 +328,61 @@ internal class WriteAheadLog {
             ///
             if object.entity.logTransactions {
 
-                let metaLogEntry = try self.transactionLogEntry(MetaLogEntryType.delete, object: object, transactionID: transactionID, metadataContext: metadataContext, sequenceNumber: sequenceNumber)
-
+                try self.insertTransactionLogEntry(entity: object.entity,
+                                                   objectID: object.objectID.uriRepresentation().absoluteString,
+                                                   updateData: nil,
+                                                   type: .update,
+                                                   transactionID: transactionID,
+                                                   metadataContext: metadataContext,
+                                                   sequenceNumber: sequenceNumber)
                 //
                 // Increment the sequence for this record
                 //
                 sequenceNumber += 1
-
-                logTrace(4) {
-                    "Log entry created: \(metaLogEntry)"
-                }
             }
         }
     }
 
-    fileprivate func transactionLogEntry(_ type: MetaLogEntryType, object: NSManagedObject, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: Int) throws -> MetaLogEntry {
+    fileprivate func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
 
-        guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-            throw Errors.failedToCreateLogEntry("Failed to create login entry for '\(type)' record.")
+        let sequence = Int32(sequenceNumber)
+
+        try metadataContext.performAndWait {
+
+            guard let entityName = entity.name else {
+                throw Errors.nilEntityName("Nil entity name for logged entity.")
+            }
+
+            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
+                throw Errors.failedToCreateLogEntry("Failed to create login entry for '\(type)' record.")
+            }
+
+            metaLogEntry.transactionID = transactionID
+            metaLogEntry.sequenceNumber = sequence
+            metaLogEntry.previousSequenceNumber = sequence - 1
+            metaLogEntry.type = type
+            metaLogEntry.timestamp = Date().timeIntervalSinceNow
+
+            //
+            // Update the object identification data
+            //
+            metaLogEntry.updateObjectID = objectID
+            metaLogEntry.updateEntityName = entityName
+
+            logTrace(4) {
+                var message: String = ""
+
+                ///
+                /// Note: TraceLog blocks are exscaping closures so
+                /// if we are to bring an NSManagedObject in it, you
+                /// must wrap it in a context.perform which is 
+                /// eecuted when the closure is evaluated
+                ///
+                metadataContext.performAndWait { () -> Void in
+                    message = "Log entry created: \(metaLogEntry)"
+                }
+                return message
+            }
         }
-
-        metaLogEntry.transactionID = transactionID
-        metaLogEntry.sequenceNumber = Int32(sequenceNumber)
-        metaLogEntry.previousSequenceNumber = Int32(sequenceNumber - 1)
-        metaLogEntry.type = type
-        metaLogEntry.timestamp = Date().timeIntervalSinceNow
-        
-        //
-        // Update the object identification data
-        //
-        metaLogEntry.updateObjectID = object.objectID.uriRepresentation().absoluteString
-        metaLogEntry.updateEntityName = object.entity.name
-
-        return metaLogEntry
     }
 }

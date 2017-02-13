@@ -20,20 +20,6 @@
 import Foundation
 import CoreData
 
-public enum ActionState {
-    case created
-    case pending
-    case executing
-    case finished
-}
-
-public enum ActionCompletionStatus {
-    case unknown
-    case successful
-    case canceled
-    case failed
-}
-
 public protocol Action {
 
     ///

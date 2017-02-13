@@ -1,7 +1,7 @@
 ///
 ///  MockListAction.swift
 ///
-///  Copyright 2016 Tony Stone
+///  Copyright 2017 Tony Stone
 ///
 ///  Licensed under the Apache License, Version 2.0 (the "License");
 ///  you may not use this file except in compliance with the License.
@@ -24,13 +24,31 @@ import Coherence
 
 class MockListAction: EntityAction {
 
-    typealias EntityType = ConnectEntity1
+    typealias ManagedObjectType = ConnectEntity1
 
-    public func execute(context: NSManagedObjectContext) -> (status: Int, headers: [String : String], objects: [Any], error: Error?) {
+    private enum Errors: Error {
+        case testError(String)
+    }
 
-        logInfo { "Executed..." }
+    private var testValues: [ManagedObjectType]
 
-        return (200, [:], [], nil)
+    public init(testValues: [ManagedObjectType]) {
+        self.testValues = testValues
+    }
+
+    public func execute(context: ActionContext) throws {
+
+        logInfo { "Executing..." }
+        guard let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: context) else {
+            throw Errors.testError("Failed to get entity for ConnectEntity1.")
+        }
+
+        ///
+        /// Merge the values set in the init into the DB
+        ///
+        try context.performAndWait {
+            try context.merge(objects: self.testValues, for: entity)
+        }
     }
 
     ///
