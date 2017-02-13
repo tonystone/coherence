@@ -1,6 +1,18 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
+
+#### Added 
+- Added `ActionContext` which captures statistics about context usage.
+- Added `ActionContext` merge routine for merging changing from remote connections.
+- `EntityAction` execute now passed an ActionContext rather than an `NSManagedObjectContext`.
+
+#### Breaking Updates 
+- Moved statistics in `ActionProxy` to it's own protocol.
+- Converted `Action` protocol `execute` func to throw instead of returning a type.
+- Changed `GenericCoreDataStack` & `CoreDataStack` `viewContext` to be read only, it will now throw an error if you save changes to it.
+
 ## [3.0.0-beta.1](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.1) 
 
 #### Added 
@@ -14,7 +26,6 @@ All significant changes to this project will be documented in this file.
 - Changed name of `CoreDataStack` to `ObjcCoreDataStack`.
 - Renamed `func editContext()` to `func newBackgroundContext()`.
 - Renamed `func mainContext()` to `var viewContext()`.
-- Changed the `viewContext` to be read only, it will now throw an error if you save changes to it.
 - Changed async error handler error type from `NSError` to `Error`.
 - Changed context model to be a hybrid model that connects the backgroundContexts directory to the persistent store and maintains the viewContext. Data from the viewContext is propagated to a root context that is persisted in a background thread.
 
