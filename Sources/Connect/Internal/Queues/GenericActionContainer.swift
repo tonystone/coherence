@@ -24,7 +24,7 @@ class GenericActionContainer<ActionType: GenericAction>: ActionContainer {
 
     private let genericAction: ActionType
 
-    internal init(action: ActionType, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+    internal init(action: ActionType, notificationService: NotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.genericAction = action
 
         super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)

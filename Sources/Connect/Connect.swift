@@ -47,6 +47,28 @@ public class Connect {
     }
 
     ///
+    /// The name of this instance of Connect
+    ///
+    public let name: String
+
+    ///
+    /// Returns the `NSPersistentStoreCoordinate` instance that
+    /// this `GenericCoreDataStack` contains.  It's type will
+    /// be `CoordinatorType` which was given as a generic
+    /// parameter during construction.
+    ///
+    public var persistentStoreCoordinator: NSPersistentStoreCoordinator {
+        return self.dataCache.persistentStoreCoordinator
+    }
+
+    ///
+    /// The model this `GenericCoreDataStack` was constructed with.
+    ///
+    public var managedObjectModel: NSManagedObjectModel {
+        return self.persistentStoreCoordinator.managedObjectModel
+    }
+
+    ///
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
     fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
@@ -63,14 +85,14 @@ public class Connect {
     fileprivate let dataCache: DataCacheType
 
     ///
+    /// Notification service used by action containers and other services that post notifications.
+    ///
+    fileprivate let notificationService: NotificationService
+
+    ///
     /// The internal write ahead log for logging transactions
     ///
     fileprivate var writeAheadLog: WriteAheadLog?
-
-    ///
-    /// Action notification service used by action containers
-    ///
-    fileprivate let actionNotificationService: ActionNotificationService
 
     ///
     /// Generic queue used for executing `GenericAction` types.
@@ -102,28 +124,6 @@ public class Connect {
     /// Configuraiton option used to start the metaCache.
     ///
     fileprivate let metaCacheOptions: ConfigurationOptionsType
-
-    ///
-    /// The name of this instance of Connect
-    ///
-    public var name: String
-
-    ///
-    /// Returns the `NSPersistentStoreCoordinate` instance that
-    /// this `GenericCoreDataStack` contains.  It's type will
-    /// be `CoordinatorType` which was given as a generic
-    /// parameter during construction.
-    ///
-    public var persistentStoreCoordinator: NSPersistentStoreCoordinator {
-        return self.dataCache.persistentStoreCoordinator
-    }
-
-    ///
-    /// The model this `GenericCoreDataStack` was constructed with.
-    ///
-    public var managedObjectModel: NSManagedObjectModel {
-        return self.persistentStoreCoordinator.managedObjectModel
-    }
 
     ///
     /// Was this instance already started?
@@ -215,17 +215,23 @@ public class Connect {
         self.dataCache = DataCacheType(name: "", managedObjectModel: model,       logTag: logTag)
         self.metaCache = MetaCacheType(name: "", managedObjectModel: MetaModel(), logTag: logTag)
 
-        self.actionNotificationService = ActionNotificationService()
+        self.notificationService = NotificationService()
 
+        self.genericQueue = ActionQueue(name: "connect.action.queue", concurrencyMode: .concurrent)
         self.entityQueues = [:]
-        self.genericQueue = ActionQueue(name: "connect.entity.queue.generic", concurrencyMode: .concurrent)
-
         ///
         /// Serial queue with background priority
         ///
-        self.synchronizationQueue = DispatchQueue(label: "connect.syncrhonization.queue", qos: .background)
+        self.synchronizationQueue = DispatchQueue(label: "connect.synchronization.queue", qos: .background)
 
         self.started = false
+
+        ///
+        /// Note: due to Swift requirement for not passing self until all instance
+        ///       variables have a value, this has to be set here and not in the 
+        ///       init method of the NotificationService.
+        ///
+        self.notificationService.source = self
     }
 
     deinit {
@@ -278,7 +284,7 @@ public extension Connect {
     @discardableResult
     func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
-        let container = GenericActionContainer<ActionType>(action: action, notificationService: self.actionNotificationService, completionBlock: completionBlock)
+        let container = GenericActionContainer<ActionType>(action: action, notificationService: self.notificationService, completionBlock: completionBlock)
 
         logInfo { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
@@ -294,7 +300,7 @@ public extension Connect {
 
         let context = self.newActionContext()
 
-        let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.actionNotificationService, completionBlock: completionBlock)
+        let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.notificationService, completionBlock: completionBlock)
 
         logInfo { "Queuing \(container) on queue `\(entityQueue)'" }
 
@@ -385,12 +391,12 @@ public extension Connect {
 fileprivate extension Connect {
 
     func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Foundation.Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Foundation.Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationDidEnterBackground(notification:)),       name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillEnterForeground(notification:)),      name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillTerminate(notification:)),            name: Notification.Name.UIApplicationWillTerminate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationDidEnterBackground(notification:)),       name: Foundation.Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillEnterForeground(notification:)),      name: Foundation.Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillTerminate(notification:)),            name: Foundation.Notification.Name.UIApplicationWillTerminate, object: nil)
 
     }
 
@@ -489,7 +495,7 @@ fileprivate extension Connect {
 
         if canBeManaged {
 
-            let queueName = "connect.entity.queue.\(name.lowercased())"
+            let queueName = "connect.action.queue.\(name.lowercased())"
 
             logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
 

@@ -26,7 +26,7 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
     private let entityAction: ActionType
     private let context: ActionContext
 
-    internal init(action: ActionType, context: ActionContext, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+    internal init(action: ActionType, context: ActionContext, notificationService: NotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.entityAction = action
         self.context      = context
 

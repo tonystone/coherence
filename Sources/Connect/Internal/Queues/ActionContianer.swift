@@ -23,7 +23,7 @@ import CoreData
 
 internal class ActionContainer: Operation, ActionProxy {
 
-    private let notificationService: ActionNotificationService
+    private let notificationService: NotificationService
     private let completion: ((_ actionProxy: ActionProxy) -> Void)?
 
     public let action: Action
@@ -52,7 +52,7 @@ internal class ActionContainer: Operation, ActionProxy {
     }
     private let _statistics: Statistics
 
-    internal init(action: Action, notificationService: ActionNotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
+    internal init(action: Action, notificationService: NotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.action              = action
         self.notificationService = notificationService
         self.completionStatus    = .unknown

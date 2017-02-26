@@ -23,7 +23,6 @@
 		521655F57CFB743D72D7E0F6 /* StaticContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B569C4C52B9EE36B340BECFC /* StaticContext.swift */; };
 		52F51E874ACF9266CEE125FA /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583F20FAC44F271D5E39171 /* Connect.swift */; };
 		534500904DE0C66718687B57 /* Pods-Coherence Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 823FFA64E46EEB27D154CD31 /* Pods-Coherence Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56B47FA19310EFF9424BCF3B /* ActionNotificationSerivce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A99B209076BCACDF1CFEC /* ActionNotificationSerivce.swift */; };
 		5A2556DF9A44E04B9307856E /* ObjcCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463BDE475BC73A97E985A4C /* ObjcCoreDataStack.swift */; };
 		684F60A36646B66DA9060CC8 /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77F165A0D22A0F5ADB9008A /* MetaLogEntry+CoreDataProperties.swift */; };
 		6AA89FD740738EF002AFDC4C /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D71B6BFD6EA7B271C7DEB /* TraceLog.swift */; };
@@ -50,6 +49,8 @@
 		D37222E173959C586E87E3FC /* RuntimeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94462DA34FEB1AC28E4F3429 /* RuntimeContext.swift */; };
 		D9EAC15567E8CAC2158A8993 /* Pods-Coherence Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C128B8A1F1B87AB3EDCD62F9 /* Pods-Coherence Tests-dummy.m */; };
 		DA41A7B978881EE98DC0412F /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDCC09B352AB14F79CD6E8 /* Writer.swift */; };
+		EA5BDC971E6345DC00527236 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC961E6345DC00527236 /* NotificationService.swift */; };
+		EA5BDC9B1E6356A400527236 /* Connect+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9A1E6356A400527236 /* Connect+Notification.swift */; };
 		EAD193651E4788A600977E93 /* LoggingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD193641E4788A600977E93 /* LoggingContext.swift */; };
 		EAF825E71E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF825E61E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift */; };
 		EAF825EA1E48DAA900E627D5 /* ActionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF825E81E48DAA900E627D5 /* ActionContext.swift */; };
@@ -99,7 +100,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		046A99B209076BCACDF1CFEC /* ActionNotificationSerivce.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionNotificationSerivce.swift; sourceTree = "<group>"; };
 		0D3C36EECFC9D2CA01262522 /* TraceLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-umbrella.h"; sourceTree = "<group>"; };
 		10DA4A5578B61C2F6FC5052D /* CCObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCObject.h; sourceTree = "<group>"; };
 		185D1C2F50E15CE0E2922D51 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -163,6 +163,8 @@
 		E5EAA1A290D53DAE3E11DAE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E703C37101BCC8644A120A4F /* Coherence-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Coherence-dummy.m"; sourceTree = "<group>"; };
 		E77F165A0D22A0F5ADB9008A /* MetaLogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MetaLogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA5BDC961E6345DC00527236 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EA5BDC9A1E6356A400527236 /* Connect+Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Connect+Notification.swift"; sourceTree = "<group>"; };
 		EA8752C8C97ABE5E6FD4A729 /* AssociatedStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssociatedStorage.swift; sourceTree = "<group>"; };
 		EAD193641E4788A600977E93 /* LoggingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingContext.swift; sourceTree = "<group>"; };
 		EAF825E61E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		1A5BCD1F24BDFF92047BD5AA /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				EA5BDC961E6345DC00527236 /* NotificationService.swift */,
 				EA8752C8C97ABE5E6FD4A729 /* AssociatedStorage.swift */,
 				EAD193641E4788A600977E93 /* LoggingContext.swift */,
 				26EB124E1DB474825D1B6D67 /* ConnectCoordinator.swift */,
@@ -409,13 +412,14 @@
 			isa = PBXGroup;
 			children = (
 				E583F20FAC44F271D5E39171 /* Connect.swift */,
-				EAF825E81E48DAA900E627D5 /* ActionContext.swift */,
-				EAF825E91E48DAA900E627D5 /* ActionContext+Merge.swift */,
+				EA5BDC9A1E6356A400527236 /* Connect+Notification.swift */,
 				7094CFAE7544AD277992B85B /* EntitySettings.swift */,
 				9798F18C9B1CF01E7F3D02FC /* Action.swift */,
+				3069876B6E939AE02494E89E /* ActionProxy.swift */,
+				EAF825E81E48DAA900E627D5 /* ActionContext.swift */,
+				EAF825E91E48DAA900E627D5 /* ActionContext+Merge.swift */,
 				ECCFC20ABB811E1E4C98C7D7 /* EntityAction.swift */,
 				52F9DBA47D338BC2713BEB01 /* GenericAction.swift */,
-				3069876B6E939AE02494E89E /* ActionProxy.swift */,
 				EA4A2E891E4FADA000C68540 /* Extensions */,
 				1A5BCD1F24BDFF92047BD5AA /* Internal */,
 			);
@@ -426,7 +430,6 @@
 			isa = PBXGroup;
 			children = (
 				82BBFA367A95616239D6EA91 /* ActionContianer.swift */,
-				046A99B209076BCACDF1CFEC /* ActionNotificationSerivce.swift */,
 				F1BE8125107B69FD57EACC22 /* ActionQueue.swift */,
 				DFA24116D8AB2626E60153F1 /* EntityActionContainer.swift */,
 				B4ED68A4DA47835BA3F55C4E /* GenericActionContainer.swift */,
@@ -734,9 +737,9 @@
 				301A1331F5D4D108E6464912 /* Action.swift in Sources */,
 				EAD193651E4788A600977E93 /* LoggingContext.swift in Sources */,
 				BD0A9F1C58A77D59FE1A5AD5 /* ActionContianer.swift in Sources */,
-				56B47FA19310EFF9424BCF3B /* ActionNotificationSerivce.swift in Sources */,
 				4A9480739D93B9B0E84552D2 /* ActionProxy.swift in Sources */,
 				31D69AA973231969EC5FAA14 /* ActionQueue.swift in Sources */,
+				EA5BDC9B1E6356A400527236 /* Connect+Notification.swift in Sources */,
 				EAF825E71E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift in Sources */,
 				C3C01BF7AC93B9DF3B213F1E /* AssociatedStorage.swift in Sources */,
 				0DE5AADD8900F0289F8DFFF4 /* CCObject.m in Sources */,
@@ -749,6 +752,7 @@
 				C30D1ECE71B83417202BB53C /* EntityActionContainer.swift in Sources */,
 				8487A8A79C627AB37FB8032D /* EntitySettings.swift in Sources */,
 				7CBA5018232F9930AD56F8D0 /* GenericAction.swift in Sources */,
+				EA5BDC971E6345DC00527236 /* NotificationService.swift in Sources */,
 				406B043FAD4605B40DA3C894 /* GenericActionContainer.swift in Sources */,
 				82F47FA20DC4BB3CDB2149D1 /* GenericCoreDataStack.swift in Sources */,
 				684F60A36646B66DA9060CC8 /* MetaLogEntry+CoreDataProperties.swift in Sources */,

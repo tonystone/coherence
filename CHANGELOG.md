@@ -3,6 +3,11 @@ All significant changes to this project will be documented in this file.
 
 ## [3.0.0-beta.3](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.3) 
 
+#### Added 
+- Added `Connect.Notification.ActionDidStartExecuting` notification for clients to listen for action start notifications.
+- Added `Connect.Notification.ActionDidFinishExecuting` notification for clients to listen for action finished notifications.
+- Added `Connect.Notification.Key.ActionProxy` key used by notifications.
+
 #### Breaking Updates 
 - Changed init sequence allowing for non-throwing init.
 - Removed `GenericCoreDataStack` default persistent option `NSMigratePersistentStoresAutomaticallyOption`.
