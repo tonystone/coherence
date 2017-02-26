@@ -1,6 +1,13 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0-beta.3](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.3) 
+
+#### Breaking Updates 
+- Changed init sequence allowing for non-throwing init.
+- Removed GenericCoreDataStack default persistent option NSMigratePersistentStoresAutomaticallyOption.
+- Removed GenericCoreDataStack default persistent option NSInferMappingModelAutomaticallyOptionChanged.
+
 ## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
 
 #### Added 

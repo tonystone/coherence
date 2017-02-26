@@ -27,25 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var connect: Connect!
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        /// Configure TraceLog to read the environment first.
-        TraceLog.configure()
-
-        logInfo { "Starting..." }
-
-        let modelName = "HR"
-        let bundle    = Bundle(for: type(of: self))
-
-        guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
-            fatalError("Could not locate \(modelName).momd in bundle.")
-        }
-
-        guard let model = NSManagedObjectModel(contentsOf: url) else {
-            fatalError("Failed to load model at \(url).")
-        }
+    var connect: Connect = {
 
         var storeOptions: [AnyHashable: Any] = defaultStoreOptions  /// Use all the default options
         storeOptions[overwriteIncompatibleStoreOption] = true       /// Force the data stores to be overwritten if incompatible with the model.
@@ -55,8 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Persistent": (storeType: NSSQLiteStoreType,   storeOptions: storeOptions, migrationManager: nil)
         ]
 
+        return Connect(name: "HR", configurationOptions: configurationOptions)
+    }()
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        /// Configure TraceLog to read the environment first.
+        TraceLog.configure()
+
         do {
-            self.connect = try Connect(name: modelName, managedObjectModel: model, configurationOptions: configurationOptions)
+            try self.connect.start()
+
         } catch {
             fatalError("\(error)")
         }

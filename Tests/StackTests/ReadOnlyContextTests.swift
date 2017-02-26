@@ -23,10 +23,11 @@ class ReadOnlyContextTests: XCTestCase {
         do {
             let expected = "Cannot save, context is read only."
 
-            let model  = TestModel1()
-            let prefix = String(describing: type(of: model.self))
+            let model = TestModel1()
+            let name  = String(describing: type(of: model.self))
 
-            let coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix)
+            let coreDataStack = CoreDataStackType(name: name, managedObjectModel: model)
+            try coreDataStack.loadPersistentStores()
 
             let viewContext = coreDataStack.viewContext
 
@@ -52,9 +53,10 @@ class ReadOnlyContextTests: XCTestCase {
             let expected = "Cannot save, context is read only."
 
             let model  = TestModel1()
-            let prefix = String(describing: type(of: model.self))
+            let name  = String(describing: type(of: model.self))
 
-            let coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix)
+            let coreDataStack = CoreDataStackType(name: name, managedObjectModel: model)
+            try coreDataStack.loadPersistentStores()
 
             guard let viewContext = coreDataStack.viewContext as? ReadOnlyContext else {
                 XCTFail("Returned Context is not a ReadOnlyContext.")
@@ -84,9 +86,10 @@ class ReadOnlyContextTests: XCTestCase {
             let expected = input
 
             let model  = TestModel1()
-            let prefix = String(describing: type(of: model.self))
+            let name  = String(describing: type(of: model.self))
 
-            let coreDataStack = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix)
+            let coreDataStack = CoreDataStackType(name: name, managedObjectModel: model)
+            try coreDataStack.loadPersistentStores()
 
             guard let viewContext = coreDataStack.viewContext as? ReadOnlyContext else {
                 XCTFail("Returned Context is not a ReadOnlyContext.")

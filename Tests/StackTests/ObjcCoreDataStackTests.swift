@@ -30,7 +30,7 @@ class ObjcCoreDataStackTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
+
         do {
             try removePersistentStoreCache()
         } catch {
@@ -47,14 +47,14 @@ class ObjcCoreDataStackTests: XCTestCase {
         super.tearDown()
     }
 
-    func testConstruction () {
+    func testConstructionWithModelNameAndModel () {
         
-        let storePrefix = String(describing: TestModel1.self)
+        let name = String(describing: TestModel1.self)
         
         do {
-            let _ = try ObjcCoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix)
+            let _ = try ObjcCoreDataStack(name: name, managedObjectModel: TestModel1()).loadPersistentStores()
             
-            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -62,15 +62,15 @@ class ObjcCoreDataStackTests: XCTestCase {
     
     func testConstruction_WithOptions () {
         
-        let storePrefix                 = String(describing: TestModel1.self)
+        let name                        = String(describing: TestModel1.self)
         var options: [AnyHashable: Any] = defaultStoreOptions
         
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try ObjcCoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: storePrefix, configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try ObjcCoreDataStack(name: name, managedObjectModel: TestModel1()).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
             
-            XCTAssertTrue(try persistentStoreExists(storePrefix: storePrefix, storeType: defaultStoreType))
+            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -78,7 +78,8 @@ class ObjcCoreDataStackTests: XCTestCase {
     
     func testCRUD () throws {
     
-        let coreDataStack = try ObjcCoreDataStack(managedObjectModel: TestModel1(), storeNamePrefix: String(describing: TestModel1.self))
+        let coreDataStack = ObjcCoreDataStack(name: String(describing: TestModel1.self), managedObjectModel: TestModel1())
+        try coreDataStack.loadPersistentStores()
         
         let editContext = coreDataStack.newBackgroundContext()
         let mainContext = coreDataStack.viewContext

@@ -51,7 +51,9 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeInsert() {
 
         do {
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+
             let actionContext = connect.newActionContext()
             let viewContext   = connect.viewContext
 
@@ -103,7 +105,9 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeUpdate() {
 
         do {
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+
             let actionContext = connect.newActionContext()
             let viewContext   = connect.viewContext
 
@@ -170,7 +174,9 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeDelete() {
 
         do {
-            let connect       = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+
             let actionContext = connect.newActionContext()
             let viewContext   = connect.viewContext
 

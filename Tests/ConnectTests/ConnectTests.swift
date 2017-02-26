@@ -23,23 +23,35 @@ import CoreData
 
 class ConnectTests: XCTestCase {
 
-    var testModel: NSManagedObjectModel! = nil
+    var testModel:      NSManagedObjectModel! = nil
+    var testEmptyModel: NSManagedObjectModel! = nil
+
     let modelName = "ConnectTestModel"
 
     override func setUp() {
         super.setUp()
 
-        let bundle    = Bundle(for: type(of: self))
+        let bundle = Bundle(for: type(of: self))
 
-        guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
+        guard let modelUrl = bundle.url(forResource: modelName, withExtension: "momd") else {
             fatalError("Could not locate \(modelName).momd in bundle.")
         }
 
-        guard let model = NSManagedObjectModel(contentsOf: url) else {
-            fatalError("Failed to load model at \(url).")
+        guard let model = NSManagedObjectModel(contentsOf: modelUrl) else {
+            fatalError("Failed to load model at \(modelUrl).")
         }
 
         self.testModel = model
+
+        guard let emptyModelUrl = bundle.url(forResource: modelName + "Empty", withExtension: "momd") else {
+            fatalError("Could not locate \(modelName + "Empty").momd in bundle.")
+        }
+
+        guard let emptyModel = NSManagedObjectModel(contentsOf: emptyModelUrl) else {
+            fatalError("Failed to load model at \(emptyModelUrl).")
+        }
+
+        self.testEmptyModel = emptyModel
 
         do {
             try removePersistentStoreCache()
@@ -48,42 +60,104 @@ class ConnectTests: XCTestCase {
         }
     }
 
-    func testConstruction() {
+    func testConstructionWithModelName() {
 
         let input = self.testModel!
         let expected = input
 
-        XCTAssertEqual(try Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
+        XCTAssertEqual(Connect(name: modelName).managedObjectModel , expected)
     }
 
-    func testConnectEntityMissingCanBeManaged() {
+    func testConstructionWithModelNameAndModel() {
+
+        let input = self.testModel!
+        let expected = input
+
+        XCTAssertEqual(Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
+    }
+
+    func testStart() throws {
+
+        let input = (modelName: self.modelName, model: self.testModel!)
+        let expected = 1
+
+        let expectation = self.expectation(description: "Completion block called")
+
+        let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+
+        connect.start() { (error) in
+            expectation.fulfill()
+        }
+
+        self.waitForExpectations(timeout: 1) { (error) in
+
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            } else {
+
+                XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+            }
+        }
+    }
+
+    func testStartThrows() throws {
+
+        let input = (modelName: self.modelName, model: self.testModel!)
+        let expected = 1
+
+        let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+        try connect.start()
+
+        XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+    }
+
+    func testStart2xThrows() throws {
+
+        let input = (modelName: self.modelName, model: self.testModel!)
+        let expected = 1
+
+        let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+        try connect.start()
+        try connect.start() /// Calling start a second time should be a no-op
+
+        XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+    }
+
+    func testStartWithIncompatibleStore() throws {
+
+        let input = (modelName: self.modelName, model: self.testModel!, emptyModel: self.testEmptyModel!)
+
+        /// Create the first instance of the persistent stores using the empty model
+        do {
+            try Connect(name: input.modelName, managedObjectModel: input.emptyModel).start()
+        }
+
+        /// Now create the second instance using the real model, it should throw an exception
+        let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+        
+        XCTAssertThrowsError(try connect.start())
+    }
+
+    func testConnectEntityMissingCanBeManaged() throws {
 
         let input = self.testModel.entitiesByName["ConnectEntity1"]
         let expected = true
 
-        do {
-            let _ = try Connect(name: modelName, managedObjectModel: self.testModel)
+        let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+        try connect.start()
 
-            XCTAssertEqual(input?.managed, expected)
-
-        } catch {
-            XCTFail("\(error)")
-        }
+        XCTAssertEqual(input?.managed, expected)
     }
 
-    func testConnectMissingUniquenessAttributeEntityCannotBeManaged() {
+    func testConnectMissingUniquenessAttributeEntityCannotBeManaged() throws {
 
         let input = self.testModel.entitiesByName["ConnectEntity4MissingUniquenessAttribute"]
         let expected = false
 
-        do {
-            let _ = try Connect(name: modelName, managedObjectModel: self.testModel)
+        let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+        try connect.start()
 
-            XCTAssertEqual(input?.managed, expected)
-
-        } catch {
-            XCTFail("\(error)")
-        }
+        XCTAssertEqual(input?.managed, expected)
     }
 
     func testPersistentStoreCoordinator() {
@@ -92,7 +166,9 @@ class ConnectTests: XCTestCase {
             let input = (id: Int64(1), string: "Test String 1")
             let expected = input
 
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+            try connect.start()
 
             ////
             /// Create a custom context which write directoy to the connect.persistentStoreCoordinator
@@ -152,7 +228,9 @@ class ConnectTests: XCTestCase {
         let input = (id: Int64(1), string: "Test String 1")
         let expected = input
 
-        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+        let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+        try connect.start()
 
         let editContext = connect.newBackgroundContext()
         let mainContext = connect.viewContext
@@ -208,7 +286,9 @@ class ConnectTests: XCTestCase {
                      update: (id: Int64(1), string: "Test String 2"))
         let expected = input.update
 
-        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+        let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+        try connect.start()
 
         let editContext = connect.newBackgroundContext()
         let mainContext = connect.viewContext
@@ -272,7 +352,9 @@ class ConnectTests: XCTestCase {
 
         let input = (id: Int64(1), string: "Test String 1")
 
-        let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+        let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+        try connect.start()
 
         let editContext = connect.newBackgroundContext()
         let mainContext = connect.viewContext
@@ -323,7 +405,9 @@ class ConnectTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+            try connect.start()
 
             let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
 
@@ -351,7 +435,9 @@ class ConnectTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+            try connect.start()
 
             let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
 
@@ -379,7 +465,9 @@ class ConnectTests: XCTestCase {
         let expected = "Entity 'ConnectEntity3Unmanaged' not managed by Coherence.Connect"
 
         do {
-            let connect = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+
+            try connect.start()
 
             XCTAssertThrowsError( try connect.execute(input) ) { (error) in
 

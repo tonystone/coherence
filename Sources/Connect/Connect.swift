@@ -65,7 +65,7 @@ public class Connect {
     ///
     /// The internal write ahead log for logging transactions
     ///
-    fileprivate var writeAheadLog: WriteAheadLog
+    fileprivate var writeAheadLog: WriteAheadLog?
 
     ///
     /// Action notification service used by action containers
@@ -80,7 +80,13 @@ public class Connect {
     ///
     /// Isolation queues used for executing `EntityAction` types.
     ///
-    fileprivate var entityQueues: [String: ActionQueue] = [:]
+    fileprivate var entityQueues: [String: ActionQueue]
+
+    ///
+    /// Background syncrhonization queue for synchronizing
+    /// operations on `Connect`.
+    ///
+    fileprivate let synchronizationQueue: DispatchQueue
 
     ///
     /// Tag used for all logging internally
@@ -88,9 +94,19 @@ public class Connect {
     fileprivate var logTag = String(describing: Connect.self)
 
     ///
-    /// The model this `GenericCoreDataStack` was constructed with.
+    /// Configuraiton option used to start the dataCache.
     ///
-    public let managedObjectModel: NSManagedObjectModel
+    fileprivate let dataCacheOptions: ConfigurationOptionsType
+
+    ///
+    /// Configuraiton option used to start the metaCache.
+    ///
+    fileprivate let metaCacheOptions: ConfigurationOptionsType
+
+    ///
+    /// The name of this instance of Connect
+    ///
+    public var name: String
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
@@ -103,12 +119,24 @@ public class Connect {
     }
 
     ///
+    /// The model this `GenericCoreDataStack` was constructed with.
+    ///
+    public var managedObjectModel: NSManagedObjectModel {
+        return self.persistentStoreCoordinator.managedObjectModel
+    }
+
+    ///
+    /// Was this instance already started?
+    ///
+    fileprivate var started: Bool
+
+    ///
     /// Internal class to create the connect bundle.
     ///
     /// - Note: you can not use a func on self for this
     ///         since we are initializing a content in self.
     ///
-    private class BundleManager {
+    fileprivate class BundleManager {
 
         class func createIfAbsent(bundleName: String, in directory: FileManager.SearchPathDirectory) throws -> URL {
 
@@ -139,52 +167,65 @@ public class Connect {
     ///  Initializes the receiver with a managed object model.
     ///
     ///   - parameters:
+    ///      - name: the name used for this instance of connect, this name will be used to name the persistent store files on disk.
+    ///
+    public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
+
+        let bundle = Bundle.main
+
+        var url: URL? = bundle.url(forResource: name, withExtension: "momd") ?? bundle.url(forResource: name, withExtension: "mom")
+
+        if url == nil {
+
+            /// Check the inner bundles if not found in the main bundle
+            for innerBundle in Bundle.allBundles {
+                url = innerBundle.url(forResource: name, withExtension: "momd") ?? innerBundle.url(forResource: name, withExtension: "mom")
+
+                if url != nil {
+                    break
+                }
+            }
+        }
+
+        guard let modelUrl = url else {
+            preconditionFailure("Could not locate model `\(name)` in any bundle.")
+        }
+
+        guard let model = NSManagedObjectModel(contentsOf: modelUrl) else {
+            preconditionFailure("Failed to load model at \(modelUrl).")
+        }
+
+        self.init(name: name, managedObjectModel: model, configurationOptions: options)
+    }
+
+    ///
+    ///  Initializes the receiver with a managed object model.
+    ///
+    ///   - parameters:
     ///      - managedObjectModel: A managed object model.
     ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
     ///      - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
     ///
-    public init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
-        logInfo { "Initializing instance '\(name)'..." }
+        self.name             = name
+        self.dataCacheOptions = options
+        self.metaCacheOptions = defaultConfigurationOptions
 
-        self.managedObjectModel = model
-
-        let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: connectBundleDirectory)
-
-        logInfo { "Creating the user data cache...." }
-
-        self.dataCache = try DataCacheType(managedObjectModel: model, storeLocationURL: bundleURL, configurationOptions: options, asyncErrorBlock: nil, logTag: logTag)
-
-        logInfo { "Creating the meta data cache...." }
-
-        let meta = try MetaCacheType(managedObjectModel: MetaModel(), storeLocationURL: bundleURL, logTag: logTag)
-        self.metaCache = meta
-
-        logInfo { "Creating the write ahead log..." }
-
-        self.writeAheadLog = try WriteAheadLog(coreDataStack: meta)
-
-        logInfo { "Creating action notification service..." }
+        self.dataCache = DataCacheType(name: "", managedObjectModel: model,       logTag: logTag)
+        self.metaCache = MetaCacheType(name: "", managedObjectModel: MetaModel(), logTag: logTag)
 
         self.actionNotificationService = ActionNotificationService()
 
-        logInfo { "Creating generic queue..." }
-
+        self.entityQueues = [:]
         self.genericQueue = ActionQueue(name: "connect.entity.queue.generic", concurrencyMode: .concurrent)
 
         ///
-        /// Initialize the entities
+        /// Serial queue with background priority
         ///
-        for (name, entity) in model.entitiesByName {
+        self.synchronizationQueue = DispatchQueue(label: "connect.syncrhonization.queue", qos: .background)
 
-            logInfo { "Found entity '\(name)'." }
-
-            self.manage(name: name, entity: entity)
-        }
-
-        self.registerForNotifications()
-
-        logInfo { "Instance initialized." }
+        self.started = false
     }
 
     deinit {
@@ -268,12 +309,69 @@ public extension Connect {
 ///
 public extension Connect {
 
-    public func start() {
+    ///
+    /// Asynchronously start the instance of `Connect`
+    ///
+    public func start(completionBlock: @escaping (Error?) -> Void) {
 
+        self.synchronizationQueue.async {
+            do {
+                try self._start()
+
+                completionBlock(nil)
+            } catch {
+                completionBlock(error)
+            }
+        }
     }
 
-    public func stop() {
+    ///
+    /// Synchronously start the instance of `Connect`
+    ///
+    public func start() throws {
 
+        try self.synchronizationQueue.sync {
+            try self._start()
+        }
+    }
+
+    private func _start() throws {
+
+        guard !started else {
+            return
+        }
+
+        try autoreleasepool {
+
+            logInfo { "Starting instance '\(self.name)'..." }
+
+            logInfo { "Loading persistent stores..." }
+
+            let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: connectBundleDirectory)
+
+            try self.dataCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: dataCacheOptions)
+            try self.metaCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: metaCacheOptions)
+
+            logInfo { "Creating the write ahead log..." }
+
+            self.writeAheadLog = try WriteAheadLog(coreDataStack: self.metaCache)
+
+            ///
+            /// Initialize the entities
+            ///
+            for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
+
+                logInfo { "Found entity '\(name)'." }
+
+                self.manage(name: name, entity: entity)
+            }
+
+            self.registerForNotifications()
+
+            self.started = true
+
+            logInfo { "Instance initialized." }
+        }
     }
 
     public var online: Bool {

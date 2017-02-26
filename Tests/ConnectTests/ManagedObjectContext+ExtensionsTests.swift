@@ -63,7 +63,9 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
         let expected = input
 
         do {
-            let connect       = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+            
             let actionContext = connect.newBackgroundContext()
 
             ///

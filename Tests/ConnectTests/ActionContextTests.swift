@@ -56,7 +56,9 @@ class ActionContextTests: XCTestCase {
     func testPerform () {
 
         do {
-            let connect       = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+
             let actionContext     = connect.newActionContext()
             let validationContext = connect.newBackgroundContext()
 
@@ -138,7 +140,9 @@ class ActionContextTests: XCTestCase {
         }
 
         do {
-            let connect       = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+            
             let actionContext     = connect.newActionContext()
             let validationContext = connect.newBackgroundContext()
 
@@ -203,7 +207,9 @@ class ActionContextTests: XCTestCase {
         let expected = input
 
         do {
-            let connect       = try Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+            
             let actionContext = connect.newActionContext()
 
             ///

@@ -29,27 +29,24 @@ import TraceLog
     
     /**
         Initializes the receiver with a managed object model.
-    
-        - parameters:
-          - managedObjectModel: A managed object model.
-          - storeNamePrefix: A unique name prefix for the persistent store to be created.
-    */
-    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String) throws {
-        impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, logTag: String(describing: ObjcCoreDataStack.self))
-    }
-    
-    /**
-        Initializes the receiver with a managed object model.
      
         - parameters:
           - managedObjectModel: A managed object model.
           - storeNamePrefix: A unique name prefix for the persistent store to be created.
           - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
      */
-    public init(managedObjectModel model: NSManagedObjectModel, storeNamePrefix: String, configurationOptions options: ConfigurationOptionsType) throws {
-        impl = try CoreDataStackType(managedObjectModel: model, storeNamePrefix: storeNamePrefix, configurationOptions: options, logTag: String(describing: ObjcCoreDataStack.self))
+    public init(name: String, managedObjectModel model: NSManagedObjectModel) {
+        impl = CoreDataStackType(name: name, managedObjectModel: model, logTag: String(describing: ObjcCoreDataStack.self))
     }
-    
+
+    public func loadPersistentStores() throws {
+        try impl.loadPersistentStores()
+    }
+
+    public func loadPersistentStores(configurationOptions options: ConfigurationOptionsType) throws {
+        try impl.loadPersistentStores(configurationOptions: options)
+    }
+
     public var viewContext: NSManagedObjectContext {
         return impl.viewContext
     }
