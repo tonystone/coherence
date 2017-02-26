@@ -5,8 +5,10 @@ All significant changes to this project will be documented in this file.
 
 #### Breaking Updates 
 - Changed init sequence allowing for non-throwing init.
-- Removed GenericCoreDataStack default persistent option NSMigratePersistentStoresAutomaticallyOption.
-- Removed GenericCoreDataStack default persistent option NSInferMappingModelAutomaticallyOptionChanged.
+- Removed `GenericCoreDataStack` default persistent option `NSMigratePersistentStoresAutomaticallyOption`.
+- Removed `GenericCoreDataStack` default persistent option `NSInferMappingModelAutomaticallyOptionChanged`.
+- `GenericCoreDataStack` now has a generic parameter for `ViewContextType` which must be specified.
+- Changed `GenericCoreDataStack` & `CoreDataStack` `viewContext` to use the `ViewContextType` removing the read only context.
 
 ## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
 

@@ -36,7 +36,7 @@ internal class WriteAheadLog {
     internal typealias TransactionContextType = NSManagedObjectContext
     internal typealias MetadataContextType    = NSManagedObjectContext
 
-    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, MetadataContextType>
+    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, MetadataContextType>
     
     fileprivate let coreDataStack: CoreDataStackType
     

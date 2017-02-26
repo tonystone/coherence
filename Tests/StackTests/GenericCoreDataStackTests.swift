@@ -28,7 +28,7 @@ fileprivate let userName  = "First Last"
 
 class GenericCoreDataStackTests: XCTestCase {
 
-    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
+    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
 
     override func setUp() {
         super.setUp()

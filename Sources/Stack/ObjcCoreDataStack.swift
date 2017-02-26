@@ -23,7 +23,7 @@ import TraceLog
 
 @objc public final class ObjcCoreDataStack: NSObject, CoreDataStack  {
     
-    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
+    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
     
     fileprivate let impl: CoreDataStackType
     

@@ -51,7 +51,6 @@
 		D9EAC15567E8CAC2158A8993 /* Pods-Coherence Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C128B8A1F1B87AB3EDCD62F9 /* Pods-Coherence Tests-dummy.m */; };
 		DA41A7B978881EE98DC0412F /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDCC09B352AB14F79CD6E8 /* Writer.swift */; };
 		EAD193651E4788A600977E93 /* LoggingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD193641E4788A600977E93 /* LoggingContext.swift */; };
-		EAD193671E478FAD00977E93 /* ReadOnlyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD193661E478FAD00977E93 /* ReadOnlyContext.swift */; };
 		EAF825E71E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF825E61E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift */; };
 		EAF825EA1E48DAA900E627D5 /* ActionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF825E81E48DAA900E627D5 /* ActionContext.swift */; };
 		EAF825EB1E48DAA900E627D5 /* ActionContext+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF825E91E48DAA900E627D5 /* ActionContext+Merge.swift */; };
@@ -166,7 +165,6 @@
 		E77F165A0D22A0F5ADB9008A /* MetaLogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MetaLogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA8752C8C97ABE5E6FD4A729 /* AssociatedStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssociatedStorage.swift; sourceTree = "<group>"; };
 		EAD193641E4788A600977E93 /* LoggingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingContext.swift; sourceTree = "<group>"; };
-		EAD193661E478FAD00977E93 /* ReadOnlyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyContext.swift; sourceTree = "<group>"; };
 		EAF825E61E48DA2500E627D5 /* ManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		EAF825E81E48DAA900E627D5 /* ActionContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionContext.swift; sourceTree = "<group>"; };
 		EAF825E91E48DAA900E627D5 /* ActionContext+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionContext+Merge.swift"; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 		27C5E019D30BA383B0965278 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
-				EAD193661E478FAD00977E93 /* ReadOnlyContext.swift */,
 				BD8B0BAB622700C37FD5DEA2 /* CoreDataStack.swift */,
 				D832A2BFB2C404469CCC2FD9 /* GenericCoreDataStack.swift */,
 				F463BDE475BC73A97E985A4C /* ObjcCoreDataStack.swift */,
@@ -746,7 +743,6 @@
 				F2B85BD5CC21D77BB711A891 /* Coherence-dummy.m in Sources */,
 				0213A50DC9748F4E48B64BE4 /* Configuration.swift in Sources */,
 				52F51E874ACF9266CEE125FA /* Connect.swift in Sources */,
-				EAD193671E478FAD00977E93 /* ReadOnlyContext.swift in Sources */,
 				F6822D2D11FFBA286C11726D /* ConnectCoordinator.swift in Sources */,
 				F34FA383BA942E86AC780D9F /* CoreDataStack.swift in Sources */,
 				AF3BEEBCB37C136006F0A142 /* EntityAction.swift in Sources */,
