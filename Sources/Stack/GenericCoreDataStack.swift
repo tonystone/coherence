@@ -76,7 +76,7 @@ public typealias AsynErrorHandlerBlock = (Error) -> Void
 ///
 ///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
-open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, BackgroundContextType: NSManagedObjectContext>: CoreDataStack {
+open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext>: CoreDataStack {
 
     /// 
     /// The model this `GenericCoreDataStack` was constructed with.
@@ -100,14 +100,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, B
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
     ///
-    public var viewContext: NSManagedObjectContext {
-        return self.mainContext
-    }
-
-    ///
-    /// This is the main internal context that is kept up to date.
-    ///
-    private let mainContext: ReadOnlyContext
+    public var viewContext: ViewContextType
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
@@ -165,8 +158,8 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, B
         self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
 
         /// Now the main thread context
-        self.mainContext = ReadOnlyContext(concurrencyType: .mainQueueConcurrencyType)
-        self.mainContext.parent = self.rootContext
+        self.viewContext = ViewContextType(concurrencyType: .mainQueueConcurrencyType)
+        self.viewContext.parent = self.rootContext
 
         NotificationCenter.default.addObserver(self, selector: #selector(GenericCoreDataStack.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
     }
@@ -364,10 +357,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, B
                         ///
                         /// Now save it to propagate the changes to the root.
                         ///
-                        /// Note: Since the main context is readonly we must 
-                        ///       override the save method.
-                        ///
-                        try self.mainContext.save(override: true)
+                        try self.viewContext.save()
 
                         ////
                         /// And finally save the root context to the persistent store

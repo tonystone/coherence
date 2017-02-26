@@ -49,8 +49,8 @@ public class Connect {
     ///
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
-    fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext>
-    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, LoggingContext>
+    fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, NSManagedObjectContext, LoggingContext>
 
     ///
     /// Stack used to manage meta data about the main cache

@@ -22,6 +22,7 @@ import CoreData
 
 public protocol CoreDataStack {
 
+    associatedtype ViewContextType: NSManagedObjectContext
     associatedtype BackgroundContextType: NSManagedObjectContext
 
     ///
@@ -33,7 +34,7 @@ public protocol CoreDataStack {
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
     ///
-    var viewContext: NSManagedObjectContext { get }
+    var viewContext: ViewContextType { get }
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
