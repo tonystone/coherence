@@ -53,28 +53,7 @@ class NSEntityDescription_EntitySettingsTests: XCTestCase {
 
         entity.uniquenessAttributes = input
 
-        XCTAssertNotNil(entity.uniquenessAttributes)
-
-        if let result = entity.uniquenessAttributes {
-            XCTAssertEqual(result, expected)
-        }
-    }
-
-    func testUniquenessAttributesWithNil() {
-        let input: [String]? = nil
-
-        entity.uniquenessAttributes = input
-
-        XCTAssertNil(entity.uniquenessAttributes)
-    }
-
-    func testUniquenessAttributesWithValueThanNil() {
-        let input: ([String]?,[String]?) = (["attribute1", "attribute2", "attribute3"], nil)
-
-        entity.uniquenessAttributes = input.0
-        entity.uniquenessAttributes = input.1
-
-        XCTAssertNil(entity.uniquenessAttributes)
+        XCTAssertEqual(entity.uniquenessAttributes, expected)
     }
 
     func testSalenessIntervalWithValue() {
@@ -114,12 +93,7 @@ class NSEntityDescription_EntitySettingsTests: XCTestCase {
 
         entity.setSettings(from: input)
 
-        XCTAssertNotNil(entity.uniquenessAttributes)
-
-        if let result = entity.uniquenessAttributes {
-            XCTAssertEqual(result, expected.0)
-        }
-
+        XCTAssertEqual(entity.uniquenessAttributes, expected.0)
         XCTAssertEqual(entity.stalenessInterval, expected.1)
         XCTAssertEqual(entity.logTransactions, expected.2)
     }
@@ -134,12 +108,8 @@ class NSEntityDescription_EntitySettingsTests: XCTestCase {
 
         entity.setSettings(from: input)
 
-        XCTAssertNotNil(entity.uniquenessAttributes)
 
-        if let result = entity.uniquenessAttributes {
-            XCTAssertEqual(result, expected.0)
-        }
-
+        XCTAssertEqual(entity.uniquenessAttributes, expected.0)
         XCTAssertEqual(entity.stalenessInterval, expected.1)
         XCTAssertEqual(entity.logTransactions, expected.2)
     }

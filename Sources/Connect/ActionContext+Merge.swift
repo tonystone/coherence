@@ -166,11 +166,8 @@ fileprivate extension ActionContext {
     fileprivate func sortDescriptors(for entity: NSEntityDescription) throws -> [NSSortDescriptor]  {
         var descriptors: [NSSortDescriptor] = []
 
-        if let attributes = entity.uniquenessAttributes {
-
-            for attribute in attributes {
-                descriptors.append(NSSortDescriptor(key: attribute, ascending: true))
-            }
+        for attribute in entity.uniquenessAttributes {
+            descriptors.append(NSSortDescriptor(key: attribute, ascending: true))
         }
         return descriptors
     }

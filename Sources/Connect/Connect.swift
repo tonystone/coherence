@@ -445,10 +445,10 @@ fileprivate extension Connect {
             entity.setSettings(from: userInfo)
         }
 
-        if let uniquenessAttributes = entity.uniquenessAttributes {
+        if !entity.uniquenessAttributes.isEmpty {
             var valid = true
 
-            for attribute in uniquenessAttributes {
+            for attribute in entity.uniquenessAttributes {
                 if !entity.attributesByName.keys.contains(attribute) {
                     valid = false
 
@@ -460,7 +460,7 @@ fileprivate extension Connect {
             if !valid {
                 canBeManaged = false
 
-                logWarning { "Setting value '\(uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
+                logWarning { "Setting value '\(entity.uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
             }
 
         } else {

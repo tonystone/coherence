@@ -57,7 +57,7 @@ extension NSEntityDescription: EntitySettings  {
     ///
     /// - SeeAlso: `EntitySettings` for description.
     ///
-    public internal(set) var uniquenessAttributes: [String]? {
+    public internal(set) var uniquenessAttributes: [String] {
         get {
             return associatedValue(self, key: &uniquenessAttributesKey, defaultValue: uniquenessAttributesDefault)
         }

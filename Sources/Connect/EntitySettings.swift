@@ -39,9 +39,9 @@ public protocol EntitySettings {
     /// Gets the attributes used to define a unique record for this entity type.  This can only be set
     /// statically in the  ManagedObjectModel for this entity.
     ///
-    /// The default is nil for this value.
+    /// The default is an empty array `[]` for this value.
     ///
-    var uniquenessAttributes: [String]? { get }
+    var uniquenessAttributes: [String] { get }
 
     ///
     /// Sets the amount of time before the resource is updated again from the master source
@@ -61,7 +61,7 @@ public protocol EntitySettings {
 //
 // Default Entity settings for system
 //
-internal let managedDefault: Bool = false
-internal let uniquenessAttributesDefault: [String]? = nil
-internal let stalenessIntervalDefault: Int          = 600
-internal let logTransactionsDefault: Bool           = false
+internal let managedDefault: Bool                  = false
+internal let uniquenessAttributesDefault: [String] = []
+internal let stalenessIntervalDefault: Int         = 600
+internal let logTransactionsDefault: Bool          = false
