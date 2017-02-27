@@ -53,16 +53,16 @@ public class ActionContext: NSManagedObjectContext {
     }
 
     public override func save() throws {
+        let start = Date()
+        defer {
+            self.statistics.saveTime = self.statistics.saveTime + Date().timeIntervalSince(start)
+        }
 
         let inserts = self.insertedObjects.count
         let updates = self.updatedObjects.count
         let deletes = self.deletedObjects.count
 
-        let start = Date()
-
         try super.save()
-
-        self.statistics.saveTime = self.statistics.saveTime + Date().timeIntervalSince(start)
 
         self.statistics.inserts = self.statistics.inserts + inserts
         self.statistics.updates = self.statistics.updates + updates
