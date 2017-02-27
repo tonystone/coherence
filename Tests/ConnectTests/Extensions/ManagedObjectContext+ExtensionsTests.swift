@@ -22,29 +22,18 @@ import CoreData
 
 @testable import Coherence
 
+fileprivate let modelName = "ConnectTestModel"
+
 class ManagedObjectContextExtensionsTests: XCTestCase {
 
     private enum Errors: Error {
         case entityNotFound(String)
     }
 
-    var testModel: NSManagedObjectModel! = nil
-    let modelName = "ConnectTestModel"
+    var testModel = ModelLoader.load(name: modelName)
 
     override func setUp() {
         super.setUp()
-
-        let bundle    = Bundle(for: type(of: self))
-
-        guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
-            fatalError("Could not locate \(modelName).momd in bundle.")
-        }
-
-        guard let model = NSManagedObjectModel(contentsOf: url) else {
-            fatalError("Failed to load model at \(url).")
-        }
-
-        self.testModel = model
 
         do {
             try removePersistentStoreCache()

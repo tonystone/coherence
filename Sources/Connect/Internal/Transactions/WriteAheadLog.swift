@@ -27,6 +27,7 @@ internal let persistentStoreType = NSSQLiteStoreType
 internal class WriteAheadLog {
 
     internal enum Errors: Error {
+        case couldNotLocateEntityDescription(String)
         case failedToCreateLogEntry(String)
         case failedToObtainPermanentIDs(String)
         case transactionWriteFailed(String)
@@ -142,7 +143,31 @@ internal class WriteAheadLog {
         return transactionID
     }
 
-    internal func removeTransaction(_ transactionID: TransactionID) {
+    internal func removeTransaction(_ transactionID: TransactionID) throws {
+
+        let metadataContext = self.coreDataStack.newBackgroundContext()
+
+        try metadataContext.performAndWait {
+            //
+            // Always work in an edit context for this thread
+            //
+            guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: metadataContext) else {
+                throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName), could not remove transaction.")
+            }
+
+            let fetchRequest = NSFetchRequest<MetaLogEntry>()
+
+            fetchRequest.entity    = entity
+            fetchRequest.predicate = NSPredicate(format: "transactionID==%@", transactionID)
+
+            let transactionRecords = try metadataContext.fetch(fetchRequest)
+
+            for object in transactionRecords {
+                metadataContext.delete(object)
+            }
+
+            try metadataContext.save()
+        }
     }
 
     internal func transactionLogEntriesForTransaction(_ transactionID: TransactionID) -> [MetaLogEntry] {
@@ -262,6 +287,8 @@ internal class WriteAheadLog {
             /// Only log entities when enabled for the entity type.
             ///
             if object.entity.logTransactions {
+
+                let uniqueID = object.uniqueueIDString()
                 //
                 // Get the object attribute change data
                 //
@@ -273,6 +300,7 @@ internal class WriteAheadLog {
 
                 try self.insertTransactionLogEntry(entity: object.entity,
                                         objectID: object.objectID.uriRepresentation().absoluteString,
+                                        uniqueueID: uniqueID,
                                         updateData: data,
                                         type: .insert,
                                         transactionID: transactionID,
@@ -294,6 +322,8 @@ internal class WriteAheadLog {
             /// Only log entities when enabled for the entity type.
             ///
             if object.entity.logTransactions {
+
+                let uniqueID = object.uniqueueIDString()
                 //
                 // Get the object attribute change data
                 //
@@ -306,6 +336,7 @@ internal class WriteAheadLog {
 
                 try self.insertTransactionLogEntry(entity: object.entity,
                                                    objectID: object.objectID.uriRepresentation().absoluteString,
+                                                   uniqueueID: uniqueID,
                                                    updateData: data,
                                                    type: .update,
                                                    transactionID: transactionID,
@@ -328,8 +359,11 @@ internal class WriteAheadLog {
             ///
             if object.entity.logTransactions {
 
+                let uniqueID = object.uniqueueIDString()
+
                 try self.insertTransactionLogEntry(entity: object.entity,
                                                    objectID: object.objectID.uriRepresentation().absoluteString,
+                                                   uniqueueID: uniqueID,
                                                    updateData: nil,
                                                    type: .update,
                                                    transactionID: transactionID,
@@ -343,7 +377,7 @@ internal class WriteAheadLog {
         }
     }
 
-    fileprivate func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
+    fileprivate func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
 
         let sequence = Int32(sequenceNumber)
 
@@ -367,6 +401,7 @@ internal class WriteAheadLog {
             // Update the object identification data
             //
             metaLogEntry.updateObjectID = objectID
+            metaLogEntry.updateUniqueID = uniqueueID
             metaLogEntry.updateEntityName = entityName
 
             logTrace(4) {
@@ -386,3 +421,4 @@ internal class WriteAheadLog {
         }
     }
 }
+

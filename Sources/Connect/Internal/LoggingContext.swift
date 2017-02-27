@@ -46,7 +46,7 @@ internal class LoggingContext: NSManagedObjectContext {
             do {
                 try super.save()
             } catch {
-                logger.removeTransaction(transactionID)
+                try logger.removeTransaction(transactionID)
 
                 throw error
             }

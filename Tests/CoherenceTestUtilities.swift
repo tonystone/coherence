@@ -18,6 +18,23 @@
 ///  Created by Tony Stone on 10/31/16.
 ///
 import Foundation
+import CoreData
+
+internal class ModelLoader {
+
+    class func load(name: String) -> NSManagedObjectModel {
+
+        let bundle = Bundle(for: ModelLoader.self)
+
+        guard let url = bundle.url(forResource: name, withExtension: "momd") else {
+            fatalError("Could not locate \(name).momd in bundle.")
+        }
+        guard let model = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Failed to load model at \(url).")
+        }
+        return model
+    }
+}
 
 internal func cachesDirectory() throws -> URL {
     

@@ -21,7 +21,7 @@ import XCTest
 import CoreData
 @testable import Coherence
 
-class NSEntityDescription_EntitySettingsTests: XCTestCase {
+class EntityDescriptionEntitySettingsTests: XCTestCase {
 
     let entity = NSEntityDescription()
 

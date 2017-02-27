@@ -33,7 +33,6 @@ public extension ActionContext {
             throw Errors.entityNotManaged("Entity \(entity.name ?? "Unknown") not managed, cannot merge objects.")
         }
 
-
         let objectSortDescriptors = try self.sortDescriptors(for: entity)
 
         let objectComparator: (ManagedObjectType, ManagedObjectType) -> ComparisonResult = { (object1, object2) -> ComparisonResult in

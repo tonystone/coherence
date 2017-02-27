@@ -21,37 +21,15 @@ import XCTest
 import CoreData
 @testable import Coherence
 
+fileprivate let modelName = "ConnectTestModel"
+
 class ConnectTests: XCTestCase {
 
-    var testModel:      NSManagedObjectModel! = nil
-    var testEmptyModel: NSManagedObjectModel! = nil
-
-    let modelName = "ConnectTestModel"
+    let testModel      = ModelLoader.load(name: modelName)
+    let testEmptyModel = ModelLoader.load(name: modelName + "Empty")
 
     override func setUp() {
         super.setUp()
-
-        let bundle = Bundle(for: type(of: self))
-
-        guard let modelUrl = bundle.url(forResource: modelName, withExtension: "momd") else {
-            fatalError("Could not locate \(modelName).momd in bundle.")
-        }
-
-        guard let model = NSManagedObjectModel(contentsOf: modelUrl) else {
-            fatalError("Failed to load model at \(modelUrl).")
-        }
-
-        self.testModel = model
-
-        guard let emptyModelUrl = bundle.url(forResource: modelName + "Empty", withExtension: "momd") else {
-            fatalError("Could not locate \(modelName + "Empty").momd in bundle.")
-        }
-
-        guard let emptyModel = NSManagedObjectModel(contentsOf: emptyModelUrl) else {
-            fatalError("Failed to load model at \(emptyModelUrl).")
-        }
-
-        self.testEmptyModel = emptyModel
 
         do {
             try removePersistentStoreCache()
@@ -62,7 +40,7 @@ class ConnectTests: XCTestCase {
 
     func testConstructionWithModelName() {
 
-        let input = self.testModel!
+        let input = self.testModel
         let expected = input
 
         XCTAssertEqual(Connect(name: modelName).managedObjectModel , expected)
@@ -70,7 +48,7 @@ class ConnectTests: XCTestCase {
 
     func testConstructionWithModelNameAndModel() {
 
-        let input = self.testModel!
+        let input = self.testModel
         let expected = input
 
         XCTAssertEqual(Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
@@ -78,7 +56,7 @@ class ConnectTests: XCTestCase {
 
     func testStart() throws {
 
-        let input = (modelName: self.modelName, model: self.testModel!)
+        let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
         let expectation = self.expectation(description: "Completion block called")
@@ -102,7 +80,7 @@ class ConnectTests: XCTestCase {
 
     func testStartThrows() throws {
 
-        let input = (modelName: self.modelName, model: self.testModel!)
+        let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
         let connect = Connect(name: input.modelName, managedObjectModel: input.model)
@@ -113,7 +91,7 @@ class ConnectTests: XCTestCase {
 
     func testStart2xThrows() throws {
 
-        let input = (modelName: self.modelName, model: self.testModel!)
+        let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
         let connect = Connect(name: input.modelName, managedObjectModel: input.model)
@@ -125,7 +103,7 @@ class ConnectTests: XCTestCase {
 
     func testStartWithIncompatibleStore() throws {
 
-        let input = (modelName: self.modelName, model: self.testModel!, emptyModel: self.testEmptyModel!)
+        let input = (modelName: modelName, model: self.testModel, emptyModel: self.testEmptyModel)
 
         /// Create the first instance of the persistent stores using the empty model
         do {
