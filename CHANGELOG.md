@@ -14,6 +14,7 @@ All significant changes to this project will be documented in this file.
 - Removed `GenericCoreDataStack` default persistent option `NSInferMappingModelAutomaticallyOptionChanged`.
 - `GenericCoreDataStack` now has a generic parameter for `ViewContextType` which must be specified.
 - Changed `GenericCoreDataStack` & `CoreDataStack` `viewContext` to use the `ViewContextType` removing the read only context.
+- Changed default merge policy for `ActionContext` to `NSMergeByPropertyObjectTrumpMergePolicy`
 
 ## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
 

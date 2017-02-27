@@ -270,7 +270,7 @@ extension Connect: CoreDataStack {
 
         let context = ActionContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = self.dataCache.persistentStoreCoordinator
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 
         return context
     }
