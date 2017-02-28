@@ -21,11 +21,7 @@ import XCTest
 import CoreData
 @testable import Coherence
 
-fileprivate let modelName = "ConnectTestModel"
-
 class ActionContextMergeTests: XCTestCase {
-
-    var testModel = ModelLoader.load(name: modelName)
 
     override func setUp() {
         super.setUp()
@@ -40,7 +36,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeInsert() {
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: "ConnectTestModel")
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -94,7 +90,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeUpdate() {
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: "ConnectTestModel")
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -163,7 +159,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeDelete() {
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: "ConnectTestModel")
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -214,6 +210,228 @@ class ActionContextMergeTests: XCTestCase {
             }
         } catch {
             XCTFail("\(error)")
+        }
+    }
+
+    func testMergeUpdateIgnoreLocalUpdatedItems() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let editContext = connect.newBackgroundContext()
+        let actionContext = connect.newActionContext()
+        let viewContext   = connect.viewContext
+
+        let input    = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+        let expected = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "New value", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+        try editContext.performAndWait {
+
+            /// Turn off logging for the insert
+            input.entity.logTransactions = false
+
+            ///
+            /// Insert the items first
+            ///
+            /// Note: these should not be logged as inserted
+            ///
+            for object in input.objects {
+                editContext.insert(object)
+            }
+            try editContext.save()
+
+            /// Turn on logging for the updates
+            input.entity.logTransactions = true
+
+            ///
+            /// Now update them
+            ///
+            /// Note: these should be logged
+            ///
+            for object in input.objects {
+                object.stringAttribute = "New value"
+            }
+            try editContext.save()
+        }
+
+        ///
+        /// Execute the merge which should ignore all items
+        ///
+        try actionContext.performAndWait {
+            try actionContext.merge(objects: input.objects, for: input.entity)
+        }
+
+        /// All Values should remain with the updated values
+        try viewContext.performAndWait {
+            for expectedObject in expected.objects {
+
+                let fetch = { () -> NSFetchRequest<ConnectEntity1> in
+
+                    let fetch = NSFetchRequest<ConnectEntity1>()
+                    fetch.entity = expected.entity
+                    fetch.predicate = NSPredicate(format: "id == %ld", expectedObject.id)
+
+                    return fetch
+                }()
+
+                let results = try viewContext.fetch(fetch)
+
+                guard let resultObject = results.last else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertEqual(resultObject.id,                 expectedObject.id)
+                XCTAssertEqual(resultObject.boolAttribute,      expectedObject.boolAttribute)
+                XCTAssertEqual(resultObject.stringAttribute,    expectedObject.stringAttribute)
+                XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
+            }
+        }
+    }
+
+    func testMergeInsertIgnoreLocalDeletedItems() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let editContext = connect.newBackgroundContext()
+        let actionContext = connect.newActionContext()
+        let viewContext   = connect.viewContext
+
+        let input    = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+        let expected = 0
+
+        try editContext.performAndWait {
+
+            let prime = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+            /// Turn off logging for the insert
+            prime.entity.logTransactions = false
+
+            ///
+            /// Insert the items first
+            ///
+            /// Note: these should not be logged as inserted
+            ///
+            for object in prime.objects {
+                editContext.insert(object)
+            }
+            try editContext.save()
+
+            /// Turn on logging for the updates
+            prime.entity.logTransactions = true
+
+            ///
+            /// Now delete them
+            ///
+            /// Note: these should be logged
+            ///
+            for object in prime.objects {
+                editContext.delete(object)
+            }
+            try editContext.save()
+        }
+
+        ///
+        /// Execute the merge which should ignore all items
+        ///
+        try actionContext.performAndWait {
+            try actionContext.merge(objects: input.objects, for: input.entity)
+        }
+
+        /// All Values should remain with the updated values
+        try viewContext.performAndWait {
+
+            let fetch = { () -> NSFetchRequest<ConnectEntity1> in
+
+                let fetch = NSFetchRequest<ConnectEntity1>()
+                fetch.entity = input.entity
+
+                return fetch
+            }()
+
+            let results = try viewContext.fetch(fetch)
+
+            ///
+            /// Should be zero (0) records
+            ///
+            XCTAssertEqual(results.count, expected)
+        }
+    }
+
+    func testMergeDeleteIgnoreLocalUpdatedItems() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let editContext = connect.newBackgroundContext()
+        let actionContext = connect.newActionContext()
+        let viewContext   = connect.viewContext
+
+        let input    = try ConnectEntity1.newTestObjects(for: actionContext, count: 0, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+        let expected = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "New value", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+        try editContext.performAndWait {
+
+            let prime = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+            /// Turn off logging for the insert
+            prime.entity.logTransactions = false
+
+            ///
+            /// Insert the items first
+            ///
+            /// Note: these should not be logged as inserted
+            ///
+            for object in prime.objects {
+                editContext.insert(object)
+            }
+            try editContext.save()
+
+            /// Turn on logging for the updates
+            prime.entity.logTransactions = true
+
+            ///
+            /// Now update them
+            ///
+            /// Note: these should be logged
+            ///
+            for object in prime.objects {
+                object.stringAttribute = "New value"
+            }
+            try editContext.save()
+        }
+
+        ///
+        /// Execute the merge which should ignore all items
+        ///
+        try actionContext.performAndWait {
+            try actionContext.merge(objects: input.objects, for: input.entity)
+        }
+
+        /// All Values should remain with the updated values
+        try viewContext.performAndWait {
+            for expectedObject in expected.objects {
+
+                let fetch = { () -> NSFetchRequest<ConnectEntity1> in
+
+                    let fetch = NSFetchRequest<ConnectEntity1>()
+                    fetch.entity = expected.entity
+                    fetch.predicate = NSPredicate(format: "id == %ld", expectedObject.id)
+
+                    return fetch
+                }()
+
+                let results = try viewContext.fetch(fetch)
+
+                guard let resultObject = results.last else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertEqual(resultObject.id,                 expectedObject.id)
+                XCTAssertEqual(resultObject.boolAttribute,      expectedObject.boolAttribute)
+                XCTAssertEqual(resultObject.stringAttribute,    expectedObject.stringAttribute)
+                XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
+            }
         }
     }
 }

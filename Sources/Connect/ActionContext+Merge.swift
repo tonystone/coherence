@@ -33,6 +33,19 @@ public extension ActionContext {
             throw Errors.entityNotManaged("Entity \(entity.name ?? "Unknown") not managed, cannot merge objects.")
         }
 
+        ///
+        /// Get a list of exceptions for the merge from the transaction log
+        ///
+        let localTransactions = try { () throws -> LogRecords in
+            if let results = try logger?.transactionLogRecordTypesForEntity(entity) {
+                return LogRecords(results)
+            }
+            return LogRecords([:])
+        }()
+
+        ///
+        /// Create the sort descriptors to sort both the source objects and the persistent objects.
+        ///
         let objectSortDescriptors = try self.sortDescriptors(for: entity)
 
         let objectComparator: (ManagedObjectType, ManagedObjectType) -> ComparisonResult = { (object1, object2) -> ComparisonResult in
@@ -98,21 +111,40 @@ public extension ActionContext {
                 /// If neither list has run out, compare with the object
                 comparisonResult = objectComparator(newObject, existingObject)
             } else {
-                continue
+                comparisonResult = .orderedSame
             }
 
             if comparisonResult == .orderedSame {
                 /// UPDATE: Identifiers match
 
                 if let existingObject = existingObject,
-                    let newObject      = newObject {
+                   let newObject      = newObject {
 
-                    /// Update the existing object with the values from the new object.
-                    let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+                    /// Get a local transaction based on the existing object in the cache, if any
+                    if localTransactions.hasRecord(for: existingObject.uniqueueIDString(), type: .update) {
+                        ///
+                        /// Note: LOCAL UPDATE: Only update the local copy if our local copy has not been changed
+                        ///                     This will preserve the transactiopn log and allow it to update the
+                        ///                     server later
+                        ///
+                        /// ------------------------------------------------------------------------------------------
+                        ///
+                        ///       LOCAL DELETE: A local delete would never match a key in the database, instead, this would
+                        ///                     show up as an insert
+                        ///
+                        ///       LOCAL INSERT: An insert on our side would never match the resource reference on this side
+                        ///
 
-                    existingObject.setValuesForKeys(objectsAndValues)
+                        /// We assume that once we update the server with our local update, the condition below
+                        /// will com into affect and the values will merged.
+                    } else {
+
+                        /// Update the existing object with the values from the new object.
+                        let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+                        
+                        existingObject.setValuesForKeys(objectsAndValues)
+                    }
                 }
-
                 ///
                 /// Move ahead in both lists.
                 ///
@@ -126,9 +158,30 @@ public extension ActionContext {
 
                 if let newObject = newObject {
 
-                    self.insert(newObject)
-                }
+                    // Get a local transaction based on the merging object, if any
+                    if localTransactions.hasRecord(for: newObject.uniqueueIDString(), type: .delete) {
+                        ///
+                        /// Note: LOCAL DELETE: A local  deleted record is the only condition that we
+                        ///                     care about here and need to deal with.  In this case the
+                        ///                     record is not in our local cache but has not yet been deleted
+                        ///                     from the server.  It still remains in our transaction log though
+                        ///
+                        /// ------------------------------------------------------------------------------------------
+                        ///
+                        ///       LOCAL UPDATE: A record that has been updated locally would not match the resource
+                        ///                     reference of a record from the server we consider new
+                        ///
+                        ///       LOCAL INSERT: An insert on our side would never match the resource reference
+                        ///                     of a server inserted record  so we let the new record be inserted
+                        ///
 
+                        /// The object on the server has been deleted locally and has not yet updated the server
+                        /// We do not need to deal with this here.  The server will be updated in time
+                    } else {
+
+                        self.insert(newObject)
+                    }
+                }
                 ///
                 /// Move ahead in just the new list since we used it for an insert.
                 ///
@@ -142,9 +195,28 @@ public extension ActionContext {
                 /// The stored item is not among those imported, and should be removed, then move ahead to the next stored item
                 if let existingObject = existingObject {
 
-                    self.delete(existingObject)
-                }
+                    // Get a local transaction based on the existing object in the cache, if any
 
+                    if localTransactions.hasRecord(for: existingObject.uniqueueIDString(), type: .update) {
+                        ///
+                        /// Note: LOCAL UPDATE: A local update to a deleted record is the only condition that we
+                        ///                     care about here and need to deal with.
+                        ///
+                        /// ------------------------------------------------------------------------------------------
+                        ///
+                        ///       LOCAL DELETE: A delete on both sides requires no action here because it is
+                        ///                     already removed from our local cache
+                        ///
+                        ///       LOCAL INSERT: An insert on our side would never match the resource reference on this side
+                        ///
+
+                        /// Merge conflict, we need to store the fact and notify the user that this object
+                        /// has been removed
+                    } else {
+
+                        self.delete(existingObject)
+                    }
+                }
                 ///
                 /// Move ahead just the existing since we deleted it.
                 ///
@@ -161,6 +233,23 @@ public extension ActionContext {
 }
 
 fileprivate extension ActionContext {
+
+    fileprivate class LogRecords {
+
+        private let records: [String: Set<MetaLogEntryType>]
+
+        init(_ records: [String: Set<MetaLogEntryType>]) {
+            self.records = records
+        }
+
+        @inline(__always)
+        func hasRecord(for uniqueID: String?, type: MetaLogEntryType) -> Bool {
+            guard let uniqueID = uniqueID, let types = records[uniqueID]
+                else { return false }
+
+            return types.contains(type)
+        }
+    }
 
     fileprivate func sortDescriptors(for entity: NSEntityDescription) throws -> [NSSortDescriptor]  {
         var descriptors: [NSSortDescriptor] = []

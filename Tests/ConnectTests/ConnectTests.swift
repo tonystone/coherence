@@ -67,12 +67,9 @@ class ConnectTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: 1) { (error) in
+        self.waitForExpectations(timeout: 5) { (error) in
 
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            } else {
-
+            if error == nil {
                 XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
             }
         }

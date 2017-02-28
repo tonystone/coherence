@@ -170,11 +170,7 @@ internal class WriteAheadLog {
         }
     }
 
-    internal func transactionLogEntriesForTransaction(_ transactionID: TransactionID) -> [MetaLogEntry] {
-        return []
-    }
-
-    internal func transactionLogRecordsForEntity(_ entityDescription: NSEntityDescription) throws -> [MetaLogEntry] {
+    internal func transactionLogRecordTypesForEntity(_ entityDescription: NSEntityDescription) throws -> [String: Set<MetaLogEntryType>]  {
 
         let context = self.coreDataStack.newBackgroundContext()
         let fetchRequest = NSFetchRequest<MetaLogEntry>()
@@ -182,10 +178,22 @@ internal class WriteAheadLog {
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: context)
         fetchRequest.predicate = NSPredicate(format: "updateEntityName == %@", entityDescription.name!)
 
-        var results: [MetaLogEntry] = []
+        var results: [String: Set<MetaLogEntryType>]  = [:]
 
         try context.performAndWait {
-            results = try context.fetch(fetchRequest)
+            let objects = try context.fetch(fetchRequest)
+
+            for object in objects {
+                if let uniqueID = object.updateUniqueID {
+                    if var types = results[uniqueID] {
+                        types.insert(object.type)
+
+                        results[uniqueID] = types
+                    } else {
+                        results[uniqueID] = Set<MetaLogEntryType>(arrayLiteral: object.type)
+                    }
+                }
+            }
         }
         return results
     }
@@ -365,7 +373,7 @@ internal class WriteAheadLog {
                                                    objectID: object.objectID.uriRepresentation().absoluteString,
                                                    uniqueueID: uniqueID,
                                                    updateData: nil,
-                                                   type: .update,
+                                                   type: .delete,
                                                    transactionID: transactionID,
                                                    metadataContext: metadataContext,
                                                    sequenceNumber: sequenceNumber)

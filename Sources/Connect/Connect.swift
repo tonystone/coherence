@@ -269,8 +269,10 @@ extension Connect: CoreDataStack {
     internal func newActionContext() -> ActionContext {
 
         let context = ActionContext(concurrencyType: .privateQueueConcurrencyType)
+        
         context.persistentStoreCoordinator = self.dataCache.persistentStoreCoordinator
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.logger = self.writeAheadLog
 
         return context
     }
