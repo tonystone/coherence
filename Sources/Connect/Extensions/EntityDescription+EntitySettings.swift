@@ -100,15 +100,6 @@ extension NSEntityDescription: EntitySettings  {
     private func logUpdate<T>(_ funcName: String, value: T) {
         logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(value)'" }
     }
-    @inline(__always)
-    private func logUpdate<T>(_ funcName: String, value: T?) {
-        var newValue: Any = "nil"
-
-        if let value = value {
-            newValue = value
-        }
-        logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(newValue)'" }
-    }
 }
 
 internal extension NSEntityDescription {
@@ -117,47 +108,30 @@ internal extension NSEntityDescription {
 
         if let rawValue = dictionary["uniquenessAttributes"] {
 
-            switch rawValue {
-            case let value as [String]:
+            if let value = rawValue as? [String] {
                 self.uniquenessAttributes = value
-                break
-            case let value as String:
+            } else if let value = rawValue as? String {
                 self.uniquenessAttributes = value.components(separatedBy: ",").map{ $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                break
-            default:
-                break
             }
         }
 
         if let rawValue = dictionary["stalenessInterval"] {
 
-            switch rawValue {
-            case let value as Int:
+            if let value = rawValue as? Int {
                 self.stalenessInterval = value
-                break
-            case let string as String:
-                if let value = Int(string) {
-                    self.stalenessInterval = value
-                }
-                break
-            default:
-                break
+            } else if let string = rawValue as? String,
+                      let value  = Int(string) {
+                self.stalenessInterval = value
             }
         }
 
         if let rawValue = dictionary["logTransactions"] {
 
-            switch rawValue {
-            case let value as Bool:
+            if let value = rawValue as? Bool {
                 self.logTransactions = value
-                break
-            case let string as String:
-                if let value = Bool(string) {
-                    self.logTransactions = value
-                }
-                break
-            default:
-                break
+            } else if let string = rawValue as? String,
+                let value  = Bool(string) {
+                self.logTransactions = value
             }
         }
     }

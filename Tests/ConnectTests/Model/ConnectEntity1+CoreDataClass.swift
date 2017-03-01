@@ -23,7 +23,7 @@ import CoreData
 @objc(ConnectEntity1)
 public class ConnectEntity1: NSManagedObject {
 
-    private enum Errors: Error {
+    public enum Errors: Error {
         case entityNotFound(String)
     }
 
@@ -48,5 +48,4 @@ public class ConnectEntity1: NSManagedObject {
         }
         return (entity, objects)
     }
-
 }

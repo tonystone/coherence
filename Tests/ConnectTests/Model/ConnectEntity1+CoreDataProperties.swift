@@ -29,7 +29,7 @@ extension ConnectEntity1 {
 
     @NSManaged public var id: Int64
     @NSManaged public var boolAttribute: Bool
-    @NSManaged public var stringAttribute: String?
+    @NSManaged public var stringAttribute: String
     @NSManaged public var transformableAttribute: NSObject?
     @NSManaged public var binaryAttribute: Data?
 

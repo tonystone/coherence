@@ -53,6 +53,7 @@
 		E2D66AB8911EA91F1850A17B /* EntityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B59130945977401CA72D98B /* EntityAction.swift */; };
 		E833812DAD019AD132806A7F /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F45D01F1DFA39B461983EBE /* MetaModel.swift */; };
 		EA5BDCA21E649EE700527236 /* ManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */; };
+		EAC4BD501E65DB7E00C3BC05 /* Connect+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD4F1E65DB7E00C3BC05 /* Connect+Errors.swift */; };
 		F22E020C370D35B609D51C49 /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C167FF49DBC42E371332E /* MetaLogEntry+CoreDataProperties.swift */; };
 		F42E02517025EACB12172286 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F1E3E23110A8566CB6AB2B /* Environment.swift */; };
 		F720C2D8E9BC21221D13EF04 /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FB1EAB6E3E07D04B702748 /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,6 +172,7 @@
 		E793CADB02C5E155F003F826 /* StaticContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StaticContext.swift; path = Sources/TraceLog/StaticContext.swift; sourceTree = "<group>"; };
 		E9FB1EAB6E3E07D04B702748 /* TraceLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-umbrella.h"; sourceTree = "<group>"; };
 		EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+Extensions.swift"; sourceTree = "<group>"; };
+		EAC4BD4F1E65DB7E00C3BC05 /* Connect+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Connect+Errors.swift"; sourceTree = "<group>"; };
 		EAC8B3EAB793AAB5DF970B14 /* Pods-Coherence Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Example.debug.xcconfig"; sourceTree = "<group>"; };
 		ED903204A42F37D05A37FD4D /* GenericActionContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericActionContainer.swift; sourceTree = "<group>"; };
 		EE81D31503238CDD4CFC337F /* ActionContext+Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ActionContext+Merge.swift"; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				EE81D31503238CDD4CFC337F /* ActionContext+Merge.swift */,
 				94DFECE038D003DBABCA14D7 /* ActionProxy.swift */,
 				B05F39023E6A55188E8EA9FE /* Connect.swift */,
+				EAC4BD4F1E65DB7E00C3BC05 /* Connect+Errors.swift */,
 				177A1A0BEFE125B67B8FC5F7 /* Connect+Notification.swift */,
 				1B59130945977401CA72D98B /* EntityAction.swift */,
 				EF14CE1DF7046094FDB866EA /* EntitySettings.swift */,
@@ -762,6 +765,7 @@
 				C9FD11A309F8C471DB46D1F9 /* ManagedObjectContext+Extensions.swift in Sources */,
 				F22E020C370D35B609D51C49 /* MetaLogEntry+CoreDataProperties.swift in Sources */,
 				5ADC827F84CCD64C2048B633 /* MetaLogEntry.swift in Sources */,
+				EAC4BD501E65DB7E00C3BC05 /* Connect+Errors.swift in Sources */,
 				E833812DAD019AD132806A7F /* MetaModel.swift in Sources */,
 				619C3BE0B23CB96006F39BC6 /* NotificationService.swift in Sources */,
 				04935EDECAB5E4198F40C877 /* EntityDescription+EntitySettings.swift in Sources */,

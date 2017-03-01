@@ -17,7 +17,7 @@ extension NSManagedObject {
         if !self.entity.uniquenessAttributes.isEmpty {
             var uniqueID = ""
             for key in self.entity.uniquenessAttributes {
-                uniqueID.append("\(self.primitiveValue(forKey: key))")
+                uniqueID.append("\(self.primitiveValue(forKey: key) ?? "")")
             }
             return uniqueID
         }

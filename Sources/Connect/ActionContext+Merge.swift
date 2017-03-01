@@ -23,14 +23,15 @@ import TraceLog
 
 public extension ActionContext {
 
-    private enum Errors: Error {
-        case entityNotManaged(String)
-    }
-
+    ///
+    /// Merrge `objects` into the database.
+    ///
+    /// - Throws: `Connect.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
+    ///
     public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil) throws {
 
         guard entity.managed else {
-            throw Errors.entityNotManaged("Entity \(entity.name ?? "Unknown") not managed, cannot merge objects.")
+            throw Connect.Errors.unmanagedEntity("Entity '\(entity.name ?? "Unknown")' not managed, cannot merge objects.")
         }
 
         ///

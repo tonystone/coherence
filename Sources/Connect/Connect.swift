@@ -39,13 +39,6 @@ private let connectBundleDirectory: FileManager.SearchPathDirectory = .documentD
 ///
 public class Connect {
 
-    /// 
-    /// Errors thrown from Connect
-    ///
-    public enum Errors: Error {
-        case unmanagedEntity(String)
-    }
-
     ///
     /// The name of this instance of Connect
     ///

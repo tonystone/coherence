@@ -59,6 +59,8 @@
 		EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */; };
+		EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
+		EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3221E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld */; };
 		EAC5C3271E6269D90025D310 /* TestModel4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3251E6269D90025D310 /* TestModel4.xcdatamodeld */; };
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
@@ -156,8 +158,10 @@
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
+		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EABEDD4B1DC69B3400D5785D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
+		EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedStorageTests.swift; sourceTree = "<group>"; };
 		EAC5C3231E624D090025D310 /* ConnectTestModelEmpty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ConnectTestModelEmpty.xcdatamodel; sourceTree = "<group>"; };
 		EAC5C3261E6269D90025D310 /* TestModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel4.xcdatamodel; sourceTree = "<group>"; };
 		EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 				EA5BDC981E63466000527236 /* NotificationServiceTests.swift */,
 				EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */,
+				EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */,
+				EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */,
 			);
 			name = Internal;
 			path = ConnectTests/Internal;
@@ -741,6 +747,7 @@
 				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,
 				EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */,
+				EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA1C14541E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift in Sources */,
 				EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
 				EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */,
@@ -752,6 +759,7 @@
 				EA1C14191E3D8107002E63BD /* User+CoreDataProperties.swift in Sources */,
 				EA1C14131E3D80F3002E63BD /* GenericCoreDataStackTests.swift in Sources */,
 				EA1C14551E3FA0B0002E63BD /* ConnectEntity2+CoreDataProperties.swift in Sources */,
+				EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */,
 				EA1C14141E3D80F6002E63BD /* ObjcCoreDataStackTests.swift in Sources */,
 				EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */,
 				EA2CC5D51E36B17300054305 /* EntityDescription+EntitySettingsTests.swift in Sources */,

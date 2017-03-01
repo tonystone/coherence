@@ -33,6 +33,31 @@ class ActionContextMergeTests: XCTestCase {
         }
     }
 
+    func testMergeUnmanagedObject() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let actionContext = connect.newActionContext()
+
+        let input = try ConnectEntity3Unmanaged.newTestObjects(for: actionContext, count: 10)
+        let expected = "Entity 'ConnectEntity3Unmanaged' not managed, cannot merge objects."
+        
+        ///
+        /// Execute the merge which should ignore all items
+        ///
+        try actionContext.performAndWait {
+            XCTAssertThrowsError(try actionContext.merge(objects: input.objects, for: input.entity)) { (error) in
+
+                if case Connect.Errors.unmanagedEntity(let message) = error {
+                    XCTAssertEqual(message, expected)
+                } else {
+                    XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
+                }
+            }
+        }
+    }
+
     func testMergeInsert() {
 
         do {
@@ -302,30 +327,30 @@ class ActionContextMergeTests: XCTestCase {
 
         try editContext.performAndWait {
 
-            let prime = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+            let primerObjects = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert",    dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
 
             /// Turn off logging for the insert
-            prime.entity.logTransactions = false
+            primerObjects.entity.logTransactions = false
 
             ///
             /// Insert the items first
             ///
             /// Note: these should not be logged as inserted
             ///
-            for object in prime.objects {
+            for object in primerObjects.objects {
                 editContext.insert(object)
             }
             try editContext.save()
 
             /// Turn on logging for the updates
-            prime.entity.logTransactions = true
+            primerObjects.entity.logTransactions = true
 
             ///
             /// Now delete them
             ///
             /// Note: these should be logged
             ///
-            for object in prime.objects {
+            for object in primerObjects.objects {
                 editContext.delete(object)
             }
             try editContext.save()
@@ -372,30 +397,30 @@ class ActionContextMergeTests: XCTestCase {
 
         try editContext.performAndWait {
 
-            let prime = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+            let primerObjects = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
 
             /// Turn off logging for the insert
-            prime.entity.logTransactions = false
+            primerObjects.entity.logTransactions = false
 
             ///
             /// Insert the items first
             ///
             /// Note: these should not be logged as inserted
             ///
-            for object in prime.objects {
+            for object in primerObjects.objects {
                 editContext.insert(object)
             }
             try editContext.save()
 
             /// Turn on logging for the updates
-            prime.entity.logTransactions = true
+            primerObjects.entity.logTransactions = true
 
             ///
             /// Now update them
             ///
             /// Note: these should be logged
             ///
-            for object in prime.objects {
+            for object in primerObjects.objects {
                 object.stringAttribute = "New value"
             }
             try editContext.save()
@@ -404,6 +429,87 @@ class ActionContextMergeTests: XCTestCase {
         ///
         /// Execute the merge which should ignore all items
         ///
+        try actionContext.performAndWait {
+            try actionContext.merge(objects: input.objects, for: input.entity)
+        }
+
+        /// All Values should remain with the updated values
+        try viewContext.performAndWait {
+            for expectedObject in expected.objects {
+
+                let fetch = { () -> NSFetchRequest<ConnectEntity1> in
+
+                    let fetch = NSFetchRequest<ConnectEntity1>()
+                    fetch.entity = expected.entity
+                    fetch.predicate = NSPredicate(format: "id == %ld", expectedObject.id)
+
+                    return fetch
+                }()
+
+                let results = try viewContext.fetch(fetch)
+
+                guard let resultObject = results.last else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertEqual(resultObject.id,                 expectedObject.id)
+                XCTAssertEqual(resultObject.boolAttribute,      expectedObject.boolAttribute)
+                XCTAssertEqual(resultObject.stringAttribute,    expectedObject.stringAttribute)
+                XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
+            }
+        }
+    }
+
+    func testMergeUpdateWithoutWriteAheadLog() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let editContext = connect.newBackgroundContext()
+        let actionContext = connect.newActionContext()
+        let viewContext   = connect.viewContext
+
+        let input    = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+        let expected = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+        try editContext.performAndWait {
+
+            let primerObjects = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+            /// Turn off logging for the insert
+            primerObjects.entity.logTransactions = false
+
+            ///
+            /// Insert the items first
+            ///
+            /// Note: these should not be logged as inserted
+            ///
+            for object in primerObjects.objects {
+                editContext.insert(object)
+            }
+            try editContext.save()
+
+            /// Turn on logging for the updates
+            primerObjects.entity.logTransactions = true
+
+            ///
+            /// Now update them
+            ///
+            /// Note: these should be logged
+            ///
+            for object in primerObjects.objects {
+                object.stringAttribute = "New value"
+            }
+            try editContext.save()
+        }
+
+        ///
+        /// Remove the Logger before executing the merge
+        /// this will ignore the transactions in the log 
+        /// and update the values back to their previous 
+        /// vaues.
+        actionContext.logger = nil
+
         try actionContext.performAndWait {
             try actionContext.merge(objects: input.objects, for: input.entity)
         }
