@@ -1,3 +1,9 @@
+
+> :warning: **WARNING** :warning: This project is in a _prerelease_ state. There
+> is active work going on that will result in API changes that can/will break
+> code while things are finished.  Use with caution.
+
+
 # Coherence ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-lightgray.svg?style=flat)
 
 <a href="https://github.com/tonystone/coherence/" target="_blank">
@@ -13,10 +19,6 @@
 <a href="https://codecov.io/gh/tonystone/coherence">
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
-
-> :warning: **WARNING** :warning: This project is in a _prerelease_ state. There
-> is active work going on that will result in API changes that can/will break
-> code while things are finished.  Use with caution.
 
 ## Requirements
 
