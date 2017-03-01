@@ -14,6 +14,10 @@
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
+> :warning: **WARNING** :warning: This project is in a _prerelease_ state. There
+> is active work going on that will result in API changes that can/will break
+> code while things are finished.  Use with caution.
+
 ## Requirements
 
 | Xcode | Swift | iOS |
