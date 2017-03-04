@@ -50,7 +50,7 @@ internal class ActionContainer: Operation, ActionProxy {
     public var statistics: ActionStatistics {
         return _statistics
     }
-    private let _statistics: Statistics
+    internal let _statistics: Statistics
 
     internal init(action: Action, notificationService: NotificationService, completionBlock: ((_ actionProxy: ActionProxy) -> Void)?) {
         self.action              = action
@@ -138,6 +138,8 @@ internal extension ActionContainer {
             }
             return finish.timeIntervalSince(start)
         }
+
+        public internal(set) var contextStatistics: ContextStatistics? = nil
 
         @inline(__always)
         fileprivate func start() { self.startTime = Date() }
