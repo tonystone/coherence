@@ -38,6 +38,9 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
     internal override func execute() throws {
         try self.entityAction.execute(context: context)
 
+        /// Pass the context statistics up the chain.
+        self._statistics.contextStatistics = self.context.statistics
+
         logInfo { "Proxy \(self): context statistics: \(self.context.statistics)" }
     }
 

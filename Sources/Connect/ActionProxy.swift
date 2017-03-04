@@ -41,7 +41,55 @@ public enum ActionCompletionStatus {
 }
 
 ///
-/// Statistics of an `Action` during and 
+/// Context Statistics
+///
+public protocol ContextStatistics {
+
+    ///
+    /// Running total number of inserts.
+    ///
+    var inserts: Int { get }
+
+    ///
+    /// Running total number of updates.
+    ///
+    var updates: Int { get }
+
+    ///
+    /// Running total number of deletes.
+    ///
+    var deletes: Int { get }
+
+    ///
+    /// Running total number of records fetched.
+    ///
+    var fetches: Int { get }
+
+    ///
+    /// Total time spent in perform or performAndWait blocks.
+    ///
+    var contextBlockTime: TimeInterval { get }
+
+    ///
+    /// Total time in fetch calls.
+    ///
+    var fetchTime: TimeInterval { get }
+
+    ///
+    /// Total time in save calls.
+    ///
+    var saveTime: TimeInterval { get }
+
+    ///
+    /// Remaining time 
+    ///
+    /// Calculated as contextBlcokTime - fetchTime - saveTime
+    ///
+    var otherTime: TimeInterval { get }
+}
+
+///
+/// Statistics of an `Action` during and
 /// after its been executed.
 ///
 public protocol ActionStatistics {
@@ -63,6 +111,12 @@ public protocol ActionStatistics {
     /// with the total execution time (minus your completion block time).
     ///
     var executionTime: TimeInterval { get }
+
+    ///
+    /// If this was an `EnityAction` context stastics will contain the
+    /// statstics of the `ActionContext` used during the action.
+    ///
+    var contextStatistics: ContextStatistics? { get }
 }
 
 ///

@@ -38,6 +38,8 @@ fileprivate class TestActionStatistics: ActionStatistics {
     var finishTime: Date? = nil
 
     var executionTime: TimeInterval = 0.0
+
+    var contextStatistics: ContextStatistics?
 }
 
 ///

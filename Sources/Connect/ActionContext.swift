@@ -148,7 +148,7 @@ public class ActionContext: NSManagedObjectContext {
 ///
 internal extension ActionContext {
 
-    internal class Statistics {
+    internal class Statistics: ContextStatistics {
 
         public internal(set) var inserts: Int = 0       /// Running total number of inserts
         public internal(set) var updates: Int = 0       /// Running total number of updates
