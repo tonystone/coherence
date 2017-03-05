@@ -169,12 +169,10 @@ internal extension ActionContext {
 extension ActionContext.Statistics: CustomStringConvertible {
 
     var description: String {
-        return String(format: "{\r\tcontextBlockTime: %.4f {" +
-            "\r\t\t{" +
+        return String(format: "{\r\tblockTime: %.4f {" +
             "\r\t\t saveTime: %.4f {\r\t\t\tinserts: %ld\r\t\t\tupdates: %ld\r\t\t\tdeletes: %ld\r\t\t\t}" +
             "\r\t\tfetchTime: %.4f {\r\t\t\tfetches: %ld\r\t\t\t}" +
             "\r\t\totherTime: %.4f" +
-            "\r\t\t}" +
             "\r\t}", self.contextBlockTime, self.saveTime, self.inserts, self.updates, self.deletes, self.fetchTime, self.fetches, self.otherTime)
     }
 }

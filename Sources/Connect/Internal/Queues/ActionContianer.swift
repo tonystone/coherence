@@ -167,10 +167,17 @@ internal extension ActionContainer {
 extension ActionContainer.Statistics: CustomStringConvertible {
 
     public var description: String {
-        return String(format: "{\r\texecutionTime: %.4f {" +
-            "\r\t\t startTime: %@" +
-            "\r\t\tfinishTime: %@" +
-            "\r\t\t}\r\t}",
-                      self.executionTime, self.startTime?.description ?? "(not started)", self.finishTime?.description ?? "(not started)")
+        var string = String(format: "{\r\texecutionTime: %.4f {", self.executionTime)
+
+        if let contextStatistics = self.contextStatistics {
+            let indentedStatistics = "\(contextStatistics)".indent(by: 2)
+            string.append("\r\t\t   context: \(indentedStatistics)")
+        }
+
+        string.append("\r\t\t startTime: \(self.startTime?.description ?? "(not started)")")
+        string.append("\r\t\tfinishTime: \(self.finishTime?.description ?? "(not started)")")
+
+        string.append("\r\t\t}\r\t}")
+        return string
     }
 }
