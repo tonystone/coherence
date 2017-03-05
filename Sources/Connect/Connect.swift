@@ -124,39 +124,6 @@ public class Connect {
     fileprivate var started: Bool
 
     ///
-    /// Internal class to create the connect bundle.
-    ///
-    /// - Note: you can not use a func on self for this
-    ///         since we are initializing a content in self.
-    ///
-    fileprivate class BundleManager {
-
-        class func createIfAbsent(bundleName: String, in directory: FileManager.SearchPathDirectory) throws -> URL {
-
-            //
-            // Figure out where to put things
-            //
-            // Note: We use the applications bundle not the classes or modules.
-            //
-            let baseURL = try FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: false)
-
-            ///
-            /// The individual stores are stored in a directory with the extension of connect.
-            ///
-            /// Example: "HR.connect"
-            ///
-            let bundleURL = baseURL.appendingPathComponent("\(bundleName).\(connectBundleExtension)", isDirectory: true)
-
-            ///
-            /// create direcotry will throw if the directory can't be created.  If it already exists, it will simply return.
-            ///
-            try FileManager.default.createDirectory(at: bundleURL, withIntermediateDirectories: true, attributes: nil)
-            
-            return bundleURL
-        }
-    }
-
-    ///
     ///  Initializes the receiver with a managed object model.
     ///
     ///   - parameters:
@@ -164,28 +131,12 @@ public class Connect {
     ///
     public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
-        let bundle = Bundle.main
-
-        var url: URL? = bundle.url(forResource: name, withExtension: "momd") ?? bundle.url(forResource: name, withExtension: "mom")
-
-        if url == nil {
-
-            /// Check the inner bundles if not found in the main bundle
-            for innerBundle in Bundle.allBundles {
-                url = innerBundle.url(forResource: name, withExtension: "momd") ?? innerBundle.url(forResource: name, withExtension: "mom")
-
-                if url != nil {
-                    break
-                }
-            }
-        }
-
-        guard let modelUrl = url else {
+        guard let url = Bundle.url(forManagedObjectModelName: name) else {
             preconditionFailure("Could not locate model `\(name)` in any bundle.")
         }
 
-        guard let model = NSManagedObjectModel(contentsOf: modelUrl) else {
-            preconditionFailure("Failed to load model at \(modelUrl).")
+        guard let model = NSManagedObjectModel(contentsOf: url) else {
+            preconditionFailure("Failed to load model at \(url).")
         }
 
         self.init(name: name, managedObjectModel: model, configurationOptions: options)
@@ -514,5 +465,41 @@ fileprivate extension Connect {
             throw Errors.unmanagedEntity("Entity '\(entityName)' not managed by \(self)")
         }
         return queue
+    }
+}
+
+fileprivate extension Connect {
+
+    ///
+    /// Internal class to create the connect bundle.
+    ///
+    /// - Note: you can not use a func on self for this
+    ///         since we are initializing a content in self.
+    ///
+    fileprivate class BundleManager {
+
+        class func createIfAbsent(bundleName: String, in directory: FileManager.SearchPathDirectory) throws -> URL {
+
+            //
+            // Figure out where to put things
+            //
+            // Note: We use the applications bundle not the classes or modules.
+            //
+            let baseURL = try FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+            ///
+            /// The individual stores are stored in a directory with the extension of connect.
+            ///
+            /// Example: "HR.connect"
+            ///
+            let bundleURL = baseURL.appendingPathComponent("\(bundleName).\(connectBundleExtension)", isDirectory: true)
+
+            ///
+            /// create direcotry will throw if the directory can't be created.  If it already exists, it will simply return.
+            ///
+            try FileManager.default.createDirectory(at: bundleURL, withIntermediateDirectories: true, attributes: nil)
+
+            return bundleURL
+        }
     }
 }
