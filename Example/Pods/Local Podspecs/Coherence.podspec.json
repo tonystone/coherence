@@ -30,6 +30,10 @@
   },
   "subspecs": [
     {
+      "name": "Common",
+      "source_files": "Sources/Common/**/*"
+    },
+    {
       "name": "ConfigurationCore",
       "requires_arc": false,
       "source_files": "Sources/ConfigurationCore/**/*"
@@ -45,11 +49,19 @@
     },
     {
       "name": "Stack",
+      "dependencies": {
+        "Coherence/Common": [
+
+        ]
+      },
       "source_files": "Sources/Stack/*"
     },
     {
       "name": "Connect",
       "dependencies": {
+        "Coherence/Common": [
+
+        ],
         "Coherence/Stack": [
 
         ]

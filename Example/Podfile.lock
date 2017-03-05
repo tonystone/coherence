@@ -5,6 +5,9 @@ PODS:
     - Coherence/Stack (= 3.0.0-beta.3)
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
+  - Coherence/Common (3.0.0-beta.3):
+    - TraceLog (~> 2.0)
+    - TraceLog/ObjC (~> 2.0)
   - Coherence/Configuration (3.0.0-beta.3):
     - Coherence/ConfigurationCore
     - TraceLog (~> 2.0)
@@ -13,10 +16,12 @@ PODS:
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
   - Coherence/Connect (3.0.0-beta.3):
+    - Coherence/Common
     - Coherence/Stack
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
   - Coherence/Stack (3.0.0-beta.3):
+    - Coherence/Common
     - TraceLog (~> 2.0)
     - TraceLog/ObjC (~> 2.0)
   - TraceLog (2.0.1):
@@ -33,7 +38,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: 76c6ea1cd61c8892e11b8979ba7e211cf3bd875b
+  Coherence: 9b54b224537a90becc19ec85fe43aae66c7693a9
   TraceLog: 37035b5d79653592f949a8cd50ec044a45d6dfc1
 
 PODFILE CHECKSUM: f816deb775485935e3e1a3e3619f3d0443e13a55
