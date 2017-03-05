@@ -17,19 +17,17 @@
 ///
 ///  Created by Tony Stone on 2/12/17.
 ///
-import UIKit
 import CoreData
 import TraceLog
 import Coherence
 
-class MockListActionUnmanaged: EntityAction {
+class MockListActionUnmanaged: MockBaseAction, EntityAction {
 
     typealias ManagedObjectType = ConnectEntity3Unmanaged
 
-    public func execute(context: ActionContext) throws {}
-
-    ///
-    /// All Actions must be cancelable
-    ///
-    public func cancel() {}
+    public func execute(context: ActionContext) throws {
+        if try self.start() {
+            logInfo { "Executed." }
+        }
+    }
 }

@@ -17,19 +17,15 @@
 ///
 ///  Created by Tony Stone on 1/22/17.
 ///
-import UIKit
 import TraceLog
 import Coherence
 
-class MockGenericAction: GenericAction {
+class MockGenericAction: MockBaseAction, GenericAction {
 
     public func execute() throws {
+        if try self.start() {
 
-        logInfo { "Executed..." }
+            logInfo { "Executed." }
+        }
     }
-
-    ///
-    /// All Actions must be cancelable
-    ///
-    public func cancel() {}
 }

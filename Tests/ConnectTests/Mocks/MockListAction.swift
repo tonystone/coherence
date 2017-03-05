@@ -22,7 +22,7 @@ import CoreData
 import TraceLog
 import Coherence
 
-class MockListAction: EntityAction {
+class MockListAction: MockBaseAction, EntityAction {
 
     typealias ManagedObjectType = ConnectEntity1
 
@@ -32,27 +32,29 @@ class MockListAction: EntityAction {
 
     private var testValues: [ManagedObjectType]
 
-    public init(testValues: [ManagedObjectType]) {
+
+    public init(waitUntilCanceled wait: Bool = false, timeout: Double = 5, forceError: Bool = false, testValues: [ManagedObjectType]) {
         self.testValues = testValues
+
+        super.init(waitUntilCanceled: wait, timeout: timeout, forceError: forceError)
     }
 
     public func execute(context: ActionContext) throws {
 
-        logInfo { "Executing..." }
-        guard let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: context) else {
-            throw Errors.testError("Failed to get entity for ConnectEntity1.")
-        }
+        if try self.start() {
 
-        ///
-        /// Merge the values set in the init into the DB
-        ///
-        try context.performAndWait {
-            try context.merge(objects: self.testValues, for: entity)
+            logInfo { "Executing..." }
+
+            guard let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: context) else {
+                throw Errors.testError("Failed to get entity for ConnectEntity1.")
+            }
+
+            ///
+            /// Merge the values set in the init into the DB
+            ///
+            try context.performAndWait {
+                try context.merge(objects: self.testValues, for: entity)
+            }
         }
     }
-
-    ///
-    /// All Actions must be cancelable
-    ///
-    public func cancel() {}
 }

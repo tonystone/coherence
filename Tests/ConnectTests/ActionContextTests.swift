@@ -30,8 +30,6 @@ class ActionContextTests: XCTestCase {
         case entityNotFound(String)
     }
 
-    var testModel = ModelLoader.load(name: modelName)
-
     override func setUp() {
         super.setUp()
 
@@ -45,7 +43,7 @@ class ActionContextTests: XCTestCase {
     func testPerform () {
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName)
             try connect.start()
 
             let actionContext     = connect.newActionContext()
@@ -129,7 +127,7 @@ class ActionContextTests: XCTestCase {
         }
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName)
             try connect.start()
             
             let actionContext     = connect.newActionContext()
@@ -196,7 +194,7 @@ class ActionContextTests: XCTestCase {
         let expected = input
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect(name: modelName)
             try connect.start()
             
             let actionContext = connect.newActionContext()

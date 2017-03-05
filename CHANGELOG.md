@@ -17,6 +17,10 @@ All significant changes to this project will be documented in this file.
 - Changed default merge policy for `ActionContext` to `NSMergeByPropertyObjectTrumpMergePolicy`
 - Changed `NSEntityDescription.uniquenessAttributes` to be non-optional.
 
+#### Fixed
+- `ActionProxy` cancel timing.  `ActionProxy` now correctly cancels actions in various states and reports back the `completionStatus` as `canceled`.
+
+
 ## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
 
 #### Added 

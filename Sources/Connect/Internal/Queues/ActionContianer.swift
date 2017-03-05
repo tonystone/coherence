@@ -68,9 +68,30 @@ internal class ActionContainer: Operation, ActionProxy {
 
     override func main() {
 
+        logInfo { "Proxy \(self) started on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
+
         self.state = .executing
 
-        logInfo { "Proxy \(self) executing on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
+        defer {
+            self.state = .finished
+
+            logInfo {
+                var message = "Proxy \(self) \(self.completionStatus)"
+
+                if self.completionStatus == .failed,  let error = self.error {
+                    message.append( " with error: \(error).")
+                } else {
+                    message.append( ", execution statistics: \(self.statistics)")
+                }
+                return message
+            }
+
+            self.completion?(self)
+        }
+
+        guard completionStatus != .canceled else {
+            return
+        }
 
         ///
         /// Execute the action
@@ -79,30 +100,28 @@ internal class ActionContainer: Operation, ActionProxy {
             try autoreleasepool {
                 try self.execute()
             }
-            completionStatus = .successful
+            ///
+            /// If canceled, we must maintain the canceled state
+            ///
+            if completionStatus != .canceled {
+                completionStatus = .successful
+            }
         } catch {
             self.error = error
 
-            completionStatus = .failed
-
-            logError { "Proxy \(self): action \(self.action) failed with error: \(error)." }
-        }
-        self.state = .finished
-
-        logInfo { "Proxy \(self) finished, statistics: \(self._statistics)" }
-
-        if let completionBlock = completion {
-            completionBlock(self)
+            ///
+            /// If canceled, we must maintain the canceled state
+            ///
+            if completionStatus != .canceled {
+                completionStatus = .failed
+            }
         }
     }
 
     override func cancel() {
-        self.action.cancel()
-        super.cancel()
-        
         self.completionStatus = .canceled
 
-        logInfo { "Proxy \(self) canceled." }
+        self.action.cancel()
     }
 }
 
@@ -110,10 +129,6 @@ extension ActionContainer {
 
     public override var description: String {
         return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque())>)"
-    }
-
-    public override var debugDescription: String {
-        return self.description
     }
 }
 

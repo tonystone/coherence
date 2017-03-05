@@ -66,6 +66,8 @@
 		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
 		EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */; };
 		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
+		EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */; };
+		EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */; };
 		EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */; };
 		EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF397551E31926A00038CD4 /* AppDelegate.swift */; };
 		EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF397571E31927B00038CD4 /* LaunchScreen.xib */; };
@@ -168,6 +170,8 @@
 		EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConfigurationTests.m; sourceTree = "<group>"; };
 		EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoherenceTestUtilities.swift; sourceTree = "<group>"; };
+		EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+ActionTests.swift"; path = "ConnectTests/Connect+ActionTests.swift"; sourceTree = "<group>"; };
+		EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseAction.swift; sourceTree = "<group>"; };
 		EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectTests.swift; path = ConnectTests/ConnectTests.swift; sourceTree = "<group>"; };
 		EAE527531DC4E94F00AA65AE /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = codecov.yml; path = ../codecov.yml; sourceTree = "<group>"; };
 		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 		EA5BDC9F1E63BADD00527236 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */,
 				EA31505B1E35359800FB9905 /* MockGenericAction.swift */,
 				EA31505D1E35533400FB9905 /* MockListAction.swift */,
 				EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */,
@@ -464,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */,
+				EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */,
 				EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */,
 				EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */,
 				EA5BDCA91E64CBB900527236 /* Extensions */,
@@ -757,7 +763,9 @@
 				EA1C14181E3D8104002E63BD /* User.swift in Sources */,
 				EA1C14161E3D80FD002E63BD /* TestModel2.swift in Sources */,
 				EA1C14191E3D8107002E63BD /* User+CoreDataProperties.swift in Sources */,
+				EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */,
 				EA1C14131E3D80F3002E63BD /* GenericCoreDataStackTests.swift in Sources */,
+				EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */,
 				EA1C14551E3FA0B0002E63BD /* ConnectEntity2+CoreDataProperties.swift in Sources */,
 				EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */,
 				EA1C14141E3D80F6002E63BD /* ObjcCoreDataStackTests.swift in Sources */,
