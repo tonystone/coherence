@@ -54,6 +54,8 @@
 		E833812DAD019AD132806A7F /* MetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F45D01F1DFA39B461983EBE /* MetaModel.swift */; };
 		EA5BDCA21E649EE700527236 /* ManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */; };
 		EAC4BD501E65DB7E00C3BC05 /* Connect+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD4F1E65DB7E00C3BC05 /* Connect+Errors.swift */; };
+		EACAD5FE1E6C70B6000781A5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FD1E6C70B6000781A5 /* String+Extensions.swift */; };
+		EACAD6001E6C8847000781A5 /* ActionContainer+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FF1E6C8847000781A5 /* ActionContainer+Statistics.swift */; };
 		F22E020C370D35B609D51C49 /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C167FF49DBC42E371332E /* MetaLogEntry+CoreDataProperties.swift */; };
 		F42E02517025EACB12172286 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F1E3E23110A8566CB6AB2B /* Environment.swift */; };
 		F720C2D8E9BC21221D13EF04 /* TraceLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FB1EAB6E3E07D04B702748 /* TraceLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -174,6 +176,8 @@
 		EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+Extensions.swift"; sourceTree = "<group>"; };
 		EAC4BD4F1E65DB7E00C3BC05 /* Connect+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Connect+Errors.swift"; sourceTree = "<group>"; };
 		EAC8B3EAB793AAB5DF970B14 /* Pods-Coherence Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Example.debug.xcconfig"; sourceTree = "<group>"; };
+		EACAD5FD1E6C70B6000781A5 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		EACAD5FF1E6C8847000781A5 /* ActionContainer+Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionContainer+Statistics.swift"; sourceTree = "<group>"; };
 		ED903204A42F37D05A37FD4D /* GenericActionContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericActionContainer.swift; sourceTree = "<group>"; };
 		EE81D31503238CDD4CFC337F /* ActionContext+Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ActionContext+Merge.swift"; sourceTree = "<group>"; };
 		EF14CE1DF7046094FDB866EA /* EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntitySettings.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				242FD58ACD3FAE45F7197F09 /* ActionContianer.swift */,
+				EACAD5FF1E6C8847000781A5 /* ActionContainer+Statistics.swift */,
 				DE1DCAEAEE0276C5B885097E /* ActionQueue.swift */,
 				8BCD2BDAD5D74BB015A6EB0B /* EntityActionContainer.swift */,
 				ED903204A42F37D05A37FD4D /* GenericActionContainer.swift */,
@@ -366,11 +371,11 @@
 		6A677EC39DDFF5732E490BB9 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				EACAD5FC1E6C708C000781A5 /* Extensions */,
 				DA6E4855548EB8432F01E16B /* AssociatedStorage.swift */,
 				16C58B4B3CDDEDE7119F8273 /* ConnectCoordinator.swift */,
 				0B2BD749E7BDDCCBB1A8A08C /* LoggingContext.swift */,
 				87CC9ADD171C95DA2436B858 /* NotificationService.swift */,
-				EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */,
 				389335973B29319277835D1A /* Queues */,
 				522188448E606A59B6F0A4F2 /* Transactions */,
 			);
@@ -548,6 +553,15 @@
 			children = (
 				92E45ECB90F3AFB34477F68F /* ManagedObjectContext+Extensions.swift */,
 				5E2EA783BED579F2FC67C7F6 /* EntityDescription+EntitySettings.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EACAD5FC1E6C708C000781A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA5BDCA11E649EE700527236 /* ManagedObject+Extensions.swift */,
+				EACAD5FD1E6C70B6000781A5 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -744,6 +758,7 @@
 				B1ADC8C82E69BC8F3D173B40 /* Action.swift in Sources */,
 				48F1B39E4D6446CF285ACB5E /* ActionContext+Merge.swift in Sources */,
 				5CA2FB9EBE00599A05F4C0C1 /* ActionContext.swift in Sources */,
+				EACAD5FE1E6C70B6000781A5 /* String+Extensions.swift in Sources */,
 				3086D9F30B0ADC855031D3DA /* ActionContianer.swift in Sources */,
 				01F2B2AC467375534A4E36B8 /* ActionProxy.swift in Sources */,
 				D14D8D58D22851A40A8C0AA7 /* ActionQueue.swift in Sources */,
@@ -754,6 +769,7 @@
 				95E3B8CB915BD70E447D0C68 /* Connect+Notification.swift in Sources */,
 				FA35C17B84D15D6D87086DCB /* Connect.swift in Sources */,
 				3BCDD69194F87787522FB78E /* ConnectCoordinator.swift in Sources */,
+				EACAD6001E6C8847000781A5 /* ActionContainer+Statistics.swift in Sources */,
 				F9556F83A9C02D4C82176F0F /* CoreDataStack.swift in Sources */,
 				E2D66AB8911EA91F1850A17B /* EntityAction.swift in Sources */,
 				859DF6AE936DC35FBE080F5A /* EntityActionContainer.swift in Sources */,

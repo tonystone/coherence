@@ -68,6 +68,7 @@
 		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
 		EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */; };
 		EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */; };
+		EACAD6041E6C8B8A000781A5 /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
 		EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */; };
 		EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF397551E31926A00038CD4 /* AppDelegate.swift */; };
 		EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF397571E31927B00038CD4 /* LaunchScreen.xib */; };
@@ -172,6 +173,7 @@
 		EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoherenceTestUtilities.swift; sourceTree = "<group>"; };
 		EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+ActionTests.swift"; path = "ConnectTests/Connect+ActionTests.swift"; sourceTree = "<group>"; };
 		EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseAction.swift; sourceTree = "<group>"; };
+		EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContainer+StatisticsTests.swift"; path = "Queues/ActionContainer+StatisticsTests.swift"; sourceTree = "<group>"; };
 		EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectTests.swift; path = ConnectTests/ConnectTests.swift; sourceTree = "<group>"; };
 		EAE527531DC4E94F00AA65AE /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = codecov.yml; path = ../codecov.yml; sourceTree = "<group>"; };
 		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */,
 				EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */,
 				EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */,
+				EACAD6011E6C88EF000781A5 /* Queues */,
 			);
 			name = Internal;
 			path = ConnectTests/Internal;
@@ -463,6 +466,14 @@
 				EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */,
 			);
 			path = ConfigurationCoreTests;
+			sourceTree = "<group>";
+		};
+		EACAD6011E6C88EF000781A5 /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+				EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */,
+			);
+			name = Queues;
 			sourceTree = "<group>";
 		};
 		EAD40E0D1E3518CB0058C9FB /* ConnectTests */ = {
@@ -775,6 +786,7 @@
 				EA4A2E901E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */,
 				EA1C14171E3D8101002E63BD /* TestModel3.swift in Sources */,
 				EAC5C3271E6269D90025D310 /* TestModel4.xcdatamodeld in Sources */,
+				EACAD6041E6C8B8A000781A5 /* ActionContainer+StatisticsTests.swift in Sources */,
 				EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */,
 				EA1C14151E3D80FA002E63BD /* TestModel1.swift in Sources */,
