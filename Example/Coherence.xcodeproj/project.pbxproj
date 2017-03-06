@@ -69,6 +69,7 @@
 		EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */; };
 		EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */; };
 		EACAD6041E6C8B8A000781A5 /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
+		EACAD60A1E6CCA66000781A5 /* ActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */; };
 		EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */; };
 		EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF397551E31926A00038CD4 /* AppDelegate.swift */; };
 		EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF397571E31927B00038CD4 /* LaunchScreen.xib */; };
@@ -174,6 +175,7 @@
 		EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+ActionTests.swift"; path = "ConnectTests/Connect+ActionTests.swift"; sourceTree = "<group>"; };
 		EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseAction.swift; sourceTree = "<group>"; };
 		EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContainer+StatisticsTests.swift"; path = "Queues/ActionContainer+StatisticsTests.swift"; sourceTree = "<group>"; };
+		EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionQueueTests.swift; path = Queues/ActionQueueTests.swift; sourceTree = "<group>"; };
 		EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectTests.swift; path = ConnectTests/ConnectTests.swift; sourceTree = "<group>"; };
 		EAE527531DC4E94F00AA65AE /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = codecov.yml; path = ../codecov.yml; sourceTree = "<group>"; };
 		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 		EACAD6011E6C88EF000781A5 /* Queues */ = {
 			isa = PBXGroup;
 			children = (
+				EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */,
 				EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */,
 			);
 			name = Queues;
@@ -789,6 +792,7 @@
 				EACAD6041E6C8B8A000781A5 /* ActionContainer+StatisticsTests.swift in Sources */,
 				EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */,
+				EACAD60A1E6CCA66000781A5 /* ActionQueueTests.swift in Sources */,
 				EA1C14151E3D80FA002E63BD /* TestModel1.swift in Sources */,
 				EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */,
 			);

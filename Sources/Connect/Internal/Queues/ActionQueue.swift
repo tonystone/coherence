@@ -21,53 +21,58 @@ import Foundation
 import TraceLog
 import CoreData
 
+internal enum ConcurrencyMode {
+    case serial
+    case concurrent
+}
+
 internal class ActionQueue {
-    
-    public enum Mode {
-        case serial
-        case concurrent
-    }
     
     fileprivate let queue: OperationQueue
     
-    public init(name: String, concurrencyMode: Mode) {
-        
+    public init(name: String, concurrencyMode mode: ConcurrencyMode = .serial) {
+
+        self.name = name
+        self.concurrencyMode = mode
+
         queue = OperationQueue()
         queue.name = name
-        
+
         switch (concurrencyMode) {
             case .serial:     queue.maxConcurrentOperationCount = 1
             case .concurrent: queue.maxConcurrentOperationCount = 5
         }
     }
-    
-    public func suspend() {
-        queue.isSuspended = true
-    }
-    
-    public func resume() {
-        queue.isSuspended = false
-    }
-    
-    public func addAction<T: Operation>(_ action: T, waitUntilDone wait: Bool) {
-    
-        queue.addOperations([action], waitUntilFinished: wait)
-    }
-    
-    public var actions: [AnyObject] {
+
+    public let name: String
+
+    public let concurrencyMode: ConcurrencyMode
+
+    public var isSuspended: Bool {
         get {
-            return queue.operations
+            return self.queue.isSuspended
         }
+        set {
+            self.queue.isSuspended = newValue
+        }
+    }
+
+    public func cancelAllActions() {
+        self.queue.cancelAllOperations()
+    }
+
+    public func waitUntilAllActionsAreFinished() {
+        self.queue.waitUntilAllOperationsAreFinished()
+    }
+
+    public func addAction<T: Operation>(_ action: T, waitUntilDone wait: Bool = false) {
+        self.queue.addOperations([action], waitUntilFinished: wait)
     }
 }
 
-extension ActionQueue: CustomStringConvertible, CustomDebugStringConvertible {
+extension ActionQueue: CustomStringConvertible {
 
     public var description: String {
-        return "\(type(of: self)) (\(self.queue.name ?? "unknown"))"
-    }
-
-    public var debugDescription: String {
-        return self.description
+        return "\(type(of: self)) (name: \(self.name), concurrencyMode: \(self.concurrencyMode))"
     }
 }
