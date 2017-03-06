@@ -121,65 +121,65 @@ open class CCConfiguration : NSObject {
 /**
  Internal load exstension
  */
-private enum Errors: Error {
-    case failedInitialization(message: String)
+internal /* Testable */
+enum ConfigurationErrors: Error {
+    case failedInitialization(String)
 }
 
 private func createInstance(_ conformingProtocol: Protocol, defaults: [String: AnyObject], bundleKey: String) -> AnyObject {
-    
+
     let config = abortIfNil(message: "Could not create instance for protoocol \(NSStringFromProtocol(conformingProtocol))") {
         return CCObject.instance(for: conformingProtocol, defaults: defaults, bundleKey: bundleKey) as? NSObject
     }
 
     abortIfError {
-        try loadObject(conformingProtocol, anObject: config, bundleKey: bundleKey, defaults: defaults)
+        try loadObject(for: conformingProtocol, anObject: config, bundleKey: bundleKey, defaults: defaults)
     }
     return config
 }
 
-private func loadObject(_ conformingProtocol: Protocol, anObject: NSObject, bundleKey: String, defaults: [AnyHashable: Any]) throws {
+internal /* Testable */
+func loadObject(for conformingProtocol: Protocol, anObject: NSObject, bundleKey: String, defaults: [AnyHashable: Any]) throws {
     
     var errorString = String()
     
     let values = Bundle.main.infoDictionary?[bundleKey] as? [AnyHashable: Any]
-    
-    if values == nil  {
-        logWarning { "Bundle key \(bundleKey) missing from Info.plist file or is an invalid type.  The type must be a dictionary." }
-    }
-    
+
     var propertyCount: UInt32 = 0
     let properties = protocol_copyPropertyList(conformingProtocol, &propertyCount)
     
     defer { properties?.deinitialize()
         properties?.deallocate(capacity: 1)
     }
-    
-    for index in 0..<propertyCount {
-        let property = properties?[Int(index)]
-        
-        if let propertyName = String(validatingUTF8: property_getName(property)) {
-            
-            if let value = values?[propertyName] {
-                
-                anObject.setValue(value, forKey: propertyName)
-                
-            } else  if let value =  defaults[propertyName] {
-                
-                anObject.setValue(value, forKey: propertyName)
-            } else {
-                
-                if errorString.characters.count == 0 {
-                    errorString += "The following keys were missing from the info.plist and no default was supplied, a value is required.\r"
+
+    if values == nil  {
+        errorString += "\tBundle key \"\(bundleKey)\" missing from Info.plist file or is an invalid type.  The type must be a dictionary."
+    } else {
+
+        for index in 0..<propertyCount {
+            let property = properties?[Int(index)]
+
+            if let propertyName = String(validatingUTF8: property_getName(property)) {
+
+                if let value = values?[propertyName] {
+
+                    anObject.setValue(value, forKey: propertyName)
+
+                } else  if let value =  defaults[propertyName] {
+
+                    anObject.setValue(value, forKey: propertyName)
+                } else {
+
+                    if errorString.characters.count == 0 {
+                        errorString += "\tKey \"\(propertyName)\" missing from Info.plist and no default was supplied, a value is required."
+                    }
                 }
-                errorString += "\t\(propertyName)\r"
             }
         }
     }
     
     if errorString.characters.count > 0  {
-        logError { errorString }
-        
-        throw Errors.failedInitialization(message: "Failed to load \(String(describing: anObject)) for protocol \(String(describing: conformingProtocol)), Required values were missing from the info.plist and no default values were found.")
+        throw ConfigurationErrors.failedInitialization("Error(s) loading protocol.\r\(errorString)")
     }
 }
 

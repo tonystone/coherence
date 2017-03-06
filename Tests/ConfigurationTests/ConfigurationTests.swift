@@ -19,7 +19,8 @@
 ///  Created by Tony Stone on 6/22/15.
 ///
 import XCTest
-import Coherence
+
+@testable import Coherence
 
 typealias Char = Int8
 
@@ -42,6 +43,16 @@ let doubleTestValue: Double             = 54321.67
 let stringTestValue: String             = "String test value 2"
 let stringReadonlyTestValue: String     = "Readonly string test value"
 let intReadonlyTestValue: Int           = 1
+
+@objc
+private protocol MockSimpleProtocol: NSObjectProtocol {
+    var string: String? { get set }
+}
+
+@objc
+private class MockSimpleObject: NSObject, MockSimpleProtocol {
+    internal var string: String? = nil
+}
 
 //
 // Test configuration when developers are using a pure protocol
@@ -94,12 +105,12 @@ class TestSubClassConfigurationClass : Configuration<TestSubClassConfiguration> 
 
 class ConfigurationTests : XCTestCase {
     
-    func testPureProtocolConfigurationConstruction () {
+    func testPureProtocolConfigurationConstruction() {
         
         XCTAssertNotNil(Configuration<TestPureProtocolConfiguration>.instance())
     }
     
-    func testPureProtocolConfigurationCRUD () {
+    func testPureProtocolConfigurationCRUD() {
         
         let configuration = Configuration<TestPureProtocolConfiguration>.instance()
 
@@ -121,7 +132,7 @@ class ConfigurationTests : XCTestCase {
         XCTAssertNotNil(TestSubClassConfigurationClass.instance())
     }
     
-    func testSubclassConfigurationCRUD () {
+    func testSubclassConfigurationCRUD() {
         
         let configuration: TestSubClassConfiguration = TestSubClassConfigurationClass.instance()
         
@@ -139,5 +150,55 @@ class ConfigurationTests : XCTestCase {
         
         XCTAssertEqual       (configuration.stringPropertyReadonly,  stringReadonlyTestValue)
         XCTAssertEqual       (configuration.intPropertyReadonly,   intReadonlyTestValue)
+    }
+
+    func testLoadObject() {
+
+        let input = ["string": "Test string 1"]
+        let expected: String? = "Test string 1"
+
+        let object = MockSimpleObject()
+
+        do {
+            try loadObject(for: MockSimpleProtocol.self, anObject: object, bundleKey: "CCCustomConfiguration", defaults: input)
+
+            XCTAssertEqual(object.string, expected)
+        } catch {
+            XCTFail("\(error.localizedDescription)")
+        }
+    }
+
+    func testLoadObjectMissingBundleKey() {
+
+        let input = ["string": "Test string 1"]
+        let expected = "Error(s) loading protocol.\r" +
+                       "\tBundle key \"MissingKey\" missing from Info.plist file or is an invalid type.  The type must be a dictionary."
+
+        let object = MockSimpleObject()
+        XCTAssertThrowsError(try loadObject(for: MockSimpleProtocol.self, anObject: object, bundleKey: "MissingKey", defaults: input)) { (error) in
+
+            if case ConfigurationErrors.failedInitialization(let message) = error {
+                XCTAssertEqual(message, expected)
+            } else {
+                XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
+            }
+        }
+    }
+
+    func testLoadObjectMissingSetting() {
+
+        let input: [String: String] = [:]
+        let expected = "Error(s) loading protocol.\r" +
+        "\tKey \"string\" missing from Info.plist and no default was supplied, a value is required."
+
+        let object = MockSimpleObject()
+        XCTAssertThrowsError(try loadObject(for: MockSimpleProtocol.self, anObject: object, bundleKey: "CCCustomConfiguration", defaults: input)) { (error) in
+
+            if case ConfigurationErrors.failedInitialization(let message) = error {
+                XCTAssertEqual(message, expected)
+            } else {
+                XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
+            }
+        }
     }
 }
