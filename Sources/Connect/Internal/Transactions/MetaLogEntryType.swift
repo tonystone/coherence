@@ -32,11 +32,11 @@ internal enum MetaLogEntryType: Int32, CustomStringConvertible {
 
     public var description: String {
         switch self {
-        case .beginMarker: return "Xtran Begin Marker"
-        case .endMarker:   return "Xtran End marker"
-        case .insert:      return "Insert"
-        case .update:      return "Update"
-        case .delete:      return "Delete"
+        case .beginMarker: return "beginMarker"
+        case .endMarker:   return "endMarker"
+        case .insert:      return "insert"
+        case .update:      return "update"
+        case .delete:      return "delete"
         }
     }
 }
