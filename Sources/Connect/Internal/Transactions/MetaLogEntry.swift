@@ -102,7 +102,7 @@ extension MetaLogEntry.InsertData {
 extension MetaLogEntry.UpdateData {
 
     public override var description: String {
-        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes:  \(updatedAttributes?.description ?? "nil") }"
+        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes: \(updatedAttributes?.description ?? "nil") }"
     }
 }
 
