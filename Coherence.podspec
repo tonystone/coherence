@@ -35,6 +35,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Configuration' do |sp|
+      sp.dependency 'Coherence/Common'
       sp.dependency 'Coherence/ConfigurationCore'
       sp.source_files  = 'Sources/Configuration/*'
   end

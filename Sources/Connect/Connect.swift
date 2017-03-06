@@ -131,14 +131,13 @@ public class Connect {
     ///
     public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
-        guard let url = Bundle.url(forManagedObjectModelName: name) else {
-            preconditionFailure("Could not locate model `\(name)` in any bundle.")
+        let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
+            return Bundle.url(forManagedObjectModelName: name)
         }
 
-        guard let model = NSManagedObjectModel(contentsOf: url) else {
-            preconditionFailure("Failed to load model at \(url).")
+        let model = abortIfNil(message: "Failed to load model at \(url).") {
+            return NSManagedObjectModel(contentsOf: url)
         }
-
         self.init(name: name, managedObjectModel: model, configurationOptions: options)
     }
 
