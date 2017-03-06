@@ -114,20 +114,20 @@ internal class MetaLogEntry: NSManagedObject {
 extension MetaLogEntry.InsertData {
 
     public override var description: String {
-        return "{ attributesAndValues: \(attributesAndValues?.description ?? "nil") }"
+        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") }"
     }
 }
 
 extension MetaLogEntry.UpdateData {
 
     public override var description: String {
-        return "{ attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes:  \(updatedAttributes?.description ?? "nil") }"
+        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes:  \(updatedAttributes?.description ?? "nil") }"
     }
 }
 
 extension MetaLogEntry.DeleteData {
 
     public override var description: String {
-        return "{}"
+        return "\(String(describing: type(of: self))) {}"
     }
 }

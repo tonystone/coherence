@@ -96,4 +96,67 @@ class MetaLogEntryTests: XCTestCase {
         XCTAssert(NSKeyedUnarchiver.unarchiveObject(with: data) is TargetType)
     }
 
+    func testMetaLogEntryInsertDataDescription() {
+
+        typealias TargetType = MetaLogEntry.InsertData
+
+        let input: [String: Int] = ["key1": 1, "key2": 2]
+        let expected = "InsertData { attributesAndValues: [AnyHashable(\"key2\"): 2, AnyHashable(\"key1\"): 1] }"
+
+        let updateData = TargetType()
+        updateData.attributesAndValues = input
+
+        XCTAssertEqual(updateData.description, expected)
+    }
+
+    func testMetaLogEntryInsertDataDescriptionNilAttributesAndValues() {
+
+        typealias TargetType = MetaLogEntry.InsertData
+
+        let input: [String: Int]? = nil
+        let expected = "InsertData { attributesAndValues: nil }"
+
+        let updateData = TargetType()
+        updateData.attributesAndValues = input
+
+        XCTAssertEqual(updateData.description, expected)
+    }
+
+    func testMetaLogEntryUpdateDataDescription() {
+
+        typealias TargetType = MetaLogEntry.UpdateData
+
+        let input: ([String: Int], [String]) = (["key1": 1, "key2": 2], ["key2"])
+        let expected = "UpdateData { attributesAndValues: [AnyHashable(\"key2\"): 2, AnyHashable(\"key1\"): 1] updatedAttributes:  [\"key2\"] }"
+
+        let updateData = TargetType()
+        updateData.attributesAndValues = input.0
+        updateData.updatedAttributes   = input.1
+
+        XCTAssertEqual(updateData.description, expected)
+    }
+
+    func testMetaLogEntryUpdateDataDescriptionNilAttributesAndValues() {
+
+        typealias TargetType = MetaLogEntry.UpdateData
+
+        let input: ([String: Int]?, [String]?) = (nil, nil)
+        let expected = "UpdateData { attributesAndValues: nil updatedAttributes:  nil }"
+
+        let updateData = TargetType()
+        updateData.attributesAndValues = input.0
+        updateData.updatedAttributes   = input.1
+
+        XCTAssertEqual(updateData.description, expected)
+    }
+
+    func testMetaLogEntryDeleteDataDescription() {
+
+        typealias TargetType = MetaLogEntry.DeleteData
+
+        let input = TargetType()
+        let expected = "DeleteData {}"
+
+        XCTAssertEqual(input.description, expected)
+    }
 }

@@ -408,12 +408,12 @@
 		EA5BDC9E1E63BA8700527236 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 				EA5BDC981E63466000527236 /* NotificationServiceTests.swift */,
 				EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */,
 				EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */,
 				EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */,
 				EACAD6011E6C88EF000781A5 /* Queues */,
+				EACAD60F1E6DB0D5000781A5 /* Transactions */,
 			);
 			name = Internal;
 			path = ConnectTests/Internal;
@@ -477,6 +477,14 @@
 				EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */,
 			);
 			name = Queues;
+			sourceTree = "<group>";
+		};
+		EACAD60F1E6DB0D5000781A5 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
+			);
+			name = Transactions;
 			sourceTree = "<group>";
 		};
 		EAD40E0D1E3518CB0058C9FB /* ConnectTests */ = {
