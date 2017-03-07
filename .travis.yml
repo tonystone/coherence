@@ -41,14 +41,6 @@ matrix:
       osx_image: xcode8.2
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s" 
-         - TEST_SDK=iphonesimulator
-
-    - 
-      os: osx
-      osx_image: xcode8.2
-      env: 
-         - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s" 
          - TEST_SDK=iphonesimulator
 
