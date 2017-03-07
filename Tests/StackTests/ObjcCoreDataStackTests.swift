@@ -47,17 +47,26 @@ class ObjcCoreDataStackTests: XCTestCase {
         super.tearDown()
     }
 
-    func testConstructionWithModelNameAndModel () {
-        
-        let name = String(describing: TestModel1.self)
-        
-        do {
-            let _ = try ObjcCoreDataStack(name: name, managedObjectModel: TestModel1()).loadPersistentStores()
-            
-            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+    func testConstructionWithName() {
+
+        let input  = "TestModel4"
+        let expected = (name: input, model: ModelLoader.load(name: "TestModel4"))
+
+        let stack = ObjcCoreDataStack(name: input)
+
+        XCTAssertEqual(stack.name,               expected.name)
+        XCTAssertEqual(stack.managedObjectModel, expected.model)
+    }
+
+    func testConstructionNameAndModel() {
+
+        let input  = (name: "TestModel", model: ModelLoader.load(name: "TestModel4"))
+        let expected = input
+
+        let stack = ObjcCoreDataStack(name: input.name, managedObjectModel: input.model)
+
+        XCTAssertEqual(stack.name,               expected.name)
+        XCTAssertEqual(stack.managedObjectModel, expected.model)
     }
     
     func testConstruction_WithOptions () {

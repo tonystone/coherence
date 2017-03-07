@@ -21,20 +21,40 @@ import Foundation
 import CoreData
 import TraceLog
 
+///
+/// A Core Data stack implemented based on GenericCoreDataStack (for objective-c use only).
+///
 @objc public final class ObjcCoreDataStack: NSObject, CoreDataStack  {
     
     fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
     
     fileprivate let impl: CoreDataStackType
-    
-    /**
-        Initializes the receiver with a managed object model.
-     
-        - parameters:
-          - managedObjectModel: A managed object model.
-          - storeNamePrefix: A unique name prefix for the persistent store to be created.
-          - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-     */
+
+    ///
+    /// Initializes a CoreData stack with the given name.
+    ///
+    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
+    ///
+    /// - Returns: A core data stack initialized with the given name.
+    ///
+    public init(name: String) {
+        impl = CoreDataStackType(name: name, logTag: String(describing: ObjcCoreDataStack.self))
+    }
+
+    ///
+    /// Initializes the receiver with the given name and a managed object model.
+    ///
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle.
+    ///     - managedObjectModel: A managed object model.
+    ///
+    /// - Returns: A core data stack initialized with the given name and model.
+    ///
     public init(name: String, managedObjectModel model: NSManagedObjectModel) {
         impl = CoreDataStackType(name: name, managedObjectModel: model, logTag: String(describing: ObjcCoreDataStack.self))
     }
@@ -45,6 +65,14 @@ import TraceLog
 
     public func loadPersistentStores(configurationOptions options: ConfigurationOptionsType) throws {
         try impl.loadPersistentStores(configurationOptions: options)
+    }
+
+    public var name: String {
+        return impl.name
+    }
+
+    public var managedObjectModel: NSManagedObjectModel {
+        return impl.managedObjectModel
     }
 
     public var viewContext: NSManagedObjectContext {

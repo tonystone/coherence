@@ -124,10 +124,15 @@ public class Connect {
     fileprivate var started: Bool
 
     ///
-    ///  Initializes the receiver with a managed object model.
+    /// Initializes a CoreData stack with the given name.
     ///
-    ///   - parameters:
-    ///      - name: the name used for this instance of connect, this name will be used to name the persistent store files on disk.
+    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///
+    /// - Returns: A generic core data stack initialized with the given name.
     ///
     public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
@@ -142,12 +147,16 @@ public class Connect {
     }
 
     ///
-    ///  Initializes the receiver with a managed object model.
+    /// Initializes the receiver with the given name and a managed object model.
     ///
-    ///   - parameters:
-    ///      - managedObjectModel: A managed object model.
-    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-    ///      - storeNamePrefix: An optional String which is appended to the beginning of the persistent store's name.
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle.
+    ///     - managedObjectModel: A managed object model.
+    ///     - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///
+    /// - Returns: A core data stack initialized with the given name and model.
     ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
