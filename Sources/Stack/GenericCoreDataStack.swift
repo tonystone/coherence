@@ -74,7 +74,7 @@ public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModel
 public typealias AsynErrorHandlerBlock = (Error) -> Void
 
 ///
-///    A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+/// A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
 open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext>: CoreDataStack {
 
@@ -128,12 +128,39 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     public let name: String
 
     ///
-    ///  Initializes the receiver with the given name and a managed object model.
+    /// Initializes a CoreData stack with the given name.
     ///
-    ///   - Parameters:
-    ///      - name: The name of the model file in the bundle.
-    ///      - managedObjectModel: A managed object model.
-    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
+    /// - Returns: A generic core data stack initialized with the given name.
+    ///
+    public convenience init(name: String, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
+
+        let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
+            return Bundle.url(forManagedObjectModelName: name)
+        }
+
+        let model = abortIfNil(message: "Failed to load model at \(url).") {
+            return NSManagedObjectModel(contentsOf: url)
+        }
+        self.init(name: name, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock, logTag: tag)
+    }
+
+    ///
+    /// Initializes the receiver with the given name and a managed object model.
+    ///
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    ///
+    /// - Parameters:
+    ///     - name: The name of the model file in the bundle.
+    ///     - managedObjectModel: A managed object model.
+    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///
+    /// - Returns: A generic core data stack initialized with the given name and model.
     ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
 

@@ -48,24 +48,30 @@ class GenericCoreDataStackTests: XCTestCase {
         }
         super.tearDown()
     }
-    
-    func testConstruction() {
 
-        let model = TestModel1()
-        let name  = String(describing: type(of: TestModel1.self))
+    func testConstructionWithName() {
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
-        
-        do {
-            let _ = try stack.loadPersistentStores()
-            
-            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        let input  = "TestModel4"
+        let expected = (name: input, model: ModelLoader.load(name: "TestModel4"))
+
+        let stack = CoreDataStackType(name: input)
+
+        XCTAssertEqual(stack.name,               expected.name)
+        XCTAssertEqual(stack.managedObjectModel, expected.model)
     }
-    
-    func testConstruction_WithOptions() {
+
+    func testConstructionNameAndModel() {
+
+        let input  = (name: "TestModel", model: ModelLoader.load(name: "TestModel4"))
+        let expected = input
+
+        let stack = CoreDataStackType(name: input.name, managedObjectModel: input.model)
+
+        XCTAssertEqual(stack.name,               expected.name)
+        XCTAssertEqual(stack.managedObjectModel, expected.model)
+    }
+
+    func testConstructionWithOptions() {
         
         let model = TestModel1()
         let name  = String(describing: type(of: model.self))

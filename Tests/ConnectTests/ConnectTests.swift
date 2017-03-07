@@ -43,7 +43,7 @@ class ConnectTests: XCTestCase {
         let input = self.testModel
         let expected = input
 
-        XCTAssertEqual(Connect(name: modelName).managedObjectModel , expected)
+        XCTAssertEqual(Connect(name: modelName).managedObjectModel, expected)
     }
 
     func testConstructionWithModelNameAndModel() {
