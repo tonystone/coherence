@@ -22,25 +22,6 @@ import CoreData
 
 internal typealias TransactionID = String
 
-@objc
-internal enum MetaLogEntryType: Int32, CustomStringConvertible {
-    case beginMarker = 0xf0
-    case endMarker   = 0xf1
-    case insert      = 0x64
-    case update      = 0x65
-    case delete      = 0x66
-
-    public var description: String {
-        switch self {
-        case .beginMarker: return "Xtran Begin Marker"
-        case .endMarker:   return "Xtran End marker"
-        case .insert:      return "Insert"
-        case .update:      return "Update"
-        case .delete:      return "Delete"
-        }
-    }
-}
-
 @objc(MetaLogEntry)
 internal class MetaLogEntry: NSManagedObject {
 
@@ -114,20 +95,20 @@ internal class MetaLogEntry: NSManagedObject {
 extension MetaLogEntry.InsertData {
 
     public override var description: String {
-        return "{ attributesAndValues: \(attributesAndValues?.description ?? "nil") }"
+        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") }"
     }
 }
 
 extension MetaLogEntry.UpdateData {
 
     public override var description: String {
-        return "{ attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes:  \(updatedAttributes?.description ?? "nil") }"
+        return "\(String(describing: type(of: self))) { attributesAndValues: \(attributesAndValues?.description ?? "nil") updatedAttributes: \(updatedAttributes?.description ?? "nil") }"
     }
 }
 
 extension MetaLogEntry.DeleteData {
 
     public override var description: String {
-        return "{}"
+        return "\(String(describing: type(of: self))) {}"
     }
 }
