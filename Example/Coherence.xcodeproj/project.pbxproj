@@ -59,6 +59,7 @@
 		EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */; };
+		EAA791691E7049B900FD1C25 /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */; };
 		EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
 		EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3221E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld */; };
@@ -165,6 +166,7 @@
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
+		EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABEDD3C1DC675E700D5785D /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EABEDD4B1DC69B3400D5785D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 		EACAD60F1E6DB0D5000781A5 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */,
 				EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */,
 				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 				EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */,
@@ -814,6 +817,7 @@
 				EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */,
 				EACAD60A1E6CCA66000781A5 /* ActionQueueTests.swift in Sources */,
 				EA1C14151E3D80FA002E63BD /* TestModel1.swift in Sources */,
+				EAA791691E7049B900FD1C25 /* WriteAheadLogTests.swift in Sources */,
 				EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

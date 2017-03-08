@@ -40,7 +40,18 @@ internal class WriteAheadLog {
     internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, MetadataContextType>
     
     fileprivate let coreDataStack: CoreDataStackType
-    
+
+    ///
+    /// Hang on to a reference to the metaLogEntry NSEntity description so it does not 
+    /// have to be looked up everywhere
+    ///
+    let metaLogEntryEntity: NSEntityDescription
+
+    ///
+    /// Tracks the sequence number in this instance.
+    ///
+    /// - Note: Access must be synchronized with objc_sync_enter(self) and objc_sync_exit(self) pairs
+    ///
     var nextSequenceNumber = 0
 
     init(coreDataStack: CoreDataStackType) throws {
@@ -48,8 +59,13 @@ internal class WriteAheadLog {
         logInfo {
             "Initializing instance..."
         }
-        
+
+        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: coreDataStack.viewContext) else {
+            throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName).")
+        }
+
         self.coreDataStack = coreDataStack
+        self.metaLogEntryEntity = entity
         
         nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
         
@@ -62,7 +78,7 @@ internal class WriteAheadLog {
         }
     }
     
-    fileprivate func lastLogEntrySequenceNumber () throws -> Int {
+    private func lastLogEntrySequenceNumber () throws -> Int {
         
         objc_sync_enter(self)
         defer {
@@ -75,7 +91,8 @@ internal class WriteAheadLog {
         // sequenceNumber value to calculate the next number
         // in the database.
         //
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: MetaLogEntryName)
+        let fetchRequest = NSFetchRequest<NSManagedObject>()
+        fetchRequest.entity = metaLogEntryEntity
         
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sequenceNumber", ascending:false)]
@@ -87,7 +104,8 @@ internal class WriteAheadLog {
         return 0
     }
     
-    internal func nextSequenceNumberBlock(_ size: Int) -> ClosedRange<Int> {
+    internal /// @testable
+    func nextSequenceNumberBlock(_ size: Int) -> ClosedRange<Int> {
         
         objc_sync_enter(self)
         defer {
@@ -151,13 +169,9 @@ internal class WriteAheadLog {
             //
             // Always work in an edit context for this thread
             //
-            guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: metadataContext) else {
-                throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName), could not remove transaction.")
-            }
-
             let fetchRequest = NSFetchRequest<MetaLogEntry>()
 
-            fetchRequest.entity    = entity
+            fetchRequest.entity    = self.metaLogEntryEntity
             fetchRequest.predicate = NSPredicate(format: "transactionID==%@", transactionID)
 
             let transactionRecords = try metadataContext.fetch(fetchRequest)
@@ -198,16 +212,14 @@ internal class WriteAheadLog {
         return results
     }
 
-    fileprivate func logBeginTransactionEntry(_ metadataContext: MetadataContextType, sequenceNumber: inout Int) throws -> TransactionID {
+    private func logBeginTransactionEntry(_ metadataContext: MetadataContextType, sequenceNumber: inout Int) throws -> TransactionID {
 
         var transactionID = "tmp"
         let sequence      = Int32(sequenceNumber)
 
         try metadataContext.performAndWait {
 
-            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-                throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction begin marker.")
-            }
+            let metaLogEntry = MetaLogEntry(entity: self.metaLogEntryEntity, insertInto: metadataContext)
 
             do {
                 try metadataContext.obtainPermanentIDs(for: [metaLogEntry])
@@ -250,15 +262,13 @@ internal class WriteAheadLog {
         return transactionID
     }
 
-    fileprivate func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
 
         let sequence = Int32(sequenceNumber)
 
-        try metadataContext.performAndWait {
+        metadataContext.performAndWait {
 
-            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-                throw Errors.failedToCreateLogEntry("Failed to create login entry for transaction end marker.")
-            }
+            let metaLogEntry = MetaLogEntry(entity: self.metaLogEntryEntity, insertInto: metadataContext)
 
             metaLogEntry.transactionID = transactionID
             metaLogEntry.sequenceNumber = sequence
@@ -287,7 +297,7 @@ internal class WriteAheadLog {
         sequenceNumber += 1
     }
 
-    fileprivate func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in insertedRecords {
 
@@ -322,7 +332,7 @@ internal class WriteAheadLog {
         }
     }
 
-    fileprivate func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in updatedRecords {
 
@@ -358,7 +368,7 @@ internal class WriteAheadLog {
         }
     }
 
-    fileprivate func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
         
         for object in deletedRecords {
 
@@ -385,19 +395,13 @@ internal class WriteAheadLog {
         }
     }
 
-    fileprivate func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
+    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
 
         let sequence = Int32(sequenceNumber)
 
-        try metadataContext.performAndWait {
+        metadataContext.performAndWait {
 
-            guard let entityName = entity.name else {
-                throw Errors.nilEntityName("Nil entity name for logged entity.")
-            }
-
-            guard let metaLogEntry = NSEntityDescription.insertNewObject(forEntityName: MetaLogEntryName, into: metadataContext) as? MetaLogEntry else {
-                throw Errors.failedToCreateLogEntry("Failed to create login entry for '\(type)' record.")
-            }
+            let metaLogEntry = MetaLogEntry(entity: self.metaLogEntryEntity, insertInto: metadataContext)
 
             metaLogEntry.transactionID = transactionID
             metaLogEntry.sequenceNumber = sequence
@@ -410,7 +414,7 @@ internal class WriteAheadLog {
             //
             metaLogEntry.updateObjectID = objectID
             metaLogEntry.updateUniqueID = uniqueueID
-            metaLogEntry.updateEntityName = entityName
+            metaLogEntry.updateEntityName = entity.name
 
             logTrace(4) {
                 var message: String = ""
