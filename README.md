@@ -1,7 +1,8 @@
 
-> :warning: **WARNING** :warning: This project is in a _prerelease_ state. There
-> is active work going on that will result in API changes that can/will break
-> code while things are finished.  Use with caution.
+> :warning: **WARNING** :warning: The **3.0.0-beta.x** versions of this project are in a _prerelease_ state. There
+> is active work going on that will result in API changes that can/will break code while things are finished.  Use with caution.
+>
+>  For a stable release, please use version [2.0.3](https://github.com/tonystone/coherence/releases/tag/2.0.3)
 
 
 # Coherence ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-lightgray.svg?style=flat)
