@@ -30,8 +30,11 @@ public extension ActionContext {
     ///
     public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil) throws {
 
+        guard let entityName = entity.name else {
+            throw Connect.Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
+        }
         guard entity.managed else {
-            throw Connect.Errors.unmanagedEntity("Entity '\(entity.name ?? "Unknown")' not managed, cannot merge objects.")
+            throw Connect.Errors.unmanagedEntity("Entity '\(entityName)' not managed, cannot merge objects.")
         }
 
         ///
@@ -86,7 +89,7 @@ public extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logTrace(1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) exsiting object(s) for entity \(entity.name ?? "Unknown")." }
+        logTrace(1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) exsiting object(s) for entity \(entityName)." }
 
         var newIterator      = newObjects.makeIterator()
         var existingIterator = existingObjects.makeIterator()

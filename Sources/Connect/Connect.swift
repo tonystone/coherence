@@ -16,7 +16,7 @@
 ///  limitations under the License.
 ///
 ///  Created by Tony Stone on 3/26/13.
-///  Rewriten by Tony Stone on 1/28/17.
+///  Rewritten by Tony Stone on 1/28/17.
 ///
 import CoreData
 import TraceLog
@@ -35,7 +35,14 @@ private let connectBundleDirectory: FileManager.SearchPathDirectory = .documentD
 ///
 /// Connect
 ///
-/// Manages all resources from threads to web services
+/// A container that encapsulates the Core Data stack in your application and 
+/// Manages all resources from threads to web services.
+///
+/// Connect offers managed execution of actions (either generic or entity specific)
+/// which can be monitored and managed via proxy execution objects.  Execution of
+/// generic action happen on a concurrent queue while entity actions are executed
+/// in a specific serial queue for each type.  This forces synchronization of
+/// operations by type.
 ///
 public class Connect {
 
@@ -98,7 +105,7 @@ public class Connect {
     fileprivate var entityQueues: [String: ActionQueue]
 
     ///
-    /// Background syncrhonization queue for synchronizing
+    /// Background synchronization queue for synchronizing
     /// operations on `Connect`.
     ///
     fileprivate let synchronizationQueue: DispatchQueue
@@ -109,12 +116,12 @@ public class Connect {
     fileprivate var logTag = String(describing: Connect.self)
 
     ///
-    /// Configuraiton option used to start the dataCache.
+    /// Configuration option used to start the dataCache.
     ///
     fileprivate let dataCacheOptions: ConfigurationOptionsType
 
     ///
-    /// Configuraiton option used to start the metaCache.
+    /// Configuration option used to start the metaCache.
     ///
     fileprivate let metaCacheOptions: ConfigurationOptionsType
 
@@ -126,13 +133,15 @@ public class Connect {
     ///
     /// Initializes a CoreData stack with the given name.
     ///
-    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    /// By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
-    ///     - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
     /// - Returns: A generic core data stack initialized with the given name.
+    ///
+    /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
     public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
@@ -149,14 +158,16 @@ public class Connect {
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
-    ///     - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
+    ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
     /// - Returns: A core data stack initialized with the given name and model.
+    ///
+    /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
 
@@ -169,7 +180,7 @@ public class Connect {
 
         self.notificationService = NotificationService()
 
-        self.genericQueue = ActionQueue(name: "connect.action.queue", concurrencyMode: .concurrent)
+        self.genericQueue = ActionQueue(label: "connect.action.queue", concurrencyMode: .concurrent)
         self.entityQueues = [:]
         ///
         /// Serial queue with background priority
@@ -211,7 +222,7 @@ extension Connect: CoreDataStack {
         if logged {
             ///
             /// Attached the logger to the context
-            /// so updates can be looged.
+            /// so updates can be logged.
             ///
             context.logger = self.writeAheadLog
         }
@@ -235,6 +246,18 @@ extension Connect: CoreDataStack {
 ///
 public extension Connect {
 
+    ///
+    /// Execute a generic action in a concurrent queue.
+    ///
+    /// - Parameters:
+    ///     - action: The `GenericAction` implementation to execute.
+    ///     - completionBlock: An optional block that will be called after teh action completes (succeeds or fails).
+    ///
+    /// - Returns: An `ActionProxy` that represents your action.  This can be used to manage and monitor the action's status.
+    ///
+    /// - SeeAlso: `GenericAction` protocol
+    /// - SeeAlso: `ActionProxy` protocol
+    ///
     @discardableResult
     func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
@@ -247,6 +270,18 @@ public extension Connect {
         return container
     }
 
+    ///
+    /// Execute a entity action in a serial queue. Entity actions also get passed a specific action context for access to the persistent storage.
+    ///
+    /// - Parameters:
+    ///     - action: The `EntityAction` implementation to execute.
+    ///     - completionBlock: An optional block that will be called after teh action completes (succeeds or fails).
+    ///
+    /// - Returns: An `ActionProxy` that represents your action.  This can be used to manage and monitor the action's status.
+    ///
+    /// - SeeAlso: `EntityAction` protocol
+    /// - SeeAlso: `ActionProxy` protocol
+    ///
     @discardableResult
     func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
@@ -272,6 +307,8 @@ public extension Connect {
     ///
     /// Asynchronously start the instance of `Connect`
     ///
+    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nill and contain the error indicating the reason for the failure.
+    ///
     public func start(completionBlock: @escaping (Error?) -> Void) {
 
         self.synchronizationQueue.async {
@@ -287,6 +324,8 @@ public extension Connect {
 
     ///
     /// Synchronously start the instance of `Connect`
+    ///
+    /// - Throws: If an error occurs.
     ///
     public func start() throws {
 
@@ -453,7 +492,7 @@ fileprivate extension Connect {
 
             logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
 
-            self.entityQueues[name] = ActionQueue(name: queueName, concurrencyMode: .serial)
+            self.entityQueues[name] = ActionQueue(label: queueName, concurrencyMode: .serial)
 
             entity.managed = true
 

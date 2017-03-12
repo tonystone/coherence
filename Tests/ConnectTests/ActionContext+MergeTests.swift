@@ -58,6 +58,36 @@ class ActionContextMergeTests: XCTestCase {
         }
     }
 
+    func testMergeUnmanagedObjectUnnamedEntity() throws {
+
+        let connect = Connect(name: "ConnectTestModel")
+        try connect.start()
+
+        let actionContext = connect.newActionContext()
+
+        let input = { () -> (objects: [ConnectEntity3Unmanaged], entity: NSEntityDescription) in
+            let entity = NSEntityDescription()
+            entity.managed = true
+
+            return ([], entity)
+        }()
+        let expected = "Entity does not have a name, cannot merge objects."
+
+        ///
+        /// Execute the merge which should ignore all items
+        ///
+        try actionContext.performAndWait {
+            XCTAssertThrowsError(try actionContext.merge(objects: input.objects, for: input.entity)) { (error) in
+
+                if case Connect.Errors.missingEntityName(let message) = error {
+                    XCTAssertEqual(message, expected)
+                } else {
+                    XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
+                }
+            }
+        }
+    }
+
     func testMergeInsert() {
 
         do {
@@ -107,6 +137,61 @@ class ActionContextMergeTests: XCTestCase {
                 }
             }
 
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+
+    func testMergeInsertReversedOrderInput() {
+
+        do {
+            let connect = Connect(name: "ConnectTestModel")
+            try connect.start()
+
+            let actionContext = connect.newActionContext()
+            let viewContext   = connect.viewContext
+
+            let input    = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+            let expected = try ConnectEntity1.newTestObjects(for: actionContext, count: 10, boolValue: true, stringValue: "Insert", dataValue: Data(bytes: [UInt8(2), UInt8(2), UInt8(2)]))
+
+            ///
+            /// Execute the merge to test the insert capabilities
+            ///
+            try actionContext.performAndWait {
+                /// Reverse the order beforing inserting to make sure a reverse sort of the DB works.
+                try actionContext.merge(objects: input.objects.reversed(), for: input.entity)
+            }
+
+            viewContext.performAndWait {
+                do {
+
+                    for expectedObject in expected.objects {
+
+                        let fetch = { () -> NSFetchRequest<ConnectEntity1> in
+
+                            let fetch = NSFetchRequest<ConnectEntity1>()
+                            fetch.entity = expected.entity
+                            fetch.predicate = NSPredicate(format: "id == %ld", expectedObject.id)
+
+                            return fetch
+                        }()
+
+                        let results = try viewContext.fetch(fetch)
+
+                        guard let resultObject = results.last else {
+                            XCTFail()
+                            return
+                        }
+                        XCTAssertEqual(resultObject.id,                 expectedObject.id)
+                        XCTAssertEqual(resultObject.boolAttribute,      expectedObject.boolAttribute)
+                        XCTAssertEqual(resultObject.stringAttribute,    expectedObject.stringAttribute)
+                        XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
+                    }
+                } catch {
+                    XCTFail()
+                }
+            }
+            
         } catch {
             XCTFail("\(error)")
         }

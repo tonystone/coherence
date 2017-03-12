@@ -55,7 +55,7 @@ class ActionQueueTests: XCTestCase {
 
     func testInitWithDefaultConcurrencyMode() {
 
-        let input = ActionQueue(name: "test.queue.1")
+        let input = ActionQueue(label: "test.queue.1")
         let expected = ConcurrencyMode.serial
 
         XCTAssertEqual(input.concurrencyMode, expected)
@@ -63,7 +63,7 @@ class ActionQueueTests: XCTestCase {
 
     func testInitSerialQueue() {
 
-        let input = ActionQueue(name: "test.queue.2", concurrencyMode: .serial)
+        let input = ActionQueue(label: "test.queue.2", concurrencyMode: .serial)
         let expected = ConcurrencyMode.serial
 
         XCTAssertEqual(input.concurrencyMode, expected)
@@ -71,7 +71,7 @@ class ActionQueueTests: XCTestCase {
 
     func testInitConcurrentQueue() {
 
-        let input = ActionQueue(name: "test.queue.3", concurrencyMode: .concurrent)
+        let input = ActionQueue(label: "test.queue.3", concurrencyMode: .concurrent)
         let expected = ConcurrencyMode.concurrent
 
         XCTAssertEqual(input.concurrencyMode, expected)
@@ -79,7 +79,7 @@ class ActionQueueTests: XCTestCase {
 
     func testDescription() throws {
 
-        let input = ActionQueue(name: "test.queue.4")
+        let input = ActionQueue(label: "test.queue.4")
         let expected = "ActionQueue (name: test.queue.4, concurrencyMode: serial)"
 
         XCTAssertEqual(input.description, expected)
@@ -90,7 +90,7 @@ class ActionQueueTests: XCTestCase {
         let input = true
         let expected = true
 
-        let queue = ActionQueue(name: "test.queue.5")
+        let queue = ActionQueue(label: "test.queue.5")
         queue.isSuspended = input
 
         XCTAssertEqual(queue.isSuspended, expected)
@@ -101,7 +101,7 @@ class ActionQueueTests: XCTestCase {
         let input = false
         let expected = false
 
-        let queue = ActionQueue(name: "test.queue.6")
+        let queue = ActionQueue(label: "test.queue.6")
         queue.isSuspended = input
 
         XCTAssertEqual(queue.isSuspended, expected)
@@ -113,7 +113,7 @@ class ActionQueueTests: XCTestCase {
 
         let input = BlockOperation(block: { expectation.fulfill() } )
 
-        let queue = ActionQueue(name: "test.queue.7")
+        let queue = ActionQueue(label: "test.queue.7")
         queue.addAction(input)
 
         self.waitForExpectations(timeout: 5) { error in
@@ -132,7 +132,7 @@ class ActionQueueTests: XCTestCase {
             expected.fulfill()
         }
 
-        let queue = ActionQueue(name: "test.queue.8")
+        let queue = ActionQueue(label: "test.queue.8")
         queue.addAction(input)
 
         ///
@@ -156,7 +156,7 @@ class ActionQueueTests: XCTestCase {
             expected.fulfill()
         }
 
-        let queue = ActionQueue(name: "test.queue.9")
+        let queue = ActionQueue(label: "test.queue.9")
         queue.addAction(input)
 
         ///

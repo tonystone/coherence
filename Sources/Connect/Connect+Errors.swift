@@ -17,5 +17,6 @@ public extension Connect {
     ///
     public enum Errors: Error {
         case unmanagedEntity(String)
+        case missingEntityName(String)
     }
 }

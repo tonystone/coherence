@@ -30,13 +30,13 @@ internal class ActionQueue {
     
     fileprivate let queue: OperationQueue
     
-    public init(name: String, concurrencyMode mode: ConcurrencyMode = .serial) {
+    public init(label: String, concurrencyMode mode: ConcurrencyMode = .serial) {
 
-        self.name = name
+        self.label = label
         self.concurrencyMode = mode
 
         queue = OperationQueue()
-        queue.name = name
+        queue.name = label
 
         switch (concurrencyMode) {
             case .serial:     queue.maxConcurrentOperationCount = 1
@@ -44,7 +44,7 @@ internal class ActionQueue {
         }
     }
 
-    public let name: String
+    public let label: String
 
     public let concurrencyMode: ConcurrencyMode
 
@@ -73,6 +73,6 @@ internal class ActionQueue {
 extension ActionQueue: CustomStringConvertible {
 
     public var description: String {
-        return "\(type(of: self)) (name: \(self.name), concurrencyMode: \(self.concurrencyMode))"
+        return "\(type(of: self)) (name: \(self.label), concurrencyMode: \(self.concurrencyMode))"
     }
 }

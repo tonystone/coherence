@@ -42,7 +42,7 @@ open class Configuration<P: NSObjectProtocol> {
      *  This method should return the name of the main bundle dictionary
      *  key to search for the configuration option keys.
      *
-     * @default TCCConfiguration
+     * @default CCConfiguration
      */
     open class func bundleKey () -> String {
         return defaultBundleKey
