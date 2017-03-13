@@ -53,7 +53,7 @@ public let defaultStoreType = NSSQLiteStoreType
 ///
 /// PersistentStore configuration settings.
 ///
-public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?, migrationManager: NSMigrationManager?)
+public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?)
 
 ///
 /// Configuration options dictionary keyed by configuration name.
@@ -64,7 +64,7 @@ public typealias ConfigurationOptionsType = [String : PersistentStoreConfigurati
 ///
 /// The detault configuration options used to configure the persistent store when no override is supplied.
 ///
-public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions, migrationManager: nil)]
+public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions)]
 
 ///
 /// There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently
@@ -232,16 +232,16 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
                storeName = "default"
             }
 
-            if let (storeType, storeOptions, migrationManager) = options[defaultModelConfigurationName] {
+            if let (storeType, storeOptions) = options[defaultModelConfigurationName] {
                 
                 let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                 
-                try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
+                try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions)
                 
             } else {
                 let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                 
-                try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil, migrationManger: nil)
+                try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil)
             }
         } else {
             for configuration in configurations {
@@ -250,16 +250,16 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
 
                 if configuration != defaultModelConfigurationName {
                     
-                    if let (storeType, storeOptions, migrationManager) = options[configuration] {
+                    if let (storeType, storeOptions) = options[configuration] {
                         
                         let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
                         
-                        try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions, migrationManger: migrationManager)
+                        try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions)
                         
                     } else {
                         let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
                         
-                        try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil, migrationManger: nil)
+                        try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil)
                     }
                 }
             }
@@ -267,79 +267,44 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
 
     }
 
-    fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?, migrationManger migrator: NSMigrationManager?) throws {
-        
-        do {
-            //
-            // If a migration manager was supplied, try a migration first.
-            //
-            if let migrationManager = migrator {
-                
-                if let mappingModel = NSMappingModel(from: nil, forSourceModel: migrationManager.sourceModel, destinationModel: migrationManager.destinationModel) {
-                    
-                    // TODO: Rename old file first
-                    try migrationManager.migrateStore(from: storeURL, sourceType: storeType, options: options, with: mappingModel, toDestinationURL: storeURL, destinationType: storeType, destinationOptions: options)
+    fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?) throws {
+            
+        logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
+
+        let fileManager = FileManager.default
+        let storePath = storeURL.path
+
+        if fileManager.fileExists(atPath: storePath) {
+
+            let storeShmPath = "\(storePath)-shm"
+            let storeWalPath = "\(storePath)-wal"
+
+            // Check the store for compatibility if requested by developer.
+            if options?[overwriteIncompatibleStoreOption] as? Bool == true {
+
+                logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
+
+                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
+
+                if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
+
+                    try deleteIfExists(storePath)
+                    try deleteIfExists(storeShmPath)
+                    try deleteIfExists(storeWalPath)
                 }
             }
-            
-            logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
-
-            let fileManager = FileManager.default
-            let storePath = storeURL.path
-            
-            if fileManager.fileExists(atPath: storePath) {
-                
-                let storeShmPath = "\(storePath)-shm"
-                let storeWalPath = "\(storePath)-wal"
-                
-                // Check the store for compatibility if requested by developer.
-                if options?[overwriteIncompatibleStoreOption] as? Bool == true {
-                    
-                    logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
-                    
-                    let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
-                    
-                    if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
-                        
-                        try deleteIfExists(storePath)
-                        try deleteIfExists(storeShmPath)
-                        try deleteIfExists(storeWalPath)
-                    }
-                }
-            }
-            
-            logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
-            
-            try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
-
-            logInfo(tag) { "Persistent store attached successfully." }
-            
-        } catch let error as NSError where [NSMigrationError,
-            NSMigrationConstraintViolationError,
-            NSMigrationCancelledError,
-            NSMigrationMissingSourceModelError,
-            NSMigrationMissingMappingModelError,
-            NSMigrationManagerSourceStoreError,
-            NSMigrationManagerDestinationStoreError].contains(error.code) {
-                
-                let message = "Migration failed due to error: \(error.localizedDescription)"
-                
-                logError { message }
-                
-                throw NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
-                
-        } catch let error as NSError {
-            
-            let message = "Failed to attached persistent store: \(error.localizedDescription)"
-            
-            logError { message }
-            
-            throw  NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
         }
+
+        logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
+
+        try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
+
+        logInfo(tag) { "Persistent store attached successfully." }
+
     }
-    
+
     fileprivate func deleteIfExists(_ path: String) throws {
-        
+
         let fileManager = FileManager.default
         
         if fileManager.fileExists(atPath: path) {

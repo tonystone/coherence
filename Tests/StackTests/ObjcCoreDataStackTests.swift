@@ -49,8 +49,8 @@ class ObjcCoreDataStackTests: XCTestCase {
 
     func testConstructionWithName() {
 
-        let input  = "TestModel4"
-        let expected = (name: input, model: ModelLoader.load(name: "TestModel4"))
+        let input  = "StackTestModel4"
+        let expected = (name: input, model: ModelLoader.load(name: "StackTestModel4"))
 
         let stack = ObjcCoreDataStack(name: input)
 
@@ -60,7 +60,7 @@ class ObjcCoreDataStackTests: XCTestCase {
 
     func testConstructionNameAndModel() {
 
-        let input  = (name: "TestModel", model: ModelLoader.load(name: "TestModel4"))
+        let input  = (name: "TestModel", model: ModelLoader.load(name: "StackTestModel4"))
         let expected = input
 
         let stack = ObjcCoreDataStack(name: input.name, managedObjectModel: input.model)
@@ -71,23 +71,26 @@ class ObjcCoreDataStackTests: XCTestCase {
     
     func testConstruction_WithOptions () {
         
-        let name                        = String(describing: TestModel1.self)
+        let input = (name: "StackTestModel1", model: ModelLoader.load(name: "StackTestModel1"))
+
         var options: [AnyHashable: Any] = defaultStoreOptions
         
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try ObjcCoreDataStack(name: name, managedObjectModel: TestModel1()).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try ObjcCoreDataStack(name: input.name, managedObjectModel: input.model).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
             
-            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
+            XCTAssertTrue(try persistentStoreExists(storePrefix: input.name, storeType: defaultStoreType))
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
     func testCRUD () throws {
-    
-        let coreDataStack = ObjcCoreDataStack(name: String(describing: TestModel1.self), managedObjectModel: TestModel1())
+
+        let input = (name: "StackTestModel1", model: ModelLoader.load(name: "StackTestModel1"))
+
+        let coreDataStack = ObjcCoreDataStack(name: input.name, managedObjectModel: input.model)
         try coreDataStack.loadPersistentStores()
         
         let editContext = coreDataStack.newBackgroundContext()
@@ -97,7 +100,7 @@ class ObjcCoreDataStackTests: XCTestCase {
         
         editContext.performAndWait {
             
-            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "User", into:editContext) as? User {
+            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "StackUser", into:editContext) as? StackUser {
                 
                 insertedUser.firstName = firstName
                 insertedUser.lastName  = lastName
@@ -122,7 +125,7 @@ class ObjcCoreDataStackTests: XCTestCase {
         
         XCTAssertNotNil(savedUser)
         
-        if let savedUser = savedUser as? User {
+        if let savedUser = savedUser as? StackUser {
             
             XCTAssertTrue(savedUser.firstName == firstName)
             XCTAssertTrue(savedUser.lastName  == lastName)

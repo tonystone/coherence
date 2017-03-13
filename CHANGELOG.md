@@ -20,6 +20,10 @@ All significant changes to this project will be documented in this file.
 #### Fixed
 - `ActionProxy` cancel timing.  `ActionProxy` now correctly cancels actions in various states and reports back the `completionStatus` as `canceled`.
 
+#### Removed 
+- Removed direct support for complex migration (with `NSMigrationManager`) in `GenericCoreDataStack`, for complex migrations that require a migration manager, migrate externally before loading.
+- Removed direct support for complex migration (with `NSMigrationManager`) in `ObjcCoreDataStack`, for complex migrations that require a migration manager, migrate externally before loading.
+- Removed direct support for complex migration (with `NSMigrationManager`) in `Connect`, for complex migrations that require a migration manager, migrate externally before starting.
 
 ## [3.0.0-beta.2](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.2) 
 
