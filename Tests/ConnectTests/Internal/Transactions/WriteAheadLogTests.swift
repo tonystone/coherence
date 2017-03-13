@@ -257,7 +257,7 @@ class WriteAheadLogTests: XCTestCase {
     func testFailedToObtainPermanentIDs() {
 
         do {
-            let transactionStack = CoreDataStackType(name: "TestModel", managedObjectModel: TestModel1())
+            let transactionStack = CoreDataStackType(name: "StackTestModel", managedObjectModel: ModelLoader.load(name: "StackTestModel1"))
             try transactionStack.loadPersistentStores()
 
             let metaStack = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
@@ -268,7 +268,7 @@ class WriteAheadLogTests: XCTestCase {
 
             let input = try { () throws -> (entity: NSEntityDescription, count: Int) in
 
-                guard let entity = NSEntityDescription.entity(forEntityName: "User", in: transactionStack.viewContext) else {
+                guard let entity = NSEntityDescription.entity(forEntityName: "StackUser", in: transactionStack.viewContext) else {
                     throw NSError(domain: "Error", code: 1, userInfo: nil)
                 }
                 entity.managed = true

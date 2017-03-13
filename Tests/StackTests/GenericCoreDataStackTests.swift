@@ -51,8 +51,8 @@ class GenericCoreDataStackTests: XCTestCase {
 
     func testConstructionWithName() {
 
-        let input  = "TestModel4"
-        let expected = (name: input, model: ModelLoader.load(name: "TestModel4"))
+        let input  = "StackTestModel4"
+        let expected = (name: input, model: ModelLoader.load(name: input))
 
         let stack = CoreDataStackType(name: input)
 
@@ -62,7 +62,7 @@ class GenericCoreDataStackTests: XCTestCase {
 
     func testConstructionNameAndModel() {
 
-        let input  = (name: "TestModel", model: ModelLoader.load(name: "TestModel4"))
+        let input  = (name: "StackTestModel", model: ModelLoader.load(name: "StackTestModel4"))
         let expected = input
 
         let stack = CoreDataStackType(name: input.name, managedObjectModel: input.model)
@@ -73,8 +73,8 @@ class GenericCoreDataStackTests: XCTestCase {
 
     func testConstructionWithOptions() {
         
-        let model = TestModel1()
-        let name  = String(describing: type(of: model.self))
+        let model = ModelLoader.load(name: "StackTestModel1")
+        let name  = "StackTestModel1"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
 
@@ -91,9 +91,9 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testConstruction_WithEmptyOptions() {
+    func testConstructionWithEmptyOptions() {
         
-        let model = TestModel1()
+        let model = ModelLoader.load(name: "StackTestModel1")
         let name  = String(describing: type(of: model.self))
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
@@ -107,10 +107,10 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testConstruction_MultiConfiguration_SQLiteStoreType() throws {
+    func testConstructionWithMultiConfigurationAndSQLiteStoreType() throws {
         
-        let model = TestModel3()
-        let name  = String(describing: type(of: model.self))
+        let model = ModelLoader.load(name: "StackTestModel3")
+        let name  = "StackTestModel3"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
 
@@ -129,10 +129,10 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testConstruction_MultiConfiguration_InMemoryType() throws {
+    func testConstructionWithMultiConfigurationAndInMemoryType() throws {
         
-        let model = TestModel3()
-        let name  = String(describing: type(of: model.self))
+        let model = ModelLoader.load(name: "StackTestModel3")
+        let name  = "StackTestModel3"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
         
@@ -151,10 +151,10 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testConstruction_MultiConfiguration_MixedType() throws {
+    func testConstructionWithMultiConfigurationAndMixedType() throws {
         
-        let model = TestModel3()
-        let name  = String(describing: type(of: model.self))
+        let model = ModelLoader.load(name: "StackTestModel3")
+        let name  = "StackTestModel3"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
         
@@ -173,10 +173,10 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testConstruction_MultiConfiguration_DefaultStoreType() throws {
+    func testConstructionWithMultiConfigurationAndDefaultStoreType() throws {
         
-        let model = TestModel3()
-        let name  = String(describing: type(of: model.self))
+        let model = ModelLoader.load(name: "StackTestModel3")
+        let name  = "StackTestModel3"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model)
 
@@ -191,13 +191,13 @@ class GenericCoreDataStackTests: XCTestCase {
         }
     }
     
-    func testStackCreation_OverrideStoreIfModelIncompatible() throws {
+    func testStackCreationWithOverrideStoreIfModelIncompatible() throws {
         
-        let model     = TestModel1()
-        let name      = String(describing: type(of: model.self))
+        let model     = ModelLoader.load(name: "StackTestModel1")
+        let name      = "StackTestModel1"
         let storeType = NSSQLiteStoreType
 
-        var stack = CoreDataStackType(name: name, managedObjectModel: TestModel2())
+        var stack = CoreDataStackType(name: name, managedObjectModel: ModelLoader.load(name: "StackTestModel2"))
 
         // Initialize model 2 (no configurations), with model 1s name
         try stack.loadPersistentStores()
@@ -216,10 +216,10 @@ class GenericCoreDataStackTests: XCTestCase {
         XCTAssertTrue(try persistentStoreDate(storePrefix: name, storeType: storeType, configuration: nil) > storeDate)
     }
     
-    func testConstruction_WithAsyncErrorHandler() {
+    func testConstructionWithAsyncErrorHandler() {
         
-        let model = TestModel1()
-        let name  = String(describing: type(of: model.self))
+        let model     = ModelLoader.load(name: "StackTestModel1")
+        let name      = "StackTestModel1"
 
         let stack = CoreDataStackType(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
             // Async Error block
@@ -237,8 +237,8 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testCRUD () throws {
         
-        let model = TestModel1()
-        let name  = String(describing: type(of: model.self))
+        let model     = ModelLoader.load(name: "StackTestModel1")
+        let name      = "StackTestModel1"
         
         let coreDataStack = CoreDataStackType(name: name, managedObjectModel: model)
         try coreDataStack.loadPersistentStores()
@@ -250,7 +250,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         editContext.performAndWait {
             
-            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "User", into:editContext) as? User {
+            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "StackUser", into:editContext) as? StackUser {
                 
                 insertedUser.firstName = firstName
                 insertedUser.lastName  = lastName
@@ -275,7 +275,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         XCTAssertNotNil(savedUser)
         
-        if let savedUser = savedUser as? User {
+        if let savedUser = savedUser as? StackUser {
             
             XCTAssertTrue(savedUser.firstName == firstName)
             XCTAssertTrue(savedUser.lastName  == lastName)
@@ -285,5 +285,4 @@ class GenericCoreDataStackTests: XCTestCase {
             XCTFail()
         }
     }
-
 }
