@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         storeOptions[overwriteIncompatibleStoreOption] = true       /// Force the data stores to be overwritten if incompatible with the model.
 
         let configurationOptions: ConfigurationOptionsType = [
-            "Transient":  (storeType: NSInMemoryStoreType, storeOptions: storeOptions, migrationManager: nil),
-            "Persistent": (storeType: NSSQLiteStoreType,   storeOptions: storeOptions, migrationManager: nil)
+            "Transient":  (storeType: NSInMemoryStoreType, storeOptions: storeOptions),
+            "Persistent": (storeType: NSSQLiteStoreType,   storeOptions: storeOptions)
         ]
 
         return Connect(name: "HR", configurationOptions: configurationOptions)

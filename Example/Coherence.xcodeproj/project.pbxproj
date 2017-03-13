@@ -46,6 +46,7 @@
 		EA2CC5D51E36B17300054305 /* EntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* EntityDescription+EntitySettingsTests.swift */; };
 		EA30E6501E764CF600F09610 /* StackTestModel2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64C1E764CF600F09610 /* StackTestModel2.xcdatamodeld */; };
 		EA30E6511E764CF600F09610 /* StackTestModel3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64E1E764CF600F09610 /* StackTestModel3.xcdatamodeld */; };
+		EA30E6541E76E67000F09610 /* StackTestModel1To2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA30E6521E764DC300F09610 /* StackTestModel1To2.xcmappingmodel */; };
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
 		EA4A2E881E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E871E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift */; };
@@ -149,6 +150,7 @@
 		EA2CC5E41E384F9F00054305 /* .travis */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .travis; path = ../.travis; sourceTree = "<group>"; };
 		EA30E64D1E764CF600F09610 /* StackTestModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StackTestModel2.xcdatamodel; sourceTree = "<group>"; };
 		EA30E64F1E764CF600F09610 /* StackTestModel3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StackTestModel3.xcdatamodel; sourceTree = "<group>"; };
+		EA30E6521E764DC300F09610 /* StackTestModel1To2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = StackTestModel1To2.xcmappingmodel; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGenericAction.swift; sourceTree = "<group>"; };
 		EA31505D1E35533400FB9905 /* MockListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockListAction.swift; sourceTree = "<group>"; };
 		EA4A2E871E4F75E200C68540 /* ManagedObjectContext+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				EAC5C3251E6269D90025D310 /* StackTestModel4.xcdatamodeld */,
 				EA1C140A1E3D80E1002E63BD /* StackUser.swift */,
 				EA1C140B1E3D80E1002E63BD /* StackUser+CoreDataProperties.swift */,
+				EA30E6521E764DC300F09610 /* StackTestModel1To2.xcmappingmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				EA1C142D1E3F9FBD002E63BD /* HR.xcdatamodeld in Sources */,
 				EA1C14421E3FA034002E63BD /* Location+CoreDataClass.swift in Sources */,
 				EA1C14481E3FA034002E63BD /* Country+CoreDataClass.swift in Sources */,
+				EA30E6541E76E67000F09610 /* StackTestModel1To2.xcmappingmodel in Sources */,
 				EA1C14411E3FA034002E63BD /* JobHistory+CoreDataProperties.swift in Sources */,
 				EA1C14461E3FA034002E63BD /* Employee+CoreDataClass.swift in Sources */,
 				EA1C14451E3FA034002E63BD /* Region+CoreDataProperties.swift in Sources */,

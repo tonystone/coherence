@@ -78,7 +78,7 @@ class ObjcCoreDataStackTests: XCTestCase {
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try ObjcCoreDataStack(name: input.name, managedObjectModel: input.model).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try ObjcCoreDataStack(name: input.name, managedObjectModel: input.model).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: input.name, storeType: defaultStoreType))
         } catch {

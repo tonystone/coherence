@@ -83,7 +83,7 @@ class GenericCoreDataStackTests: XCTestCase {
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
@@ -119,8 +119,8 @@ class GenericCoreDataStackTests: XCTestCase {
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil),
-                                                                          "TransientEntities":  (storeType: NSSQLiteStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType, storeOptions: options),
+                                                                          "TransientEntities":  (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType, configuration: "PersistentEntities"))
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType, configuration: "TransientEntities"))
@@ -141,8 +141,8 @@ class GenericCoreDataStackTests: XCTestCase {
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSInMemoryStoreType, storeOptions: options, migrationManager: nil),
-                                                                          "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSInMemoryStoreType, storeOptions: options),
+                                                                          "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options)])
             
             XCTAssertFalse(try persistentStoreExists(storePrefix: name, storeType: NSInMemoryStoreType, configuration: "PersistentEntities"))
             XCTAssertFalse(try persistentStoreExists(storePrefix: name, storeType: NSInMemoryStoreType, configuration: "TransientEntities"))
@@ -163,8 +163,8 @@ class GenericCoreDataStackTests: XCTestCase {
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType,   storeOptions: options, migrationManager: nil),
-                                                                          "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options, migrationManager: nil)])
+            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType,   storeOptions: options),
+                                                                          "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options)])
 
             XCTAssertTrue(try persistentStoreExists (storePrefix: name, storeType: NSSQLiteStoreType,   configuration: "PersistentEntities"))
             XCTAssertFalse(try persistentStoreExists(storePrefix: name, storeType: NSInMemoryStoreType, configuration: "TransientEntities"))
@@ -211,7 +211,7 @@ class GenericCoreDataStackTests: XCTestCase {
 
         // Now use model 1 with model 1s name
         stack = CoreDataStackType(name: name, managedObjectModel: model)
-        try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options, migrationManager: nil)])
+        try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options)])
 
         XCTAssertTrue(try persistentStoreDate(storePrefix: name, storeType: storeType, configuration: nil) > storeDate)
     }
