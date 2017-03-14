@@ -47,7 +47,7 @@ import TraceLog
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.

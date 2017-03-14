@@ -30,8 +30,8 @@
   },
   "subspecs": [
     {
-      "name": "Common",
-      "source_files": "Sources/Common/**/*"
+      "name": "CoreExtensions",
+      "source_files": "Sources/CoreExtensions/**/*"
     },
     {
       "name": "ConfigurationCore",
@@ -41,7 +41,7 @@
     {
       "name": "Configuration",
       "dependencies": {
-        "Coherence/Common": [
+        "Coherence/CoreExtensions": [
 
         ],
         "Coherence/ConfigurationCore": [
@@ -53,7 +53,7 @@
     {
       "name": "Stack",
       "dependencies": {
-        "Coherence/Common": [
+        "Coherence/CoreExtensions": [
 
         ]
       },
@@ -62,7 +62,7 @@
     {
       "name": "Connect",
       "dependencies": {
-        "Coherence/Common": [
+        "Coherence/CoreExtensions": [
 
         ],
         "Coherence/Stack": [

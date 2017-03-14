@@ -128,7 +128,7 @@ public extension ActionContext {
                     if localTransactions.hasRecord(for: existingObject.uniqueueIDString(), type: .update) {
                         ///
                         /// Note: LOCAL UPDATE: Only update the local copy if our local copy has not been changed
-                        ///                     This will preserve the transactiopn log and allow it to update the
+                        ///                     This will preserve the transaction log and allow it to update the
                         ///                     server later
                         ///
                         /// ------------------------------------------------------------------------------------------

@@ -243,10 +243,10 @@ internal class WriteAheadLog {
                 var message: String = ""
 
                 ///
-                /// Note: TraceLog blocks are exscaping closures so
+                /// Note: TraceLog blocks are escaping closures so
                 /// if we are to bring an NSManagedObject in it, you
                 /// must wrap it in a context.perform which is
-                /// eecuted when the closure is evaluated
+                /// executed when the closure is evaluated
                 ///
                 metadataContext.performAndWait { () -> Void in
                     message = "Log entry created: \(metaLogEntry)"
@@ -280,10 +280,10 @@ internal class WriteAheadLog {
                 var message: String = ""
 
                 ///
-                /// Note: TraceLog blocks are exscaping closures so
+                /// Note: TraceLog blocks are escaping closures so
                 /// if we are to bring an NSManagedObject in it, you
                 /// must wrap it in a context.perform which is
-                /// eecuted when the closure is evaluated
+                /// executed when the closure is evaluated
                 ///
                 metadataContext.performAndWait { () -> Void in
                     message = "Log entry created: \(metaLogEntry)"
@@ -318,7 +318,7 @@ internal class WriteAheadLog {
 
                 try self.insertTransactionLogEntry(entity: object.entity,
                                         objectID: object.objectID.uriRepresentation().absoluteString,
-                                        uniqueueID: uniqueID,
+                                        uniqueID: uniqueID,
                                         updateData: data,
                                         type: .insert,
                                         transactionID: transactionID,
@@ -354,7 +354,7 @@ internal class WriteAheadLog {
 
                 try self.insertTransactionLogEntry(entity: object.entity,
                                                    objectID: object.objectID.uriRepresentation().absoluteString,
-                                                   uniqueueID: uniqueID,
+                                                   uniqueID: uniqueID,
                                                    updateData: data,
                                                    type: .update,
                                                    transactionID: transactionID,
@@ -381,7 +381,7 @@ internal class WriteAheadLog {
 
                 try self.insertTransactionLogEntry(entity: object.entity,
                                                    objectID: object.objectID.uriRepresentation().absoluteString,
-                                                   uniqueueID: uniqueID,
+                                                   uniqueID: uniqueID,
                                                    updateData: nil,
                                                    type: .delete,
                                                    transactionID: transactionID,
@@ -395,7 +395,7 @@ internal class WriteAheadLog {
         }
     }
 
-    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
+    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
 
         let sequence = Int32(sequenceNumber)
 
@@ -413,17 +413,17 @@ internal class WriteAheadLog {
             // Update the object identification data
             //
             metaLogEntry.updateObjectID = objectID
-            metaLogEntry.updateUniqueID = uniqueueID
+            metaLogEntry.updateUniqueID = uniqueID
             metaLogEntry.updateEntityName = entity.name
 
             logTrace(4) {
                 var message: String = ""
 
                 ///
-                /// Note: TraceLog blocks are exscaping closures so
+                /// Note: TraceLog blocks are escaping closures so
                 /// if we are to bring an NSManagedObject in it, you
                 /// must wrap it in a context.perform which is 
-                /// eecuted when the closure is evaluated
+                /// executed when the closure is evaluated
                 ///
                 metadataContext.performAndWait { () -> Void in
                     message = "Log entry created: \(metaLogEntry)"

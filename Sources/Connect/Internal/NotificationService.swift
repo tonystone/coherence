@@ -33,9 +33,9 @@ internal class NotificationService {
     ///         to have a value before referencing self.  
     /// 
     ///         With this configuration the init method
-    ///         using this class can costruct an instance 
-    ///         assigning it to it's propery and once 
-    ///         the clss is fully initialized, assign 
+    ///         using this class can construct an instance
+    ///         assigning it to it's property and once
+    ///         the class is fully initialized, assign
     ///         self to `source`.
     ///
     internal weak var source: AnyObject?

@@ -40,4 +40,20 @@ extension NSManagedObjectContext {
             throw error
         }
     }
+
+    ///
+    /// Asynchronously performs the block on the context's queue with a throwing block calling errorHandler if an error is thrown. May safely be called reentrantly and throw Errors from this block.
+    ///
+    @nonobjc
+    public func perform(onError: @escaping (Error) -> Void, _ block: @escaping () throws -> Void) {
+        self.performAndWait { () -> Void in
+            do {
+                try block()
+
+            } catch {
+                onError(error)
+            }
+        }
+
+    }
 }

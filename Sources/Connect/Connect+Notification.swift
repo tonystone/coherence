@@ -8,7 +8,7 @@
 import Swift
 
 ///
-/// Connect specific notifcations.
+/// Connect specific notifications.
 ///
 public extension Connect {
 

@@ -72,5 +72,37 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
             XCTFail("\(error)")
         }
     }
+
+    func testPerformThrowingWithErrorBlock() {
+
+        enum Errors: Error {
+            case testError(String)
+        }
+
+        let input  = Errors.testError("Test Error")
+
+        do {
+            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
+
+            let actionContext = connect.newBackgroundContext()
+
+            let expectation = self .expectation(description: "Error block gets called")
+
+            let errorBlock = { (error: Error) -> Void in
+                expectation.fulfill()
+            }
+
+            actionContext.perform(onError: errorBlock) { throw input }
+
+            self.waitForExpectations(timeout: 5) { (error) in
+                if let error = error {
+                    XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+                }
+            }
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
 }
 

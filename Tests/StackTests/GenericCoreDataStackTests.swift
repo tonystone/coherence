@@ -20,7 +20,8 @@
 ///
 import XCTest
 import CoreData
-import Coherence
+
+@testable import Coherence
 
 fileprivate let firstName = "First"
 fileprivate let lastName  = "Last"
@@ -234,7 +235,21 @@ class GenericCoreDataStackTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
-    
+
+    func testDefaultErrorHandlingBlock() {
+
+        enum TestErrors: Error {
+            case testError
+        }
+
+        let input = TestErrors.testError
+
+        ///
+        /// Note: there is really no way at the moment to validate the output of the default handler so this is just to exercise it for test coverage completion.
+        ///
+        Coherence.defaultAsyncErrorHandlingBlock(input)
+    }
+
     func testCRUD () throws {
         
         let model     = ModelLoader.load(name: "StackTestModel1")

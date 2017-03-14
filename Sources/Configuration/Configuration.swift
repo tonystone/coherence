@@ -61,7 +61,7 @@ open class Configuration<P: NSObjectProtocol> {
     public final class func instance(_ defaults: [String: AnyObject]? = nil, bundleKey: String? = nil) -> P {
         
         // Lookup the protocol in the Objective-C runtime to get the Protocol object pointer
-        let conformingProtocol: Protocol = abortIfNil(message: "Could not create instance for protoocol \(P.self)") {
+        let conformingProtocol: Protocol = abortIfNil(message: "Could not create instance for protocol \(P.self)") {
            return objc_getProtocol(String(reflecting: P.self))
         }
         

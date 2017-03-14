@@ -67,11 +67,19 @@ public typealias ConfigurationOptionsType = [String : PersistentStoreConfigurati
 public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions)]
 
 ///
-/// There are activities that the CoreDataStack will do asyncrhonously as a result of various events.  GenericCoreDataStack currently
+/// There are activities that the CoreDataStack will do asynchronously as a result of various events.  GenericCoreDataStack currently
 /// logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take
 /// an alternate action.
 ///
-public typealias AsynErrorHandlerBlock = (Error) -> Void
+public typealias AsyncErrorHandlerBlock = (Error) -> Void
+
+///
+/// Default block used to log Async errors if the user does not supply one
+///
+internal /// @testable
+let defaultAsyncErrorHandlingBlock = { (error: Error) -> Void in
+    logError { "\(error)" }
+}
 
 ///
 /// A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
@@ -94,18 +102,18 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///
     /// The main context.
     ///
-    /// This context should be used for read operations only.  Use it for all fetches and NSFechtedResultsControllers.
+    /// This context should be used for read operations only.  Use it for all fetches and NSFetchedResultsControllers.
     ///
     /// It will be maintained automatically and be kept consistent.
     ///
-    /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `edittContext` while on the thread.  See that method for more details
+    /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `newBackgroundContext` while on the thread.  See that method for more details
     ///
     public var viewContext: ViewContextType
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
     ///
-    /// At save time, resource manager will merge those changes back to the mainManagedObjectContext.
+    /// At save time, Connect will merge those changes back to the viewContext.
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
@@ -123,7 +131,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
 
     fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
-    fileprivate let errorHandlerBlock: AsynErrorHandlerBlock
+    fileprivate let errorHandlerBlock: AsyncErrorHandlerBlock
 
     public let name: String
 
@@ -138,7 +146,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///
     /// - Returns: A generic core data stack initialized with the given name.
     ///
-    public convenience init(name: String, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
+    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -153,7 +161,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persisent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
@@ -162,20 +170,14 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///
     /// - Returns: A generic core data stack initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsynErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
 
         self.name = name
 
         self.managedObjectModel = model
         self.tag = tag
 
-        if let asyncErrorBlock = asyncErrorBlock {
-            self.errorHandlerBlock = asyncErrorBlock
-        } else {
-            self.errorHandlerBlock = { (error: Error) -> Void in
-                logError { "\(error)" }
-            }
-        }
+        self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock
 
         /// Create the coordinator
         self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
@@ -328,42 +330,27 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
         
         if let context = notification.object as? NSManagedObjectContext {
-            
-            ///
-            /// If the context has it's persistentStoreCoordinate as our coordinator
-            /// and it does not have a parent, the context is one of our edit
-            /// contexts so we propogate the changes to our main context and
-            /// up the stack.
 
             if isEditContext(context) {
                 
-                self.viewContext.perform {
+                self.viewContext.perform(onError: self.errorHandlerBlock) {
 
-                    do {
-                        ///
-                        /// Merge the changes from the edit context to the main
-                        /// conntext.
-                        ///
-                        self.viewContext.mergeChanges(fromContextDidSave: notification)
+                    ///
+                    /// Merge the changes from the edit context to the main context.
+                    ///
+                    self.viewContext.mergeChanges(fromContextDidSave: notification)
 
-                        ///
-                        /// Now save it to propagate the changes to the root.
-                        ///
-                        try self.viewContext.save()
+                    ///
+                    /// Now save it to propagate the changes to the root.
+                    ///
+                    try self.viewContext.save()
 
-                        ////
-                        /// And finally save the root context to the persistent store
-                        /// on a background thread.
-                        ///
-                        self.rootContext.perform {
-                            do {
-                                try self.rootContext.save()
-                            } catch {
-                                self.errorHandlerBlock(error)
-                            }
-                        }
-                    } catch {
-                        self.errorHandlerBlock(error)
+                    ////
+                    /// And finally save the root context to the persistent store
+                    /// on a background thread.
+                    ///
+                    self.rootContext.perform(onError: self.errorHandlerBlock) {
+                        try self.rootContext.save()
                     }
                 }
             }

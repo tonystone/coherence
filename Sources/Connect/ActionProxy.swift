@@ -20,8 +20,7 @@
 import Foundation
 
 ///
-/// A type representing the current execution state
-/// of an `Action`.
+/// A type representing the current execution state of an `Action`.
 ///
 public enum ActionState {
     case created    /// The `Action` was created but has not executed.
@@ -36,7 +35,7 @@ public enum ActionState {
 public enum ActionCompletionStatus {
     case unknown        /// If the `Action` has not executed, its `ActionCompletionStatus` will be `.unknown`.
     case successful     /// The `Action` completed successfully.
-    case canceled       /// The `Action` was canceled either before or during exection.
+    case canceled       /// The `Action` was canceled either before or during execution.
     case failed         /// The `Action` failed to execute completely.
 }
 
@@ -83,7 +82,7 @@ public protocol ContextStatistics {
     ///
     /// Remaining time 
     ///
-    /// Calculated as contextBlcokTime - fetchTime - saveTime
+    /// Calculated as contextBlockTime - fetchTime - saveTime
     ///
     var otherTime: TimeInterval { get }
 }
@@ -101,7 +100,7 @@ public protocol ActionStatistics {
     var startTime: Date? { get }
 
     ///
-    /// If the `Action` has finished, finshTime will be set
+    /// If the `Action` has finished, finishTime will be set
     /// with the finish time.
     ///
     var finishTime: Date? { get }
@@ -113,8 +112,8 @@ public protocol ActionStatistics {
     var executionTime: TimeInterval { get }
 
     ///
-    /// If this was an `EnityAction` context stastics will contain the
-    /// statstics of the `ActionContext` used during the action.
+    /// If this was an `EntityAction` context statistics will contain the
+    /// statistics of the `ActionContext` used during the action.
     ///
     var contextStatistics: ContextStatistics? { get }
 }

@@ -307,7 +307,7 @@ public extension Connect {
     ///
     /// Asynchronously start the instance of `Connect`
     ///
-    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nill and contain the error indicating the reason for the failure.
+    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
     ///
     public func start(completionBlock: @escaping (Error?) -> Void) {
 

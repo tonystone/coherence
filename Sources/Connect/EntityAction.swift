@@ -28,8 +28,8 @@ public protocol EntityAction: Action {
     /// Execute Action on a background thread.
     ///
     /// Actions that do not throw an exception or are canceled 
-    /// will complete with an `ActionCompletionStatus.successfull`
-    /// in the `ActionProxy` that is reqeturned when you execute
+    /// will complete with an `ActionCompletionStatus.successful`
+    /// in the `ActionProxy` that is returned when you execute
     /// this action.
     ///
     /// - SeeAlso: `ActionCompletionStatus`
