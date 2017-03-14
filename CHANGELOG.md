@@ -7,6 +7,7 @@ All significant changes to this project will be documented in this file.
 - Added `Connect.Notification.ActionDidStartExecuting` notification for clients to listen for action start notifications.
 - Added `Connect.Notification.ActionDidFinishExecuting` notification for clients to listen for action finished notifications.
 - Added `Connect.Notification.Key.ActionProxy` key used by notifications.
+- Added `Connect` `suspended` functionality to control state. 
 
 #### Breaking Updates 
 - Changed init sequence allowing for non-throwing init.
@@ -16,6 +17,7 @@ All significant changes to this project will be documented in this file.
 - Changed `GenericCoreDataStack` & `CoreDataStack` `viewContext` to use the `ViewContextType` removing the read only context.
 - Changed default merge policy for `ActionContext` to `NSMergeByPropertyObjectTrumpMergePolicy`
 - Changed `NSEntityDescription.uniquenessAttributes` to be non-optional.
+- Removed `Connect` `online` replacing them with `suspended`.
 
 #### Fixed
 - `ActionProxy` cancel timing.  `ActionProxy` now correctly cancels actions in various states and reports back the `completionStatus` as `canceled`.

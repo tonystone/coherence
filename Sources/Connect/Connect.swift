@@ -23,14 +23,51 @@ import TraceLog
 import UIKit
 
 ///
-/// The extension of the store bundle created for this store.
+/// Private constants
 ///
-private let connectBundleExtension: String = "connect"
+private extension Connect {
 
-///
-/// Location to store the connect store bundle.
-///
-private let connectBundleDirectory: FileManager.SearchPathDirectory = .documentDirectory
+    struct Default {
+
+        struct Bundle {
+            ///
+            /// The extension of the store bundle created for this store.
+            ///
+            static let `extension`: String = "connect"
+
+            ///
+            /// Location to store the connect store bundle.
+            ///
+            static let directory: FileManager.SearchPathDirectory = .documentDirectory
+        }
+
+        struct Queue {
+            ///
+            /// Prefix used for all queues
+            ///
+            static let prefix: String = "connect.queue"
+        }
+
+        struct ActionQueue {
+            ///
+            /// Qos for `ActionQueue`s within the system.
+            ///
+            static let qos: DispatchQoS = .utility
+
+            ///
+            /// The startup state of the queues
+            ///
+            static let suspended: Bool = true
+        }
+    }
+
+    struct Log {
+        ///
+        /// Tag used for all logging internally
+        ///
+        static let tag = String(describing: Connect.self)
+    }
+}
 
 ///
 /// Connect
@@ -111,11 +148,6 @@ public class Connect {
     fileprivate let synchronizationQueue: DispatchQueue
 
     ///
-    /// Tag used for all logging internally
-    ///
-    fileprivate var logTag = String(describing: Connect.self)
-
-    ///
     /// Configuration option used to start the dataCache.
     ///
     fileprivate let dataCacheOptions: ConfigurationOptionsType
@@ -175,17 +207,17 @@ public class Connect {
         self.dataCacheOptions = options
         self.metaCacheOptions = defaultConfigurationOptions
 
-        self.dataCache = DataCacheType(name: "", managedObjectModel: model,       logTag: logTag)
-        self.metaCache = MetaCacheType(name: "", managedObjectModel: MetaModel(), logTag: logTag)
+        self.dataCache = DataCacheType(name: "", managedObjectModel: model,       logTag: Log.tag)
+        self.metaCache = MetaCacheType(name: "", managedObjectModel: MetaModel(), logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
-        self.genericQueue = ActionQueue(label: "connect.action.queue", concurrencyMode: .concurrent)
+        self.genericQueue = ActionQueue(label: "\(Default.Queue.prefix).generic", qos: Default.ActionQueue.qos, concurrencyMode: .concurrent, suspended: Default.ActionQueue.suspended)
         self.entityQueues = [:]
         ///
         /// Serial queue with background priority
         ///
-        self.synchronizationQueue = DispatchQueue(label: "connect.synchronization.queue", qos: .background)
+        self.synchronizationQueue = DispatchQueue(label: "\(Default.Queue.prefix).synchronization", qos: .userInitiated)
 
         self.started = false
 
@@ -263,7 +295,7 @@ public extension Connect {
 
         let container = GenericActionContainer<ActionType>(action: action, notificationService: self.notificationService, completionBlock: completionBlock)
 
-        logInfo { "Queuing \(container) on queue `\(self.genericQueue)'" }
+        logInfo(Log.tag) { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
         self.genericQueue.addAction(container, waitUntilDone: false)
 
@@ -291,7 +323,7 @@ public extension Connect {
 
         let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.notificationService, completionBlock: completionBlock)
 
-        logInfo { "Queuing \(container) on queue `\(entityQueue)'" }
+        logInfo(Log.tag) { "Queuing \(container) on queue `\(entityQueue)'" }
 
         entityQueue.addAction(container, waitUntilDone: false)
 
@@ -342,16 +374,16 @@ public extension Connect {
 
         try autoreleasepool {
 
-            logInfo { "Starting instance '\(self.name)'..." }
+            logInfo(Log.tag) { "Starting instance '\(self.name)'..." }
 
-            logInfo { "Loading persistent stores..." }
+            logInfo(Log.tag) { "Loading persistent stores..." }
 
-            let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: connectBundleDirectory)
+            let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: Default.Bundle.directory)
 
             try self.dataCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: dataCacheOptions)
             try self.metaCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: metaCacheOptions)
 
-            logInfo { "Creating the write ahead log..." }
+            logInfo(Log.tag) { "Creating the write ahead log..." }
 
             self.writeAheadLog = try WriteAheadLog(coreDataStack: self.metaCache)
 
@@ -360,21 +392,41 @@ public extension Connect {
             ///
             for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
 
-                logInfo { "Found entity '\(name)'." }
+                logInfo(Log.tag) { "Found entity '\(name)'." }
 
                 self.manage(name: name, entity: entity)
             }
 
             self.registerForNotifications()
 
+            if self.suspended {
+                self.suspended = false
+            }
+
             self.started = true
 
-            logInfo { "Instance initialized." }
+            logInfo(Log.tag) { "Instance started." }
         }
     }
 
-    public var online: Bool {
-        return true
+    public var suspended: Bool {
+        get {
+            return self.genericQueue.suspended
+        }
+        set {
+            if newValue != self.genericQueue.suspended {
+                logInfo(Log.tag) { "\(newValue ? "Suspending" : "Resuming") queues." }
+                self.genericQueue.suspended = newValue
+
+                logInfo(Log.tag) { "Queue \"\(self.genericQueue.label)\" \(self.genericQueue.suspended ? "suspended" : "active")." }
+
+                for queue in self.entityQueues.values {
+                    queue.suspended = newValue
+
+                    logInfo(Log.tag) { "Queue \"\(queue.label)\" \(queue.suspended ? "suspended" : "active")." }
+                }
+            }
+        }
     }
 }
 
@@ -429,12 +481,12 @@ fileprivate extension Connect {
 
     @discardableResult
     func manage(name: String, entity: NSEntityDescription) -> Bool {
-        logInfo { "Determining if entity '\(name)' can be managed...."}
+        logInfo(Log.tag) { "Determining if entity '\(name)' can be managed...."}
 
         var canBeManaged = true
 
         if let userInfo = entity.userInfo, userInfo.count > 0 {
-            logInfo { "UserInfo found on entity '\(name)', reading static settings (if any)." }
+            logInfo(Log.tag) { "UserInfo found on entity '\(name)', reading static settings (if any)." }
             entity.setSettings(from: userInfo)
         }
 
@@ -460,7 +512,7 @@ fileprivate extension Connect {
 
             if #available(iOS 9.0, *), entity.uniquenessConstraints.count > 0 {
 
-                logInfo { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
+                logInfo(Log.tag) { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
 
                 var shortest = entity.uniquenessConstraints[0]
 
@@ -482,24 +534,24 @@ fileprivate extension Connect {
             } else {
                 canBeManaged = false
 
-                logInfo { "Missing 'uniquenessAttributes' setting."}
+                logInfo(Log.tag) { "Missing 'uniquenessAttributes' setting."}
             }
         }
 
         if canBeManaged {
 
-            let queueName = "connect.action.queue.\(name.lowercased())"
+            let label = "\(Default.Queue.prefix).entity.\(name.lowercased())"
 
-            logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
+            logInfo(Log.tag) { "Creating action queue for entity '\(name)' (\(label))" }
 
-            self.entityQueues[name] = ActionQueue(label: queueName, concurrencyMode: .serial)
+            self.entityQueues[name] = ActionQueue(label: label, qos: Default.ActionQueue.qos, concurrencyMode: .serial, suspended: Default.ActionQueue.suspended)
 
             entity.managed = true
 
-            logInfo { "Entity '\(name)' marked as managed."}
+            logInfo(Log.tag) { "Entity '\(name)' marked as managed."}
         } else {
 
-            logInfo { "Entity '\(name)' cannot be managed."}
+            logInfo(Log.tag) { "Entity '\(name)' cannot be managed."}
         }
 
         return entity.managed
@@ -539,7 +591,7 @@ fileprivate extension Connect {
             ///
             /// Example: "HR.connect"
             ///
-            let bundleURL = baseURL.appendingPathComponent("\(bundleName).\(connectBundleExtension)", isDirectory: true)
+            let bundleURL = baseURL.appendingPathComponent("\(bundleName).\(Default.Bundle.extension)", isDirectory: true)
 
             ///
             /// create direcotry will throw if the directory can't be created.  If it already exists, it will simply return.
