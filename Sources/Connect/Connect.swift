@@ -212,12 +212,12 @@ public class Connect {
 
         self.notificationService = NotificationService()
 
-        self.genericQueue = ActionQueue(label: "connect.action.queue", concurrencyMode: .concurrent)
+        self.genericQueue = ActionQueue(label: "\(Default.Queue.prefix).generic", qos: Default.ActionQueue.qos, concurrencyMode: .concurrent, suspended: Default.ActionQueue.suspended)
         self.entityQueues = [:]
         ///
         /// Serial queue with background priority
         ///
-        self.synchronizationQueue = DispatchQueue(label: "connect.synchronization.queue", qos: .background)
+        self.synchronizationQueue = DispatchQueue(label: "\(Default.Queue.prefix).synchronization", qos: .userInitiated)
 
         self.started = false
 
@@ -399,14 +399,34 @@ public extension Connect {
 
             self.registerForNotifications()
 
+            if self.suspended {
+                self.suspended = false
+            }
+
             self.started = true
 
             logInfo(Log.tag) { "Instance started." }
         }
     }
 
-    public var online: Bool {
-        return true
+    public var suspended: Bool {
+        get {
+            return self.genericQueue.suspended
+        }
+        set {
+            if newValue != self.genericQueue.suspended {
+                logInfo(Log.tag) { "\(newValue ? "Suspending" : "Resuming") queues." }
+                self.genericQueue.suspended = newValue
+
+                logInfo(Log.tag) { "Queue \"\(self.genericQueue.label)\" \(self.genericQueue.suspended ? "suspended" : "active")." }
+
+                for queue in self.entityQueues.values {
+                    queue.suspended = newValue
+
+                    logInfo(Log.tag) { "Queue \"\(queue.label)\" \(queue.suspended ? "suspended" : "active")." }
+                }
+            }
+        }
     }
 }
 
@@ -514,17 +534,17 @@ fileprivate extension Connect {
             } else {
                 canBeManaged = false
 
-                logInfo { "Missing 'uniquenessAttributes' setting."}
+                logInfo(Log.tag) { "Missing 'uniquenessAttributes' setting."}
             }
         }
 
         if canBeManaged {
 
-            let queueName = "connect.action.queue.\(name.lowercased())"
+            let label = "\(Default.Queue.prefix).entity.\(name.lowercased())"
 
-            logInfo { "Creating action queue for entity '\(name)' (\(queueName))" }
+            logInfo(Log.tag) { "Creating action queue for entity '\(name)' (\(label))" }
 
-            self.entityQueues[name] = ActionQueue(label: queueName, concurrencyMode: .serial)
+            self.entityQueues[name] = ActionQueue(label: label, qos: Default.ActionQueue.qos, concurrencyMode: .serial, suspended: Default.ActionQueue.suspended)
 
             entity.managed = true
 

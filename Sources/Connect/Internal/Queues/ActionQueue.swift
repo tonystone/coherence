@@ -27,52 +27,65 @@ internal enum ConcurrencyMode {
 }
 
 internal class ActionQueue {
-    
-    fileprivate let queue: OperationQueue
-    
-    public init(label: String, concurrencyMode mode: ConcurrencyMode = .serial) {
 
-        self.label = label
+    fileprivate let dispatchQueue:  DispatchQueue
+    fileprivate let operationQueue: OperationQueue
+
+    public init(label: String, qos: DispatchQoS, concurrencyMode mode: ConcurrencyMode = .serial, suspended: Bool = false) {
+
         self.concurrencyMode = mode
 
-        queue = OperationQueue()
-        queue.name = label
+        var queueAttributes = DispatchQueue.Attributes(rawValue: UInt64(0))
+
+        if mode == .concurrent {
+            queueAttributes.insert(.concurrent)
+        }
+
+        self.dispatchQueue = DispatchQueue(label: label, qos: qos, attributes: queueAttributes, autoreleaseFrequency: .inherit)
+
+        operationQueue = OperationQueue()
+        self.operationQueue.underlyingQueue = self.dispatchQueue
+
+        operationQueue.name = label
+        self.operationQueue.isSuspended = suspended
 
         switch (concurrencyMode) {
-            case .serial:     queue.maxConcurrentOperationCount = 1
-            case .concurrent: queue.maxConcurrentOperationCount = 5
+            case .serial:     self.operationQueue.maxConcurrentOperationCount = 1; break
+            case .concurrent: self.operationQueue.maxConcurrentOperationCount = 5; break
         }
     }
 
-    public let label: String
+    public var label: String {
+        return self.dispatchQueue.label
+    }
 
-    public let concurrencyMode: ConcurrencyMode
+    public var concurrencyMode: ConcurrencyMode
 
-    public var isSuspended: Bool {
+    public var suspended: Bool {
         get {
-            return self.queue.isSuspended
+            return self.operationQueue.isSuspended
         }
         set {
-            self.queue.isSuspended = newValue
+            self.operationQueue.isSuspended = newValue
         }
     }
 
     public func cancelAllActions() {
-        self.queue.cancelAllOperations()
+        self.operationQueue.cancelAllOperations()
     }
 
     public func waitUntilAllActionsAreFinished() {
-        self.queue.waitUntilAllOperationsAreFinished()
+        self.operationQueue.waitUntilAllOperationsAreFinished()
     }
 
     public func addAction<T: Operation>(_ action: T, waitUntilDone wait: Bool = false) {
-        self.queue.addOperations([action], waitUntilFinished: wait)
+        self.operationQueue.addOperations([action], waitUntilFinished: wait)
     }
 }
 
 extension ActionQueue: CustomStringConvertible {
 
     public var description: String {
-        return "\(type(of: self)) (name: \(self.label), concurrencyMode: \(self.concurrencyMode))"
+        return "\(type(of: self)) (name: \(self.label), qos: \(self.dispatchQueue.qos), concurrencyMode: \(self.concurrencyMode))"
     }
 }
