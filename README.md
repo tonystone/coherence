@@ -16,8 +16,10 @@
 <a href="https://github.com/tonystone/coherence/" target="_blank">
    <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
 </a>
-[![Build Status](https://travis-ci.org/tonystone/coherence.svg?branch=master)](https://travis-ci.org/tonystone/coherence)
-<a href="https://codecov.io/gh/tonystone/coherence">
+<a href="https://travis-ci.org/tonystone/coherence" target="_blank">
+  <img src="https://travis-ci.org/tonystone/coherence.svg?branch=master" alt="travis-ci.org" />
+</a>
+<a href="https://codecov.io/gh/tonystone/coherence" target="_blank">
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
@@ -25,7 +27,7 @@
 
 | Xcode | Swift | iOS |
 |:-----:|:-----:|:---:|
-|  8.2  |  3.0  | 8.0 |
+|  8.2  |  3.0  | 9.0 |
 
 
 ## Author
