@@ -9,6 +9,10 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
+                <constraint value="stringAttribute"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
         <userInfo>

@@ -59,7 +59,7 @@ class ConnectTests: XCTestCase {
         let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
-        let expectation = self.expectation(description: "Completion block called")
+        let expectation = self.expectation(description: "Completion block called.")
 
         let connect = Connect(name: input.modelName, managedObjectModel: input.model)
 
@@ -71,6 +71,34 @@ class ConnectTests: XCTestCase {
 
             if error == nil {
                 XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+            }
+        }
+    }
+
+    func testStartWithIncompatibleStore() throws {
+
+        let input = (modelName: modelName, model: self.testModel, emptyModel: self.testEmptyModel)
+
+        /// Create the first instance of the persistent stores using the empty model
+        do {
+            try Connect(name: input.modelName, managedObjectModel: input.emptyModel).start()
+        }
+
+        /// Now create the second instance using the real model, it should throw an exception
+        let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+
+        let expectation = self.expectation(description: "Completion block called with error.")
+
+        connect.start() { (error) in
+            if error == nil {
+                XCTFail("Failed to throw an error.")
+            }
+            expectation.fulfill()
+        }
+
+        self.waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTFail("\(error)")
             }
         }
     }
@@ -98,7 +126,7 @@ class ConnectTests: XCTestCase {
         XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
     }
 
-    func testStartWithIncompatibleStore() throws {
+    func testStartThrowsWithIncompatibleStore() throws {
 
         let input = (modelName: modelName, model: self.testModel, emptyModel: self.testEmptyModel)
 
@@ -113,15 +141,21 @@ class ConnectTests: XCTestCase {
         XCTAssertThrowsError(try connect.start())
     }
 
-    func testConnectEntityMissingCanBeManaged() throws {
+    func testConnectEntityCanBeManagedUniquenessAttributesDefined() throws {
 
-        let input = self.testModel.entitiesByName["ConnectEntity1"]
-        let expected = true
+        guard let input = self.testModel.entitiesByName["ConnectEntity1"]
+            else { XCTFail(); return }
+
+        ///
+        /// Note: Test values are defined on the static model.
+        ///
+        let expected = (managed: true, uniqnessAttributes: ["id"])
 
         let connect = Connect(name: modelName, managedObjectModel: self.testModel)
         try connect.start()
 
-        XCTAssertEqual(input?.managed, expected)
+        XCTAssertEqual(input.managed, expected.managed)
+        XCTAssertEqual(input.uniquenessAttributes, expected.uniqnessAttributes)
     }
 
     func testConnectMissingUniquenessAttributeEntityCannotBeManaged() throws {

@@ -1,11 +1,17 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
+platform :ios, '9.0'
+
 use_frameworks!
 
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'Coherence Example' do
   pod "Coherence", :path => "../"
+end
+
+target 'Coherence Test Host' do
+    pod "Coherence", :path => "../"
 end
 
 target 'Coherence Tests' do

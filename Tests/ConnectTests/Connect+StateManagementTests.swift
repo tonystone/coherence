@@ -54,4 +54,31 @@ class ConnectStateManagementTests: XCTestCase {
 
         XCTAssertEqual(connect.suspended, expected)
     }
+
+    func testProtectedDataWillBecomeUnavailable() throws {
+
+        let input = (modelName: "ConnectTestModel", isSuspended: true)
+        let expected = input.isSuspended
+
+        let connect = Connect(name: input.modelName)
+        try connect.start()
+
+        NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+
+        XCTAssertEqual(connect.suspended, expected)
+    }
+
+    func testProtectedDataDidBecomeAvailable() throws {
+
+        let input = (modelName: "ConnectTestModel", isSuspended: true)
+        let expected = false
+
+        let connect = Connect(name: input.modelName)
+        try connect.start()
+        connect.suspended = input.isSuspended
+
+        NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
+
+        XCTAssertEqual(connect.suspended, expected)
+    }
 }

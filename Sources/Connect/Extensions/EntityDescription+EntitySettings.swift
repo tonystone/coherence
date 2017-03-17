@@ -98,7 +98,7 @@ extension NSEntityDescription: EntitySettings  {
     
     @inline(__always)
     private func logUpdate<T>(_ funcName: String, value: T) {
-        logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? String(reflecting: self))' setting '\(funcName)' changed to '\(value)'" }
+        logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? "Unnamed entity")' setting '\(funcName)' changed to '\(value)'" }
     }
 }
 

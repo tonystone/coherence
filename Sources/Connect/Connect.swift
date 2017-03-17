@@ -239,14 +239,33 @@ public class Connect {
 ///
 extension Connect: CoreDataStack {
 
+    ///
+    /// The main context.
+    ///
+    /// This context should be used for read operations only.  Use it for all fetches and NSFetchedResultsControllers.
+    ///
+    /// It will be maintained automatically and be kept consistent.
+    ///
     public var viewContext: NSManagedObjectContext {
         return self.dataCache.viewContext
     }
 
+    ///
+    /// Gets a new NSManagedObjectContext that can be used for updating objects.
+    ///
+    /// At save time, Connect will merge those changes back to the ViewContextType.
+    ///
     public func newBackgroundContext() -> NSManagedObjectContext {
         return self.newBackgroundContext(logged: true)
     }
 
+    ///
+    /// Gets a new NSManagedObjectContext that can be used for updating objects with the option to log changes into the write ahead log.
+    ///
+    /// At save time, Connect will merge those changes back to the ViewContextType.
+    ///
+    /// - Parameter logged: Enable/disable transaction logging to the write ahead log when context.save is called.
+    ///
     public func newBackgroundContext(logged: Bool) -> NSManagedObjectContext {
 
         let context = self.dataCache.newBackgroundContext()
@@ -291,15 +310,18 @@ public extension Connect {
     /// - SeeAlso: `ActionProxy` protocol
     ///
     @discardableResult
-    func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
+    public func execute<ActionType: GenericAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
-        let container = GenericActionContainer<ActionType>(action: action, notificationService: self.notificationService, completionBlock: completionBlock)
+        return self.synchronizationQueue.sync {
 
-        logInfo(Log.tag) { "Queuing \(container) on queue `\(self.genericQueue)'" }
+            let container = GenericActionContainer<ActionType>(action: action, notificationService: self.notificationService, completionBlock: completionBlock)
 
-        self.genericQueue.addAction(container, waitUntilDone: false)
+            logInfo(Log.tag) { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
-        return container
+            self.genericQueue.addAction(container, waitUntilDone: false)
+            
+            return container
+        }
     }
 
     ///
@@ -315,24 +337,27 @@ public extension Connect {
     /// - SeeAlso: `ActionProxy` protocol
     ///
     @discardableResult
-    func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
+    public func execute<ActionType: EntityAction>(_ action: ActionType, completionBlock: ((_ actionProxy: ActionProxy) -> Void)? = nil) throws -> ActionProxy {
 
-        let entityQueue = try queue(entity: ActionType.ManagedObjectType.self)
+        return try self.synchronizationQueue.sync {
 
-        let context = self.newActionContext()
+            let entityQueue = try queue(entity: ActionType.ManagedObjectType.self)
 
-        let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.notificationService, completionBlock: completionBlock)
+            let context = self.newActionContext()
 
-        logInfo(Log.tag) { "Queuing \(container) on queue `\(entityQueue)'" }
+            let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.notificationService, completionBlock: completionBlock)
 
-        entityQueue.addAction(container, waitUntilDone: false)
+            logInfo(Log.tag) { "Queuing \(container) on queue `\(entityQueue)'" }
 
-        return container
+            entityQueue.addAction(container, waitUntilDone: false)
+            
+            return container
+        }
     }
 }
 
 ///
-/// Connect state management
+/// Connect state management (public synchronized)
 ///
 public extension Connect {
 
@@ -366,7 +391,35 @@ public extension Connect {
         }
     }
 
-    private func _start() throws {
+    ///
+    /// Suspend or resume the operation of `Connect`.
+    ///
+    /// - Note: This will suspend or activate all Queues.
+    ///
+    public var suspended: Bool {
+        get {
+            return self.synchronizationQueue.sync {
+                return self._suspended
+            }
+        }
+        set {
+            self.synchronizationQueue.sync {
+                self._suspended = newValue
+            }
+        }
+    }
+}
+
+///
+/// Connect state management (private unsynchronized)
+///
+fileprivate extension Connect {
+
+    ///
+    /// Note: This private implementation method is unsynchronized  and
+    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///
+    fileprivate func _start() throws {
 
         guard !started else {
             return
@@ -399,17 +452,21 @@ public extension Connect {
 
             self.registerForNotifications()
 
-            if self.suspended {
-                self.suspended = false
+            if self._suspended {
+                self._suspended = false
             }
-
+            
             self.started = true
-
+            
             logInfo(Log.tag) { "Instance started." }
         }
     }
 
-    public var suspended: Bool {
+    ///
+    /// Note: This private implementation method is unsynchronized  and
+    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///
+    fileprivate var _suspended: Bool {
         get {
             return self.genericQueue.suspended
         }
@@ -418,12 +475,12 @@ public extension Connect {
                 logInfo(Log.tag) { "\(newValue ? "Suspending" : "Resuming") queues." }
                 self.genericQueue.suspended = newValue
 
-                logInfo(Log.tag) { "Queue \"\(self.genericQueue.label)\" \(self.genericQueue.suspended ? "suspended" : "active")." }
+                logInfo(Log.tag) { "Queue \"\(self.genericQueue.label)\" \(newValue ? "suspended" : "active")." }
 
                 for queue in self.entityQueues.values {
                     queue.suspended = newValue
 
-                    logInfo(Log.tag) { "Queue \"\(queue.label)\" \(queue.suspended ? "suspended" : "active")." }
+                    logInfo(Log.tag) { "Queue \"\(queue.label)\" \(newValue ? "suspended" : "active")." }
                 }
             }
         }
@@ -438,11 +495,6 @@ fileprivate extension Connect {
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Foundation.Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Foundation.Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationDidEnterBackground(notification:)),       name: Foundation.Notification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillEnterForeground(notification:)),      name: Foundation.Notification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleApplicationWillTerminate(notification:)),            name: Foundation.Notification.Name.UIApplicationWillTerminate, object: nil)
-
     }
 
     func unregisterForNotifications() {
@@ -451,26 +503,20 @@ fileprivate extension Connect {
 
     dynamic func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
 
+        self.synchronizationQueue.async {
+            logInfo(Log.tag) { "Protected data is now available." }
+
+            self._suspended = false
+        }
     }
 
     dynamic func handleProtectedDataWillBecomeUnavailable(notification: NSNotification) {
 
-    }
+        self.synchronizationQueue.async {
+            logInfo(Log.tag) { "Protected data will become unavailable." }
 
-    dynamic func handleApplicationDidEnterBackground(notification: NSNotification) {
-
-    }
-
-    dynamic func handleApplicationWillEnterForeground(notification: NSNotification) {
-        
-    }
-
-    dynamic func handleApplicationWillTerminate(notification: NSNotification) {
-
-    }
-
-    dynamic func handleConnectivityChanged(notification: NSNotification) {
-
+            self._suspended = true
+        }
     }
 }
 
