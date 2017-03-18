@@ -17,7 +17,7 @@
   "module_name": "Coherence",
   "default_subspecs": [
     "Configuration",
-    "Stack",
+    "Container",
     "Connect"
   ],
   "dependencies": {
@@ -51,13 +51,13 @@
       "source_files": "Sources/Configuration/*"
     },
     {
-      "name": "Stack",
+      "name": "Container",
       "dependencies": {
         "Coherence/CoreExtensions": [
 
         ]
       },
-      "source_files": "Sources/Stack/*"
+      "source_files": "Sources/Container/*"
     },
     {
       "name": "Connect",
@@ -65,7 +65,7 @@
         "Coherence/CoreExtensions": [
 
         ],
-        "Coherence/Stack": [
+        "Coherence/Container": [
 
         ]
       },

@@ -37,7 +37,7 @@ internal class WriteAheadLog {
     internal typealias TransactionContextType = NSManagedObjectContext
     internal typealias MetadataContextType    = NSManagedObjectContext
 
-    internal typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, MetadataContextType>
+    internal typealias CoreDataStackType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, MetadataContextType>
     
     fileprivate let coreDataStack: CoreDataStackType
 
@@ -125,7 +125,7 @@ internal class WriteAheadLog {
 
         try transactionContext.performAndWait {
             ///
-            /// NOTE: This method must be reentrent.  Be sure to use only stack variables asside from
+            /// NOTE: This method must be reentrent.  Be sure to use only container variables asside from
             ///       the protected access method nextSequenceNumberBlock
             ///
             let inserted = transactionContext.insertedObjects

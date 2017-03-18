@@ -24,7 +24,7 @@ import CoreData
 
 class WriteAheadLogTests: XCTestCase {
 
-    typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
 
     override func setUp() {
         super.setUp()
@@ -47,7 +47,7 @@ class WriteAheadLogTests: XCTestCase {
 
     func testInit() {
 
-        let input = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
+        let input = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
         let expected: ClosedRange<Int> = 1...1
 
         do {
@@ -61,7 +61,7 @@ class WriteAheadLogTests: XCTestCase {
 
     func testInitFailedToFindMetaLogEntity() {
 
-        let input = CoreDataStackType(name: "MetaModel", managedObjectModel: NSManagedObjectModel())
+        let input = PersistentContainerType(name: "MetaModel", managedObjectModel: NSManagedObjectModel())
 
         do {
             try input.loadPersistentStores()
@@ -74,7 +74,7 @@ class WriteAheadLogTests: XCTestCase {
 
     func testLastLogEntrySequenceNumber() {
 
-        let input = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
+        let input = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
         let expected: ClosedRange<Int> = 5...5
 
         do {
@@ -113,8 +113,8 @@ class WriteAheadLogTests: XCTestCase {
         let expected: [ClosedRange<Int>] = [1...5, 6...7, 8...17, 18...21, 22...43]
 
         do {
-            let stack = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
-            let log = try WriteAheadLog(coreDataStack: stack)
+            let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
+            let log = try WriteAheadLog(coreDataStack: container)
 
             for index in 0..<input.count {
                 let blockSize = input[index]
@@ -139,13 +139,13 @@ class WriteAheadLogTests: XCTestCase {
         let expected: [String: Set<MetaLogEntryType>] = [input.entityUniqueID: [MetaLogEntryType.insert]]
 
         do {
-            let stack = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
-            try stack.loadPersistentStores()
+            let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
+            try container.loadPersistentStores()
 
-            let log = try WriteAheadLog(coreDataStack: stack)
+            let log = try WriteAheadLog(coreDataStack: container)
 
             /// prime the database with mock records
-            let context = stack.newBackgroundContext()
+            let context = container.newBackgroundContext()
 
             try context.performAndWait {
 
@@ -203,13 +203,13 @@ class WriteAheadLogTests: XCTestCase {
         let expected: [String: Set<MetaLogEntryType>] = [input.entityUniqueID: [MetaLogEntryType.beginMarker, .endMarker, .insert, .update, .delete]]
 
         do {
-            let stack = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
-            try stack.loadPersistentStores()
+            let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
+            try container.loadPersistentStores()
 
-            let log = try WriteAheadLog(coreDataStack: stack)
+            let log = try WriteAheadLog(coreDataStack: container)
 
             /// prime the database with mock records
-            let context = stack.newBackgroundContext()
+            let context = container.newBackgroundContext()
 
             try context.performAndWait {
 
@@ -257,10 +257,10 @@ class WriteAheadLogTests: XCTestCase {
     func testFailedToObtainPermanentIDs() {
 
         do {
-            let transactionStack = CoreDataStackType(name: "StackTestModel", managedObjectModel: ModelLoader.load(name: "StackTestModel1"))
+            let transactionStack = PersistentContainerType(name: "ContainerTestModel", managedObjectModel: ModelLoader.load(name: "ContainerTestModel1"))
             try transactionStack.loadPersistentStores()
 
-            let metaStack = CoreDataStackType(name: "MetaModel", managedObjectModel: MetaModel())
+            let metaStack = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try metaStack.loadPersistentStores()
 
             let log = try WriteAheadLog(coreDataStack: metaStack)
@@ -268,7 +268,7 @@ class WriteAheadLogTests: XCTestCase {
 
             let input = try { () throws -> (entity: NSEntityDescription, count: Int) in
 
-                guard let entity = NSEntityDescription.entity(forEntityName: "StackUser", in: transactionStack.viewContext) else {
+                guard let entity = NSEntityDescription.entity(forEntityName: "ContainerUser", in: transactionStack.viewContext) else {
                     throw NSError(domain: "Error", code: 1, userInfo: nil)
                 }
                 entity.managed = true

@@ -26,7 +26,7 @@ fileprivate let firstName = "First"
 fileprivate let lastName  = "Last"
 fileprivate let userName  = "First Last"
 
-class ObjcCoreDataStackTests: XCTestCase {
+class ObjcPersistentContainerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -49,36 +49,36 @@ class ObjcCoreDataStackTests: XCTestCase {
 
     func testConstructionWithName() {
 
-        let input  = "StackTestModel4"
-        let expected = (name: input, model: ModelLoader.load(name: "StackTestModel4"))
+        let input  = "ContainerTestModel4"
+        let expected = (name: input, model: ModelLoader.load(name: "ContainerTestModel4"))
 
-        let stack = ObjcCoreDataStack(name: input)
+        let container = ObjcPersistentContainer(name: input)
 
-        XCTAssertEqual(stack.name,               expected.name)
-        XCTAssertEqual(stack.managedObjectModel, expected.model)
+        XCTAssertEqual(container.name,               expected.name)
+        XCTAssertEqual(container.managedObjectModel, expected.model)
     }
 
     func testConstructionNameAndModel() {
 
-        let input  = (name: "TestModel", model: ModelLoader.load(name: "StackTestModel4"))
+        let input  = (name: "TestModel", model: ModelLoader.load(name: "ContainerTestModel4"))
         let expected = input
 
-        let stack = ObjcCoreDataStack(name: input.name, managedObjectModel: input.model)
+        let container = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
 
-        XCTAssertEqual(stack.name,               expected.name)
-        XCTAssertEqual(stack.managedObjectModel, expected.model)
+        XCTAssertEqual(container.name,               expected.name)
+        XCTAssertEqual(container.managedObjectModel, expected.model)
     }
     
     func testConstruction_WithOptions () {
         
-        let input = (name: "StackTestModel1", model: ModelLoader.load(name: "StackTestModel1"))
+        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"))
 
         var options: [AnyHashable: Any] = defaultStoreOptions
         
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try ObjcCoreDataStack(name: input.name, managedObjectModel: input.model).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
+            let _ = try ObjcPersistentContainer(name: input.name, managedObjectModel: input.model).loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: input.name, storeType: defaultStoreType))
         } catch {
@@ -88,9 +88,9 @@ class ObjcCoreDataStackTests: XCTestCase {
     
     func testCRUD () throws {
 
-        let input = (name: "StackTestModel1", model: ModelLoader.load(name: "StackTestModel1"))
+        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"))
 
-        let coreDataStack = ObjcCoreDataStack(name: input.name, managedObjectModel: input.model)
+        let coreDataStack = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
         try coreDataStack.loadPersistentStores()
         
         let editContext = coreDataStack.newBackgroundContext()
@@ -100,7 +100,7 @@ class ObjcCoreDataStackTests: XCTestCase {
         
         editContext.performAndWait {
             
-            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "StackUser", into:editContext) as? StackUser {
+            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "ContainerUser", into:editContext) as? ContainerUser {
                 
                 insertedUser.firstName = firstName
                 insertedUser.lastName  = lastName
@@ -125,7 +125,7 @@ class ObjcCoreDataStackTests: XCTestCase {
         
         XCTAssertNotNil(savedUser)
         
-        if let savedUser = savedUser as? StackUser {
+        if let savedUser = savedUser as? ContainerUser {
             
             XCTAssertTrue(savedUser.firstName == firstName)
             XCTAssertTrue(savedUser.lastName  == lastName)

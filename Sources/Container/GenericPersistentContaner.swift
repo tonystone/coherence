@@ -1,5 +1,5 @@
 ///
-///  GenericCoreDataStack.swift
+///  GenericPersistentContainer.swift
 ///
 ///  Copyright 2016 Tony Stone
 ///
@@ -67,7 +67,7 @@ public typealias ConfigurationOptionsType = [String : PersistentStoreConfigurati
 public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions)]
 
 ///
-/// There are activities that the CoreDataStack will do asynchronously as a result of various events.  GenericCoreDataStack currently
+/// There are activities that the CoreDataStack will do asynchronously as a result of various events.  GenericPersistentContainer currently
 /// logs those events, if you would like to handle them yourself, you can set an error block which will be called to allow you to take
 /// an alternate action.
 ///
@@ -82,18 +82,18 @@ let defaultAsyncErrorHandlingBlock = { (error: Error) -> Void in
 }
 
 ///
-/// A Core Data stack that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+/// A persistent container that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
-open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext>: CoreDataStack {
+open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext> {
 
     /// 
-    /// The model this `GenericCoreDataStack` was constructed with.
+    /// The model this `GenericPersistentContainer` was constructed with.
     ///
     public let managedObjectModel: NSManagedObjectModel
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
-    /// this `GenericCoreDataStack` contains.  It's type will
+    /// this `GenericPersistentContainer` contains.  It's type will
     /// be `CoordinatorType` which was given as a generic
     /// parameter during construction.
     ///
@@ -136,17 +136,17 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     public let name: String
 
     ///
-    /// Initializes a CoreData stack with the given name.
+    /// Initializes the receiver with the given name.
     ///
-    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
-    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
     ///
-    /// - Returns: A generic core data stack initialized with the given name.
+    /// - Returns: A generic container initialized with the given name.
     ///
-    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
+    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericPersistentContainer.self)) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -161,16 +161,16 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the container. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
-    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
     ///
-    /// - Returns: A generic core data stack initialized with the given name and model.
+    /// - Returns: A generic container initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericCoreDataStack.self)) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericPersistentContainer.self)) {
 
         self.name = name
 
@@ -190,7 +190,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
         self.viewContext = ViewContextType(concurrencyType: .mainQueueConcurrencyType)
         self.viewContext.parent = self.rootContext
 
-        NotificationCenter.default.addObserver(self, selector: #selector(GenericCoreDataStack.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GenericPersistentContainer.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
     }
 
     deinit {
@@ -215,7 +215,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, V
     ///      - managedObjectModel: A managed object model.
     ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
     ///      - storeURL: An optional String which is appended to the beginning of the persistent store's name.
-    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericCoreDataStack).  This is typically used if you are embedding GenericCoreDataStack in something else and you want to to log as your class.
+    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
     ///
     public func loadPersistentStores(storeLocationURL: URL, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
 

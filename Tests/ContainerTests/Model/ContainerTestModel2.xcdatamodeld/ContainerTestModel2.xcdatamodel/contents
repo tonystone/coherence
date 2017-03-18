@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="2">
-    <entity name="StackRole" representedClassName="StackRole" syncable="YES">
+    <entity name="ContainerRole" representedClassName="ContainerRole" syncable="YES">
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="StackUser" representedClassName="StackUser" syncable="YES">
+    <entity name="ContainerUser" representedClassName="ContainerUser" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StackUser" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="StackRole" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="ContainerRole" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="ContainerUser" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

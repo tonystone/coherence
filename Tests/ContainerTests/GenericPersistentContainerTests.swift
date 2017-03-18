@@ -27,9 +27,9 @@ fileprivate let firstName = "First"
 fileprivate let lastName  = "Last"
 fileprivate let userName  = "First Last"
 
-class GenericCoreDataStackTests: XCTestCase {
+class GenericPersistentContainerTests: XCTestCase {
 
-    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    fileprivate typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
 
     override func setUp() {
         super.setUp()
@@ -52,39 +52,39 @@ class GenericCoreDataStackTests: XCTestCase {
 
     func testConstructionWithName() {
 
-        let input  = "StackTestModel4"
+        let input  = "ContainerTestModel4"
         let expected = (name: input, model: ModelLoader.load(name: input))
 
-        let stack = CoreDataStackType(name: input)
+        let container = PersistentContainerType(name: input)
 
-        XCTAssertEqual(stack.name,               expected.name)
-        XCTAssertEqual(stack.managedObjectModel, expected.model)
+        XCTAssertEqual(container.name,               expected.name)
+        XCTAssertEqual(container.managedObjectModel, expected.model)
     }
 
     func testConstructionNameAndModel() {
 
-        let input  = (name: "StackTestModel", model: ModelLoader.load(name: "StackTestModel4"))
+        let input  = (name: "ContainerTestModel", model: ModelLoader.load(name: "ContainerTestModel4"))
         let expected = input
 
-        let stack = CoreDataStackType(name: input.name, managedObjectModel: input.model)
+        let container = PersistentContainerType(name: input.name, managedObjectModel: input.model)
 
-        XCTAssertEqual(stack.name,               expected.name)
-        XCTAssertEqual(stack.managedObjectModel, expected.model)
+        XCTAssertEqual(container.name,               expected.name)
+        XCTAssertEqual(container.managedObjectModel, expected.model)
     }
 
     func testConstructionWithOptions() {
         
-        let model = ModelLoader.load(name: "StackTestModel1")
-        let name  = "StackTestModel1"
+        let model = ModelLoader.load(name: "ContainerTestModel1")
+        let name  = "ContainerTestModel1"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
 
         var options: [AnyHashable: Any] = defaultStoreOptions
         
         options[overwriteIncompatibleStoreOption] = true
         
         do {
-            let _ = try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
+            let _ = try container.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
@@ -94,13 +94,13 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testConstructionWithEmptyOptions() {
         
-        let model = ModelLoader.load(name: "StackTestModel1")
+        let model = ModelLoader.load(name: "ContainerTestModel1")
         let name  = String(describing: type(of: model.self))
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
 
         do {
-            let _ = try stack.loadPersistentStores(configurationOptions: [:])
+            let _ = try container.loadPersistentStores(configurationOptions: [:])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
@@ -110,17 +110,17 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testConstructionWithMultiConfigurationAndSQLiteStoreType() throws {
         
-        let model = ModelLoader.load(name: "StackTestModel3")
-        let name  = "StackTestModel3"
+        let model = ModelLoader.load(name: "ContainerTestModel3")
+        let name  = "ContainerTestModel3"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
 
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType, storeOptions: options),
+            let _ = try container.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType, storeOptions: options),
                                                                           "TransientEntities":  (storeType: NSSQLiteStoreType, storeOptions: options)])
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType, configuration: "PersistentEntities"))
@@ -132,17 +132,17 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testConstructionWithMultiConfigurationAndInMemoryType() throws {
         
-        let model = ModelLoader.load(name: "StackTestModel3")
-        let name  = "StackTestModel3"
+        let model = ModelLoader.load(name: "ContainerTestModel3")
+        let name  = "ContainerTestModel3"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSInMemoryStoreType, storeOptions: options),
+            let _ = try container.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSInMemoryStoreType, storeOptions: options),
                                                                           "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options)])
             
             XCTAssertFalse(try persistentStoreExists(storePrefix: name, storeType: NSInMemoryStoreType, configuration: "PersistentEntities"))
@@ -154,17 +154,17 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testConstructionWithMultiConfigurationAndMixedType() throws {
         
-        let model = ModelLoader.load(name: "StackTestModel3")
-        let name  = "StackTestModel3"
+        let model = ModelLoader.load(name: "ContainerTestModel3")
+        let name  = "ContainerTestModel3"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
         
         var options: [AnyHashable: Any] = defaultStoreOptions
         options[overwriteIncompatibleStoreOption] = true
         
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType,   storeOptions: options),
+            let _ = try container.loadPersistentStores(configurationOptions: ["PersistentEntities": (storeType: NSSQLiteStoreType,   storeOptions: options),
                                                                           "TransientEntities":  (storeType: NSInMemoryStoreType, storeOptions: options)])
 
             XCTAssertTrue(try persistentStoreExists (storePrefix: name, storeType: NSSQLiteStoreType,   configuration: "PersistentEntities"))
@@ -176,14 +176,14 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testConstructionWithMultiConfigurationAndDefaultStoreType() throws {
         
-        let model = ModelLoader.load(name: "StackTestModel3")
-        let name  = "StackTestModel3"
+        let model = ModelLoader.load(name: "ContainerTestModel3")
+        let name  = "ContainerTestModel3"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model)
+        let container = PersistentContainerType(name: name, managedObjectModel: model)
 
         do {
             /// TestModel2 has multiple configurations and should will produce multiple persistent stores.
-            let _ = try stack.loadPersistentStores()
+            let _ = try container.loadPersistentStores()
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType, configuration: "PersistentEntities"))
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType, configuration: "TransientEntities"))
@@ -194,14 +194,14 @@ class GenericCoreDataStackTests: XCTestCase {
     
     func testStackCreationWithOverrideStoreIfModelIncompatible() throws {
         
-        let model     = ModelLoader.load(name: "StackTestModel1")
-        let name      = "StackTestModel1"
+        let model     = ModelLoader.load(name: "ContainerTestModel1")
+        let name      = "ContainerTestModel1"
         let storeType = NSSQLiteStoreType
 
-        var stack = CoreDataStackType(name: name, managedObjectModel: ModelLoader.load(name: "StackTestModel2"))
+        var container = PersistentContainerType(name: name, managedObjectModel: ModelLoader.load(name: "ContainerTestModel2"))
 
         // Initialize model 2 (no configurations), with model 1s name
-        try stack.loadPersistentStores()
+        try container.loadPersistentStores()
         
         let storeDate = try persistentStoreDate(storePrefix: name, storeType: storeType, configuration: nil)
         
@@ -211,24 +211,24 @@ class GenericCoreDataStackTests: XCTestCase {
         options[overwriteIncompatibleStoreOption] = true
 
         // Now use model 1 with model 1s name
-        stack = CoreDataStackType(name: name, managedObjectModel: model)
-        try stack.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options)])
+        container = PersistentContainerType(name: name, managedObjectModel: model)
+        try container.loadPersistentStores(configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: options)])
 
         XCTAssertTrue(try persistentStoreDate(storePrefix: name, storeType: storeType, configuration: nil) > storeDate)
     }
     
     func testConstructionWithAsyncErrorHandler() {
         
-        let model     = ModelLoader.load(name: "StackTestModel1")
-        let name      = "StackTestModel1"
+        let model     = ModelLoader.load(name: "ContainerTestModel1")
+        let name      = "ContainerTestModel1"
 
-        let stack = CoreDataStackType(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
+        let container = PersistentContainerType(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
             // Async Error block
             print(error.localizedDescription)
         })
 
         do {
-            let _ = try stack.loadPersistentStores()
+            let _ = try container.loadPersistentStores()
             
             XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: defaultStoreType))
         } catch {
@@ -252,10 +252,10 @@ class GenericCoreDataStackTests: XCTestCase {
 
     func testCRUD () throws {
         
-        let model     = ModelLoader.load(name: "StackTestModel1")
-        let name      = "StackTestModel1"
+        let model     = ModelLoader.load(name: "ContainerTestModel1")
+        let name      = "ContainerTestModel1"
         
-        let coreDataStack = CoreDataStackType(name: name, managedObjectModel: model)
+        let coreDataStack = PersistentContainerType(name: name, managedObjectModel: model)
         try coreDataStack.loadPersistentStores()
         
         let editContext = coreDataStack.newBackgroundContext()
@@ -265,7 +265,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         editContext.performAndWait {
             
-            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "StackUser", into:editContext) as? StackUser {
+            if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "ContainerUser", into:editContext) as? ContainerUser {
                 
                 insertedUser.firstName = firstName
                 insertedUser.lastName  = lastName
@@ -290,7 +290,7 @@ class GenericCoreDataStackTests: XCTestCase {
         
         XCTAssertNotNil(savedUser)
         
-        if let savedUser = savedUser as? StackUser {
+        if let savedUser = savedUser as? ContainerUser {
             
             XCTAssertTrue(savedUser.firstName == firstName)
             XCTAssertTrue(savedUser.lastName  == lastName)

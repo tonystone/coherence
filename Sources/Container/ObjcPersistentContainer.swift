@@ -22,18 +22,19 @@ import CoreData
 import TraceLog
 
 ///
-/// A Core Data stack implemented based on GenericCoreDataStack (for objective-c use only).
+/// An Objective-C wrapper around a GenericPersistentContainer (for objective-c use only).
 ///
-@objc public final class ObjcCoreDataStack: NSObject, CoreDataStack  {
+@objc(ObjcPersistentContainer)
+public final class ObjcPersistentContainer: NSObject {
     
-    fileprivate typealias CoreDataStackType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    fileprivate typealias ContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
     
-    fileprivate let impl: CoreDataStackType
+    fileprivate let impl: ContainerType
 
     ///
-    /// Initializes a CoreData stack with the given name.
+    /// Initializes a Container with the given name.
     ///
-    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
@@ -41,22 +42,22 @@ import TraceLog
     /// - Returns: A core data stack initialized with the given name.
     ///
     public init(name: String) {
-        impl = CoreDataStackType(name: name, logTag: String(describing: ObjcCoreDataStack.self))
+        impl = ContainerType(name: name, logTag: String(describing: ObjcPersistentContainer.self))
     }
 
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the container. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
     ///
-    /// - Returns: A core data stack initialized with the given name and model.
+    /// - Returns: A ObjcPersistentContainer initialized with the given name and model.
     ///
     public init(name: String, managedObjectModel model: NSManagedObjectModel) {
-        impl = CoreDataStackType(name: name, managedObjectModel: model, logTag: String(describing: ObjcCoreDataStack.self))
+        impl = ContainerType(name: name, managedObjectModel: model, logTag: String(describing: ObjcPersistentContainer.self))
     }
 
     public func loadPersistentStores() throws {

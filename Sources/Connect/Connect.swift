@@ -90,7 +90,7 @@ public class Connect {
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
-    /// this `GenericCoreDataStack` contains.  It's type will
+    /// this `GenericPersistentContainer` contains.  It's type will
     /// be `CoordinatorType` which was given as a generic
     /// parameter during construction.
     ///
@@ -99,7 +99,7 @@ public class Connect {
     }
 
     ///
-    /// The model this `GenericCoreDataStack` was constructed with.
+    /// The model this `GenericPersistentContainer` was constructed with.
     ///
     public var managedObjectModel: NSManagedObjectModel {
         return self.persistentStoreCoordinator.managedObjectModel
@@ -108,8 +108,8 @@ public class Connect {
     ///
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
-    fileprivate typealias MetaCacheType = GenericCoreDataStack<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
-    fileprivate typealias DataCacheType = GenericCoreDataStack<ConnectCoordinator, NSManagedObjectContext, LoggingContext>
+    fileprivate typealias MetaCacheType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    fileprivate typealias DataCacheType = GenericPersistentContainer<ConnectCoordinator, NSManagedObjectContext, LoggingContext>
 
     ///
     /// Stack used to manage meta data about the main cache
@@ -117,7 +117,7 @@ public class Connect {
     fileprivate let metaCache: MetaCacheType
 
     ///
-    /// Main user cache stack
+    /// Main user cache container
     ///
     fileprivate let dataCache: DataCacheType
 
@@ -163,15 +163,15 @@ public class Connect {
     fileprivate var started: Bool
 
     ///
-    /// Initializes a CoreData stack with the given name.
+    /// Initializes the receiver with the given name.
     ///
-    /// By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericCoreDataStack` object.
+    /// By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
     ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
-    /// - Returns: A generic core data stack initialized with the given name.
+    /// - Returns: A Connect instance initialized with the given name.
     ///
     /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
@@ -190,14 +190,14 @@ public class Connect {
     ///
     /// Initializes the receiver with the given name and a managed object model.
     ///
-    /// - Note: By default, the provided `name` value of the stack is used as the name of the persistent store associated with the stack. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
+    /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the instance. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
     ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
-    /// - Returns: A core data stack initialized with the given name and model.
+    /// - Returns: A Connect instance initialized with the given name and model.
     ///
     /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
@@ -235,11 +235,11 @@ public class Connect {
 }
 
 ///
-/// Connect CoreDataStack implementation
+/// Context access methods
 ///
-extension Connect: CoreDataStack {
+extension Connect {
 
-    ///
+    ///z
     /// The main context.
     ///
     /// This context should be used for read operations only.  Use it for all fetches and NSFetchedResultsControllers.
