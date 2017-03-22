@@ -2,10 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
-target 'Coherence', :exclusive => true do
+target 'Coherence' do
   pod "Coherence", :path => "../"
 end
 
-target 'Tests', :exclusive => true do
+target 'Tests' do
   pod "Coherence", :path => "../"
 end
