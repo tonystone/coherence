@@ -249,15 +249,21 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 
                 logError { message }
                 
-                throw NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
+                var userInfo: [NSObject: AnyObject] = error.userInfo ?? [:]
+                userInfo[NSLocalizedDescriptionKey] = message
+
+                throw  NSError(domain: error.domain, code: error.code, userInfo: userInfo)
                 
         } catch let error as NSError {
-            
+
             let message = "Failed to attached persistent store: \(error.localizedDescription)"
             
             logError { message }
-            
-            throw  NSError(domain: error.domain, code: error.code, userInfo: [NSLocalizedDescriptionKey: message])
+
+            var userInfo: [NSObject: AnyObject] = error.userInfo ?? [:]
+            userInfo[NSLocalizedDescriptionKey] = message
+
+            throw  NSError(domain: error.domain, code: error.code, userInfo: userInfo)
         }
     }
     
