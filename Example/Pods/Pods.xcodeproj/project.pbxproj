@@ -63,6 +63,8 @@
 		E3EDFCABDFDAC285684B08CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F29573D4217D7FF2A527ECF /* Foundation.framework */; };
 		E470823CD5C0457E2F3C6E15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F29573D4217D7FF2A527ECF /* Foundation.framework */; };
 		E4CC58191C269893FD11CF9F /* ObjcPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E98C691E5DBEC92915F829 /* ObjcPersistentContainer.swift */; };
+		EA5074D61E82D2C1004DE565 /* Connect+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5074D51E82D2C1004DE565 /* Connect+Constants.swift */; };
+		EA6C5A8E1E7F663300706E51 /* StoreConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C5A8D1E7F663300706E51 /* StoreConfiguration.swift */; };
 		EDA1BDD665F6C87E59D527FC /* Coherence-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C07F1D12FDE2AF2BCBA912E /* Coherence-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE6D572E473478303639EEC /* ManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FF6DB3AD641BBA6EA038EE /* ManagedObject+Extensions.swift */; };
 		EEFADBB9D67EB7F5E34ACE8F /* Pods-Coherence Test Host-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C40883A8F44BBF0E39AED647 /* Pods-Coherence Test Host-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,7 +127,7 @@
 /* Begin PBXFileReference section */
 		064BDB22149B4510687440B0 /* Pods-Coherence Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Coherence Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		0659948CA818141D9C4E3393 /* Pods-Coherence Test Host-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Coherence Test Host-resources.sh"; sourceTree = "<group>"; };
-		0719E6ADEC099B9DE04CD299 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0719E6ADEC099B9DE04CD299 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		08A1E4CD0522F136114001C6 /* Pods-Coherence Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		09BD80A003968F3FD56EE598 /* EntityActionContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntityActionContainer.swift; sourceTree = "<group>"; };
 		0B51FC50D223AE3D32DBB290 /* Connect+Notification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Connect+Notification.swift"; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 		112BD08223A873EA2300B679 /* GenericActionContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericActionContainer.swift; sourceTree = "<group>"; };
 		119ED4FA732208F72174F1F1 /* LogLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Sources/TraceLog/LogLevel.swift; sourceTree = "<group>"; };
 		120FFE3BC371F4D809B19D21 /* ActionContianer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionContianer.swift; sourceTree = "<group>"; };
-		13E68D87613DCCC83EF55F70 /* Pods_Coherence_Test_Host.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Coherence_Test_Host.framework; path = "Pods-Coherence Test Host.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E68D87613DCCC83EF55F70 /* Pods_Coherence_Test_Host.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence_Test_Host.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FD182D4CA616C508E67E3F /* NotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		18B26C3D2D2867CA790EA1B8 /* String+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1E96A151DB8187D542874575 /* TraceLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TraceLog.xcconfig; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		4D3F82CCEA81767DCFA194A2 /* Connect+Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Connect+Errors.swift"; sourceTree = "<group>"; };
 		5892D1A9AB4CCCB04FD9F070 /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Sources/TraceLog/Environment.swift; sourceTree = "<group>"; };
 		5A9BADD0342C4FD85E4A8BC6 /* Coherence.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Coherence.xcconfig; sourceTree = "<group>"; };
-		5D215FC23DDB14AF92D5DB89 /* Coherence.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Coherence.modulemap; sourceTree = "<group>"; };
+		5D215FC23DDB14AF92D5DB89 /* Coherence.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Coherence.modulemap; sourceTree = "<group>"; };
 		5E06445822389B6D35B82F40 /* Pods-Coherence Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		637CBD02227253C04636A694 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E9E676C729BDE8F34859C9 /* LoggingContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoggingContext.swift; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 		7BB8E61AFF11266330DDA8A8 /* ActionContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionContext.swift; sourceTree = "<group>"; };
 		7C4F5516BE2112DE851792B2 /* Coherence-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Coherence-dummy.m"; sourceTree = "<group>"; };
 		7F29573D4217D7FF2A527ECF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8DBEA1A47C1DB08DA1106FF2 /* Pods_Coherence_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Coherence_Tests.framework; path = "Pods-Coherence Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DBEA1A47C1DB08DA1106FF2 /* Pods_Coherence_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F6BFB510D81929361A07F4F /* ConsoleWriter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleWriter.swift; path = Sources/TraceLog/ConsoleWriter.swift; sourceTree = "<group>"; };
 		9315F8DF7E9E3B597FD0061B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E98C691E5DBEC92915F829 /* ObjcPersistentContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ObjcPersistentContainer.swift; sourceTree = "<group>"; };
@@ -192,32 +194,34 @@
 		9D73BE6047D9CEDAA790F3CC /* EntityAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntityAction.swift; sourceTree = "<group>"; };
 		A91DA6D6F31A027AFB7F1E54 /* Connect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 		AC695DD61305BD13F2D5620F /* ActionContainer+Statistics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ActionContainer+Statistics.swift"; sourceTree = "<group>"; };
-		BCB88D302F718F4B67222231 /* Pods_Coherence_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Coherence_Example.framework; path = "Pods-Coherence Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCB88D302F718F4B67222231 /* Pods_Coherence_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07DD39BBB90EA8EE6A338DA /* Pods-Coherence Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence Example-dummy.m"; sourceTree = "<group>"; };
 		C40883A8F44BBF0E39AED647 /* Pods-Coherence Test Host-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Test Host-umbrella.h"; sourceTree = "<group>"; };
 		C4EBBE701EDEB2C16868F376 /* Pods-Coherence Test Host-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Coherence Test Host-acknowledgements.plist"; sourceTree = "<group>"; };
 		C4FDA0EF5773BA925D05946E /* Coherence-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Coherence-prefix.pch"; sourceTree = "<group>"; };
 		C52472891E0C1F7A981BA15A /* GenericPersistentContaner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericPersistentContaner.swift; sourceTree = "<group>"; };
 		C78966DDE1D098290D1596D5 /* CCObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CCObject.m; sourceTree = "<group>"; };
-		CB0B0596E53F50D817507E61 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TraceLog.modulemap; sourceTree = "<group>"; };
+		CB0B0596E53F50D817507E61 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TraceLog.modulemap; sourceTree = "<group>"; };
 		D0724188ACD74381B033D635 /* Pods-Coherence Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1AD3C2D6B730788E43D49D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D33D91E413108D2CB567B567 /* Pods-Coherence Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Coherence Tests.modulemap"; sourceTree = "<group>"; };
+		D33D91E413108D2CB567B567 /* Pods-Coherence Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Coherence Tests.modulemap"; sourceTree = "<group>"; };
 		E1910AB73DA6CDA8DDB5574C /* Pods-Coherence Test Host-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence Test Host-dummy.m"; sourceTree = "<group>"; };
 		E41D4E4B2396DBB5295C0C86 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/TraceLog/Configuration.swift; sourceTree = "<group>"; };
 		E70CB57229C3436075204597 /* PartialFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PartialFunctions.swift; sourceTree = "<group>"; };
 		E75B3CA19582F1663CF893E9 /* Pods-Coherence Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Coherence Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EA5074D51E82D2C1004DE565 /* Connect+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Connect+Constants.swift"; sourceTree = "<group>"; };
+		EA6C5A8D1E7F663300706E51 /* StoreConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfiguration.swift; sourceTree = "<group>"; };
 		EAEFD8EE0ECCAE78B4EE57A4 /* ActionContext+Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ActionContext+Merge.swift"; sourceTree = "<group>"; };
-		F17904E8EB43DC3EEBA63768 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TraceLog.framework; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17904E8EB43DC3EEBA63768 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C569555601515C3CC229D4 /* ManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		F463A3856B3AB3A9ED46B041 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56F017BAC8A1BB4CF7EE7EA /* TraceLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TraceLog.h; path = Sources/TraceLogObjC/TraceLog.h; sourceTree = "<group>"; };
 		F5FF6DB3AD641BBA6EA038EE /* ManagedObject+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ManagedObject+Extensions.swift"; sourceTree = "<group>"; };
 		FA77C0DE14AA5D3F34CA1AD6 /* TraceLog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TraceLog-prefix.pch"; sourceTree = "<group>"; };
-		FC833E70763D5A841F5B5A36 /* Pods-Coherence Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Coherence Example.modulemap"; sourceTree = "<group>"; };
-		FD7313D08F72BABB6DE71C34 /* Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Coherence.framework; path = Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC833E70763D5A841F5B5A36 /* Pods-Coherence Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Coherence Example.modulemap"; sourceTree = "<group>"; };
+		FD7313D08F72BABB6DE71C34 /* Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE54C9B9BC5C7011EC6EFB6C /* Pods-Coherence Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence Tests-dummy.m"; sourceTree = "<group>"; };
-		FFAA35A2136272334C949EEB /* Pods-Coherence Test Host.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Coherence Test Host.modulemap"; sourceTree = "<group>"; };
+		FFAA35A2136272334C949EEB /* Pods-Coherence Test Host.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Coherence Test Host.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,7 +274,6 @@
 			children = (
 				21ECBC36AC6CAD7C1B24BF4E /* EntityDescription+EntitySettings.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -326,7 +329,6 @@
 				C78966DDE1D098290D1596D5 /* CCObject.m */,
 				6D94C77DE5CDFD54F8BAE307 /* include */,
 			);
-			name = ConfigurationCore;
 			path = ConfigurationCore;
 			sourceTree = "<group>";
 		};
@@ -341,7 +343,6 @@
 				7461D8955D4CE3142748338A /* Queues */,
 				D8FE2C82770AC0E6544EAABC /* Transactions */,
 			);
-			name = Internal;
 			path = Internal;
 			sourceTree = "<group>";
 		};
@@ -376,7 +377,6 @@
 			children = (
 				F013F1405842DAC73D13EA89 /* Connect */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -385,7 +385,6 @@
 			children = (
 				CE2A96C7407052C2B9CACB99 /* CoreExtensions */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -394,7 +393,6 @@
 			children = (
 				2D8C3362C4A8CD8D96B4AC25 /* CCObject.h */,
 			);
-			name = include;
 			path = include;
 			sourceTree = "<group>";
 		};
@@ -423,7 +421,6 @@
 				09BD80A003968F3FD56EE598 /* EntityActionContainer.swift */,
 				112BD08223A873EA2300B679 /* GenericActionContainer.swift */,
 			);
-			name = Queues;
 			path = Queues;
 			sourceTree = "<group>";
 		};
@@ -487,7 +484,6 @@
 			children = (
 				F5FF6DB3AD641BBA6EA038EE /* ManagedObject+Extensions.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -496,7 +492,6 @@
 			children = (
 				C4DEB68D7D57C9AE8329E9F2 /* Container */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -505,7 +500,6 @@
 			children = (
 				C405CD1E51082776EF2E594B /* Configuration */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -532,7 +526,6 @@
 			children = (
 				36537367D84285C60A3DE17D /* ConfigurationCore */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -583,17 +576,16 @@
 			children = (
 				6F44065F12C044523BDE90C8 /* Configuration.swift */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
 		C4DEB68D7D57C9AE8329E9F2 /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				EA6C5A8D1E7F663300706E51 /* StoreConfiguration.swift */,
 				C52472891E0C1F7A981BA15A /* GenericPersistentContaner.swift */,
 				98E98C691E5DBEC92915F829 /* ObjcPersistentContainer.swift */,
 			);
-			name = Container;
 			path = Container;
 			sourceTree = "<group>";
 		};
@@ -605,7 +597,6 @@
 				E70CB57229C3436075204597 /* PartialFunctions.swift */,
 				18B26C3D2D2867CA790EA1B8 /* String+Extensions.swift */,
 			);
-			name = CoreExtensions;
 			path = CoreExtensions;
 			sourceTree = "<group>";
 		};
@@ -618,7 +609,6 @@
 				3AEAEFE1380FFFE37D4ACE6F /* MetaModel.swift */,
 				9BEB873049F430BD8C866505 /* WriteAheadLog.swift */,
 			);
-			name = Transactions;
 			path = Transactions;
 			sourceTree = "<group>";
 		};
@@ -654,6 +644,7 @@
 				EAEFD8EE0ECCAE78B4EE57A4 /* ActionContext+Merge.swift */,
 				49A9743193196C9A0153C549 /* ActionProxy.swift */,
 				A91DA6D6F31A027AFB7F1E54 /* Connect.swift */,
+				EA5074D51E82D2C1004DE565 /* Connect+Constants.swift */,
 				4D3F82CCEA81767DCFA194A2 /* Connect+Errors.swift */,
 				0B51FC50D223AE3D32DBB290 /* Connect+Notification.swift */,
 				9D73BE6047D9CEDAA790F3CC /* EntityAction.swift */,
@@ -662,7 +653,6 @@
 				0E6D8D5149AB000FF46DC054 /* Extensions */,
 				3B45AF75192D2C767985243A /* Internal */,
 			);
-			name = Connect;
 			path = Connect;
 			sourceTree = "<group>";
 		};
@@ -673,7 +663,6 @@
 				E50DE5462B3A5790EF105A87 /* Support Files */,
 				6E0E98737CA163A07D9C60BB /* Swift */,
 			);
-			name = TraceLog;
 			path = TraceLog;
 			sourceTree = "<group>";
 		};
@@ -895,6 +884,7 @@
 				EDE6D572E473478303639EEC /* ManagedObject+Extensions.swift in Sources */,
 				61C0B6E9CC0436799F234C95 /* ManagedObjectContext+Extensions.swift in Sources */,
 				4B813B9B6B28EBD9EA735EB4 /* MetaLogEntry+CoreDataProperties.swift in Sources */,
+				EA5074D61E82D2C1004DE565 /* Connect+Constants.swift in Sources */,
 				020E626D3495E7289B53DE0C /* MetaLogEntry.swift in Sources */,
 				593D37DFC068426B623BF52B /* MetaLogEntryType.swift in Sources */,
 				52F8105873D4D5C0234BC5C2 /* MetaModel.swift in Sources */,
@@ -903,6 +893,7 @@
 				BD8BBEEC1371F8D938DE46BD /* PartialFunctions.swift in Sources */,
 				0850AEC541DF2B28D47B5341 /* String+Extensions.swift in Sources */,
 				AAC8774AC7FCED6348FB744B /* WriteAheadLog.swift in Sources */,
+				EA6C5A8E1E7F663300706E51 /* StoreConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

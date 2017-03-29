@@ -21,50 +21,20 @@ import Foundation
 import CoreData
 import TraceLog
 
-///
-/// Location to store the persistent stores.
-///
-private let coreDataStackStoreDirectory: FileManager.SearchPathDirectory = .documentDirectory
 
 ///
-/// The name of the default configuration in the model.  If you have not
-/// created any configurations, this will be the only configuration avaialble.
+/// Private constants
 ///
-/// Use this name if you override the options passed.
-///
-public let defaultModelConfigurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
+private struct Default {
 
-///
-/// An option – when set to true – will check if the persistent store and the model are incompatible.
-/// If so, the underlying persistent store will be removed and replaced.
-///
-public let overwriteIncompatibleStoreOption: String = "overwriteIncompatibleStoreOption"
+    struct PersistentStore {
 
-///
-/// Default options passed to attached and configure the persistent stores.
-///
-public let defaultStoreOptions: [AnyHashable: Any] = [:]
-
-///
-/// If no storeType is passed in, this store type will be used
-///
-public let defaultStoreType = NSSQLiteStoreType
-
-///
-/// PersistentStore configuration settings.
-///
-public typealias PersistentStoreConfiguration = (storeType: String, storeOptions: [AnyHashable: Any]?)
-
-///
-/// Configuration options dictionary keyed by configuration name.
-/// The name is the name you listed in your model.
-///
-public typealias ConfigurationOptionsType = [String : PersistentStoreConfiguration]
-
-///
-/// The detault configuration options used to configure the persistent store when no override is supplied.
-///
-public let defaultConfigurationOptions: ConfigurationOptionsType = [defaultModelConfigurationName : (storeType: defaultStoreType, storeOptions: defaultStoreOptions)]
+        ///
+        /// Default PersistentStoreDescriptions array.
+        ///
+        static let configurations: [StoreConfiguration] = []
+    }
+}
 
 ///
 /// There are activities that the CoreDataStack will do asynchronously as a result of various events.  GenericPersistentContainer currently
@@ -81,10 +51,26 @@ let defaultAsyncErrorHandlingBlock = { (error: Error) -> Void in
     logError { "\(error)" }
 }
 
+public enum GenericPersistentContainerErrors: Error {
+    case invalidStoreDescription(String)
+}
+
 ///
 /// A persistent container that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
 open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext> {
+
+    ///
+    /// Creates and returns a URL to the default directory for the persistent stores.
+    ///
+    public class func defaultStoreLocation() -> URL {
+        return abortIfError(block: { try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) })
+    }
+
+    ///
+    /// The name of this instance of GenericPersistentContainer.
+    ///
+    public let name: String
 
     /// 
     /// The model this `GenericPersistentContainer` was constructed with.
@@ -129,11 +115,15 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
         return context
     }
 
+    ///
+    /// The persistent store configurations used to create the persistent stores referenced by this instance.
+    ///
+    public var storeConfigurations: [StoreConfiguration]
+
     fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
     fileprivate let errorHandlerBlock: AsyncErrorHandlerBlock
 
-    public let name: String
 
     ///
     /// Initializes the receiver with the given name.
@@ -141,8 +131,9 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     /// - Note: By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
-    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
+    ///     - name:             The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - asyncErrorBlock:  An error handling block which will be called when an asynchronous error occurs (e.g. during a save of the main context to the persistent stores).
+    ///     - logTag:           An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
     ///
     /// - Returns: A generic container initialized with the given name.
     ///
@@ -164,18 +155,19 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the container. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle.
+    ///     - name:               The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
-    ///     - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
+    ///     - asyncErrorBlock:    An error handling block which will be called when an asynchronous error occurs (e.g. during a save of the main context to the persistent stores).
+    ///     - logTag:             An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
     ///
     /// - Returns: A generic container initialized with the given name and model.
     ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericPersistentContainer.self)) {
 
-        self.name = name
-
-        self.managedObjectModel = model
-        self.tag = tag
+        self.name                        = name
+        self.managedObjectModel          = model
+        self.storeConfigurations         = Default.PersistentStore.configurations
+        self.tag                         = tag
 
         self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock
 
@@ -197,112 +189,50 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
         NotificationCenter.default.removeObserver(self)
     }
 
-    public func loadPersistentStores(configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
-        //
-        // Figure out where to put things
-        //
-        // Note: We use the applications bundle not the classes or modules.
-        //
-        let baseURL = try FileManager.default.url(for: coreDataStackStoreDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    public func loadPersistentStores() throws {
 
-        try self.loadPersistentStores(storeLocationURL: baseURL, configurationOptions: options)
-    }
+        var configurations = self.storeConfigurations
 
-    ///
-    ///  Initializes the receiver with a managed object model.
-    ///
-    ///   - parameters:
-    ///      - managedObjectModel: A managed object model.
-    ///      - configurationOptions: Optional configuration settings by persistent store config name (see ConfigurationOptionsType for structure)
-    ///      - storeURL: An optional String which is appended to the beginning of the persistent store's name.
-    ///      - logTag: An optional String that will be used as the tag for logging (default is GenericPersistentContainer).  This is typically used if you are embedding GenericPersistentContainer in something else and you want to to log as your class.
-    ///
-    public func loadPersistentStores(storeLocationURL: URL, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) throws {
-
-        logInfo(tag) { "Store path: \(storeLocationURL)" }
-        
-        let configurations = managedObjectModel.configurations
-        
-        // There is only one so it's the default configuration
-        if configurations.count == 1 {
-
-            let storeName: String
-
-            if self.name.characters.count > 0 {
-                storeName = self.name
-            } else {
-               storeName = "default"
-            }
-
-            if let (storeType, storeOptions) = options[defaultModelConfigurationName] {
-                
-                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
-                
-                try self.addPersistentStore(storeType, configuration: nil, URL: storeURL, options: storeOptions)
-                
-            } else {
-                let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
-                
-                try self.addPersistentStore(defaultStoreType, configuration: nil, URL: storeURL, options: nil)
-            }
-        } else {
-            for configuration in configurations {
-
-                let storeName: String  = "\(self.name)\(configuration.lowercased())"
-
-                if configuration != defaultModelConfigurationName {
-                    
-                    if let (storeType, storeOptions) = options[configuration] {
-                        
-                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(storeType.lowercased())")
-                        
-                        try self.addPersistentStore(storeType, configuration: configuration, URL: storeURL, options: storeOptions)
-                        
-                    } else {
-                        let storeURL = storeLocationURL.appendingPathComponent("\(storeName).\(defaultStoreType.lowercased())")
-                        
-                        try self.addPersistentStore(defaultStoreType, configuration: configuration, URL: storeURL, options: nil)
-                    }
-                }
-            }
+        /// If no configurations supplied, default the url
+        if configurations.count == 0 {
+            configurations.append(StoreConfiguration(url: GenericPersistentContainer.defaultStoreLocation().appendingPathComponent("\(self.name).sqlite")))
         }
 
+        ///
+        /// Load each store in turn
+        ///
+        for configuration in configurations {
+            try self.addPersistentStore(for: configuration)
+        }
     }
 
-    fileprivate func addPersistentStore(_ storeType: String, configuration: String?, URL storeURL: URL, options: [AnyHashable: Any]?) throws {
-            
-        logInfo(tag) { "Attaching persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
+    fileprivate func addPersistentStore(for configuration: StoreConfiguration) throws {
 
         let fileManager = FileManager.default
-        let storePath = storeURL.path
 
-        if fileManager.fileExists(atPath: storePath) {
+        // Check the store for compatibility if requested by developer.
+        if configuration.overwriteIncompatibleStore,
+           configuration.type != NSInMemoryStoreType,
+           let url = configuration.url,
+           fileManager.fileExists(atPath: url.path) {
 
-            let storeShmPath = "\(storePath)-shm"
-            let storeWalPath = "\(storePath)-wal"
+            logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
+            
+            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: configuration.type, at: url, options: configuration.options)
 
-            // Check the store for compatibility if requested by developer.
-            if options?[overwriteIncompatibleStoreOption] as? Bool == true {
-
-                logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
-
-                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
-
-                if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration, compatibleWithStoreMetadata: metadata) {
-
-                    try deleteIfExists(storePath)
-                    try deleteIfExists(storeShmPath)
-                    try deleteIfExists(storeWalPath)
-                }
+            if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration.name, compatibleWithStoreMetadata: metadata) {
+ 
+                try deleteIfExists(url.path)
+                try deleteIfExists("\(url.path)-shm")
+                try deleteIfExists("\(url.path)-wal")
             }
         }
 
-        logInfo(tag) { "Attaching new persistent store \"\(storeURL.lastPathComponent)\" for type: \(storeType)."}
+        logInfo(tag) { "Attaching persistent store \"\(configuration.url?.absoluteString ?? "nil")\" for type: \(configuration.type)."}
 
-        try persistentStoreCoordinator.addPersistentStore(ofType: storeType, configurationName:  configuration, at: storeURL, options: options)
+        try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: configuration.url, options: configuration.options)
 
         logInfo(tag) { "Persistent store attached successfully." }
-
     }
 
     fileprivate func deleteIfExists(_ path: String) throws {

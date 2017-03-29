@@ -27,18 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var connect: Connect = {
-
-        var storeOptions: [AnyHashable: Any] = defaultStoreOptions  /// Use all the default options
-        storeOptions[overwriteIncompatibleStoreOption] = true       /// Force the data stores to be overwritten if incompatible with the model.
-
-        let configurationOptions: ConfigurationOptionsType = [
-            "Transient":  (storeType: NSInMemoryStoreType, storeOptions: storeOptions),
-            "Persistent": (storeType: NSSQLiteStoreType,   storeOptions: storeOptions)
-        ]
-
-        return Connect(name: "HR", configurationOptions: configurationOptions)
-    }()
+    var connect = Connect(name: "HR")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -46,12 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TraceLog.configure()
 
         do {
+            let baseURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+            let configurations = [StoreConfiguration(name: "Transient",  type: NSInMemoryStoreType),
+                                  StoreConfiguration(url: baseURL.appendingPathComponent("HR.sqlite"), name: "Persistent", type: NSSQLiteStoreType, overwriteIncompatibleStore: true)]
+
+            connect.storeConfigurations = configurations
+
             try self.connect.start()
 
         } catch {
             fatalError("\(error)")
         }
-
         return true
     }
 

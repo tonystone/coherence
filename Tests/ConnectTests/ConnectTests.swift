@@ -38,6 +38,19 @@ class ConnectTests: XCTestCase {
         }
     }
 
+    func testDefaultStoreLocation() {
+
+        let input = Connect.defaultStoreLocation()
+        let expected = { () -> URL in
+
+            let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+
+            return possibleURLs[0]
+        }()
+
+        XCTAssertEqual(input, expected)
+    }
+
     func testConstructionWithModelName() {
 
         let input = self.testModel
@@ -53,6 +66,39 @@ class ConnectTests: XCTestCase {
 
         XCTAssertEqual(Connect(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
+
+    func testStoreConfigurations() {
+
+        let input = (name: modelName, configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite")))
+        let expected: (url: URL,
+            name: String?,
+            type: String,
+            overwriteIncompatibleStore: Bool,
+            options: [String: Any]) = (defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
+
+
+        do {
+            let container = Connect(name: input.name)
+            container.storeConfigurations = [input.configuration]
+
+            try container.start()
+
+            if container.storeConfigurations.count >= 1 {
+                let configuration = container.storeConfigurations[0]
+
+                XCTAssertEqual(configuration.url,                        expected.url)
+                XCTAssertEqual(configuration.name,                       expected.name)
+                XCTAssertEqual(configuration.overwriteIncompatibleStore, expected.overwriteIncompatibleStore)
+                XCTAssertEqual(configuration.options[NSInferMappingModelAutomaticallyOption] as? Bool,       expected.options[NSInferMappingModelAutomaticallyOption] as? Bool)
+                XCTAssertEqual(configuration.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool, expected.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool)
+            } else {
+                XCTFail()
+            }
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+
 
     func testStart() throws {
 
@@ -77,15 +123,22 @@ class ConnectTests: XCTestCase {
 
     func testStartWithIncompatibleStore() throws {
 
-        let input = (modelName: modelName, model: self.testModel, emptyModel: self.testEmptyModel)
+        let input = (modelName: modelName,
+                     model: self.testModel,
+                     emptyModel: self.testEmptyModel,
+                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
 
         /// Create the first instance of the persistent stores using the empty model
         do {
-            try Connect(name: input.modelName, managedObjectModel: input.emptyModel).start()
+            let connect = Connect(name: input.modelName, managedObjectModel: input.emptyModel)
+
+            connect.storeConfigurations = input.descriptions
+            try connect.start()
         }
 
         /// Now create the second instance using the real model, it should throw an exception
         let connect = Connect(name: input.modelName, managedObjectModel: input.model)
+        connect.storeConfigurations = input.descriptions
 
         let expectation = self.expectation(description: "Completion block called with error.")
 
@@ -128,16 +181,25 @@ class ConnectTests: XCTestCase {
 
     func testStartThrowsWithIncompatibleStore() throws {
 
-        let input = (modelName: modelName, model: self.testModel, emptyModel: self.testEmptyModel)
+        let input = (modelName: modelName,
+                     model: self.testModel,
+                     emptyModel: self.testEmptyModel,
+                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
+
 
         /// Create the first instance of the persistent stores using the empty model
         do {
-            try Connect(name: input.modelName, managedObjectModel: input.emptyModel).start()
+            let connect =  Connect(name: input.modelName, managedObjectModel: input.emptyModel)
+
+            connect.storeConfigurations = input.descriptions
+            try connect.start()
         }
 
         /// Now create the second instance using the real model, it should throw an exception
         let connect = Connect(name: input.modelName, managedObjectModel: input.model)
-        
+
+        connect.storeConfigurations = input.descriptions
+
         XCTAssertThrowsError(try connect.start())
     }
 

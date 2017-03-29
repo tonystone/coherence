@@ -55,6 +55,7 @@
 		EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */; };
 		EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */; };
 		EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */; };
+		EA5074D81E839285004DE565 /* StoreConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */; };
 		EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC981E63466000527236 /* NotificationServiceTests.swift */; };
 		EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
@@ -173,7 +174,8 @@
 		EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity3Unmanaged+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfigurationTests.swift; sourceTree = "<group>"; };
 		EA5BDC981E63466000527236 /* NotificationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingContextTests.swift; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 		EA1C14031E3D7E7A002E63BD /* ContainerTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */,
 				EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */,
 				EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */,
 				EAC5C3281E626C150025D310 /* Model */,
@@ -924,6 +927,7 @@
 				EA1C14521E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift in Sources */,
 				EA1C14531E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
+				EA5074D81E839285004DE565 /* StoreConfigurationTests.swift in Sources */,
 				EA4A2E8D1E512FC600C68540 /* MockListActionUnmanaged.swift in Sources */,
 				EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */,
 				EACBC6511E77A017001D5431 /* Connect+StateManagementTests.swift in Sources */,

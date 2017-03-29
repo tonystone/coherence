@@ -23,49 +23,37 @@ import TraceLog
 import UIKit
 
 ///
-/// Private constants
+/// Constants
 ///
-private extension Connect {
+public extension Connect {
 
-    struct Default {
+    internal struct Default {
 
-        struct Bundle {
-            ///
-            /// The extension of the store bundle created for this store.
-            ///
-            static let `extension`: String = "connect"
-
-            ///
-            /// Location to store the connect store bundle.
-            ///
-            static let directory: FileManager.SearchPathDirectory = .documentDirectory
-        }
-
-        struct Queue {
+        internal struct Queue {
             ///
             /// Prefix used for all queues
             ///
-            static let prefix: String = "connect.queue"
+            internal static let prefix: String = "connect.queue"
         }
 
-        struct ActionQueue {
+        internal struct ActionQueue {
             ///
             /// Qos for `ActionQueue`s within the system.
             ///
-            static let qos: DispatchQoS = .utility
+            internal static let qos: DispatchQoS = .utility
 
             ///
             /// The startup state of the queues
             ///
-            static let suspended: Bool = true
+            internal static let suspended: Bool = true
         }
     }
 
-    struct Log {
+    internal struct Log {
         ///
         /// Tag used for all logging internally
         ///
-        static let tag = String(describing: Connect.self)
+       internal static let tag = String(describing: Connect.self)
     }
 }
 
@@ -84,25 +72,42 @@ private extension Connect {
 public class Connect {
 
     ///
-    /// The name of this instance of Connect
+    /// Creates and returns a URL to the default directory for the persistent stores.
+    ///
+    public class func defaultStoreLocation() -> URL {
+        return GenericPersistentContainer.defaultStoreLocation()
+    }
+
+    ///
+    /// The name of this instance of `Connect`
     ///
     public let name: String
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
-    /// this `GenericPersistentContainer` contains.  It's type will
-    /// be `CoordinatorType` which was given as a generic
-    /// parameter during construction.
+    /// this `Connect` instance contains. 
     ///
     public var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         return self.dataCache.persistentStoreCoordinator
     }
 
     ///
-    /// The model this `GenericPersistentContainer` was constructed with.
+    /// The model this `Connect` instance was constructed with.
     ///
     public var managedObjectModel: NSManagedObjectModel {
         return self.persistentStoreCoordinator.managedObjectModel
+    }
+
+    ///
+    /// The persistent store configurations used to create the persistent stores referenced by this instance.
+    ///
+    public var storeConfigurations: [StoreConfiguration] {
+        get {
+            return self.dataCache.storeConfigurations
+        }
+        set {
+            self.dataCache.storeConfigurations = newValue
+        }
     }
 
     ///
@@ -148,16 +153,6 @@ public class Connect {
     fileprivate let synchronizationQueue: DispatchQueue
 
     ///
-    /// Configuration option used to start the dataCache.
-    ///
-    fileprivate let dataCacheOptions: ConfigurationOptionsType
-
-    ///
-    /// Configuration option used to start the metaCache.
-    ///
-    fileprivate let metaCacheOptions: ConfigurationOptionsType
-
-    ///
     /// Was this instance already started?
     ///
     fileprivate var started: Bool
@@ -169,13 +164,12 @@ public class Connect {
     ///
     /// - Parameters:
     ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
-    ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
     /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
-    public convenience init(name: String, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
+    public convenience init(name: String) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -184,7 +178,7 @@ public class Connect {
         let model = abortIfNil(message: "Failed to load model at \(url).") {
             return NSManagedObjectModel(contentsOf: url)
         }
-        self.init(name: name, managedObjectModel: model, configurationOptions: options)
+        self.init(name: name, managedObjectModel: model)
     }
 
     ///
@@ -195,20 +189,17 @@ public class Connect {
     /// - Parameters:
     ///     - name: The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
-    ///     - configurationOptions: Optional configuration settings by persistent store config name.
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
     /// - SeeAlso: `ConfigurationOptionsType` for structure
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel, configurationOptions options: ConfigurationOptionsType = defaultConfigurationOptions) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel) {
 
-        self.name             = name
-        self.dataCacheOptions = options
-        self.metaCacheOptions = defaultConfigurationOptions
+        self.name = name
 
-        self.dataCache = DataCacheType(name: "", managedObjectModel: model,       logTag: Log.tag)
-        self.metaCache = MetaCacheType(name: "", managedObjectModel: MetaModel(), logTag: Log.tag)
+        self.dataCache = DataCacheType(name: name,                managedObjectModel: model,       logTag: Log.tag)
+        self.metaCache = MetaCacheType(name: "\(name)._metadata", managedObjectModel: MetaModel(), logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
@@ -239,7 +230,7 @@ public class Connect {
 ///
 extension Connect {
 
-    ///z
+    ///
     /// The main context.
     ///
     /// This context should be used for read operations only.  Use it for all fetches and NSFetchedResultsControllers.
@@ -366,15 +357,15 @@ public extension Connect {
     ///
     /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
     ///
-    public func start(completionBlock: @escaping (Error?) -> Void) {
+    public func start(block: @escaping (Error?) -> Void) {
 
         self.synchronizationQueue.async {
             do {
                 try self._start()
 
-                completionBlock(nil)
+                block(nil)
             } catch {
-                completionBlock(error)
+                block(error)
             }
         }
     }
@@ -431,10 +422,8 @@ fileprivate extension Connect {
 
             logInfo(Log.tag) { "Loading persistent stores..." }
 
-            let bundleURL = try BundleManager.createIfAbsent(bundleName: name, in: Default.Bundle.directory)
-
-            try self.dataCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: dataCacheOptions)
-            try self.metaCache.loadPersistentStores(storeLocationURL: bundleURL, configurationOptions: metaCacheOptions)
+            try self.dataCache.loadPersistentStores()
+            try self.metaCache.loadPersistentStores()
 
             logInfo(Log.tag) { "Creating the write ahead log..." }
 
@@ -610,41 +599,5 @@ fileprivate extension Connect {
             throw Errors.unmanagedEntity("Entity '\(entityName)' not managed by \(self)")
         }
         return queue
-    }
-}
-
-fileprivate extension Connect {
-
-    ///
-    /// Internal class to create the connect bundle.
-    ///
-    /// - Note: you can not use a func on self for this
-    ///         since we are initializing a content in self.
-    ///
-    fileprivate class BundleManager {
-
-        class func createIfAbsent(bundleName: String, in directory: FileManager.SearchPathDirectory) throws -> URL {
-
-            //
-            // Figure out where to put things
-            //
-            // Note: We use the applications bundle not the classes or modules.
-            //
-            let baseURL = try FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: false)
-
-            ///
-            /// The individual stores are stored in a directory with the extension of connect.
-            ///
-            /// Example: "HR.connect"
-            ///
-            let bundleURL = baseURL.appendingPathComponent("\(bundleName).\(Default.Bundle.extension)", isDirectory: true)
-
-            ///
-            /// create direcotry will throw if the directory can't be created.  If it already exists, it will simply return.
-            ///
-            try FileManager.default.createDirectory(at: bundleURL, withIntermediateDirectories: true, attributes: nil)
-
-            return bundleURL
-        }
     }
 }

@@ -19,6 +19,7 @@
 ///
 import Foundation
 import CoreData
+import Coherence
 
 internal class ModelLoader {
 
@@ -36,11 +37,9 @@ internal class ModelLoader {
     }
 }
 
-internal func cachesDirectory() throws -> URL {
-    
-    let fileManager = FileManager.default
-    
-    return try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+internal func defaultPersistentStoreDirectory() -> URL {
+
+    return GenericPersistentContainer.defaultStoreLocation()
 }
 
 
@@ -48,7 +47,7 @@ internal func removePersistentStoreCache() throws {
     
     let fileManager = FileManager.default
     
-    let files = try fileManager.contentsOfDirectory(at: cachesDirectory(), includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles)
+    let files = try fileManager.contentsOfDirectory(at: defaultPersistentStoreDirectory(), includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles)
     
     for file in files {
         try fileManager.removeItem(at: file)
@@ -57,7 +56,7 @@ internal func removePersistentStoreCache() throws {
 
 internal func persistentStoreDate(storePrefix: String, storeType: String, configuration: String? = nil) throws -> Date {
     
-    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
+    let storePath = defaultPersistentStoreDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     
     let attributes = try FileManager.default.attributesOfItem(atPath: storePath)
     
@@ -69,14 +68,36 @@ internal func persistentStoreDate(storePrefix: String, storeType: String, config
 
 internal func persistentStoreExists(storePrefix: String, storeType: String,  configuration: String? = nil) throws -> Bool {
     
-    let storePath = try cachesDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
+    let storePath = defaultPersistentStoreDirectory().appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     
     return FileManager.default.fileExists(atPath: storePath)
 }
 
+internal func persistentStoreDate(url: URL?) throws -> Date {
+
+    guard let url = url
+        else { throw NSError(domain: "TestErrorDomain", code: 100, userInfo: [NSLocalizedDescriptionKey: "Nil url passed."]) }
+
+
+    let attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+
+    guard let date = attributes[FileAttributeKey.creationDate] as? Date else {
+        throw NSError(domain: "TestErrorDomain", code: 100, userInfo: [NSLocalizedDescriptionKey: "No creation date returned"])
+    }
+    return date
+}
+
+internal func persistentStoreExists(url: URL?) throws -> Bool {
+
+    guard let url = url
+        else { return false }
+        
+    return FileManager.default.fileExists(atPath: url.path)
+}
+
 internal func deletePersistentStoreFilesIfExist(storePrefix: String, storeType: String, configuration: String? = nil) throws {
     
-    let storeDirectory = try cachesDirectory()
+    let storeDirectory = defaultPersistentStoreDirectory()
     
     let storePath = storeDirectory.appendingPathComponent("\(storePrefix)\(configuration?.lowercased() ?? "").\(storeType.lowercased())").path
     

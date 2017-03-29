@@ -18,9 +18,10 @@ All significant changes to this project will be documented in this file.
 - Changed default merge policy for `ActionContext` to `NSMergeByPropertyObjectTrumpMergePolicy`
 - Changed `NSEntityDescription.uniquenessAttributes` to be non-optional.
 - Removed `Connect` `online` replacing them with `suspended`.
-- Renamed `GenericCoreDataStack` to `GenericPersistentContainer` to match it's function and make it more recognizable to developers using NSPersistentContainer.
-- Renamed `ObjcCoreDataStack` to `ObjcPersistentContainer` to match it's function and make it more recognizable to developers using NSPersistentContainer.
+- Renamed `GenericCoreDataStack` to `GenericPersistentContainer`.
+- Renamed `ObjcCoreDataStack` to `ObjcPersistentContainer`.
 - Dropped `CoreDataStack` protocol.
+- Changed init option `StoreConfiguration` into a formal struct to make it simpler to use.
 
 #### Fixed
 - `ActionProxy` cancel timing.  `ActionProxy` now correctly cancels actions in various states and reports back the `completionStatus` as `canceled`.
