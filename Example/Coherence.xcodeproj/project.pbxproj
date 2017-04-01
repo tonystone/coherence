@@ -60,6 +60,9 @@
 		EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EA7D1AC51E4D1541003EAD4A /* ActionContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */; };
+		EA97628F1E8F351A007D919C /* ContextStrategy+MixedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */; };
+		EA9762911E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */; };
+		EA9762931E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */; };
 		EAA791691E7049B900FD1C25 /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */; };
 		EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
 		EABBFAF41E762D2C0042D937 /* ContainerTestModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EABBFAF21E762D2C0042D937 /* ContainerTestModel1.xcdatamodeld */; };
@@ -183,6 +186,9 @@
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
+		EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+MixedTests.swift"; sourceTree = "<group>"; };
+		EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+NestedIndirectTests.swift"; sourceTree = "<group>"; };
+		EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndependentDirectTests.swift"; sourceTree = "<group>"; };
 		EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABBFAF31E762D2C0042D937 /* ContainerTestModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -388,6 +394,9 @@
 		EA1C14031E3D7E7A002E63BD /* ContainerTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */,
+				EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */,
+				EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */,
 				EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */,
 				EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */,
 				EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */,
@@ -945,11 +954,13 @@
 				EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */,
 				EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */,
 				EA1C14181E3D8104002E63BD /* ContainerUser.swift in Sources */,
+				EA97628F1E8F351A007D919C /* ContextStrategy+MixedTests.swift in Sources */,
 				EACAD62D1E6E4981000781A5 /* MetaModelTests.swift in Sources */,
 				EA1C14191E3D8107002E63BD /* ContainerUser+CoreDataProperties.swift in Sources */,
 				EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */,
 				EA1C14131E3D80F3002E63BD /* GenericPersistentContainerTests.swift in Sources */,
 				EACAD6131E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift in Sources */,
+				EA9762911E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift in Sources */,
 				EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */,
 				EABBFAF41E762D2C0042D937 /* ContainerTestModel1.xcdatamodeld in Sources */,
 				EA1C14551E3FA0B0002E63BD /* ConnectEntity2+CoreDataProperties.swift in Sources */,
@@ -966,6 +977,7 @@
 				EACAD60A1E6CCA66000781A5 /* ActionQueueTests.swift in Sources */,
 				EAA791691E7049B900FD1C25 /* WriteAheadLogTests.swift in Sources */,
 				EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */,
+				EA9762931E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

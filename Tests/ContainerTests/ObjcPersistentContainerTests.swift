@@ -121,53 +121,60 @@ class ObjcPersistentContainerTests: XCTestCase {
 
     func testCRUD () throws {
 
-        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"))
+        let input = (firstName: "firstName", lastName: "lastName", userName: "userName")
 
-        let coreDataStack = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
-        try coreDataStack.loadPersistentStores()
-        
-        let editContext = coreDataStack.newBackgroundContext()
-        let mainContext = coreDataStack.viewContext
-        
-        var userId: NSManagedObjectID? = nil
-        
-        editContext.performAndWait {
-            
+        let container = ObjcPersistentContainer(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
+        try container.loadPersistentStores()
+
+        let editContext = container.newBackgroundContext()
+        let viewContext = container.viewContext
+
+        var userId: NSManagedObjectID = NSManagedObjectID()
+
+        ///
+        /// Insert the object into the editContext and get it's permanent ObjectID.
+        ///
+        try editContext.performAndWait {
+
             if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "ContainerUser", into:editContext) as? ContainerUser {
-                
-                insertedUser.firstName = firstName
-                insertedUser.lastName  = lastName
-                insertedUser.userName  = userName
-                
-                do {
-                    try editContext.save()
-                } catch {
-                    XCTFail()
-                }
+
+                insertedUser.firstName = input.firstName
+                insertedUser.lastName  = input.lastName
+                insertedUser.userName  = input.userName
+
+                try editContext.obtainPermanentIDs(for: [insertedUser])
+
                 userId = insertedUser.objectID
             }
         }
-        
-        var savedUser: NSManagedObject? = nil
-        
-        mainContext.performAndWait {
-            if let userId = userId {
-                savedUser = mainContext.object(with: userId)
+
+        ///
+        /// Wait for the viewContext NSManagedObjectContextObjectsDidChange notification and validate that this object was inserted into the viewContext.
+        ///
+        /// Note: this will happen when the edit context is saved
+        ///
+        self.expectation(forNotification: NSNotification.Name.NSManagedObjectContextObjectsDidChange.rawValue, object: viewContext) { notification -> Bool in
+
+            if let inserted = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+
+                let objectIds = inserted.map { $0.objectID }
+
+                return objectIds.contains(userId)
             }
-        }
-        
-        XCTAssertNotNil(savedUser)
-        
-        if let savedUser = savedUser as? ContainerUser {
-            
-            XCTAssertTrue(savedUser.firstName == firstName)
-            XCTAssertTrue(savedUser.lastName  == lastName)
-            XCTAssertTrue(savedUser.userName  == userName)
-            
-        } else {
-            XCTFail()
+            return false
         }
 
+        ///
+        /// Now save the edit context to trigger the updates on the viewContext.
+        ///
+        try editContext.performAndWait {
+            try editContext.save()
+        }
+
+        ///
+        /// Make sure the notification was sent by waiting on the expectation, if already fired, this will just return.
+        ///
+        self.waitForExpectations(timeout: 5)
     }
 
     fileprivate func deleteIfExists(fileURL url: URL) throws {

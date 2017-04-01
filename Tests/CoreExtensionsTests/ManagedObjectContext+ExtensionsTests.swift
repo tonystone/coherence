@@ -52,7 +52,7 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
         let expected = input
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
             try connect.start()
             
             let actionContext = connect.newBackgroundContext()
@@ -82,7 +82,7 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
         let input  = Errors.testError("Test Error")
 
         do {
-            let connect = Connect(name: modelName, managedObjectModel: self.testModel)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
             try connect.start()
 
             let actionContext = connect.newBackgroundContext()

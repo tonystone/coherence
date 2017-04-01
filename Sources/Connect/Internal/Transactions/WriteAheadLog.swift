@@ -24,7 +24,20 @@ import TraceLog
 internal let MetaLogEntryName    = "MetaLogEntry"
 internal let persistentStoreType = NSSQLiteStoreType
 
-internal class WriteAheadLog {
+internal protocol WriteAheadLog {
+
+    func nextSequenceNumberBlock(_ size: Int) -> ClosedRange<Int>
+
+
+    func logTransactionForContextChanges(_ transactionContext: NSManagedObjectContext) throws -> TransactionID
+
+    func removeTransaction(_ transactionID: TransactionID) throws
+
+    func transactionLogRecordTypesForEntity(_ entityDescription: NSEntityDescription) throws -> [String: Set<MetaLogEntryType>]
+
+}
+
+internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
 
     internal enum Errors: Error {
         case couldNotLocateEntityDescription(String)
@@ -34,10 +47,7 @@ internal class WriteAheadLog {
         case nilEntityName(String)
     }
 
-    internal typealias TransactionContextType = NSManagedObjectContext
-    internal typealias MetadataContextType    = NSManagedObjectContext
-
-    internal typealias CoreDataStackType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, MetadataContextType>
+    internal typealias CoreDataStackType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, Strategy>
     
     fileprivate let coreDataStack: CoreDataStackType
 
@@ -119,7 +129,7 @@ internal class WriteAheadLog {
         return sequenceNumberBlockStart...sequenceNumberBlockEnd
     }
 
-    internal func logTransactionForContextChanges(_ transactionContext: TransactionContextType) throws -> TransactionID {
+    internal func logTransactionForContextChanges(_ transactionContext: NSManagedObjectContext) throws -> TransactionID {
 
         var transactionID: TransactionID = "temp"
 
@@ -212,7 +222,7 @@ internal class WriteAheadLog {
         return results
     }
 
-    private func logBeginTransactionEntry(_ metadataContext: MetadataContextType, sequenceNumber: inout Int) throws -> TransactionID {
+    private func logBeginTransactionEntry(_ metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws -> TransactionID {
 
         var transactionID = "tmp"
         let sequence      = Int32(sequenceNumber)
@@ -262,7 +272,7 @@ internal class WriteAheadLog {
         return transactionID
     }
 
-    private func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logEndTransactionEntry(_ transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
 
         let sequence = Int32(sequenceNumber)
 
@@ -297,7 +307,7 @@ internal class WriteAheadLog {
         sequenceNumber += 1
     }
 
-    private func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logInsertEntries(_ insertedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
         
         for object in insertedRecords {
 
@@ -332,7 +342,7 @@ internal class WriteAheadLog {
         }
     }
 
-    private func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logUpdateEntries(_ updatedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
         
         for object in updatedRecords {
 
@@ -368,7 +378,7 @@ internal class WriteAheadLog {
         }
     }
 
-    private func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: inout Int) throws {
+    private func logDeleteEntries(_ deletedRecords: Set<NSManagedObject>, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: inout Int) throws {
         
         for object in deletedRecords {
 
@@ -395,7 +405,7 @@ internal class WriteAheadLog {
         }
     }
 
-    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: MetadataContextType, sequenceNumber: Int) throws {
+    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: Int) throws {
 
         let sequence = Int32(sequenceNumber)
 

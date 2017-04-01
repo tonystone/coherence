@@ -50,15 +50,15 @@ internal class NotificationService {
     ///
     internal func actionProxy(_ actionProxy: ActionProxy, didChangeState newState: ActionState) {
 
-        let userInfo = [Connect.Notification.Key.ActionProxy: actionProxy]
+        let userInfo = [Notification.Key.ActionProxy: actionProxy]
 
         switch newState {
 
         case .executing:
-            NotificationCenter.default.post(name: Connect.Notification.ActionDidStartExecuting, object: self.source, userInfo: userInfo)
+            NotificationCenter.default.post(name: Notification.ActionDidStartExecuting, object: self.source, userInfo: userInfo)
             break
         case .finished:
-            NotificationCenter.default.post(name: Connect.Notification.ActionDidFinishExecuting, object: self.source, userInfo: userInfo)
+            NotificationCenter.default.post(name: Notification.ActionDidFinishExecuting, object: self.source, userInfo: userInfo)
             break
         default:
             break

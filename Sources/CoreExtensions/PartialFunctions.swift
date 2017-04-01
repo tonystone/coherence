@@ -46,7 +46,6 @@ internal func abortIfNil<T>(message: String, file: StaticString = #file, line: U
 ///
 /// Abort the program if block returns nil an otherwise return the result value as a non-optional.
 ///
-@discardableResult
 internal func abortIfFalse(message: String, file: StaticString = #file, line: UInt = #line, condition: @autoclosure () -> Bool) {
 
     guard !condition() else {

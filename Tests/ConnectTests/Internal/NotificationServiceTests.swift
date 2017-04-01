@@ -85,12 +85,12 @@ class NotificationServiceTests: XCTestCase {
         let input    = TestActionProxy(name: "TestProxy", actionState: ActionState.executing)
         let expected = input
 
-        let _ = self.expectation(forNotification: Connect.Notification.ActionDidStartExecuting.rawValue, object: self) { (notification) -> Bool in
+        let _ = self.expectation(forNotification: Notification.ActionDidStartExecuting.rawValue, object: self) { (notification) -> Bool in
 
-            XCTAssertNotNil(notification.userInfo?[Connect.Notification.Key.ActionProxy])
-            XCTAssert(notification.userInfo?[Connect.Notification.Key.ActionProxy] is TestActionProxy)
+            XCTAssertNotNil(notification.userInfo?[Notification.Key.ActionProxy])
+            XCTAssert(notification.userInfo?[Notification.Key.ActionProxy] is TestActionProxy)
 
-            if let actionProxy = notification.userInfo?[Connect.Notification.Key.ActionProxy] as? TestActionProxy {
+            if let actionProxy = notification.userInfo?[Notification.Key.ActionProxy] as? TestActionProxy {
 
                 XCTAssertEqual(actionProxy.name,  expected.name)
                 XCTAssertEqual(actionProxy.state, expected.state)
@@ -114,12 +114,12 @@ class NotificationServiceTests: XCTestCase {
         let input    = TestActionProxy(name: "TestProxy", actionState: ActionState.finished)
         let expected = input
 
-        let _ = self.expectation(forNotification: Connect.Notification.ActionDidFinishExecuting.rawValue, object: self) { (notification) -> Bool in
+        let _ = self.expectation(forNotification: Notification.ActionDidFinishExecuting.rawValue, object: self) { (notification) -> Bool in
 
-            XCTAssertNotNil(notification.userInfo?[Connect.Notification.Key.ActionProxy])
-            XCTAssert(notification.userInfo?[Connect.Notification.Key.ActionProxy] is TestActionProxy)
+            XCTAssertNotNil(notification.userInfo?[Notification.Key.ActionProxy])
+            XCTAssert(notification.userInfo?[Notification.Key.ActionProxy] is TestActionProxy)
 
-            if let actionProxy = notification.userInfo?[Connect.Notification.Key.ActionProxy] as? TestActionProxy {
+            if let actionProxy = notification.userInfo?[Notification.Key.ActionProxy] as? TestActionProxy {
 
                 XCTAssertEqual(actionProxy.name,  expected.name)
                 XCTAssertEqual(actionProxy.state, expected.state)

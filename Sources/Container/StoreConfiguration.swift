@@ -1,5 +1,5 @@
 ///
-///  PersistentStoreDescription.swift
+///  StoreConfiguration.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///

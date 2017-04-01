@@ -58,7 +58,7 @@ public enum GenericPersistentContainerErrors: Error {
 ///
 /// A persistent container that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
 ///
-open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordinator, ViewContextType: NSManagedObjectContext, BackgroundContextType: NSManagedObjectContext> {
+open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordinator, BackgroundContextType: NSManagedObjectContext, Strategy: ContextStrategyType> {
 
     ///
     /// Creates and returns a URL to the default directory for the persistent stores.
@@ -94,7 +94,9 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     ///
     /// - Warning: You should only use this context on the main thread.  If you must work on a background thread, use the method `newBackgroundContext` while on the thread.  See that method for more details
     ///
-    public var viewContext: ViewContextType
+    public var viewContext: NSManagedObjectContext {
+        return contextStrategy.viewContext
+    }
 
     ///
     /// Gets a new NSManagedObjectContext that can be used for updating objects.
@@ -104,15 +106,11 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
     public func newBackgroundContext() -> BackgroundContextType {
-
-        logInfo(tag) { "Creating edit context for \(Thread.current)..." }
-
-        let context = BackgroundContextType(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
-        context.persistentStoreCoordinator = self.persistentStoreCoordinator
-
-        logInfo(tag) { "Edit context created." }
-
-        return context
+        logInfo { "Creating new background context in thread \(Thread.current)..." }
+        defer {
+            logInfo { "Edit context created." }
+        }
+        return contextStrategy.newBackgroundContext()
     }
 
     ///
@@ -120,10 +118,10 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     ///
     public var storeConfigurations: [StoreConfiguration]
 
-    fileprivate let rootContext: NSManagedObjectContext
     fileprivate let tag: String
     fileprivate let errorHandlerBlock: AsyncErrorHandlerBlock
 
+    fileprivate let contextStrategy: Strategy
 
     ///
     /// Initializes the receiver with the given name.
@@ -174,19 +172,7 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
         /// Create the coordinator
         self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
 
-        /// Create teh root context for saving
-        self.rootContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        self.rootContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-
-        /// Now the main thread context
-        self.viewContext = ViewContextType(concurrencyType: .mainQueueConcurrencyType)
-        self.viewContext.parent = self.rootContext
-
-        NotificationCenter.default.addObserver(self, selector: #selector(GenericPersistentContainer.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.contextStrategy = Strategy(persistentStoreCoordinator: self.persistentStoreCoordinator, errorHandler: self.errorHandlerBlock)
     }
 
     public func loadPersistentStores() throws {
@@ -244,46 +230,6 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
             logInfo(tag) { "Removing file \(path)." }
             
             try fileManager.removeItem(atPath: path)
-        }
-    }
-
-    @inline(__always)
-    fileprivate func isEditContext(_ context: NSManagedObjectContext) -> Bool {
-        ///
-        /// Note: you must use the identity operator `===` for the comparison.
-        ///
-        return context.persistentStoreCoordinator === self.persistentStoreCoordinator &&    /// Ensure it is one of this instances contexts
-               context !== self.rootContext &&                                              /// and that is it not the rootContext
-               context !== self.viewContext                                                 /// and not the main context
-    }
-
-    fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
-        
-        if let context = notification.object as? NSManagedObjectContext {
-
-            if isEditContext(context) {
-                
-                self.viewContext.perform(onError: self.errorHandlerBlock) {
-
-                    ///
-                    /// Merge the changes from the edit context to the main context.
-                    ///
-                    self.viewContext.mergeChanges(fromContextDidSave: notification)
-
-                    ///
-                    /// Now save it to propagate the changes to the root.
-                    ///
-                    try self.viewContext.save()
-
-                    ////
-                    /// And finally save the root context to the persistent store
-                    /// on a background thread.
-                    ///
-                    self.rootContext.perform(onError: self.errorHandlerBlock) {
-                        try self.rootContext.save()
-                    }
-                }
-            }
         }
     }
 }

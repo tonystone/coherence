@@ -28,7 +28,7 @@ import CoreData
 ///
 class ManagedObjectExtensionsTests: XCTestCase {
 
-    let connect = Connect(name: "ConnectTestModel")
+    let connect = Connect<ContextStrategy.Mixed>(name: "ConnectTestModel")
 
     override func setUp() {
         super.setUp()

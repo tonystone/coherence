@@ -8,15 +8,9 @@
 import Swift
 
 ///
-/// Error messages and other routines for handling errors from `Connect`.
+/// Errors thrown from `Connect`
 ///
-public extension Connect {
-
-    ///
-    /// Errors thrown from `Connect`
-    ///
-    public enum Errors: Error {
-        case unmanagedEntity(String)
-        case missingEntityName(String)
-    }
+public enum Errors: Error {
+    case unmanagedEntity(String)
+    case missingEntityName(String)
 }

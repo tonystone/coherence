@@ -1,12 +1,24 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0-beta.4](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.4) 
+
+#### Added 
+- Added `ContextStrategyType` allowing different ManagedObjectContext layout strategies to be used for both `Connect` and `GenericPersistentContainer`.
+
+#### Breaking Updates 
+- Changed `Connect` to generic class to support `ContextStrategyType`.
+- Changed `GenericPersistentContainer` generic parameters to support `ContextStrategyType`.
+- Rmeoved `ViewContextType` from `GenericPersistentContainer` generic parameters.
+- Updated to require *Swift 3.1*.
+- Updated to require *Xcode 8.3*
+
 ## [3.0.0-beta.3](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.3) 
 
 #### Added 
-- Added `Connect.Notification.ActionDidStartExecuting` notification for clients to listen for action start notifications.
-- Added `Connect.Notification.ActionDidFinishExecuting` notification for clients to listen for action finished notifications.
-- Added `Connect.Notification.Key.ActionProxy` key used by notifications.
+- Added `Notification.ActionDidStartExecuting` notification for clients to listen for action start notifications.
+- Added `Notification.ActionDidFinishExecuting` notification for clients to listen for action finished notifications.
+- Added `Notification.Key.ActionProxy` key used by notifications.
 - Added `Connect` `suspended` functionality to control state. 
 
 #### Breaking Updates 

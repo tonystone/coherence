@@ -40,7 +40,7 @@ class LoggingContextTests: XCTestCase {
         let input = (id: Int64(1), string: "Test String 1")
         let expected = input
 
-        let connect = Connect(name: "ConnectTestModel")
+        let connect = Connect<ContextStrategy.Mixed>(name: "ConnectTestModel")
         try connect.start()
 
         let editContext = connect.newBackgroundContext()
@@ -89,7 +89,7 @@ class LoggingContextTests: XCTestCase {
         let input = (id: Int64(1), string: "Test String 1")
         let expected = input
 
-        let connect = Connect(name: "ConnectTestModel")
+        let connect = Connect<ContextStrategy.Mixed>(name: "ConnectTestModel")
         try connect.start()
 
         /// Create a logging context without the write ahead logger
@@ -138,7 +138,7 @@ class LoggingContextTests: XCTestCase {
 
     func testSaveWithRollback() throws {
 
-        let connect = Connect(name: "ConnectTestModel")
+        let connect = Connect<ContextStrategy.Mixed>(name: "ConnectTestModel")
         try connect.start()
 
         let editContext = connect.newBackgroundContext()

@@ -25,42 +25,39 @@ import UIKit
 ///
 /// Constants
 ///
-public extension Connect {
+fileprivate struct Default {
 
-    internal struct Default {
-
-        internal struct Queue {
-            ///
-            /// Prefix used for all queues
-            ///
-            internal static let prefix: String = "connect.queue"
-        }
-
-        internal struct ActionQueue {
-            ///
-            /// Qos for `ActionQueue`s within the system.
-            ///
-            internal static let qos: DispatchQoS = .utility
-
-            ///
-            /// The startup state of the queues
-            ///
-            internal static let suspended: Bool = true
-        }
+    fileprivate struct Queue {
+        ///
+        /// Prefix used for all queues
+        ///
+        fileprivate static let prefix: String = "connect.queue"
     }
 
-    internal struct Log {
+    fileprivate struct ActionQueue {
         ///
-        /// Tag used for all logging internally
+        /// Qos for `ActionQueue`s within the system.
         ///
-       internal static let tag = String(describing: Connect.self)
+        fileprivate static let qos: DispatchQoS = .utility
+
+        ///
+        /// The startup state of the queues
+        ///
+        fileprivate static let suspended: Bool = true
     }
+}
+
+fileprivate struct Log {
+    ///
+    /// Tag used for all logging internally
+    ///
+    fileprivate static let tag = "Connect"
 }
 
 ///
 /// Connect
 ///
-/// A container that encapsulates the Core Data stack in your application and 
+/// A container that encapsulates the Core Data stack in your application and
 /// Manages all resources from threads to web services.
 ///
 /// Connect offers managed execution of actions (either generic or entity specific)
@@ -69,13 +66,19 @@ public extension Connect {
 /// in a specific serial queue for each type.  This forces synchronization of
 /// operations by type.
 ///
-public class Connect {
+public class Connect<Strategy: ContextStrategyType> {
+
+    ///
+    /// Internal types defining the MetaCache and DataCache CoreDataStack types
+    ///
+    fileprivate typealias DataCacheType = GenericPersistentContainer<ConnectCoordinator, LoggingContext, Strategy>
+    fileprivate typealias MetaCacheType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.IndependentDirect>
 
     ///
     /// Creates and returns a URL to the default directory for the persistent stores.
     ///
     public class func defaultStoreLocation() -> URL {
-        return GenericPersistentContainer.defaultStoreLocation()
+        return DataCacheType.defaultStoreLocation()
     }
 
     ///
@@ -109,12 +112,6 @@ public class Connect {
             self.dataCache.storeConfigurations = newValue
         }
     }
-
-    ///
-    /// Internal types defining the MetaCache and DataCache CoreDataStack types
-    ///
-    fileprivate typealias MetaCacheType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
-    fileprivate typealias DataCacheType = GenericPersistentContainer<ConnectCoordinator, NSManagedObjectContext, LoggingContext>
 
     ///
     /// Stack used to manage meta data about the main cache
@@ -222,6 +219,33 @@ public class Connect {
 
     deinit {
         self.unregisterForNotifications()
+    }
+
+    func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Foundation.Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Foundation.Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+    }
+
+    func unregisterForNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc dynamic func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
+
+        self.synchronizationQueue.async {
+            logInfo(Log.tag) { "Protected data is now available." }
+
+            self._suspended = false
+        }
+    }
+
+    @objc dynamic func handleProtectedDataWillBecomeUnavailable(notification: NSNotification) {
+
+        self.synchronizationQueue.async {
+            logInfo(Log.tag) { "Protected data will become unavailable." }
+
+            self._suspended = true
+        }
     }
 }
 
@@ -427,7 +451,7 @@ fileprivate extension Connect {
 
             logInfo(Log.tag) { "Creating the write ahead log..." }
 
-            self.writeAheadLog = try WriteAheadLog(coreDataStack: self.metaCache)
+            self.writeAheadLog = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: self.metaCache)
 
             ///
             /// Initialize the entities
@@ -472,39 +496,6 @@ fileprivate extension Connect {
                     logInfo(Log.tag) { "Queue \"\(queue.label)\" \(newValue ? "suspended" : "active")." }
                 }
             }
-        }
-    }
-}
-
-///
-/// Connect Notification handling
-///
-fileprivate extension Connect {
-
-    func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Foundation.Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Foundation.Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
-    }
-
-    func unregisterForNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    dynamic func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
-
-        self.synchronizationQueue.async {
-            logInfo(Log.tag) { "Protected data is now available." }
-
-            self._suspended = false
-        }
-    }
-
-    dynamic func handleProtectedDataWillBecomeUnavailable(notification: NSNotification) {
-
-        self.synchronizationQueue.async {
-            logInfo(Log.tag) { "Protected data will become unavailable." }
-
-            self._suspended = true
         }
     }
 }

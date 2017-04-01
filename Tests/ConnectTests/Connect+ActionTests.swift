@@ -31,7 +31,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect = Connect(name: modelName)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -60,7 +60,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(forceError: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.failed)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -91,7 +91,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(waitUntilCanceled: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -121,7 +121,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(waitUntilCanceled: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -153,7 +153,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(forceError: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -191,7 +191,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
@@ -216,7 +216,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.failed)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
@@ -243,16 +243,16 @@ class ConnectActionTests: XCTestCase {
     func testExecuteEntityActionUnmanagedEntity() {
 
         let input = MockListActionUnmanaged()
-        let expected = "Entity 'ConnectEntity3Unmanaged' not managed by Coherence.Connect"
+        let expected = "Entity 'ConnectEntity3Unmanaged' not managed by Coherence.Connect<Coherence.ContextStrategy.Mixed>"
 
         do {
-            let connect = Connect(name: modelName)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
             XCTAssertThrowsError( try connect.execute(input) ) { (error) in
 
-                if case Connect.Errors.unmanagedEntity(let message) = error {
+                if case Coherence.Errors.unmanagedEntity(let message) = error {
                     XCTAssertEqual(message, expected)
                 } else {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
@@ -271,7 +271,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
         do {
-            let connect = Connect(name: modelName)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -306,7 +306,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
         do {
-            let connect = Connect(name: modelName)
+            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -342,7 +342,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect = Connect(name: modelName)
+        let connect = Connect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")

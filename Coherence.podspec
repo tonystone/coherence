@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "3.0.0-beta.3"
+  s.version          = "3.0.0-beta.4"
   s.summary          = "Coherence"
   s.description      = <<-DESC
                        Coherence is a collection of base frameworks that help set the groundwork for module development.

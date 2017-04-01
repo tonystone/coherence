@@ -24,7 +24,7 @@ import CoreData
 
 class WriteAheadLogTests: XCTestCase {
 
-    typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.IndependentDirect>
 
     override func setUp() {
         super.setUp()
@@ -51,7 +51,7 @@ class WriteAheadLogTests: XCTestCase {
         let expected: ClosedRange<Int> = 1...1
 
         do {
-            let log = try WriteAheadLog(coreDataStack: input)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: input)
 
             XCTAssertEqual(log.nextSequenceNumberBlock(1), expected)
         } catch {
@@ -66,7 +66,7 @@ class WriteAheadLogTests: XCTestCase {
         do {
             try input.loadPersistentStores()
 
-            XCTAssertThrowsError(try WriteAheadLog(coreDataStack: input))
+            XCTAssertThrowsError(try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: input))
         } catch {
             XCTFail("\(error.localizedDescription)")
         }
@@ -99,7 +99,7 @@ class WriteAheadLogTests: XCTestCase {
                 try context.save()
             }
 
-            let log = try WriteAheadLog(coreDataStack: input)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: input)
 
             XCTAssertEqual(log.nextSequenceNumberBlock(1), expected)
         } catch {
@@ -114,7 +114,7 @@ class WriteAheadLogTests: XCTestCase {
 
         do {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-            let log = try WriteAheadLog(coreDataStack: container)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: container)
 
             for index in 0..<input.count {
                 let blockSize = input[index]
@@ -142,7 +142,7 @@ class WriteAheadLogTests: XCTestCase {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try container.loadPersistentStores()
 
-            let log = try WriteAheadLog(coreDataStack: container)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: container)
 
             /// prime the database with mock records
             let context = container.newBackgroundContext()
@@ -206,7 +206,7 @@ class WriteAheadLogTests: XCTestCase {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try container.loadPersistentStores()
 
-            let log = try WriteAheadLog(coreDataStack: container)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: container)
 
             /// prime the database with mock records
             let context = container.newBackgroundContext()
@@ -263,7 +263,7 @@ class WriteAheadLogTests: XCTestCase {
             let metaStack = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try metaStack.loadPersistentStores()
 
-            let log = try WriteAheadLog(coreDataStack: metaStack)
+            let log = try WriteAheadLogImpl<ContextStrategy.IndependentDirect>(coreDataStack: metaStack)
 
 
             let input = try { () throws -> (entity: NSEntityDescription, count: Int) in
@@ -302,7 +302,7 @@ class WriteAheadLogTests: XCTestCase {
 
             XCTAssertThrowsError(try log.logTransactionForContextChanges(context)) { (error) in
 
-                if case WriteAheadLog.Errors.failedToObtainPermanentIDs(let message) = error {
+                if case WriteAheadLogImpl<ContextStrategy.IndependentDirect>.Errors.failedToObtainPermanentIDs(let message) = error {
                     XCTAssert(message.range(of: expected, options: .regularExpression) != nil)
                 } else {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")

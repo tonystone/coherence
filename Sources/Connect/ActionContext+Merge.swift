@@ -26,15 +26,15 @@ public extension ActionContext {
     ///
     /// Merrge `objects` into the database.
     ///
-    /// - Throws: `Connect.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
+    /// - Throws: `Coherence.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
     ///
     public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil) throws {
 
         guard let entityName = entity.name else {
-            throw Connect.Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
+            throw Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
         }
         guard entity.managed else {
-            throw Connect.Errors.unmanagedEntity("Entity '\(entityName)' not managed, cannot merge objects.")
+            throw Errors.unmanagedEntity("Entity '\(entityName)' not managed, cannot merge objects.")
         }
 
         ///

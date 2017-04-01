@@ -29,7 +29,7 @@ fileprivate let userName  = "First Last"
 
 class GenericPersistentContainerTests: XCTestCase {
 
-    fileprivate typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, NSManagedObjectContext>
+    fileprivate typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.Mixed>
 
     override func setUp() {
         super.setUp()
@@ -52,7 +52,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
     func testDefaultStoreLocation() {
 
-        let input = GenericPersistentContainer.defaultStoreLocation()
+        let input = PersistentContainerType.defaultStoreLocation()
         let expected = { () -> URL in
 
             let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
@@ -118,9 +118,9 @@ class GenericPersistentContainerTests: XCTestCase {
         Coherence.defaultAsyncErrorHandlingBlock(input)
     }
 
-    func testLoadPersistentStoresWithDescriptions() throws {
+    func testLoadPersistentStoresWithConfigurations() throws {
         
-        let input = (modelName: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(name).\(NSSQLiteStoreType.lowercased())")))
+        let input = (modelName: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.\(NSSQLiteStoreType.lowercased())")))
         let expected = input.configuration.url
 
         let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
@@ -303,53 +303,60 @@ class GenericPersistentContainerTests: XCTestCase {
     }
 
     func testCRUD () throws {
-        
-        let model     = ModelLoader.load(name: "ContainerTestModel1")
-        let name      = "ContainerTestModel1"
-        
-        let coreDataStack = PersistentContainerType(name: name, managedObjectModel: model)
-        try coreDataStack.loadPersistentStores()
-        
-        let editContext = coreDataStack.newBackgroundContext()
-        let viewContext = coreDataStack.viewContext
-        
-        var userId: NSManagedObjectID? = nil
-        
-        editContext.performAndWait {
-            
+
+        let input = (firstName: "firstName", lastName: "lastName", userName: "userName")
+
+        let container = PersistentContainerType(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
+        try container.loadPersistentStores()
+
+        let editContext = container.newBackgroundContext()
+        let viewContext = container.viewContext
+
+        var userId: NSManagedObjectID = NSManagedObjectID()
+
+        ///
+        /// Insert the object into the editContext and get it's permanent ObjectID.
+        ///
+        try editContext.performAndWait {
+
             if let insertedUser = NSEntityDescription.insertNewObject(forEntityName: "ContainerUser", into:editContext) as? ContainerUser {
-                
-                insertedUser.firstName = firstName
-                insertedUser.lastName  = lastName
-                insertedUser.userName  = userName
-                
-                do {
-                    try editContext.save()
-                } catch {
-                    XCTFail()
-                }
+
+                insertedUser.firstName = input.firstName
+                insertedUser.lastName  = input.lastName
+                insertedUser.userName  = input.userName
+
+                try editContext.obtainPermanentIDs(for: [insertedUser])
+
                 userId = insertedUser.objectID
             }
         }
-        
-        var savedUser: NSManagedObject? = nil
-        
-        viewContext.performAndWait {
-            if let userId = userId {
-                savedUser = viewContext.object(with: userId)
+
+        ///
+        /// Wait for the viewContext NSManagedObjectContextObjectsDidChange notification and validate that this object was inserted into the viewContext.
+        ///
+        /// Note: this will happen when the edit context is saved
+        ///
+        self.expectation(forNotification: NSNotification.Name.NSManagedObjectContextObjectsDidChange.rawValue, object: viewContext) { notification -> Bool in
+
+            if let inserted = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+
+                let objectIds = inserted.map { $0.objectID }
+
+                return objectIds.contains(userId)
             }
+            return false
         }
-        
-        XCTAssertNotNil(savedUser)
-        
-        if let savedUser = savedUser as? ContainerUser {
-            
-            XCTAssertTrue(savedUser.firstName == firstName)
-            XCTAssertTrue(savedUser.lastName  == lastName)
-            XCTAssertTrue(savedUser.userName  == userName)
-            
-        } else {
-            XCTFail()
+
+        ///
+        /// Now save the edit context to trigger the updates on the viewContext.
+        ///
+        try editContext.performAndWait {
+            try editContext.save()
         }
+
+        ///
+        /// Make sure the notification was sent by waiting on the expectation, if already fired, this will just return.
+        ///
+        self.waitForExpectations(timeout: 5)
     }
 }
