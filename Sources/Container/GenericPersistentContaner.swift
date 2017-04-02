@@ -98,7 +98,7 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
-    public func newBackgroundContext<T: NSManagedObjectContext>() -> T {
+    public func newBackgroundContext<T: BackgroundContext>() -> T {
         logInfo { "Creating new background context of type `\(String(describing: T.self))`..." }
         defer {
             logInfo { "Background context created." }

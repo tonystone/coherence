@@ -19,7 +19,7 @@
 ///
 import CoreData
 
-internal class LoggingContext: NSManagedObjectContext {
+internal class LoggingContext: BackgroundContext {
 
     ///
     /// Container access to the writeAheadLog.

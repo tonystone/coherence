@@ -51,8 +51,6 @@ extension ContextStrategy {
             self.viewContext.parent = self.rootContext
 
             super.init(persistentStoreCoordinator: persistentStoreCoordinator, errorHandler: errorHandler)
-
-            NotificationCenter.default.addObserver(self, selector: #selector(self.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
         }
 
         deinit {
@@ -61,50 +59,39 @@ extension ContextStrategy {
 
         public let viewContext: NSManagedObjectContext
 
-        public func newBackgroundContext<T: NSManagedObjectContext>() -> T {
+        public func newBackgroundContext<T: BackgroundContext>() -> T {
 
             let context = T(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
             context.persistentStoreCoordinator = self.persistentStoreCoordinator
-            
-            return context
-        }
 
-        @inline(__always)
-        fileprivate func isEditContext(_ context: NSManagedObjectContext) -> Bool {
-            ///
-            /// Note: you must use the identity operator `===` for the comparison.
-            ///
-            return context.persistentStoreCoordinator === self.persistentStoreCoordinator && /// Ensure it is one of this instances contexts
-                context !== self.rootContext &&                                              /// and that is it not the rootContext
-                context !== self.viewContext                                                 /// and not the main context
+            /// Register to listen to this context
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+            context.deinitBlock = { [weak context] in
+                NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+            }
+            return context
         }
 
         fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
 
-            if let context = notification.object as? NSManagedObjectContext {
+            self.viewContext.perform(onError: self.errorHandler) {
 
-                if isEditContext(context) {
+                ///
+                /// Merge the changes from the edit context to the main context.
+                ///
+                self.viewContext.mergeChanges(fromContextDidSave: notification)
 
-                    self.viewContext.perform(onError: self.errorHandler) {
+                ///
+                /// Now save it to propagate the changes to the root.
+                ///
+                try self.viewContext.save()
 
-                        ///
-                        /// Merge the changes from the edit context to the main context.
-                        ///
-                        self.viewContext.mergeChanges(fromContextDidSave: notification)
-
-                        ///
-                        /// Now save it to propagate the changes to the root.
-                        ///
-                        try self.viewContext.save()
-
-                        ////
-                        /// And finally save the root context to the persistent store
-                        /// on a background thread.
-                        ///
-                        self.rootContext.perform(onError: self.errorHandler) {
-                            try self.rootContext.save()
-                        }
-                    }
+                ////
+                /// And finally save the root context to the persistent store
+                /// on a background thread.
+                ///
+                self.rootContext.perform(onError: self.errorHandler) {
+                    try self.rootContext.save()
                 }
             }
         }

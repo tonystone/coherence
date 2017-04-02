@@ -67,6 +67,7 @@
 		E790E93833A805344DFB5D52 /* GenericPersistentContaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC25198D730BF903461B47E /* GenericPersistentContaner.swift */; };
 		EA4AA4C11E90138300F90069 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4C01E90138300F90069 /* PersistentStack.swift */; };
 		EA4AA4C31E90266E00F90069 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4C21E90266E00F90069 /* Connect.swift */; };
+		EA4AA4CD1E913BC800F90069 /* BackgroundContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */; };
 		EBFECEF1D22D527F8DCAA7EC /* Pods-Coherence Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 719F1F60A5436458C5616DEC /* Pods-Coherence Tests-dummy.m */; };
 		F0DD3B50B02740CC79B710F1 /* ActionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE39793B4E1892D067FB23 /* ActionContext.swift */; };
 		F277615F1BB8EC2AEC75683C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7C4610EDAFD6E7A41549F /* Logger.swift */; };
@@ -223,6 +224,7 @@
 		E9994EE33B8C64A89A500732 /* Pods-Coherence Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Example-umbrella.h"; sourceTree = "<group>"; };
 		EA4AA4C01E90138300F90069 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
 		EA4AA4C21E90266E00F90069 /* Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
+		EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContext.swift; sourceTree = "<group>"; };
 		EBA1E7827572E9EC72F17B93 /* LoggingContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoggingContext.swift; sourceTree = "<group>"; };
 		EBA955D4E4F394C9CF8261B2 /* Pods-Coherence Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F28C6B5F56182E55BA0E236F /* Pods-Coherence Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				0ACA094CD10FEA8FDF3C2F51 /* ContextStrategy+Mixed.swift */,
 				79E6291CD77D681850025812 /* ContextStrategy+NestedIndirect.swift */,
 				EA4AA4C01E90138300F90069 /* PersistentStack.swift */,
+				EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */,
 				1DC25198D730BF903461B47E /* GenericPersistentContaner.swift */,
 				B5B882FDE24E4FD0C9BDD911 /* ObjcPersistentContainer.swift */,
 				7709ACEEE067FE436806F7F2 /* StoreConfiguration.swift */,
@@ -880,6 +883,7 @@
 				DE2C5C686CA33282AB2E1492 /* ActionQueue.swift in Sources */,
 				5AF1EA7CD21449C3ACC95F28 /* AssociatedStorage.swift in Sources */,
 				09B1968D599A6F6E35B5A783 /* Bundle+Extensions.swift in Sources */,
+				EA4AA4CD1E913BC800F90069 /* BackgroundContext.swift in Sources */,
 				F94475C8A177DE5191C5223F /* CCObject.m in Sources */,
 				40A7D0A61EED98177D220220 /* Coherence-dummy.m in Sources */,
 				95B9DD0D3D16F72A44587153 /* Configuration.swift in Sources */,

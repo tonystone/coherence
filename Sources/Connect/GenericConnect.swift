@@ -251,7 +251,7 @@ extension GenericConnect {
     ///
     /// At save time, Connect will merge those changes back to the ViewContextType.
     ///
-    public func newBackgroundContext() -> NSManagedObjectContext {
+    public func newBackgroundContext() -> BackgroundContext {
         return self.newBackgroundContext(logged: true)
     }
 
@@ -262,7 +262,7 @@ extension GenericConnect {
     ///
     /// - Parameter logged: Enable/disable transaction logging to the write ahead log when context.save is called.
     ///
-    public func newBackgroundContext(logged: Bool) -> NSManagedObjectContext {
+    public func newBackgroundContext(logged: Bool) -> BackgroundContext {
 
         let context: LoggingContext = self.dataCache.newBackgroundContext()
 

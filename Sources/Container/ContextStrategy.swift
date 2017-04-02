@@ -30,7 +30,7 @@ public protocol ContextStrategyType {
 
     var viewContext: NSManagedObjectContext { get }
 
-    func newBackgroundContext<T: NSManagedObjectContext>() -> T
+    func newBackgroundContext<T: BackgroundContext>() -> T
 }
 
 ///

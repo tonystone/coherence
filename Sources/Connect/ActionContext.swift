@@ -19,7 +19,7 @@
 ///
 import CoreData
 
-public class ActionContext: NSManagedObjectContext {
+public class ActionContext: BackgroundContext {
 
     ///
     /// The statistics for this Context
@@ -33,7 +33,7 @@ public class ActionContext: NSManagedObjectContext {
     ///         Make sure you only access this in a context
     ///         perform or performAndWait block.
     ///
-    internal var blockStartTime: Date? = nil
+    private var blockStartTime: Date? = nil
 
     ///
     /// Container access to the writeAheadLog.

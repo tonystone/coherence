@@ -48,7 +48,7 @@ extension ContextStrategy {
 
         public let viewContext: NSManagedObjectContext
 
-        public func newBackgroundContext<T: NSManagedObjectContext>() -> T {
+        public func newBackgroundContext<T: BackgroundContext>() -> T {
 
             let context = T(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
             context.persistentStoreCoordinator = self.persistentStoreCoordinator
