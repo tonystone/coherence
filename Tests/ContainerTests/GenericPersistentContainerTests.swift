@@ -29,8 +29,6 @@ fileprivate let userName  = "First Last"
 
 class GenericPersistentContainerTests: XCTestCase {
 
-    fileprivate typealias PersistentContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.Mixed>
-
     override func setUp() {
         super.setUp()
         
@@ -52,7 +50,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
     func testDefaultStoreLocation() {
 
-        let input = PersistentContainerType.defaultStoreLocation()
+        let input = GenericPersistentContainer<ContextStrategy.Mixed>.defaultStoreLocation()
         let expected = { () -> URL in
 
             let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
@@ -68,7 +66,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let input  = "ContainerTestModel4"
         let expected = (name: input, model: ModelLoader.load(name: input))
 
-        let container = PersistentContainerType(name: input)
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input)
 
         XCTAssertEqual(container.name,               expected.name)
         XCTAssertEqual(container.managedObjectModel, expected.model)
@@ -79,7 +77,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let input  = (name: "ContainerTestModel", model: ModelLoader.load(name: "ContainerTestModel4"))
         let expected = input
 
-        let container = PersistentContainerType(name: input.name, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.name, managedObjectModel: input.model)
 
         XCTAssertEqual(container.name,               expected.name)
         XCTAssertEqual(container.managedObjectModel, expected.model)
@@ -90,7 +88,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let model     = ModelLoader.load(name: "ContainerTestModel1")
         let name      = "ContainerTestModel1"
 
-        let container = PersistentContainerType(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
             // Async Error block
             print(error.localizedDescription)
         })
@@ -123,7 +121,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let input = (modelName: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.\(NSSQLiteStoreType.lowercased())")))
         let expected = input.configuration.url
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         container.storeConfigurations = [input.configuration]
 
@@ -143,7 +141,7 @@ class GenericPersistentContainerTests: XCTestCase {
                      configurations: [] as [StoreConfiguration])
         let expected = defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.NestedIndirect>(name: input.modelName, managedObjectModel: input.model)
 
         container.storeConfigurations = input.configurations
 
@@ -166,7 +164,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
         let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.NestedIndirect>(name: input.modelName, managedObjectModel: input.model)
 
         container.storeConfigurations = [input.transientDescription, input.persistentDescription]
         
@@ -189,7 +187,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
         let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.NestedIndirect>(name: input.modelName, managedObjectModel: input.model)
 
         container.storeConfigurations = [input.transientDescription, input.persistentDescription]
 
@@ -212,7 +210,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
         let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model)
+        let container = GenericPersistentContainer<ContextStrategy.IndependentDirect>(name: input.modelName, managedObjectModel: input.model)
 
         container.storeConfigurations = [input.transientDescription, input.persistentDescription]
 
@@ -231,7 +229,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let model = ModelLoader.load(name: "ContainerTestModel3")
         let name  = "ContainerTestModel3"
 
-        let container = PersistentContainerType(name: name, managedObjectModel: model)
+        let container = GenericPersistentContainer<ContextStrategy.IndependentDirect>(name: name, managedObjectModel: model)
 
         do {
             let _ = try container.loadPersistentStores()
@@ -251,7 +249,7 @@ class GenericPersistentContainerTests: XCTestCase {
         let expected = input.configuration.url
 
         do {
-            let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model1)
+            let container = GenericPersistentContainer<ContextStrategy.IndependentDirect>(name: input.modelName, managedObjectModel: input.model1)
             container.storeConfigurations = [input.configuration]
 
             try container.loadPersistentStores()
@@ -261,7 +259,7 @@ class GenericPersistentContainerTests: XCTestCase {
         /// Sleep so we have a significant change in date of the store file.
         sleep(1)
 
-        let container = PersistentContainerType(name: input.modelName, managedObjectModel: input.model2)
+        let container = GenericPersistentContainer<ContextStrategy.IndependentDirect>(name: input.modelName, managedObjectModel: input.model2)
         container.storeConfigurations = [input.configuration]
 
         try container.loadPersistentStores()
@@ -281,7 +279,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
 
         do {
-            let container = PersistentContainerType(name: input.name, managedObjectModel: input.model)
+            let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.name, managedObjectModel: input.model)
             container.storeConfigurations = [input.configuration]
 
             try container.loadPersistentStores()
@@ -306,7 +304,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
         let input = (firstName: "firstName", lastName: "lastName", userName: "userName")
 
-        let container = PersistentContainerType(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
         try container.loadPersistentStores()
 
         let editContext = container.newBackgroundContext()

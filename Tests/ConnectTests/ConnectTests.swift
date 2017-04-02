@@ -40,7 +40,7 @@ class ConnectTests: XCTestCase {
 
     func testDefaultStoreLocation() {
 
-        let input = Connect<ContextStrategy.Mixed>.defaultStoreLocation()
+        let input = GenericConnect<ContextStrategy.Mixed>.defaultStoreLocation()
         let expected = { () -> URL in
 
             let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
@@ -56,7 +56,7 @@ class ConnectTests: XCTestCase {
         let input = self.testModel
         let expected = input
 
-        XCTAssertEqual(Connect<ContextStrategy.Mixed>(name: modelName).managedObjectModel, expected)
+        XCTAssertEqual(GenericConnect<ContextStrategy.Mixed>(name: modelName).managedObjectModel, expected)
     }
 
     func testConstructionWithModelNameAndModel() {
@@ -64,7 +64,7 @@ class ConnectTests: XCTestCase {
         let input = self.testModel
         let expected = input
 
-        XCTAssertEqual(Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: input).managedObjectModel , expected)
+        XCTAssertEqual(GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
     func testStoreConfigurations() {
@@ -78,7 +78,7 @@ class ConnectTests: XCTestCase {
 
 
         do {
-            let container = Connect<ContextStrategy.Mixed>(name: input.name)
+            let container = GenericConnect<ContextStrategy.Mixed>(name: input.name)
             container.storeConfigurations = [input.configuration]
 
             try container.start()
@@ -107,7 +107,7 @@ class ConnectTests: XCTestCase {
 
         let expectation = self.expectation(description: "Completion block called.")
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         connect.start() { (error) in
             expectation.fulfill()
@@ -130,14 +130,14 @@ class ConnectTests: XCTestCase {
 
         /// Create the first instance of the persistent stores using the empty model
         do {
-            let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
+            var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
 
             connect.storeConfigurations = input.descriptions
             try connect.start()
         }
 
         /// Now create the second instance using the real model, it should throw an exception
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
         connect.storeConfigurations = input.descriptions
 
         let expectation = self.expectation(description: "Completion block called with error.")
@@ -161,7 +161,7 @@ class ConnectTests: XCTestCase {
         let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
         try connect.start()
 
         XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
@@ -172,7 +172,7 @@ class ConnectTests: XCTestCase {
         let input = (modelName: modelName, model: self.testModel)
         let expected = 1
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
         try connect.start()
         try connect.start() /// Calling start a second time should be a no-op
 
@@ -189,14 +189,14 @@ class ConnectTests: XCTestCase {
 
         /// Create the first instance of the persistent stores using the empty model
         do {
-            let connect =  Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
+            let connect =  GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
 
             connect.storeConfigurations = input.descriptions
             try connect.start()
         }
 
         /// Now create the second instance using the real model, it should throw an exception
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         connect.storeConfigurations = input.descriptions
 
@@ -213,7 +213,7 @@ class ConnectTests: XCTestCase {
         ///
         let expected = (managed: true, uniqnessAttributes: ["id"])
 
-        let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
         try connect.start()
 
         XCTAssertEqual(input.managed, expected.managed)
@@ -225,7 +225,7 @@ class ConnectTests: XCTestCase {
         let input = self.testModel.entitiesByName["ConnectEntity4MissingUniquenessAttribute"]
         let expected = false
 
-        let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
         try connect.start()
 
         XCTAssertEqual(input?.managed, expected)
@@ -237,7 +237,7 @@ class ConnectTests: XCTestCase {
             let input = (id: Int64(1), string: "Test String 1")
             let expected = input
 
-            let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
 
             try connect.start()
 
@@ -299,7 +299,7 @@ class ConnectTests: XCTestCase {
         let input = (id: Int64(1), string: "Test String 1")
         let expected = input
 
-        let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
 
         try connect.start()
 
@@ -357,7 +357,7 @@ class ConnectTests: XCTestCase {
                      update: (id: Int64(1), string: "Test String 2"))
         let expected = input.update
 
-        let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
 
         try connect.start()
 
@@ -423,7 +423,7 @@ class ConnectTests: XCTestCase {
 
         let input = (id: Int64(1), string: "Test String 1")
 
-        let connect = Connect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
 
         try connect.start()
 

@@ -24,7 +24,7 @@ import CoreData
 
 class ContextStrategyNestedIndirectTests: XCTestCase {
 
-    let container = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.NestedIndirect>(name: "ContainerTestModel1")
+    let container = GenericPersistentContainer<ContextStrategy.NestedIndirect>(name: "ContainerTestModel1")
 
     override func setUp() {
         super.setUp()

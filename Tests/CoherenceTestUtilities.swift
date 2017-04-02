@@ -39,7 +39,7 @@ internal class ModelLoader {
 
 internal func defaultPersistentStoreDirectory() -> URL {
 
-    return GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.Mixed>.defaultStoreLocation()
+    return GenericPersistentContainer<ContextStrategy.Mixed>.defaultStoreLocation()
 }
 
 

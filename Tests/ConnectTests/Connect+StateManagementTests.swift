@@ -27,7 +27,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = "ConnectTestModel"
         let expected = true
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input)
 
         XCTAssertEqual(connect.suspended, expected)
     }
@@ -37,7 +37,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = "ConnectTestModel"
         let expected = false
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input)
         try connect.start()
 
         XCTAssertEqual(connect.suspended, expected)
@@ -48,7 +48,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = (modelName: "ConnectTestModel", isSuspended: true)
         let expected = input.isSuspended
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName)
+        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
         connect.suspended = input.isSuspended
 
@@ -60,7 +60,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = (modelName: "ConnectTestModel", isSuspended: true)
         let expected = input.isSuspended
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
 
         NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
@@ -73,7 +73,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = (modelName: "ConnectTestModel", isSuspended: true)
         let expected = false
 
-        let connect = Connect<ContextStrategy.Mixed>(name: input.modelName)
+        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
         connect.suspended = input.isSuspended
 

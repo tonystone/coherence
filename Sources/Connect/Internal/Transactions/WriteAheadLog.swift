@@ -24,20 +24,7 @@ import TraceLog
 internal let MetaLogEntryName    = "MetaLogEntry"
 internal let persistentStoreType = NSSQLiteStoreType
 
-internal protocol WriteAheadLog {
-
-    func nextSequenceNumberBlock(_ size: Int) -> ClosedRange<Int>
-
-
-    func logTransactionForContextChanges(_ transactionContext: NSManagedObjectContext) throws -> TransactionID
-
-    func removeTransaction(_ transactionID: TransactionID) throws
-
-    func transactionLogRecordTypesForEntity(_ entityDescription: NSEntityDescription) throws -> [String: Set<MetaLogEntryType>]
-
-}
-
-internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
+internal class WriteAheadLog {
 
     internal enum Errors: Error {
         case couldNotLocateEntityDescription(String)
@@ -46,10 +33,8 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
         case transactionWriteFailed(String)
         case nilEntityName(String)
     }
-
-    internal typealias CoreDataStackType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, Strategy>
     
-    fileprivate let coreDataStack: CoreDataStackType
+    fileprivate let persistentStack: PersistentStack
 
     ///
     /// Hang on to a reference to the metaLogEntry NSEntity description so it does not 
@@ -64,17 +49,17 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
     ///
     var nextSequenceNumber = 0
 
-    init(coreDataStack: CoreDataStackType) throws {
+    init(persistentStack: PersistentStack) throws {
         
         logInfo {
             "Initializing instance..."
         }
 
-        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: coreDataStack.viewContext) else {
+        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentStack.viewContext) else {
             throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName).")
         }
 
-        self.coreDataStack = coreDataStack
+        self.persistentStack = persistentStack
         self.metaLogEntryEntity = entity
         
         nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
@@ -94,7 +79,7 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
         defer {
             objc_sync_exit(self)
         }
-        let metadataContext = coreDataStack.newBackgroundContext()
+        let metadataContext = persistentStack.newBackgroundContext()
         
         //
         // We need to find the last log entry and get it's
@@ -151,7 +136,7 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
             let sequenceNumberBlock = self.nextSequenceNumberBlock(2 + inserted.count + updated.count + deleted.count)
             var sequenceNumber = sequenceNumberBlock.lowerBound
 
-            let metadataContext = self.coreDataStack.newBackgroundContext()
+            let metadataContext = self.persistentStack.newBackgroundContext()
 
             transactionID = try self.logBeginTransactionEntry(metadataContext, sequenceNumber: &sequenceNumber)
 
@@ -173,7 +158,7 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
 
     internal func removeTransaction(_ transactionID: TransactionID) throws {
 
-        let metadataContext = self.coreDataStack.newBackgroundContext()
+        let metadataContext = self.persistentStack.newBackgroundContext()
 
         try metadataContext.performAndWait {
             //
@@ -196,7 +181,7 @@ internal class WriteAheadLogImpl<Strategy: ContextStrategyType>: WriteAheadLog {
 
     internal func transactionLogRecordTypesForEntity(_ entityDescription: NSEntityDescription) throws -> [String: Set<MetaLogEntryType>]  {
 
-        let context = self.coreDataStack.newBackgroundContext()
+        let context = self.persistentStack.newBackgroundContext()
         let fetchRequest = NSFetchRequest<MetaLogEntry>()
 
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: context)

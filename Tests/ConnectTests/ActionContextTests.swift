@@ -43,7 +43,7 @@ class ActionContextTests: XCTestCase {
     func testPerform () {
 
         do {
-            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
 
             let actionContext     = connect.newActionContext()
@@ -127,7 +127,7 @@ class ActionContextTests: XCTestCase {
         }
 
         do {
-            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
             
             let actionContext     = connect.newActionContext()
@@ -194,7 +194,7 @@ class ActionContextTests: XCTestCase {
         let expected = input
 
         do {
-            let connect = Connect<ContextStrategy.Mixed>(name: modelName)
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
             
             let actionContext = connect.newActionContext()

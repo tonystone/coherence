@@ -56,16 +56,9 @@ public enum GenericPersistentContainerErrors: Error {
 }
 
 ///
-/// A persistent container that can be customized with specific NSPersistentStoreCoordinator and a NSManagedObjectContext Context type.
+/// A persistent container that can be customized with specific ContextStrategy Context type.
 ///
-open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordinator, BackgroundContextType: NSManagedObjectContext, Strategy: ContextStrategyType> {
-
-    ///
-    /// Creates and returns a URL to the default directory for the persistent stores.
-    ///
-    public class func defaultStoreLocation() -> URL {
-        return abortIfError(block: { try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) })
-    }
+public class GenericPersistentContainer<Strategy: ContextStrategyType>: PersistentStack {
 
     ///
     /// The name of this instance of GenericPersistentContainer.
@@ -83,7 +76,7 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     /// be `CoordinatorType` which was given as a generic
     /// parameter during construction.
     ///
-    public let persistentStoreCoordinator: CoordinatorType
+    public let persistentStoreCoordinator: NSPersistentStoreCoordinator
 
     ///
     /// The main context.
@@ -105,10 +98,10 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
     ///
     /// - Note: This method and the returned NSManagedObjectContext can be used on a background thread as long as you get the context while on that thread.  It can also be used on the main thread if gotten while on the main thread.
     ///
-    public func newBackgroundContext() -> BackgroundContextType {
-        logInfo { "Creating new background context in thread \(Thread.current)..." }
+    public func newBackgroundContext<T: NSManagedObjectContext>() -> T {
+        logInfo { "Creating new background context of type `\(String(describing: T.self))`..." }
         defer {
-            logInfo { "Edit context created." }
+            logInfo { "Background context created." }
         }
         return contextStrategy.newBackgroundContext()
     }
@@ -170,7 +163,7 @@ open class GenericPersistentContainer<CoordinatorType: NSPersistentStoreCoordina
         self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock
 
         /// Create the coordinator
-        self.persistentStoreCoordinator = CoordinatorType(managedObjectModel: managedObjectModel)
+        self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
 
         self.contextStrategy = Strategy(persistentStoreCoordinator: self.persistentStoreCoordinator, errorHandler: self.errorHandlerBlock)
     }

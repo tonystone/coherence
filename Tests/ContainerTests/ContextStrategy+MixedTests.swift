@@ -24,7 +24,7 @@ import CoreData
 
 class ContextStrategyMixedTests: XCTestCase {
     
-    let container = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.Mixed>(name: "ContainerTestModel1")
+    let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: "ContainerTestModel1")
 
     override func setUp() {
         super.setUp()

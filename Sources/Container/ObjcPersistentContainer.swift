@@ -27,7 +27,7 @@ import TraceLog
 @objc(ObjcPersistentContainer)
 public final class ObjcPersistentContainer: NSObject {
     
-    fileprivate typealias ContainerType = GenericPersistentContainer<NSPersistentStoreCoordinator, NSManagedObjectContext, ContextStrategy.Mixed>
+    fileprivate typealias ContainerType = GenericPersistentContainer<ContextStrategy.Mixed>
     
     fileprivate let impl: ContainerType
 
