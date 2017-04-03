@@ -65,11 +65,6 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     ///
     public let name: String
 
-    /// 
-    /// The model this `GenericPersistentContainer` was constructed with.
-    ///
-    public let managedObjectModel: NSManagedObjectModel
-
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
     /// this `GenericPersistentContainer` contains.  It's type will
@@ -95,6 +90,7 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
     ///
     public func newBackgroundContext<T: BackgroundContext>() -> T {
+        logInfo { "Creating new background context of type `\(String(describing: T.self))`..." }
         defer {
             logInfo { "Background context created." }
         }
@@ -151,14 +147,13 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericPersistentContainer.self)) {
 
         self.name                        = name
-        self.managedObjectModel          = model
         self.storeConfigurations         = Default.PersistentStore.configurations
         self.tag                         = tag
 
         self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock
 
         /// Create the coordinator
-        self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
 
         self.contextStrategy = Strategy(persistentStoreCoordinator: self.persistentStoreCoordinator, errorHandler: self.errorHandlerBlock)
     }

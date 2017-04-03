@@ -76,13 +76,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     }
 
     ///
-    /// The model this `Connect` instance was constructed with.
-    ///
-    public var managedObjectModel: NSManagedObjectModel {
-        return self.persistentStoreCoordinator.managedObjectModel
-    }
-
-    ///
     /// The persistent store configurations used to create the persistent stores referenced by this instance.
     ///
     public var storeConfigurations: [StoreConfiguration] {

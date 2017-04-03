@@ -73,4 +73,11 @@ extension PersistentStack {
     public static func defaultStoreLocation() -> URL {
         return abortIfError(block: { try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) })
     }
+
+    ///
+    /// The model this instance was constructed with.
+    ///
+    public var managedObjectModel: NSManagedObjectModel {
+        return persistentStoreCoordinator.managedObjectModel
+    }
 }
