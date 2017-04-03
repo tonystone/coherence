@@ -24,7 +24,14 @@ import CoreData
 extension ContextStrategy {
 
     ///
-    /// A strategy that manages a nested (parent/child) viewContexts connected indirectly through a root context to the `NSPersistentStoreCoordinator` and background contexts that are connected directly to the `NSPersistentStoreCoordinator`.
+    /// A strategy that manages a nested (parent/child) viewContexts connected indirectly 
+    /// through a root context to the `NSPersistentStoreCoordinator` and background contexts 
+    /// that are connected directly to the `NSPersistentStoreCoordinator`.
+    ///
+    /// Changes made to BackgroundContexts are propagated directly to the persistentStore
+    /// allowing merge policies to be set and respected. `viewContext` updates are done purely
+    /// in memory and propagated to the persistentStore indirectly in a background thread
+    /// through the rootContext.
     ///
     /// ```
     ///    backgroundContext ----------------\

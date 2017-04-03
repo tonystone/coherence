@@ -31,6 +31,8 @@ extension ContextStrategy {
     ///
     /// A strategy that manages nested (parent/child) contexts (for view and background) connected indirectly through a root context to the `NSPersistentStoreCoordinator`.
     ///
+    /// Propagation of changes to the persistent store are done indirectly in the background through a root context.
+    ///
     /// ```
     ///    backgroundContext -> viewContext -> rootContext -> PersistentStoreCoordinator
     /// ```

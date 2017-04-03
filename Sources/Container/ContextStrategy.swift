@@ -21,15 +21,32 @@ import Swift
 import CoreData
 
 ///
-/// A type that defines an interface for a ManagedObejctContext strategy.  This defines the hiearchy of 
+/// A type that defines an interface for a ManagedObjectContext strategy.  This defines the hierarchy of
 /// the contexts and determines how they are kept up to date when changes are made in contexts.
 ///
 public protocol ContextStrategyType {
 
+    ///
+    /// Required initializer for all `ContextStrategyType`s.
+    ///
+    /// - Parameters:
+    ///     - persistentStoreCoordinator: The `NSPersistentStoreCoordinator` used by this `ContextStrategy`.
+    ///     - errorHandler: An error handler block call in the event a background propagation of changes fails.
+    ///
     init(persistentStoreCoordinator: NSPersistentStoreCoordinator, errorHandler: @escaping AsyncErrorHandlerBlock)
 
+    ///
+    /// The main context.
+    ///
+    /// This context should be used for read operations only.  Use it for all fetches and NSFetchedResultsControllers.
+    ///
     var viewContext: NSManagedObjectContext { get }
 
+    ///
+    /// Gets a new `BackgroundContext` that can be used for updating objects.
+    ///
+    /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
+    ///
     func newBackgroundContext<T: BackgroundContext>() -> T
 }
 

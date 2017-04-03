@@ -19,11 +19,15 @@
 ///
 import CoreData
 
+///
+/// A NSManagedObjectContext subclass returned by all `newBackgroundContext` methods.
+///
 public class BackgroundContext: NSManagedObjectContext {
 
     internal var deinitBlock: (() -> Void)? = nil
 
     public override required init(concurrencyType ct: NSManagedObjectContextConcurrencyType) {
+        /// Since deinit was implemented, the override constructors also must be implemented.
         super.init(concurrencyType: ct)
     }
     
