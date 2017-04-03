@@ -1,5 +1,5 @@
 ///
-///  ContextStrategy+NestedIndirect.swift
+///  ContextStrategy+IndirectNested.swift
 ///  Pods
 ///
 ///  Created by Tony Stone on 3/29/17.
@@ -39,7 +39,7 @@ extension ContextStrategy {
     ///
     /// - Note: The view context will be kept up to date and persisted to the store when a background context is saved.
     ///
-    public class NestedIndirect: ContextStrategy, ContextStrategyType {
+    public class IndirectNested: ContextStrategy, ContextStrategyType {
 
         private let rootContext: NSManagedObjectContext
 

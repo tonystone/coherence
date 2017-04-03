@@ -22,21 +22,10 @@ import CoreData
 import TraceLog
 
 ///
-/// Method keys
-///
-fileprivate var managedKey:              UInt8 = 0
-fileprivate var uniquenessAttributesKey: UInt8 = 0
-fileprivate var stalenessIntervalKey:    UInt8 = 0
-fileprivate var logTransactionsKey:      UInt8 = 0
-
-
-///
 /// This extension defines the properties that can be defined
-/// for each NSEntityDescription.  Some properties can be set 
-/// for the entire model. see `NSManagedObjectModel+EntitySettings`
-/// for specifics.
+/// for each NSEntityDescription.
 ///
-/// - SeeAlso: `NSManagedObjectModel+EntitySettings`
+/// - SeeAlso: `EntitySettings` for more information.
 ///
 extension NSEntityDescription: EntitySettings  {
 
@@ -136,3 +125,11 @@ internal extension NSEntityDescription {
         }
     }
 }
+
+///
+/// Method keys
+///
+fileprivate var managedKey:              UInt8 = 0
+fileprivate var uniquenessAttributesKey: UInt8 = 0
+fileprivate var stalenessIntervalKey:    UInt8 = 0
+fileprivate var logTransactionsKey:      UInt8 = 0

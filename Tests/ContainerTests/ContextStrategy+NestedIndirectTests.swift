@@ -1,5 +1,5 @@
 ///
-///  ContextStrategy+NestedIndirect.swift
+///  ContextStrategy+IndirectNested.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -24,7 +24,7 @@ import CoreData
 
 class ContextStrategyNestedIndirectTests: XCTestCase {
 
-    let container = GenericPersistentContainer<ContextStrategy.NestedIndirect>(name: "ContainerTestModel1")
+    let container = GenericPersistentContainer<ContextStrategy.IndirectNested>(name: "ContainerTestModel1")
 
     override func setUp() {
         super.setUp()

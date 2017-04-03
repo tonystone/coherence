@@ -60,7 +60,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
     ///
     fileprivate typealias DataCacheType = GenericPersistentContainer<Strategy>
-    fileprivate typealias MetaCacheType = GenericPersistentContainer<ContextStrategy.IndependentDirect>
+    fileprivate typealias MetaCacheType = GenericPersistentContainer<ContextStrategy.DirectIndependent>
 
     ///
     /// The name of this instance of `Connect`

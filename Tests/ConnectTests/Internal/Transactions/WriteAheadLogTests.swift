@@ -24,7 +24,7 @@ import CoreData
 
 class WriteAheadLogTests: XCTestCase {
 
-    typealias PersistentContainerType = GenericPersistentContainer<ContextStrategy.IndependentDirect>
+    typealias PersistentContainerType = GenericPersistentContainer<ContextStrategy.DirectIndependent>
 
     override func setUp() {
         super.setUp()

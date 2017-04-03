@@ -25,7 +25,7 @@
 		3B35123F6D7ABA7084589BBD /* RuntimeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20CB5C4CAE2DD97C61E1AA0 /* RuntimeContext.swift */; };
 		40A7D0A61EED98177D220220 /* Coherence-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8696EB8138C1B9E089D724B2 /* Coherence-dummy.m */; };
 		42131947816621C84B6955AF /* GenericConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FE46B8C6D6037251C2078 /* GenericConnect.swift */; };
-		519198B578BECEA6DFA4579C /* ContextStrategy+NestedIndirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E6291CD77D681850025812 /* ContextStrategy+NestedIndirect.swift */; };
+		519198B578BECEA6DFA4579C /* ContextStrategy+IndirectNested.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E6291CD77D681850025812 /* ContextStrategy+IndirectNested.swift */; };
 		54C105A4F4156BFB5C1F860F /* Connect+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7390C316ED042D72C357FC /* Connect+Notification.swift */; };
 		5885DDF51775D2C28AA9B465 /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FC982FE726848003E0BCD /* ConsoleWriter.swift */; };
 		5AF1EA7CD21449C3ACC95F28 /* AssociatedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93981620AD66EF6B1D7579EB /* AssociatedStorage.swift */; };
@@ -34,7 +34,7 @@
 		5E73C48833629D8C713C0566 /* EntityDescription+EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A82F12F5F41B6B78EE9FF /* EntityDescription+EntitySettings.swift */; };
 		60F7207E948C6F649929DD21 /* ObjcPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B882FDE24E4FD0C9BDD911 /* ObjcPersistentContainer.swift */; };
 		6AA4F233B8D02A24ABAA37A1 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD2FABA231B03F98FB5B2C /* TraceLog.swift */; };
-		72A0A8386FF94C118DC2DE12 /* ContextStrategy+IndependentDirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+IndependentDirect.swift */; };
+		72A0A8386FF94C118DC2DE12 /* ContextStrategy+DirectIndependent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+DirectIndependent.swift */; };
 		771725D28940A83E8BC8FD0B /* Pods-Coherence Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9994EE33B8C64A89A500732 /* Pods-Coherence Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78F6886D022FC3CA8F5FBD17 /* PartialFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D18E4D88A595DA9E726EB /* PartialFunctions.swift */; };
 		7905C3912CBF79A54436234C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49E89DCD981BE265037A50A /* Foundation.framework */; };
@@ -141,7 +141,7 @@
 		26C3E313ED3CCAEE69A0AB0F /* ActionProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionProxy.swift; sourceTree = "<group>"; };
 		28EFC89C917563B8DB83408B /* ActionContext+Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ActionContext+Merge.swift"; sourceTree = "<group>"; };
 		2BF7582E1984947C430EA232 /* Pods-Coherence Test Host-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Coherence Test Host-umbrella.h"; sourceTree = "<group>"; };
-		2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+IndependentDirect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndependentDirect.swift"; sourceTree = "<group>"; };
+		2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+DirectIndependent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+DirectIndependent.swift"; sourceTree = "<group>"; };
 		2CAE39793B4E1892D067FB23 /* ActionContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionContext.swift; sourceTree = "<group>"; };
 		345D3551512BEC8B2C7480DD /* GenericAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		3564DCF2A802DAB0FBD93F73 /* ManagedObject+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ManagedObject+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		7709ACEEE067FE436806F7F2 /* StoreConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoreConfiguration.swift; sourceTree = "<group>"; };
 		772468789DDF6867BBA88CB0 /* LogLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Sources/TraceLog/LogLevel.swift; sourceTree = "<group>"; };
 		78CAFE6496FE14306E045213 /* TraceLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraceLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79E6291CD77D681850025812 /* ContextStrategy+NestedIndirect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+NestedIndirect.swift"; sourceTree = "<group>"; };
+		79E6291CD77D681850025812 /* ContextStrategy+IndirectNested.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndirectNested.swift"; sourceTree = "<group>"; };
 		7B894A0BD272A7648A37D17A /* CCObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CCObject.h; sourceTree = "<group>"; };
 		7BBCE9DDF02F6BE3F64C653A /* MetaLogEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetaLogEntry.swift; sourceTree = "<group>"; };
 		804E8A7113D4D49E5D9F4CBC /* Connect+Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Connect+Errors.swift"; sourceTree = "<group>"; };
@@ -351,9 +351,9 @@
 			children = (
 				B731C21DDD7F99DB2BDF154B /* ContextStrategy.swift */,
 				EA4AA4D01E91EA7800F90069 /* ContextStrategy+Direct.swift */,
-				2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+IndependentDirect.swift */,
+				2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+DirectIndependent.swift */,
 				0ACA094CD10FEA8FDF3C2F51 /* ContextStrategy+Mixed.swift */,
-				79E6291CD77D681850025812 /* ContextStrategy+NestedIndirect.swift */,
+				79E6291CD77D681850025812 /* ContextStrategy+IndirectNested.swift */,
 				EA4AA4C01E90138300F90069 /* PersistentStack.swift */,
 				EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */,
 				1DC25198D730BF903461B47E /* GenericPersistentContaner.swift */,
@@ -894,9 +894,9 @@
 				832D5248C249715E2EC2BC6D /* Connect+Errors.swift in Sources */,
 				54C105A4F4156BFB5C1F860F /* Connect+Notification.swift in Sources */,
 				42131947816621C84B6955AF /* GenericConnect.swift in Sources */,
-				72A0A8386FF94C118DC2DE12 /* ContextStrategy+IndependentDirect.swift in Sources */,
+				72A0A8386FF94C118DC2DE12 /* ContextStrategy+DirectIndependent.swift in Sources */,
 				B899E8FE91B441B38C489E50 /* ContextStrategy+Mixed.swift in Sources */,
-				519198B578BECEA6DFA4579C /* ContextStrategy+NestedIndirect.swift in Sources */,
+				519198B578BECEA6DFA4579C /* ContextStrategy+IndirectNested.swift in Sources */,
 				E0D88B088F1030AE541A08AF /* ContextStrategy.swift in Sources */,
 				B61B9E9B31CDDFE2B3063523 /* EntityAction.swift in Sources */,
 				5C34462F827B474AC7184623 /* EntityActionContainer.swift in Sources */,

@@ -1,5 +1,5 @@
 ///
-///  ContextStrategy+IndependentDirect.swift
+///  ContextStrategy+DirectIndependent.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -24,7 +24,7 @@ import CoreData
 
 class ContextStrategyIndependentDirectTests: XCTestCase {
 
-    let container = GenericPersistentContainer<ContextStrategy.IndependentDirect>(name: "ContainerTestModel1")
+    let container = GenericPersistentContainer<ContextStrategy.DirectIndependent>(name: "ContainerTestModel1")
 
     override func setUp() {
         super.setUp()

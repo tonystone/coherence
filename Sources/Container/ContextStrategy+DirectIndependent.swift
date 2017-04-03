@@ -1,5 +1,5 @@
 ///
-///  ContextStrategy+IndependentDirect.swift
+///  ContextStrategy+DirectIndependent.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -36,7 +36,7 @@ extension ContextStrategy {
     /// ```    
     /// - Note: The view context will not be kept up to date with this strategy.
     ///
-    public class IndependentDirect: ContextStrategy, ContextStrategyType {
+    public class DirectIndependent: ContextStrategy, ContextStrategyType {
 
         public required init(persistentStoreCoordinator: NSPersistentStoreCoordinator, errorHandler: @escaping AsyncErrorHandlerBlock) {
 

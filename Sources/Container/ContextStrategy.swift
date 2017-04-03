@@ -53,7 +53,10 @@ public protocol ContextStrategyType {
 ///
 /// Base class to implement `ContextStrategyType` classes.
 ///
-public class ContextStrategy {
+/// - Note: Subclassing notes, you can subclass this class and implement `ContextStrategyType` in order
+///         to create your own Strategies.
+///
+open class ContextStrategy {
 
     internal let errorHandler: AsyncErrorHandlerBlock
     internal let persistentStoreCoordinator: NSPersistentStoreCoordinator
