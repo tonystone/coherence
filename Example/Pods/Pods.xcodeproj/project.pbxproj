@@ -68,6 +68,7 @@
 		EA4AA4C11E90138300F90069 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4C01E90138300F90069 /* PersistentStack.swift */; };
 		EA4AA4C31E90266E00F90069 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4C21E90266E00F90069 /* Connect.swift */; };
 		EA4AA4CD1E913BC800F90069 /* BackgroundContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */; };
+		EA4AA4D11E91EA7800F90069 /* ContextStrategy+Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4D01E91EA7800F90069 /* ContextStrategy+Direct.swift */; };
 		EBFECEF1D22D527F8DCAA7EC /* Pods-Coherence Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 719F1F60A5436458C5616DEC /* Pods-Coherence Tests-dummy.m */; };
 		F0DD3B50B02740CC79B710F1 /* ActionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE39793B4E1892D067FB23 /* ActionContext.swift */; };
 		F277615F1BB8EC2AEC75683C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7C4610EDAFD6E7A41549F /* Logger.swift */; };
@@ -225,6 +226,7 @@
 		EA4AA4C01E90138300F90069 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
 		EA4AA4C21E90266E00F90069 /* Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 		EA4AA4CC1E913BC800F90069 /* BackgroundContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContext.swift; sourceTree = "<group>"; };
+		EA4AA4D01E91EA7800F90069 /* ContextStrategy+Direct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+Direct.swift"; sourceTree = "<group>"; };
 		EBA1E7827572E9EC72F17B93 /* LoggingContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoggingContext.swift; sourceTree = "<group>"; };
 		EBA955D4E4F394C9CF8261B2 /* Pods-Coherence Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F28C6B5F56182E55BA0E236F /* Pods-Coherence Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Coherence Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				B731C21DDD7F99DB2BDF154B /* ContextStrategy.swift */,
+				EA4AA4D01E91EA7800F90069 /* ContextStrategy+Direct.swift */,
 				2C37727CC4DECBFEAEDA72C5 /* ContextStrategy+IndependentDirect.swift */,
 				0ACA094CD10FEA8FDF3C2F51 /* ContextStrategy+Mixed.swift */,
 				79E6291CD77D681850025812 /* ContextStrategy+NestedIndirect.swift */,
@@ -887,6 +890,7 @@
 				F94475C8A177DE5191C5223F /* CCObject.m in Sources */,
 				40A7D0A61EED98177D220220 /* Coherence-dummy.m in Sources */,
 				95B9DD0D3D16F72A44587153 /* Configuration.swift in Sources */,
+				EA4AA4D11E91EA7800F90069 /* ContextStrategy+Direct.swift in Sources */,
 				832D5248C249715E2EC2BC6D /* Connect+Errors.swift in Sources */,
 				54C105A4F4156BFB5C1F860F /* Connect+Notification.swift in Sources */,
 				42131947816621C84B6955AF /* GenericConnect.swift in Sources */,

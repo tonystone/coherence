@@ -1,5 +1,5 @@
 ///
-///  ContextStrategy+IndependentDirect.swift
+///  ContextStrategy+Direct.swift
 ///
 ///  Copyright 2017 Tony Stone
 ///
@@ -24,19 +24,24 @@ import CoreData
 extension ContextStrategy {
 
     ///
-    /// A strategy that manages independent contexts (for view and background) connected directly to the `NSPersistentStoreCoordinator`.
+    /// A strategy that manages the viewContext and BackgroundContext connected diretly
+    /// tto the `NSPersistentStoreCoordinator`.
+    ///
+    /// Changes made to `BackgroundContext`s are propagated directly to the persistentStore
+    /// allowing merge policies to be set and respected. 
     ///
     /// ```
     ///    backgroundContext -\
-    ///                        \
-    ///                          -> PersistentStoreCoordinator
-    ///                        /
+    ///          |             \
+    ///          |               -> PersistentStoreCoordinator
+    ///          V             /
     ///    viewContext -------/
     ///
-    /// ```    
-    /// - Note: The view context will not be kept up to date with this strategy.
+    /// ```
     ///
-    public class IndependentDirect: ContextStrategy, ContextStrategyType {
+    /// - Note: The view context will be kept up to date and persisted to the store when a background context is saved.
+    ///
+    public class Direct: ContextStrategy, ContextStrategyType {
 
         public required init(persistentStoreCoordinator: NSPersistentStoreCoordinator, errorHandler: @escaping AsyncErrorHandlerBlock) {
 
@@ -53,8 +58,30 @@ extension ContextStrategy {
 
             let context = T(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
             context.persistentStoreCoordinator = self.persistentStoreCoordinator
-
+            
+            /// Register to listen to this context
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+            context.deinitBlock = { [weak context] in
+                NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+            }
             return context
+        }
+
+        fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
+
+            self.viewContext.perform(onError: self.errorHandler) {
+
+                ///
+                /// Merge the changes from the edit context to the main context.
+                ///
+                self.viewContext.mergeChanges(fromContextDidSave: notification)
+
+                ///
+                /// Save it to propagate the changes to the root.
+                ///
+                try self.viewContext.save()
+            }
         }
     }
 }
+

@@ -56,6 +56,7 @@
 		EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */; };
 		EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */; };
 		EA4AA4CF1E91720E00F90069 /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */; };
+		EA4AA4D31E91ED8500F90069 /* ContextStrategy+DirectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4D21E91ED8500F90069 /* ContextStrategy+DirectTests.swift */; };
 		EA5074D81E839285004DE565 /* StoreConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */; };
 		EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC981E63466000527236 /* NotificationServiceTests.swift */; };
 		EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
@@ -179,6 +180,7 @@
 		EA4A2E921E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA4A2E931E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContextTests.swift; sourceTree = "<group>"; };
+		EA4AA4D21E91ED8500F90069 /* ContextStrategy+DirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+DirectTests.swift"; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfigurationTests.swift; sourceTree = "<group>"; };
 		EA5BDC981E63466000527236 /* NotificationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 		EA1C14031E3D7E7A002E63BD /* ContainerTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA4AA4D21E91ED8500F90069 /* ContextStrategy+DirectTests.swift */,
 				EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */,
 				EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */,
 				EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */,
@@ -960,6 +963,7 @@
 				EA97628F1E8F351A007D919C /* ContextStrategy+MixedTests.swift in Sources */,
 				EACAD62D1E6E4981000781A5 /* MetaModelTests.swift in Sources */,
 				EA1C14191E3D8107002E63BD /* ContainerUser+CoreDataProperties.swift in Sources */,
+				EA4AA4D31E91ED8500F90069 /* ContextStrategy+DirectTests.swift in Sources */,
 				EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */,
 				EA1C14131E3D80F3002E63BD /* GenericPersistentContainerTests.swift in Sources */,
 				EACAD6131E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift in Sources */,
