@@ -25,69 +25,99 @@ import TraceLog
 /// This extension defines the properties that can be defined
 /// for each NSEntityDescription.
 ///
-/// - SeeAlso: `EntitySettings` for more information.
-///
-extension NSEntityDescription: EntitySettings  {
+extension NSEntityDescription {
 
     ///
-    /// - SeeAlso: `EntitySettings` for description.
+    /// Default Entity settings for system
+    ///
+    public struct Default {
+        public static let managed: Bool                  = false
+        public static let uniquenessAttributes: [String] = []
+        public static let stalenessInterval: Int         = 600
+        public static let logTransactions: Bool          = false
+    }
+
+    ///
+    /// Method keys
+    ///
+    private struct Key {
+        static var managed:              UInt8 = 0
+        static var uniquenessAttributes: UInt8 = 0
+        static var stalenessInterval:    UInt8 = 0
+        static var logTransactions:      UInt8 = 0
+    }
+    
+    ///
+    /// Is this entity managed by Connect?
+    ///
+    /// By default, objects are not managed until they pass
+    /// the criteria that Connect sets for being able to
+    /// manage a specific entity.
     ///
     public internal(set) var managed: Bool {
         get {
-            return associatedValue(self, key: &managedKey, defaultValue: managedDefault)
+            return associatedValue(self, key: &Key.managed, defaultValue: Default.managed)
         }
         set {
-            associatedValue(self, key: &managedKey, value: newValue)
+            associatedValue(self, key: &Key.managed, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
     }
 
     ///
-    /// - SeeAlso: `EntitySettings` for description.
+    /// Gets the attributes used to define a unique record for this entity type.  This can only be set
+    /// statically in the  ManagedObjectModel for this entity.
+    ///
+    /// The default is an empty array `[]` for this value.
     ///
     public internal(set) var uniquenessAttributes: [String] {
         get {
-            return associatedValue(self, key: &uniquenessAttributesKey, defaultValue: uniquenessAttributesDefault)
+            return associatedValue(self, key: &Key.uniquenessAttributes, defaultValue: Default.uniquenessAttributes)
         }
         set {
-            associatedValue(self, key: &uniquenessAttributesKey, value: newValue)
+            associatedValue(self, key: &Key.uniquenessAttributes, value: newValue)
 
             logUpdate(#function, value: newValue)
         }
     }
 
     ///
-    /// - SeeAlso: `EntitySettings` for description.
+    /// Sets the amount of time before the resource is updated again from the master source
     ///
     public var stalenessInterval: Int {
         get {
-            return associatedValue(self, key: &stalenessIntervalKey, defaultValue: stalenessIntervalDefault)
+            return associatedValue(self, key: &Key.stalenessInterval, defaultValue: Default.stalenessInterval)
         }
         set {
-            associatedValue(self, key: &stalenessIntervalKey, value: newValue)
+            associatedValue(self, key: &Key.stalenessInterval, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
     }
     
     ///
-    /// - SeeAlso: `EntitySettings` for description.
+    /// Should Connect log transactions for this entity?
+    ///
+    /// The default value is false for all entities.  You must set
+    /// this value if you want Connect to log transactions for this
+    /// entity.
     ///
     public var logTransactions: Bool {
         get {
-            return associatedValue(self, key: &logTransactionsKey, defaultValue: logTransactionsDefault)
+            return associatedValue(self, key: &Key.logTransactions, defaultValue: Default.logTransactions)
         }
         set {
-            associatedValue(self, key: &logTransactionsKey, value: newValue)
+            associatedValue(self, key: &Key.logTransactions, value: newValue)
             
             logUpdate(#function, value: newValue)
         }
     }
     
-    @inline(__always)
     private func logUpdate<T>(_ funcName: String, value: T) {
-        logInfo(String(reflecting: type(of: self))) { "'\(self.name ?? "Unnamed entity")' setting '\(funcName)' changed to '\(value)'" }
+        logInfo(Log.tag) {
+            return "Entity setting \(self.name ?? "<Unnamed entity>").\(funcName)' changed to '\(value)'"
+        }
     }
 }
 
@@ -125,11 +155,3 @@ internal extension NSEntityDescription {
         }
     }
 }
-
-///
-/// Method keys
-///
-fileprivate var managedKey:              UInt8 = 0
-fileprivate var uniquenessAttributesKey: UInt8 = 0
-fileprivate var stalenessIntervalKey:    UInt8 = 0
-fileprivate var logTransactionsKey:      UInt8 = 0

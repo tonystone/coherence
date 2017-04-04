@@ -47,7 +47,7 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
         XCTAssertEqual(entity.managed, expected)
     }
 
-    func testUniquenessAttributesWithValue() {
+    func testUniquenessAttributes() {
         let input = ["attribute1", "attribute2", "attribute3"]
         let expected = input
 
@@ -56,7 +56,7 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
         XCTAssertEqual(entity.uniquenessAttributes, expected)
     }
 
-    func testSalenessIntervalWithValue() {
+    func testSalenessInterval() {
         let input = 3060
         let expected = input
 
@@ -108,10 +108,8 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
 
         entity.setSettings(from: input)
 
-
         XCTAssertEqual(entity.uniquenessAttributes, expected.0)
         XCTAssertEqual(entity.stalenessInterval, expected.1)
         XCTAssertEqual(entity.logTransactions, expected.2)
     }
-    
 }

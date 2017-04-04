@@ -47,8 +47,11 @@ public typealias AsyncErrorHandlerBlock = (Error) -> Void
 /// Default block used to log Async errors if the user does not supply one
 ///
 internal /// @testable
-let defaultAsyncErrorHandlingBlock = { (error: Error) -> Void in
-    logError { "\(error)" }
+func defaultAsyncErrorHandlingBlock(tag tagName: String) -> AsyncErrorHandlerBlock {
+
+    return { (error: Error) -> Void in
+        logError(tagName) { "\(error)" }
+    }
 }
 
 public enum GenericPersistentContainerErrors: Error {
@@ -90,9 +93,9 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
     ///
     public func newBackgroundContext<T: BackgroundContext>() -> T {
-        logInfo { "Creating new background context of type `\(String(describing: T.self))`..." }
+        logInfo(self.tag) { "Creating new background context of type `\(String(describing: T.self))`..." }
         defer {
-            logInfo { "Background context created." }
+            logInfo(self.tag) { "Background context created." }
         }
         return contextStrategy.newBackgroundContext()
     }
@@ -144,13 +147,13 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     ///
     /// - Returns: A generic container initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag tag: String = String(describing: GenericPersistentContainer.self)) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag: String = String(describing: GenericPersistentContainer.self)) {
 
         self.name                        = name
         self.storeConfigurations         = Default.PersistentStore.configurations
-        self.tag                         = tag
+        self.tag                         = logTag
 
-        self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock
+        self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock(tag: logTag)
 
         /// Create the coordinator
         self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
@@ -185,7 +188,7 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
            let url = configuration.url,
            fileManager.fileExists(atPath: url.path) {
 
-            logInfo(tag) { "Checking to see if persistent store is compatible with the model." }
+            logInfo(self.tag) { "Checking to see if persistent store is compatible with the model." }
             
             let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: configuration.type, at: url, options: configuration.options)
 
@@ -197,11 +200,11 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
             }
         }
 
-        logInfo(tag) { "Attaching persistent store \"\(configuration.url?.absoluteString ?? "nil")\" for type: \(configuration.type)."}
+        logInfo(self.tag) { "Attaching persistent store \"\(configuration.url?.absoluteString ?? "nil")\" for type: \(configuration.type)."}
 
         try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: configuration.url, options: configuration.options)
 
-        logInfo(tag) { "Persistent store attached successfully." }
+        logInfo(self.tag) { "Persistent store attached successfully." }
     }
 
     fileprivate func deleteIfExists(_ path: String) throws {
@@ -210,7 +213,7 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
         
         if fileManager.fileExists(atPath: path) {
             
-            logInfo(tag) { "Removing file \(path)." }
+            logInfo(self.tag) { "Removing file \(path)." }
             
             try fileManager.removeItem(atPath: path)
         }

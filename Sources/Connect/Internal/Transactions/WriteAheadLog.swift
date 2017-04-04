@@ -51,8 +51,8 @@ internal class WriteAheadLog {
 
     init(persistentStack: PersistentStack) throws {
         
-        logInfo {
-            "Initializing instance..."
+        logInfo(Log.tag) {
+            "Initializing WriteAheadLog instance..."
         }
 
         guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentStack.viewContext) else {
@@ -64,12 +64,12 @@ internal class WriteAheadLog {
         
         nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
         
-        logInfo {
+        logInfo(Log.tag) {
             "Starting Transaction ID: \(self.nextSequenceNumber)"
         }
         
-        logInfo {
-            "Instance initialized."
+        logInfo(Log.tag) {
+            "WriteAheadLog instance initialized."
         }
     }
     
@@ -234,7 +234,7 @@ internal class WriteAheadLog {
             metaLogEntry.type = MetaLogEntryType.beginMarker
             metaLogEntry.timestamp = Date().timeIntervalSinceNow
 
-            logTrace(4) {
+            logTrace(Log.tag, level: 4) {
                 var message: String = ""
 
                 ///
@@ -271,7 +271,7 @@ internal class WriteAheadLog {
             metaLogEntry.type = MetaLogEntryType.endMarker
             metaLogEntry.timestamp = Date().timeIntervalSinceNow
 
-            logTrace(4) {
+            logTrace(Log.tag, level: 4) {
                 var message: String = ""
 
                 ///
@@ -411,7 +411,7 @@ internal class WriteAheadLog {
             metaLogEntry.updateUniqueID = uniqueID
             metaLogEntry.updateEntityName = entity.name
 
-            logTrace(4) {
+            logTrace(Log.tag, level: 4) {
                 var message: String = ""
 
                 ///

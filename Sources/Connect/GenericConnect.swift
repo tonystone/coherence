@@ -47,13 +47,6 @@ fileprivate struct Default {
     }
 }
 
-fileprivate struct Log {
-    ///
-    /// Tag used for all logging internally
-    ///
-    fileprivate static let tag = "Connect"
-}
-
 public class GenericConnect<Strategy: ContextStrategyType>: Connect {
 
     ///
@@ -454,8 +447,6 @@ fileprivate extension GenericConnect {
             try self.dataCache.loadPersistentStores()
             try self.metaCache.loadPersistentStores()
 
-            logInfo(Log.tag) { "Creating the write ahead log..." }
-
             self.writeAheadLog = try WriteAheadLog(persistentStack: self.metaCache)
 
             ///
@@ -528,7 +519,7 @@ fileprivate extension GenericConnect {
                 if !entity.attributesByName.keys.contains(attribute) {
                     valid = false
 
-                    logWarning { "Uniqueness attribute '\(attribute)' specified but it is not present on entity." }
+                    logWarning(Log.tag) { "Uniqueness attribute '\(attribute)' specified but it is not present on entity." }
                     break
                 }
             }
@@ -536,7 +527,7 @@ fileprivate extension GenericConnect {
             if !valid {
                 canBeManaged = false
 
-                logWarning { "Setting value '\(entity.uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
+                logWarning(Log.tag) { "Setting value '\(entity.uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
             }
 
         } else {
@@ -578,9 +569,8 @@ fileprivate extension GenericConnect {
             self.entityQueues[name] = ActionQueue(label: label, qos: Default.ActionQueue.qos, concurrencyMode: .serial, suspended: Default.ActionQueue.suspended)
 
             entity.managed = true
-
-            logInfo(Log.tag) { "Entity '\(name)' marked as managed."}
         } else {
+            entity.managed = false
 
             logInfo(Log.tag) { "Entity '\(name)' cannot be managed."}
         }

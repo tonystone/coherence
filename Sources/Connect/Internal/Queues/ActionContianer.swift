@@ -68,14 +68,14 @@ internal class ActionContainer: Operation, ActionProxy {
 
     override func main() {
 
-        logInfo { "Proxy \(self) started on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
+        logInfo(Log.tag) { "Proxy \(self) started on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
 
         self.state = .executing
 
         defer {
             self.state = .finished
 
-            logInfo {
+            logInfo(Log.tag) {
                 var message = "Proxy \(self) \(self.completionStatus)"
 
                 if self.completionStatus == .failed,  let error = self.error {

@@ -89,7 +89,7 @@ public extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logTrace(1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) exsiting object(s) for entity \(entityName)." }
+        logTrace(Log.tag, level: 1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) exsiting object(s) for entity \(entityName)." }
 
         var newIterator      = newObjects.makeIterator()
         var existingIterator = existingObjects.makeIterator()

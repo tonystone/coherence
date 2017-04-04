@@ -15,7 +15,6 @@
 		1564BC00823B797AA4221451 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49E89DCD981BE265037A50A /* Foundation.framework */; };
 		187FB034FEE092B883964786 /* ManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3564DCF2A802DAB0FBD93F73 /* ManagedObject+Extensions.swift */; };
 		20F8452D7CC2E91341FB5E93 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09EA7606E3DF71AD2EBAE5 /* String+Extensions.swift */; };
-		21989C7F14A744BAD1F25555 /* EntitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9F4277A675174000CF5937 /* EntitySettings.swift */; };
 		250C2A30705476ABDF4F10C6 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368F1B163B300954CEBB7EB1 /* WriteAheadLog.swift */; };
 		2B946E4EC1968F67819475E4 /* MetaLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBCE9DDF02F6BE3F64C653A /* MetaLogEntry.swift */; };
 		306A6FF5438C9A0C77C2AFE4 /* MetaLogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2C649A56E7A595EB30B21 /* MetaLogEntry+CoreDataProperties.swift */; };
@@ -160,7 +159,6 @@
 		627F20D4C2EC0CE1A4A33C30 /* Pods-Coherence Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Coherence Example-frameworks.sh"; sourceTree = "<group>"; };
 		66E02D73A7A778379EB807E8 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		67672992DCDBC9F061AF6753 /* Pods-Coherence Test Host-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Coherence Test Host-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6A9F4277A675174000CF5937 /* EntitySettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EntitySettings.swift; sourceTree = "<group>"; };
 		6C208669D46D9714740072ED /* ActionContianer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionContianer.swift; sourceTree = "<group>"; };
 		719F1F60A5436458C5616DEC /* Pods-Coherence Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Coherence Tests-dummy.m"; sourceTree = "<group>"; };
 		7709ACEEE067FE436806F7F2 /* StoreConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoreConfiguration.swift; sourceTree = "<group>"; };
@@ -636,7 +634,6 @@
 				9D7390C316ED042D72C357FC /* Connect+Notification.swift */,
 				913FE46B8C6D6037251C2078 /* GenericConnect.swift */,
 				9C94C95875A147E50E35F2EA /* EntityAction.swift */,
-				6A9F4277A675174000CF5937 /* EntitySettings.swift */,
 				345D3551512BEC8B2C7480DD /* GenericAction.swift */,
 				783ABDB4E405C4E966178523 /* Extensions */,
 				1547C33433CE1179425B12EE /* Internal */,
@@ -901,7 +898,6 @@
 				B61B9E9B31CDDFE2B3063523 /* EntityAction.swift in Sources */,
 				5C34462F827B474AC7184623 /* EntityActionContainer.swift in Sources */,
 				5E73C48833629D8C713C0566 /* EntityDescription+EntitySettings.swift in Sources */,
-				21989C7F14A744BAD1F25555 /* EntitySettings.swift in Sources */,
 				DFEEFF56E09CE4E023F0A962 /* GenericAction.swift in Sources */,
 				FB7CDDFEE4E5C542294999C3 /* GenericActionContainer.swift in Sources */,
 				E790E93833A805344DFB5D52 /* GenericPersistentContaner.swift in Sources */,

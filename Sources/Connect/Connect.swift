@@ -19,6 +19,14 @@
 ///
 import Swift
 
+
+internal struct Log {
+    ///
+    /// Tag used for all logging internally
+    ///
+    internal static let tag = "Connect"
+}
+
 ///
 /// Connect
 ///

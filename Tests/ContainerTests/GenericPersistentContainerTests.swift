@@ -113,7 +113,7 @@ class GenericPersistentContainerTests: XCTestCase {
         ///
         /// Note: there is really no way at the moment to validate the output of the default handler so this is just to exercise it for test coverage completion.
         ///
-        Coherence.defaultAsyncErrorHandlingBlock(input)
+        Coherence.defaultAsyncErrorHandlingBlock(tag: "Testing")(input)
     }
 
     func testLoadPersistentStoresWithConfigurations() throws {
