@@ -16,7 +16,6 @@
   "requires_arc": true,
   "module_name": "Coherence",
   "default_subspecs": [
-    "Configuration",
     "Container",
     "Connect"
   ],
@@ -32,23 +31,6 @@
     {
       "name": "CoreExtensions",
       "source_files": "Sources/CoreExtensions/**/*"
-    },
-    {
-      "name": "ConfigurationCore",
-      "requires_arc": false,
-      "source_files": "Sources/ConfigurationCore/**/*"
-    },
-    {
-      "name": "Configuration",
-      "dependencies": {
-        "Coherence/CoreExtensions": [
-
-        ],
-        "Coherence/ConfigurationCore": [
-
-        ]
-      },
-      "source_files": "Sources/Configuration/*"
     },
     {
       "name": "Container",

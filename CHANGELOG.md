@@ -13,6 +13,7 @@ All significant changes to this project will be documented in this file.
 - Rmeoved `ViewContextType` from `GenericPersistentContainer` generic parameters.
 - Updated to require *Swift 3.1*.
 - Updated to require *Xcode 8.3*
+- Removed `Configuration` subspec from project.  Note this will be moved into its own project.
 
 ## [3.0.0-beta.3](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.3) 
 

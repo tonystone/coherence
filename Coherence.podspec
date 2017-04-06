@@ -23,21 +23,10 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   
   s.module_name   = 'Coherence'
-  s.default_subspecs = ['Configuration', 'Container', 'Connect']
+  s.default_subspecs = ['Container', 'Connect']
 
   s.subspec 'CoreExtensions' do |sp|
     sp.source_files = 'Sources/CoreExtensions/**/*'
-  end
-
-  s.subspec 'ConfigurationCore' do |sp|
-      sp.requires_arc = false
-      sp.source_files = 'Sources/ConfigurationCore/**/*'
-  end
-
-  s.subspec 'Configuration' do |sp|
-      sp.dependency 'Coherence/CoreExtensions'
-      sp.dependency 'Coherence/ConfigurationCore'
-      sp.source_files  = 'Sources/Configuration/*'
   end
 
   s.subspec 'Container' do |sp|

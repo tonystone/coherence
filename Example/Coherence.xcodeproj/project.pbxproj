@@ -71,8 +71,6 @@
 		EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3221E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld */; };
 		EAC5C3271E6269D90025D310 /* ContainerTestModel4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3251E6269D90025D310 /* ContainerTestModel4.xcdatamodeld */; };
-		EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */; };
-		EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */; };
 		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
 		EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */; };
 		EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */; };
@@ -201,8 +199,6 @@
 		EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedStorageTests.swift; sourceTree = "<group>"; };
 		EAC5C3231E624D090025D310 /* ConnectTestModelEmpty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ConnectTestModelEmpty.xcdatamodel; sourceTree = "<group>"; };
 		EAC5C3261E6269D90025D310 /* ContainerTestModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel4.xcdatamodel; sourceTree = "<group>"; };
-		EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
-		EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConfigurationTests.m; sourceTree = "<group>"; };
 		EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoherenceTestUtilities.swift; sourceTree = "<group>"; };
 		EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+ActionTests.swift"; path = "ConnectTests/Connect+ActionTests.swift"; sourceTree = "<group>"; };
@@ -339,8 +335,6 @@
 			children = (
 				EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */,
 				EA30E6551E771CE500F09610 /* CoreExtensionsTests */,
-				EA1C14041E3D7E90002E63BD /* ConfigurationTests */,
-				EACAA3EB1DC6CDE800D3D371 /* ConfigurationCoreTests */,
 				EAD40E0D1E3518CB0058C9FB /* ConnectTests */,
 				EA1C14031E3D7E7A002E63BD /* ContainerTests */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
@@ -409,14 +403,6 @@
 				EAC5C3281E626C150025D310 /* Model */,
 			);
 			path = ContainerTests;
-			sourceTree = "<group>";
-		};
-		EA1C14041E3D7E90002E63BD /* ConfigurationTests */ = {
-			isa = PBXGroup;
-			children = (
-				EACAA3E51DC6CDCD00D3D371 /* ConfigurationTests.swift */,
-			);
-			path = ConfigurationTests;
 			sourceTree = "<group>";
 		};
 		EA1C14231E3EF956002E63BD /* Docs */ = {
@@ -532,14 +518,6 @@
 				EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		EACAA3EB1DC6CDE800D3D371 /* ConfigurationCoreTests */ = {
-			isa = PBXGroup;
-			children = (
-				EACAA3EC1DC6CDE800D3D371 /* CCConfigurationTests.m */,
-			);
-			path = ConfigurationCoreTests;
 			sourceTree = "<group>";
 		};
 		EACAD6011E6C88EF000781A5 /* Queues */ = {
@@ -948,9 +926,7 @@
 				EACBC6511E77A017001D5431 /* Connect+StateManagementTests.swift in Sources */,
 				EACAD6A51E6FB4E4000781A5 /* ActionContainerTests.swift in Sources */,
 				EA30E6511E764CF600F09610 /* ContainerTestModel3.xcdatamodeld in Sources */,
-				EACAA3ED1DC6CDE800D3D371 /* CCConfigurationTests.m in Sources */,
 				EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
-				EACAA3E81DC6CDCD00D3D371 /* ConfigurationTests.swift in Sources */,
 				EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA1C14541E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift in Sources */,
 				EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
