@@ -62,6 +62,20 @@ public protocol Connect: PersistentStack {
     func start(block: @escaping (Error?) -> Void)
 
     ///
+    /// Synchronously stop the instance of `Connect` unloading the persistent stores.
+    ///
+    /// - Throws: If an error occurs.
+    ///
+    func stop() throws
+
+    ///
+    /// Asynchronously stop the instance of `Connect` unloading the persistent stores.
+    ///
+    /// - Parameter completionBlock: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    ///
+    func stop(block: @escaping (Error?) -> Void)
+
+    ///
     /// Suspend or resume the operation of `Connect`.
     ///
     /// - Note: This will suspend or activate all Queues.

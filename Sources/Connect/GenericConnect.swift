@@ -374,6 +374,18 @@ public extension GenericConnect {
 public extension GenericConnect {
 
     ///
+    /// Synchronously start the instance of `Connect`
+    ///
+    /// - Throws: If an error occurs.
+    ///
+    public func start() throws {
+
+        try self.synchronizationQueue.sync {
+            try self._start()
+        }
+    }
+
+    ///
     /// Asynchronously start the instance of `Connect`
     ///
     /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
@@ -392,14 +404,32 @@ public extension GenericConnect {
     }
 
     ///
-    /// Synchronously start the instance of `Connect`
+    /// Synchronously stop the instance of `Connect` unloading the persistent stores.
     ///
     /// - Throws: If an error occurs.
     ///
-    public func start() throws {
+    public func stop() throws {
 
         try self.synchronizationQueue.sync {
-            try self._start()
+            try self._stop()
+        }
+    }
+
+    ///
+    /// Asynchronously stop the instance of `Connect` unloading the persistent stores.
+    ///
+    /// - Parameter completionBlock: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    ///
+    public func stop(block: @escaping (Error?) -> Void) {
+
+        self.synchronizationQueue.async {
+            do {
+                try self._stop()
+
+                block(nil)
+            } catch {
+                block(error)
+            }
         }
     }
 
@@ -434,6 +464,7 @@ fileprivate extension GenericConnect {
     fileprivate func _start() throws {
 
         guard !started else {
+            logWarning(Log.tag) { "Instance '\(self.name)' already started, no action taken." }
             return
         }
 
@@ -441,32 +472,11 @@ fileprivate extension GenericConnect {
 
             logInfo(Log.tag) { "Starting instance '\(self.name)'..." }
 
-            logInfo(Log.tag) { "Loading persistent stores..." }
+            try self._loadModel()
 
-            let defaultLocation = BundleManager.url(for: self.name, bundleLocation: GenericConnect.defaultStoreLocation())
-
-            let resolvedConfiguration  = self.configuration.resolved(defaultLocation: defaultLocation)
-            let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true).resolved(defaultLocation: resolvedConfiguration.location)
-
-            try BundleManager.createIfAbsent(url: resolvedConfiguration.location)
-
-            self.dataCache.storeConfigurations = resolvedConfiguration.storeConfigurations
-            self.metaCache.storeConfigurations = [metaStoreConfiguration]
-            
-            try self.dataCache.loadPersistentStores()
-            try self.metaCache.loadPersistentStores()
+            try self._loadPersistentStores()
 
             self.writeAheadLog = try WriteAheadLog(persistentStack: self.metaCache)
-
-            ///
-            /// Initialize the entities
-            ///
-            for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
-
-                logInfo(Log.tag) { "Found entity '\(name)'." }
-
-                self.manage(name: name, entity: entity)
-            }
 
             self.registerForNotifications()
 
@@ -476,8 +486,97 @@ fileprivate extension GenericConnect {
             
             self.started = true
             
-            logInfo(Log.tag) { "Instance started." }
+            logInfo(Log.tag) { "Instance '\(self.name)' started." }
         }
+    }
+
+    /// Note: This private implementation method is unsynchronized  and
+    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///
+    fileprivate func _stop() throws {
+
+        guard started else {
+            logWarning(Log.tag) { "Instance '\(self.name)' already stopped, no action taken." }
+            return
+        }
+
+        try autoreleasepool {
+
+            logInfo(Log.tag) { "Stopping instance '\(self.name)'..." }
+
+            if !self._suspended {
+                self._suspended = true
+            }
+
+            self.unregisterForNotifications()
+
+            try self._unloadPersistentStores()
+
+            self.writeAheadLog = nil
+
+            try self._unloadModel()
+
+            self.started = false
+            
+            logInfo(Log.tag) { "Instance '\(self.name)' stopped." }
+        }
+    }
+
+    fileprivate func _loadPersistentStores() throws {
+
+        logInfo(Log.tag) { "Loading persistent stores..." }
+
+        let defaultLocation = BundleManager.url(for: self.name, bundleLocation: GenericConnect.defaultStoreLocation())
+
+        let resolvedConfiguration  = self.configuration.resolved(defaultLocation: defaultLocation)
+        let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true).resolved(defaultLocation: resolvedConfiguration.location)
+
+        try BundleManager.createIfAbsent(url: resolvedConfiguration.location)
+
+        self.dataCache.storeConfigurations = resolvedConfiguration.storeConfigurations
+        self.metaCache.storeConfigurations = [metaStoreConfiguration]
+
+        try self.dataCache.loadPersistentStores()
+        try self.metaCache.loadPersistentStores()
+    }
+
+    fileprivate func _unloadPersistentStores() throws {
+
+        logInfo(Log.tag) { "Unloading persistent stores..." }
+
+        try self.dataCache.unloadPersistentStores()
+        try self.metaCache.unloadPersistentStores()
+    }
+
+    fileprivate func _loadModel() throws {
+
+        logInfo(Log.tag) { "Loading model for instance '\(self.name)'..." }
+        ///
+        /// Initialize the entities
+        ///
+        for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
+            self.manage(name: name, entity: entity)
+        }
+
+        logInfo(Log.tag) { "Model for instance '\(self.name)' loaded." }
+    }
+
+    fileprivate func _unloadModel() throws {
+
+        logInfo(Log.tag) { "Unloading model for instance '\(self.name)'..." }
+        ///
+        /// Initialize the entities
+        ///
+        for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
+
+            if entity.managed {
+                entity.managed = false
+
+                self.entityQueues[name] = nil
+            }
+        }
+
+        logInfo(Log.tag) { "Model for instance '\(self.name)' unloaded." }
     }
 
     ///
@@ -493,12 +592,12 @@ fileprivate extension GenericConnect {
                 logInfo(Log.tag) { "\(newValue ? "Suspending" : "Resuming") queues." }
                 self.genericQueue.suspended = newValue
 
-                logInfo(Log.tag) { "Queue \"\(self.genericQueue.label)\" \(newValue ? "suspended" : "active")." }
+                logInfo(Log.tag) { "Queue '\(self.genericQueue.label)' \(newValue ? "suspended" : "active")." }
 
                 for queue in self.entityQueues.values {
                     queue.suspended = newValue
 
-                    logInfo(Log.tag) { "Queue \"\(queue.label)\" \(newValue ? "suspended" : "active")." }
+                    logInfo(Log.tag) { "Queue '\(queue.label)' \(newValue ? "suspended" : "active")." }
                 }
             }
         }

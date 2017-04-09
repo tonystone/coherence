@@ -177,7 +177,37 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
         }
     }
 
+    public func unloadPersistentStores() throws {
+
+        for store in self.persistentStoreCoordinator.persistentStores {
+
+            logInfo(self.tag) {
+
+                var message = "Unloading persistent store '\(store.configurationName)' for type '\(store.type)'"
+                if let url = store.url {
+                    message.append(" at: \(url.path)")
+                }
+                message.append(".")
+                return message
+            }
+
+            try self.persistentStoreCoordinator.remove(store)
+
+            logInfo(self.tag) { "Persistent store unloaded successfully." }
+        }
+    }
+
     fileprivate func addPersistentStore(for configuration: StoreConfiguration) throws {
+
+        logInfo(self.tag) {
+
+            var message = "Attaching persistent store '\(configuration.name ?? "default")' for type '\(configuration.type)'"
+            if let url = configuration.url {
+                message.append(" at: \(url.path)")
+            }
+            message.append(".")
+            return message
+        }
 
         let fileManager = FileManager.default
 
@@ -198,8 +228,6 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
                 try deleteIfExists("\(url.path)-wal")
             }
         }
-
-        logInfo(self.tag) { "Attaching persistent store \"\(configuration.url?.path ?? "nil")\" for type: \(configuration.type)."}
 
         try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: configuration.url, options: configuration.options)
 

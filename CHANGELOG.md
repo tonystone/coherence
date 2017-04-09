@@ -7,6 +7,8 @@ All significant changes to this project will be documented in this file.
 - Added `ContextStrategyType` allowing different ManagedObjectContext layout strategies to be used for both `Connect` and `GenericPersistentContainer`.
 - Added `BackgroundContext` which is the base type returned from `ContextStrategy` `newBackgroundContext`.
 - Added `Configuration` class to allow configuration of Connect instances.
+- Added `stop` state management to `Connect`.
+- Added `unloadPersistentStores` state management to `GenericPersistentContainer`.
 
 #### Breaking Updates 
 - Changed `Connect` to generic class to support `ContextStrategyType`.

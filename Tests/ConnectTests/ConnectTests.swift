@@ -25,8 +25,7 @@ fileprivate let modelName = "ConnectTestModel"
 
 class ConnectTests: XCTestCase {
 
-    let testModel      = ModelLoader.load(name: modelName)
-    let testEmptyModel = ModelLoader.load(name: modelName + "Empty")
+    let testModel = ModelLoader.load(name: modelName)
 
     override func setUp() {
         super.setUp()
@@ -97,110 +96,6 @@ class ConnectTests: XCTestCase {
         } catch {
             XCTFail(error.localizedDescription)
         }
-    }
-
-
-    func testStart() throws {
-
-        let input = (modelName: modelName, model: self.testModel)
-        let expected = 1
-
-        let expectation = self.expectation(description: "Completion block called.")
-
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-
-        connect.start() { (error) in
-            expectation.fulfill()
-        }
-
-        self.waitForExpectations(timeout: 5) { (error) in
-
-            if error == nil {
-                XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
-            }
-        }
-    }
-
-    func testStartWithIncompatibleStore() throws {
-
-        let input = (modelName: modelName,
-                     model: self.testModel,
-                     emptyModel: self.testEmptyModel,
-                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
-
-        /// Create the first instance of the persistent stores using the empty model
-        do {
-            var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
-
-            connect.storeConfigurations = input.descriptions
-            try connect.start()
-        }
-
-        /// Now create the second instance using the real model, it should throw an exception
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-        connect.storeConfigurations = input.descriptions
-
-        let expectation = self.expectation(description: "Completion block called with error.")
-
-        connect.start() { (error) in
-            if error == nil {
-                XCTFail("Failed to throw an error.")
-            }
-            expectation.fulfill()
-        }
-
-        self.waitForExpectations(timeout: 5) { (error) in
-            if let error = error {
-                XCTFail("\(error)")
-            }
-        }
-    }
-
-    func testStartThrows() throws {
-
-        let input = (modelName: modelName, model: self.testModel)
-        let expected = 1
-
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-        try connect.start()
-
-        XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
-    }
-
-    func testStart2xThrows() throws {
-
-        let input = (modelName: modelName, model: self.testModel)
-        let expected = 1
-
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-        try connect.start()
-        try connect.start() /// Calling start a second time should be a no-op
-
-        XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
-    }
-
-    func testStartThrowsWithIncompatibleStore() throws {
-
-        let input = (modelName: modelName,
-                     model: self.testModel,
-                     emptyModel: self.testEmptyModel,
-                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
-
-
-        /// Create the first instance of the persistent stores using the empty model
-        do {
-            let connect =  GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
-
-            connect.storeConfigurations = input.descriptions
-            try connect.start()
-        }
-
-        /// Now create the second instance using the real model, it should throw an exception
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-
-        connect.storeConfigurations = input.descriptions
-
-        XCTAssertThrowsError(try connect.start())
     }
 
     func testConnectEntityCanBeManagedUniquenessAttributesDefined() throws {
