@@ -35,12 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TraceLog.configure()
 
         do {
-            let baseURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-
-            let configurations = [StoreConfiguration(name: "Transient",  type: NSInMemoryStoreType),
-                                  StoreConfiguration(url: baseURL.appendingPathComponent("HR.sqlite"), name: "Persistent", type: NSSQLiteStoreType, overwriteIncompatibleStore: true)]
-
-            connect.storeConfigurations = configurations
+            connect.configuration = Configuration(storeConfigurations: [
+                    StoreConfiguration(name: "Transient",  type: NSInMemoryStoreType),
+                    StoreConfiguration(name: "Persistent", type: NSSQLiteStoreType, overwriteIncompatibleStore: true)
+                    ])
 
             try self.connect.start()
 

@@ -14,11 +14,11 @@ class StoreConfigurationTests: XCTestCase {
 
     func testInit() {
         let input = StoreConfiguration()
-        let expected: (url: URL,
+        let expected: (url: URL?,
                         name: String?,
                         type: String,
                         overwriteIncompatibleStore: Bool,
-                        options: [String: Any]) = (URL(fileURLWithPath: "/dev/null"), nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
+                        options: [String: Any]) = (nil, nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
 
         XCTAssertEqual(input.url,                        expected.url)
         XCTAssertEqual(input.name,                       expected.name)
@@ -39,14 +39,14 @@ class StoreConfigurationTests: XCTestCase {
 
     func testDescription() {
         let input    = StoreConfiguration()
-        let expected = "<StoreConfiguration> (type: SQLite, url: file:///dev/null)"
+        let expected = "<StoreConfiguration> (type: SQLite, url: nil)"
 
         XCTAssertEqual(input.description, expected)
     }
 
-    func testDescriptionWithNilURLValue() {
-        let input: URL? = nil
-        let expected = "<StoreConfiguration> (type: SQLite, url: nil)"
+    func testDescriptionWithURL() {
+        let input: URL? = URL(fileURLWithPath: "/dev/null")
+        let expected = "<StoreConfiguration> (type: SQLite, url: /dev/null)"
 
         var configuration = StoreConfiguration()
         configuration.url = input

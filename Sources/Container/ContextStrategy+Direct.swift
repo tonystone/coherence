@@ -25,7 +25,7 @@ extension ContextStrategy {
 
     ///
     /// A strategy that manages the viewContext and BackgroundContext connected diretly
-    /// tto the `NSPersistentStoreCoordinator`.
+    /// to the `NSPersistentStoreCoordinator`.
     ///
     /// Changes made to `BackgroundContext`s are propagated directly to the persistentStore
     /// allowing merge policies to be set and respected. 

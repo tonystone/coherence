@@ -42,6 +42,20 @@ internal func defaultPersistentStoreDirectory() -> URL {
     return GenericPersistentContainer<ContextStrategy.Mixed>.defaultStoreLocation()
 }
 
+internal func removePersistentStoreCache(for modelName: String) throws {
+
+    let url = defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).connect")
+
+    let fileManager = FileManager.default
+
+    if fileManager.fileExists(atPath: url.path) {
+        let files = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles)
+
+        for file in files {
+            try fileManager.removeItem(at: file)
+        }
+    }
+}
 
 internal func removePersistentStoreCache() throws {
     

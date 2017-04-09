@@ -33,11 +33,6 @@ public protocol PersistentStack {
     var name: String { get }
 
     ///
-    /// The persistent store configurations used to create the persistent stores referenced by this instance.
-    ///
-    var storeConfigurations: [StoreConfiguration] { get set }
-
-    ///
     /// The model this instance was constructed with.
     ///
     var managedObjectModel: NSManagedObjectModel { get }

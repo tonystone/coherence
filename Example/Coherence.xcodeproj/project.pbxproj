@@ -19,6 +19,7 @@
 		90E556DDA503834CEAD6EE14 /* Pods_Coherence_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19897CFC4B2C3F5E29F1374 /* Pods_Coherence_Example.framework */; };
 		910CCAC7BC0524E48467CD29 /* Pods_Coherence_Test_Host.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8113C6BC234826F68D6E4436 /* Pods_Coherence_Test_Host.framework */; };
 		A0E2F25BF7F642CE1447AFAB /* Pods_Coherence_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75BBAA30DEFA72C8CBE899C /* Pods_Coherence_Tests.framework */; };
+		EA1358A11E99E4630008A94A /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1358A01E99E4630008A94A /* ConfigurationTests.swift */; };
 		EA1C14131E3D80F3002E63BD /* GenericPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */; };
 		EA1C14141E3D80F6002E63BD /* ObjcPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */; };
 		EA1C14181E3D8104002E63BD /* ContainerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */; };
@@ -137,6 +138,7 @@
 		92E0A52AB6E160D59F17EFE2 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBF446C4B5F6CB3431A2835D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E19897CFC4B2C3F5E29F1374 /* Pods_Coherence_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA1358A01E99E4630008A94A /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationTests.swift; path = ConnectTests/ConfigurationTests.swift; sourceTree = "<group>"; };
 		EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPersistentContainerTests.swift; sourceTree = "<group>"; };
 		EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjcPersistentContainerTests.swift; sourceTree = "<group>"; };
 		EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerUser.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */,
 				EACBC64F1E779FC4001D5431 /* Connect+StateManagementTests.swift */,
 				EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */,
+				EA1358A01E99E4630008A94A /* ConfigurationTests.swift */,
 				EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */,
 				EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */,
 				EA5BDCA91E64CBB900527236 /* Extensions */,
@@ -679,7 +682,7 @@
 			attributes = {
 				CLASSPREFIX = CC;
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -929,6 +932,7 @@
 				EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA1C14541E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift in Sources */,
+				EA1358A11E99E4630008A94A /* ConfigurationTests.swift in Sources */,
 				EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
 				EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */,
 				EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */,
@@ -1054,14 +1058,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1094,13 +1103,18 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1109,6 +1123,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

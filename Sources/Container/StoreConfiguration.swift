@@ -20,12 +20,29 @@
 import Swift
 import CoreData
 
+
+extension StoreConfiguration {
+
+    public struct Default {
+
+        public static let url: URL? = nil
+
+        public static let name: String? = nil
+
+        public static let type: String = NSSQLiteStoreType
+
+        public static let overwriteIncompatibleStore: Bool = false
+
+        public static let options:[String: Any] = [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true]
+    }
+}
+
 ///
 /// A description object used to create and/or load a persistent store.
 ///
 public struct StoreConfiguration {
 
-    public init(url: URL                         = Default.url,
+    public init(url: URL?                        = Default.url,
                 name: String?                    = Default.name,
                 type: String                     = Default.type,
                 overwriteIncompatibleStore: Bool = Default.overwriteIncompatibleStore,
@@ -65,25 +82,9 @@ public struct StoreConfiguration {
     public var options: [String: Any]
 }
 
-extension StoreConfiguration {
-
-    public struct Default {
-
-        public static let url: URL = URL(fileURLWithPath: "/dev/null")
-
-        public static let name: String? = nil
-
-        public static let type: String = NSSQLiteStoreType
-
-        public static let overwriteIncompatibleStore: Bool = false
-
-        public static let options:[String: Any] = [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true]
-    }
-}
-
 extension StoreConfiguration: CustomStringConvertible {
 
     public var description: String {
-        return "<\(String(describing: type(of: self)))> (type: \(self.type), url: \(self.url?.absoluteString ?? "nil"))"
+        return "<\(String(describing: type(of: self)))> (type: \(self.type), url: \(self.url?.path ?? "nil"))"
     }
 }

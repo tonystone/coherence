@@ -21,13 +21,15 @@ import XCTest
 import CoreData
 @testable import Coherence
 
+fileprivate let modelName = "ConnectTestModel"
+
 class ActionContextMergeTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try removePersistentStoreCache(for: modelName)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -35,7 +37,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeUnmanagedObject() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let actionContext = connect.newActionContext()
@@ -60,7 +62,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeUnmanagedObjectUnnamedEntity() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let actionContext = connect.newActionContext()
@@ -91,7 +93,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeInsert() {
 
         do {
-            let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -145,7 +147,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeInsertReversedOrderInput() {
 
         do {
-            let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -200,7 +202,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeUpdate() {
 
         do {
-            let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -269,7 +271,7 @@ class ActionContextMergeTests: XCTestCase {
     func testMergeDelete() {
 
         do {
-            let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+            let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
             try connect.start()
 
             let actionContext = connect.newActionContext()
@@ -325,7 +327,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeUpdateIgnoreLocalUpdatedItems() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let editContext = connect.newBackgroundContext()
@@ -400,7 +402,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeInsertIgnoreLocalDeletedItems() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let editContext = connect.newBackgroundContext()
@@ -470,7 +472,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeDeleteIgnoreLocalUpdatedItems() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let editContext = connect.newBackgroundContext()
@@ -547,7 +549,7 @@ class ActionContextMergeTests: XCTestCase {
 
     func testMergeUpdateWithoutWriteAheadLog() throws {
 
-        let connect = GenericConnect<ContextStrategy.Mixed>(name: "ConnectTestModel")
+        let connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let editContext = connect.newBackgroundContext()

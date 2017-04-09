@@ -19,7 +19,6 @@
 ///
 import Swift
 
-
 internal struct Log {
     ///
     /// Tag used for all logging internally
@@ -40,6 +39,13 @@ internal struct Log {
 /// operations by type.
 ///
 public protocol Connect: PersistentStack {
+
+    ///
+    /// The persistent store configurations used to create the persistent stores referenced by this instance.
+    ///
+    var configuration: Configuration { get set }
+
+    var storeConfigurations: [StoreConfiguration] { get set }
 
     ///
     /// Synchronously start the instance of `Connect`

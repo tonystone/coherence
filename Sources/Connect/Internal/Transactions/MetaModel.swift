@@ -22,14 +22,14 @@ import CoreData
 
 internal class MetaModel: NSManagedObjectModel {
 
-    internal let metaConfigurationName = "_meta"
+    internal static let metaConfigurationName = "_meta"
 
     override init() {
         super.init()
 
         self.entities = [self.metaLogEntry(), self.refreshStatus()]
 
-        self.setEntities(self.entities, forConfigurationName: metaConfigurationName)
+        self.setEntities(self.entities, forConfigurationName: MetaModel.metaConfigurationName)
 
         self.versionIdentifiers = [1]
     }

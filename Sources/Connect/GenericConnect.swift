@@ -27,23 +27,23 @@ import UIKit
 ///
 fileprivate struct Default {
 
-    fileprivate struct Queue {
+    struct Queue {
         ///
         /// Prefix used for all queues
         ///
-        fileprivate static let prefix: String = "connect.queue"
+        static let prefix: String = "connect.queue"
     }
 
-    fileprivate struct ActionQueue {
+    struct ActionQueue {
         ///
         /// Qos for `ActionQueue`s within the system.
         ///
-        fileprivate static let qos: DispatchQoS = .utility
+        static let qos: DispatchQoS = .utility
 
         ///
         /// The startup state of the queues
         ///
-        fileprivate static let suspended: Bool = true
+        static let suspended: Bool = true
     }
 }
 
@@ -71,12 +71,14 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     ///
     /// The persistent store configurations used to create the persistent stores referenced by this instance.
     ///
+    public var configuration: Configuration
+
     public var storeConfigurations: [StoreConfiguration] {
         get {
-            return self.dataCache.storeConfigurations
+            return configuration.storeConfigurations
         }
         set {
-            self.dataCache.storeConfigurations = newValue
+            configuration.storeConfigurations = newValue
         }
     }
 
@@ -131,8 +133,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
-    /// - SeeAlso: `ConfigurationOptionsType` for structure
-    ///
     public convenience init(name: String) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
@@ -156,12 +156,11 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
-    /// - SeeAlso: `ConfigurationOptionsType` for structure
-    ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel) {
 
         self.name = name
-
+        self.configuration = Configuration()
+        
         self.dataCache = DataCacheType(name: name,                managedObjectModel: model,       logTag: Log.tag)
         self.metaCache = MetaCacheType(name: "\(name)._metadata", managedObjectModel: MetaModel(), logTag: Log.tag)
 
@@ -444,6 +443,16 @@ fileprivate extension GenericConnect {
 
             logInfo(Log.tag) { "Loading persistent stores..." }
 
+            let defaultLocation = BundleManager.url(for: self.name, bundleLocation: GenericConnect.defaultStoreLocation())
+
+            let resolvedConfiguration  = self.configuration.resolved(defaultLocation: defaultLocation)
+            let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true).resolved(defaultLocation: resolvedConfiguration.location)
+
+            try BundleManager.createIfAbsent(url: resolvedConfiguration.location)
+
+            self.dataCache.storeConfigurations = resolvedConfiguration.storeConfigurations
+            self.metaCache.storeConfigurations = [metaStoreConfiguration]
+            
             try self.dataCache.loadPersistentStores()
             try self.metaCache.loadPersistentStores()
 

@@ -21,7 +21,6 @@ import Foundation
 import CoreData
 import TraceLog
 
-
 ///
 /// Private constants
 ///
@@ -200,7 +199,7 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
             }
         }
 
-        logInfo(self.tag) { "Attaching persistent store \"\(configuration.url?.absoluteString ?? "nil")\" for type: \(configuration.type)."}
+        logInfo(self.tag) { "Attaching persistent store \"\(configuration.url?.path ?? "nil")\" for type: \(configuration.type)."}
 
         try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: configuration.url, options: configuration.options)
 

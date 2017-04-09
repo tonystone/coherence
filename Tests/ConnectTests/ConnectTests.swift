@@ -32,7 +32,7 @@ class ConnectTests: XCTestCase {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try removePersistentStoreCache(for: modelName)
         } catch {
             XCTFail(error.localizedDescription)
         }
