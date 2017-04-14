@@ -41,9 +41,18 @@ internal class NotificationService {
     internal weak var source: AnyObject?
 
     ///
+    /// We want to keep synchronous delivery of our notification to the default center but don't want to
+    /// block the posting queue/thread by the users code handling the notification.  This queue is used for
+    /// the users handling the notifications.
+    ///
+    private let notificationQueue: DispatchQueue
+
+    ///
     /// Init an instance of `NotificationService`.
     ///
-    internal init() {}
+    internal init() {
+        self.notificationQueue = DispatchQueue(label: "connect.queue.notification")  /// Serial queue.
+    }
 
     ///
     /// Notify the notificationService that an ActionProxy changed state.
@@ -55,10 +64,14 @@ internal class NotificationService {
         switch newState {
 
         case .executing:
-            NotificationCenter.default.post(name: Notification.ActionDidStartExecuting, object: self.source, userInfo: userInfo)
+            self.notificationQueue.async {
+                NotificationCenter.default.post(name: Notification.ActionDidStartExecuting, object: self.source, userInfo: userInfo)
+            }
             break
         case .finished:
-            NotificationCenter.default.post(name: Notification.ActionDidFinishExecuting, object: self.source, userInfo: userInfo)
+            self.notificationQueue.async {
+                NotificationCenter.default.post(name: Notification.ActionDidFinishExecuting, object: self.source, userInfo: userInfo)
+            }
             break
         default:
             break

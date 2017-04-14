@@ -57,7 +57,7 @@ public protocol Connect: PersistentStack {
     ///
     /// Asynchronously start the instance of `Connect`
     ///
-    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    /// - Parameter block: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
     ///
     func start(block: @escaping (Error?) -> Void)
 
@@ -71,7 +71,7 @@ public protocol Connect: PersistentStack {
     ///
     /// Asynchronously stop the instance of `Connect` unloading the persistent stores.
     ///
-    /// - Parameter completionBlock: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    /// - Parameter block: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
     ///
     func stop(block: @escaping (Error?) -> Void)
 

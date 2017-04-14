@@ -48,8 +48,6 @@ matrix:
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
   - rvm get head --auto-dotfiles || true
-  - rvm install 2.2.1
-  - rvm rvmrc warning ignore allGemfiles
   #
   # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
   #

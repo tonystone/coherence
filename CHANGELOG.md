@@ -1,6 +1,11 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0-beta.5](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.5) 
+
+#### changes
+- Moved `start` and `stop` blocks to execute on the global queue instead of the internal queue.
+
 ## [3.0.0-beta.4](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.4) 
 
 #### Added 

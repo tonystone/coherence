@@ -396,9 +396,15 @@ public extension GenericConnect {
             do {
                 try self._start()
 
-                block(nil)
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(nil)
+                }
             } catch {
-                block(error)
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(error)
+                }
             }
         }
     }
@@ -426,9 +432,15 @@ public extension GenericConnect {
             do {
                 try self._stop()
 
-                block(nil)
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(nil)
+                }
             } catch {
-                block(error)
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(error)
+                }
             }
         }
     }
