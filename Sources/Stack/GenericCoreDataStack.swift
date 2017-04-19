@@ -249,7 +249,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
                 
                 logError { message }
                 
-                var userInfo: [NSObject: AnyObject] = error.userInfo ?? [:]
+                var userInfo: [AnyHashable: Any] = error.userInfo 
                 userInfo[NSLocalizedDescriptionKey] = message
 
                 throw  NSError(domain: error.domain, code: error.code, userInfo: userInfo)
@@ -260,7 +260,7 @@ open class GenericCoreDataStack<CoordinatorType: NSPersistentStoreCoordinator, C
             
             logError { message }
 
-            var userInfo: [NSObject: AnyObject] = error.userInfo ?? [:]
+            var userInfo: [AnyHashable: Any] = error.userInfo
             userInfo[NSLocalizedDescriptionKey] = message
 
             throw  NSError(domain: error.domain, code: error.code, userInfo: userInfo)
