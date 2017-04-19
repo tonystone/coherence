@@ -198,7 +198,20 @@ class GenericCoreDataStackTests: XCTestCase {
         
         XCTAssertTrue(try persistentStoreDate(storePrefix: prefix, storeType: storeType, configuration: nil) > storeDate)
     }
-    
+
+    func testStackCreation_ForceIncompatibleStore() throws {
+
+        let model       = TestModel1()
+        let prefix      = String(describing: type(of: model.self))
+        let storeType   = NSSQLiteStoreType
+
+        // Initialize model 2 (no configurations), with model 1s name
+        let _ = try CoreDataStackType(managedObjectModel: TestModel2(), storeNamePrefix: prefix)
+
+        // Now use model 1 with model 1s name
+        XCTAssertThrowsError(try CoreDataStackType(managedObjectModel: model, storeNamePrefix: prefix, configurationOptions: [defaultModelConfigurationName: (storeType: storeType, storeOptions: [:], migrationManager: nil)]))
+    }
+
     func testConstruction_WithAsyncErrorHandler() {
         
         let model  = TestModel1()
