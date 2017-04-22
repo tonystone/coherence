@@ -27,6 +27,7 @@ internal let persistentStoreType = NSSQLiteStoreType
 internal class WriteAheadLog {
 
     internal enum Errors: Error {
+        case missingStoreLocation(String)
         case couldNotLocateEntityDescription(String)
         case failedToCreateLogEntry(String)
         case failedToObtainPermanentIDs(String)
@@ -45,9 +46,7 @@ internal class WriteAheadLog {
     ///
     /// Tracks the sequence number in this instance.
     ///
-    /// - Note: Access must be synchronized with objc_sync_enter(self) and objc_sync_exit(self) pairs
-    ///
-    var nextSequenceNumber = 0
+    var sequence: Sequence
 
     init(persistentStack: PersistentStack) throws {
         
@@ -55,30 +54,28 @@ internal class WriteAheadLog {
             "Initializing WriteAheadLog instance..."
         }
 
-        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentStack.viewContext) else {
-            throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName).")
-        }
+        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentStack.viewContext)
+            else { throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName).") }
 
-        self.persistentStack = persistentStack
+        self.persistentStack    = persistentStack
         self.metaLogEntryEntity = entity
-        
-        nextSequenceNumber = try self.lastLogEntrySequenceNumber() + 1
-        
+
+        let startSequence = try WriteAheadLog.lastLogEntrySequenceNumber(persistentStack: persistentStack, metaLogEntryEntity: entity)
+
+        self.sequence = InMemorySequence(start: startSequence)
+
         logInfo(Log.tag) {
-            "Starting Transaction ID: \(self.nextSequenceNumber)"
+            "Starting Transaction ID: \(self.sequence.start)"
         }
         
         logInfo(Log.tag) {
             "WriteAheadLog instance initialized."
         }
     }
-    
-    private func lastLogEntrySequenceNumber () throws -> Int {
-        
-        objc_sync_enter(self)
-        defer {
-            objc_sync_exit(self)
-        }
+
+    /* @testable */
+    internal class func lastLogEntrySequenceNumber (persistentStack: PersistentStack, metaLogEntryEntity: NSEntityDescription) throws -> Int {
+
         let metadataContext = persistentStack.newBackgroundContext()
         
         //
@@ -96,22 +93,7 @@ internal class WriteAheadLog {
             
             return Int(lastLogRecord.sequenceNumber)
         }
-        return 0
-    }
-    
-    internal /// @testable
-    func nextSequenceNumberBlock(_ size: Int) -> ClosedRange<Int> {
-        
-        objc_sync_enter(self)
-        defer {
-            objc_sync_exit(self)
-        }
-        let sequenceNumberBlockStart = nextSequenceNumber
-        let sequenceNumberBlockEnd   = nextSequenceNumber + size - 1
-
-        nextSequenceNumber = sequenceNumberBlockEnd + 1
-
-        return sequenceNumberBlockStart...sequenceNumberBlockEnd
+        return 1
     }
 
     internal func logTransactionForContextChanges(_ transactionContext: NSManagedObjectContext) throws -> TransactionID {
@@ -133,7 +115,7 @@ internal class WriteAheadLog {
             ///
             /// Sequence number = begin + end + inserted + updated + deleted
             ///
-            let sequenceNumberBlock = self.nextSequenceNumberBlock(2 + inserted.count + updated.count + deleted.count)
+            let sequenceNumberBlock = self.sequence.nextBlock(size: 2 + inserted.count + updated.count + deleted.count)
             var sequenceNumber = sequenceNumberBlock.lowerBound
 
             let metadataContext = self.persistentStack.newBackgroundContext()

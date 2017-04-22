@@ -45,20 +45,6 @@ class WriteAheadLogTests: XCTestCase {
         super.tearDown()
     }
 
-    func testInit() {
-
-        let input = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-        let expected: ClosedRange<Int> = 1...1
-
-        do {
-            let log = try WriteAheadLog(persistentStack: input)
-
-            XCTAssertEqual(log.nextSequenceNumberBlock(1), expected)
-        } catch {
-            XCTFail("\(error.localizedDescription)")
-        }
-    }
-
     func testInitFailedToFindMetaLogEntity() {
 
         let input = PersistentContainerType(name: "MetaModel", managedObjectModel: NSManagedObjectModel())
@@ -75,7 +61,7 @@ class WriteAheadLogTests: XCTestCase {
     func testLastLogEntrySequenceNumber() {
 
         let input = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-        let expected: ClosedRange<Int> = 5...5
+        let expected = 5
 
         do {
             try input.loadPersistentStores()
@@ -83,13 +69,15 @@ class WriteAheadLogTests: XCTestCase {
             /// prime the database with mock records
             let context = input.newBackgroundContext()
 
+            guard let logEntry = NSEntityDescription.insertNewObject(forEntityName: "MetaLogEntry", into: context) as? MetaLogEntry else {
+                XCTFail()
+                return
+            }
+
             try context.performAndWait {
 
-                for index in 0..<5 {
-                    guard let logEntry = NSEntityDescription.insertNewObject(forEntityName: "MetaLogEntry", into: context) as? MetaLogEntry else {
-                        XCTFail()
-                        return
-                    }
+                for index in 1...5 {
+
                     logEntry.transactionID = "\(index)"
                     logEntry.sequenceNumber = Int32(index)
                     logEntry.previousSequenceNumber = Int32(index - 1)
@@ -99,28 +87,7 @@ class WriteAheadLogTests: XCTestCase {
                 try context.save()
             }
 
-            let log = try WriteAheadLog(persistentStack: input)
-
-            XCTAssertEqual(log.nextSequenceNumberBlock(1), expected)
-        } catch {
-            XCTFail("\(error.localizedDescription)")
-        }
-    }
-
-    func testNextSequenceNumberBlock() {
-
-        let input = [5, 2, 10, 4, 22]
-        let expected: [ClosedRange<Int>] = [1...5, 6...7, 8...17, 18...21, 22...43]
-
-        do {
-            let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-            let log = try WriteAheadLog(persistentStack: container)
-
-            for index in 0..<input.count {
-                let blockSize = input[index]
-                XCTAssertEqual(log.nextSequenceNumberBlock(blockSize), expected[index])
-            }
-
+            XCTAssertEqual(try WriteAheadLog.lastLogEntrySequenceNumber(persistentStack: input, metaLogEntryEntity: logEntry.entity), expected)
         } catch {
             XCTFail("\(error.localizedDescription)")
         }
