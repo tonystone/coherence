@@ -21,29 +21,31 @@ matrix:
       osx_image: xcode8.3
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6s"
+         - TEST_DEST="platform=iOS Simulator,OS=10.3,name=iPhone 7"
          - TEST_SDK=iphonesimulator
-    -
-      os: osx
-      osx_image: xcode8.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.1,name=iPhone 7"
-         - TEST_SDK=iphonesimulator
-    -
-      os: osx
-      osx_image: xcode8.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6" 
-         - TEST_SDK=iphonesimulator
-    -
-      os: osx
-      osx_image: xcode8.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s" 
-         - TEST_SDK=iphonesimulator
+
+# Removing other builds until travis fixes their image from https://github.com/travis-ci/travis-ci/issues/7638
+#   -
+#      os: osx
+#      osx_image: xcode8.3
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=10.1,name=iPhone 6s"
+#         - TEST_SDK=iphonesimulator
+#    -
+#      os: osx
+#      osx_image: xcode8.3
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
+#         - TEST_SDK=iphonesimulator
+#    -
+#      os: osx
+#      osx_image: xcode8.3
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s"
+#         - TEST_SDK=iphonesimulator
 
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
