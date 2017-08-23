@@ -8,6 +8,7 @@ env:
   global:
     - WORKSPACE=Example/Coherence.xcworkspace
     - SCHEME="Coherence Test Host"
+    - TEST_SDK=iphonesimulator
 
 matrix:
   include:
@@ -16,72 +17,57 @@ matrix:
       osx_image: xcode8.3
       env: 
          - BUILD="pod lint"
-    -
+    - 
       os: osx
       osx_image: xcode8.3
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.3,name=iPhone 7"
-         - TEST_SDK=iphonesimulator
-
-# Removing other builds until travis fixes their image from https://github.com/travis-ci/travis-ci/issues/7638
-#   -
-#      os: osx
-#      osx_image: xcode8.3
-#      env:
-#         - BUILD="xcodebuild"
-#         - TEST_DEST="platform=iOS Simulator,OS=10.1,name=iPhone 6s"
-#         - TEST_SDK=iphonesimulator
-#    -
-#      os: osx
-#      osx_image: xcode8.3
-#      env:
-#         - BUILD="xcodebuild"
-#         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
-#         - TEST_SDK=iphonesimulator
-#    -
-#      os: osx
-#      osx_image: xcode8.3
-#      env:
-#         - BUILD="xcodebuild"
-#         - TEST_DEST="platform=iOS Simulator,OS=9.0,name=iPhone 4s"
-#         - TEST_SDK=iphonesimulator
+         - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
+    - 
+      os: osx
+      osx_image: xcode8.3
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=10.0,name=iPhone 6"
+    - 
+      os: osx
+      osx_image: xcode8.3
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
+    - 
+      os: osx
+      osx_image: xcode8.3
+      env: 
+         - BUILD="xcodebuild"
+         - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s"
 
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
   - rvm get head --auto-dotfiles || true
-  #
-  # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
-  #
-  - |
-    if [ -e Gemfile ]; then
-       export BUNDLE_GEMFILE=Gemfile
-       gem install bundler
-       bundler install
-    fi
+  - brew unlink swiftlint
+  - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/498e8046cc166d1c7043de66735f1a5567f8f0ef/Formula/swiftlint.rb
 
 script:
   - |
-    if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
-       # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
-       rvm get head --auto-dotfiles || true
-    fi
-  - |
     if [[ "$BUILD" == "swift build"  ]]; then
-      set -e
+      set -e  # Fail (and stop build) on first non zero exit code
       swift test
       set +e
     fi
   - |
     if [[ "$BUILD" == "pod lint" ]]; then
-        set -e
+        set -e  # Fail (and stop build) on first non zero exit code
         bundler exec pod repo update
         bundler exec pod lib lint
         set +e
     fi
   - |
     if [[ "$BUILD" == "xcodebuild"  ]]; then
-       travis_retry ./.travis/scripts/xcode_build_test.sh
+        set -eo pipefail
+        xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$TEST_DEST" -sdk "$TEST_SDK" -enableCodeCoverage YES build-for-testing | bundler exec xcpretty
+        xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$TEST_DEST" -sdk "$TEST_SDK" -enableCodeCoverage YES test              | bundler exec xcpretty
+        set +eo pipefail
     fi
 
 after_success:

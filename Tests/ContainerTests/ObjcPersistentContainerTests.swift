@@ -32,7 +32,7 @@ class ObjcPersistentContainerTests: XCTestCase {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -40,7 +40,7 @@ class ObjcPersistentContainerTests: XCTestCase {
     
     override func tearDown() {
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -50,7 +50,7 @@ class ObjcPersistentContainerTests: XCTestCase {
     func testConstructionWithName() {
 
         let input  = "ContainerTestModel4"
-        let expected = (name: input, model: ModelLoader.load(name: "ContainerTestModel4"))
+        let expected = (name: input, model: TestModelLoader.load(name: "ContainerTestModel4"))
 
         let container = ObjcPersistentContainer(name: input)
 
@@ -60,7 +60,7 @@ class ObjcPersistentContainerTests: XCTestCase {
 
     func testConstructionNameAndModel() {
 
-        let input  = (name: "TestModel", model: ModelLoader.load(name: "ContainerTestModel4"))
+        let input  = (name: "TestModel", model: TestModelLoader.load(name: "ContainerTestModel4"))
         let expected = input
 
         let container = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
@@ -71,49 +71,15 @@ class ObjcPersistentContainerTests: XCTestCase {
     
     func testConstructionWithDescription () {
 
-        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")))
-        let expected = input.configuration.url
+        let input = (name: "ContainerTestModel1", model: TestModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(fileName: "ContainerTestModel1.sqlite"))
+        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")
 
         do {
             let container = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
-            container.storeConfigurations = [input.configuration]
 
-            try container.loadPersistentStores()
+            try container.loadPersistentStores(for: [input.configuration])
 
-            XCTAssertTrue(try persistentStoreExists(url: expected))
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
-    }
-
-    func testStoreConfigurations() {
-
-        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")))
-
-        let expected: (url: URL,
-            name: String?,
-            type: String,
-            overwriteIncompatibleStore: Bool,
-            options: [String: Any]) = (defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite"), nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
-
-
-        do {
-            let container = ObjcPersistentContainer(name: input.name, managedObjectModel: input.model)
-            container.storeConfigurations = [input.configuration]
-
-            try container.loadPersistentStores()
-
-            if container.storeConfigurations.count >= 1 {
-                let configuration = container.storeConfigurations[0]
-
-                XCTAssertEqual(configuration.url,                        expected.url)
-                XCTAssertEqual(configuration.name,                       expected.name)
-                XCTAssertEqual(configuration.overwriteIncompatibleStore, expected.overwriteIncompatibleStore)
-                XCTAssertEqual(configuration.options[NSInferMappingModelAutomaticallyOption] as? Bool,       expected.options[NSInferMappingModelAutomaticallyOption] as? Bool)
-                XCTAssertEqual(configuration.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool, expected.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool)
-            } else {
-                XCTFail()
-            }
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -123,7 +89,7 @@ class ObjcPersistentContainerTests: XCTestCase {
 
         let input = (firstName: "firstName", lastName: "lastName", userName: "userName")
 
-        let container = ObjcPersistentContainer(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
+        let container = ObjcPersistentContainer(name: "ContainerTestModel1", managedObjectModel:  TestModelLoader.load(name: "ContainerTestModel1"))
         try container.loadPersistentStores()
 
         let editContext = container.newBackgroundContext()

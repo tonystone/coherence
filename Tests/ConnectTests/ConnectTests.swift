@@ -25,13 +25,13 @@ fileprivate let modelName = "ConnectTestModel"
 
 class ConnectTests: XCTestCase {
 
-    let testModel = ModelLoader.load(name: modelName)
+    let testModel = TestModelLoader.load(name: modelName)
 
     override func setUp() {
         super.setUp()
 
         do {
-            try removePersistentStoreCache(for: modelName)
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -64,38 +64,6 @@ class ConnectTests: XCTestCase {
         let expected = input
 
         XCTAssertEqual(GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: input).managedObjectModel , expected)
-    }
-
-    func testStoreConfigurations() {
-
-        let input = (name: modelName, configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite")))
-        let expected: (url: URL,
-            name: String?,
-            type: String,
-            overwriteIncompatibleStore: Bool,
-            options: [String: Any]) = (defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
-
-
-        do {
-            let container = GenericConnect<ContextStrategy.Mixed>(name: input.name)
-            container.storeConfigurations = [input.configuration]
-
-            try container.start()
-
-            if container.storeConfigurations.count >= 1 {
-                let configuration = container.storeConfigurations[0]
-
-                XCTAssertEqual(configuration.url,                        expected.url)
-                XCTAssertEqual(configuration.name,                       expected.name)
-                XCTAssertEqual(configuration.overwriteIncompatibleStore, expected.overwriteIncompatibleStore)
-                XCTAssertEqual(configuration.options[NSInferMappingModelAutomaticallyOption] as? Bool,       expected.options[NSInferMappingModelAutomaticallyOption] as? Bool)
-                XCTAssertEqual(configuration.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool, expected.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool)
-            } else {
-                XCTFail()
-            }
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
     }
 
     func testConnectEntityCanBeManagedUniquenessAttributesDefined() throws {

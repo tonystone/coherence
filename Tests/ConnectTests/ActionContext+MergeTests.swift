@@ -29,7 +29,7 @@ class ActionContextMergeTests: XCTestCase {
         super.setUp()
 
         do {
-            try removePersistentStoreCache(for: modelName)
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }

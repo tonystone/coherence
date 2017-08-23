@@ -33,7 +33,7 @@ class GenericPersistentContainerTests: XCTestCase {
         super.setUp()
         
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -41,7 +41,7 @@ class GenericPersistentContainerTests: XCTestCase {
     
     override func tearDown() {
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -64,7 +64,7 @@ class GenericPersistentContainerTests: XCTestCase {
     func testInitWithName() {
 
         let input  = "ContainerTestModel4"
-        let expected = (name: input, model: ModelLoader.load(name: input))
+        let expected = (name: input, model: TestModelLoader.load(name: input))
 
         let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input)
 
@@ -74,7 +74,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
     func testInitWithNameAndModel() {
 
-        let input  = (name: "ContainerTestModel", model: ModelLoader.load(name: "ContainerTestModel4"))
+        let input  = (name: "ContainerTestModel", model: TestModelLoader.load(name: "ContainerTestModel4"))
         let expected = input
 
         let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.name, managedObjectModel: input.model)
@@ -85,7 +85,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
     func testInitWithAsyncErrorHandler() {
 
-        let model     = ModelLoader.load(name: "ContainerTestModel1")
+        let model     = TestModelLoader.load(name: "ContainerTestModel1")
         let name      = "ContainerTestModel1"
 
         let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: name, managedObjectModel: model, asyncErrorBlock: { (error) -> Void in
@@ -94,9 +94,9 @@ class GenericPersistentContainerTests: XCTestCase {
         })
 
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores()
 
-            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType))
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -116,185 +116,178 @@ class GenericPersistentContainerTests: XCTestCase {
         Coherence.defaultAsyncErrorHandlingBlock(tag: "Testing")(input)
     }
 
-    func testLoadPersistentStoresWithConfigurations() throws {
+    func testAttachPersistentStoresWithConfigurations() throws {
         
-        let input = (modelName: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.\(NSSQLiteStoreType.lowercased())")))
-        let expected = input.configuration.url
+        let input = (modelName: "ContainerTestModel1", model: TestModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(fileName: "ContainerTestModel1.\(NSSQLiteStoreType.lowercased())"))
+        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.\(NSSQLiteStoreType.lowercased())")
 
         let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
-        container.storeConfigurations = [input.configuration]
-
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores(for: [input.configuration])
             
-            XCTAssertTrue(try persistentStoreExists(url: expected))
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected))
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    func testLoadPersistentStoresWithEmptyDescriptions() throws {
+    func testAttachPersistentStoresWithEmptyDescriptions() throws {
 
         let input = (modelName: "ContainerTestModel1",
-                     model: ModelLoader.load(name: "ContainerTestModel1"),
+                     model: TestModelLoader.load(name: "ContainerTestModel1"),
                      configurations: [] as [StoreConfiguration])
-        let expected = defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")
+        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")
 
         let container = GenericPersistentContainer<ContextStrategy.IndirectNested>(name: input.modelName, managedObjectModel: input.model)
 
-        container.storeConfigurations = input.configurations
-
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores(for: input.configurations)
 
-            let exists = try persistentStoreExists(url: expected)
+            let exists = TestPersistentStoreManager.persistentStoreExists(url: expected)
             XCTAssertTrue(exists)
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    func testLoadPersistentStoresWithMultiConfigurationAndSQLiteStoreType() throws {
-        
-        let input = (modelName: "ContainerTestModel3",
-                     model: ModelLoader.load(name: "ContainerTestModel3"),
-                     transientDescription:  StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"),  name: "TransientEntities",  type: NSSQLiteStoreType),
-                     persistentDescription: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"), name: "PersistentEntities", type: NSSQLiteStoreType))
+    func testAttachPersistentStoresWithMultiConfigurationAndSQLiteStoreType() throws {
 
-        let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
+        let input = (modelName: "ContainerTestModel3",
+                     model: TestModelLoader.load(name: "ContainerTestModel3"),
+                     transientConfiguration:  StoreConfiguration(fileName: "ContainerTestModel3-transient.sqlite",  name: "TransientEntities",  type: NSSQLiteStoreType),
+                     persistentConfiguration: StoreConfiguration(fileName: "ContainerTestModel3-persistent.sqlite", name: "PersistentEntities", type: NSSQLiteStoreType))
+
+        let expected = (transientUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"), persistentUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"))
 
         let container = GenericPersistentContainer<ContextStrategy.IndirectNested>(name: input.modelName, managedObjectModel: input.model)
 
-        container.storeConfigurations = [input.transientDescription, input.persistentDescription]
-        
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores(for: [input.transientConfiguration, input.persistentConfiguration])
 
-            XCTAssertTrue(try persistentStoreExists(url: expected.transientUrl), "Persistent store does not exist on disk.")
-            XCTAssertTrue(try persistentStoreExists(url: expected.persistentUrl), "Persistent store does not exist on disk.")
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected.transientUrl), "Persistent store does not exist on disk.")
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected.persistentUrl), "Persistent store does not exist on disk.")
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    func testLoadPersistentStoresWithMultiConfigurationAndInMemoryType() throws {
+    func testAttachPersistentStoresWithMultiConfigurationAndInMemoryType() throws {
         
         let input = (modelName: "ContainerTestModel3",
-                     model: ModelLoader.load(name: "ContainerTestModel3"),
-                     transientDescription:  StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"),  name: "TransientEntities",  type: NSInMemoryStoreType),
-                     persistentDescription: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"), name: "PersistentEntities", type: NSInMemoryStoreType))
+                     model: TestModelLoader.load(name: "ContainerTestModel3"),
+                     transientConfiguration:  StoreConfiguration(fileName: "ContainerTestModel3-transient.sqlite",  name: "TransientEntities",  type: NSInMemoryStoreType),
+                     persistentConfiguration: StoreConfiguration(fileName: "ContainerTestModel3-persistent.sqlite", name: "PersistentEntities", type: NSInMemoryStoreType))
 
-        let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
+        let expected = (transientUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"), persistentUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"))
 
         let container = GenericPersistentContainer<ContextStrategy.IndirectNested>(name: input.modelName, managedObjectModel: input.model)
 
-        container.storeConfigurations = [input.transientDescription, input.persistentDescription]
-
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores(for: [input.transientConfiguration, input.persistentConfiguration])
 
-            XCTAssertFalse(try persistentStoreExists(url: expected.transientUrl), "Persistent store exist on disk but should not.")
-            XCTAssertFalse(try persistentStoreExists(url: expected.persistentUrl), "Persistent store exist on disk but should not.")
+            XCTAssertFalse(TestPersistentStoreManager.persistentStoreExists(url: expected.transientUrl), "Persistent store exist on disk but should not.")
+            XCTAssertFalse(TestPersistentStoreManager.persistentStoreExists(url: expected.persistentUrl), "Persistent store exist on disk but should not.")
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    func testLoadPersistentStoresWithMultiConfigurationAndMixedType() throws {
+    func testAttachPersistentStoresWithMultiConfigurationAndMixedType() throws {
         
         let input = (modelName: "ContainerTestModel3",
-                     model: ModelLoader.load(name: "ContainerTestModel3"),
-                     transientDescription:  StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"),  name: "TransientEntities",  type: NSInMemoryStoreType),
-                     persistentDescription: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"), name: "PersistentEntities", type: NSSQLiteStoreType))
+                     model: TestModelLoader.load(name: "ContainerTestModel3"),
+                     transientConfiguration:  StoreConfiguration(fileName: "ContainerTestModel3-transient.sqlite",  name: "TransientEntities",  type: NSInMemoryStoreType),
+                     persistentConfiguration: StoreConfiguration(fileName: "ContainerTestModel3-persistent.sqlite", name: "PersistentEntities", type: NSSQLiteStoreType))
 
-        let expected = (transientUrl: input.transientDescription.url, persistentUrl: input.persistentDescription.url)
+        let expected = (transientUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-transient.sqlite"), persistentUrl: TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel3-persistent.sqlite"))
 
         let container = GenericPersistentContainer<ContextStrategy.DirectIndependent>(name: input.modelName, managedObjectModel: input.model)
 
-        container.storeConfigurations = [input.transientDescription, input.persistentDescription]
-
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores(for: [input.transientConfiguration, input.persistentConfiguration])
 
-            XCTAssertFalse(try persistentStoreExists(url: expected.transientUrl), "Persistent store exist on disk but should not.")
-            XCTAssertTrue(try persistentStoreExists(url: expected.persistentUrl), "Persistent store does not exist on disk.")
+            XCTAssertFalse(TestPersistentStoreManager.persistentStoreExists(url: expected.transientUrl), "Persistent store exist on disk but should not.")
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected.persistentUrl), "Persistent store does not exist on disk.")
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
-    func testLoadPersistentStoresWithMultiConfigurationAndDefaultStoreType() throws {
+    func testAttachPersistentStoresWithMultiConfigurationAndDefaultStoreType() throws {
         
-        let model = ModelLoader.load(name: "ContainerTestModel3")
+        let model = TestModelLoader.load(name: "ContainerTestModel3")
         let name  = "ContainerTestModel3"
 
         let container = GenericPersistentContainer<ContextStrategy.DirectIndependent>(name: name, managedObjectModel: model)
 
         do {
-            let _ = try container.loadPersistentStores()
+            let _ = try container.attachPersistentStores()
 
-            XCTAssertTrue(try persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType))
+            XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: name, storeType: NSSQLiteStoreType))
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
 
-    func testLoadPersistentStoresWithOverwriteIncompatibleStore() throws {
+    func testAttachPersistentStoresWithOverwriteIncompatibleStore() throws {
 
         let input = (modelName: "ContainerTestModel1",
-                     model1: ModelLoader.load(name: "ContainerTestModel1"),
-                     model2: ModelLoader.load(name: "ContainerTestModel2"),
-                     configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite"), overwriteIncompatibleStore: true))
-        let expected = input.configuration.url
+                     model1: TestModelLoader.load(name: "ContainerTestModel1"),
+                     model2: TestModelLoader.load(name: "ContainerTestModel2"),
+                     configuration: StoreConfiguration(fileName: "ContainerTestModel1.sqlite", overwriteIncompatibleStore: true))
+        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")
 
         do {
             let container = GenericPersistentContainer<ContextStrategy.DirectIndependent>(name: input.modelName, managedObjectModel: input.model1)
-            container.storeConfigurations = [input.configuration]
 
-            try container.loadPersistentStores()
+            try container.attachPersistentStores(for: [input.configuration])
         }
-        let storeDate = try persistentStoreDate(url: expected)
+        let storeDate = try TestPersistentStoreManager.persistentStoreDate(url: expected)
 
         /// Sleep so we have a significant change in date of the store file.
         sleep(1)
 
         let container = GenericPersistentContainer<ContextStrategy.DirectIndependent>(name: input.modelName, managedObjectModel: input.model2)
-        container.storeConfigurations = [input.configuration]
 
-        try container.loadPersistentStores()
+        try container.attachPersistentStores(for: [input.configuration])
 
-        XCTAssertTrue(try persistentStoreDate(url: expected) > storeDate)
+        XCTAssertTrue(try TestPersistentStoreManager.persistentStoreDate(url: expected) > storeDate)
     }
 
-    func testStoreConfigurations() {
+    func testDetachPersistentStore() throws {
 
-        let input = (name: "ContainerTestModel1", model: ModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite")))
+        let input = (modelName: "ContainerTestModel1", model: TestModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration())
 
-        let expected: (url: URL,
-            name: String?,
-            type: String,
-            overwriteIncompatibleStore: Bool,
-            options: [String: Any]) = (defaultPersistentStoreDirectory().appendingPathComponent("ContainerTestModel1.sqlite"), nil, NSSQLiteStoreType, false, [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true])
-
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         do {
-            let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.name, managedObjectModel: input.model)
-            container.storeConfigurations = [input.configuration]
+            let testStore = try container.attachPersistentStore(for: input.configuration)
 
-            try container.loadPersistentStores()
+            XCTAssertTrue(container.persistentStoreCoordinator.persistentStores.contains(testStore))
 
-            if container.storeConfigurations.count >= 1 {
-                let configuration = container.storeConfigurations[0]
+            try container.detach(persistentStore: testStore)
 
-                XCTAssertEqual(configuration.url,                        expected.url)
-                XCTAssertEqual(configuration.name,                       expected.name)
-                XCTAssertEqual(configuration.overwriteIncompatibleStore, expected.overwriteIncompatibleStore)
-                XCTAssertEqual(configuration.options[NSInferMappingModelAutomaticallyOption] as? Bool,       expected.options[NSInferMappingModelAutomaticallyOption] as? Bool)
-                XCTAssertEqual(configuration.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool, expected.options[NSMigratePersistentStoresAutomaticallyOption] as? Bool)
-            } else {
-                XCTFail()
-            }
+            XCTAssertFalse(container.persistentStoreCoordinator.persistentStores.contains(testStore))
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+
+    func testDetachPersistentStores() throws {
+
+        let input = (modelName: "ContainerTestModel1", model: TestModelLoader.load(name: "ContainerTestModel1"), configuration: StoreConfiguration())
+
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
+
+        do {
+            let testStore = try container.attachPersistentStore(for: input.configuration)
+
+            XCTAssertTrue(container.persistentStoreCoordinator.persistentStores.contains(testStore))
+
+            try container.detach(persistentStores: [testStore])
+
+            XCTAssertFalse(container.persistentStoreCoordinator.persistentStores.contains(testStore))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -304,8 +297,8 @@ class GenericPersistentContainerTests: XCTestCase {
 
         let input = (firstName: "firstName", lastName: "lastName", userName: "userName")
 
-        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: "ContainerTestModel1", managedObjectModel:  ModelLoader.load(name: "ContainerTestModel1"))
-        try container.loadPersistentStores()
+        let container = GenericPersistentContainer<ContextStrategy.Mixed>(name: "ContainerTestModel1", managedObjectModel:  TestModelLoader.load(name: "ContainerTestModel1"))
+        try container.attachPersistentStores()
 
         let editContext = container.newBackgroundContext()
         let viewContext = container.viewContext

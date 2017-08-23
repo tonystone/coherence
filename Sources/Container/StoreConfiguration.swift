@@ -17,15 +17,15 @@
 ///
 ///  Created by Tony Stone on 3/17/17.
 ///
+import Foundation
 import Swift
 import CoreData
-
 
 extension StoreConfiguration {
 
     public struct Default {
 
-        public static let url: URL? = nil
+        public static let fileName: String? = nil
 
         public static let name: String? = nil
 
@@ -42,13 +42,13 @@ extension StoreConfiguration {
 ///
 public struct StoreConfiguration {
 
-    public init(url: URL?                        = Default.url,
+    public init(fileName: String?                = Default.fileName,
                 name: String?                    = Default.name,
                 type: String                     = Default.type,
                 overwriteIncompatibleStore: Bool = Default.overwriteIncompatibleStore,
                 options: [String: Any]           = Default.options) {
 
-        self.url                        = url
+        self.fileName                   = fileName
         self.name                       = name
         self.type                       = type
         self.overwriteIncompatibleStore = overwriteIncompatibleStore
@@ -56,9 +56,9 @@ public struct StoreConfiguration {
     }
 
     ///
-    /// The URL specifying the stores location.
+    /// The name of the file that will be written to disk.
     ///
-    public var url: URL?
+    public var fileName: String?
 
     ///
     /// The name of the configuration used by this store.
@@ -85,6 +85,27 @@ public struct StoreConfiguration {
 extension StoreConfiguration: CustomStringConvertible {
 
     public var description: String {
-        return "<\(String(describing: type(of: self)))> (type: \(self.type), url: \(self.url?.path ?? "nil"))"
+        var string = "<\(String(describing: type(of: self)))> ("
+
+        if let fileName = self.fileName {
+            string.append("fileName: '\(fileName)', ")
+        }
+
+        if let name = self.name {
+            string.append("name: '\(name)', ")
+        }
+        string.append("type: \(self.type))")
+
+        return string
     }
+}
+
+extension StoreConfiguration: Equatable {}
+
+public func == (lhs: StoreConfiguration, rhs: StoreConfiguration) -> Bool {
+    return lhs.fileName == rhs.fileName &&
+           lhs.name == rhs.name &&
+           lhs.type == rhs.type &&
+           lhs.overwriteIncompatibleStore == rhs.overwriteIncompatibleStore &&
+           NSDictionary(dictionary: lhs.options).isEqual(to: rhs.options)
 }

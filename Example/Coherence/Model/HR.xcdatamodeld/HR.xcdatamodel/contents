@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Country" representedClassName="Country" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" syncable="YES"/>
+    </entity>
+    <entity name="CountryCode" representedClassName="CountryCode" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Department" representedClassName="Department" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,6 +59,12 @@
     <entity name="Region" representedClassName="Region" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <configuration name="Global">
+        <memberEntity name="User"/>
+    </configuration>
     <configuration name="Persistent">
         <memberEntity name="Country"/>
         <memberEntity name="Department"/>
@@ -65,14 +74,18 @@
         <memberEntity name="Location"/>
         <memberEntity name="Region"/>
     </configuration>
-    <configuration name="Transient"/>
+    <configuration name="Transient">
+        <memberEntity name="CountryCode"/>
+    </configuration>
     <elements>
         <element name="Country" positionX="387" positionY="260" width="128" height="75"/>
+        <element name="CountryCode" positionX="-9" positionY="-135" width="128" height="60"/>
         <element name="Department" positionX="189" positionY="95" width="128" height="105"/>
         <element name="Employee" positionX="-216" positionY="-148" width="128" height="195"/>
         <element name="Job" positionX="90" positionY="-16" width="128" height="90"/>
         <element name="JobHistory" positionX="99" positionY="-288" width="128" height="120"/>
         <element name="Location" positionX="187" positionY="267" width="128" height="120"/>
         <element name="Region" positionX="385" positionY="72" width="128" height="60"/>
+        <element name="User" positionX="0" positionY="-126" width="128" height="60"/>
     </elements>
 </model>

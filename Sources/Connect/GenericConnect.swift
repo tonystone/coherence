@@ -43,10 +43,76 @@ fileprivate struct Default {
         ///
         /// The startup state of the queues
         ///
-        static let suspended: Bool = true
+        static let suspended: Bool = false
+    }
+
+    struct ManagedObjectModel {
+        ///
+        /// This is the default configuration name of the model
+        ///
+        static let configurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
     }
 }
 
+///
+/// GenericConnect is the concrete implementation of the Connect protocol.  Use this class to instantiate 
+/// a spcifically configured instance for you needs.
+///
+/// GenericConnect has several startup schenarios/use cases.
+///
+/// 1) No Configuration
+///
+///     Developer wants a no hassle simple configuration.
+///
+/// ```
+///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
+///
+///     try connect.start()
+/// ```
+///
+/// 2) Custom Configuration
+///
+///     Developer has a custom configuration or location setup for the persistent stores that he wants to maintain.
+///
+/// ```
+///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
+///
+///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
+///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)])
+/// ```
+///
+/// 3) User per configuration
+///
+///     Developer wants a Configuration/PersistentStore per user that logs into the application.
+///
+/// ```
+///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
+///
+///     let userName = loggedInUserName() /* Determine user that is logging in */
+///
+///     connect.bundleLocation = URL("/persistentStores/base/location/\(userName)"
+///
+///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
+///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)]))
+/// ```
+///
+/// 3) Global Store, User per configuration
+///
+///     Developer starts a global PersistentStore(s) before starting connect with a custom Configuration/StoreConfigurations per user that logs into the application.
+///
+/// ```
+///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
+///
+///     try connect.attachPersistentStore(for: StoreConfiguration(url: URL(fileURLWithPath: "/persistentStores/location/globalData.sqlite", name: "GlobalData", type: NSSQLiteStoreType)))
+///
+///     let userName = loggedInUserName() /* Determine user that is logging in */
+///
+///     connect.bundleLocation = URL("/persistentStores/base/location/\(userName)"
+///
+///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
+///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)]))
+/// ```
+///
 public class GenericConnect<Strategy: ContextStrategyType>: Connect {
 
     ///
@@ -66,20 +132,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     ///
     public var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         return self.dataCache.persistentStoreCoordinator
-    }
-
-    ///
-    /// The persistent store configurations used to create the persistent stores referenced by this instance.
-    ///
-    public var configuration: Configuration
-
-    public var storeConfigurations: [StoreConfiguration] {
-        get {
-            return configuration.storeConfigurations
-        }
-        set {
-            configuration.storeConfigurations = newValue
-        }
     }
 
     ///
@@ -123,6 +175,14 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     ///
     fileprivate var started: Bool
 
+    fileprivate enum StoreStatus {
+        case attached       /// The store is attached but *not* started
+        case started        /// The store is attached and started
+        case stopped        /// The store is stopped but still attached
+    }
+
+    fileprivate var storeStatus: [AnyHashable: StoreStatus]
+
     ///
     /// Initializes the receiver with the given name.
     ///
@@ -159,10 +219,10 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     public required init(name: String, managedObjectModel model: NSManagedObjectModel) {
 
         self.name = name
-        self.configuration = Configuration()
-        
-        self.dataCache = DataCacheType(name: name,                managedObjectModel: model,       logTag: Log.tag)
-        self.metaCache = MetaCacheType(name: "\(name)._metadata", managedObjectModel: MetaModel(), logTag: Log.tag)
+        self.storeStatus = [:]
+
+        self.dataCache = DataCacheType(name: name, managedObjectModel: model,       logTag: Log.tag)
+        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
@@ -181,6 +241,8 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
         ///       init method of the NotificationService.
         ///
         self.notificationService.source = self
+
+        self.registerForNotifications()
     }
 
     deinit {
@@ -211,6 +273,162 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
             logInfo(Log.tag) { "Protected data will become unavailable." }
 
             self._suspended = true
+        }
+    }
+}
+
+///
+/// Connect state management (public synchronized)
+///
+public extension GenericConnect {
+
+    ///
+    /// Synchronously start the instance of `Connect`, starting all
+    ///
+    /// - Throws: If an error occurs.
+    ///
+    public func start() throws {
+
+        try self.synchronizationQueue.sync {
+            try self._start()
+        }
+    }
+
+    ///
+    /// Asynchronously start the instance of `Connect`
+    ///
+    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    ///
+    public func start(block: @escaping (Error?) -> Void) {
+
+        self.synchronizationQueue.async {
+            do {
+                try self._start()
+
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(nil)
+                }
+            } catch {
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(error)
+                }
+            }
+        }
+    }
+
+    ///
+    /// Synchronously stop the instance of `Connect` unloading the persistent stores.
+    ///
+    /// - Throws: If an error occurs.
+    ///
+    public func stop() throws {
+
+        try self.synchronizationQueue.sync {
+            try self._stop()
+        }
+    }
+
+    ///
+    /// Asynchronously stop the instance of `Connect` unloading the persistent stores.
+    ///
+    /// - Parameter completionBlock: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
+    ///
+    public func stop(block: @escaping (Error?) -> Void) {
+
+        self.synchronizationQueue.async {
+            do {
+                try self._stop()
+
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(nil)
+                }
+            } catch {
+                /// Keep the user block execution outside of our synchronization queue
+                DispatchQueue.global().async {
+                    block(error)
+                }
+            }
+        }
+    }
+
+    ///
+    /// Attach a persistent store for a `StoreConfiguration`.
+    ///
+    /// - Parameters:
+    ///     - url: (Optional) the `URL` for the location to attach the stores. If you do not pass this, the location will be defauled to the `defaultStoreLocation`.
+    ///     - configuration: A `StoreConfiguration` that describes the store being attached.
+    ///
+    /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
+    ///
+    @discardableResult
+    public func attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore {
+        return try self.synchronizationQueue.sync {
+            return try self._attachPersistentStore(at: url, for: configuration)
+        }
+    }
+
+    ///
+    /// Detach a persistent store from the Coordinator.
+    ///
+    public func detach(persistentStore store: NSPersistentStore) throws {
+        try self.synchronizationQueue.sync {
+            try self._detach(persistentStore: store)
+
+        }
+    }
+
+    ///
+    /// Attach the persistent stores specified in the array of `StoreConfiguration`s.
+    ///
+    /// - Parameters:
+    ///     - url: (Optional) the `URL` for the location to attach the stores. If you do not pass this, the location will be defauled to the `defaultStoreLocation`.
+    ///     - configurations: An array of `StoreConfiguration`s that describes the stores being attached.
+    ///
+    /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
+    ///
+    @discardableResult
+    public func attachPersistentStores(at url: URL, for configurations: [StoreConfiguration]) throws -> [NSPersistentStore] {
+
+        return try self.synchronizationQueue.sync {
+            var stores: [NSPersistentStore] = []
+
+            for configuration in configurations {
+                stores.append(try self._attachPersistentStore(at: url, for: configuration))
+            }
+            return stores
+        }
+    }
+
+    ///
+    /// Detach an array of persistent stores from the Coordinator.
+    ///
+    public func detach(persistentStores stores: [NSPersistentStore]) throws {
+        try self.synchronizationQueue.sync {
+            for store in stores {
+                try self._detach(persistentStore: store)
+            }
+            
+        }
+    }
+
+    ///
+    /// Suspend or resume the operation of `Connect`.
+    ///
+    /// - Note: This will suspend or activate all Queues.
+    ///
+    public var suspended: Bool {
+        get {
+            return self.synchronizationQueue.sync {
+                return self._suspended
+            }
+        }
+        set {
+            self.synchronizationQueue.sync {
+                self._suspended = newValue
+            }
         }
     }
 }
@@ -369,109 +587,13 @@ public extension GenericConnect {
 }
 
 ///
-/// Connect state management (public synchronized)
-///
-public extension GenericConnect {
-
-    ///
-    /// Synchronously start the instance of `Connect`
-    ///
-    /// - Throws: If an error occurs.
-    ///
-    public func start() throws {
-
-        try self.synchronizationQueue.sync {
-            try self._start()
-        }
-    }
-
-    ///
-    /// Asynchronously start the instance of `Connect`
-    ///
-    /// - Parameter completionBlock: Block to call when the startup sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
-    ///
-    public func start(block: @escaping (Error?) -> Void) {
-
-        self.synchronizationQueue.async {
-            do {
-                try self._start()
-
-                /// Keep the user block execution outside of our synchronization queue
-                DispatchQueue.global().async {
-                    block(nil)
-                }
-            } catch {
-                /// Keep the user block execution outside of our synchronization queue
-                DispatchQueue.global().async {
-                    block(error)
-                }
-            }
-        }
-    }
-
-    ///
-    /// Synchronously stop the instance of `Connect` unloading the persistent stores.
-    ///
-    /// - Throws: If an error occurs.
-    ///
-    public func stop() throws {
-
-        try self.synchronizationQueue.sync {
-            try self._stop()
-        }
-    }
-
-    ///
-    /// Asynchronously stop the instance of `Connect` unloading the persistent stores.
-    ///
-    /// - Parameter completionBlock: Block to call when the shutdown sequence is complete. If an error occurs, `Error` will be non nil and contain the error indicating the reason for the failure.
-    ///
-    public func stop(block: @escaping (Error?) -> Void) {
-
-        self.synchronizationQueue.async {
-            do {
-                try self._stop()
-
-                /// Keep the user block execution outside of our synchronization queue
-                DispatchQueue.global().async {
-                    block(nil)
-                }
-            } catch {
-                /// Keep the user block execution outside of our synchronization queue
-                DispatchQueue.global().async {
-                    block(error)
-                }
-            }
-        }
-    }
-
-    ///
-    /// Suspend or resume the operation of `Connect`.
-    ///
-    /// - Note: This will suspend or activate all Queues.
-    ///
-    public var suspended: Bool {
-        get {
-            return self.synchronizationQueue.sync {
-                return self._suspended
-            }
-        }
-        set {
-            self.synchronizationQueue.sync {
-                self._suspended = newValue
-            }
-        }
-    }
-}
-
-///
 /// Connect state management (private unsynchronized)
 ///
 fileprivate extension GenericConnect {
 
     ///
     /// Note: This private implementation method is unsynchronized  and
-    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///       must be synchronized through `self.synchronizationQueue` when used.
     ///
     fileprivate func _start() throws {
 
@@ -484,18 +606,28 @@ fileprivate extension GenericConnect {
 
             logInfo(Log.tag) { "Starting instance '\(self.name)'..." }
 
-            try self._loadModel()
+            let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true)
 
-            try self._loadPersistentStores()
+            try self.metaCache.attachPersistentStore(at: GenericConnect.defaultStoreLocation(), for: metaStoreConfiguration)
 
             self.writeAheadLog = try WriteAheadLog(persistentStack: self.metaCache)
 
-            self.registerForNotifications()
-
-            if self._suspended {
-                self._suspended = false
+            ///
+            /// If there are no stores attached at the time of starting, we assume that 
+            /// the user wants the default configuration for persistent stores and we start them
+            ///
+            if self.storeStatus.count == 0 {
+                try self._attachPersistentStore(at: GenericConnect.defaultStoreLocation(), for: StoreConfiguration())
             }
-            
+
+            ///
+            /// Check that all the exsiting stores are started, if not, start each of them
+            ///
+            for store in self.dataCache.persistentStoreCoordinator.persistentStores {
+                if self.storeStatus[store.identifier] != .started {
+                    self._start(persistentStore: store)
+                }
+            }
             self.started = true
             
             logInfo(Log.tag) { "Instance '\(self.name)' started." }
@@ -503,7 +635,7 @@ fileprivate extension GenericConnect {
     }
 
     /// Note: This private implementation method is unsynchronized  and
-    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///       must be synchronized through `self.synchronizationQueue` when used.
     ///
     fileprivate func _stop() throws {
 
@@ -516,84 +648,90 @@ fileprivate extension GenericConnect {
 
             logInfo(Log.tag) { "Stopping instance '\(self.name)'..." }
 
-            if !self._suspended {
-                self._suspended = true
+            if let metaStore = self.metaCache.persistentStoreCoordinator.persistentStores.first {
+                try self.metaCache.detach(persistentStore: metaStore)
             }
-
-            self.unregisterForNotifications()
-
-            try self._unloadPersistentStores()
 
             self.writeAheadLog = nil
 
-            try self._unloadModel()
+            ///
+            /// Check that all the exsiting stores are started, if not, start each of them
+            ///
+            for store in self.dataCache.persistentStoreCoordinator.persistentStores {
+                if self.storeStatus[store.identifier] == .started {
+                    self._stop(persistentStore: store)
+                }
 
+                try self._detach(persistentStore: store)
+            }
             self.started = false
             
             logInfo(Log.tag) { "Instance '\(self.name)' stopped." }
         }
     }
 
-    fileprivate func _loadPersistentStores() throws {
+    fileprivate func _start(persistentStore store: NSPersistentStore) {
 
-        logInfo(Log.tag) { "Loading persistent stores..." }
+        logInfo(Log.tag) { "Determining if entitites in configuration '\(store.configurationDisplayName)' can be managed..." }
 
-        let defaultLocation = BundleManager.url(for: self.name, bundleLocation: GenericConnect.defaultStoreLocation())
+        if let entities = self.managedObjectModel.entities(forConfigurationName: store.configurationName) {
 
-        let resolvedConfiguration  = self.configuration.resolved(defaultLocation: defaultLocation)
-        let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true).resolved(defaultLocation: resolvedConfiguration.location)
+            for entity in entities {
+                guard let name = entity.name else { continue }
 
-        try BundleManager.createIfAbsent(url: resolvedConfiguration.location)
-
-        self.dataCache.storeConfigurations = resolvedConfiguration.storeConfigurations
-        self.metaCache.storeConfigurations = [metaStoreConfiguration]
-
-        try self.dataCache.loadPersistentStores()
-        try self.metaCache.loadPersistentStores()
-    }
-
-    fileprivate func _unloadPersistentStores() throws {
-
-        logInfo(Log.tag) { "Unloading persistent stores..." }
-
-        try self.dataCache.unloadPersistentStores()
-        try self.metaCache.unloadPersistentStores()
-    }
-
-    fileprivate func _loadModel() throws {
-
-        logInfo(Log.tag) { "Loading model for instance '\(self.name)'..." }
-        ///
-        /// Initialize the entities
-        ///
-        for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
-            self.manage(name: name, entity: entity)
+                self.manage(name: name, entity: entity)
+            }
+        } else {
+            logWarning(Log.tag) { "No entities found for configuration '\(store.configurationDisplayName)'." }
         }
 
-        logInfo(Log.tag) { "Model for instance '\(self.name)' loaded." }
+        self.storeStatus[store.identifier] = .started
     }
 
-    fileprivate func _unloadModel() throws {
+    fileprivate func _stop(persistentStore store: NSPersistentStore) {
 
-        logInfo(Log.tag) { "Unloading model for instance '\(self.name)'..." }
-        ///
-        /// Initialize the entities
-        ///
-        for (name, entity) in self.dataCache.managedObjectModel.entitiesByName {
+        logInfo(Log.tag) { "Stopping persistent store for configuration '\(store.configurationDisplayName)'..." }
 
-            if entity.managed {
-                entity.managed = false
+        if let entities = self.managedObjectModel.entities(forConfigurationName: store.configurationName) {
 
-                self.entityQueues[name] = nil
+            for entity in entities {
+                guard let name = entity.name else { continue }
+
+                self.unmanage(name: name, entity: entity)
             }
         }
+        self.storeStatus[store.identifier] = .stopped
+    }
 
-        logInfo(Log.tag) { "Model for instance '\(self.name)' unloaded." }
+    @discardableResult
+    fileprivate func _attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore {
+
+        let store = try self.dataCache.attachPersistentStore(at: url, for: configuration)
+
+        /// Maintain the list of stores and status, still just attached
+        self.storeStatus[store.identifier] = .attached
+
+        if started {
+            self._start(persistentStore: store)
+        }
+        return store
+    }
+
+    fileprivate func _detach(persistentStore store: NSPersistentStore) throws {
+
+        /// Stop the the store
+        self._stop(persistentStore: store)
+
+        /// Detach it
+        try self.dataCache.detach(persistentStore: store)
+
+        /// Clear the storeStatus
+        storeStatus[store.identifier] = nil
     }
 
     ///
     /// Note: This private implementation method is unsynchronized  and
-    ///       must be syncrhonized through `self.syncrhonizationQueue` when used.
+    ///       must be synchronized through `self.synchronizationQueue` when used.
     ///
     fileprivate var _suspended: Bool {
         get {
@@ -623,7 +761,7 @@ fileprivate extension GenericConnect {
 
     @discardableResult
     func manage(name: String, entity: NSEntityDescription) -> Bool {
-        logInfo(Log.tag) { "Determining if entity '\(name)' can be managed...."}
+        logInfo(Log.tag) { "Analyzing entity '\(name)'...."}
 
         var canBeManaged = true
 
@@ -698,6 +836,15 @@ fileprivate extension GenericConnect {
         return entity.managed
     }
 
+    fileprivate func unmanage(name: String, entity: NSEntityDescription) {
+
+        logInfo(Log.tag) { "Removing action queue for entity '\(name)'." }
+
+        self.entityQueues[name] = nil
+
+        entity.managed = false
+    }
+
     func queue<EntityType: NSManagedObject>(entity: EntityType.Type) throws -> ActionQueue {
         let entityName = String(describing: entity)
 
@@ -705,5 +852,15 @@ fileprivate extension GenericConnect {
             throw Errors.unmanagedEntity("Entity '\(entityName)' not managed by \(Log.tag)")
         }
         return queue
+    }
+}
+
+extension NSPersistentStore {
+
+    var configurationDisplayName: String {
+        if self.configurationName == Default.ManagedObjectModel.configurationName {
+            return "default"
+        }
+        return self.configurationName
     }
 }

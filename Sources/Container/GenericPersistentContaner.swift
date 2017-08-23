@@ -28,6 +28,8 @@ private struct Default {
 
     struct PersistentStore {
 
+        static let configurationName: String = "PF_DEFAULT_CONFIGURATION_NAME"
+
         ///
         /// Default PersistentStoreDescriptions array.
         ///
@@ -99,11 +101,6 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
         return contextStrategy.newBackgroundContext()
     }
 
-    ///
-    /// The persistent store configurations used to create the persistent stores referenced by this instance.
-    ///
-    public var storeConfigurations: [StoreConfiguration]
-
     fileprivate let tag: String
     fileprivate let errorHandlerBlock: AsyncErrorHandlerBlock
 
@@ -148,9 +145,8 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     ///
     public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil, logTag: String = String(describing: GenericPersistentContainer.self)) {
 
-        self.name                        = name
-        self.storeConfigurations         = Default.PersistentStore.configurations
-        self.tag                         = logTag
+        self.name = name
+        self.tag  = logTag
 
         self.errorHandlerBlock = asyncErrorBlock ?? defaultAsyncErrorHandlingBlock(tag: logTag)
 
@@ -160,78 +156,124 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
         self.contextStrategy = Strategy(persistentStoreCoordinator: self.persistentStoreCoordinator, errorHandler: self.errorHandlerBlock)
     }
 
-    public func loadPersistentStores() throws {
-
-        var configurations = self.storeConfigurations
-
-        /// If no configurations supplied, default the url
-        if configurations.count == 0 {
-            configurations.append(StoreConfiguration(url: GenericPersistentContainer.defaultStoreLocation().appendingPathComponent("\(self.name).sqlite")))
-        }
+    ///
+    /// Attach a persistent store for a `StoreConfiguration`.
+    ///
+    /// - Parameters:
+    ///     - url: (Optional) the `URL` for the location to attach the stores. If you do not pass this, the location will be defauled to the `defaultStoreLocation`.
+    ///     - configuration: A `StoreConfiguration` that describes the store being attached.
+    ///
+    /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
+    ///
+    @discardableResult
+    public func attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore {
 
         ///
-        /// Load each store in turn
+        /// Resolve the configuration passed before attaching store to expand
+        /// the default values.
         ///
-        for configuration in configurations {
-            try self.addPersistentStore(for: configuration)
-        }
-    }
-
-    public func unloadPersistentStores() throws {
-
-        for store in self.persistentStoreCoordinator.persistentStores {
-
-            logInfo(self.tag) {
-
-                var message = "Unloading persistent store '\(store.configurationName)' for type '\(store.type)'"
-                if let url = store.url {
-                    message.append(" at: \(url.path)")
-                }
-                message.append(".")
-                return message
-            }
-
-            try self.persistentStoreCoordinator.remove(store)
-
-            logInfo(self.tag) { "Persistent store unloaded successfully." }
-        }
-    }
-
-    fileprivate func addPersistentStore(for configuration: StoreConfiguration) throws {
+        /// - Note: This returns nil if it is an InMemoryStore
+        ///
+        let url = configuration.resolveURL(defaultStorePrefix: self.name, storeLocation: url)
 
         logInfo(self.tag) {
 
             var message = "Attaching persistent store '\(configuration.name ?? "default")' for type '\(configuration.type)'"
-            if let url = configuration.url {
+            if let url = url {
                 message.append(" at: \(url.path)")
             }
             message.append(".")
             return message
         }
 
-        let fileManager = FileManager.default
+        /// If we have a file to check, make sure it is compatible.
+        if let url = url {
+            let fileManager = FileManager.default
 
-        // Check the store for compatibility if requested by developer.
-        if configuration.overwriteIncompatibleStore,
-           configuration.type != NSInMemoryStoreType,
-           let url = configuration.url,
-           fileManager.fileExists(atPath: url.path) {
+            // Check the store for compatibility if requested by developer.
+            if configuration.overwriteIncompatibleStore, configuration.type != NSInMemoryStoreType, fileManager.fileExists(atPath: url.path) {
 
-            logInfo(self.tag) { "Checking to see if persistent store is compatible with the model." }
-            
-            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: configuration.type, at: url, options: configuration.options)
+                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: configuration.type, at: url, options: configuration.options)
 
-            if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration.name, compatibleWithStoreMetadata: metadata) {
- 
-                try deleteIfExists(url.path)
-                try deleteIfExists("\(url.path)-shm")
-                try deleteIfExists("\(url.path)-wal")
+                if !persistentStoreCoordinator.managedObjectModel.isConfiguration(withName: configuration.name, compatibleWithStoreMetadata: metadata) {
+
+                    logInfo(self.tag) { "Persistent store for configuration '\(configuration.name ?? "default")' is not compatible with the model, removing persistent store." }
+
+                    try deleteIfExists(url.path)
+                    try deleteIfExists("\(url.path)-shm")
+                    try deleteIfExists("\(url.path)-wal")
+                }
             }
+
+            /// Make sure the directory is present
+            try fileManager.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
         }
 
-        try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: configuration.url, options: configuration.options)
+        let store = try persistentStoreCoordinator.addPersistentStore(ofType: configuration.type, configurationName:  configuration.name, at: url, options: configuration.options)
 
         logInfo(self.tag) { "Persistent store attached successfully." }
+
+        return store
+    }
+
+    ///
+    /// Detach a specific store.
+    ///
+    public func detach(persistentStore store: NSPersistentStore) throws {
+
+        logInfo(self.tag) {
+
+            var message = "Detaching persistent store '\(store.configurationName)' for type '\(store.type)'"
+            if let url = store.url {
+                message.append(" at: \(url.path)")
+            }
+            message.append(".")
+            return message
+        }
+        
+        try self.persistentStoreCoordinator.remove(store)
+        
+        logInfo(self.tag) { "Persistent store detached successfully." }
+    }
+
+    ///
+    /// Attach the persistent stores specified in the array of `StoreConfiguration`s.
+    ///
+    /// - Parameters:
+    ///     - url: (Optional) the `URL` for the location to attach the stores. If you do not pass this, the location will be defauled to the `defaultStoreLocation`.
+    ///     - configurations: An array of `StoreConfiguration`s that describes the stores being attached.
+    ///
+    /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
+    ///
+    @discardableResult
+    public func attachPersistentStores(at url: URL, for configurations: [StoreConfiguration]) throws -> [NSPersistentStore] {
+
+        var configurations = configurations
+
+        /// If no configurations supplied, default the url
+        if configurations.count == 0 {
+            configurations.append(StoreConfiguration())
+        }
+
+        var stores: [NSPersistentStore] = []
+
+        ///
+        /// Attach each store in turn
+        ///
+        for configuration in configurations {
+            stores.append(try self.attachPersistentStore(at: url, for: configuration))
+        }
+        return stores
+    }
+
+    ///
+    /// Detach an array of stores.
+    ///
+    public func detach(persistentStores stores: [NSPersistentStore]) throws {
+
+        for store in stores {
+            try self.detach(persistentStore: store)
+        }
     }
 
     fileprivate func deleteIfExists(_ path: String) throws {

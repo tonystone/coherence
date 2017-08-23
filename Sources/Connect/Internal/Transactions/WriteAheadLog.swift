@@ -202,7 +202,7 @@ internal class WriteAheadLog {
                 try metadataContext.obtainPermanentIDs(for: [metaLogEntry])
 
             } catch let error as NSError {
-                throw  Errors.failedToObtainPermanentIDs("Failed to obtain perminent id for transaction log record: \(error.localizedDescription)")
+                throw  Errors.failedToObtainPermanentIDs("Failed to obtain permanent id for transaction log record: \(error.localizedDescription)")
             }
 
             ///

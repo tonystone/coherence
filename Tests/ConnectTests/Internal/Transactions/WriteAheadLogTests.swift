@@ -30,7 +30,7 @@ class WriteAheadLogTests: XCTestCase {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -38,7 +38,7 @@ class WriteAheadLogTests: XCTestCase {
 
     override func tearDown() {
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -50,7 +50,7 @@ class WriteAheadLogTests: XCTestCase {
         let input = PersistentContainerType(name: "MetaModel", managedObjectModel: NSManagedObjectModel())
 
         do {
-            try input.loadPersistentStores()
+            try input.attachPersistentStores()
 
             XCTAssertThrowsError(try WriteAheadLog(persistentStack: input))
         } catch {
@@ -64,7 +64,7 @@ class WriteAheadLogTests: XCTestCase {
         let expected = 5
 
         do {
-            try input.loadPersistentStores()
+            try input.attachPersistentStores()
 
             /// prime the database with mock records
             let context = input.newBackgroundContext()
@@ -107,7 +107,7 @@ class WriteAheadLogTests: XCTestCase {
 
         do {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-            try container.loadPersistentStores()
+            try container.attachPersistentStores()
 
             let log = try WriteAheadLog(persistentStack: container)
 
@@ -171,7 +171,7 @@ class WriteAheadLogTests: XCTestCase {
 
         do {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-            try container.loadPersistentStores()
+            try container.attachPersistentStores()
 
             let log = try WriteAheadLog(persistentStack: container)
 
@@ -224,11 +224,11 @@ class WriteAheadLogTests: XCTestCase {
     func testFailedToObtainPermanentIDs() {
 
         do {
-            let transactionStack = PersistentContainerType(name: "ContainerTestModel", managedObjectModel: ModelLoader.load(name: "ContainerTestModel1"))
-            try transactionStack.loadPersistentStores()
+            let transactionStack = PersistentContainerType(name: "ContainerTestModel", managedObjectModel: TestModelLoader.load(name: "ContainerTestModel1"))
+            try transactionStack.attachPersistentStores()
 
             let metaStack = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
-            try metaStack.loadPersistentStores()
+            try metaStack.attachPersistentStores()
 
             let log = try WriteAheadLog(persistentStack: metaStack)
 
@@ -244,7 +244,7 @@ class WriteAheadLogTests: XCTestCase {
                 
                 return (entity: entity, count: 5)
             }()
-            let expected = "^Failed to obtain perminent id for transaction log record: *"
+            let expected = "^Failed to obtain permanent id for transaction log record: *"
 
 
             /// prime the database with mock records

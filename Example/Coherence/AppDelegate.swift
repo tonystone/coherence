@@ -35,10 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TraceLog.configure()
 
         do {
-            connect.configuration = Configuration(storeConfigurations: [
-                    StoreConfiguration(name: "Transient",  type: NSInMemoryStoreType),
-                    StoreConfiguration(name: "Persistent", type: NSSQLiteStoreType, overwriteIncompatibleStore: true)
-                    ])
+            try self.connect.attachPersistentStore(for: StoreConfiguration(name: "Transient",  type: NSInMemoryStoreType))
+            try self.connect.attachPersistentStore(for: StoreConfiguration(name: "Persistent", type: NSSQLiteStoreType, overwriteIncompatibleStore: true))
 
             try self.connect.start()
 

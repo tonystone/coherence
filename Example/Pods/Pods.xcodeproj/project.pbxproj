@@ -67,8 +67,7 @@
 		EA8719561EABC63E0077AE27 /* InMemorySequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8719551EABC63E0077AE27 /* InMemorySequence.swift */; };
 		EA9899D841AE1BF24F7A7E3A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C5EBE6E68FB528486E087 /* NotificationService.swift */; };
 		EA9BCCF41CE250254683AAF6 /* WriteAheadLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB186877E91787F5A87331 /* WriteAheadLog.swift */; };
-		EAA45AC71E96EC0900F9B007 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA45AC61E96EC0900F9B007 /* Configuration.swift */; };
-		EAA45AC91E96EDA700F9B007 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA45AC81E96EDA700F9B007 /* BundleManager.swift */; };
+		EADA13C31F474E96003983D3 /* StoreConfiguration+Resolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA13C21F474E96003983D3 /* StoreConfiguration+Resolve.swift */; };
 		EB501845D7713EE85057A692 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270C8189DE9D71EEEBA9C61E /* Foundation.framework */; };
 		EC424783FB997A535B84878C /* StoreConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9358A52C8A4FA093174B2D3 /* StoreConfiguration.swift */; };
 		F0A44B952CC0F3E0DB2E43A7 /* ActionContainer+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F75F5D34FB5D97EAF6B1D6 /* ActionContainer+Statistics.swift */; };
@@ -227,8 +226,7 @@
 		EA179B321EAAB0B20043D7C8 /* FileBackedSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBackedSequence.swift; sourceTree = "<group>"; };
 		EA8719531EABC5C30077AE27 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		EA8719551EABC63E0077AE27 /* InMemorySequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemorySequence.swift; sourceTree = "<group>"; };
-		EAA45AC61E96EC0900F9B007 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		EAA45AC81E96EDA700F9B007 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
+		EADA13C21F474E96003983D3 /* StoreConfiguration+Resolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoreConfiguration+Resolve.swift"; sourceTree = "<group>"; };
 		EAF633FB1EF400809F56DB9A /* Connect+Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Connect+Errors.swift"; sourceTree = "<group>"; };
 		EB8B1E7D93ACECCE6287AD20 /* TraceLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TraceLog.modulemap; sourceTree = "<group>"; };
 		F35EA05AD84BF20CC80DC9D1 /* Coherence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coherence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,7 +292,6 @@
 		024DDDDE76CE62AB9BAA70DF /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				EAA45AC81E96EDA700F9B007 /* BundleManager.swift */,
 				4FCEB6791A302EAE36566A13 /* AssociatedStorage.swift */,
 				8756446014CCCED31B65CDCE /* LoggingContext.swift */,
 				982C5EBE6E68FB528486E087 /* NotificationService.swift */,
@@ -403,6 +400,7 @@
 				43E0EDE6669CBF9A5581DAAE /* ObjcPersistentContainer.swift */,
 				97F9CB17E0F40FF65E7911AC /* PersistentStack.swift */,
 				F9358A52C8A4FA093174B2D3 /* StoreConfiguration.swift */,
+				EADA13C21F474E96003983D3 /* StoreConfiguration+Resolve.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -556,7 +554,6 @@
 				DDCA8E986B280CFFDC2C3F00 /* ActionContext.swift */,
 				9E88F187EBAEEA234CD0F500 /* ActionContext+Merge.swift */,
 				8126B475573C550825DA7DB4 /* ActionProxy.swift */,
-				EAA45AC61E96EC0900F9B007 /* Configuration.swift */,
 				D28EF4A2A9163E6A5E5A5AB7 /* Connect.swift */,
 				67A04EDD1D2716B082075072 /* GenericConnect.swift */,
 				EAF633FB1EF400809F56DB9A /* Connect+Errors.swift */,
@@ -869,7 +866,6 @@
 				0E51A53D5B051D42998F26F1 /* ContextStrategy.swift in Sources */,
 				BB120B8C529B0636036905A6 /* EntityAction.swift in Sources */,
 				AF4B4B320D00A30D22205164 /* EntityActionContainer.swift in Sources */,
-				EAA45AC91E96EDA700F9B007 /* BundleManager.swift in Sources */,
 				ABDFCDE2A434806CB5345D17 /* EntityDescription+EntitySettings.swift in Sources */,
 				03181264FF012B75096163A8 /* GenericAction.swift in Sources */,
 				EA179B331EAAB0B20043D7C8 /* FileBackedSequence.swift in Sources */,
@@ -889,8 +885,8 @@
 				78A74C22868872B4B8863A1B /* PersistentStack.swift in Sources */,
 				EC424783FB997A535B84878C /* StoreConfiguration.swift in Sources */,
 				F7493EF57CF4CB70D260DFFA /* String+Extensions.swift in Sources */,
+				EADA13C31F474E96003983D3 /* StoreConfiguration+Resolve.swift in Sources */,
 				EA9BCCF41CE250254683AAF6 /* WriteAheadLog.swift in Sources */,
-				EAA45AC71E96EC0900F9B007 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,14 +14,14 @@ fileprivate let modelName = "ConnectTestModel"
 
 class ConnectStateManagementTests: XCTestCase {
 
-    let testModel      = ModelLoader.load(name: modelName)
-    let testEmptyModel = ModelLoader.load(name: modelName + "Empty")
+    let testModel      = TestModelLoader.load(name: modelName)
+    let testEmptyModel = TestModelLoader.load(name: modelName + "Empty")
 
     override func setUp() {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -30,7 +30,7 @@ class ConnectStateManagementTests: XCTestCase {
     func testStart() throws {
 
         let input = modelName
-        let expected = 1
+        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("\(modelName)._meta.sqlite")
 
         let expectation = self.expectation(description: "Completion block called.")
 
@@ -43,42 +43,7 @@ class ConnectStateManagementTests: XCTestCase {
         self.waitForExpectations(timeout: 5) { (error) in
 
             if error == nil {
-                XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
-            }
-        }
-    }
-
-    func testStartWithIncompatibleStore() throws {
-
-        let input = (modelName: modelName,
-                     model: self.testModel,
-                     emptyModel: self.testEmptyModel,
-                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
-
-        /// Create the first instance of the persistent stores using the empty model
-        do {
-            var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
-
-            connect.storeConfigurations = input.descriptions
-            try connect.start()
-        }
-
-        /// Now create the second instance using the real model, it should throw an exception
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-        connect.storeConfigurations = input.descriptions
-
-        let expectation = self.expectation(description: "Completion block called with error.")
-
-        connect.start() { (error) in
-            if error == nil {
-                XCTFail("Failed to throw an error.")
-            }
-            expectation.fulfill()
-        }
-
-        self.waitForExpectations(timeout: 5) { (error) in
-            if let error = error {
-                XCTFail("\(error)")
+                XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected))
             }
         }
     }
@@ -104,30 +69,6 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start() /// Calling start a second time should be a no-op
 
         XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
-    }
-
-    func testStartThrowsWithIncompatibleStore() throws {
-
-        let input = (modelName: modelName,
-                     model: self.testModel,
-                     emptyModel: self.testEmptyModel,
-                     descriptions: [StoreConfiguration(url: defaultPersistentStoreDirectory().appendingPathComponent("\(modelName).sqlite"), options: [NSMigratePersistentStoresAutomaticallyOption: false])])
-
-
-        /// Create the first instance of the persistent stores using the empty model
-        do {
-            let connect =  GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.emptyModel)
-
-            connect.storeConfigurations = input.descriptions
-            try connect.start()
-        }
-
-        /// Now create the second instance using the real model, it should throw an exception
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
-        
-        connect.storeConfigurations = input.descriptions
-        
-        XCTAssertThrowsError(try connect.start())
     }
 
     func testStop() throws {
@@ -181,10 +122,21 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.stop()
     }
 
-    func testQueueStateAfterInitIsSuspended() {
+    func testQueueStateAfterInitIsNotSuspended() throws {
 
         let input = modelName
-        let expected = true
+        let expected = false
+
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input)
+        try connect.start()
+
+        XCTAssertEqual(connect.suspended, expected)
+    }
+
+    func testQueueStateIfNotStarted() {
+
+        let input = modelName
+        let expected = false
 
         let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input)
 

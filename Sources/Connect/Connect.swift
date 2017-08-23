@@ -18,6 +18,7 @@
 ///  Created by Tony Stone on 4/1/17.
 ///
 import Swift
+import CoreData
 
 internal struct Log {
     ///
@@ -39,13 +40,6 @@ internal struct Log {
 /// operations by type.
 ///
 public protocol Connect: PersistentStack {
-
-    ///
-    /// The persistent store configurations used to create the persistent stores referenced by this instance.
-    ///
-    var configuration: Configuration { get set }
-
-    var storeConfigurations: [StoreConfiguration] { get set }
 
     ///
     /// Synchronously start the instance of `Connect`

@@ -61,7 +61,11 @@ public final class ObjcPersistentContainer: NSObject {
     }
 
     public func loadPersistentStores() throws {
-        try impl.loadPersistentStores()
+        try impl.attachPersistentStores()
+    }
+
+    public func loadPersistentStores(for storeConfigurations: [StoreConfiguration]) throws {
+        try impl.attachPersistentStores(for: storeConfigurations)
     }
 
     public var name: String {
@@ -78,14 +82,5 @@ public final class ObjcPersistentContainer: NSObject {
     
     public func newBackgroundContext() -> NSManagedObjectContext {
         return impl.newBackgroundContext()
-    }
-
-    public var storeConfigurations: [StoreConfiguration] {
-        get {
-            return impl.storeConfigurations
-        }
-        set {
-            impl.storeConfigurations = newValue
-        }
     }
 }

@@ -5,17 +5,11 @@ import CoreData
 
 @testable import Coherence
 
-let defaultBundleLocation = GenericConnect<ContextStrategy.Mixed>.defaultStoreLocation()
+let ptr = UnsafeMutablePointer<String>.allocate(capacity: 1)
 
-let config1 = Configuration(storeConfigurations: [StoreConfiguration(name: "persistent1"), StoreConfiguration(name: "persistent2"), StoreConfiguration(name: "transient", type: NSInMemoryStoreType)])
+ptr.initialize(to: "This is a test String")
 
-let resolved1 = config1.resolved(defaultLocation: URL(fileURLWithPath: "/dir/path/HR.connect"))
+print(ptr.pointee)
 
-resolved1.storeConfigurations
-
-
-let config2 = Configuration(location: URL(fileURLWithPath: "/my/custom/directory"), storeConfigurations: [StoreConfiguration(name: "persistent")])
-
-let resolved2 = config2.resolved(defaultLocation: URL(fileURLWithPath: "/dir/path"))
-
-resolved2.storeConfigurations
+ptr.deinitialize()
+ptr.deallocate(capacity: 1)

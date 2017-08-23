@@ -30,13 +30,13 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
         case entityNotFound(String)
     }
 
-    var testModel = ModelLoader.load(name: modelName)
+    var testModel = TestModelLoader.load(name: modelName)
 
     override func setUp() {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }

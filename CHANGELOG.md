@@ -3,8 +3,19 @@ All significant changes to this project will be documented in this file.
 
 ## [3.0.0-beta.5](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.5) 
 
+#### Added
+- Added `attachPersistentStore` and `attachPersistentStores` to `PersistentStack` and classes that implement it, `GenericConnect` and `GenericPersistentContainer`.
+- Added `InMemorySequence` for log entry sequence numbering.
+- Added `FileBackedSequence` as an alternative for log entry sequence (persistent).
+- Added `==` to `StoreConfiguration` for equality comparison.
+
 #### changes
+- Renamed `Configuration` to `StoreConfiguration`.
 - Moved `start` and `stop` blocks to execute on the global queue instead of the internal queue.
+
+#### Removed
+- Removed `loadPersistentStores` from `GenericPersistentContainer` (use `attachPersistentStore(s)` instead).
+- Removed `url` from `Confuration` instead realying on `url` passed to the new `attachPersistentStore(s)` methods.
 
 ## [3.0.0-beta.4](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.4) 
 

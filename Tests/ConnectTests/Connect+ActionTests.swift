@@ -17,7 +17,7 @@ class ConnectActionTests: XCTestCase {
         super.setUp()
 
         do {
-            try removePersistentStoreCache()
+            try TestPersistentStoreManager.removePersistentStoreCache()
         } catch {
             XCTFail(error.localizedDescription)
         }

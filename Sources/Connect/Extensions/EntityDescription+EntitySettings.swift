@@ -116,7 +116,7 @@ extension NSEntityDescription {
     
     private func logUpdate<T>(_ funcName: String, value: T) {
         logInfo(Log.tag) {
-            return "Entity setting \(self.name ?? "<Unnamed entity>").\(funcName)' changed to '\(value)'"
+            return "Entity setting '\(self.name ?? "<Unnamed entity>").\(funcName)' changed to '\(value)'"
         }
     }
 }

@@ -31,9 +31,7 @@ class ContextStrategyMixedTests: XCTestCase {
 
         do {
             /// Load a default store type that loads to /dev/null
-            container.storeConfigurations = [StoreConfiguration(type: NSInMemoryStoreType)]
-
-            try container.loadPersistentStores()
+            try container.attachPersistentStores(for: [StoreConfiguration(type: NSInMemoryStoreType)])
         } catch {
             XCTFail()
         }

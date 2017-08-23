@@ -19,7 +19,6 @@
 		90E556DDA503834CEAD6EE14 /* Pods_Coherence_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19897CFC4B2C3F5E29F1374 /* Pods_Coherence_Example.framework */; };
 		910CCAC7BC0524E48467CD29 /* Pods_Coherence_Test_Host.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8113C6BC234826F68D6E4436 /* Pods_Coherence_Test_Host.framework */; };
 		A0E2F25BF7F642CE1447AFAB /* Pods_Coherence_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75BBAA30DEFA72C8CBE899C /* Pods_Coherence_Tests.framework */; };
-		EA1358A11E99E4630008A94A /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1358A01E99E4630008A94A /* ConfigurationTests.swift */; };
 		EA179B351EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */; };
 		EA1C14131E3D80F3002E63BD /* GenericPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */; };
 		EA1C14141E3D80F6002E63BD /* ObjcPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */; };
@@ -52,6 +51,8 @@
 		EA30E6571E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30E6561E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift */; };
 		EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505B1E35359800FB9905 /* MockGenericAction.swift */; };
 		EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31505D1E35533400FB9905 /* MockListAction.swift */; };
+		EA3C16291F45E35D0087F6B8 /* Connect+PersistentStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C16281F45E35D0087F6B8 /* Connect+PersistentStackTests.swift */; };
+		EA3C162C1F45FEE30087F6B8 /* TestModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C162A1F45FE300087F6B8 /* TestModelLoader.swift */; };
 		EA4A2E8D1E512FC600C68540 /* MockListActionUnmanaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */; };
 		EA4A2E901E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8E1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift */; };
 		EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */; };
@@ -74,7 +75,7 @@
 		EAC4BD521E65DDB700C3BC05 /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3221E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld */; };
 		EAC5C3271E6269D90025D310 /* ContainerTestModel4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3251E6269D90025D310 /* ContainerTestModel4.xcdatamodeld */; };
-		EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */; };
+		EACAA3FB1DC8114F00D3D371 /* TestPersistentStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* TestPersistentStoreManager.swift */; };
 		EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */; };
 		EACAD5FB1E6B3F95000781A5 /* MockBaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */; };
 		EACAD6041E6C8B8A000781A5 /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
@@ -89,6 +90,7 @@
 		EACBC68C1E7AF628001D5431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACBC68B1E7AF628001D5431 /* Assets.xcassets */; };
 		EACBC68F1E7AF628001D5431 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACBC68D1E7AF628001D5431 /* LaunchScreen.storyboard */; };
 		EAD40E0F1E3522BF0058C9FB /* ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */; };
+		EADA13C11F474E12003983D3 /* StoreConfiguration+ResolveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */; };
 		EAF397561E31926A00038CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF397551E31926A00038CD4 /* AppDelegate.swift */; };
 		EAF3975B1E31927B00038CD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF397571E31927B00038CD4 /* LaunchScreen.xib */; };
 		EAF3975C1E31927B00038CD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF397591E31927B00038CD4 /* Main.storyboard */; };
@@ -140,7 +142,6 @@
 		92E0A52AB6E160D59F17EFE2 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBF446C4B5F6CB3431A2835D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E19897CFC4B2C3F5E29F1374 /* Pods_Coherence_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coherence_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA1358A01E99E4630008A94A /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationTests.swift; path = ConnectTests/ConfigurationTests.swift; sourceTree = "<group>"; };
 		EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBackedSequenceTests.swift; sourceTree = "<group>"; };
 		EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPersistentContainerTests.swift; sourceTree = "<group>"; };
 		EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjcPersistentContainerTests.swift; sourceTree = "<group>"; };
@@ -177,6 +178,8 @@
 		EA30E6561E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ManagedObjectContext+ExtensionsTests.swift"; path = "CoreExtensionsTests/ManagedObjectContext+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EA31505B1E35359800FB9905 /* MockGenericAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGenericAction.swift; sourceTree = "<group>"; };
 		EA31505D1E35533400FB9905 /* MockListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockListAction.swift; sourceTree = "<group>"; };
+		EA3C16281F45E35D0087F6B8 /* Connect+PersistentStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+PersistentStackTests.swift"; path = "ConnectTests/Connect+PersistentStackTests.swift"; sourceTree = "<group>"; };
+		EA3C162A1F45FE300087F6B8 /* TestModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModelLoader.swift; sourceTree = "<group>"; };
 		EA4A2E8C1E512FC600C68540 /* MockListActionUnmanaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockListActionUnmanaged.swift; sourceTree = "<group>"; };
 		EA4A2E8E1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity3Unmanaged+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA4A2E8F1E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectEntity3Unmanaged+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -206,7 +209,7 @@
 		EAC5C3231E624D090025D310 /* ConnectTestModelEmpty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ConnectTestModelEmpty.xcdatamodel; sourceTree = "<group>"; };
 		EAC5C3261E6269D90025D310 /* ContainerTestModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel4.xcdatamodel; sourceTree = "<group>"; };
 		EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
-		EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoherenceTestUtilities.swift; sourceTree = "<group>"; };
+		EACAA3FA1DC8114F00D3D371 /* TestPersistentStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPersistentStoreManager.swift; sourceTree = "<group>"; };
 		EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+ActionTests.swift"; path = "ConnectTests/Connect+ActionTests.swift"; sourceTree = "<group>"; };
 		EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseAction.swift; sourceTree = "<group>"; };
 		EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContainer+StatisticsTests.swift"; path = "Queues/ActionContainer+StatisticsTests.swift"; sourceTree = "<group>"; };
@@ -223,8 +226,9 @@
 		EACBC68E1E7AF628001D5431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACBC6901E7AF628001D5431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectTests.swift; path = ConnectTests/ConnectTests.swift; sourceTree = "<group>"; };
+		EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoreConfiguration+ResolveTests.swift"; sourceTree = "<group>"; };
 		EAE527531DC4E94F00AA65AE /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = codecov.yml; path = ../codecov.yml; sourceTree = "<group>"; };
-		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
+		EAF397441E318A8900038CD4 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
 		EAF3974D1E31917000038CD4 /* hr-rest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hr-rest.json"; sourceTree = "<group>"; };
 		EAF3974F1E31917000038CD4 /* hr-legacy.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-legacy.wadl"; sourceTree = "<group>"; };
 		EAF397501E31917000038CD4 /* hr-rest.wadl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hr-rest.wadl"; sourceTree = "<group>"; };
@@ -339,7 +343,8 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EACAA3FA1DC8114F00D3D371 /* CoherenceTestUtilities.swift */,
+				EA3C162A1F45FE300087F6B8 /* TestModelLoader.swift */,
+				EACAA3FA1DC8114F00D3D371 /* TestPersistentStoreManager.swift */,
 				EA30E6551E771CE500F09610 /* CoreExtensionsTests */,
 				EAD40E0D1E3518CB0058C9FB /* ConnectTests */,
 				EA1C14031E3D7E7A002E63BD /* ContainerTests */,
@@ -403,6 +408,7 @@
 				EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */,
 				EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */,
 				EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */,
+				EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */,
 				EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */,
 				EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */,
 				EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */,
@@ -575,9 +581,9 @@
 			isa = PBXGroup;
 			children = (
 				EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */,
+				EA3C16281F45E35D0087F6B8 /* Connect+PersistentStackTests.swift */,
 				EACBC64F1E779FC4001D5431 /* Connect+StateManagementTests.swift */,
 				EACAD5F81E6A4FE2000781A5 /* Connect+ActionTests.swift */,
-				EA1358A01E99E4630008A94A /* ConfigurationTests.swift */,
 				EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */,
 				EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */,
 				EA5BDCA91E64CBB900527236 /* Extensions */,
@@ -936,7 +942,7 @@
 				EA1C14291E3EF9EB002E63BD /* MetaLogEntryTests.swift in Sources */,
 				EA1C14521E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift in Sources */,
 				EA1C14531E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift in Sources */,
-				EACAA3FB1DC8114F00D3D371 /* CoherenceTestUtilities.swift in Sources */,
+				EACAA3FB1DC8114F00D3D371 /* TestPersistentStoreManager.swift in Sources */,
 				EA5074D81E839285004DE565 /* StoreConfigurationTests.swift in Sources */,
 				EA4A2E8D1E512FC600C68540 /* MockListActionUnmanaged.swift in Sources */,
 				EA5BDC9D1E63BA8000527236 /* LoggingContextTests.swift in Sources */,
@@ -948,9 +954,9 @@
 				EA4A2E941E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EAB4C68B1E66284200254A13 /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA1C14541E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift in Sources */,
-				EA1358A11E99E4630008A94A /* ConfigurationTests.swift in Sources */,
 				EA4A2E911E51307D00C68540 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
 				EA31505C1E35359800FB9905 /* MockGenericAction.swift in Sources */,
+				EA3C16291F45E35D0087F6B8 /* Connect+PersistentStackTests.swift in Sources */,
 				EA7D1AC31E4C23FE003EAD4A /* ActionContext+MergeTests.swift in Sources */,
 				EA30E6571E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift in Sources */,
 				EAC5C3241E624D090025D310 /* ConnectTestModelEmpty.xcdatamodeld in Sources */,
@@ -959,6 +965,7 @@
 				EA97628F1E8F351A007D919C /* ContextStrategy+MixedTests.swift in Sources */,
 				EACAD62D1E6E4981000781A5 /* MetaModelTests.swift in Sources */,
 				EA1C14191E3D8107002E63BD /* ContainerUser+CoreDataProperties.swift in Sources */,
+				EADA13C11F474E12003983D3 /* StoreConfiguration+ResolveTests.swift in Sources */,
 				EA4AA4D31E91ED8500F90069 /* ContextStrategy+DirectTests.swift in Sources */,
 				EACAD5F91E6A4FE2000781A5 /* Connect+ActionTests.swift in Sources */,
 				EA1C14131E3D80F3002E63BD /* GenericPersistentContainerTests.swift in Sources */,
@@ -977,6 +984,7 @@
 				EA4A2E951E51408C00C68540 /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EA31505F1E35553000FB9905 /* MockListAction.swift in Sources */,
 				EA30E6501E764CF600F09610 /* ContainerTestModel2.xcdatamodeld in Sources */,
+				EA3C162C1F45FEE30087F6B8 /* TestModelLoader.swift in Sources */,
 				EACAD60A1E6CCA66000781A5 /* ActionQueueTests.swift in Sources */,
 				EAA791691E7049B900FD1C25 /* WriteAheadLogTests.swift in Sources */,
 				EA5BDC991E63466000527236 /* NotificationServiceTests.swift in Sources */,
@@ -1277,6 +1285,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1301,6 +1310,7 @@
 				PRODUCT_NAME = "Coherence Test Host";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
