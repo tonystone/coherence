@@ -118,6 +118,10 @@
 		184BB7F26C2A89A7B25B7FD9 /* Pods-Coherence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.debug.xcconfig"; sourceTree = "<group>"; };
 		291A0C150819D4D7CBFD531A /* Pods-Coherence Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence Tests/Pods-Coherence Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2FBE8AE5EDCF3BF3BFE11E57 /* Pods-Coherence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coherence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coherence/Pods-Coherence.release.xcconfig"; sourceTree = "<group>"; };
+		366980078D3C908C8C6CE496 /* Actions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Actions.md; sourceTree = "<group>"; };
+		366984EECFC520E3CF64262F /* Initialization & Startup.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Initialization & Startup.md"; sourceTree = "<group>"; };
+		366987822719B95EEF0095E0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		36698E3D6F3B2034B8F366E8 /* Quick Start Guide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Quick Start Guide.md"; sourceTree = "<group>"; };
 		387FD13B580E0398D458F786 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		40A707AC1AAD93073D43D43B /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5E24CF33E7AF94B910E2D265 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Metadata */,
-				EA1C14231E3EF956002E63BD /* Docs */,
+				EA1C14231E3EF956002E63BD /* Documentation */,
 				EA5FD52A1C1A5918002A7B8A /* Playground */,
 				6003F593195388D20070C39A /* Coherence Example */,
 				EACBC6831E7AF628001D5431 /* Coherence Test Host */,
@@ -370,6 +374,7 @@
 			children = (
 				F8F8D94FABCD9BFC28AEADDF /* Coherence.podspec */,
 				CBF446C4B5F6CB3431A2835D /* README.md */,
+				EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */,
 				387FD13B580E0398D458F786 /* LICENSE */,
 				EA4D365C1C3DF58C003DC554 /* .travis.yml */,
 				EAF397441E318A8900038CD4 /* Gemfile */,
@@ -378,7 +383,6 @@
 				EA8519E61DC113C2007CAB43 /* .swift-version */,
 				EAE527531DC4E94F00AA65AE /* codecov.yml */,
 				EABEDD4B1DC69B3400D5785D /* Package.swift */,
-				EACAA3F71DC6E85400D3D371 /* CHANGELOG.md */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
@@ -417,15 +421,19 @@
 			path = ContainerTests;
 			sourceTree = "<group>";
 		};
-		EA1C14231E3EF956002E63BD /* Docs */ = {
+		EA1C14231E3EF956002E63BD /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
 				EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */,
 				EA1C14251E3EF986002E63BD /* Connect High Level Architecture.graffle */,
 				EA1C14261E3EF986002E63BD /* Connect High Level Architecture.png */,
+				366980078D3C908C8C6CE496 /* Actions.md */,
+				366987822719B95EEF0095E0 /* README.md */,
+				36698E3D6F3B2034B8F366E8 /* Quick Start Guide.md */,
+				366984EECFC520E3CF64262F /* Initialization & Startup.md */,
 			);
-			name = Docs;
-			path = ../Docs;
+			name = Documentation;
+			path = ../Documentation;
 			sourceTree = "<group>";
 		};
 		EA1C142A1E3F9F7B002E63BD /* Model */ = {

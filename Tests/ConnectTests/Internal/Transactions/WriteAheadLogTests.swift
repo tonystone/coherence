@@ -263,14 +263,14 @@ class WriteAheadLogTests: XCTestCase {
             }
 
             ///
-            /// Remove the Persistent Stores to force an error when trying to obtainPerminentIDs.
+            /// Remove the Persistent Stores to force an error when trying to obtainPermanentIDs.
             ///
             try metaStack.persistentStoreCoordinator.remove(metaStack.persistentStoreCoordinator.persistentStores[0])
 
             XCTAssertThrowsError(try log.logTransactionForContextChanges(context)) { (error) in
 
                 if case WriteAheadLog.Errors.failedToObtainPermanentIDs(let message) = error {
-                    XCTAssert(message.range(of: expected, options: .regularExpression) != nil)
+                    XCTAssert(message.range(of: expected, options: .regularExpression) != nil, "\(message) not equal to \(expected)")
                 } else {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
                 }

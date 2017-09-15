@@ -23,12 +23,51 @@
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
+
+**Coherence**, the configurable CoreData extension for the Web Service era.  Coherence helps you build apps that require persistence, offline storage, store and forward and web connectivity. It provides you with a comprehensive framework for managing low level resources intelligently and efficiently.
+
+## Documentation
+
+To get started using Coherence quickly, see the [Quick Start Guide](Documentation/Quick&#32;Start&#32;Guide.md).
+
+For extensive documentation on using Coherence and more, see [Documentation](Documentation).
+
+## Sources and Binaries
+
+You can find the latest sources and binaries on [github](https://github.com/tonystone/coherence).
+
+## Communication and Contributions
+
+- If you **found a bug**, _and can provide steps to reliably reproduce it_, [open an issue](https://github.com/tonystone/coherence/issues).
+- If you **have a feature request**, [open an issue](https://github.com/tonystone/coherence/issues).
+- If you **want to contribute**
+   - Fork it! [Coherence repository](https://github.com/tonystone/coherence)
+   - Create your feature branch: `git checkout -b my-new-feature`
+   - Commit your changes: `git commit -am 'Add some feature'`
+   - Push to the branch: `git push origin my-new-feature`
+   - Submit a pull request :-)
+
+## Installation (Swift Package Manager)
+
+Coherence now supports dependency management via Swift Package Manager.  To add Coherence as a dependency to your project add the following to your `Package.swift` file in the project root.
+
+Please see [Swift Package Manager](https://swift.org/package-manager/#conceptual-overview) for further information.
+
+## Installation (CocoaPods)
+
+Coherence is available through [CocoaPods](http://cocoapods.org). Currently Swift is the default so to install it, simply add the following line to your Podfile:
+
+```ruby
+pod "Coherence"
+```
+
+See the ["Using CocoaPods"](https://guides.cocoapods.org/using/using-cocoapods.html) guide for more information.
+
 ## Requirements
 
 | Xcode | Swift | iOS |
 |:-----:|:-----:|:---:|
 |  8.3  |  3.1  | 9.0 |
-
 
 ## Author
 

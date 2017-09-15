@@ -56,62 +56,7 @@ fileprivate struct Default {
 
 ///
 /// GenericConnect is the concrete implementation of the Connect protocol.  Use this class to instantiate 
-/// a spcifically configured instance for you needs.
-///
-/// GenericConnect has several startup schenarios/use cases.
-///
-/// 1) No Configuration
-///
-///     Developer wants a no hassle simple configuration.
-///
-/// ```
-///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
-///
-///     try connect.start()
-/// ```
-///
-/// 2) Custom Configuration
-///
-///     Developer has a custom configuration or location setup for the persistent stores that he wants to maintain.
-///
-/// ```
-///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
-///
-///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
-///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)])
-/// ```
-///
-/// 3) User per configuration
-///
-///     Developer wants a Configuration/PersistentStore per user that logs into the application.
-///
-/// ```
-///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
-///
-///     let userName = loggedInUserName() /* Determine user that is logging in */
-///
-///     connect.bundleLocation = URL("/persistentStores/base/location/\(userName)"
-///
-///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
-///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)]))
-/// ```
-///
-/// 3) Global Store, User per configuration
-///
-///     Developer starts a global PersistentStore(s) before starting connect with a custom Configuration/StoreConfigurations per user that logs into the application.
-///
-/// ```
-///     let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "MyModelName")
-///
-///     try connect.attachPersistentStore(for: StoreConfiguration(url: URL(fileURLWithPath: "/persistentStores/location/globalData.sqlite", name: "GlobalData", type: NSSQLiteStoreType)))
-///
-///     let userName = loggedInUserName() /* Determine user that is logging in */
-///
-///     connect.bundleLocation = URL("/persistentStores/base/location/\(userName)"
-///
-///     try connect.start(storeConfigurations: [StoreConfiguration(name: "TransientData",  type: NSInMemoryStoreType),
-///                                             StoreConfiguration(name: "PersistentData", type: NSSQLiteStoreType)]))
-/// ```
+/// a specifically configured instance for you needs.
 ///
 public class GenericConnect<Strategy: ContextStrategyType>: Connect {
 

@@ -3,13 +3,8 @@
 import UIKit
 import CoreData
 
-@testable import Coherence
+import Coherence
 
-let ptr = UnsafeMutablePointer<String>.allocate(capacity: 1)
+let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: "PlayModel", managedObjectModel: PlayModel.newInstance())
 
-ptr.initialize(to: "This is a test String")
-
-print(ptr.pointee)
-
-ptr.deinitialize()
-ptr.deallocate(capacity: 1)
+try connect.start()
