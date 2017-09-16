@@ -14,7 +14,7 @@
    <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
 </a>
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
+   <img src="https://img.shields.io/badge/Swift-3.0%20%7C%204.0-orange.svg?style=flat" alt="Swift 3.0 | 4.0">
 </a>
 <a href="https://travis-ci.org/tonystone/coherence" target="_blank">
   <img src="https://travis-ci.org/tonystone/coherence.svg?branch=master" alt="travis-ci.org" />
@@ -63,11 +63,20 @@ pod "Coherence"
 
 See the ["Using CocoaPods"](https://guides.cocoapods.org/using/using-cocoapods.html) guide for more information.
 
-## Requirements
+## Minimum Requirements
 
-| Xcode | Swift | iOS |
-|:-----:|:-----:|:---:|
-|  8.3  |  3.1  | 9.0 |
+Build Environment
+
+| Platform | Swift | Swift Build | Xcode |
+|:--------:|:-----:|:----------:|:------:|
+| OSX      | 3.1 | &#x2714; | 8.3 |
+| Linux    | Not supported | &#x2718; | &#x2718; |
+
+Minimum Runtime Version
+
+| iOS |  OS X | Linux |
+|:---:|:-----:|:------------:|
+| 9.0 | 10.11 | Not supported |
 
 ## Author
 

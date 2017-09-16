@@ -25,7 +25,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryInsertDataArchive() {
 
-        typealias TargetType = MetaLogEntry.InsertData
+        typealias TargetType = InsertData
 
         let input: [String: Int] = ["key1": 1, "key2": 2]
         let expected = input
@@ -52,7 +52,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryUpdateDataArchive() {
 
-        typealias TargetType = MetaLogEntry.UpdateData
+        typealias TargetType = UpdateData
 
         let input: ([String: Int], [String]) = (["key1": 1, "key2": 2], ["key2"])
         let expected = input
@@ -87,7 +87,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryDeleteDataArchive() {
 
-        typealias TargetType = MetaLogEntry.DeleteData
+        typealias TargetType = DeleteData
 
         let input = TargetType()
 
@@ -98,7 +98,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryInsertDataDescription() {
 
-        typealias TargetType = MetaLogEntry.InsertData
+        typealias TargetType = InsertData
 
         let input: [String: Int] = ["key1": 1, "key2": 2]
         let expected = "InsertData \\{ attributesAndValues: \\[AnyHashable\\(\"key[12]\"\\): [12], AnyHashable\\(\"key[12]\"\\): [12]\\] \\}"
@@ -111,7 +111,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryInsertDataDescriptionNilAttributesAndValues() {
 
-        typealias TargetType = MetaLogEntry.InsertData
+        typealias TargetType = InsertData
 
         let input: [String: Int]? = nil
         let expected = "InsertData { attributesAndValues: nil }"
@@ -124,7 +124,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryUpdateDataDescription() {
 
-        typealias TargetType = MetaLogEntry.UpdateData
+        typealias TargetType = UpdateData
 
         let input: ([String: Int], [String]) = (["key1": 1, "key2": 2], ["key2"])
         let expected = "UpdateData \\{ attributesAndValues: \\[AnyHashable\\(\"key[12]\"\\): [12], AnyHashable\\(\"key[12]\"\\): [12]\\] updatedAttributes: \\[\"key[12]\"\\] \\}"
@@ -138,7 +138,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryUpdateDataDescriptionNilAttributesAndValues() {
 
-        typealias TargetType = MetaLogEntry.UpdateData
+        typealias TargetType = UpdateData
 
         let input: ([String: Int]?, [String]?) = (nil, nil)
         let expected = "UpdateData { attributesAndValues: nil updatedAttributes: nil }"
@@ -152,7 +152,7 @@ class MetaLogEntryTests: XCTestCase {
 
     func testMetaLogEntryDeleteDataDescription() {
 
-        typealias TargetType = MetaLogEntry.DeleteData
+        typealias TargetType = DeleteData
 
         let input = TargetType()
         let expected = "DeleteData {}"

@@ -750,8 +750,15 @@ fileprivate extension GenericConnect {
                 entity.uniquenessAttributes = {
                     var array: [String] = []
 
-                    for case let attribute as NSAttributeDescription in shortest {
-                        array.append(attribute.name)
+                    for attribute in shortest {
+                        switch attribute {
+                        case let attribute as NSAttributeDescription:
+                            array.append(attribute.name)
+                        case let name as String:
+                            array.append(name)
+                        default:
+                            continue
+                        }
                     }
                     return array
                 }()

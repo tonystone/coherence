@@ -287,7 +287,7 @@ internal class WriteAheadLog {
                 //
                 // Get the object attribute change data
                 //
-                let data = MetaLogEntry.InsertData()
+                let data = InsertData()
 
                 let attributes = [String](object.entity.attributesByName.keys)
 
@@ -322,7 +322,7 @@ internal class WriteAheadLog {
                 //
                 // Get the object attribute change data
                 //
-                let data = MetaLogEntry.UpdateData()
+                let data = UpdateData()
 
                 let attributes = [String](object.entity.attributesByName.keys)
 
@@ -372,7 +372,7 @@ internal class WriteAheadLog {
         }
     }
 
-    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueID: String?, updateData: MetaLogEntry.ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: Int) throws {
+    private func insertTransactionLogEntry(entity: NSEntityDescription, objectID: String, uniqueID: String?, updateData: ChangeData?, type: MetaLogEntryType, transactionID: TransactionID, metadataContext: NSManagedObjectContext, sequenceNumber: Int) throws {
 
         let sequence = Int32(sequenceNumber)
 

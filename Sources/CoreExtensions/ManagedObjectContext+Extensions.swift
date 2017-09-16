@@ -24,6 +24,24 @@ extension NSManagedObjectContext {
     ///
     /// synchronously performs the block on the context's queue with a throwing block.  May safely be called reentrantly and throw Errors from this block.
     ///
+    #if swift(>=3.2)    /// Signature change in Xcode 9 swift 3.2, Apple removed the @escaping
+    @nonobjc
+    public func performAndWait(_ block: () throws -> Void) throws {
+        var error: Error? = nil
+
+        self.performAndWait { () -> Void in
+            do {
+                try block()
+
+            } catch let blockError {
+                error = blockError
+            }
+        }
+        if let error = error {
+            throw error
+        }
+    }
+    #else
     @nonobjc
     public func performAndWait(_ block: @escaping () throws -> Void) throws {
         var error: Error? = nil
@@ -40,6 +58,7 @@ extension NSManagedObjectContext {
             throw error
         }
     }
+    #endif
 
     ///
     /// Asynchronously performs the block on the context's queue with a throwing block calling errorHandler if an error is thrown. May safely be called reentrantly and throw Errors from this block.

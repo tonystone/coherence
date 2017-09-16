@@ -72,7 +72,8 @@ public class ActionContext: BackgroundContext {
     ///
     /// synchronously performs the block on the context's queue with a throwing block.  May safely be called reentrantly.
     ///
-    public override func performAndWait(_ block: @escaping () -> Void) {
+    #if swift(>=3.2)    /// Signature change in Xcode 9 swift 3.2, Apple removed the @escaping
+    public override func performAndWait(_ block: () -> Void) {
 
         super.performAndWait { () -> Void in
             var root: Bool = false
@@ -105,6 +106,27 @@ public class ActionContext: BackgroundContext {
             }
         }
     }
+    #else
+    public override func performAndWait(_ block: @escaping () -> Void) {
+
+        super.performAndWait { () -> Void in
+            var root: Bool = false
+
+            if self.blockStartTime == nil {
+                self.blockStartTime = Date()
+                root = true
+            }
+
+            block()
+
+            if root, let start = self.blockStartTime {
+                /// Calculate time
+                self.statistics.contextBlockTime = self.statistics.contextBlockTime + Date().timeIntervalSince(start)
+                self.blockStartTime = nil
+            }
+        }
+    }
+    #endif
 
     public override func perform(_ block: @escaping () -> Void) {
 

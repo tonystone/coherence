@@ -4,6 +4,7 @@ All significant changes to this project will be documented in this file.
 ## [3.0.0-beta.5](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.5) 
 
 #### Added
+- Added support for Xcode 9 and Swift 4 compiler.
 - Added `attachPersistentStore` and `attachPersistentStores` to `PersistentStack` and classes that implement it, `GenericConnect` and `GenericPersistentContainer`.
 - Added `InMemorySequence` for log entry sequence numbering.
 - Added `FileBackedSequence` as an alternative for log entry sequence (persistent).
@@ -12,6 +13,7 @@ All significant changes to this project will be documented in this file.
 #### changes
 - Renamed `Configuration` to `StoreConfiguration`.
 - Moved `start` and `stop` blocks to execute on the global queue instead of the internal queue.
+- Changed performAndWait to non-escaping on Swift 3.2 and above.
 
 #### Removed
 - Removed `loadPersistentStores` from `GenericPersistentContainer` (use `attachPersistentStore(s)` instead).
