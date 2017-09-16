@@ -14,7 +14,7 @@
    <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
 </a>
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Swift-3.0%20%7C%204.0-orange.svg?style=flat" alt="Swift 3.0 | 4.0">
+   <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
 </a>
 <a href="https://travis-ci.org/tonystone/coherence" target="_blank">
   <img src="https://travis-ci.org/tonystone/coherence.svg?branch=master" alt="travis-ci.org" />
@@ -23,6 +23,7 @@
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
+---
 
 **Coherence**, the configurable CoreData extension for the Web Service era.  Coherence helps you build apps that require persistence, offline storage, store and forward and web connectivity. It provides you with a comprehensive framework for managing low level resources intelligently and efficiently.
 
