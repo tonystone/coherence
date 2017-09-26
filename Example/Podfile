@@ -1,19 +1,36 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
-
 use_frameworks!
 
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'Coherence Example' do
-  pod "Coherence", :path => "../"
-end
-
-target 'Coherence Test Host' do
+abstract_target 'Coherence' do
     pod "Coherence", :path => "../"
-end
+    pod "TraceLog", "~> 2.0"
+    
+    target 'Coherence Example' do
+        platform :ios, '9.0'
+    end
 
-target 'Coherence Tests' do
-  pod "Coherence", :path => "../"
+    target 'iOS Test Host' do
+        platform :ios, '8.1'
+
+        target 'iOS Tests'
+    end
+
+    target 'OSX Test Host' do
+        platform :osx, '10.10'
+
+        target 'OSX Tests'
+    end
+
+    target 'tvOS Test Host' do
+        platform :tvos, '9.0'
+
+        target 'tvOS Tests'
+    end
+
+    target 'watchOS Test App Extension' do
+        platform :watchos, '2.0'
+    end
 end

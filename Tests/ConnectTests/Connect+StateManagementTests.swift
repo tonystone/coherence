@@ -166,6 +166,7 @@ class ConnectStateManagementTests: XCTestCase {
         XCTAssertEqual(connect.suspended, expected)
     }
 
+#if os(iOS)
     func testProtectedDataWillBecomeUnavailable() throws {
 
         let input = (modelName: modelName, isSuspended: true)
@@ -192,4 +193,5 @@ class ConnectStateManagementTests: XCTestCase {
 
         XCTAssertEqual(connect.suspended, expected)
     }
+#endif
 }

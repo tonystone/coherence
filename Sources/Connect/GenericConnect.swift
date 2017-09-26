@@ -20,7 +20,12 @@
 ///
 import CoreData
 import TraceLog
-import UIKit
+
+#if os(OSX)
+    import Cocoa
+#elseif os(iOS)
+    import UIKit
+#endif
 
 ///
 /// Constants
@@ -195,12 +200,16 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     }
 
     func registerForNotifications() {
+    #if os(iOS)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataDidBecomeAvailable(notification:)),     name: Foundation.Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProtectedDataWillBecomeUnavailable(notification:)),  name: Foundation.Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+    #endif
     }
 
     func unregisterForNotifications() {
+    #if os(iOS)
         NotificationCenter.default.removeObserver(self)
+    #endif
     }
 
     @objc dynamic func handleProtectedDataDidBecomeAvailable(notification: NSNotification) {
@@ -735,7 +744,7 @@ fileprivate extension GenericConnect {
 
         } else {
 
-            if #available(iOS 9.0, *), entity.uniquenessConstraints.count > 0 {
+            if #available(iOS 9.0, OSX 10.11, *), entity.uniquenessConstraints.count > 0 {
 
                 logInfo(Log.tag) { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
 

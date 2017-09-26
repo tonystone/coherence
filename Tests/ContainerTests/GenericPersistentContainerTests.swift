@@ -55,7 +55,7 @@ class GenericPersistentContainerTests: XCTestCase {
 
             let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
 
-            return possibleURLs[0]
+            return possibleURLs[0].appendingPathComponent("Coherence")
         }()
 
         XCTAssertEqual(input, expected)

@@ -1,6 +1,16 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/tonystone/coherence/releases/tag/3.0.0)
+
+Please see previsous 3.0.0-beta.x releases for complete list of features and changes.
+
+#### Updated
+- Changed defaultStoreLocation from applicationSupport directory to ApplicationSupport directory + "Coherence"
+
+#### Removed
+- Removed broken Swift PM support (will re-release in next release)
+
 ## [3.0.0-beta.5](https://github.com/tonystone/coherence/releases/tag/3.0.0-beta.5) 
 
 #### Added
@@ -10,7 +20,7 @@ All significant changes to this project will be documented in this file.
 - Added `FileBackedSequence` as an alternative for log entry sequence (persistent).
 - Added `==` to `StoreConfiguration` for equality comparison.
 
-#### changes
+#### Updated
 - Renamed `Configuration` to `StoreConfiguration`.
 - Moved `start` and `stop` blocks to execute on the global queue instead of the internal queue.
 - Changed performAndWait to non-escaping on Swift 3.2 and above.

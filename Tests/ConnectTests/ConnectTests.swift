@@ -44,7 +44,7 @@ class ConnectTests: XCTestCase {
 
             let possibleURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
 
-            return possibleURLs[0]
+            return possibleURLs[0].appendingPathComponent("Coherence")
         }()
 
         XCTAssertEqual(input, expected)
@@ -66,7 +66,13 @@ class ConnectTests: XCTestCase {
         XCTAssertEqual(GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
+    @available(iOS 9.0, OSX 10.11, *)
     func testConnectEntityCanBeManagedUniquenessAttributesDefined() throws {
+
+        /// Clear out the userInfo structure so there is no uniquenessAttributes
+        self.testModel.entitiesByName["Entity1"]?.userInfo = nil
+        /// Now add in an iOS 9.0+ uniquenessConstraints
+        self.testModel.entitiesByName["Entity1"]?.uniquenessConstraints = [["id"]]
 
         guard let input = self.testModel.entitiesByName["ConnectEntity1"]
             else { XCTFail(); return }

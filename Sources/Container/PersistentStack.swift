@@ -20,6 +20,17 @@
 import Swift
 import CoreData
 
+///
+/// Private constants
+///
+private struct Default {
+
+    struct PersistentStore {
+
+        static let location: String = "Coherence"
+    }
+}
+
 public protocol PersistentStack {
 
     ///
@@ -99,7 +110,11 @@ public protocol PersistentStack {
 /// Creates and returns a URL to the default directory for the persistent stores.
 ///
 private func defaultStoreLocation() -> URL {
-    return abortIfError(block: { try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) })
+    return abortIfError(block: {
+        let url = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+
+        return url.appendingPathComponent(Default.PersistentStore.location)
+    })
 }
 
 extension PersistentStack {

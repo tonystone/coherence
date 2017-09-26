@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Country" representedClassName="Country" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" syncable="YES"/>
@@ -24,11 +24,9 @@
         <relationship name="department" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department" syncable="YES"/>
         <relationship name="job" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Job" syncable="YES"/>
         <relationship name="manager" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="email"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
+        <userInfo>
+            <entry key="uniquenessAttributes" value="email"/>
+        </userInfo>
     </entity>
     <entity name="Job" representedClassName="Job" syncable="YES">
         <attribute name="maxSalary" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>

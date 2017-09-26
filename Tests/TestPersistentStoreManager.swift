@@ -27,6 +27,10 @@ import CoreData
 
 internal class TestPersistentStoreManager {
 
+    public enum Errors: Error {
+        case invalidPersistentstoreDirectory(message: String)
+    }
+
      class func defaultPersistentStoreDirectory() -> URL {
 
         return GenericPersistentContainer<ContextStrategy.Mixed>.defaultStoreLocation()
@@ -42,6 +46,11 @@ internal class TestPersistentStoreManager {
 
     class func removePersistentStoreCache(at url: URL) throws {
 
+        let applicationDirectory = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+
+        guard url != applicationDirectory
+            else { throw Errors.invalidPersistentstoreDirectory(message: "Attempting to remove 'Application Support' directory \(url).") }
+
         let fileManager = FileManager.default
 
         if fileManager.fileExists(atPath: url.path) {
@@ -50,6 +59,7 @@ internal class TestPersistentStoreManager {
             for file in files {
                 try fileManager.removeItem(at: file)
             }
+            try fileManager.removeItem(at: url)
         }
     }
 

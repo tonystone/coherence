@@ -1,14 +1,8 @@
 
-> :warning: **WARNING** :warning: The **3.0.0-beta.x** versions of this project are in a _prerelease_ state. There
-> is active work going on that will result in API changes that can/will break code while things are finished.  Use with caution.
->
->  For a stable release, please use version [2.0.4](https://github.com/tonystone/coherence/releases/tag/2.0.4)
-
-
 # Coherence ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-lightgray.svg?style=flat)
 
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Platforms-ios%20%7C%20osx-lightgray.svg?style=flat" alt="Platforms: ios | osx">
+   <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgray.svg?style=flat" alt="Platforms: iOS | macOS | tvOS | watchOS">
 </a>
 <a href="https://github.com/tonystone/coherence/" target="_blank">
    <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
@@ -48,12 +42,6 @@ You can find the latest sources and binaries on [github](https://github.com/tony
    - Push to the branch: `git push origin my-new-feature`
    - Submit a pull request :-)
 
-## Installation (Swift Package Manager)
-
-Coherence now supports dependency management via Swift Package Manager.  To add Coherence as a dependency to your project add the following to your `Package.swift` file in the project root.
-
-Please see [Swift Package Manager](https://swift.org/package-manager/#conceptual-overview) for further information.
-
 ## Installation (CocoaPods)
 
 Coherence is available through [CocoaPods](http://cocoapods.org). Currently Swift is the default so to install it, simply add the following line to your Podfile:
@@ -70,14 +58,14 @@ Build Environment
 
 | Platform | Swift | Swift Build | Xcode |
 |:--------:|:-----:|:----------:|:------:|
-| OSX      | 3.1 | &#x2714; | 8.3 |
+| OSX      | 3.1 | &#x2718; | 8.3 |
 | Linux    | Not supported | &#x2718; | &#x2718; |
 
 Minimum Runtime Version
 
-| iOS |  OS X | Linux |
-|:---:|:-----:|:------------:|
-| 9.0 | 10.11 | Not supported |
+| iOS |  OS X | tvOS | watchOS | Linux |
+|:---:|:-----:|:----:|:-------:|:------------:|
+| 8.1 | 10.10 | 9.0  | 2.0 | Not supported |
 
 ## Author
 

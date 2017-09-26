@@ -17,7 +17,6 @@
 ///
 ///  Created by Tony Stone on 1/22/17.
 ///
-import UIKit
 import CoreData
 import TraceLog
 import Coherence
