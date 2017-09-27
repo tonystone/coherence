@@ -2,19 +2,22 @@
 # Coherence ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-lightgray.svg?style=flat)
 
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgray.svg?style=flat" alt="Platforms: iOS | macOS | tvOS | watchOS">
+   <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgray.svg?style=flat" alt="platforms: iOS | macOS | tvOS | watchOS">
 </a>
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
-</a>
-<a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
+   <img src="https://img.shields.io/badge/Swift-3.1-orange.svg?style=flat" alt="Swift 3.1">
 </a>
 <a href="https://travis-ci.org/tonystone/coherence" target="_blank">
   <img src="https://travis-ci.org/tonystone/coherence.svg?branch=master" alt="travis-ci.org" />
 </a>
 <a href="https://codecov.io/gh/tonystone/coherence" target="_blank">
   <img src="https://codecov.io/gh/tonystone/coherence/branch/master/graph/badge.svg" alt="Codecov" />
+</a>
+<a href="https://github.com/tonystone/coherence/" target="_blank">
+    <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
+</a>
+<a href="https://github.com/tonystone/coherence/" target="_blank">
+    <img src="https://img.shields.io/cocoapods/dt/Coherence.svg?style=flat" alt="Downloads">
 </a>
 
 ---

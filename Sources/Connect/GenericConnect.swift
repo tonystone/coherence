@@ -744,7 +744,7 @@ fileprivate extension GenericConnect {
 
         } else {
 
-            if #available(iOS 9.0, OSX 10.11, *), entity.uniquenessConstraints.count > 0 {
+            if #available(iOS 9.0, OSX 10.11, tvOS 9.0, watchOS 2.0, *), entity.uniquenessConstraints.count > 0 {
 
                 logInfo(Log.tag) { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
 

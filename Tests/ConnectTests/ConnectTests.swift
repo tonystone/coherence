@@ -66,27 +66,30 @@ class ConnectTests: XCTestCase {
         XCTAssertEqual(GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: input).managedObjectModel , expected)
     }
 
-    @available(iOS 9.0, OSX 10.11, *)
+
     func testConnectEntityCanBeManagedUniquenessAttributesDefined() throws {
+    
+        if #available(iOS 9.0, OSX 10.11, tvOS 9.0, watchOS 2.0, *) {
+            /// Clear out the userInfo structure so there is no uniquenessAttributes
+            self.testModel.entitiesByName["ConnectEntity1"]?.userInfo = [:]
+            /// Now add in an iOS 9.0+ uniquenessConstraints
+            self.testModel.entitiesByName["ConnectEntity1"]?.uniquenessConstraints = [["id", "stringAttribute"], ["id"]]
 
-        /// Clear out the userInfo structure so there is no uniquenessAttributes
-        self.testModel.entitiesByName["Entity1"]?.userInfo = nil
-        /// Now add in an iOS 9.0+ uniquenessConstraints
-        self.testModel.entitiesByName["Entity1"]?.uniquenessConstraints = [["id"]]
+            guard let input = self.testModel.entitiesByName["ConnectEntity1"]
+                else { XCTFail(); return }
 
-        guard let input = self.testModel.entitiesByName["ConnectEntity1"]
-            else { XCTFail(); return }
+            ///
+            /// Note: Test values are defined on the static model.
+            ///
+            let expected = (managed: true, uniqnessAttributes: ["id"])
 
-        ///
-        /// Note: Test values are defined on the static model.
-        ///
-        let expected = (managed: true, uniqnessAttributes: ["id"])
+            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
+            try connect.start()
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName, managedObjectModel: self.testModel)
-        try connect.start()
+            XCTAssertEqual(input.managed, expected.managed)
+            XCTAssertEqual(input.uniquenessAttributes, expected.uniqnessAttributes)
+        }
 
-        XCTAssertEqual(input.managed, expected.managed)
-        XCTAssertEqual(input.uniquenessAttributes, expected.uniqnessAttributes)
     }
 
     func testConnectMissingUniquenessAttributeEntityCannotBeManaged() throws {
