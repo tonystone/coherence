@@ -3,7 +3,7 @@ All significant changes to this project will be documented in this file.
 
 ## [3.0.0](https://github.com/tonystone/coherence/releases/tag/3.0.0)
 
-Please see previsous 3.0.0-beta.x releases for complete list of features and changes.
+Please see the previous 3.0.0-beta.x releases for a complete list of features and changes.
 
 #### Updated
 - Changed defaultStoreLocation from applicationSupport directory to ApplicationSupport directory + "Coherence"
