@@ -12,12 +12,12 @@ matrix:
   include:
     -
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="pod lint"
     - 
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
@@ -25,7 +25,7 @@ matrix:
          - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
@@ -33,23 +33,24 @@ matrix:
          - ACTION="-enableCodeCoverage YES test"
     - 
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s"
          - SCHEME="iOS Test Host"
          - ACTION="-enableCodeCoverage YES test"
+# Dropping test for iOS 8 temporarily due to a an issue with XCTest on and Xcode 9.3 (see https://github.com/CocoaPods/CocoaPods/issues/7608)
+#    -
+#      os: osx
+#      osx_image: xcode9.3
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=8.1,name=iPhone 6"
+#         - SCHEME="iOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode8.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=8.1,name=iPhone 6"
-         - SCHEME="iOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=OS X,arch=x86_64"
@@ -57,7 +58,7 @@ matrix:
          - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=tvOS Simulator,OS=9.0,name=Apple TV 1080p"
@@ -65,7 +66,7 @@ matrix:
          - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=tvOS Simulator,OS=10.2,name=Apple TV 1080p"
@@ -73,7 +74,7 @@ matrix:
          - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.3
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
@@ -83,8 +84,15 @@ matrix:
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
   - rvm get head --auto-dotfiles || true
-  - brew unlink swiftlint
-  - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/498e8046cc166d1c7043de66735f1a5567f8f0ef/Formula/swiftlint.rb
+  #
+  # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
+  #
+  - |
+    if [ -e Gemfile ]; then
+       export BUNDLE_GEMFILE=Gemfile
+       gem install bundler
+       bundler install
+    fi
 
 script:
   - |

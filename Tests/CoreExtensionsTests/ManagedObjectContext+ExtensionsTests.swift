@@ -68,6 +68,8 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
                 }
             }
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }
@@ -100,6 +102,8 @@ class ManagedObjectContextExtensionsTests: XCTestCase {
                     XCTFail("waitForExpectationsWithTimeout errored: \(error)")
                 }
             }
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }

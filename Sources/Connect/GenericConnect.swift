@@ -609,7 +609,7 @@ fileprivate extension GenericConnect {
             self.writeAheadLog = nil
 
             ///
-            /// Check that all the exsiting stores are started, if not, start each of them
+            /// Check that all the exsiting stores are stopped, if not, stop each of them
             ///
             for store in self.dataCache.persistentStoreCoordinator.persistentStores {
                 if self.storeStatus[store.identifier] == .started {

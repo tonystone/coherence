@@ -40,6 +40,16 @@ class ManagedObjectExtensionsTests: XCTestCase {
         }
     }
 
+    override func tearDown() {
+        super.tearDown()
+        
+        do {
+            try connect.stop()
+        } catch {
+            XCTFail()
+        }
+    }
+    
     func testUniguenessIDString() throws {
     
         let input    = (id: Int64(1), string: "Test String")

@@ -50,6 +50,8 @@ class ConnectActionTests: XCTestCase {
                     XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -65,7 +67,7 @@ class ConnectActionTests: XCTestCase {
 
             try connect.start()
 
-            self.expectation(forNotification: Coherence.Notification.ActionDidFinishExecuting.rawValue, object: nil)
+            self.expectation(forNotification: Coherence.Notification.ActionDidFinishExecuting, object: nil)
 
             let proxy = try connect.execute(input)
 
@@ -78,6 +80,8 @@ class ConnectActionTests: XCTestCase {
                     XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -110,6 +114,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     // MARK: GenericAction Cancel Tests
@@ -142,6 +147,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testCancelGenericActionInUserCode() throws {
@@ -174,6 +180,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testCancelGenericActionThrowingAnError() throws {
@@ -210,6 +217,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     // MARK: EntityAction Execute Tests
@@ -237,6 +245,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testExecuteEntityActionThrowingAnError() throws {
@@ -266,6 +275,7 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testExecuteEntityActionUnmanagedEntity() {
@@ -286,6 +296,8 @@ class ConnectActionTests: XCTestCase {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -323,6 +335,8 @@ class ConnectActionTests: XCTestCase {
                     XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -360,6 +374,8 @@ class ConnectActionTests: XCTestCase {
                     XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -399,5 +415,6 @@ class ConnectActionTests: XCTestCase {
                 XCTAssertEqual(proxy.completionStatus, expected.completionStatus)
             }
         }
+        try connect.stop()  /// Clean up
     }
 }

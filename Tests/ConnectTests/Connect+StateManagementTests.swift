@@ -46,6 +46,7 @@ class ConnectStateManagementTests: XCTestCase {
                 XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected))
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testStartThrows() throws {
@@ -57,6 +58,8 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start()
 
         XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+
+        try connect.stop()  /// Clean up
     }
 
     func testStart2xThrows() throws {
@@ -69,6 +72,8 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start() /// Calling start a second time should be a no-op
 
         XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
+
+        try connect.stop()  /// Clean up
     }
 
     func testStop() throws {
@@ -100,6 +105,7 @@ class ConnectStateManagementTests: XCTestCase {
                 XCTAssertEqual(connect.persistentStoreCoordinator.persistentStores.count, expected)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testStartStopStart() throws {
@@ -110,6 +116,7 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start()
         try connect.stop()
         try connect.start()
+        try connect.stop()  /// Clean up
     }
 
     func testStartStoppedTwice() throws {
@@ -131,6 +138,8 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start()
 
         XCTAssertEqual(connect.suspended, expected)
+
+        try connect.stop()  /// Clean up
     }
 
     func testQueueStateIfNotStarted() {
@@ -152,6 +161,8 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start()
 
         XCTAssertEqual(connect.suspended, expected)
+
+        try connect.stop()  /// Clean up
     }
 
     func testSuspendedAfterStartUp() throws {
@@ -164,6 +175,8 @@ class ConnectStateManagementTests: XCTestCase {
         connect.suspended = input.isSuspended
 
         XCTAssertEqual(connect.suspended, expected)
+
+        try connect.stop()  /// Clean up
     }
 
 #if os(iOS)
@@ -178,6 +191,8 @@ class ConnectStateManagementTests: XCTestCase {
         NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
 
         XCTAssertEqual(connect.suspended, expected)
+
+        try connect.stop()  /// Clean up
     }
 
     func testProtectedDataDidBecomeAvailable() throws {
@@ -192,6 +207,8 @@ class ConnectStateManagementTests: XCTestCase {
         NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
 
         XCTAssertEqual(connect.suspended, expected)
+
+        try connect.stop()  /// Clean up
     }
 #endif
 }

@@ -88,6 +88,8 @@ class ConnectTests: XCTestCase {
 
             XCTAssertEqual(input.managed, expected.managed)
             XCTAssertEqual(input.uniquenessAttributes, expected.uniqnessAttributes)
+            
+            try connect.stop()  /// Clean up
         }
 
     }
@@ -101,6 +103,8 @@ class ConnectTests: XCTestCase {
         try connect.start()
 
         XCTAssertEqual(input?.managed, expected)
+        
+        try connect.stop()  /// Clean up
     }
 
     func testPersistentStoreCoordinator() {
@@ -161,6 +165,8 @@ class ConnectTests: XCTestCase {
             } else {
                 XCTFail()
             }
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }
@@ -221,6 +227,7 @@ class ConnectTests: XCTestCase {
         } else {
             XCTFail()
         }
+        try connect.stop()  /// Clean up
     }
 
     func testCRUDUpdate () throws {
@@ -289,6 +296,7 @@ class ConnectTests: XCTestCase {
         } else {
             XCTFail()
         }
+        try connect.stop()  /// Clean up
     }
 
     func testCRUDDelete () throws {
@@ -340,5 +348,6 @@ class ConnectTests: XCTestCase {
                 XCTFail()
             }
         }
+        try connect.stop()  /// Clean up
     }
 }

@@ -127,7 +127,7 @@ class MetaLogEntryTests: XCTestCase {
         typealias TargetType = UpdateData
 
         let input: ([String: Int], [String]) = (["key1": 1, "key2": 2], ["key2"])
-        let expected = "UpdateData \\{ attributesAndValues: \\[AnyHashable\\(\"key[12]\"\\): [12], AnyHashable\\(\"key[12]\"\\): [12]\\] updatedAttributes: \\[\"key[12]\"\\] \\}"
+        let expected = "UpdateData \\{ attributesAndValues: \\[AnyHashable\\(\"key[12]\"\\): [12], AnyHashable\\(\"key[12]\"\\): [12]\\], updatedAttributes: \\[\"key[12]\"\\] \\}"
 
         let updateData = TargetType()
         updateData.attributesAndValues = input.0
@@ -141,7 +141,7 @@ class MetaLogEntryTests: XCTestCase {
         typealias TargetType = UpdateData
 
         let input: ([String: Int]?, [String]?) = (nil, nil)
-        let expected = "UpdateData { attributesAndValues: nil updatedAttributes: nil }"
+        let expected = "UpdateData { attributesAndValues: nil, updatedAttributes: nil }"
 
         let updateData = TargetType()
         updateData.attributesAndValues = input.0
