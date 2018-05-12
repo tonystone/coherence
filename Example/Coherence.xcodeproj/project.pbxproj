@@ -108,6 +108,9 @@
 		EA1C14471E3FA034002E63BD /* Employee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14391E3FA034002E63BD /* Employee+CoreDataProperties.swift */; };
 		EA1C14481E3FA034002E63BD /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C143A1E3FA034002E63BD /* Country+CoreDataClass.swift */; };
 		EA1C14491E3FA034002E63BD /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C143B1E3FA034002E63BD /* Country+CoreDataProperties.swift */; };
+		EA4EC6F520A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
+		EA4EC6F620A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
+		EA4EC6F720A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
 		EA5798AD1F78148A00039268 /* TestModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C162A1F45FE300087F6B8 /* TestModelLoader.swift */; };
 		EA5798AE1F78148A00039268 /* TestPersistentStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* TestPersistentStoreManager.swift */; };
 		EA5798AF1F78148A00039268 /* ManagedObjectContext+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30E6561E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift */; };
@@ -427,6 +430,7 @@
 		EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContextTests.swift; sourceTree = "<group>"; };
 		EA4AA4D21E91ED8500F90069 /* ContextStrategy+DirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+DirectTests.swift"; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDataTests.swift; sourceTree = "<group>"; };
 		EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfigurationTests.swift; sourceTree = "<group>"; };
 		EA5BDC981E63466000527236 /* NotificationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingContextTests.swift; sourceTree = "<group>"; };
@@ -976,6 +980,7 @@
 				EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */,
 				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
 				EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */,
+				EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -1785,6 +1790,7 @@
 				EA14F7571F76D954009F542A /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA14F7711F76D954009F542A /* StoreConfigurationTests.swift in Sources */,
 				EA14F75A1F76D954009F542A /* ActionContainer+StatisticsTests.swift in Sources */,
+				EA4EC6F520A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
 				EA14F7621F76D954009F542A /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EA14F7771F76D954009F542A /* ContainerUser+CoreDataProperties.swift in Sources */,
 				EA14F7671F76D954009F542A /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
@@ -1853,6 +1859,7 @@
 				EAF3D89D1F76DD9E0051F5DE /* ActionContext+MergeTests.swift in Sources */,
 				EAF3D89C1F76DD9E0051F5DE /* ActionContextTests.swift in Sources */,
 				EAF3D8A21F76DD9E0051F5DE /* ManagedObject+ExtensionsTests.swift in Sources */,
+				EA4EC6F620A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
 				EAF3D8A51F76DD9E0051F5DE /* ActionContainer+StatisticsTests.swift in Sources */,
 				EAF3D8C21F76DD9E0051F5DE /* ContainerUser+CoreDataProperties.swift in Sources */,
 				EAF3D8AD1F76DD9E0051F5DE /* ConnectEntity1+CoreDataProperties.swift in Sources */,
@@ -1921,6 +1928,7 @@
 				EA5798B61F78148A00039268 /* EntityDescription+EntitySettingsTests.swift in Sources */,
 				EA5798AD1F78148A00039268 /* TestModelLoader.swift in Sources */,
 				EA5798B31F78148A00039268 /* Connect+ActionTests.swift in Sources */,
+				EA4EC6F720A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
 				EA5798B81F78148A00039268 /* LoggingContextTests.swift in Sources */,
 				EA5798D11F78148A00039268 /* ContextStrategy+MixedTests.swift in Sources */,
 				EA5798D91F78148A00039268 /* ContainerUser.swift in Sources */,
