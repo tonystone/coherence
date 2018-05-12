@@ -114,7 +114,7 @@ class NotificationServiceTests: XCTestCase {
         let input    = TestActionProxy(name: "TestProxy", actionState: ActionState.finished)
         let expected = input
 
-        let _ = self.expectation(forNotification: NSNotification.Name(rawValue: Notification.ActionDidFinishExecuting.rawValue), object: self) { (notification) -> Bool in
+        let _ = self.expectation(forNotification: Notification.ActionDidFinishExecuting, object: self) { (notification) -> Bool in
 
             XCTAssertNotNil(notification.userInfo?[Notification.Key.ActionProxy])
             XCTAssert(notification.userInfo?[Notification.Key.ActionProxy] is TestActionProxy)
