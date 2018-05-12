@@ -58,6 +58,7 @@ class ActionContextMergeTests: XCTestCase {
                 }
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testMergeUnmanagedObjectUnnamedEntity() throws {
@@ -88,6 +89,7 @@ class ActionContextMergeTests: XCTestCase {
                 }
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testMergeInsert() {
@@ -138,7 +140,8 @@ class ActionContextMergeTests: XCTestCase {
                     XCTFail()
                 }
             }
-
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }
@@ -193,6 +196,7 @@ class ActionContextMergeTests: XCTestCase {
                     XCTFail()
                 }
             }
+            try connect.stop()  /// Clean up
             
         } catch {
             XCTFail("\(error)")
@@ -262,6 +266,7 @@ class ActionContextMergeTests: XCTestCase {
                     XCTFail()
                 }
             }
+            try connect.stop()  /// Clean up
             
         } catch {
             XCTFail("\(error)")
@@ -320,6 +325,8 @@ class ActionContextMergeTests: XCTestCase {
                     XCTFail()
                 }
             }
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }
@@ -398,6 +405,7 @@ class ActionContextMergeTests: XCTestCase {
                 XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testMergeInsertIgnoreLocalDeletedItems() throws {
@@ -468,6 +476,7 @@ class ActionContextMergeTests: XCTestCase {
             ///
             XCTAssertEqual(results.count, expected)
         }
+        try connect.stop()  /// Clean up
     }
 
     func testMergeDeleteIgnoreLocalUpdatedItems() throws {
@@ -545,6 +554,7 @@ class ActionContextMergeTests: XCTestCase {
                 XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
             }
         }
+        try connect.stop()  /// Clean up
     }
 
     func testMergeUpdateWithoutWriteAheadLog() throws {
@@ -626,5 +636,6 @@ class ActionContextMergeTests: XCTestCase {
                 XCTAssertEqual(resultObject.binaryAttribute,    expectedObject.binaryAttribute)
             }
         }
+        try connect.stop()  /// Clean up
     }
 }

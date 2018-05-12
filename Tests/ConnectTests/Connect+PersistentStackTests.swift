@@ -34,9 +34,11 @@ class ConnectPersistentStackTests: XCTestCase {
         let connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         do {
-            let _ = try connect.attachPersistentStore(for: input.configuration)
+            let store = try connect.attachPersistentStore(for: input.configuration)
 
             XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: modelName, storeType: NSSQLiteStoreType))
+
+            try connect.detach(persistentStore: store)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -51,11 +53,14 @@ class ConnectPersistentStackTests: XCTestCase {
         let connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName, managedObjectModel: input.model)
 
         do {
-            let _ = try connect.attachPersistentStore(for: input.configurations[0])
-            let _ = try connect.attachPersistentStore(for: input.configurations[1])
+            let transientEntities = try connect.attachPersistentStore(for: input.configurations[0])
+            let persistentEntities = try connect.attachPersistentStore(for: input.configurations[1])
 
             XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: modelName, storeType: NSSQLiteStoreType, configuration: "TransientEntities"))
             XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: modelName, storeType: NSSQLiteStoreType, configuration: "PersistentEntities"))
+
+            try connect.detach(persistentStore: transientEntities)
+            try connect.detach(persistentStore: persistentEntities)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -78,6 +83,8 @@ class ConnectPersistentStackTests: XCTestCase {
 
             XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: modelName, storeType: NSSQLiteStoreType, configuration: "TransientEntities"))
             XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(storePrefix: modelName, storeType: NSSQLiteStoreType, configuration: "PersistentEntities"))
+            
+            try connect.stop()  /// Clean up
         } catch {
             XCTFail(error.localizedDescription)
         }

@@ -114,7 +114,8 @@ class ActionContextTests: XCTestCase {
                     }
                 }
             })
-            
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -179,6 +180,8 @@ class ActionContextTests: XCTestCase {
                     XCTFail()
                 }
             }
+            try connect.stop()  /// Clean up
+
         } catch {
             XCTFail("\(error)")
         }
@@ -210,6 +213,8 @@ class ActionContextTests: XCTestCase {
                     XCTFail("Wrong error thrown: \(error) is not equal to \(expected)")
                 }
             }
+            try connect.stop()  /// Clean up
+            
         } catch {
             XCTFail("\(error)")
         }

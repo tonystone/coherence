@@ -82,6 +82,7 @@ class LoggingContextTests: XCTestCase {
         } else {
             XCTFail()
         }
+        try connect.stop()  /// Clean up
     }
 
     func testSaveNoWriteAheadLog() throws {
@@ -134,6 +135,7 @@ class LoggingContextTests: XCTestCase {
         } else {
             XCTFail()
         }
+        try connect.stop()  /// Clean up
     }
 
     func testSaveWithRollback() throws {
@@ -153,6 +155,7 @@ class LoggingContextTests: XCTestCase {
                 XCTAssertThrowsError(try editContext.save())
             }
         }
+        try connect.stop()  /// Clean up
     }
 }
 
