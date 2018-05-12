@@ -83,6 +83,15 @@ matrix:
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
   - rvm get head --auto-dotfiles || true
+  #
+  # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
+  #
+  - |
+    if [ -e Gemfile ]; then
+       export BUNDLE_GEMFILE=Gemfile
+       gem install bundler
+       bundler install
+    fi
 
 script:
   - |
