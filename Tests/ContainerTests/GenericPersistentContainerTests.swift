@@ -327,7 +327,7 @@ class GenericPersistentContainerTests: XCTestCase {
         ///
         /// Note: this will happen when the edit context is saved
         ///
-        self.expectation(forNotification: NSNotification.Name.NSManagedObjectContextObjectsDidChange.rawValue, object: viewContext) { notification -> Bool in
+        self.expectation(forNotification: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: viewContext) { notification -> Bool in
 
             if let inserted = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
 

@@ -1,33 +1,37 @@
 PODS:
-  - Coherence (3.0.0):
-    - Coherence/Connect (= 3.0.0)
-    - Coherence/Container (= 3.0.0)
-    - TraceLog (~> 2.0)
-  - Coherence/Connect (3.0.0):
+  - Coherence (3.1.0):
+    - Coherence/Connect (= 3.1.0)
+    - Coherence/Container (= 3.1.0)
+    - TraceLog (~> 3.0)
+  - Coherence/Connect (3.1.0):
     - Coherence/Container
     - Coherence/CoreExtensions
-    - TraceLog (~> 2.0)
-  - Coherence/Container (3.0.0):
+    - TraceLog (~> 3.0)
+  - Coherence/Container (3.1.0):
     - Coherence/CoreExtensions
-    - TraceLog (~> 2.0)
-  - Coherence/CoreExtensions (3.0.0):
-    - TraceLog (~> 2.0)
-  - TraceLog (2.0.2):
-    - TraceLog/Swift (= 2.0.2)
-  - TraceLog/Swift (2.0.2)
+    - TraceLog (~> 3.0)
+  - Coherence/CoreExtensions (3.1.0):
+    - TraceLog (~> 3.0)
+  - TraceLog (3.0.0):
+    - TraceLog/Swift (= 3.0.0)
+  - TraceLog/Swift (3.0.0)
 
 DEPENDENCIES:
   - Coherence (from `../`)
-  - TraceLog (~> 2.0)
+  - TraceLog (~> 3.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TraceLog
 
 EXTERNAL SOURCES:
   Coherence:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Coherence: f6e3b6519eb27259d061687b1cd03c2839e0dbc0
-  TraceLog: d853ab3e97f8cabaf0bbe3d0f53da81a51744d2d
+  Coherence: 023f72f0a9bb6f27124febb6168f55c1ef2dd85f
+  TraceLog: a1c0f9377886b4f31267239ade8bc6e3c8766ae1
 
-PODFILE CHECKSUM: 3fa9dc5c31b6a19230f769aa39083a321e1309b5
+PODFILE CHECKSUM: fd89c219e8334a2e68b1d4b55a67e29a08717970
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.2

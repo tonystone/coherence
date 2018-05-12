@@ -65,7 +65,7 @@ class ConnectActionTests: XCTestCase {
 
             try connect.start()
 
-            self.expectation(forNotification: Coherence.Notification.ActionDidFinishExecuting.rawValue, object: nil)
+            self.expectation(forNotification: Coherence.Notification.ActionDidFinishExecuting, object: nil)
 
             let proxy = try connect.execute(input)
 

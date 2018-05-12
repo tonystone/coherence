@@ -67,7 +67,7 @@ extension ContextStrategy {
             return context
         }
 
-        fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
+        @objc fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
 
             self.viewContext.perform(onError: self.errorHandler) {
 
