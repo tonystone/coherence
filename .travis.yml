@@ -39,14 +39,15 @@ matrix:
          - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s"
          - SCHEME="iOS Test Host"
          - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=8.1,name=iPhone 6"
-         - SCHEME="iOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
+# Dropping test for iOS 8 temporarily due to a an issue with XCTest on and Xcode 9.3 (see https://github.com/CocoaPods/CocoaPods/issues/7608)
+#    -
+#      os: osx
+#      osx_image: xcode9.3
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=8.1,name=iPhone 6"
+#         - SCHEME="iOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
       osx_image: xcode9.3
