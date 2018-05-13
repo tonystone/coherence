@@ -67,11 +67,6 @@ public protocol PersistentStack {
     func attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore
 
     ///
-    /// Detach a persistent store from the Coordinator.
-    ///
-    func detach(persistentStore: NSPersistentStore) throws
-
-    ///
     /// Attach the persistent stores specified in the array of `StoreConfiguration`s.
     ///
     /// - Parameters:
@@ -82,6 +77,11 @@ public protocol PersistentStack {
     ///
     @discardableResult
     func attachPersistentStores(at url: URL, for configurations: [StoreConfiguration]) throws -> [NSPersistentStore]
+
+    ///
+    /// Detach a persistent store from the Coordinator.
+    ///
+    func detach(persistentStore: NSPersistentStore) throws
 
     ///
     /// Detach a persistent stores from the Coordinator.
