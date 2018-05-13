@@ -139,11 +139,12 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     /// By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - name:            The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - asyncErrorBlock: An optional error handling block which will be called when an asynchronous error occurs (e.g. during a save of the contexts to the persistent stores).
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
-    public convenience init(name: String) {
+    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -152,7 +153,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
         let model = abortIfNil(message: "Failed to load model at \(url).") {
             return NSManagedObjectModel(contentsOf: url)
         }
-        self.init(name: name, managedObjectModel: model)
+        self.init(name: name, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
     }
 
     ///
@@ -161,18 +162,32 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the instance. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle.
+    ///     - name:               The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
+    ///     - asyncErrorBlock:    An optional error handling block which will be called when an asynchronous error occurs (e.g. during a save of the contexts to the persistent stores).
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         self.name = name
         self.storeStatus = [:]
 
-        self.dataCache = DataCacheType(name: name, managedObjectModel: model,       logTag: Log.tag)
-        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), logTag: Log.tag)
+        let errorBlock = { (error: Error) -> Void in
+
+            /// Log the error
+            logError(Log.tag) { "\(error)" }
+
+            /// Call the users block if supplied
+            if let errorBlock = asyncErrorBlock {
+                DispatchQueue.global().async {  /// Note: we move all user callback outside of our threads so that we can't be blocked by user code.
+                    errorBlock(error)
+                }
+            }
+        }
+
+        self.dataCache = DataCacheType(name: name, managedObjectModel: model,       asyncErrorBlock: errorBlock, logTag: Log.tag)
+        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), asyncErrorBlock: errorBlock, logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
