@@ -1,6 +1,10 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [3.1.0](https://github.com/tonystone/coherence/releases/tag/3.1.0)
+
+This is a minor release to update the Swift language to 4.1 and Xcode to 9.3.
+
 ## [3.0.0](https://github.com/tonystone/coherence/releases/tag/3.0.0)
 
 Please see the previous 3.0.0-beta.x releases for a complete list of features and changes.
