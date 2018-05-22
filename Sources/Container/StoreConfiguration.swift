@@ -40,7 +40,8 @@ extension StoreConfiguration {
 ///
 /// A description object used to create and/or load a persistent store.
 ///
-public struct StoreConfiguration {
+@objc(StoreConfiguration)
+public class StoreConfiguration: NSObject {
 
     public init(fileName: String?                = Default.fileName,
                 name: String?                    = Default.name,
@@ -82,9 +83,9 @@ public struct StoreConfiguration {
     public var options: [String: Any]
 }
 
-extension StoreConfiguration: CustomStringConvertible {
+extension StoreConfiguration /* CustomStringConvertible */ {
 
-    public var description: String {
+    public override var description: String {
         var string = "<\(String(describing: Swift.type(of: self)))> ("
 
         if let fileName = self.fileName {
@@ -100,7 +101,7 @@ extension StoreConfiguration: CustomStringConvertible {
     }
 }
 
-extension StoreConfiguration: Equatable {}
+extension StoreConfiguration /* Equatable */ {}
 
 public func == (lhs: StoreConfiguration, rhs: StoreConfiguration) -> Bool {
     return lhs.fileName == rhs.fileName &&

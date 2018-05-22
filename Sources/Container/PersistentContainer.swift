@@ -31,7 +31,8 @@ private struct Default {
     }
 }
 
-public protocol PersistentStack {
+@objc(PersistentContainer)
+public protocol PersistentContainer: NSObjectProtocol {
 
     ///
     /// Creates and returns a URL to the default directory for the persistent stores.
@@ -109,7 +110,7 @@ public protocol PersistentStack {
 ///
 /// Creates and returns a URL to the default directory for the persistent stores.
 ///
-private func defaultStoreLocation() -> URL {
+public func defaultStoreLocation() -> URL {
     return abortIfError(block: {
         let url = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
@@ -117,21 +118,7 @@ private func defaultStoreLocation() -> URL {
     })
 }
 
-extension PersistentStack {
-
-    ///
-    /// Creates and returns a URL to the default directory for the persistent stores.
-    ///
-    public static func defaultStoreLocation() -> URL {
-        return Coherence.defaultStoreLocation()
-    }
-
-    ///
-    /// The model this instance was constructed with.
-    ///
-    public var managedObjectModel: NSManagedObjectModel {
-        return persistentStoreCoordinator.managedObjectModel
-    }
+extension PersistentContainer {
 
     @discardableResult
     public func attachPersistentStores(at url: URL = defaultStoreLocation(), for configurations: [StoreConfiguration] = [StoreConfiguration()]) throws -> [NSPersistentStore] {

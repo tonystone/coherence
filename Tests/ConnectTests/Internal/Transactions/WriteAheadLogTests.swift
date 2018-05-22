@@ -52,7 +52,7 @@ class WriteAheadLogTests: XCTestCase {
         do {
             try input.attachPersistentStores()
 
-            XCTAssertThrowsError(try WriteAheadLog(persistentStack: input))
+            XCTAssertThrowsError(try WriteAheadLog(persistentContainer: input))
         } catch {
             XCTFail("\(error.localizedDescription)")
         }
@@ -87,7 +87,7 @@ class WriteAheadLogTests: XCTestCase {
                 try context.save()
             }
 
-            XCTAssertEqual(try WriteAheadLog.lastLogEntrySequenceNumber(persistentStack: input, metaLogEntryEntity: logEntry.entity), expected)
+            XCTAssertEqual(try WriteAheadLog.lastLogEntrySequenceNumber(persistentContainer: input, metaLogEntryEntity: logEntry.entity), expected)
         } catch {
             XCTFail("\(error.localizedDescription)")
         }
@@ -109,7 +109,7 @@ class WriteAheadLogTests: XCTestCase {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try container.attachPersistentStores()
 
-            let log = try WriteAheadLog(persistentStack: container)
+            let log = try WriteAheadLog(persistentContainer: container)
 
             /// prime the database with mock records
             let context = container.newBackgroundContext()
@@ -173,7 +173,7 @@ class WriteAheadLogTests: XCTestCase {
             let container = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try container.attachPersistentStores()
 
-            let log = try WriteAheadLog(persistentStack: container)
+            let log = try WriteAheadLog(persistentContainer: container)
 
             /// prime the database with mock records
             let context = container.newBackgroundContext()
@@ -230,7 +230,7 @@ class WriteAheadLogTests: XCTestCase {
             let metaStack = PersistentContainerType(name: "MetaModel", managedObjectModel: MetaModel())
             try metaStack.attachPersistentStores()
 
-            let log = try WriteAheadLog(persistentStack: metaStack)
+            let log = try WriteAheadLog(persistentContainer: metaStack)
 
 
             let input = try { () throws -> (entity: NSEntityDescription, count: Int) in

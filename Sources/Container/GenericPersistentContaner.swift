@@ -51,12 +51,26 @@ public enum GenericPersistentContainerErrors: Error {
 ///
 /// A persistent container that can be customized with specific ContextStrategy Context type.
 ///
-public class GenericPersistentContainer<Strategy: ContextStrategyType>: PersistentStack {
+public class GenericPersistentContainer<Strategy: ContextStrategyType>: NSObject, PersistentContainer {
+
+    ///
+    /// Creates and returns a URL to the default directory for the persistent stores.
+    ///
+    public static func defaultStoreLocation() -> URL {
+        return Coherence.defaultStoreLocation()
+    }
 
     ///
     /// The name of this instance of GenericPersistentContainer.
     ///
     public let name: String
+
+    ///
+    /// The model this instance was constructed with.
+    ///
+    public var managedObjectModel: NSManagedObjectModel {
+        return persistentStoreCoordinator.managedObjectModel
+    }
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
@@ -82,7 +96,20 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
     ///
     /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
     ///
-    public func newBackgroundContext<T: BackgroundContext>() -> T {
+    public func newBackgroundContext() -> BackgroundContext {
+        logInfo(self.tag) { "Creating new background context..." }
+        defer {
+            logInfo(self.tag) { "Background context created." }
+        }
+        return contextStrategy.newBackgroundContext()
+    }
+
+    ///
+    /// Gets a new `BackgroundContext` that can be used for updating objects.
+    ///
+    /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
+    ///
+    public func newGenericBackgroundContext<T: BackgroundContext>() -> T {
         logInfo(self.tag) { "Creating new background context of type `\(String(describing: T.self))`..." }
         defer {
             logInfo(self.tag) { "Background context created." }
@@ -154,6 +181,12 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: Persiste
         self.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
 
         self.contextStrategy = Strategy(persistentStoreCoordinator: self.persistentStoreCoordinator, errorHandler: self.errorHandlerBlock)
+    }
+
+    deinit {
+        do {
+            try self.detach(persistentStores: self.persistentStoreCoordinator.persistentStores)
+        } catch {/* ignore errors here */}
     }
 
     ///
