@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
   s.author           = "Tony Stone"
   s.source           = { :git => "https://github.com/tonystone/coherence.git", :tag => s.version.to_s }
 
+  s.swift_version = '4.0'
+
   s.ios.deployment_target     = '8.1'
   s.osx.deployment_target     = '10.10'
   s.tvos.deployment_target    = '9.0'

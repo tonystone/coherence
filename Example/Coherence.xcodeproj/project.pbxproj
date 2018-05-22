@@ -160,6 +160,7 @@
 		EA5798DE1F7814B200039268 /* ContainerTestModel2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64C1E764CF600F09610 /* ContainerTestModel2.xcdatamodeld */; };
 		EA5798DF1F7814B500039268 /* ContainerTestModel3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64E1E764CF600F09610 /* ContainerTestModel3.xcdatamodeld */; };
 		EA5798E01F7814B700039268 /* ContainerTestModel4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3251E6269D90025D310 /* ContainerTestModel4.xcdatamodeld */; };
+		EAA4F7F520B499D70030EA0E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F7F420B499D70030EA0E /* RootViewController.m */; };
 		EAE5CB581F780F83005EACD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5CB571F780F83005EACD8 /* AppDelegate.swift */; };
 		EAE5CB5A1F780F83005EACD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5CB591F780F83005EACD8 /* ViewController.swift */; };
 		EAE5CB5D1F780F83005EACD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE5CB5B1F780F83005EACD8 /* Main.storyboard */; };
@@ -433,11 +434,13 @@
 		EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContext+MergeTests.swift"; path = "ConnectTests/ActionContext+MergeTests.swift"; sourceTree = "<group>"; };
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
-		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
 		EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InMemorySequenceTests.swift; path = ../Sequence/InMemorySequenceTests.swift; sourceTree = "<group>"; };
 		EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+MixedTests.swift"; sourceTree = "<group>"; };
 		EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+NestedIndirectTests.swift"; sourceTree = "<group>"; };
 		EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndependentDirectTests.swift"; sourceTree = "<group>"; };
+		EAA4F7F220B499D70030EA0E /* Coherence Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coherence Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAA4F7F320B499D70030EA0E /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		EAA4F7F420B499D70030EA0E /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABBFAF31E762D2C0042D937 /* ContainerTestModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -629,11 +632,14 @@
 			isa = PBXGroup;
 			children = (
 				EAF397551E31926A00038CD4 /* AppDelegate.swift */,
+				EAA4F7F320B499D70030EA0E /* RootViewController.h */,
+				EAA4F7F420B499D70030EA0E /* RootViewController.m */,
 				EAF397571E31927B00038CD4 /* LaunchScreen.xib */,
 				EAF397591E31927B00038CD4 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				EA1C142A1E3F9F7B002E63BD /* Model */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				EAA4F7F220B499D70030EA0E /* Coherence Example-Bridging-Header.h */,
 			);
 			name = "Coherence Example";
 			path = Coherence;
@@ -673,7 +679,6 @@
 				EAF397441E318A8900038CD4 /* Gemfile */,
 				EA2CC5E41E384F9F00054305 /* .travis */,
 				EA8519E51DC0FC3F007CAB43 /* .gitignore */,
-				EA8519E61DC113C2007CAB43 /* .swift-version */,
 				EAE527531DC4E94F00AA65AE /* codecov.yml */,
 			);
 			name = Metadata;
@@ -1222,7 +1227,7 @@
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Manual;
 					};
 					EA014B3F1F786E9000FC7BD3 = {
@@ -1701,6 +1706,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA4F7F520B499D70030EA0E /* RootViewController.m in Sources */,
 				EA1C143C1E3FA034002E63BD /* Department+CoreDataClass.swift in Sources */,
 				EA1C143E1E3FA034002E63BD /* Job+CoreDataClass.swift in Sources */,
 				EA1C143D1E3FA034002E63BD /* Department+CoreDataProperties.swift in Sources */,
@@ -2178,6 +2184,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coherence/Coherence Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2203,6 +2210,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coherence/Coherence Example-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2308,7 +2316,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
@@ -2331,7 +2338,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
