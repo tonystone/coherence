@@ -31,7 +31,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+            let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -63,7 +63,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
         do {
-            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+            let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -92,7 +92,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(forceError: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.failed)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -124,7 +124,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(waitUntilCanceled: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -155,7 +155,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(waitUntilCanceled: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -188,7 +188,7 @@ class ConnectActionTests: XCTestCase {
         let input = MockGenericAction(forceError: true)
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "GenericAction Completion Block Gets Called")
@@ -227,7 +227,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.successful)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
@@ -253,7 +253,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.failed)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")
@@ -284,7 +284,7 @@ class ConnectActionTests: XCTestCase {
         let expected = "Entity 'ConnectEntity3Unmanaged' not managed by Connect"
 
         do {
-            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+            let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -311,7 +311,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
         do {
-            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+            let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -348,7 +348,7 @@ class ConnectActionTests: XCTestCase {
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
         do {
-            let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+            let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
 
             try connect.start()
 
@@ -386,7 +386,7 @@ class ConnectActionTests: XCTestCase {
         let input: [ConnectEntity1] = []
         let expected = (state: ActionState.finished, completionStatus: ActionCompletionStatus.canceled)
 
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: modelName)
+        let connect: Connect & ActionManager = GenericConnect<ContextStrategy.Mixed>(name: modelName)
         try connect.start()
 
         let expecation = self.expectation(description: "EntityAction Completion Block Gets Called")

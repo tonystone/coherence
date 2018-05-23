@@ -170,7 +170,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = (modelName: modelName, isSuspended: true)
         let expected = input.isSuspended
 
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
         connect.suspended = input.isSuspended
 
@@ -200,7 +200,7 @@ class ConnectStateManagementTests: XCTestCase {
         let input = (modelName: modelName, isSuspended: true)
         let expected = false
 
-        var connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
+        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
         connect.suspended = input.isSuspended
 

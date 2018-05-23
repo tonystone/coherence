@@ -1,6 +1,24 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [4.0.0-bweta.1](https://github.com/tonystone/coherence/releases/tag/4.0.0-beta.1)
+
+#### Breaking Updates 
+- Renamed `PersistentStack` to `PersistentContainer`.
+- Change `PersistentContainer` to @objc so you can now pass references to Objective-C.
+- Changed `Connect` to @objc so you can now pass references to Objective-C.  
+- Split `Connect` protocol into `Connect` and `ActionManager` protocols.
+- Changed `StoreConfiguration` to be a class instead of a struct to support Objective-C.
+- Removed `ObjcPersistentContainer` as it's no longer needed with the new changes to the protocols.
+
+#### Updated
+- Changed `GenericConnect` to subclass `NSObject`.
+
+## [3.2.0](https://github.com/tonystone/coherence/releases/tag/3.2.0)
+
+#### Added
+- Added the ability to supply an  `AsyncErrorHandlerBlock`  to `GenericConnect` init methods.
+
 ## [3.1.0](https://github.com/tonystone/coherence/releases/tag/3.1.0)
 
 This is a minor release to update the Swift language to 4.1 and Xcode to 9.3.

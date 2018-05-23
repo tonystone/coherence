@@ -31,7 +31,8 @@ private struct Default {
     }
 }
 
-public protocol PersistentStack {
+@objc(PersistentContainer)
+public protocol PersistentContainer: NSObjectProtocol {
 
     ///
     /// Creates and returns a URL to the default directory for the persistent stores.
@@ -67,11 +68,6 @@ public protocol PersistentStack {
     func attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore
 
     ///
-    /// Detach a persistent store from the Coordinator.
-    ///
-    func detach(persistentStore: NSPersistentStore) throws
-
-    ///
     /// Attach the persistent stores specified in the array of `StoreConfiguration`s.
     ///
     /// - Parameters:
@@ -82,6 +78,11 @@ public protocol PersistentStack {
     ///
     @discardableResult
     func attachPersistentStores(at url: URL, for configurations: [StoreConfiguration]) throws -> [NSPersistentStore]
+
+    ///
+    /// Detach a persistent store from the Coordinator.
+    ///
+    func detach(persistentStore: NSPersistentStore) throws
 
     ///
     /// Detach a persistent stores from the Coordinator.
@@ -109,7 +110,7 @@ public protocol PersistentStack {
 ///
 /// Creates and returns a URL to the default directory for the persistent stores.
 ///
-private func defaultStoreLocation() -> URL {
+public func defaultStoreLocation() -> URL {
     return abortIfError(block: {
         let url = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
@@ -117,21 +118,7 @@ private func defaultStoreLocation() -> URL {
     })
 }
 
-extension PersistentStack {
-
-    ///
-    /// Creates and returns a URL to the default directory for the persistent stores.
-    ///
-    public static func defaultStoreLocation() -> URL {
-        return Coherence.defaultStoreLocation()
-    }
-
-    ///
-    /// The model this instance was constructed with.
-    ///
-    public var managedObjectModel: NSManagedObjectModel {
-        return persistentStoreCoordinator.managedObjectModel
-    }
+extension PersistentContainer {
 
     @discardableResult
     public func attachPersistentStores(at url: URL = defaultStoreLocation(), for configurations: [StoreConfiguration] = [StoreConfiguration()]) throws -> [NSPersistentStore] {

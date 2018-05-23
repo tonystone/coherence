@@ -75,16 +75,7 @@ internal class ActionContainer: Operation, ActionProxy {
         defer {
             self.state = .finished
 
-            logInfo(Log.tag) {
-                var message = "Proxy \(self) \(self.completionStatus)"
-
-                if self.completionStatus == .failed,  let error = self.error {
-                    message.append( " with error: \(error).")
-                } else {
-                    message.append( ", execution statistics: \(self.statistics)")
-                }
-                return message
-            }
+            logInfo(Log.tag) { "Proxy \(self) \(self.completionStatus), execution statistics: \(self.statistics)" }
 
             self.completion?(self)
         }
@@ -115,6 +106,8 @@ internal class ActionContainer: Operation, ActionProxy {
             if completionStatus != .canceled {
                 completionStatus = .failed
             }
+
+            logError(Log.tag) { "Action \(self.action) threw error: \(error)." }
         }
     }
 

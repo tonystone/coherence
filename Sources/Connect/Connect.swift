@@ -39,7 +39,8 @@ internal struct Log {
 /// in a specific serial queue for each type.  This forces synchronization of
 /// operations by type.
 ///
-public protocol Connect: PersistentStack {
+@objc(Connect)
+public protocol Connect: PersistentContainer {
 
     ///
     /// Synchronously start the instance of `Connect`
@@ -75,6 +76,9 @@ public protocol Connect: PersistentStack {
     /// - Note: This will suspend or activate all Queues.
     ///
     var suspended: Bool { get set }
+}
+
+public protocol ActionManager {
 
     ///
     /// Execute a generic action in a concurrent queue.

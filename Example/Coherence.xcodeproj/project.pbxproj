@@ -15,7 +15,6 @@
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6494D75B5B49D066D2B9B934 /* Pods_Coherence_OSX_Test_Host.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79E4C2F6886E1E815583F04 /* Pods_Coherence_OSX_Test_Host.framework */; };
 		85D08753DF210A4BF5DFC682 /* Pods_Coherence_OSX_Test_Host_OSX_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91817CB8552DA4C5F5F6A3AD /* Pods_Coherence_OSX_Test_Host_OSX_Tests.framework */; };
-		90E556DDA503834CEAD6EE14 /* Pods_Coherence_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19897CFC4B2C3F5E29F1374 /* Pods_Coherence_Example.framework */; };
 		C4D1638C55D958450318D175 /* Pods_Coherence_tvOS_Test_Host_tvOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDD3B6FD2E8FD4C8913409C /* Pods_Coherence_tvOS_Test_Host_tvOS_Tests.framework */; };
 		CEFBA98226BE2935F34CBA5F /* Pods_Coherence_watchOS_Test_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372F9C82F43EE50479E1A21E /* Pods_Coherence_watchOS_Test_App_Extension.framework */; };
 		D4690BB76791B798BD893892 /* Pods_Coherence_Coherence_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655C70710F1913FE6BAF62B9 /* Pods_Coherence_Coherence_Example.framework */; };
@@ -80,7 +79,6 @@
 		EA14F7721F76D954009F542A /* StoreConfiguration+ResolveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */; };
 		EA14F7731F76D954009F542A /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */; };
 		EA14F7741F76D954009F542A /* GenericPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */; };
-		EA14F7751F76D954009F542A /* ObjcPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */; };
 		EA14F7761F76D954009F542A /* ContainerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */; };
 		EA14F7771F76D954009F542A /* ContainerUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */; };
 		EA14F7781F76D97A009F542A /* ConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144B1E3FA08A002E63BD /* ConnectTestModel.xcdatamodeld */; };
@@ -154,7 +152,6 @@
 		EA5798D51F78148A00039268 /* StoreConfiguration+ResolveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */; };
 		EA5798D61F78148A00039268 /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */; };
 		EA5798D71F78148A00039268 /* GenericPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */; };
-		EA5798D81F78148A00039268 /* ObjcPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */; };
 		EA5798D91F78148A00039268 /* ContainerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */; };
 		EA5798DA1F78148A00039268 /* ContainerUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */; };
 		EA5798DB1F7814AB00039268 /* ConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144B1E3FA08A002E63BD /* ConnectTestModel.xcdatamodeld */; };
@@ -163,6 +160,7 @@
 		EA5798DE1F7814B200039268 /* ContainerTestModel2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64C1E764CF600F09610 /* ContainerTestModel2.xcdatamodeld */; };
 		EA5798DF1F7814B500039268 /* ContainerTestModel3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA30E64E1E764CF600F09610 /* ContainerTestModel3.xcdatamodeld */; };
 		EA5798E01F7814B700039268 /* ContainerTestModel4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC5C3251E6269D90025D310 /* ContainerTestModel4.xcdatamodeld */; };
+		EAA4F7F520B499D70030EA0E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F7F420B499D70030EA0E /* RootViewController.m */; };
 		EAE5CB581F780F83005EACD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5CB571F780F83005EACD8 /* AppDelegate.swift */; };
 		EAE5CB5A1F780F83005EACD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5CB591F780F83005EACD8 /* ViewController.swift */; };
 		EAE5CB5D1F780F83005EACD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE5CB5B1F780F83005EACD8 /* Main.storyboard */; };
@@ -213,7 +211,6 @@
 		EAF3D8BD1F76DD9E0051F5DE /* StoreConfiguration+ResolveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */; };
 		EAF3D8BE1F76DD9E0051F5DE /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */; };
 		EAF3D8BF1F76DD9E0051F5DE /* GenericPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */; };
-		EAF3D8C01F76DD9E0051F5DE /* ObjcPersistentContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */; };
 		EAF3D8C11F76DD9E0051F5DE /* ContainerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */; };
 		EAF3D8C21F76DD9E0051F5DE /* ContainerUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */; };
 		EAF3D8C31F76DDB30051F5DE /* ConnectTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144B1E3FA08A002E63BD /* ConnectTestModel.xcdatamodeld */; };
@@ -386,7 +383,6 @@
 		EA14F7981F76DBD2009F542A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBackedSequenceTests.swift; sourceTree = "<group>"; };
 		EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPersistentContainerTests.swift; sourceTree = "<group>"; };
-		EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjcPersistentContainerTests.swift; sourceTree = "<group>"; };
 		EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerUser.swift; sourceTree = "<group>"; };
 		EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContainerUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect Architecture & Design.graffle"; sourceTree = "<group>"; };
@@ -438,11 +434,13 @@
 		EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContext+MergeTests.swift"; path = "ConnectTests/ActionContext+MergeTests.swift"; sourceTree = "<group>"; };
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
-		EA8519E61DC113C2007CAB43 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
 		EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InMemorySequenceTests.swift; path = ../Sequence/InMemorySequenceTests.swift; sourceTree = "<group>"; };
 		EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+MixedTests.swift"; sourceTree = "<group>"; };
 		EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+NestedIndirectTests.swift"; sourceTree = "<group>"; };
 		EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndependentDirectTests.swift"; sourceTree = "<group>"; };
+		EAA4F7F220B499D70030EA0E /* Coherence Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coherence Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAA4F7F320B499D70030EA0E /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		EAA4F7F420B499D70030EA0E /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABBFAF31E762D2C0042D937 /* ContainerTestModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -498,7 +496,6 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				90E556DDA503834CEAD6EE14 /* Pods_Coherence_Example.framework in Frameworks */,
 				D4690BB76791B798BD893892 /* Pods_Coherence_Coherence_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,11 +632,14 @@
 			isa = PBXGroup;
 			children = (
 				EAF397551E31926A00038CD4 /* AppDelegate.swift */,
+				EAA4F7F320B499D70030EA0E /* RootViewController.h */,
+				EAA4F7F420B499D70030EA0E /* RootViewController.m */,
 				EAF397571E31927B00038CD4 /* LaunchScreen.xib */,
 				EAF397591E31927B00038CD4 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				EA1C142A1E3F9F7B002E63BD /* Model */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				EAA4F7F220B499D70030EA0E /* Coherence Example-Bridging-Header.h */,
 			);
 			name = "Coherence Example";
 			path = Coherence;
@@ -679,7 +679,6 @@
 				EAF397441E318A8900038CD4 /* Gemfile */,
 				EA2CC5E41E384F9F00054305 /* .travis */,
 				EA8519E51DC0FC3F007CAB43 /* .gitignore */,
-				EA8519E61DC113C2007CAB43 /* .swift-version */,
 				EAE527531DC4E94F00AA65AE /* codecov.yml */,
 			);
 			name = Metadata;
@@ -812,7 +811,6 @@
 				EADA13C01F474E12003983D3 /* StoreConfiguration+ResolveTests.swift */,
 				EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */,
 				EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */,
-				EA1C14061E3D80E1002E63BD /* ObjcPersistentContainerTests.swift */,
 				EAC5C3281E626C150025D310 /* Model */,
 			);
 			path = ContainerTests;
@@ -1229,7 +1227,7 @@
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Manual;
 					};
 					EA014B3F1F786E9000FC7BD3 = {
@@ -1708,6 +1706,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA4F7F520B499D70030EA0E /* RootViewController.m in Sources */,
 				EA1C143C1E3FA034002E63BD /* Department+CoreDataClass.swift in Sources */,
 				EA1C143E1E3FA034002E63BD /* Job+CoreDataClass.swift in Sources */,
 				EA1C143D1E3FA034002E63BD /* Department+CoreDataProperties.swift in Sources */,
@@ -1796,7 +1795,6 @@
 				EA14F7671F76D954009F542A /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EA14F75F1F76D954009F542A /* MetaLogEntryTests.swift in Sources */,
 				EA14F76E1F76D954009F542A /* ContextStrategy+IndependentDirectTests.swift in Sources */,
-				EA14F7751F76D954009F542A /* ObjcPersistentContainerTests.swift in Sources */,
 				EA14F74B1F76D954009F542A /* TestPersistentStoreManager.swift in Sources */,
 				EA14F7551F76D954009F542A /* LoggingContextTests.swift in Sources */,
 				EA14F75D1F76D954009F542A /* WriteAheadLogTests.swift in Sources */,
@@ -1865,7 +1863,6 @@
 				EAF3D8AD1F76DD9E0051F5DE /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EAF3D8B21F76DD9E0051F5DE /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EAF3D8AA1F76DD9E0051F5DE /* MetaLogEntryTests.swift in Sources */,
-				EAF3D8C01F76DD9E0051F5DE /* ObjcPersistentContainerTests.swift in Sources */,
 				EAF3D8BC1F76DD9E0051F5DE /* ContextStrategy+DirectTests.swift in Sources */,
 				EAF3D8961F76DD9E0051F5DE /* TestPersistentStoreManager.swift in Sources */,
 				EAF3D8BA1F76DD9E0051F5DE /* ContextStrategy+NestedIndirectTests.swift in Sources */,
@@ -1918,7 +1915,6 @@
 				EA5798BB1F78148A00039268 /* ActionQueueTests.swift in Sources */,
 				EA5798C11F78148A00039268 /* MetaModelTests.swift in Sources */,
 				EA5798CC1F78148A00039268 /* MockBaseAction.swift in Sources */,
-				EA5798D81F78148A00039268 /* ObjcPersistentContainerTests.swift in Sources */,
 				EA5798BC1F78148A00039268 /* ActionContainerTests.swift in Sources */,
 				EA5798B71F78148A00039268 /* NotificationServiceTests.swift in Sources */,
 				EA5798D01F78148A00039268 /* ContextStrategy+IndependentDirectTests.swift in Sources */,
@@ -2182,11 +2178,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "coherence.demo.Coherence-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coherence/Coherence Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2206,11 +2204,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coherence/Coherence-Prefix.pch";
 				INFOPLIST_FILE = "Coherence/Coherence-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "coherence.demo.Coherence-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coherence/Coherence Example-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2316,7 +2316,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
@@ -2339,7 +2338,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};

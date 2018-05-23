@@ -35,7 +35,7 @@ internal class WriteAheadLog {
         case nilEntityName(String)
     }
     
-    fileprivate let persistentStack: PersistentStack
+    fileprivate let persistentContainer: PersistentContainer
 
     ///
     /// Hang on to a reference to the metaLogEntry NSEntity description so it does not 
@@ -48,19 +48,19 @@ internal class WriteAheadLog {
     ///
     var sequence: Sequence
 
-    init(persistentStack: PersistentStack) throws {
+    init(persistentContainer: PersistentContainer) throws {
         
         logInfo(Log.tag) {
             "Initializing WriteAheadLog instance..."
         }
 
-        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentStack.viewContext)
+        guard let entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: persistentContainer.viewContext)
             else { throw Errors.couldNotLocateEntityDescription("Failed to locate entity \(MetaLogEntryName).") }
 
-        self.persistentStack    = persistentStack
+        self.persistentContainer    = persistentContainer
         self.metaLogEntryEntity = entity
 
-        let startSequence = try WriteAheadLog.lastLogEntrySequenceNumber(persistentStack: persistentStack, metaLogEntryEntity: entity)
+        let startSequence = try WriteAheadLog.lastLogEntrySequenceNumber(persistentContainer: persistentContainer, metaLogEntryEntity: entity)
 
         self.sequence = InMemorySequence(start: startSequence)
 
@@ -74,9 +74,9 @@ internal class WriteAheadLog {
     }
 
     /* @testable */
-    internal class func lastLogEntrySequenceNumber (persistentStack: PersistentStack, metaLogEntryEntity: NSEntityDescription) throws -> Int {
+    internal class func lastLogEntrySequenceNumber (persistentContainer: PersistentContainer, metaLogEntryEntity: NSEntityDescription) throws -> Int {
 
-        let metadataContext = persistentStack.newBackgroundContext()
+        let metadataContext = persistentContainer.newBackgroundContext()
         
         //
         // We need to find the last log entry and get it's
@@ -118,7 +118,7 @@ internal class WriteAheadLog {
             let sequenceNumberBlock = self.sequence.nextBlock(size: 2 + inserted.count + updated.count + deleted.count)
             var sequenceNumber = sequenceNumberBlock.lowerBound
 
-            let metadataContext = self.persistentStack.newBackgroundContext()
+            let metadataContext = self.persistentContainer.newBackgroundContext()
 
             transactionID = try self.logBeginTransactionEntry(metadataContext, sequenceNumber: &sequenceNumber)
 
@@ -140,7 +140,7 @@ internal class WriteAheadLog {
 
     internal func removeTransaction(_ transactionID: TransactionID) throws {
 
-        let metadataContext = self.persistentStack.newBackgroundContext()
+        let metadataContext = self.persistentContainer.newBackgroundContext()
 
         try metadataContext.performAndWait {
             //
@@ -163,7 +163,7 @@ internal class WriteAheadLog {
 
     internal func transactionLogRecordTypesForEntity(_ entityDescription: NSEntityDescription) throws -> [String: Set<MetaLogEntryType>]  {
 
-        let context = self.persistentStack.newBackgroundContext()
+        let context = self.persistentContainer.newBackgroundContext()
         let fetchRequest = NSFetchRequest<MetaLogEntry>()
 
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: MetaLogEntryName, in: context)

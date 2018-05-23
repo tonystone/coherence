@@ -63,7 +63,7 @@ fileprivate struct Default {
 /// GenericConnect is the concrete implementation of the Connect protocol.  Use this class to instantiate 
 /// a specifically configured instance for you needs.
 ///
-public class GenericConnect<Strategy: ContextStrategyType>: Connect {
+public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
 
     ///
     /// Internal types defining the MetaCache and DataCache CoreDataStack types
@@ -72,9 +72,23 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     fileprivate typealias MetaCacheType = GenericPersistentContainer<ContextStrategy.DirectIndependent>
 
     ///
+    /// Creates and returns a URL to the default directory for the persistent stores.
+    ///
+    public static func defaultStoreLocation() -> URL {
+        return Coherence.defaultStoreLocation()
+    }
+
+    ///
     /// The name of this instance of `Connect`
     ///
     public let name: String
+
+    ///
+    /// The model this instance was constructed with.
+    ///
+    public var managedObjectModel: NSManagedObjectModel {
+        return persistentStoreCoordinator.managedObjectModel
+    }
 
     ///
     /// Returns the `NSPersistentStoreCoordinate` instance that
@@ -139,11 +153,12 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     /// By default, the provided `name` value is used to name the persistent store and is used to look up the name of the `NSManagedObjectModel` object to be used with the `GenericPersistentContainer` object.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - name:            The name of the model file in the bundle. The model will be located based on the name given.
+    ///     - asyncErrorBlock: An optional error handling block which will be called when an asynchronous error occurs (e.g. during a save of the contexts to the persistent stores).
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
-    public convenience init(name: String) {
+    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -152,7 +167,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
         let model = abortIfNil(message: "Failed to load model at \(url).") {
             return NSManagedObjectModel(contentsOf: url)
         }
-        self.init(name: name, managedObjectModel: model)
+        self.init(name: name, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
     }
 
     ///
@@ -161,18 +176,32 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
     /// - Note: By default, the provided `name` value is used as the name of the persistent store associated with the instance. Passing in the `NSManagedObjectModel` object overrides the lookup of the model by the provided name value.
     ///
     /// - Parameters:
-    ///     - name: The name of the model file in the bundle.
+    ///     - name:               The name of the model file in the bundle.
     ///     - managedObjectModel: A managed object model.
+    ///     - asyncErrorBlock:    An optional error handling block which will be called when an asynchronous error occurs (e.g. during a save of the contexts to the persistent stores).
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         self.name = name
         self.storeStatus = [:]
 
-        self.dataCache = DataCacheType(name: name, managedObjectModel: model,       logTag: Log.tag)
-        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), logTag: Log.tag)
+        let errorBlock = { (error: Error) -> Void in
+
+            /// Log the error
+            logError(Log.tag) { "\(error)" }
+
+            /// Call the users block if supplied
+            if let errorBlock = asyncErrorBlock {
+                DispatchQueue.global().async {  /// Note: we move all user callback outside of our threads so that we can't be blocked by user code.
+                    errorBlock(error)
+                }
+            }
+        }
+
+        self.dataCache = DataCacheType(name: name, managedObjectModel: model,       asyncErrorBlock: errorBlock, logTag: Log.tag)
+        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), asyncErrorBlock: errorBlock, logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
@@ -184,6 +213,8 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
         self.synchronizationQueue = DispatchQueue(label: "\(Default.Queue.prefix).synchronization", qos: .userInitiated)
 
         self.started = false
+
+        super.init()
 
         ///
         /// Note: due to Swift requirement for not passing self until all instance
@@ -229,12 +260,8 @@ public class GenericConnect<Strategy: ContextStrategyType>: Connect {
             self._suspended = true
         }
     }
-}
 
-///
-/// Connect state management (public synchronized)
-///
-public extension GenericConnect {
+    // MARK: - Connect state management (public synchronized)
 
     ///
     /// Synchronously start the instance of `Connect`, starting all
@@ -318,6 +345,7 @@ public extension GenericConnect {
     /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
     ///
     @discardableResult
+    @objc(attachPersistentStoreAt:for:error:)
     public func attachPersistentStore(at url: URL, for configuration: StoreConfiguration) throws -> NSPersistentStore {
         return try self.synchronizationQueue.sync {
             return try self._attachPersistentStore(at: url, for: configuration)
@@ -327,6 +355,7 @@ public extension GenericConnect {
     ///
     /// Detach a persistent store from the Coordinator.
     ///
+    @objc(detachWithPersistentStore:error:)
     public func detach(persistentStore store: NSPersistentStore) throws {
         try self.synchronizationQueue.sync {
             try self._detach(persistentStore: store)
@@ -344,6 +373,7 @@ public extension GenericConnect {
     /// - Note: Calling this method will attempt to create the directory specified in the `at` parameter specified.  If a url is not specified, the `defaultStoreLocation` will be used and an attempt will be made to create that directory.
     ///
     @discardableResult
+    @objc(attachPersistentStoresAt:for:error:)
     public func attachPersistentStores(at url: URL, for configurations: [StoreConfiguration]) throws -> [NSPersistentStore] {
 
         return try self.synchronizationQueue.sync {
@@ -359,6 +389,7 @@ public extension GenericConnect {
     ///
     /// Detach an array of persistent stores from the Coordinator.
     ///
+    @objc(detachWithPersistentStores:error:)
     public func detach(persistentStores stores: [NSPersistentStore]) throws {
         try self.synchronizationQueue.sync {
             for store in stores {
@@ -385,12 +416,8 @@ public extension GenericConnect {
             }
         }
     }
-}
 
-///
-/// Context access methods
-///
-extension GenericConnect {
+    // MARK: - Context access methods
 
     ///
     /// The main context.
@@ -399,6 +426,7 @@ extension GenericConnect {
     ///
     /// It will be maintained automatically and be kept consistent.
     ///
+    @objc
     public var viewContext: NSManagedObjectContext {
         return self.dataCache.viewContext
     }
@@ -408,6 +436,7 @@ extension GenericConnect {
     ///
     /// At save time, Connect will merge those changes back to the ViewContextType.
     ///
+    @objc
     public func newBackgroundContext() -> BackgroundContext {
         return self.newBackgroundContext(logged: true)
     }
@@ -421,7 +450,7 @@ extension GenericConnect {
     ///
     public func newBackgroundContext(logged: Bool) -> BackgroundContext {
 
-        let context: LoggingContext = self.dataCache.newBackgroundContext()
+        let context: LoggingContext = self.dataCache.newGenericBackgroundContext()
 
         if logged {
             ///
@@ -435,7 +464,7 @@ extension GenericConnect {
 
     internal func newActionContext() -> ActionContext {
 
-        let context: ActionContext = self.dataCache.newBackgroundContext()
+        let context: ActionContext = self.dataCache.newGenericBackgroundContext()
         
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         context.logger = self.writeAheadLog
@@ -447,7 +476,7 @@ extension GenericConnect {
 ///
 /// Action Execution methods
 ///
-public extension GenericConnect {
+extension GenericConnect: ActionManager {
 
     ///
     /// Execute a generic action in a concurrent queue.
@@ -564,7 +593,7 @@ fileprivate extension GenericConnect {
 
             try self.metaCache.attachPersistentStore(at: GenericConnect.defaultStoreLocation(), for: metaStoreConfiguration)
 
-            self.writeAheadLog = try WriteAheadLog(persistentStack: self.metaCache)
+            self.writeAheadLog = try WriteAheadLog(persistentContainer: self.metaCache)
 
             ///
             /// If there are no stores attached at the time of starting, we assume that 
