@@ -41,20 +41,17 @@ class InsertDataTests: XCTestCase {
             value.attributesAndValues = ["col1": "value1", "col2": "value2"]
             return value
         }()
-        let expected = ["col1": "value1", "col2": "value2"]
+        let expected = ["col2": "value2", "col1": "value1"]
 
         let data = NSKeyedArchiver.archivedData(withRootObject: input)
 
         if let result = NSKeyedUnarchiver.unarchiveObject(with: data) as? InsertData,
            let attributesAndValues = result.attributesAndValues {
 
-            XCTAssertTrue(attributesAndValues.elementsEqual(expected, by: { (lhs, rhs) -> Bool in
-                guard let lhsKey = lhs.key as? String,
-                    let lhsValue = lhs.value as? String
-                    else { return false }
+            XCTAssertEqual(attributesAndValues.count, expected.count)
+            XCTAssertEqual(attributesAndValues["col1"] as? String, expected["col1"])
+            XCTAssertEqual(attributesAndValues["col2"] as? String, expected["col2"])
 
-                return lhsKey == rhs.key && lhsValue == rhs.value
-            }))
         } else {
             XCTFail("Could not unarchive InsertData.")
         }
@@ -96,13 +93,10 @@ class UpdateDataTests: XCTestCase {
             let attributesAndValues = result.attributesAndValues,
             let updatedAttributes   = result.updatedAttributes {
 
-            XCTAssertTrue(attributesAndValues.elementsEqual(expected.0, by: { (lhs, rhs) -> Bool in
-                guard let lhsKey = lhs.key as? String,
-                    let lhsValue = lhs.value as? String
-                    else { return false }
+            XCTAssertEqual(attributesAndValues.count, expected.0.count)
+            XCTAssertEqual(attributesAndValues["col1"] as? String, expected.0["col1"])
+            XCTAssertEqual(attributesAndValues["col2"] as? String, expected.0["col2"])
 
-                return lhsKey == rhs.key && lhsValue == rhs.value
-            }))
             XCTAssertTrue(updatedAttributes.elementsEqual(expected.1))
         } else {
             XCTFail("Could not unarchive InsertData.")

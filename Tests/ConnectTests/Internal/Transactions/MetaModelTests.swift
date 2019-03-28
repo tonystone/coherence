@@ -33,9 +33,9 @@ class MetaModelTests: XCTestCase {
 
         if let result = result as? MetaModel {
 
-            XCTAssert(result.entityVersionHashesByName.elementsEqual(expected.entityVersionHashesByName) { (entity1, entity2) -> Bool in
-                return entity1.key == entity2.key
-            })
+            XCTAssertEqual(result.entityVersionHashesByName.count, expected.entityVersionHashesByName.count)
+            XCTAssertEqual(result.entityVersionHashesByName["MetaLogEntry"], expected.entityVersionHashesByName["MetaLogEntry"])
+            XCTAssertEqual(result.entityVersionHashesByName["RefreshStatus"], expected.entityVersionHashesByName["RefreshStatus"])
         } else {
             XCTFail("Result is not the correct type of '\(String(describing: MetaModel.self))'.")
         }
