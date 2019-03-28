@@ -1223,7 +1223,7 @@
 			attributes = {
 				CLASSPREFIX = CC;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Tony Stone";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -1244,23 +1244,23 @@
 					};
 					EA14F7291F76D835009F542A = {
 						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					EA14F73C1F76D836009F542A = {
 						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = EA14F7291F76D835009F542A;
 					};
 					EA14F7811F76DBD2009F542A = {
 						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					EA14F7911F76DBD2009F542A = {
 						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = EA14F7811F76DBD2009F542A;
 					};
@@ -1282,6 +1282,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1438,8 +1439,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-tvOS Test Host/Pods-Coherence-tvOS Test Host-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-tvOS9.0/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-tvOS9.0/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-tvOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-tvOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1476,8 +1477,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-iOS Test Host/Pods-Coherence-iOS Test Host-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-iOS8.1/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS8.1/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-iOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1496,8 +1497,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-tvOS Test Host-tvOS Tests/Pods-Coherence-tvOS Test Host-tvOS Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-tvOS9.0/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-tvOS9.0/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-tvOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-tvOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1516,8 +1517,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-iOS Test Host-iOS Tests/Pods-Coherence-iOS Test Host-iOS Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-iOS8.1/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS8.1/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-iOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1608,8 +1609,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-watchOS Test App Extension/Pods-Coherence-watchOS Test App Extension-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-watchOS2.0/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-watchOS2.0/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-watchOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-watchOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1628,8 +1629,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-Coherence Example/Pods-Coherence-Coherence Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-iOS9.0/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS9.0/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-iOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-iOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1648,8 +1649,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-OSX Test Host-OSX Tests/Pods-Coherence-OSX Test Host-OSX Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-macOS10.10/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-macOS10.10/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-macOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-macOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1668,8 +1669,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coherence-OSX Test Host/Pods-Coherence-OSX Test Host-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Coherence-macOS10.10/Coherence.framework",
-				"${BUILT_PRODUCTS_DIR}/TraceLog-macOS10.10/TraceLog.framework",
+				"${BUILT_PRODUCTS_DIR}/Coherence-macOS/Coherence.framework",
+				"${BUILT_PRODUCTS_DIR}/TraceLog-macOS/TraceLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2066,6 +2067,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2109,10 +2111,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -2120,6 +2124,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2156,10 +2161,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2353,7 +2360,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "iOS Test Host/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.iOS-Test-Host";
@@ -2374,7 +2381,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "iOS Test Host/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.iOS-Test-Host";
@@ -2436,7 +2443,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "OSX Test Host/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.OSX-Test-Host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2460,7 +2466,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "OSX Test Host/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.OSX-Test-Host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2481,7 +2486,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "OSX Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.OSX-Test-HostTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2506,7 +2510,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "OSX Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.OSX-Test-HostTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
