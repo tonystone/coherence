@@ -10,7 +10,7 @@ import Swift
 ///
 /// Connect specific notifications.
 ///
-public extension  Notification {
+extension  Notification {
 
     ///
     /// Notification sent when an `Action` starts executing.

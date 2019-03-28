@@ -21,7 +21,7 @@ import Foundation
 import CoreData
 import TraceLog
 
-public extension ActionContext {
+extension ActionContext {
 
     ///
     /// Merge `objects` into the database.
@@ -236,7 +236,7 @@ public extension ActionContext {
     }
 }
 
-fileprivate extension ActionContext {
+extension ActionContext {
 
     fileprivate class LogRecords {
 

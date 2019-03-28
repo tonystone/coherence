@@ -126,7 +126,6 @@ internal class MetaModel: NSManagedObjectModel {
         scope.name = "scope"
         scope.isOptional = true
         scope.attributeType = NSAttributeType.stringAttributeType
-        scope.isIndexed = true
         attributes.append(scope)
 
         let lastSyncError = NSAttributeDescription()

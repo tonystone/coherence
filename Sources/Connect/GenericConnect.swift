@@ -572,7 +572,7 @@ extension GenericConnect: ActionManager {
 ///
 /// Connect state management (private unsynchronized)
 ///
-fileprivate extension GenericConnect {
+extension GenericConnect {
 
     ///
     /// Note: This private implementation method is unsynchronized  and
@@ -740,10 +740,10 @@ fileprivate extension GenericConnect {
 ///
 /// Utility methods
 ///
-fileprivate extension GenericConnect {
+extension GenericConnect {
 
     @discardableResult
-    func manage(name: String, entity: NSEntityDescription) -> Bool {
+    fileprivate func manage(name: String, entity: NSEntityDescription) -> Bool {
         logInfo(Log.tag) { "Analyzing entity '\(name)'...."}
 
         var canBeManaged = true
@@ -835,7 +835,7 @@ fileprivate extension GenericConnect {
         entity.managed = false
     }
 
-    func queue<EntityType: NSManagedObject>(entity: EntityType.Type) throws -> ActionQueue {
+    fileprivate func queue<EntityType: NSManagedObject>(entity: EntityType.Type) throws -> ActionQueue {
         let entityName = String(describing: entity)
 
         guard let queue = self.entityQueues[entityName] else {

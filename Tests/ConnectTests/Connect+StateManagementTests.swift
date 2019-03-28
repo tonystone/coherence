@@ -188,7 +188,7 @@ class ConnectStateManagementTests: XCTestCase {
         let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input.modelName)
         try connect.start()
 
-        NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataWillBecomeUnavailable, object: nil)
+        NotificationCenter.default.post(name: UIApplication.protectedDataWillBecomeUnavailableNotification, object: nil)
 
         XCTAssertEqual(connect.suspended, expected)
 
@@ -204,7 +204,7 @@ class ConnectStateManagementTests: XCTestCase {
         try connect.start()
         connect.suspended = input.isSuspended
 
-        NotificationCenter.default.post(name: Notification.Name.UIApplicationProtectedDataDidBecomeAvailable, object: nil)
+        NotificationCenter.default.post(name: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil)
 
         XCTAssertEqual(connect.suspended, expected)
 

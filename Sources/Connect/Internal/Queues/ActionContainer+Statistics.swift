@@ -22,7 +22,7 @@ import Swift
 ///
 /// Extension to implement the Statistics implementation of ActionContainer.
 ///
-internal extension ActionContainer {
+extension ActionContainer {
 
     ///
     /// ActionStatistics implementation for rhe container.
