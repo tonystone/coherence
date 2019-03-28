@@ -8,38 +8,39 @@ env:
   global:
     - WORKSPACE=Example/Coherence.xcworkspace
 
+podfile: Example/Podfile
+
 matrix:
   include:
     -
       os: osx
-      osx_image: xcode9.3
+      osx_image: xcode10.2
       env: 
          - BUILD="pod lint"
     - 
       os: osx
-      osx_image: xcode9.3
+      osx_image: xcode10.2
       env: 
          - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
+         - TEST_DEST="platform=iOS Simulator,OS=12.2,name=iPhone Xs"
          - SCHEME="iOS Test Host"
          - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
-         - SCHEME="iOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
-    - 
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s"
-         - SCHEME="iOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
-# Dropping test for iOS 8 temporarily due to a an issue with XCTest on and Xcode 9.3 (see https://github.com/CocoaPods/CocoaPods/issues/7608)
+#    -
+#      os: osx
+#      osx_image: xcode10.2
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=9.3,name=iPhone 6"
+#         - SCHEME="iOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
+#    -
+#      os: osx
+#      osx_image: xcode10.2
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=9.2,name=iPhone 5s"
+#         - SCHEME="iOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
 #    -
 #      os: osx
 #      osx_image: xcode9.3
@@ -50,40 +51,42 @@ matrix:
 #         - ACTION="-enableCodeCoverage YES test"
     -
       os: osx
-      osx_image: xcode9.3
+      osx_image: xcode10.2
       env: 
          - BUILD="xcodebuild"
          - TEST_DEST="platform=OS X,arch=x86_64"
          - SCHEME="OSX Test Host"
          - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=tvOS Simulator,OS=9.0,name=Apple TV 1080p"
-         - SCHEME="tvOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=tvOS Simulator,OS=10.2,name=Apple TV 1080p"
-         - SCHEME="tvOS Test Host"
-         - ACTION="-enableCodeCoverage YES test"
-    -
-      os: osx
-      osx_image: xcode9.3
-      env: 
-         - BUILD="xcodebuild"
-         - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
-         - SCHEME="watchOS Test App"
-         - ACTION=build
+#    -
+#      os: osx
+#      osx_image: xcode10.2
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=tvOS Simulator,OS=9.0,name=Apple TV 1080p"
+#         - SCHEME="tvOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
+#    -
+#      os: osx
+#      osx_image: xcode10.2
+#     env:
+#         - BUILD="xcodebuild"
+#        - TEST_DEST="platform=tvOS Simulator,OS=10.2,name=Apple TV 1080p"
+#         - SCHEME="tvOS Test Host"
+#         - ACTION="-enableCodeCoverage YES test"
+#    -
+#      os: osx
+#      osx_image: xcode10.2
+#      env:
+#         - BUILD="xcodebuild"
+#         - TEST_DEST="platform=iOS Simulator,OS=10.3.1,name=iPhone 6s"
+#         - SCHEME="watchOS Test App"
+#         - ACTION=build
 
 before_install:
   # Fix travis issue: https://github.com/travis-ci/travis-ci/issues/6307
   - rvm get head --auto-dotfiles || true
+
+install:
   #
   # If there is a Gemfile for this os, install bundler and ask bundler to install the gems
   #
@@ -92,6 +95,10 @@ before_install:
        export BUNDLE_GEMFILE=Gemfile
        gem install bundler
        bundler install
+       bundler exec pod repo update
+       pushd Example
+       bundler exec pod install
+       popd
     fi
 
 script:
