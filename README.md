@@ -16,9 +16,6 @@
 <a href="https://github.com/tonystone/coherence/" target="_blank">
     <img src="https://img.shields.io/cocoapods/v/Coherence.svg?style=flat" alt="Pod version">
 </a>
-<a href="https://github.com/tonystone/coherence/" target="_blank">
-    <img src="https://img.shields.io/cocoapods/dt/Coherence.svg?style=flat" alt="Downloads">
-</a>
 
 ---
 **Coherence**, the configurable CoreData extension for the Web Service era.  Coherence helps you build apps that require persistence, offline storage, store and forward and web connectivity. It provides you with a comprehensive framework for managing low level resources intelligently and efficiently.
