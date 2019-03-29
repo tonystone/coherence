@@ -8,7 +8,7 @@
 import Swift
 import CoreData
 
-internal extension StoreConfiguration {
+extension StoreConfiguration {
 
     ///
     /// Returns a new Configuration resolved against the defaultBundleLocation and bundleName.

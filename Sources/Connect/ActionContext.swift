@@ -168,7 +168,7 @@ public class ActionContext: BackgroundContext {
 ///
 /// Extension to implement the Statistics implementation of ConnectContext.
 ///
-internal extension ActionContext {
+extension ActionContext {
 
     internal class Statistics: ContextStatistics {
 

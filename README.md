@@ -5,7 +5,7 @@
    <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgray.svg?style=flat" alt="platforms: iOS | macOS | tvOS | watchOS">
 </a>
 <a href="https://github.com/tonystone/coherence/" target="_blank">
-   <img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" alt="Swift 4.1">
+   <img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift 4.2">
 </a>
 <a href="https://travis-ci.org/tonystone/coherence" target="_blank">
   <img src="https://travis-ci.org/tonystone/coherence.svg?branch=master" alt="travis-ci.org" />
@@ -318,14 +318,14 @@ Build Environment
 
 | Platform | Swift | Swift Build | Xcode |
 |:--------:|:-----:|:----------:|:------:|
-| OSX      | 4.1 | &#x2718; | 9.3 |
+| OSX      | 4.2 | &#x2718; | 10.1 |
 | Linux    | Not supported | &#x2718; | &#x2718; |
 
 Minimum Runtime Version
 
 | iOS |  OS X | tvOS | watchOS | Linux |
 |:---:|:-----:|:----:|:-------:|:------------:|
-| 8.1 | 10.10 | 9.0  | 2.0 | Not supported |
+| 9.0 | 10.13 | 9.0  | 2.0 | Not supported |
 
 # Author
 

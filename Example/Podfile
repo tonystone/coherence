@@ -6,20 +6,20 @@ install! 'cocoapods', :deterministic_uuids => false
 
 abstract_target 'Coherence' do
     pod "Coherence", :path => "../"
-    pod "TraceLog", "~> 3.0"
+    pod "TraceLog", "~> 5.0.0-beta.2"
     
     target 'Coherence Example' do
         platform :ios, '9.0'
     end
 
     target 'iOS Test Host' do
-        platform :ios, '8.1'
+        platform :ios, '9.0'
 
         target 'iOS Tests'
     end
 
     target 'OSX Test Host' do
-        platform :osx, '10.10'
+        platform :osx, '10.13'
 
         target 'OSX Tests'
     end

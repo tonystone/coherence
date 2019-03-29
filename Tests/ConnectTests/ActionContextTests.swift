@@ -58,6 +58,9 @@ class ActionContextTests: XCTestCase {
             /// Test the perform asynchronous method
             ///
             actionContext.perform { () -> Void in
+                defer {
+                    expectation.fulfill()
+                }
 
                 for object in input.objects {
                     actionContext.insert(object)
@@ -67,10 +70,6 @@ class ActionContextTests: XCTestCase {
                 } catch {
                     XCTFail("\(error)")
                     return
-                }
-
-                defer {
-                    expectation.fulfill()
                 }
             }
 

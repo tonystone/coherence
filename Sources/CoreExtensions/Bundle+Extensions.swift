@@ -22,7 +22,7 @@ import Swift
 ///
 /// Internal extensions on Bundle.
 ///
-internal extension Bundle {
+extension Bundle {
 
     ///
     /// Returns the first URL for the managedObjectModel.

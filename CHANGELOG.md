@@ -1,7 +1,15 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
-## [4.0.0-bweta.1](https://github.com/tonystone/coherence/releases/tag/4.0.0-beta.1)
+## [4.0.0](https://github.com/tonystone/coherence/releases/tag/4.0.0)
+
+#### Updates
+- Updated Swift Version to 4.2.
+- Changed TraceLog dependency requirement to ">= 3", "<= 5"
+- Moved to minimum iOS deployment target of 9.0
+- Moved to minimum macOS deployment target of 10.13
+
+## [4.0.0-beta.1](https://github.com/tonystone/coherence/releases/tag/4.0.0-beta.1)
 
 #### Breaking Updates 
 - Renamed `PersistentStack` to `PersistentContainer`.

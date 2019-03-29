@@ -121,7 +121,7 @@ extension NSEntityDescription {
     }
 }
 
-internal extension NSEntityDescription {
+extension NSEntityDescription {
 
     internal func setSettings(from dictionary: [AnyHashable: Any]) {
 
