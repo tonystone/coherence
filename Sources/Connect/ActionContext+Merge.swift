@@ -89,7 +89,15 @@ extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logTrace(Log.tag, level: 1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity \(entityName)." }
+        logInfo(Log.tag) {
+            var message = "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity '\(entityName)'"
+
+            if let filter = subsetFilter {
+                message.append(", using filter: \(filter)")
+            }
+            message.append(".")
+            return message
+        }
 
         var newIterator      = newObjects.makeIterator()
         var existingIterator = existingObjects.makeIterator()
@@ -145,7 +153,7 @@ extension ActionContext {
 
                         /// Update the existing object with the values from the new object.
                         let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
-                        
+
                         existingObject.setValuesForKeys(objectsAndValues)
                     }
                 }
@@ -227,7 +235,7 @@ extension ActionContext {
                 existingObject = existingIterator.next()
             }
         }
-        
+
         /// Only save this if there are actually changes that took place
         if self.hasChanges {
 
