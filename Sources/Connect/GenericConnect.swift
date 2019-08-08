@@ -746,65 +746,56 @@ extension GenericConnect {
     fileprivate func manage(name: String, entity: NSEntityDescription) -> Bool {
         logInfo(Log.tag) { "Analyzing entity '\(name)'...."}
 
-        var canBeManaged = true
+        var canBeManaged = false
 
         if let userInfo = entity.userInfo, userInfo.count > 0 {
-            logInfo(Log.tag) { "UserInfo found on entity '\(name)', reading static settings (if any)." }
+            logInfo(Log.tag) { "UserInfo found on entity '\(name)', reading static settings." }
             entity.setSettings(from: userInfo)
         }
 
-        if !entity.uniquenessAttributes.isEmpty {
-            var valid = true
+        if !entity.isAbstract {
+            let (valid, attributes) = validUniquenessAttributes(name: name, entity: entity)
 
-            for attribute in entity.uniquenessAttributes {
-                if !entity.attributesByName.keys.contains(attribute) {
-                    valid = false
+            if valid, let attributes = attributes {
+                entity.uniquenessAttributes = attributes
 
-                    logWarning(Log.tag) { "Uniqueness attribute '\(attribute)' specified but it is not present on entity." }
-                    break
-                }
-            }
+                canBeManaged = true
+            } else {
 
-            if !valid {
-                canBeManaged = false
+                if #available(iOS 9.0, OSX 10.11, tvOS 9.0, watchOS 2.0, *), entity.uniquenessConstraints.count > 0 {
 
-                logWarning(Log.tag) { "Setting value '\(entity.uniquenessAttributes)' for 'uniquenessAttributes' invalid." }
-            }
+                    logInfo(Log.tag) { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
 
-        } else {
+                    var shortest = entity.uniquenessConstraints[0]
 
-            if #available(iOS 9.0, OSX 10.11, tvOS 9.0, watchOS 2.0, *), entity.uniquenessConstraints.count > 0 {
-
-                logInfo(Log.tag) { "Found constraints, using the least complex key for 'uniquenessAttributes'.  To override define 'uniquenessAttributes' in your CoreData model for entity '\(name)'."}
-
-                var shortest = entity.uniquenessConstraints[0]
-
-                for attributes in entity.uniquenessConstraints {
-                    if attributes.count < shortest.count {
-                        shortest = attributes
-                    }
-                }
-
-                entity.uniquenessAttributes = {
-                    var array: [String] = []
-
-                    for attribute in shortest {
-                        switch attribute {
-                        case let attribute as NSAttributeDescription:
-                            array.append(attribute.name)
-                        case let name as String:
-                            array.append(name)
-                        default:
-                            continue
+                    for attributes in entity.uniquenessConstraints {
+                        if attributes.count < shortest.count {
+                            shortest = attributes
                         }
                     }
-                    return array
-                }()
 
-            } else {
-                canBeManaged = false
+                    entity.uniquenessAttributes = {
+                        var array: [String] = []
 
-                logInfo(Log.tag) { "Missing 'uniquenessAttributes' setting."}
+                        for attribute in shortest {
+                            switch attribute {
+                            case let attribute as NSAttributeDescription:
+                                array.append(attribute.name)
+                            case let name as String:
+                                array.append(name)
+                            default:
+                                continue
+                            }
+                        }
+                        return array
+                    }()
+
+                    canBeManaged = true
+                } else {
+                    canBeManaged = false
+
+                    logInfo(Log.tag) { "Missing 'uniquenessAttributes' setting."}
+                }
             }
         }
 
@@ -812,18 +803,82 @@ extension GenericConnect {
 
             let label = "\(Default.Queue.prefix).entity.\(name.lowercased())"
 
-            logInfo(Log.tag) { "Creating action queue for entity '\(name)' (\(label))" }
+            logInfo(Log.tag) { "Creating action queue for '\(name)' (\(label))" }
 
             self.entityQueues[name] = ActionQueue(label: label, qos: Default.ActionQueue.qos, concurrencyMode: .serial, suspended: Default.ActionQueue.suspended)
 
             entity.managed = true
+
+            logInfo(Log.tag) { "Entity '\(name)' set to managed."}
         } else {
             entity.managed = false
 
-            logInfo(Log.tag) { "Entity '\(name)' cannot be managed."}
+            logInfo(Log.tag) { "\(entity.isAbstract ? "Abstract entity" : "Entity") '\(name)' cannot be managed."}
         }
 
         return entity.managed
+    }
+
+    private func entityUniquenessAttributes(entity: NSEntityDescription) -> [String] {
+
+        if entity.uniquenessAttributes.count > 0 {
+            return entity.uniquenessAttributes
+        }
+
+        if let userInfo = entity.userInfo {
+            if let uniquenessAttributes = userInfo["uniquenessAttributes"] as? [String] {
+                return uniquenessAttributes
+            }
+        }
+
+        return []
+    }
+
+    private func validUniquenessAttributes(name rootName: String, entity: NSEntityDescription) -> (Bool, [String]?) {
+
+        let uniquenessAttributes = self.entityUniquenessAttributes(entity: entity)
+
+        if uniquenessAttributes.count > 0 {
+
+            /// The user specified attributes, make sure each of them
+            /// is contained on this entity or one above it.
+            ///
+            for attribute in uniquenessAttributes {
+                guard find(attribute, entity: entity) != nil
+                    else {
+                        logWarning(Log.tag) { "Attribute '\(attribute)' not found on enity or any parent, uniquenessAttributes \(uniquenessAttributes) are invalid." }
+                        return (false, nil)
+                }
+            }
+
+            if let name = entity.name {
+                if name == rootName {
+                    logInfo(Log.tag) { "Using uniquenessAttributes \(uniquenessAttributes) for '\(rootName)'." }
+                } else {
+                    logInfo(Log.tag) { "Using uniquenessAttributes \(uniquenessAttributes) from superentity '\(name)' for '\(rootName)'." }
+                }
+            }
+            return (true, uniquenessAttributes)
+        }
+
+        /// No uniquenessAttributes on this entity, check the parent
+        ///
+        if let parent = entity.superentity {
+            return validUniquenessAttributes(name: rootName, entity: parent)
+        }
+        return (false, nil)
+    }
+
+    private func find(_ attribute: String, entity: NSEntityDescription) -> NSEntityDescription? {
+
+        if entity.attributesByName.keys.contains(attribute) {
+            return entity
+        }
+
+        if let parent = entity.superentity {
+            return find(attribute, entity: parent)
+        }
+        return nil
     }
 
     fileprivate func unmanage(name: String, entity: NSEntityDescription) {
