@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Coherence"
-  s.version          = "4.0.0"
+  s.version          = "4.1.0"
   s.summary          = "Coherence"
   s.description      = <<-DESC
                        Coherence is a collection of base frameworks that help set the groundwork for module development.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target    = '9.0'
 
   s.requires_arc  = true
-  
+
   s.module_name   = 'Coherence'
   s.default_subspecs = ['Container', 'Connect']
 
