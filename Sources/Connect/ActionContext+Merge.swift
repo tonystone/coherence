@@ -28,7 +28,7 @@ extension ActionContext {
     ///
     /// - Throws: `Coherence.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
     ///
-    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil) throws {
+    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true)) throws {
 
         guard let entityName = entity.name else {
             throw Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
@@ -89,7 +89,18 @@ extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logTrace(Log.tag, level: 1) { "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity \(entityName)." }
+        logInfo(Log.tag) {
+            var message = "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity '\(entityName)'"
+
+            if let filter = subsetFilter {
+                message.append(", using filter: \(filter)")
+            }
+
+            message.append(", with update condition: \(condition)")
+
+            message.append(".")
+            return message
+        }
 
         var newIterator      = newObjects.makeIterator()
         var existingIterator = existingObjects.makeIterator()
@@ -140,13 +151,19 @@ extension ActionContext {
                         ///
 
                         /// We assume that once we update the server with our local update, the condition below
-                        /// will com into affect and the values will merged.
+                        /// will come into affect and the values will merged unless clear transactions is set in
+                        /// which case this is the update from the server.
+
                     } else {
 
-                        /// Update the existing object with the values from the new object.
-                        let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
-                        
-                        existingObject.setValuesForKeys(objectsAndValues)
+                        /// Only do the update if the condition supplied by the user is true
+                        if condition.evaluate(with: existingObject) {
+
+                            /// Update the existing object with the values from the new object.
+                            let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+
+                            existingObject.setValuesForKeys(objectsAndValues)
+                        }
                     }
                 }
                 ///
@@ -218,7 +235,10 @@ extension ActionContext {
                         /// has been removed
                     } else {
 
-                        self.delete(existingObject)
+                        /// Only do the delete if the condition supplied by the user is true
+                        if condition.evaluate(with: existingObject) {
+                            self.delete(existingObject)
+                        }
                     }
                 }
                 ///
@@ -227,7 +247,7 @@ extension ActionContext {
                 existingObject = existingIterator.next()
             }
         }
-        
+
         /// Only save this if there are actually changes that took place
         if self.hasChanges {
 
