@@ -28,7 +28,7 @@ extension ActionContext {
     ///
     /// - Throws: `Coherence.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
     ///
-    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil) throws {
+    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true)) throws {
 
         guard let entityName = entity.name else {
             throw Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
@@ -95,6 +95,9 @@ extension ActionContext {
             if let filter = subsetFilter {
                 message.append(", using filter: \(filter)")
             }
+
+            message.append(", with update condition: \(condition)")
+
             message.append(".")
             return message
         }
@@ -148,13 +151,19 @@ extension ActionContext {
                         ///
 
                         /// We assume that once we update the server with our local update, the condition below
-                        /// will com into affect and the values will merged.
+                        /// will come into affect and the values will merged unless clear transactions is set in
+                        /// which case this is the update from the server.
+
                     } else {
 
-                        /// Update the existing object with the values from the new object.
-                        let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+                        /// Only do the update if the condition supplied by the user is true
+                        if condition.evaluate(with: existingObject) {
 
-                        existingObject.setValuesForKeys(objectsAndValues)
+                            /// Update the existing object with the values from the new object.
+                            let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+
+                            existingObject.setValuesForKeys(objectsAndValues)
+                        }
                     }
                 }
                 ///
@@ -226,7 +235,10 @@ extension ActionContext {
                         /// has been removed
                     } else {
 
-                        self.delete(existingObject)
+                        /// Only do the delete if the condition supplied by the user is true
+                        if condition.evaluate(with: existingObject) {
+                            self.delete(existingObject)
+                        }
                     }
                 }
                 ///
