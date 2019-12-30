@@ -114,6 +114,11 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     fileprivate let notificationService: NotificationService
 
     ///
+    /// Is logging enabled
+    ///
+    fileprivate let loggingEnabled: Bool
+
+    ///
     /// The internal write ahead log for logging transactions
     ///
     fileprivate var writeAheadLog: WriteAheadLog?
@@ -158,7 +163,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
-    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
+    public convenience init(name: String, enableLogging logging: Bool = false, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -167,7 +172,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
         let model = abortIfNil(message: "Failed to load model at \(url).") {
             return NSManagedObjectModel(contentsOf: url)
         }
-        self.init(name: name, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
+        self.init(name: name, enableLogging: logging, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
     }
 
     ///
@@ -182,9 +187,10 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
-    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
+    public required init(name: String, enableLogging logging: Bool = false, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         self.name = name
+        self.loggingEnabled = logging
         self.storeStatus = [:]
 
         let errorBlock = { (error: Error) -> Void in
@@ -593,7 +599,9 @@ extension GenericConnect {
 
             try self.metaCache.attachPersistentStore(at: GenericConnect.defaultStoreLocation(), for: metaStoreConfiguration)
 
-            self.writeAheadLog = try WriteAheadLog(persistentContainer: self.metaCache)
+            if self.loggingEnabled {
+                self.writeAheadLog = try WriteAheadLog(persistentContainer: self.metaCache)
+            }
 
             ///
             /// If there are no stores attached at the time of starting, we assume that 
