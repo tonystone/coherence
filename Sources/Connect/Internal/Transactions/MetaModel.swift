@@ -94,6 +94,7 @@ internal class MetaModel: NSManagedObjectModel {
         updateData.name = "updateData"
         updateData.isOptional = true
         updateData.attributeType = NSAttributeType.transformableAttributeType
+        updateData.valueTransformerName = "NSSecureUnarchiveFromData"
         attributes.append(updateData)
 
         let entity = NSEntityDescription()
@@ -119,7 +120,6 @@ internal class MetaModel: NSManagedObjectModel {
         type.name = "type"
         type.isOptional = false
         type.attributeType = NSAttributeType.stringAttributeType
-//        type.defaultValue = kDefaultRefreshType
         attributes.append(type)
 
         let scope = NSAttributeDescription()
@@ -132,6 +132,7 @@ internal class MetaModel: NSManagedObjectModel {
         lastSyncError.name = "lastSyncError"
         lastSyncError.isOptional = true
         lastSyncError.attributeType = NSAttributeType.transformableAttributeType
+        lastSyncError.valueTransformerName = "NSSecureUnarchiveFromData"
         attributes.append(lastSyncError)
 
         let lastSyncStatus = NSAttributeDescription()
