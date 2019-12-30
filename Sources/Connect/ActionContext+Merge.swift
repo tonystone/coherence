@@ -28,7 +28,7 @@ extension ActionContext {
     ///
     /// - Throws: `Coherence.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
     ///
-    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true)) throws {
+    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, ignoreAttributes: [String] = [], subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true)) throws {
 
         guard let entityName = entity.name else {
             throw Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
@@ -36,6 +36,8 @@ extension ActionContext {
         guard entity.managed else {
             throw Errors.unmanagedEntity("Entity '\(entityName)' not managed, cannot merge objects.")
         }
+
+        let updateAttributes = Array<String>(entity.attributesByName.keys).filter({ !ignoreAttributes.contains($0) })
 
         ///
         /// Get a list of exceptions for the merge from the transaction log
@@ -91,6 +93,10 @@ extension ActionContext {
 
         logInfo(Log.tag) {
             var message = "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity '\(entityName)'"
+
+            if ignoreAttributes.count > 0 {
+                message.append(", ignoring attributes: \(ignoreAttributes)")
+            }
 
             if let filter = subsetFilter {
                 message.append(", using filter: \(filter)")
@@ -160,9 +166,9 @@ extension ActionContext {
                         if condition.evaluate(with: existingObject) {
 
                             /// Update the existing object with the values from the new object.
-                            let objectsAndValues = newObject.dictionaryWithValues(forKeys: Array<String>(entity.attributesByName.keys))
+                            let keysAndValues = newObject.dictionaryWithValues(forKeys: updateAttributes)
 
-                            existingObject.setValuesForKeys(objectsAndValues)
+                            existingObject.setValuesForKeys(keysAndValues)
                         }
                     }
                 }

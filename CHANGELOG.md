@@ -1,6 +1,10 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [4.2.0](https://github.com/tonystone/coherence/releases/tag/4.2.0)
+
+#### Added
+- Added the ability to ignoreAttributes during a `ActionContext.merge`.
 ## [4.1.0](https://github.com/tonystone/coherence/releases/tag/4.1.0)
 
 #### Added
