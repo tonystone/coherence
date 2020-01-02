@@ -9,7 +9,9 @@ import Swift
 
 typealias ValueContainerType = [AnyHashable: Any]
 
-internal class ChangeData : NSObject, NSCoding  {
+internal class ChangeData : NSObject, NSSecureCoding  {
+    static var supportsSecureCoding: Bool = false
+
     required override init() {}
     required init?(coder aDecoder: NSCoder) {}
     func encode(with aCoder: NSCoder) {}

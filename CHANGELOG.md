@@ -1,6 +1,13 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [4.2.0](https://github.com/tonystone/coherence/releases/tag/4.2.0)
+
+#### Added
+- Added the ability to ignoreAttributes during a `ActionContext.merge`.
+- Added the ability to enable/diable logging when initializing an instance of `GenericConnect`.  Default is now logging is disabled.
+- Updated meta data model to use NSSecureCoding to conform with Apple's new requirements.
+
 ## [4.1.0](https://github.com/tonystone/coherence/releases/tag/4.1.0)
 
 #### Added

@@ -119,7 +119,6 @@ internal class MetaModel: NSManagedObjectModel {
         type.name = "type"
         type.isOptional = false
         type.attributeType = NSAttributeType.stringAttributeType
-//        type.defaultValue = kDefaultRefreshType
         attributes.append(type)
 
         let scope = NSAttributeDescription()
