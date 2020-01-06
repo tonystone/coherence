@@ -68,30 +68,28 @@ extension ContextStrategy {
             context.parent = self.viewContext
 
             /// Register to listen to this context
-            NotificationCenter.default.addObserver(self, selector: #selector(self.handleContextDidSaveNotification(_:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
-            context.deinitBlock = { [weak context] in
-                NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+            let observer = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextDidSave, object: context, queue: OperationQueue.main, using: { notification in
+
+                self.viewContext.perform(onError: self.errorHandler) {
+
+                    ///
+                    /// Save it to propagate the changes to the root.
+                    ///
+                    try self.viewContext.save()
+
+                    ////
+                    /// And finally save the root context to the persistent store
+                    /// on a background thread.
+                    ///
+                    self.rootContext.perform(onError: self.errorHandler) {
+                        try self.rootContext.save()
+                    }
+                }
+            })
+            context.deinitBlock = {
+                NotificationCenter.default.removeObserver(observer)
             }
             return context
-        }
-
-        @objc fileprivate dynamic func handleContextDidSaveNotification(_ notification: Notification)  {
-
-            self.viewContext.perform(onError: self.errorHandler) {
-
-                ///
-                /// Save it to propagate the changes to the root.
-                ///
-                try self.viewContext.save()
-
-                ////
-                /// And finally save the root context to the persistent store
-                /// on a background thread.
-                ///
-                self.rootContext.perform(onError: self.errorHandler) {
-                    try self.rootContext.save()
-                }
-            }
         }
     }
 }
