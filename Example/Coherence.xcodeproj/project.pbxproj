@@ -47,18 +47,11 @@
 		EA14F7521F76D954009F542A /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EA14F7531F76D954009F542A /* EntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* EntityDescription+EntitySettingsTests.swift */; };
 		EA14F7541F76D954009F542A /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC981E63466000527236 /* NotificationServiceTests.swift */; };
-		EA14F7551F76D954009F542A /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA14F7561F76D954009F542A /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EA14F7571F76D954009F542A /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
 		EA14F7581F76D954009F542A /* ActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */; };
 		EA14F7591F76D954009F542A /* ActionContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6A31E6FB4B2000781A5 /* ActionContainerTests.swift */; };
 		EA14F75A1F76D954009F542A /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
-		EA14F75B1F76D954009F542A /* FileBackedSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */; };
-		EA14F75C1F76D954009F542A /* InMemorySequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */; };
-		EA14F75D1F76D954009F542A /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */; };
-		EA14F75E1F76D954009F542A /* MetaModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */; };
-		EA14F75F1F76D954009F542A /* MetaLogEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */; };
-		EA14F7601F76D954009F542A /* MetaLogEntryTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */; };
 		EA14F7611F76D954009F542A /* ConnectEntity1+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144E1E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift */; };
 		EA14F7621F76D954009F542A /* ConnectEntity1+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144F1E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift */; };
 		EA14F7631F76D954009F542A /* ConnectEntity2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14501E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift */; };
@@ -106,9 +99,6 @@
 		EA1C14471E3FA034002E63BD /* Employee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14391E3FA034002E63BD /* Employee+CoreDataProperties.swift */; };
 		EA1C14481E3FA034002E63BD /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C143A1E3FA034002E63BD /* Country+CoreDataClass.swift */; };
 		EA1C14491E3FA034002E63BD /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C143B1E3FA034002E63BD /* Country+CoreDataProperties.swift */; };
-		EA4EC6F520A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
-		EA4EC6F620A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
-		EA4EC6F720A780AD00E04DE3 /* ChangeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */; };
 		EA5798AD1F78148A00039268 /* TestModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C162A1F45FE300087F6B8 /* TestModelLoader.swift */; };
 		EA5798AE1F78148A00039268 /* TestPersistentStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAA3FA1DC8114F00D3D371 /* TestPersistentStoreManager.swift */; };
 		EA5798AF1F78148A00039268 /* ManagedObjectContext+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30E6561E771E9E00F09610 /* ManagedObjectContext+ExtensionsTests.swift */; };
@@ -120,18 +110,11 @@
 		EA5798B51F78148A00039268 /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EA5798B61F78148A00039268 /* EntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* EntityDescription+EntitySettingsTests.swift */; };
 		EA5798B71F78148A00039268 /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC981E63466000527236 /* NotificationServiceTests.swift */; };
-		EA5798B81F78148A00039268 /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EA5798B91F78148A00039268 /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EA5798BA1F78148A00039268 /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
 		EA5798BB1F78148A00039268 /* ActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */; };
 		EA5798BC1F78148A00039268 /* ActionContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6A31E6FB4B2000781A5 /* ActionContainerTests.swift */; };
 		EA5798BD1F78148A00039268 /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
-		EA5798BE1F78148A00039268 /* FileBackedSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */; };
-		EA5798BF1F78148A00039268 /* InMemorySequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */; };
-		EA5798C01F78148A00039268 /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */; };
-		EA5798C11F78148A00039268 /* MetaModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */; };
-		EA5798C21F78148A00039268 /* MetaLogEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */; };
-		EA5798C31F78148A00039268 /* MetaLogEntryTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */; };
 		EA5798C41F78148A00039268 /* ConnectEntity1+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144E1E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift */; };
 		EA5798C51F78148A00039268 /* ConnectEntity1+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144F1E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift */; };
 		EA5798C61F78148A00039268 /* ConnectEntity2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14501E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift */; };
@@ -179,18 +162,11 @@
 		EAF3D89D1F76DD9E0051F5DE /* ActionContext+MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */; };
 		EAF3D89E1F76DD9E0051F5DE /* EntityDescription+EntitySettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CC5D41E36B17300054305 /* EntityDescription+EntitySettingsTests.swift */; };
 		EAF3D89F1F76DD9E0051F5DE /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC981E63466000527236 /* NotificationServiceTests.swift */; };
-		EAF3D8A01F76DD9E0051F5DE /* LoggingContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */; };
 		EAF3D8A11F76DD9E0051F5DE /* AssociatedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */; };
 		EAF3D8A21F76DD9E0051F5DE /* ManagedObject+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */; };
 		EAF3D8A31F76DD9E0051F5DE /* ActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */; };
 		EAF3D8A41F76DD9E0051F5DE /* ActionContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6A31E6FB4B2000781A5 /* ActionContainerTests.swift */; };
 		EAF3D8A51F76DD9E0051F5DE /* ActionContainer+StatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */; };
-		EAF3D8A61F76DD9E0051F5DE /* FileBackedSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */; };
-		EAF3D8A71F76DD9E0051F5DE /* InMemorySequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */; };
-		EAF3D8A81F76DD9E0051F5DE /* WriteAheadLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */; };
-		EAF3D8A91F76DD9E0051F5DE /* MetaModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */; };
-		EAF3D8AA1F76DD9E0051F5DE /* MetaLogEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */; };
-		EAF3D8AB1F76DD9E0051F5DE /* MetaLogEntryTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */; };
 		EAF3D8AC1F76DD9E0051F5DE /* ConnectEntity1+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144E1E3FA0B0002E63BD /* ConnectEntity1+CoreDataClass.swift */; };
 		EAF3D8AD1F76DD9E0051F5DE /* ConnectEntity1+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C144F1E3FA0B0002E63BD /* ConnectEntity1+CoreDataProperties.swift */; };
 		EAF3D8AE1F76DD9E0051F5DE /* ConnectEntity2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C14501E3FA0B0002E63BD /* ConnectEntity2+CoreDataClass.swift */; };
@@ -381,14 +357,12 @@
 		EA14F78D1F76DBD2009F542A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA14F7921F76DBD2009F542A /* OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA14F7981F76DBD2009F542A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBackedSequenceTests.swift; sourceTree = "<group>"; };
 		EA1C14051E3D80E1002E63BD /* GenericPersistentContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPersistentContainerTests.swift; sourceTree = "<group>"; };
 		EA1C140A1E3D80E1002E63BD /* ContainerUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerUser.swift; sourceTree = "<group>"; };
 		EA1C140B1E3D80E1002E63BD /* ContainerUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContainerUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA1C14241E3EF986002E63BD /* Connect Architecture & Design.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect Architecture & Design.graffle"; sourceTree = "<group>"; };
 		EA1C14251E3EF986002E63BD /* Connect High Level Architecture.graffle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Connect High Level Architecture.graffle"; sourceTree = "<group>"; };
 		EA1C14261E3EF986002E63BD /* Connect High Level Architecture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connect High Level Architecture.png"; sourceTree = "<group>"; };
-		EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaLogEntryTests.swift; sourceTree = "<group>"; };
 		EA1C142C1E3F9FBD002E63BD /* HR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HR.xcdatamodel; sourceTree = "<group>"; };
 		EA1C142E1E3FA034002E63BD /* Department+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Department+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA1C142F1E3FA034002E63BD /* Department+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Department+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -426,22 +400,18 @@
 		EA4AA4CE1E91720E00F90069 /* BackgroundContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContextTests.swift; sourceTree = "<group>"; };
 		EA4AA4D21E91ED8500F90069 /* ContextStrategy+DirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+DirectTests.swift"; sourceTree = "<group>"; };
 		EA4D365C1C3DF58C003DC554 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDataTests.swift; sourceTree = "<group>"; };
 		EA5074D71E839285004DE565 /* StoreConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfigurationTests.swift; sourceTree = "<group>"; };
 		EA5BDC981E63466000527236 /* NotificationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
-		EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingContextTests.swift; sourceTree = "<group>"; };
 		EA5FD52B1C1A598D002A7B8A /* Coherence.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Coherence.playground; sourceTree = "<group>"; };
 		EA7D1AC21E4C23FE003EAD4A /* ActionContext+MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContext+MergeTests.swift"; path = "ConnectTests/ActionContext+MergeTests.swift"; sourceTree = "<group>"; };
 		EA7D1AC41E4D1541003EAD4A /* ActionContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContextTests.swift; path = ConnectTests/ActionContextTests.swift; sourceTree = "<group>"; };
 		EA8519E51DC0FC3F007CAB43 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
-		EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InMemorySequenceTests.swift; path = ../Sequence/InMemorySequenceTests.swift; sourceTree = "<group>"; };
 		EA97628E1E8F351A007D919C /* ContextStrategy+MixedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+MixedTests.swift"; sourceTree = "<group>"; };
 		EA9762901E8F3A69007D919C /* ContextStrategy+NestedIndirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+NestedIndirectTests.swift"; sourceTree = "<group>"; };
 		EA9762921E8F3B1D007D919C /* ContextStrategy+IndependentDirectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextStrategy+IndependentDirectTests.swift"; sourceTree = "<group>"; };
 		EAA4F7F220B499D70030EA0E /* Coherence Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coherence Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		EAA4F7F320B499D70030EA0E /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		EAA4F7F420B499D70030EA0E /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAheadLogTests.swift; sourceTree = "<group>"; };
 		EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedObject+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		EABBFAF31E762D2C0042D937 /* ContainerTestModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContainerTestModel1.xcdatamodel; sourceTree = "<group>"; };
 		EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedStorageTests.swift; sourceTree = "<group>"; };
@@ -453,8 +423,6 @@
 		EACAD5FA1E6B3F95000781A5 /* MockBaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseAction.swift; sourceTree = "<group>"; };
 		EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ActionContainer+StatisticsTests.swift"; path = "Queues/ActionContainer+StatisticsTests.swift"; sourceTree = "<group>"; };
 		EACAD6091E6CCA66000781A5 /* ActionQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionQueueTests.swift; path = Queues/ActionQueueTests.swift; sourceTree = "<group>"; };
-		EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaLogEntryTypeTests.swift; sourceTree = "<group>"; };
-		EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaModelTests.swift; sourceTree = "<group>"; };
 		EACAD6A31E6FB4B2000781A5 /* ActionContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionContainerTests.swift; path = Queues/ActionContainerTests.swift; sourceTree = "<group>"; };
 		EACBC64F1E779FC4001D5431 /* Connect+StateManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Connect+StateManagementTests.swift"; path = "ConnectTests/Connect+StateManagementTests.swift"; sourceTree = "<group>"; };
 		EAD40E0E1E3522BF0058C9FB /* ConnectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectTests.swift; path = ConnectTests/ConnectTests.swift; sourceTree = "<group>"; };
@@ -883,12 +851,9 @@
 			isa = PBXGroup;
 			children = (
 				EA5BDC981E63466000527236 /* NotificationServiceTests.swift */,
-				EA5BDC9C1E63BA8000527236 /* LoggingContextTests.swift */,
 				EAC4BD511E65DDB700C3BC05 /* AssociatedStorageTests.swift */,
 				EAB4C68A1E66284200254A13 /* ManagedObject+ExtensionsTests.swift */,
 				EACAD6011E6C88EF000781A5 /* Queues */,
-				EA8719571EABC9610077AE27 /* Sequence */,
-				EACAD60F1E6DB0D5000781A5 /* Transactions */,
 			);
 			name = Internal;
 			path = ConnectTests/Internal;
@@ -921,15 +886,6 @@
 				EA5FD52B1C1A598D002A7B8A /* Coherence.playground */,
 			);
 			name = Playground;
-			sourceTree = "<group>";
-		};
-		EA8719571EABC9610077AE27 /* Sequence */ = {
-			isa = PBXGroup;
-			children = (
-				EA179B341EAAB2FE0043D7C8 /* FileBackedSequenceTests.swift */,
-				EA8719581EABC9C00077AE27 /* InMemorySequenceTests.swift */,
-			);
-			path = Sequence;
 			sourceTree = "<group>";
 		};
 		EABC3FDA1F798290004F9820 /* Test Targets */ = {
@@ -969,18 +925,6 @@
 				EACAD6021E6C892E000781A5 /* ActionContainer+StatisticsTests.swift */,
 			);
 			name = Queues;
-			sourceTree = "<group>";
-		};
-		EACAD60F1E6DB0D5000781A5 /* Transactions */ = {
-			isa = PBXGroup;
-			children = (
-				EAA791681E7049B900FD1C25 /* WriteAheadLogTests.swift */,
-				EACAD62C1E6E4981000781A5 /* MetaModelTests.swift */,
-				EA1C14281E3EF9EB002E63BD /* MetaLogEntryTests.swift */,
-				EACAD6121E6DB6A9000781A5 /* MetaLogEntryTypeTests.swift */,
-				EA4EC6F420A780AD00E04DE3 /* ChangeDataTests.swift */,
-			);
-			path = Transactions;
 			sourceTree = "<group>";
 		};
 		EAD40E0D1E3518CB0058C9FB /* ConnectTests */ = {
@@ -1758,7 +1702,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA14F75E1F76D954009F542A /* MetaModelTests.swift in Sources */,
 				EA14F7651F76D954009F542A /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */,
 				EA14F7541F76D954009F542A /* NotificationServiceTests.swift in Sources */,
 				EA14F74E1F76D954009F542A /* Connect+PersistentStackTests.swift in Sources */,
@@ -1769,7 +1712,6 @@
 				EA14F7761F76D954009F542A /* ContainerUser.swift in Sources */,
 				EA14F7531F76D954009F542A /* EntityDescription+EntitySettingsTests.swift in Sources */,
 				EA14F74A1F76D954009F542A /* TestModelLoader.swift in Sources */,
-				EA14F75B1F76D954009F542A /* FileBackedSequenceTests.swift in Sources */,
 				EA14F74F1F76D954009F542A /* Connect+StateManagementTests.swift in Sources */,
 				EA14F7631F76D954009F542A /* ConnectEntity2+CoreDataClass.swift in Sources */,
 				EA14F76A1F76D954009F542A /* MockGenericAction.swift in Sources */,
@@ -1780,7 +1722,6 @@
 				EA14F76C1F76D954009F542A /* MockListActionUnmanaged.swift in Sources */,
 				EA14F7731F76D954009F542A /* BackgroundContextTests.swift in Sources */,
 				EA14F7661F76D954009F542A /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
-				EA14F75C1F76D954009F542A /* InMemorySequenceTests.swift in Sources */,
 				EA14F7681F76D954009F542A /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EA14F76B1F76D954009F542A /* MockListAction.swift in Sources */,
 				EA14F7591F76D954009F542A /* ActionContainerTests.swift in Sources */,
@@ -1790,16 +1731,11 @@
 				EA14F7571F76D954009F542A /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA14F7711F76D954009F542A /* StoreConfigurationTests.swift in Sources */,
 				EA14F75A1F76D954009F542A /* ActionContainer+StatisticsTests.swift in Sources */,
-				EA4EC6F520A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
 				EA14F7621F76D954009F542A /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EA14F7771F76D954009F542A /* ContainerUser+CoreDataProperties.swift in Sources */,
 				EA14F7671F76D954009F542A /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
-				EA14F75F1F76D954009F542A /* MetaLogEntryTests.swift in Sources */,
 				EA14F76E1F76D954009F542A /* ContextStrategy+IndependentDirectTests.swift in Sources */,
 				EA14F74B1F76D954009F542A /* TestPersistentStoreManager.swift in Sources */,
-				EA14F7551F76D954009F542A /* LoggingContextTests.swift in Sources */,
-				EA14F75D1F76D954009F542A /* WriteAheadLogTests.swift in Sources */,
-				EA14F7601F76D954009F542A /* MetaLogEntryTypeTests.swift in Sources */,
 				EA14F7641F76D954009F542A /* ConnectEntity2+CoreDataProperties.swift in Sources */,
 				EA14F74D1F76D954009F542A /* ConnectTests.swift in Sources */,
 				EA14F76D1F76D954009F542A /* ContextStrategy+DirectTests.swift in Sources */,
@@ -1826,7 +1762,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF3D8A91F76DD9E0051F5DE /* MetaModelTests.swift in Sources */,
 				EAF3D8B01F76DD9E0051F5DE /* ConnectEntity3Unmanaged+CoreDataClass.swift in Sources */,
 				EAF3D89F1F76DD9E0051F5DE /* NotificationServiceTests.swift in Sources */,
 				EAF3D8991F76DD9E0051F5DE /* Connect+PersistentStackTests.swift in Sources */,
@@ -1838,7 +1773,6 @@
 				EAF3D89E1F76DD9E0051F5DE /* EntityDescription+EntitySettingsTests.swift in Sources */,
 				EAF3D8951F76DD9E0051F5DE /* TestModelLoader.swift in Sources */,
 				EAF3D8BB1F76DD9E0051F5DE /* StoreConfigurationTests.swift in Sources */,
-				EAF3D8A61F76DD9E0051F5DE /* FileBackedSequenceTests.swift in Sources */,
 				EAF3D89A1F76DD9E0051F5DE /* Connect+StateManagementTests.swift in Sources */,
 				EAF3D8AE1F76DD9E0051F5DE /* ConnectEntity2+CoreDataClass.swift in Sources */,
 				EAF3D8B51F76DD9E0051F5DE /* MockGenericAction.swift in Sources */,
@@ -1851,25 +1785,19 @@
 				EAF3D8B71F76DD9E0051F5DE /* MockListActionUnmanaged.swift in Sources */,
 				EAF3D8B91F76DD9E0051F5DE /* ContextStrategy+MixedTests.swift in Sources */,
 				EAF3D8B11F76DD9E0051F5DE /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
-				EAF3D8A71F76DD9E0051F5DE /* InMemorySequenceTests.swift in Sources */,
 				EAF3D8B31F76DD9E0051F5DE /* ConnectEntity4MissingUniquenessAttribute+CoreDataProperties.swift in Sources */,
 				EAF3D8B61F76DD9E0051F5DE /* MockListAction.swift in Sources */,
 				EAF3D8A41F76DD9E0051F5DE /* ActionContainerTests.swift in Sources */,
 				EAF3D89D1F76DD9E0051F5DE /* ActionContext+MergeTests.swift in Sources */,
 				EAF3D89C1F76DD9E0051F5DE /* ActionContextTests.swift in Sources */,
 				EAF3D8A21F76DD9E0051F5DE /* ManagedObject+ExtensionsTests.swift in Sources */,
-				EA4EC6F620A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
 				EAF3D8A51F76DD9E0051F5DE /* ActionContainer+StatisticsTests.swift in Sources */,
 				EAF3D8C21F76DD9E0051F5DE /* ContainerUser+CoreDataProperties.swift in Sources */,
 				EAF3D8AD1F76DD9E0051F5DE /* ConnectEntity1+CoreDataProperties.swift in Sources */,
 				EAF3D8B21F76DD9E0051F5DE /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
-				EAF3D8AA1F76DD9E0051F5DE /* MetaLogEntryTests.swift in Sources */,
 				EAF3D8BC1F76DD9E0051F5DE /* ContextStrategy+DirectTests.swift in Sources */,
 				EAF3D8961F76DD9E0051F5DE /* TestPersistentStoreManager.swift in Sources */,
 				EAF3D8BA1F76DD9E0051F5DE /* ContextStrategy+NestedIndirectTests.swift in Sources */,
-				EAF3D8A01F76DD9E0051F5DE /* LoggingContextTests.swift in Sources */,
-				EAF3D8A81F76DD9E0051F5DE /* WriteAheadLogTests.swift in Sources */,
-				EAF3D8AB1F76DD9E0051F5DE /* MetaLogEntryTypeTests.swift in Sources */,
 				EAF3D8AF1F76DD9E0051F5DE /* ConnectEntity2+CoreDataProperties.swift in Sources */,
 				EAF3D8981F76DD9E0051F5DE /* ConnectTests.swift in Sources */,
 				EAF3D8C31F76DDB30051F5DE /* ConnectTestModel.xcdatamodeld in Sources */,
@@ -1906,27 +1834,20 @@
 				EA5798D51F78148A00039268 /* StoreConfiguration+ResolveTests.swift in Sources */,
 				EA5798B01F78148A00039268 /* ConnectTests.swift in Sources */,
 				EA5798B11F78148A00039268 /* Connect+PersistentStackTests.swift in Sources */,
-				EA5798C21F78148A00039268 /* MetaLogEntryTests.swift in Sources */,
 				EA5798D71F78148A00039268 /* GenericPersistentContainerTests.swift in Sources */,
-				EA5798BE1F78148A00039268 /* FileBackedSequenceTests.swift in Sources */,
 				EA5798BA1F78148A00039268 /* ManagedObject+ExtensionsTests.swift in Sources */,
 				EA5798CA1F78148A00039268 /* ConnectEntity4MissingUniquenessAttribute+CoreDataClass.swift in Sources */,
 				EA5798B51F78148A00039268 /* ActionContext+MergeTests.swift in Sources */,
-				EA5798BF1F78148A00039268 /* InMemorySequenceTests.swift in Sources */,
 				EA5798BB1F78148A00039268 /* ActionQueueTests.swift in Sources */,
-				EA5798C11F78148A00039268 /* MetaModelTests.swift in Sources */,
 				EA5798CC1F78148A00039268 /* MockBaseAction.swift in Sources */,
 				EA5798BC1F78148A00039268 /* ActionContainerTests.swift in Sources */,
 				EA5798B71F78148A00039268 /* NotificationServiceTests.swift in Sources */,
 				EA5798D01F78148A00039268 /* ContextStrategy+IndependentDirectTests.swift in Sources */,
-				EA5798C31F78148A00039268 /* MetaLogEntryTypeTests.swift in Sources */,
 				EA5798B91F78148A00039268 /* AssociatedStorageTests.swift in Sources */,
 				EA5798D21F78148A00039268 /* ContextStrategy+NestedIndirectTests.swift in Sources */,
 				EA5798B61F78148A00039268 /* EntityDescription+EntitySettingsTests.swift in Sources */,
 				EA5798AD1F78148A00039268 /* TestModelLoader.swift in Sources */,
 				EA5798B31F78148A00039268 /* Connect+ActionTests.swift in Sources */,
-				EA4EC6F720A780AD00E04DE3 /* ChangeDataTests.swift in Sources */,
-				EA5798B81F78148A00039268 /* LoggingContextTests.swift in Sources */,
 				EA5798D11F78148A00039268 /* ContextStrategy+MixedTests.swift in Sources */,
 				EA5798D91F78148A00039268 /* ContainerUser.swift in Sources */,
 				EA5798C91F78148A00039268 /* ConnectEntity3Unmanaged+CoreDataProperties.swift in Sources */,
@@ -1937,7 +1858,6 @@
 				EA5798CE1F78148A00039268 /* MockListAction.swift in Sources */,
 				EA5798C71F78148A00039268 /* ConnectEntity2+CoreDataProperties.swift in Sources */,
 				EA5798C41F78148A00039268 /* ConnectEntity1+CoreDataClass.swift in Sources */,
-				EA5798C01F78148A00039268 /* WriteAheadLogTests.swift in Sources */,
 				EA5798BD1F78148A00039268 /* ActionContainer+StatisticsTests.swift in Sources */,
 				EA5798D41F78148A00039268 /* ContextStrategy+DirectTests.swift in Sources */,
 				EA5798DB1F7814AB00039268 /* ConnectTestModel.xcdatamodeld in Sources */,

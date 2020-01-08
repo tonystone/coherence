@@ -135,8 +135,6 @@ class ConnectTests: XCTestCase {
                 if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
                     let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into: editContext) as? ConnectEntity1 {
 
-                    entity.logTransactions = true
-
                     object.id              = input.id
                     object.stringAttribute = input.string
 
@@ -190,8 +188,6 @@ class ConnectTests: XCTestCase {
 
             if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
                 let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
-
-                entity.logTransactions = true
 
                 object.id              = input.id
                 object.stringAttribute = input.string
@@ -249,8 +245,6 @@ class ConnectTests: XCTestCase {
 
             if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
                 let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
-
-                entity.logTransactions = true
 
                 object.id              = input.insert.id
                 object.stringAttribute = input.insert.string
@@ -314,8 +308,6 @@ class ConnectTests: XCTestCase {
 
             if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
                 let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
-
-                entity.logTransactions = true
 
                 object.id              = input.id
                 object.stringAttribute = input.string
