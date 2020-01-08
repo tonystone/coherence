@@ -97,6 +97,7 @@ install:
        bundler install
        bundler exec pod repo update
        pushd Example
+       bundler exec pod repo add-cdn jsDelivr-Specs "https://cdn.jsdelivr.net/cocoa/"
        bundler exec pod install
        popd
     fi
