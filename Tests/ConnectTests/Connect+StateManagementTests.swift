@@ -27,28 +27,6 @@ class ConnectStateManagementTests: XCTestCase {
         }
     }
 
-    func testStart() throws {
-
-        let input = modelName
-        let expected = TestPersistentStoreManager.defaultPersistentStoreDirectory().appendingPathComponent("\(modelName)._meta.sqlite")
-
-        let expectation = self.expectation(description: "Completion block called.")
-
-        let connect: Connect = GenericConnect<ContextStrategy.Mixed>(name: input)
-
-        connect.start() { (error) in
-            expectation.fulfill()
-        }
-
-        self.waitForExpectations(timeout: 5) { (error) in
-
-            if error == nil {
-                XCTAssertTrue(TestPersistentStoreManager.persistentStoreExists(url: expected))
-            }
-        }
-        try connect.stop()  /// Clean up
-    }
-
     func testStartThrows() throws {
 
         let input = (modelName: modelName, model: self.testModel)
