@@ -35,11 +35,6 @@ public class ActionContext: BackgroundContext {
     ///
     private var blockStartTime: Date? = nil
 
-    ///
-    /// Container access to the writeAheadLog.
-    ///
-    internal var logger: WriteAheadLog? = nil
-
     public override func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
         let start = Date()
         defer {

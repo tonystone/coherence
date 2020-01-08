@@ -33,8 +33,6 @@ extension NSEntityDescription {
     public struct Default {
         public static let managed: Bool                  = false
         public static let uniquenessAttributes: [String] = []
-        public static let stalenessInterval: Int         = 600
-        public static let logTransactions: Bool          = false
     }
 
     ///
@@ -43,8 +41,6 @@ extension NSEntityDescription {
     private struct Key {
         static var managed:              UInt8 = 0
         static var uniquenessAttributes: UInt8 = 0
-        static var stalenessInterval:    UInt8 = 0
-        static var logTransactions:      UInt8 = 0
     }
     
     ///
@@ -81,38 +77,6 @@ extension NSEntityDescription {
             logUpdate(#function, value: newValue)
         }
     }
-
-    ///
-    /// Sets the amount of time before the resource is updated again from the master source
-    ///
-    public var stalenessInterval: Int {
-        get {
-            return associatedValue(self, key: &Key.stalenessInterval, defaultValue: Default.stalenessInterval)
-        }
-        set {
-            associatedValue(self, key: &Key.stalenessInterval, value: newValue)
-            
-            logUpdate(#function, value: newValue)
-        }
-    }
-    
-    ///
-    /// Should Connect log transactions for this entity?
-    ///
-    /// The default value is false for all entities.  You must set
-    /// this value if you want Connect to log transactions for this
-    /// entity.
-    ///
-    public var logTransactions: Bool {
-        get {
-            return associatedValue(self, key: &Key.logTransactions, defaultValue: Default.logTransactions)
-        }
-        set {
-            associatedValue(self, key: &Key.logTransactions, value: newValue)
-            
-            logUpdate(#function, value: newValue)
-        }
-    }
     
     private func logUpdate<T>(_ funcName: String, value: T) {
         logInfo(Log.tag) {
@@ -131,26 +95,6 @@ extension NSEntityDescription {
                 self.uniquenessAttributes = value
             } else if let value = rawValue as? String {
                 self.uniquenessAttributes = value.components(separatedBy: ",").map{ $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            }
-        }
-
-        if let rawValue = dictionary["stalenessInterval"] {
-
-            if let value = rawValue as? Int {
-                self.stalenessInterval = value
-            } else if let string = rawValue as? String,
-                      let value  = Int(string) {
-                self.stalenessInterval = value
-            }
-        }
-
-        if let rawValue = dictionary["logTransactions"] {
-
-            if let value = rawValue as? Bool {
-                self.logTransactions = value
-            } else if let string = rawValue as? String,
-                let value  = Bool(string) {
-                self.logTransactions = value
             }
         }
     }
