@@ -132,12 +132,10 @@ class ConnectTests: XCTestCase {
 
             try editContext.performAndWait {
 
-                if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
-                    let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into: editContext) as? ConnectEntity1 {
+                if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into: editContext) as? ConnectEntity1 {
 
                     object.id              = input.id
                     object.stringAttribute = input.string
-
 
                     try editContext.save()
 
@@ -186,8 +184,7 @@ class ConnectTests: XCTestCase {
 
         editContext.performAndWait {
 
-            if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
-                let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
 
                 object.id              = input.id
                 object.stringAttribute = input.string
@@ -243,8 +240,7 @@ class ConnectTests: XCTestCase {
 
         editContext.performAndWait {
 
-            if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
-                let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
 
                 object.id              = input.insert.id
                 object.stringAttribute = input.insert.string
@@ -306,8 +302,7 @@ class ConnectTests: XCTestCase {
 
         editContext.performAndWait {
 
-            if let entity = NSEntityDescription.entity(forEntityName: "ConnectEntity1", in: editContext),
-                let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
+            if let object = NSEntityDescription.insertNewObject(forEntityName: "ConnectEntity1", into:editContext) as? ConnectEntity1 {
 
                 object.id              = input.id
                 object.stringAttribute = input.string
