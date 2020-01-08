@@ -1,6 +1,14 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [5.0.0](https://github.com/tonystone/coherence/releases/tag/5.0.0)
+
+#### Fixed
+- Fixed issue where the main context was not being updated when a background context was saved.
+
+#### Removed
+- Removed Write Ahead Logging since it was not exposed and enhancing the performance.
+
 ## [4.2.0](https://github.com/tonystone/coherence/releases/tag/4.2.0)
 
 #### Added
