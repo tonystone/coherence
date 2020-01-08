@@ -56,37 +56,9 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
         XCTAssertEqual(entity.uniquenessAttributes, expected)
     }
 
-    func testSalenessInterval() {
-        let input = 3060
-        let expected = input
-
-        entity.stalenessInterval = input
-
-        XCTAssertEqual(entity.stalenessInterval, expected)
-    }
-
-    func testLogTransactionsWithTrue() {
-        let input = true
-        let expected = input
-
-        entity.logTransactions = input
-
-        XCTAssertEqual(entity.logTransactions, expected)
-    }
-
-    func testLogTransactionsWithFalse() {
-        let input = false
-        let expected = input
-
-        entity.logTransactions = input
-
-        XCTAssertEqual(entity.logTransactions, expected)
-    }
 
     func testSetSettingsWithStringString() {
-        let input = ["uniquenessAttributes": "attribute1, attribute2",
-                     "stalenessInterval": "3600",
-                     "logTransactions": "true"]
+        let input = ["uniquenessAttributes": "attribute1, attribute2"]
         let expected = (["attribute1", "attribute2"],
                         3600,
                         true)
@@ -94,14 +66,10 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
         entity.setSettings(from: input)
 
         XCTAssertEqual(entity.uniquenessAttributes, expected.0)
-        XCTAssertEqual(entity.stalenessInterval, expected.1)
-        XCTAssertEqual(entity.logTransactions, expected.2)
     }
 
     func testSetSettingsWithAnyHashableAny() {
-        let input: [AnyHashable: Any] = ["uniquenessAttributes": ["attribute1", "attribute2"],
-                     "stalenessInterval": 3600,
-                     "logTransactions": true]
+        let input: [AnyHashable: Any] = ["uniquenessAttributes": ["attribute1", "attribute2"]]
         let expected = (["attribute1", "attribute2"],
                         3600,
                         true)
@@ -109,7 +77,5 @@ class EntityDescriptionEntitySettingsTests: XCTestCase {
         entity.setSettings(from: input)
 
         XCTAssertEqual(entity.uniquenessAttributes, expected.0)
-        XCTAssertEqual(entity.stalenessInterval, expected.1)
-        XCTAssertEqual(entity.logTransactions, expected.2)
     }
 }

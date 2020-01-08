@@ -99,11 +99,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     }
 
     ///
-    /// Stack used to manage meta data about the main cache
-    ///
-    fileprivate let metaCache: MetaCacheType
-
-    ///
     /// Main user cache container
     ///
     fileprivate let dataCache: DataCacheType
@@ -112,16 +107,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     /// Notification service used by action containers and other services that post notifications.
     ///
     fileprivate let notificationService: NotificationService
-
-    ///
-    /// Is logging enabled
-    ///
-    fileprivate let loggingEnabled: Bool
-
-    ///
-    /// The internal write ahead log for logging transactions
-    ///
-    fileprivate var writeAheadLog: WriteAheadLog?
 
     ///
     /// Generic queue used for executing `GenericAction` types.
@@ -163,7 +148,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name.
     ///
-    public convenience init(name: String, enableLogging logging: Bool = false, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
+    public convenience init(name: String, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         let url = abortIfNil(message: "Could not locate model `\(name)` in any bundle.") {
             return Bundle.url(forManagedObjectModelName: name)
@@ -172,7 +157,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
         let model = abortIfNil(message: "Failed to load model at \(url).") {
             return NSManagedObjectModel(contentsOf: url)
         }
-        self.init(name: name, enableLogging: logging, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
+        self.init(name: name, managedObjectModel: model, asyncErrorBlock: asyncErrorBlock)
     }
 
     ///
@@ -187,10 +172,9 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     ///
     /// - Returns: A Connect instance initialized with the given name and model.
     ///
-    public required init(name: String, enableLogging logging: Bool = false, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
+    public required init(name: String, managedObjectModel model: NSManagedObjectModel, asyncErrorBlock: AsyncErrorHandlerBlock? = nil) {
 
         self.name = name
-        self.loggingEnabled = logging
         self.storeStatus = [:]
 
         let errorBlock = { (error: Error) -> Void in
@@ -207,7 +191,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
         }
 
         self.dataCache = DataCacheType(name: name, managedObjectModel: model,       asyncErrorBlock: errorBlock, logTag: Log.tag)
-        self.metaCache = MetaCacheType(name: name, managedObjectModel: MetaModel(), asyncErrorBlock: errorBlock, logTag: Log.tag)
 
         self.notificationService = NotificationService()
 
@@ -455,17 +438,7 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
     /// - Parameter logged: Enable/disable transaction logging to the write ahead log when context.save is called.
     ///
     public func newBackgroundContext(logged: Bool) -> BackgroundContext {
-
-        let context: LoggingContext = self.dataCache.newGenericBackgroundContext()
-
-        if logged {
-            ///
-            /// Attached the logger to the context
-            /// so updates can be logged.
-            ///
-            context.logger = self.writeAheadLog
-        }
-        return context
+        return  self.dataCache.newGenericBackgroundContext()
     }
 
     internal func newActionContext() -> ActionContext {
@@ -473,7 +446,6 @@ public class GenericConnect<Strategy: ContextStrategyType>: NSObject, Connect {
         let context: ActionContext = self.dataCache.newGenericBackgroundContext()
         
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        context.logger = self.writeAheadLog
 
         return context
     }
@@ -595,14 +567,6 @@ extension GenericConnect {
 
             logInfo(Log.tag) { "Starting instance '\(self.name)'..." }
 
-            let metaStoreConfiguration = StoreConfiguration(name: MetaModel.metaConfigurationName, type: NSSQLiteStoreType, overwriteIncompatibleStore: true)
-
-            try self.metaCache.attachPersistentStore(at: GenericConnect.defaultStoreLocation(), for: metaStoreConfiguration)
-
-            if self.loggingEnabled {
-                self.writeAheadLog = try WriteAheadLog(persistentContainer: self.metaCache)
-            }
-
             ///
             /// If there are no stores attached at the time of starting, we assume that 
             /// the user wants the default configuration for persistent stores and we start them
@@ -638,12 +602,6 @@ extension GenericConnect {
         try autoreleasepool {
 
             logInfo(Log.tag) { "Stopping instance '\(self.name)'..." }
-
-            if let metaStore = self.metaCache.persistentStoreCoordinator.persistentStores.first {
-                try self.metaCache.detach(persistentStore: metaStore)
-            }
-
-            self.writeAheadLog = nil
 
             ///
             /// Check that all the exsiting stores are stopped, if not, stop each of them
