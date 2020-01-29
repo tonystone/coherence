@@ -68,14 +68,14 @@ internal class ActionContainer: Operation, ActionProxy {
 
     override func main() {
 
-        logInfo(Log.tag) { "Proxy \(self) started on thread \(Thread.current) at priority \(Thread.current.threadPriority)." }
+        logInfo("\(type(of: self.action))") { "\(self.action) started." }
 
         self.state = .executing
 
         defer {
             self.state = .finished
 
-            logInfo(Log.tag) { "Proxy \(self) \(self.completionStatus), execution statistics: \(self.statistics)" }
+            logInfo("\(type(of: self.action))") { "\(self.action) \(self.completionStatus), execution statistics: \(self.statistics)" }
 
             self.completion?(self)
         }
@@ -107,7 +107,7 @@ internal class ActionContainer: Operation, ActionProxy {
                 completionStatus = .failed
             }
 
-            logError(Log.tag) { "Action \(self.action) threw error: \(error)." }
+            logError("\(type(of: self.action))") { "\(self.action) threw error: \(error)." }
         }
     }
 

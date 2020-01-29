@@ -32,7 +32,7 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
 
         super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
-        logInfo(Log.tag) { "Proxy \(self) created for action \(self.action)." }
+        logTrace(Log.tag, level: 4) { "Proxy \(self) created for action \(self.action)." }
     }
 
     internal override func execute() throws {

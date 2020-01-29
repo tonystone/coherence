@@ -110,10 +110,6 @@ public class GenericPersistentContainer<Strategy: ContextStrategyType>: NSObject
     /// - Note: This method and the returned `BackgroundContext` can be used on a background thread.  It can also be used on the main thread.
     ///
     public func newGenericBackgroundContext<T: BackgroundContext>() -> T {
-        logInfo(self.tag) { "Creating new background context of type `\(String(describing: T.self))`..." }
-        defer {
-            logInfo(self.tag) { "Background context created." }
-        }
         return contextStrategy.newBackgroundContext()
     }
 
