@@ -30,6 +30,9 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
         self.entityAction = action
         self.context      = context
 
+        // Set the tag for debug loggin of the context to the ActionType description.
+        context.tag = "\(ActionType.self)"
+
         super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
         logTrace(Log.tag, level: 4) { "Proxy \(self) created for action \(self.action)." }
