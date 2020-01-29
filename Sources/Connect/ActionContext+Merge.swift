@@ -28,7 +28,7 @@ extension ActionContext {
     ///
     /// - Throws: `Coherence.Errors.unmanagedEntity` if the `for entity` is not managed by `Connect`
     ///
-    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, ignoreAttributes: [String] = [], subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true)) throws {
+    public func merge<ManagedObjectType: NSManagedObject>(objects: [ManagedObjectType], for entity: NSEntityDescription, ignoreAttributes: [String] = [], subsetFilter: NSPredicate? = nil, condition: NSPredicate = NSPredicate(value: true), tag: String? = nil) throws {
 
         guard let entityName = entity.name else {
             throw Errors.missingEntityName("Entity does not have a name, cannot merge objects.")
@@ -81,7 +81,7 @@ extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logInfo(Log.tag) {
+        logInfo(tag ?? Log.tag) {
             var message = "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity '\(entityName)'"
 
             if ignoreAttributes.count > 0 {
