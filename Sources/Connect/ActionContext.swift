@@ -21,6 +21,9 @@ import CoreData
 
 public class ActionContext: BackgroundContext {
 
+    /// Tag to use for debug logging.
+    internal var tag: String? = nil
+
     ///
     /// The statistics for this Context
     ///

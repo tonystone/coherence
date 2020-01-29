@@ -1,6 +1,12 @@
 # Change Log
 All significant changes to this project will be documented in this file.
 
+## [5.0.1](https://github.com/tonystone/coherence/releases/tag/5.0.1)
+
+#### Updated
+- Changed debug log output of the ActionProxy to use the tag of the Action it's executing so actions can be identified better.
+
+
 ## [5.0.0](https://github.com/tonystone/coherence/releases/tag/5.0.0)
 
 #### Fixed

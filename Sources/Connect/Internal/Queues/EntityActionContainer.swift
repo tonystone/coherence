@@ -30,9 +30,12 @@ class EntityActionContainer<ActionType: EntityAction>: ActionContainer {
         self.entityAction = action
         self.context      = context
 
+        // Set the tag for debug loggin of the context to the ActionType description.
+        context.tag = "\(ActionType.self)"
+
         super.init(action: action, notificationService: notificationService, completionBlock: completionBlock)
 
-        logInfo(Log.tag) { "Proxy \(self) created for action \(self.action)." }
+        logTrace(Log.tag, level: 4) { "Proxy \(self) created for action \(self.action)." }
     }
 
     internal override func execute() throws {

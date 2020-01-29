@@ -491,7 +491,7 @@ extension GenericConnect: ActionManager {
 
             let container = GenericActionContainer<ActionType>(action: action, notificationService: self.notificationService, completionBlock: completionBlock)
 
-            logInfo(Log.tag) { "Queuing \(container) on queue `\(self.genericQueue)'" }
+            logTrace(Log.tag, level: 4) { "Queuing \(container) on queue `\(self.genericQueue)'" }
 
             self.genericQueue.addAction(container, waitUntilDone: false)
             
@@ -538,7 +538,7 @@ extension GenericConnect: ActionManager {
 
             let container = EntityActionContainer<ActionType>(action: action, context: context, notificationService: self.notificationService, completionBlock: completionBlock)
 
-            logInfo(Log.tag) { "Queuing \(container) on queue `\(entityQueue)'" }
+            logTrace(Log.tag, level: 4) { "Queuing \(container) on queue `\(entityQueue)'" }
 
             entityQueue.addAction(container, waitUntilDone: false)
             

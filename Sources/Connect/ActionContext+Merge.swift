@@ -81,7 +81,7 @@ extension ActionContext {
             return try self.fetch(request) /// This fetch will come back sorted
         }()
 
-        logInfo(Log.tag) {
+        logInfo(self.tag ?? Log.tag) {
             var message = "Merging \(newObjects.count) pending object(s) into \(existingObjects.count) existing object(s) for entity '\(entityName)'"
 
             if ignoreAttributes.count > 0 {
